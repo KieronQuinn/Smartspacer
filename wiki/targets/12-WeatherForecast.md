@@ -1,5 +1,7 @@
 # Target: Weather Forecast
 
+A full-width weather forecast, with up to 4 columns
+
 ### Feature ID
 
 `SmartspaceTarget.FEATURE_WEATHER_ALERT` (`10`)
