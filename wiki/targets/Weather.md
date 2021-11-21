@@ -2,7 +2,7 @@
 
 ### Feature ID
 
-`SmartspaceTarget.FEATURE_WEATHER` (`1`)
+`SmartspaceTarget.FEATURE_WEATHER_ALERT` (`10`)
 
 ### Preview
 
