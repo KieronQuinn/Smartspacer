@@ -1,6 +1,6 @@
 # Target: Flight
 
-Shows a boarding pass, seat number, gate **or** a textual or image hint.
+Shows a boarding pass, seat number, gate **or** an image and text.
 
 ### Feature ID
 
