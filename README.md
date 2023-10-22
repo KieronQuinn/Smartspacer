@@ -33,4 +33,4 @@ If you are a developer, and you're interested in making a Smartspacer Plugin, or
 
 ## Licences 
 
-The Smartspacer app is licensed under the [GNU GPL v3 licence](https://github.com/KieronQuinn/Smartspacer/LICENSE), the SDK is licensed under [Apache 2.0](https://github.com/KieronQuinn/Smartspacer/sdk-core/LICENSE)
+The Smartspacer app is licensed under the [GNU GPL v3 licence](https://github.com/KieronQuinn/Smartspacer/blob/main/LICENSE), the SDK is licensed under [Apache 2.0](https://github.com/KieronQuinn/Smartspacer/blob/main/sdk-core/LICENSE)
