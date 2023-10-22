@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_settings"
+    app:startDestination="@id/settingsFragment">
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsFragment"
+        android:label="@string/bottom_nav_settings"
+        tools:layout="@layout/fragment_settings_base">
+        <action
+            android:id="@+id/action_settingsFragment_to_nativeModeFragment2"
+            app:destination="@id/nativeModeFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_enhancedModeFragment2"
+            app:destination="@id/enhancedModeFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_expandedSettingsFragment"
+            app:destination="@id/expandedSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsHideSensitiveFragment"
+            app:destination="@id/settingsHideSensitiveFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsOemSmartspaceFragment"
+            app:destination="@id/settingsOemSmartspaceFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsBatteryOptimisationFragment"
+            app:destination="@id/settingsBatteryOptimisationFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_pluginRepositorySettingsFragment"
+            app:destination="@id/pluginRepositorySettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_graph_backup_restore"
+            app:destination="@id/nav_graph_backup_restore" />
+        <action
+            android:id="@+id/action_settingsFragment_to_ossLicensesMenuActivity"
+            app:destination="@id/ossLicensesMenuActivity" />
+        <action
+            android:id="@+id/action_settingsFragment_to_contributorsFragment"
+            app:destination="@id/contributorsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_graph_include_donate"
+            app:destination="@id/nav_graph_include_donate" />
+    </fragment>
+    <fragment
+        android:id="@+id/nativeModeFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeFragment"
+        android:label="@string/native_title"
+        tools:layout="@layout/fragment_native">
+        <argument
+            android:name="is_setup"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="smartspacer://native"/>
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="smartspacer://native-from-notification"/>
+        <action
+            android:id="@+id/action_nativeModeFragment2_to_nativeModeSettingsFragment"
+            app:destination="@id/nativeModeSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enhancedModeFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.enhancedmode.EnhancedModeFragment"
+        android:label="@string/enhanced_mode_title"
+        tools:layout="@layout/fragment_enhanced_mode">
+        <argument
+            android:name="is_setup"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_enhancedModeFragment2_to_enhancedModeRequestFragment2"
+            app:destination="@id/enhancedModeRequestFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/enhancedModeRequestFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.enhancedmode.request.EnhancedModeRequestFragment"
+        android:label="@string/enhanced_mode_title"
+        tools:layout="@layout/fragment_enhanced_mode_request">
+        <argument
+            android:name="is_setup"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/nativeModeSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.native.settings.NativeModeSettingsFragment"
+        android:label="@string/native_mode_settings_title"
+        tools:layout="@layout/fragment_settings_base">
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <action
+            android:id="@+id/action_nativeModeSettingsFragment_to_nativeModePageLimitFragment"
+            app:destination="@id/nativeModePageLimitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nativeModePageLimitFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.native.settings.pagelimit.NativeModePageLimitFragment"
+        android:label="@string/native_mode_settings_target_limit_title"
+        tools:layout="@layout/fragment_settings_base">
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+    <fragment
+        android:id="@+id/expandedSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.ExpandedSettingsFragment"
+        android:label="@string/expanded_settings_title_short"
+        tools:layout="@layout/fragment_settings_base">
+        <action
+            android:id="@+id/action_expandedSettingsFragment_to_expandedHomeOpenModeSettingsFragment"
+            app:destination="@id/expandedHomeOpenModeSettingsFragment" />
+        <action
+            android:id="@+id/action_expandedSettingsFragment_to_expandedLockOpenModeSettingsFragment"
+            app:destination="@id/expandedLockOpenModeSettingsFragment" />
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="smartspacer://expanded"/>
+        <action
+            android:id="@+id/action_expandedSettingsFragment_to_expandedSettingsSearchProviderFragment"
+            app:destination="@id/expandedSettingsSearchProviderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expandedHomeOpenModeSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.home.ExpandedHomeOpenModeSettingsFragment"
+        android:label="@string/expanded_settings_open_mode_home_screen_title_short"
+        tools:layout="@layout/fragment_settings_base">
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+    <fragment
+        android:id="@+id/expandedLockOpenModeSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.lock.ExpandedLockOpenModeSettingsFragment"
+        android:label="@string/expanded_settings_open_mode_lock_screen_title_short"
+        tools:layout="@layout/fragment_settings_base">
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+    <fragment
+        android:id="@+id/settingsHideSensitiveFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.sensitive.SettingsHideSensitiveFragment"
+        android:label="@string/settings_hide_sensitive_contents_title_short"
+        tools:layout="@layout/fragment_settings_base"/>
+    <fragment
+        android:id="@+id/settingsOemSmartspaceFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmartspaceFragment"
+        android:label="@string/oem_smartspace_title"
+        tools:layout="@layout/fragment_settings_base"/>
+    <fragment
+        android:id="@+id/expandedSettingsSearchProviderFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.searchprovider.ExpandedSettingsSearchProviderFragment"
+        android:label="@string/expanded_settings_search_provider_title"
+        tools:layout="@layout/fragment_settings_base"/>
+    <fragment
+        android:id="@+id/settingsBatteryOptimisationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationFragment"
+        android:label="@string/battery_optimisation_title"
+        tools:layout="@layout/fragment_battery_optimisation"/>
+    <fragment
+        android:id="@+id/pluginRepositorySettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.repository.settings.PluginRepositorySettingsFragment"
+        android:label="@string/plugin_settings_title"
+        tools:layout="@layout/fragment_settings_base">
+        <action
+            android:id="@+id/action_pluginRepositorySettingsFragment_to_pluginRepositorySettingsUrlBottomSheetFragment"
+            app:destination="@id/pluginRepositorySettingsUrlBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/pluginRepositorySettingsUrlBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.repository.settings.url.PluginRepositorySettingsUrlBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_settings_plugin_repository_url_bottom_sheet"/>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permissions.PermissionsFragment"
+        android:label="@string/permissions_title"
+        tools:layout="@layout/fragment_permissions"/>
+    <include app:graph="@navigation/nav_graph_backup_restore" />
+
+    <activity
+        android:id="@+id/ossLicensesMenuActivity"
+        android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+        tools:layout="@layout/libraries_social_licenses_license_menu_activity" />
+    <fragment
+        android:id="@+id/contributorsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.contributors.ContributorsFragment"
+        android:label="@string/about_contributors"
+        tools:layout="@layout/fragment_settings_base"/>
+    <include app:graph="@navigation/nav_graph_include_donate" />
+
+</navigation>

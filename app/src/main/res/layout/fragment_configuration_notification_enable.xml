@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/configuration_notification_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_close"
+        app:title="@string/configuration_notification_enable_title"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        app:titleTextColor="?android:textColorPrimary"
+        tools:background="@android:color/background_light" />
+
+    <include
+        android:id="@+id/configuration_notification_content"
+        layout="@layout/include_configuration_notification_enable"/>
+
+</LinearLayout>

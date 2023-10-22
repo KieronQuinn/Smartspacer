@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionGroup="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <!-- Intentional: Load all items to prevent widget reload where possible -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/expanded_nested_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/expanded_unlock_container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.kieronquinn.app.smartspacer.ui.views.NestedRecyclerView
+            android:id="@+id/expanded_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/expanded_button_unlock_height"
+            tools:listitem="@layout/smartspace_view_template_basic" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/expanded_disabled_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_expanded_mode"
+        app:layout_constraintBottom_toTopOf="@id/expanded_disabled_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/expanded_disabled_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/expanded_disabled"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/expanded_disabled_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expanded_disabled_icon" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expanded_disabled_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/expanded_disabled_settings"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        android:textColor="?android:textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expanded_disabled_title" />
+
+    <ImageView
+        android:id="@+id/expanded_loading"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:src="@drawable/avd_foreground_splash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/expanded_disabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="expanded_disabled_icon,expanded_disabled_title,expanded_disabled_button" />
+
+    <FrameLayout
+        android:id="@+id/expanded_unlock_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_expanded_unlock"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:backgroundTint="@android:color/darker_gray">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/expanded_unlock"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/expanded_button_unlock_height"
+            app:icon="@drawable/ic_expanded_unlock"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="?android:textColorPrimary" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

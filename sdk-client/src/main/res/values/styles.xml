@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Smartspacer.Page.Title.Preview" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/smartspace_page_title_size</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Page.Title" parent="TextAppearance.Smartspacer.Page.Title.Preview">
+        <item name="android:fontFamily">google-sans</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Page.Subtitle.Preview" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/smartspace_page_subtitle_size</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Page.Subtitle" parent="TextAppearance.Smartspacer.Page.Subtitle.Preview">
+        <item name="android:fontFamily">google-sans-text</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Page.Popup.Preview" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Page.Popup" parent="TextAppearance.Smartspacer.Page.Popup.Preview">
+        <item name="android:fontFamily">google-sans-text-medium</item>
+    </style>
+
+    <style name="SmartspacerPageRoot">
+        <item name="android:paddingStart">@dimen/smartspace_page_margin</item>
+        <item name="android:paddingEnd">@dimen/smartspace_page_margin</item>
+    </style>
+
+    <style name="SmartspacerPageTitle" parent="@android:style/Widget.TextView">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="SmartspacerPageSubtitle" parent="SmartspacerPageTitle">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineHeight">@dimen/smartspace_page_icon_size</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+    
+</resources>

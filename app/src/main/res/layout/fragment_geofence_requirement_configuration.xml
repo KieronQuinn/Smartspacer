@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/geofence_requirement_loading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/requirement_geofence_configuration_background_location_permission"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_requirement_geofence_permission" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:gravity="center"
+                android:text="@string/requirement_geofence_configuration_background_location_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:gravity="center"
+                android:text="@string/requirement_geofence_configuration_background_location_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:textColor="?android:textColorPrimary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/requirement_geofence_configuration_background_location_grant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/requirement_geofence_configuration_background_location_grant" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/requirement_geofence_configuration_limit_reached"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_requirement_geofence_permission" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:gravity="center"
+                android:text="@string/requirement_geofence_configuration_limit_reached_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:gravity="center"
+                android:text="@string/requirement_geofence_configuration_limit_reached_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:textColor="?android:textColorPrimary" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/geofence_requirement_configuration"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/geofence_requirement_configuration_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/geofence_requirement_bottom_sheet_peek_size_minus_margin"
+            tools:layout="@layout/include_loading" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/geofence_requirement_configuration_save"
+            style="@style/Widget.Material3.ExtendedFloatingActionButton.Smartspacer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/geofence_requirement_bottom_sheet_peek_size_with_margin"
+            android:elevation="0dp"
+            android:text="@string/save"
+            app:icon="@drawable/ic_save" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/geofence_requirement_bottom_sheet"
+            style="?attr/bottomSheetStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="64dp"
+            app:behavior_peekHeight="@dimen/geofence_requirement_bottom_sheet_peek_size"
+            app:cardCornerRadius="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:strokeWidth="0dp"
+            tools:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/geofence_requirement_bottom_sheet_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/geofence_requirement_bottom_sheet_peek_size"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/geofence_requirement_bottom_sheet_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:background="@drawable/rounded_ripple_40"
+                        android:padding="0dp"
+                        android:rotation="180"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_arrow_down" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginEnd="@dimen/margin_16"
+                        android:layout_weight="1"
+                        android:text="@string/requirement_geofence_bottom_sheet_title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                        android:textColor="?android:textColorPrimary" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/geofence_requirement_bottom_sheet_nav_blocker"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/geofence_requirement_bottom_sheet_nav_settings"
+                    android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.GeofenceRequirementConfigurationSettingsFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_settings_base" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

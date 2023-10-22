@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionGroup="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/expanded_rearrange_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:actionBarSize"
+        app:titleTextColor="?android:textColorPrimary"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="@string/expanded_custom_widget_rearrange_title"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+            android:id="@+id/expanded_rearrange_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_expanded_widget" />
+
+        <include
+            android:id="@+id/expanded_rearrange_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            layout="@layout/include_loading"/>
+
+    </FrameLayout>
+
+</LinearLayout>

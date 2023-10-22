@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_page_template_root"
+    style="@style/SmartspacerPageTitle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:layout_height="@dimen/smartspace_page_max_height">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/smartspace_page_images"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/smartspace_page_template_images_image_height"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/smartspace_page_images_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:background="@drawable/smartspace_page_outline_rounded"
+            android:clipToOutline="true"
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintDimensionRatio="1:1"
+            tools:src="@android:color/holo_red_dark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/smartspace_page_margin_16"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_title"
+            layout="@layout/include_smartspace_page_title" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_subtitle"
+            layout="@layout/include_smartspace_page_subtitle" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_supplemental"
+            layout="@layout/include_smartspace_page_supplemental" />
+
+    </LinearLayout>
+
+</LinearLayout>

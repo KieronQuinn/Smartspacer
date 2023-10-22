@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.SEND_UPDATE_BROADCAST"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_TARGETS"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_COMPLICATIONS"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_REQUIREMENTS"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_WIDGETS"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_NOTIFICATIONS"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_BROADCASTS"
+        android:protectionLevel="signature" />
+
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_TARGETS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_COMPLICATIONS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_REQUIREMENTS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_WIDGETS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_NOTIFICATIONS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_BROADCASTS" />
+    <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.SEND_UPDATE_BROADCAST" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission
+        android:name="android.permission.READ_SMS"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="com.google.android.gm.permission.READ_CONTENT_PROVIDER" />
+
+    <uses-feature android:name="android.software.companion_device_setup" />
+
+    <application
+        android:name=".Smartspacer"
+        android:allowBackup="false"
+        android:enableOnBackInvokedCallback="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Smartspacer.Splash"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="smartspacer" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/app_shortcuts" />
+        </activity>
+
+        <activity
+            android:name=".ui.activities.DummyHomeActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Smartspacer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activities.permission.notification.NotificationPermissionActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Smartspacer" />
+
+        <activity
+            android:name=".ui.activities.permission.accessibility.AccessibilityPermissionActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Smartspacer" />
+
+        <activity
+            android:name=".ui.activities.permission.sms.SmsPermissionActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Smartspacer.Transparent" />
+
+        <activity
+            android:name=".ui.activities.permission.calllog.CallLogPermissionActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.Smartspacer.Transparent" />
+
+        <activity
+            android:name=".ui.activities.ExpandedActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@style/Theme.Smartspacer.Wallpaper" />
+
+        <activity-alias
+            android:name=".ui.activities.ExportedExpandedActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:showOnLockScreen="true"
+            android:targetActivity=".ui.activities.ExpandedActivity">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.SMARTSPACE" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".ui.activities.configuration.ConfigurationActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Smartspacer" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.timedate.TimeDateRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.geofence.GeofenceRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.appprediction.AppPredictionRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.recenttask.RecentTaskRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.wifi.WiFiRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.notification.NotificationTargetConfigurationActivity"
+            android:description="@string/target_notification_configuration_content"
+            android:exported="true"
+            android:icon="@drawable/ic_target_notifications"
+            android:label="@string/target_notification_configuration_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.calendar.CalendarTargetConfigurationActivity"
+            android:description="@string/target_calendar_configuration_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_calendar_configuration_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.default.DefaultTargetConfigurationActivity"
+            android:description="@string/target_default_configuration_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_default_configuration_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.GreetingTargetConfigurationActivity"
+            android:description="@string/target_greeting_configuration_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_greeting_configuration_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.music.MusicTargetConfigurationActivity"
+            android:description="@string/target_music_setting_setting_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_music_setting_setting_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.blank.BlankTargetConfigurationActivity"
+            android:description="@string/target_blank_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_music_setting_setting_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.complication.GmailComplicationConfigurationActivity"
+            android:description="@string/complication_gmail_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/complication_gmail_settings_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.default.AsiSettingsTrampolineActivity"
+            android:description="@string/target_default_configuration_description"
+            android:exported="true"
+            android:icon="@drawable/ic_target_at_a_glance"
+            android:label="@string/target_default_configuration_title"
+            android:targetActivity=".ui.activities.TrampolineActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.glance.GlanceSettingsTrampolineActivity"
+            android:description="@string/complication_default_configuration_description"
+            android:exported="true"
+            android:icon="@drawable/ic_target_at_a_glance"
+            android:label="@string/complication_default_configuration_title"
+            android:targetActivity=".ui.activities.TrampolineActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.appwidget.SmartspacerAppWidgetConfigureActivity"
+            android:exported="false"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity-alias>
+
+        <service
+            android:name=".service.SmartspacerSmartspaceService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.MANAGE_SMARTSPACE">
+            <intent-filter>
+                <action android:name="android.service.smartspace.SmartspaceService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receivers.AlarmRequirementChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receivers.NativeDismissReceiver" />
+        <receiver android:name=".receivers.StartShizukuReceiver" />
+        <receiver android:name=".receivers.AtAGlanceClickReceiver" />
+
+        <receiver
+            android:name=".widgets.SmartspacerAppWidgetProvider"
+            android:exported="false"
+            android:label="@string/widget_title_smartspacer">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_smartspacer" />
+            <meta-data
+                android:name="com.samsung.android.appwidget.provider"
+                android:resource="@xml/samsung_widget_smartspacer" />
+        </receiver>
+
+        <receiver
+            android:name=".receivers.SmartspacerWidgetClickReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".receivers.SmartspacerOemClickReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".receivers.DummyReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
+
+        <service
+            android:name=".service.SmartspacerNotificationListenerService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"
+            android:label="@string/notification_service"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.notification.default_filter_types"
+                android:value="conversations|alerting|ongoing|silent" />
+        </service>
+
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="false"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+        <!-- Built in targets -->
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget"
+            android:authorities="${applicationId}.target.default"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.DateTarget"
+            android:authorities="${applicationId}.target.date"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.GreetingTarget"
+            android:authorities="${applicationId}.target.greeting"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.AsNowPlayingTarget"
+            android:authorities="${applicationId}.target.asnowplaying"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.AmmNowPlayingTarget"
+            android:authorities="${applicationId}.target.ammnowplaying"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget"
+            android:authorities="${applicationId}.target.notification"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.AtAGlanceTarget"
+            android:authorities="${applicationId}.target.ataglance"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.MusicTarget"
+            android:authorities="${applicationId}.target.music"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.DigitalWellbeingTarget"
+            android:authorities="${applicationId}.target.digitalwellbeing"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget"
+            android:authorities="${applicationId}.target.calendar"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.GoogleWeatherForecastTarget"
+            android:authorities="${applicationId}.target.googleweatherforecast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.BlankTarget"
+            android:authorities="${applicationId}.target.blank"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <!-- Built in complications -->
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication"
+            android:authorities="${applicationId}.complication.default"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.GoogleWeatherComplication"
+            android:authorities="${applicationId}.complication.googleweather"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.DigitalWellbeingComplication"
+            android:authorities="${applicationId}.complication.digitalwellbeing"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.GmailComplication"
+            android:authorities="${applicationId}.complication.gmail"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.SmsComplication"
+            android:authorities="${applicationId}.complication.sms"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.MissedCallsComplication"
+            android:authorities="${applicationId}.complication.missedcalls"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.AlarmComplication"
+            android:authorities="${applicationId}.complication.alarm"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.complications.BlankComplication"
+            android:authorities="${applicationId}.complication.blank"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
+        <!-- Built in widget mapping -->
+
+        <provider
+            android:name=".components.smartspace.widgets.GoogleWeatherWidget"
+            android:authorities="${applicationId}.widget.googleweather"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.widgets.AtAGlanceWidget"
+            android:authorities="${applicationId}.widget.ataglance"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.widgets.DigitalWellbeingWidget"
+            android:authorities="${applicationId}.widget.digitalwellbeing"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.widgets.GoogleWeatherForecastWidget"
+            android:authorities="${applicationId}.widget.googleweatherforecast"
+            android:exported="false" />
+
+        <!-- Built in requirements -->
+
+        <provider
+            android:name=".components.smartspace.requirements.TimeDateRequirement"
+            android:authorities="${applicationId}.requirement.timedate"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.requirements.AppPredictionRequirement"
+            android:authorities="${applicationId}.requirement.appprediction"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.requirements.GeofenceRequirement"
+            android:authorities="${applicationId}.requirement.geofence"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.requirements.RecentTaskRequirement"
+            android:authorities="${applicationId}.requirement.recenttask"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.requirements.WiFiRequirement"
+            android:authorities="${applicationId}.requirement.wifi"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <!-- Built in notifications -->
+        <provider
+            android:name=".components.smartspace.notifications.NotificationTargetNotification"
+            android:authorities="${applicationId}.notifications.notification"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.notifications.AmmNowPlayingTargetNotification"
+            android:authorities="${applicationId}.notifications.ammnowplaying"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.notifications.AsNowPlayingTargetNotification"
+            android:authorities="${applicationId}.notifications.asnowplaying"
+            android:exported="false" />
+
+        <receiver android:name=".receivers.GeofenceReceiver" />
+        <receiver android:name=".receivers.TimeDateRequirementAlarmReceiver" />
+        <receiver android:name=".receivers.CalendarTargetAlarmReceiver" />
+        <receiver android:name=".receivers.CalendarTargetTOTMAlarmReceiver" />
+        <receiver android:name=".receivers.GreetingTargetAlarmReceiver" />
+        <receiver android:name=".receivers.DailyUpdateAlarmReceiver" />
+        <receiver android:name=".receivers.AlarmComplicationAlarmReceiver" />
+
+        <receiver
+            android:name=".receivers.SmartspaceTargetUpdateReceiver"
+            android:exported="true"
+            android:permission="com.kieronquinn.app.smartspacer.permission.SEND_UPDATE_BROADCAST">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUEST_TARGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receivers.SmartspaceComplicationUpdateReceiver"
+            android:exported="true"
+            android:permission="com.kieronquinn.app.smartspacer.permission.SEND_UPDATE_BROADCAST">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUEST_COMPLICATION_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name=".providers.SmartspacerWidgetProxyContentProvider"
+            android:authorities="${applicationId}.widgetproxyprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <!-- Exported without permission as the calling package is checked against a list -->
+        <provider
+            android:name=".providers.SmartspacerProxyContentProvider"
+            android:authorities="${applicationId}.proxyprovider"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <!-- Exported without permission as the calling package is verified in the provider -->
+        <provider
+            android:name=".providers.SmartspacerWidgetProvider"
+            android:authorities="${applicationId}.appwidgetprovider"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <!-- Exported without permission as the calling package is verified in the provider -->
+        <provider
+            android:name=".providers.SmartspacerNotificationProvider"
+            android:authorities="${applicationId}.notificationprovider"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <receiver
+            android:name=".receivers.SafeModeReceiver"
+            android:exported="false"
+            android:process=":safemode" />
+
+        <receiver
+            android:name=".receivers.AlarmChangedReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receivers.WidgetPageChangeReceiver"/>
+
+        <activity
+            android:name=".ui.activities.safemode.SafeModeActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:noHistory="true"
+            android:process=":safemode"
+            android:theme="@style/Theme.Smartspacer" />
+
+        <activity
+            android:name=".ui.activities.TrampolineActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:theme="@style/Theme.Smartspacer.Transparent" />
+
+        <activity android:name=".ui.activities.ExportedSmartspaceTrampolineProxyActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:theme="@style/Theme.Smartspacer.Transparent"/>
+
+        <service
+            android:name="com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+        </service>
+
+        <service
+            android:name=".service.SmartspacerManagerService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"
+            tools:ignore="ExportedService">
+            <!-- Permission check is within service -->
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.MANAGER" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.SmartspacerBackgroundService"
+            android:foregroundServiceType="specialUse" />
+
+        <activity
+            android:name=".ui.activities.permission.client.SmartspacerClientPermissionActivity"
+            android:theme="@style/Theme.Smartspacer.Dialog" />
+
+        <!-- Disable automatic WorkManager configuration since we do it ourselves -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+
+        <provider
+            android:name=".providers.SmartspacerOemIconProvider"
+            android:authorities="${applicationId}.oemiconprovider"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <service
+            android:name=".service.SmartspacerMinusOneService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.android.launcher3.WINDOW_OVERLAY" />
+                <data android:scheme="app" />
+            </intent-filter>
+
+            <meta-data
+                android:name="service.api.version"
+                android:value="7" />
+        </service>
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/AppTheme.ThirdPartyLicences" />
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/AppTheme.ThirdPartyLicences" />
+
+        <!-- Google Maps SDK -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Firebase Analytics & Crashlytics are disabled unless the user opts in -->
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+
+    </application>
+
+</manifest>

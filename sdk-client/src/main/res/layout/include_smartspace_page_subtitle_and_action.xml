@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_page_subtitle_and_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:layout_marginTop="@dimen/smartspace_page_space">
+
+    <LinearLayout
+        android:id="@+id/smartspace_page_subtitle_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/smartspace_page_action_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+            android:id="@+id/smartspace_page_subtitle_icon"
+            android:layout_width="@dimen/smartspace_page_icon_size"
+            android:layout_height="@dimen/smartspace_page_icon_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/smartspace_page_subtitle_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@android:drawable/btn_star" />
+
+        <TextView
+            android:id="@+id/smartspace_page_subtitle_text"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smartspace_page_icon_margin"
+            android:layout_marginEnd="@dimen/smartspace_page_action_margin"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="Subtitle but it's really really really long"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/smartspace_page_action_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBaseline_toBaselineOf="@id/smartspace_page_subtitle_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/smartspace_page_subtitle_container"
+        app:layout_constraintWidth_min="wrap">
+
+        <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+            android:id="@+id/smartspace_page_action_icon"
+            android:layout_width="@dimen/smartspace_page_icon_size"
+            android:layout_height="@dimen/smartspace_page_icon_size"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/smartspace_page_icon_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/smartspace_page_action_text"
+            app:layout_constraintStart_toEndOf="@id/smartspace_page_subtitle_text"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@android:drawable/btn_star" />
+
+        <TextView
+            android:id="@+id/smartspace_page_action_text"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/smartspace_page_action_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Action"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

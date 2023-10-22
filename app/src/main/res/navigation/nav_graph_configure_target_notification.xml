@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_notification_target_configuration"
+    app:startDestination="@id/notificationTargetConfigurationFragment">
+
+    <fragment
+        android:id="@+id/notificationTargetConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.notification.NotificationTargetConfigurationFragment"
+        android:label="@string/target_notification_label" >
+        <action
+            android:id="@+id/action_notificationTargetConfigurationFragment_to_notificationTargetConfigurationAppPickerFragment"
+            app:destination="@id/notificationTargetConfigurationAppPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationTargetConfigurationAppPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.notification.apppicker.NotificationTargetConfigurationAppPickerFragment"
+        android:label="@string/target_notification_configuration_app_title"
+        tools:layout="@layout/fragment_configuration_target_notification_app_picker">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_settings"
+        android:showAsAction="always"
+        android:title="@string/native_mode_settings_menu_title"
+        tools:ignore="AppCompatResource" />
+</menu>

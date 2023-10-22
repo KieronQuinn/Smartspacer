@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="smartspace"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_name_smartspace"
+        android:shortcutLongLabel="@string/shortcut_name_smartspace"
+        android:shortcutDisabledMessage="@string/shortcut_name_smartspace">
+        <intent
+            android:targetPackage="com.kieronquinn.app.smartspacer"
+            android:action="com.kieronquinn.app.smartspacer.SMARTSPACE"
+            android:targetClass="com.kieronquinn.app.smartspacer.ui.activities.ExportedExpandedActivity" />
+    </shortcut>
+</shortcuts>

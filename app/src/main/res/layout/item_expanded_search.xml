@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_expanded_header"
+    android:layout_marginBottom="@dimen/margin_8"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/expanded_doodle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/margin_16" />
+
+    <include
+        android:id="@+id/expanded_search_box"
+        layout="@layout/include_expanded_search_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16" />
+
+</LinearLayout>

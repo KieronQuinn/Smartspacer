@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_requirement_time_date"
+    app:startDestination="@id/timeDateConfigurationFragment">
+
+    <fragment
+        android:id="@+id/timeDateConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationFragment"
+        android:label="@string/requirement_time_date_configuration_title"
+        tools:layout="@layout/fragment_time_date_requirement_configuration"/>
+
+</navigation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_requirement_app_prediction"
+    app:startDestination="@id/appPredictionRequirementConfigurationFragment">
+
+    <fragment
+        android:id="@+id/appPredictionRequirementConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.appprediction.AppPredictionRequirementConfigurationFragment"
+        android:label="@string/requirement_app_prediction_configuration_title"
+        tools:layout="@layout/fragment_app_prediction_requirement_configuration"/>
+
+</navigation>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="APPWIDGET_HOST_ID" type="id"/>
+    <item name="expanded_app_widget_host_view" type="id"/>
+</resources>

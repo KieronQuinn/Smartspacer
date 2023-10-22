@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_graph_targets"
+        android:icon="@drawable/ic_targets"
+        android:title="@string/bottom_nav_targets" />
+    <item
+        android:id="@+id/nav_graph_complications"
+        android:icon="@drawable/ic_complications"
+        android:title="@string/bottom_nav_complications" />
+    <item
+        android:id="@+id/nav_graph_plugin_repository"
+        android:icon="@drawable/ic_plugins"
+        android:title="@string/bottom_nav_plugins" />
+    <item
+        android:id="@+id/nav_graph_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/bottom_nav_settings" />
+</menu>

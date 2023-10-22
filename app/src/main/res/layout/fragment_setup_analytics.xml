@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setup_analytics_scrollable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:transitionGroup="true">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/setup_analytics_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        app:navigationIcon="@drawable/ic_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/setup_analytics_lottie"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/setup_analytics" />
+
+            <TextView
+                android:id="@+id/setup_analytics_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:gravity="center"
+                android:paddingStart="@dimen/margin_16"
+                android:paddingEnd="@dimen/margin_16"
+                android:text="@string/setup_analytics_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer" />
+
+            <TextView
+                android:id="@+id/setup_analytics_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:gravity="center"
+                android:paddingStart="@dimen/margin_16"
+                android:paddingEnd="@dimen/margin_16"
+                android:text="@string/setup_analytics_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/setup_analytics_allow"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:minWidth="160dp"
+                android:text="@string/setup_analytics_allow"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                app:cornerRadius="@dimen/margin_32" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/setup_analytics_deny"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:minWidth="160dp"
+                android:text="@string/setup_analytics_deny"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                app:cornerRadius="@dimen/margin_32" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

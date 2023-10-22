@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_plugin_repository"
+    app:startDestination="@id/pluginRepositoryFragment">
+
+    <fragment
+        android:id="@+id/pluginRepositoryFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.repository.PluginRepositoryFragment"
+        android:label="@string/bottom_nav_plugins"
+        tools:layout="@layout/fragment_plugin_repository">
+        <action
+            android:id="@+id/action_pluginRepositoryFragment_to_pluginDetailsFragment"
+            app:destination="@id/pluginDetailsFragment" />
+        <deepLink
+            app:action="android.intent.action.VIEW"
+            app:uri="smartspacer://plugins"/>
+    </fragment>
+    <fragment
+        android:id="@+id/pluginDetailsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.repository.details.PluginDetailsFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_plugin_details" >
+        <argument
+            android:name="plugin"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.PluginRepository$Plugin" />
+        <action
+            android:id="@+id/action_pluginDetailsFragment_to_pluginDetailsScreenshotFragment"
+            app:destination="@id/pluginDetailsScreenshotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pluginDetailsScreenshotFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.repository.details.screenshot.PluginDetailsScreenshotFragment"
+        android:label=""
+        tools:layout="@layout/fragment_plugin_details_screenshot" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

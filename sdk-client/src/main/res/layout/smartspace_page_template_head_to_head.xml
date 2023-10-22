@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_page_template_root"
+    style="@style/SmartspacerPageRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:layout_height="@dimen/smartspace_page_max_height">
+
+    <RelativeLayout
+        android:id="@+id/smartspace_page_head_to_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/smartspace_page_head_to_head_title"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/smartspace_page_head_to_head_2_icon"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="Final"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+        <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+            android:id="@+id/smartspace_page_head_to_head_1_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:layout_below="@id/smartspace_page_head_to_head_title"
+            tools:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/smartspace_page_head_to_head_1_text"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/smartspace_page_head_to_head_1_icon"
+            android:layout_alignBottom="@id/smartspace_page_head_to_head_1_icon"
+            android:layout_toRightOf="@id/smartspace_page_head_to_head_1_icon"
+            android:gravity="center_vertical"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="1"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+        <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+            android:id="@+id/smartspace_page_head_to_head_2_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:layout_below="@id/smartspace_page_head_to_head_title"
+            android:layout_toRightOf="@id/smartspace_page_head_to_head_2_text"
+            tools:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/smartspace_page_head_to_head_2_text"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/smartspace_page_head_to_head_2_icon"
+            android:layout_alignBottom="@id/smartspace_page_head_to_head_2_icon"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@id/smartspace_page_head_to_head_1_text"
+            android:gravity="center_vertical"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="1"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/smartspace_page_margin_16"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_title"
+            layout="@layout/include_smartspace_page_title" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_subtitle"
+            layout="@layout/include_smartspace_page_subtitle" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_supplemental"
+            layout="@layout/include_smartspace_page_supplemental" />
+
+    </LinearLayout>
+</LinearLayout>

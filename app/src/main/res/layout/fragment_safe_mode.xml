@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/safe_mode_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        app:titleTextColor="?android:textColorPrimary"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        app:title="@string/app_name"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/safe_mode_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_16"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+                android:text="@string/safe_mode_title"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:text="@string/safe_mode_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/safe_mode_relaunch"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/safe_mode_relaunch"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

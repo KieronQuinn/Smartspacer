@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_16"
+    android:theme="@style/Theme.Material3.DynamicColors.DayNight">
+
+    <TextView
+        style="@style/WidgetTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="google-sans-medium"
+        android:gravity="center"
+        android:text="@string/widget_loading_smartspacer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        tools:fontFamily="sans-serif-medium" />
+
+    <TextView
+        style="@style/WidgetSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:fontFamily="google-sans-text"
+        android:gravity="center"
+        android:lineHeight="16sp"
+        android:maxLines="10"
+        android:text="@string/widget_loading_smartspacer_subtitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        tools:fontFamily="sans-serif" />
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/setup_widget_card"
+        style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        app:cardBackgroundColor="?android:colorControlHighlight"
+        app:layout_constraintBottom_toTopOf="@id/setup_add_widget_lock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="350dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/widget_smartspacer_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/setup_add_widget_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                android:textColor="?android:textColorPrimary" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/setup_add_widget_lock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:gravity="center"
+        android:text="@string/setup_add_widget_lock"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintEnd_toEndOf="@id/setup_widget_card"
+        app:layout_constraintStart_toStartOf="@id/setup_widget_card"
+        app:layout_constraintTop_toBottomOf="@id/setup_widget_card" />
+
+    <FrameLayout
+        android:id="@+id/setup_widget_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/setup_widget_loading_inner"
+            layout="@layout/include_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/setup_widget_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_setup_controls"
+        android:padding="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:backgroundTint="@android:color/darker_gray">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/setup_widget_controls_next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:outlineProvider="none"
+            android:text="@string/setup_targets_controls_skip"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+            app:icon="@drawable/ic_arrow_right"
+            app:iconGravity="textEnd"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

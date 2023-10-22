@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_feature_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_height="@dimen/smartspace_view_max_height"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    style="@style/WidgetRoot">
+
+    <include layout="@layout/include_smartspace_view_clock" />
+
+    <include layout="@layout/include_smartspace_view_subtitle_and_action" />
+
+</LinearLayout>

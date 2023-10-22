@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icon_foreground">@color/white</color>
+    <color name="icon_background">@color/black</color>
+    <color name="icon_primary">#757575</color>
+
+    <color name="splash_background">@color/black</color>
+    <color name="licenses_background">@color/black</color>
+    <color name="licenses_toolbar">@color/black</color>
+    <color name="search_box_background">#757575</color>
+
+    <color name="expanded_search_box_background_color">@color/black</color>
+    <color name="sign_in_with_google_button_background">@color/black</color>
+</resources>

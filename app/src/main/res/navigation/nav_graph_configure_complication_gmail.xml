@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_complication_gmail"
+    app:startDestination="@id/gmailComplicationConfigurationFragment">
+
+    <fragment
+        android:id="@+id/gmailComplicationConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.gmail.GmailComplicationConfigurationFragment"
+        android:label="@string/complication_gmail_label"
+        tools:layout="@layout/fragment_settings_base"/>
+
+</navigation>

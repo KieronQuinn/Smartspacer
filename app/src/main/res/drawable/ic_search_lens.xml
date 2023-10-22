@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vector android:height="24.0dp" android:viewportHeight="192.0" android:viewportWidth="192.0" android:width="24.0dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="@color/search_icon_tint_secondary" android:pathData="M128,144a16,16 0 1,0 32,0a16,16 0 1,0 -32,0"/>
+    <path android:fillColor="@color/search_icon_tint_primary" android:pathData="M72,104a24,24 0 1,0 48,0a24,24 0 1,0 -48,0"/>
+    <path android:fillColor="@color/search_icon_tint_quaternary" android:pathData="M24,135.2c0,18.11,14.69,32.8,32.8,32.8H96v-16l-40.1-0.1c-8.8,0-15.9-8.19-15.9-17.9v-18H24V135.2z"/>
+    <path android:fillColor="@color/search_icon_tint_tertiary" android:pathData="M168,72.8c0-18.11-14.69-32.8-32.8-32.8H116l20,16c8.8,0,16,8.29,16,18v30h16V72.8z"/>
+    <path android:fillColor="@color/search_icon_tint_primary" android:pathData="M112,24l-32,0L68,40H56.8C38.69,40,24,54.69,24,72.8V92h16V74c0-9.71,7.2-18,16-18h80L112,24z"/>
+</vector>

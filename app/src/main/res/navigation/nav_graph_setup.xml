@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_setup"
+    app:startDestination="@id/setupDecisionFragment">
+
+    <fragment
+        android:id="@+id/setupDecisionFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.decision.SetupDecisionFragment"
+        android:label=""
+        tools:layout="@layout/fragment_setup_decision">
+        <action
+            android:id="@+id/action_setupDecisionFragment_to_setupNotificationsFragment"
+            app:destination="@id/setupNotificationsFragment" />
+        <action
+            android:id="@+id/action_setupDecisionFragment_to_enhancedModeFragment"
+            app:destination="@id/enhancedModeFragment" />
+        <action
+            android:id="@+id/action_setupDecisionFragment_to_setupTargetsFragment"
+            app:destination="@id/setupTargetInfoFragment"
+            app:popUpTo="@id/nav_graph_setup"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setupNotificationsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.notifications.SetupNotificationsFragment"
+        android:label="@string/setup_notifications_title"
+        tools:layout="@layout/fragment_setup_notifications">
+        <action
+            android:id="@+id/action_setupNotificationsFragment_to_enhancedModeFragment"
+            app:destination="@id/enhancedModeFragment"
+            app:popUpTo="@id/nav_graph_setup"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_setupNotificationsFragment_to_setupCompleteFragment"
+            app:destination="@id/setupCompleteFragment"
+            app:popUpTo="@id/nav_graph_setup"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_setupNotificationsFragment_to_setupTargetsFragment"
+            app:destination="@id/setupTargetInfoFragment"
+            app:popUpTo="@id/nav_graph_setup"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/enhancedModeFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.enhancedmode.EnhancedModeFragment"
+        android:label="@string/enhanced_mode_title"
+        tools:layout="@layout/fragment_enhanced_mode">
+        <argument
+            android:name="is_setup"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_enhancedModeFragment_to_setupCompleteFragment"
+            app:destination="@id/setupCompleteFragment"
+            app:popUpTo="@id/nav_graph_setup"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_enhancedModeFragment_to_enhancedModeRequestFragment"
+            app:destination="@id/enhancedModeRequestFragment" />
+        <action
+            android:id="@+id/action_enhancedModeFragment_to_setupTargetsFragment"
+            app:destination="@id/setupTargetInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enhancedModeRequestFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.enhancedmode.request.EnhancedModeRequestFragment"
+        android:label="@string/enhanced_mode_title"
+        tools:layout="@layout/fragment_enhanced_mode_request">
+        <argument
+            android:name="is_setup"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_enhancedModeRequestFragment_to_setupTargetsFragment"
+            app:destination="@id/setupTargetInfoFragment"
+            app:popUpTo="@+id/enhancedModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupTargetsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.targets.SetupTargetsFragment"
+        android:label="@string/setup_targets_title"
+        tools:layout="@layout/fragment_setup_targets" >
+        <action
+            android:id="@+id/action_setupTargetsFragment_to_setupComplicationsFragment"
+            app:destination="@id/setupComplicationInfoFragment" />
+        <action
+            android:id="@+id/action_setupTargetsFragment_to_widgetPermissionDialogFragment"
+            app:destination="@id/widgetPermissionDialogFragment" />
+        <action
+            android:id="@+id/action_setupTargetsFragment_to_notificationPermissionDialogFragment2"
+            app:destination="@id/notificationPermissionDialogFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupComplicationsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.complications.SetupComplicationsFragment"
+        android:label="@string/setup_complications_title"
+        tools:layout="@layout/fragment_setup_complications">
+        <action
+            android:id="@+id/action_setupComplicationsFragment_to_widgetPermissionDialogFragment"
+            app:destination="@id/widgetPermissionDialogFragment" />
+        <action
+            android:id="@+id/action_setupComplicationsFragment_to_notificationPermissionDialogFragment2"
+            app:destination="@id/notificationPermissionDialogFragment2" />
+        <action
+            android:id="@+id/action_setupComplicationsFragment_to_nativeModeFragment"
+            app:destination="@id/nativeModeFragment"
+            app:popUpTo="@id/setupComplicationsFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_setupComplicationsFragment_to_setupBatteryOptimisationFragment"
+            app:destination="@id/setupBatteryOptimisationFragment"
+            app:popUpTo="@id/setupComplicationsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/widgetPermissionDialogFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.WidgetPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_widget"/>
+    <fragment
+        android:id="@+id/nativeModeFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeFragment"
+        android:label="@string/native_title"
+        tools:layout="@layout/fragment_native" >
+        <argument
+            android:name="is_setup"
+            app:argType="boolean" />
+        <argument
+            android:name="is_from_settings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <action
+            android:id="@+id/action_nativeModeFragment_to_setupBatteryOptimisationFragment"
+            app:destination="@id/setupBatteryOptimisationFragment"
+            app:popUpTo="@id/nativeModeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/setupWidgetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.widget.SetupWidgetFragment"
+        android:label="@string/setup_add_widget_title"
+        tools:layout="@layout/fragment_setup_widget_fragment">
+        <action
+            android:id="@+id/action_setupWidgetFragment_to_setupRequirementsInfoFragment"
+            app:destination="@id/setupRequirementsInfoFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/notificationPermissionDialogFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.NotificationPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_notification"/>
+    <fragment
+        android:id="@+id/setupBatteryOptimisationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.batteryoptimisation.SetupBatteryOptimisationFragment"
+        android:label="@string/battery_optimisation_title"
+        tools:layout="@layout/fragment_settings_base">
+        <action
+            android:id="@+id/action_setupBatteryOptimisationFragment_to_setupWidgetFragment"
+            app:destination="@id/setupWidgetFragment"
+            app:popUpTo="@id/setupBatteryOptimisationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupTargetInfoFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.targetinfo.SetupTargetInfoFragment"
+        android:label="@string/setup_targets_info_title"
+        tools:layout="@layout/fragment_setup_target_info">
+        <action
+            android:id="@+id/action_setupTargetInfoFragment_to_setupTargetsFragment"
+            app:destination="@id/setupTargetsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupComplicationInfoFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.complicationinfo.SetupComplicationInfoFragment"
+        android:label="@string/setup_complications_info_title"
+        tools:layout="@layout/fragment_setup_complication_info">
+        <action
+            android:id="@+id/action_setupComplicationInfoFragment_to_setupComplicationsFragment"
+            app:destination="@id/setupComplicationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupRequirementsInfoFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.requirements.SetupRequirementsInfoFragment"
+        android:label="@string/setup_requirements_info_title"
+        tools:layout="@layout/fragment_setup_requirements_info">
+        <action
+            android:id="@+id/action_setupRequirementsInfoFragment_to_setupExpandedSmartspaceFragment"
+            app:destination="@id/setupExpandedSmartspaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupExpandedSmartspaceFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.expanded.SetupExpandedSmartspaceFragment"
+        android:label="@string/setup_expanded_title"
+        tools:layout="@layout/fragment_setup_expanded">
+        <action
+            android:id="@+id/action_setupExpandedSmartspaceFragment_to_setupPluginsFragment"
+            app:destination="@id/setupPluginsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupPluginsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.plugins.SetupPluginsFragment"
+        android:label="@string/setup_plugins_title"
+        tools:layout="@layout/fragment_setup_plugins_info"/>
+</navigation>

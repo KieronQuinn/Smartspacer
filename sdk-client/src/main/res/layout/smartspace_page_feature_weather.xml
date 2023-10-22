@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_template_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:layout_height="@dimen/smartspace_page_max_height">
+
+    <include layout="@layout/include_smartspace_page_clock"
+        android:id="@+id/smartspace_page_template_basic_clock" />
+
+    <include layout="@layout/include_smartspace_page_subtitle_and_action"
+        android:id="@+id/smartspace_page_template_basic_subtitle" />
+
+</LinearLayout>

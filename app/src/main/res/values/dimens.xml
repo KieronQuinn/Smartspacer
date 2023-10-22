@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="shared_axis_x_slide_distance">96dp</dimen>
+    <dimen name="bottom_nav_elevation">1dp</dimen>
+    <dimen name="bottom_nav_height">80dp</dimen>
+    <dimen name="bottom_nav_height_margins">104dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="app_bar_height">179dp</dimen>
+    <dimen name="app_bar_height_edit">128dp</dimen>
+    <dimen name="app_bar_scrim_height">174dp</dimen>
+    <dimen name="expanded_title_margin">24dp</dimen>
+    <dimen name="fab_margin">96dp</dimen>
+    <dimen name="search_box_height">48dp</dimen>
+    <dimen name="clear_button_size">36dp</dimen>
+    <dimen name="search_box_corners">24dp</dimen>
+    <dimen name="search_box_negative_margin">-32dp</dimen>
+    <dimen name="search_box_recyclerview_padding">32dp</dimen>
+    <dimen name="tab_min_width">350dp</dimen>
+    <dimen name="geofence_requirement_bottom_sheet_peek_size">80dp</dimen>
+    <dimen name="geofence_requirement_bottom_sheet_peek_size_with_margin">96dp</dimen>
+    <dimen name="geofence_requirement_bottom_sheet_peek_size_minus_margin">64dp</dimen>
+    <dimen name="geofence_requirement_map_padding">40dp</dimen>
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+    <dimen name="min_window_blur_radius">1px</dimen>
+    <dimen name="max_window_blur_radius">150px</dimen>
+    <dimen name="permission_dialog_corners">16dp</dimen>
+    <dimen name="expanded_button_unlock_height">48dp</dimen>
+    <dimen name="expanded_max_view_height">300dp</dimen>
+
+    <!-- Smartspacer widget views -->
+    <dimen name="smartspace_view_title_size">20sp</dimen>
+    <dimen name="smartspace_view_subtitle_size">16sp</dimen>
+    <dimen name="smartspace_view_max_height">112dp</dimen>
+    <dimen name="smartspace_view_icon_size">20sp</dimen>
+    <dimen name="smartspace_view_icon_margin">4dp</dimen>
+    <dimen name="smartspace_view_action_margin">8dp</dimen>
+    <dimen name="smartspace_view_margin">4dp</dimen>
+    <dimen name="smartspace_view_space">9dp</dimen>
+    <dimen name="smartspace_view_space_short">4.5dp</dimen>
+    <dimen name="smartspace_view_template_images_image_height">80dp</dimen>
+    <dimen name="smartspace_view_template_images_image_width">112dp</dimen>
+    <dimen name="smartspace_view_template_carousel_column_size">24dp</dimen>
+    <dimen name="smartspace_view_template_carousel_column_text_size">12sp</dimen>
+    <dimen name="smartspace_view_template_button_max_size">80dp</dimen>
+    <dimen name="smartspace_view_feature_commute_time_image_width">112dp</dimen>
+    <dimen name="smartspace_view_feature_commute_time_image_height">63dp</dimen>
+    <dimen name="smartspace_view_feature_doorbell_image_width">112dp</dimen>
+    <dimen name="smartspace_view_feature_doorbell_image_height">80dp</dimen>
+    <dimen name="smartspace_view_feature_doorbell_image_default_padding">16dp</dimen>
+
+    <dimen name="setup_image_size">160dp</dimen>
+
+    <!-- Expanded Smartspace -->
+    <dimen name="expanded_smartspace_remoteviews_max_height">300dp</dimen>
+    <dimen name="expanded_smartspace_remoteviews_max_height_minus_padding">268dp</dimen>
+    <dimen name="expanded_smartspace_widget_row_height">112dp</dimen>
+    <dimen name="expanded_smartspace_widget_column_width">96dp</dimen>
+    <dimen name="expanded_doodle_height">100dp</dimen>
+    <dimen name="enforced_rounded_corner_max_radius">16dp</dimen>
+
+    <!-- OEM Smartspace -->
+    <dimen name="oem_smartspace_icon_size">48dp</dimen>
+    <dimen name="snackbar_corner_radius">16dp</dimen>
+
+    <dimen name="snackbar_height">56dp</dimen>
+</resources>

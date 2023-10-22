@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="expanded_add_widget_widgets">
+        <item quantity="one">@string/expanded_add_widget_widgets_one</item>
+        <item quantity="other">@string/expanded_add_widget_widgets_other</item>
+    </plurals>
+    <plurals name="notification_plugin_updates_content">
+        <item quantity="one">@string/notification_plugin_updates_content_one</item>
+        <item quantity="other">@string/notification_plugin_updates_content_other</item>
+    </plurals>
+    <plurals name="complication_gmail_description_filled">
+        <item quantity="one">@string/complication_gmail_description_filled_one</item>
+        <item quantity="other">@string/complication_gmail_description_filled_other</item>
+    </plurals>
+    <plurals name="target_notification_description_channels">
+        <item quantity="one">@string/target_notification_description_channels_one</item>
+        <item quantity="other">@string/target_notification_description_channels_other</item>
+    </plurals>
+    <plurals name="complication_edit_requirements_content_any">
+        <item quantity="one">@string/complication_edit_requirements_content_any_one</item>
+        <item quantity="other">@string/complication_edit_requirements_content_any_other</item>
+    </plurals>
+    <plurals name="complication_edit_requirements_content_all">
+        <item quantity="one">@string/complication_edit_requirements_content_all_one</item>
+        <item quantity="other">@string/complication_edit_requirements_content_all_other</item>
+    </plurals>
+    <plurals name="target_edit_requirements_content_any">
+        <item quantity="one">@string/target_edit_requirements_content_any_one</item>
+        <item quantity="other">@string/target_edit_requirements_content_any_other</item>
+    </plurals>
+    <plurals name="target_edit_requirements_content_all">
+        <item quantity="one">@string/target_edit_requirements_content_all_one</item>
+        <item quantity="other">@string/target_edit_requirements_content_all_other</item>
+    </plurals>
+</resources>

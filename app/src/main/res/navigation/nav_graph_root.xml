@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_root"
+    app:startDestination="@id/containerFragment">
+
+    <fragment
+        android:id="@+id/containerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.container.ContainerFragment"
+        android:label="ContainerFragment"
+        tools:layout="@layout/fragment_container"/>
+
+    <fragment
+        android:id="@+id/setupLandingFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.landing.SetupLandingFragment"
+        android:label="SetupLandingFragment"
+        tools:layout="@layout/fragment_setup_landing">
+        <action
+            android:id="@+id/action_setupLandingFragment_to_setupAnalyticsFragment"
+            app:destination="@id/setupAnalyticsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupContainerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.container.SetupContainerFragment"
+        android:label="SetupContainerFragment"
+        tools:layout="@layout/fragment_setup_container">
+        <action
+            android:id="@+id/action_setupContainerFragment_to_setupCompleteFragment"
+            app:destination="@id/setupCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupCompleteFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.complete.SetupCompleteFragment"
+        android:label="SetupCompleteFragment"
+        tools:layout="@layout/fragment_setup_complete"/>
+    <action
+        android:id="@+id/action_global_settings"
+        app:destination="@id/containerFragment"
+        app:popUpTo="@id/nav_graph_root" />
+    <action
+        android:id="@+id/action_global_setup"
+        app:destination="@id/setupLandingFragment"
+        app:popUpTo="@id/nav_graph_root" />
+    <fragment
+        android:id="@+id/setupAnalyticsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.setup.analytics.SetupAnalyticsFragment"
+        android:label="SetupAnalyticsFragment"
+        tools:layout="@layout/fragment_setup_analytics">
+        <action
+            android:id="@+id/action_setupAnalyticsFragment_to_setupContainerFragment"
+            app:destination="@id/setupContainerFragment" />
+    </fragment>
+
+</navigation>

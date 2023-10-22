@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/margin_8"
+    android:paddingBottom="@dimen/margin_8">
+
+    <ImageView
+        android:id="@+id/native_compatibility_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_16"
+        android:padding="@dimen/margin_8"
+        tools:src="@drawable/ic_check_circle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/native_compatibility_inner_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+            android:textColor="?android:textColorPrimary"
+            tools:text="@string/compatibility_feature_basic_title" />
+
+        <TextView
+            android:id="@+id/native_compatibility_inner_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            android:textColor="?android:textColorPrimary"
+            tools:text="@string/compatibility_feature_basic_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

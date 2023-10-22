@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margin_8"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <include
+        android:id="@+id/notification_target_configuration_app_picker_search"
+        layout="@layout/include_search" />
+
+    <include
+        android:id="@+id/notification_target_configuration_app_picker_loading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+        android:id="@+id/notification_target_configuration_app_picker_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/search_box_negative_margin"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/search_box_recyclerview_padding"
+        android:paddingBottom="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_target_configuration_app_picker_search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

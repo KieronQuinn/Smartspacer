@@ -1,0 +1,113 @@
+syntax = "proto2";
+
+package com.google.geo.sidekick;
+
+option java_package = "com.google.geo.sidekick";
+option java_outer_classname = "SmartspaceProto";
+
+/*
+  Reversed from OEM SystemUI & based on
+  https://gerrit.aospa.co/plugins/gitiles/AOSPA/android_frameworks_base/+/refs/changes/86/13386/7/packages/SystemUI/src/com/google/android/systemui/smartspace/smartspace.proto
+ */
+message SmartspaceUpdate {
+  repeated SmartspaceCard card = 1;
+
+  message SmartspaceCard {
+    optional bool should_discard = 1;
+    optional int32 card_id = 2;
+    optional Message pre_event = 3;
+    optional Message during_event = 4;
+    optional Message post_event = 5;
+    optional Image icon = 6;
+    optional CardType card_type = 7;
+    optional TapAction tap_action = 8;
+    optional int64 update_time_millis = 9;
+    optional int64 event_time_millis = 10;
+    optional int64 event_duration_millis = 11;
+    optional CardPriority card_priority = 13;
+    optional ExpiryCriteria expiry_criteria = 12;
+    optional Message pre_event_static = 14;
+    optional Message during_event_static = 15;
+    optional Message post_event_static = 16;
+    optional bool is_sensitive = 17;
+    optional bool is_work_profile = 18;
+    optional bool is_data_from_3p_app = 19;
+
+    message Message {
+      optional FormattedText title = 1;
+      optional FormattedText subtitle = 2;
+
+      message FormattedText {
+        optional string text = 1;
+        optional TruncateLocation truncate_location = 2;
+        repeated FormatParam format_param = 3;
+
+        enum TruncateLocation {
+          UNSPECIFIED = 0;
+          START = 1;
+          MIDDLE = 2;
+          END = 3;
+        }
+
+        message FormatParam {
+          enum FormatParamArgs {
+            UNDEFINED = 0;
+            EVENT_START_TIME = 1;
+            EVENT_END_TIME = 2;
+            FIXED_STRING = 3;
+          }
+
+          optional string text = 1;
+          optional TruncateLocation truncate_location = 2;
+          optional FormatParamArgs format_param_args = 3;
+          optional bool update_time_locally = 4;
+        }
+      }
+    }
+
+    message Image {
+      optional string key = 1;
+      optional string gsa_resource_name = 2;
+      optional string uri = 3;
+      optional string content_description = 4;
+    }
+
+    enum CardType {
+      UNDEFINED = 0;
+      WEATHER = 1;
+      CALENDAR = 2;
+      COMMUTE_TIME = 3;
+      FLIGHT = 4;
+      BIRTHDAY = 5;
+      AMBIENT_MUSIC = 6;
+      TIPS = 7;
+      REMINDER = 8;
+      ASSISTANT = 9;
+      ALARM = 10;
+      HAMMERSPACE_DEBUG = 11;
+      OOBE = 12;
+    }
+
+    message TapAction {
+      optional ActionType action_type = 1;
+      optional string intent = 2;
+
+      enum ActionType {
+        UNDEFINED = 0;
+        BROADCAST = 1;
+        START_ACTIVITY = 2;
+      }
+    }
+
+    enum CardPriority {
+      PRIORITY_UNDEFINED = 0;
+      PRIMARY = 1;
+      SECONDARY = 2;
+    }
+
+    message ExpiryCriteria {
+      optional int64 expiration_time_millis = 1;
+      optional int32 max_impressions = 2;
+    }
+  }
+}

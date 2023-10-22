@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/expanded_search_box_background_color"
+    app:cardCornerRadius="28dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/expanded_search_box_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_4"
+            android:padding="@dimen/margin_8"
+            tools:src="@drawable/ic_search_google" />
+
+        <TextView
+            android:id="@+id/expanded_search_box_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/expanded_search_box_search"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+            android:textColor="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/expanded_search_box_mic"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:padding="@dimen/margin_4"
+            android:scaleType="fitXY"
+            android:background="@drawable/rounded_ripple_40"
+            android:src="@drawable/ic_search_mic" />
+
+        <ImageButton
+            android:id="@+id/expanded_search_box_lens"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/margin_4"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:padding="@dimen/margin_4"
+            android:scaleType="fitXY"
+            android:background="@drawable/rounded_ripple_40"
+            android:src="@drawable/ic_search_lens" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/edit_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        app:layout_behavior=".utils.appbar.DragOptionalAppBarLayoutBehaviour"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/edit_collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height_edit"
+            android:background="@android:color/transparent"
+            android:clipToPadding="false"
+            app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitle.Collapsed"
+            app:contentScrim="@android:color/transparent"
+            app:expandedTitleMarginEnd="@dimen/expanded_title_margin"
+            app:expandedTitleMarginStart="@dimen/expanded_title_margin"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:maxLines="1"
+            app:scrimAnimationDuration="250"
+            app:scrimVisibleHeightTrigger="@dimen/app_bar_height_edit"
+            app:statusBarScrim="@null"
+            app:title=" "
+            app:titleCollapseMode="fade">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height_edit">
+
+                <include
+                    android:id="@+id/edit_preview"
+                    layout="@layout/include_target_edit_preview"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_bar_height_edit" />
+
+            </FrameLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/edit_card_view"
+        style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+        app:cardCornerRadius="0dp"
+        android:transitionName="card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include
+            android:id="@+id/edit_content_loading"
+            layout="@layout/include_loading" />
+
+        <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+            android:id="@+id/edit_content_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingBottom="@dimen/margin_16"
+            android:visibility="gone"
+            tools:listitem="@layout/item_settings_switch_item"
+            tools:visibility="visible" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

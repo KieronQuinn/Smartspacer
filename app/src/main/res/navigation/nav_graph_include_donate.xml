@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_include_donate"
+    app:startDestination="@id/donateFragment">
+
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.donate.DonateFragment"
+        android:label="@string/donate"
+        tools:layout="@layout/fragment_donate" />
+
+</navigation>

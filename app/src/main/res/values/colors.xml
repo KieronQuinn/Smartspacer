@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="icon_foreground">@color/black</color>
+    <color name="icon_background">@color/white</color>
+    <color name="icon_primary">#757575</color>
+
+    <color name="splash_background">@color/white</color>
+    <color name="licenses_background">@color/white</color>
+    <color name="licenses_toolbar">@color/white</color>
+    <color name="icon_accent">#3C6ED7</color>
+    <color name="colorPrimary">#1472FF</color>
+    <color name="colorPrimaryDark">#801472FF</color>
+    <color name="search_box_background">#F5F5F5</color>
+
+    <color name="expanded_text_color_dark">@color/black</color>
+    <color name="expanded_text_color_light">@color/white</color>
+
+    <color name="expanded_search_box_background_color">@color/white</color>
+
+    <color name="search_icon_tint_primary">#4285f4</color>
+    <color name="search_icon_tint_quaternary">#ea4335</color>
+    <color name="search_icon_tint_secondary">#34a853</color>
+    <color name="search_icon_tint_tertiary">#fbbc05</color>
+
+    <color name="sign_in_with_google_button_background">@color/white</color>
+</resources>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/enhanced_mode_request"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="enhanced_mode_request_title,enhanced_mode_request_subtitle,enhanced_mode_request_progress" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/enhanced_mode_request_progress"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toTopOf="@id/enhanced_mode_request_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="8dp" />
+
+    <TextView
+        android:id="@+id/enhanced_mode_request_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/enhanced_mode_request_loading_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        app:layout_constraintBottom_toTopOf="@id/enhanced_mode_request_subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_progress" />
+
+    <TextView
+        android:id="@+id/enhanced_mode_request_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4"
+        android:text="@string/enhanced_mode_request_loading_subtitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_title" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/enhanced_mode_shizuku_error"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="enhanced_mode_request_shizuku_error_icon,enhanced_mode_request_shizuku_error_label,enhanced_mode_request_shizuku_error_label_sub,enhanced_mode_request_shizuku_error_open" />
+
+    <ImageView
+        android:id="@+id/enhanced_mode_request_shizuku_error_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_shizuku"
+        app:layout_constraintBottom_toTopOf="@id/enhanced_mode_request_shizuku_error_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/enhanced_mode_request_shizuku_error_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/enhanced_mode_request_shizuku_error_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/enhanced_mode_request_shizuku_error_label_sub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_shizuku_error_icon" />
+
+    <TextView
+        android:id="@+id/enhanced_mode_request_shizuku_error_label_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:gravity="center"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/enhanced_mode_request_shizuku_error_subtitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintBottom_toTopOf="@id/enhanced_mode_request_shizuku_error_open"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_shizuku_error_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/enhanced_mode_request_shizuku_error_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enhanced_mode_request_shizuku_error_open"
+        android:layout_marginTop="@dimen/margin_16"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_shizuku_error_label_sub" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/enhanced_mode_request_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/enhanced_mode_request_shizuku"
+                style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="?android:colorControlHighlight">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_16">
+
+                    <ImageView
+                        android:id="@+id/enhanced_mode_request_shizuku_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_shizuku"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/enhanced_mode_request_shizuku_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:text="@string/enhanced_mode_request_shizuku_title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/enhanced_mode_request_shizuku_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/enhanced_mode_request_shizuku_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/enhanced_mode_request_shizuku_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/enhanced_mode_request_shizuku_icon"
+                        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_shizuku_title" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/enhanced_mode_request_shizuku_button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_8"
+                        android:background="@drawable/rounded_ripple_36"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="@dimen/margin_8"
+                        android:text="@string/enhanced_mode_request_shizuku_button"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_shizuku_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/enhanced_mode_request_sui"
+                style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                app:cardBackgroundColor="?android:colorControlHighlight">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_16">
+
+                    <ImageView
+                        android:id="@+id/enhanced_mode_request_sui_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_sui"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/enhanced_mode_request_sui_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:text="@string/enhanced_mode_request_sui_title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/enhanced_mode_request_sui_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/enhanced_mode_request_sui_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/enhanced_mode_request_sui_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/enhanced_mode_request_sui_icon"
+                        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_sui_title" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/enhanced_mode_request_sui_button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_8"
+                        android:background="@drawable/rounded_ripple_36"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="@dimen/margin_8"
+                        android:text="@string/enhanced_mode_request_sui_button"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                        android:textColor="?android:textColorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/enhanced_mode_request_sui_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

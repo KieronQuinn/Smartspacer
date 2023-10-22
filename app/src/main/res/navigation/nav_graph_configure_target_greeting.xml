@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_target_greeting"
+    app:startDestination="@id/greetingConfigurationFragment">
+
+    <fragment
+        android:id="@+id/greetingConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.greeting.GreetingConfigurationFragment"
+        android:label="@string/target_greeting_label"
+        tools:layout="@layout/fragment_settings_base" >
+        <action
+            android:id="@+id/action_greetingConfigurationFragment_to_greetingConfigurationNameBottomSheetFragment"
+            app:destination="@id/greetingConfigurationNameBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/greetingConfigurationNameBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.greeting.name.GreetingConfigurationNameBottomSheetFragment"
+        android:label=" " >
+        <argument
+            android:name="smartspacer_id"
+            app:argType="string" />
+    </dialog>
+
+</navigation>

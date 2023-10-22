@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configuration_requirement_recent_task"
+    app:startDestination="@id/recentTaskRequirementConfigurationFragment">
+
+    <fragment
+        android:id="@+id/recentTaskRequirementConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.RecentTaskRequirementConfigurationFragment"
+        android:label="@string/requirement_recent_apps_label"
+        tools:layout="@layout/fragment_settings_base" >
+        <action
+            android:id="@+id/action_recentTaskRequirementConfigurationFragment_to_recentTaskRequirementConfigurationAppPickerFragment"
+            app:destination="@id/recentTaskRequirementConfigurationAppPickerFragment" />
+        <action
+            android:id="@+id/action_recentTaskRequirementConfigurationFragment_to_recentTaskRequirementConfigurationLimitBottomSheetFragment"
+            app:destination="@id/recentTaskRequirementConfigurationLimitBottomSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentTaskRequirementConfigurationAppPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.apppicker.RecentTaskRequirementConfigurationAppPickerFragment"
+        android:label="@string/requirement_recent_apps_label"
+        tools:layout="@layout/fragment_recent_task_requirement_configuration_picker" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/recentTaskRequirementConfigurationLimitBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.limit.RecentTaskRequirementConfigurationLimitBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_recent_task_requirement_configuration_limit_bottom_sheet">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </dialog>
+
+</navigation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_requirement_geofence"
+    app:startDestination="@id/geofenceRequirementConfigurationFragment">
+
+    <fragment
+        android:id="@+id/geofenceRequirementConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.GeofenceRequirementConfigurationFragment"
+        android:label="@string/requirement_geofence_title"
+        tools:layout="@layout/fragment_geofence_requirement_configuration" />
+
+</navigation>

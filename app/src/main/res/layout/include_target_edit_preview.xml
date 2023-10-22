@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/app_bar_height_edit"
+    android:padding="@dimen/margin_16">
+
+    <TextView
+        android:id="@+id/target_edit_preview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/google_sans_text"
+        android:maxLines="1"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="0.5"
+        android:shadowDy="0.5"
+        android:shadowRadius="0.5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/target_edit_preview_subtitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Target Name" />
+
+    <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+        android:id="@+id/target_edit_preview_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@id/target_edit_preview_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/target_edit_preview_subtitle"
+        tools:src="@drawable/ic_target_plugin"
+        app:tint="?android:textColorPrimary" />
+
+    <TextView
+        android:id="@+id/target_edit_preview_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_4"
+        android:ellipsize="end"
+        android:fontFamily="@font/google_sans_text"
+        android:maxLines="1"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="0.5"
+        android:shadowDy="0.5"
+        android:shadowRadius="0.5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/target_edit_preview_icon"
+        app:layout_constraintTop_toBottomOf="@id/target_edit_preview_title"
+        tools:text="Target Subtitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

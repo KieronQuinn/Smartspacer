@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:canRetrieveWindowContent="false"
+    android:isAccessibilityTool="true"
+    android:settingsActivity="com.kieronquinn.app.smartspacer.ui.activities.MainActivity"
+    android:description="@string/accessibility_service_description"
+    tools:targetApi="s" />

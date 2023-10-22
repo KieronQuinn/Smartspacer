@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">88dp</dimen>
+    <dimen name="app_bar_scrim_height">80dp</dimen>
+    <dimen name="tab_min_width">0dp</dimen>
+</resources>

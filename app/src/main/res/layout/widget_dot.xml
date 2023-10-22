@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dot"
+    android:layout_width="12dp"
+    android:layout_height="12dp"
+    android:padding="3dp"
+    android:src="@drawable/widget_dot" />

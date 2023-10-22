@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/date_time_requirement_configuration_loading"
+        layout="@layout/include_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/date_time_requirement_configuration_scrollable"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/requirement_time_date_configuration_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:text="@string/requirement_time_date_configuration_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer.Lighter"
+                android:textColor="?android:textColorPrimary"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/requirement_time_date_configuration_chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:paddingStart="@dimen/margin_16"
+                android:paddingEnd="@dimen/margin_16"
+                app:chipSpacingHorizontal="@dimen/margin_8"
+                app:chipSpacingVertical="0dp"
+                app:layout_constraintTop_toBottomOf="@id/requirement_time_date_configuration_content">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_monday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Monday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_tuesday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Tuesday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_wednesday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Wednesday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_thursday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Thursday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_friday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Friday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_saturday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Saturday" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/requirement_time_date_configuration_chip_sunday"
+                    style="@style/Widget.Material3.Chip.Filter.Smartspacer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                    tools:checked="true"
+                    tools:text="Sunday" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/requirement_time_date_configuration_start_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:text="@string/requirement_time_date_configuration_start_time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                app:layout_constraintEnd_toStartOf="@id/requirement_time_date_configuration_end_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/requirement_time_date_configuration_chips" />
+
+            <TextView
+                android:id="@+id/requirement_time_date_configuration_end_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:text="@string/requirement_time_date_configuration_end_time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/requirement_time_date_configuration_start_time"
+                app:layout_constraintTop_toBottomOf="@id/requirement_time_date_configuration_chips" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/requirement_time_date_configuration_start_time_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:background="@drawable/background_time_button"
+                android:textAppearance="@style/TextAppearance.AppCompat.ExtraLarge.Smartspacer"
+                app:backgroundTint="@null"
+                app:backgroundTintMode="src_atop"
+                app:layout_constraintEnd_toStartOf="@id/requirement_time_date_configuration_end_time_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/requirement_time_date_configuration_start_time"
+                tools:text="10:00" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/requirement_time_date_configuration_end_time_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:background="@drawable/background_time_button"
+                android:textAppearance="@style/TextAppearance.AppCompat.ExtraLarge.Smartspacer"
+                app:backgroundTint="@null"
+                app:backgroundTintMode="src_atop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/requirement_time_date_configuration_start_time_button"
+                app:layout_constraintTop_toBottomOf="@id/requirement_time_date_configuration_start_time"
+                tools:text="10:00" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/requirement_time_date_configuration_fab_save"
+        style="@style/Widget.Material3.ExtendedFloatingActionButton.Smartspacer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:text="@string/save"
+        app:icon="@drawable/ic_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/date_time_requirement_configuration_loaded"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="date_time_requirement_configuration_scrollable,requirement_time_date_configuration_fab_save"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

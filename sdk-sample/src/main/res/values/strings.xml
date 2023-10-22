@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Smartspacer SDK Sample</string>
+    <string name="configuration_label">Smartspacer SDK Sample Settings</string>
+</resources>

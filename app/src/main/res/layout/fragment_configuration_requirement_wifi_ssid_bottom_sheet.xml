@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_16"
+    tools:background="@drawable/bottom_sheet_rounded_bg_dark"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/configuration_requirement_wifi_ssid_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margin_16"
+        android:text="@string/requirement_wifi_configuration_ssid_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/configuration_requirement_wifi_ssid_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/requirement_wifi_configuration_ssid_content_unset"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintTop_toBottomOf="@id/configuration_requirement_wifi_ssid_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:id="@+id/configuration_requirement_wifi_ssid_input"
+        app:boxCornerRadiusBottomStart="@dimen/margin_16"
+        app:boxCornerRadiusTopEnd="@dimen/margin_16"
+        app:boxCornerRadiusTopStart="@dimen/margin_16"
+        app:boxCornerRadiusBottomEnd="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/configuration_requirement_wifi_ssid_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:hint="@string/requirement_wifi_configuration_ssid_title"
+            android:inputType="text|textVisiblePassword|textNoSuggestions"
+            android:importantForAutofill="noExcludeDescendants"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer.Lighter"
+            android:id="@+id/configuration_requirement_wifi_ssid_edit"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/configuration_requirement_wifi_ssid_positive"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@android:string/ok"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/configuration_requirement_wifi_ssid_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/configuration_requirement_wifi_ssid_negative"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@android:string/cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/configuration_requirement_wifi_ssid_positive"
+        app:layout_constraintTop_toTopOf="@id/configuration_requirement_wifi_ssid_positive" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/configuration_requirement_wifi_ssid_neutral"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/configuration_requirement_wifi_ssid_positive" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

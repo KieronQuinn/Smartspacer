@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Smartspacer.Splash" parent="Theme.Smartspacer.Splash.Base">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_foreground_splash</item>
+    </style>
+</resources>

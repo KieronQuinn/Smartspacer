@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/smartspace_view_space"
+    android:gravity="center_vertical"
+    android:id="@+id/smartspace_view_supplemental"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/smartspace_view_supplemental_icon"
+        android:layout_width="@dimen/smartspace_view_icon_size"
+        android:layout_height="@dimen/smartspace_view_icon_size"
+        tools:src="@android:drawable/btn_star"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/smartspace_view_supplemental_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/smartspace_view_icon_margin"
+        style="@style/WidgetSubtitle"
+        android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+        tools:text="Supplemental"
+        tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+</LinearLayout>

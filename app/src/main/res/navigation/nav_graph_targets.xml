@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_targets"
+    app:startDestination="@id/targetsFragment">
+
+    <fragment
+        android:id="@+id/targetsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.targets.TargetsFragment"
+        android:label="@string/bottom_nav_targets"
+        tools:layout="@layout/fragment_targets" >
+        <action
+            android:id="@+id/action_targetsFragment_to_targetsAddFragment"
+            app:destination="@id/targetsAddFragment" />
+        <action
+            android:id="@+id/action_targetsFragment_to_targetEditFragment"
+            app:destination="@id/targetEditFragment" />
+        <action
+            android:id="@+id/action_targetsFragment_to_wallpaperColourPickerBottomSheetFragment"
+            app:destination="@id/wallpaperColourPickerBottomSheetFragment" />
+        <action
+            android:id="@+id/action_targetsFragment_to_nav_graph_include_donate"
+            app:destination="@id/nav_graph_include_donate" />
+    </fragment>
+    <fragment
+        android:id="@+id/targetsAddFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.targets.add.TargetsAddFragment"
+        android:label="@string/fab_targets_add"
+        tools:layout="@layout/fragment_targets_add" >
+        <action
+            android:id="@+id/action_targetsAddFragment_to_widgetPermissionDialog"
+            app:destination="@id/widgetPermissionDialog" />
+        <action
+            android:id="@+id/action_targetsAddFragment_to_notificationPermissionDialogFragment"
+            app:destination="@id/notificationPermissionDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/targetEditFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.targets.edit.TargetEditFragment"
+        android:label="@string/target_edit_title"
+        tools:layout="@layout/fragment_edit">
+        <argument
+            android:name="target"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Target" />
+        <action
+            android:id="@+id/action_targetEditFragment_to_configurationNotificationPickerFragment"
+            app:destination="@id/configurationNotificationPickerFragment" />
+        <action
+            android:id="@+id/action_targetEditFragment_to_configurationNotificationAssociationFragment"
+            app:destination="@id/configurationNotificationAssociationFragment" />
+        <action
+            android:id="@+id/action_targetEditFragment_to_targetsRequirementsFragment"
+            app:destination="@id/targetsRequirementsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/configurationNotificationPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.notification.picker.ConfigurationNotificationPickerFragment"
+        android:label="@string/target_notification_configuration_title"
+        tools:layout="@layout/fragment_configuration_notification_picker" />
+    <fragment
+        android:id="@+id/configurationNotificationAssociationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.notification.association.ConfigurationNotificationAssociationFragment"
+        android:label="@string/target_notification_configuration_title"
+        tools:layout="@layout/include_configuration_target_notification_association">
+        <action
+            android:id="@+id/action_configurationNotificationAssociationFragment_to_configurationNotificationPickerFragment"
+            app:destination="@id/configurationNotificationPickerFragment"
+            app:popUpTo="@id/targetEditFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/targetsRequirementsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.targets.requirements.TargetsRequirementsFragment"
+        android:label="@string/requirements_title"
+        tools:layout="@layout/fragment_requirements">
+        <argument
+            android:name="target_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_targetsRequirementsFragment_to_targetsRequirementsAddFragment"
+            app:destination="@id/targetsRequirementsAddFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/targetsRequirementsAddFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.targets.requirements.add.TargetsRequirementsAddFragment"
+        android:label="@string/fab_requirements_add"
+        tools:layout="@layout/fragment_requirements_add">
+        <argument
+            android:name="target_id"
+            app:argType="string" />
+        <argument
+            android:name="page_type"
+            app:argType="com.kieronquinn.app.smartspacer.ui.screens.base.requirements.BaseRequirementsViewModel$PageType" />
+    </fragment>
+    <dialog
+        android:id="@+id/widgetPermissionDialog"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.WidgetPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_widget">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <dialog
+        android:id="@+id/notificationPermissionDialogFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.NotificationPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_notification">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <dialog
+        android:id="@+id/wallpaperColourPickerBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.wallpapercolourpicker.WallpaperColourPickerBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_wallpaper_color_picker_bottom_sheet"/>
+    <include app:graph="@navigation/nav_graph_include_donate" />
+
+</navigation>

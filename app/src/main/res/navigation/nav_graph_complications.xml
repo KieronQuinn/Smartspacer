@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_complications"
+    app:startDestination="@id/complicationsFragment">
+
+    <fragment
+        android:id="@+id/complicationsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.complications.ComplicationsFragment"
+        android:label="@string/bottom_nav_complications"
+        tools:layout="@layout/fragment_complications">
+        <action
+            android:id="@+id/action_complicationsFragment_to_complicationsAddFragment"
+            app:destination="@id/complicationsAddFragment" />
+        <action
+            android:id="@+id/action_complicationsFragment_to_complicationEditFragment"
+            app:destination="@id/complicationEditFragment" />
+        <action
+            android:id="@+id/action_complicationsFragment_to_wallpaperColourPickerBottomSheetFragment2"
+            app:destination="@id/wallpaperColourPickerBottomSheetFragment2" />
+        <action
+            android:id="@+id/action_complicationsFragment_to_nav_graph_include_donate"
+            app:destination="@id/nav_graph_include_donate" />
+    </fragment>
+    <fragment
+        android:id="@+id/complicationsAddFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.complications.add.ComplicationsAddFragment"
+        android:label="@string/fab_complications_add"
+        tools:layout="@layout/fragment_complications_add" >
+        <action
+            android:id="@+id/action_complicationsAddFragment_to_widgetPermissionDialog2"
+            app:destination="@id/widgetPermissionDialog2" />
+        <action
+            android:id="@+id/action_complicationsAddFragment_to_notificationPermissionDialogFragment3"
+            app:destination="@id/notificationPermissionDialogFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/complicationEditFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.complications.edit.ComplicationEditFragment"
+        android:label="@string/complication_edit_title"
+        tools:layout="@layout/fragment_edit" >
+        <argument
+            android:name="action"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Action" />
+        <action
+            android:id="@+id/action_complicationEditFragment_to_complicationsRequirementsFragment"
+            app:destination="@id/complicationsRequirementsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complicationsRequirementsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.complications.requirements.ComplicationsRequirementsFragment"
+        android:label="@string/requirements_title"
+        tools:layout="@layout/fragment_requirements">
+        <argument
+            android:name="complication_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_complicationsRequirementsFragment_to_complicationsRequirementsAddFragment"
+            app:destination="@id/complicationsRequirementsAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complicationsRequirementsAddFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.complications.requirements.add.ComplicationsRequirementsAddFragment"
+        android:label="@string/fab_requirements_add"
+        tools:layout="@layout/fragment_requirements_add">
+        <argument
+            android:name="complication_id"
+            app:argType="string" />
+        <argument
+            android:name="page_type"
+            app:argType="com.kieronquinn.app.smartspacer.ui.screens.base.requirements.BaseRequirementsViewModel$PageType" />
+    </fragment>
+    <dialog
+        android:id="@+id/widgetPermissionDialog2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.WidgetPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_widget">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <dialog
+        android:id="@+id/notificationPermissionDialogFragment3"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.NotificationPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_notification">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <dialog
+        android:id="@+id/wallpaperColourPickerBottomSheetFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.wallpapercolourpicker.WallpaperColourPickerBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_wallpaper_color_picker_bottom_sheet"/>
+    <include app:graph="@navigation/nav_graph_include_donate" />
+
+</navigation>

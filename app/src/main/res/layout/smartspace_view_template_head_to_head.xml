@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_template_root"
+    style="@style/WidgetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:layout_height="@dimen/smartspace_view_max_height">
+
+    <RelativeLayout
+        android:id="@+id/smartspace_view_head_to_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/smartspace_view_head_to_head_title"
+            style="@style/WidgetSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/smartspace_view_head_to_head_2_icon"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+            tools:text="Final"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        <ImageView
+            android:id="@+id/smartspace_view_head_to_head_1_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:layout_below="@id/smartspace_view_head_to_head_title"
+            tools:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/smartspace_view_head_to_head_1_text"
+            style="@style/WidgetSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/smartspace_view_head_to_head_1_icon"
+            android:layout_alignBottom="@id/smartspace_view_head_to_head_1_icon"
+            android:layout_toRightOf="@id/smartspace_view_head_to_head_1_icon"
+            android:gravity="center_vertical"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+            tools:text="1"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        <ImageView
+            android:id="@+id/smartspace_view_head_to_head_2_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:layout_below="@id/smartspace_view_head_to_head_title"
+            android:layout_toRightOf="@id/smartspace_view_head_to_head_2_text"
+            tools:src="@android:drawable/ic_delete" />
+
+        <TextView
+            android:id="@+id/smartspace_view_head_to_head_2_text"
+            style="@style/WidgetSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/smartspace_view_head_to_head_2_icon"
+            android:layout_alignBottom="@id/smartspace_view_head_to_head_2_icon"
+            android:layout_marginStart="8dp"
+            android:layout_toRightOf="@id/smartspace_view_head_to_head_1_text"
+            android:gravity="center_vertical"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+            tools:text="1"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_smartspace_view_title" />
+
+        <include layout="@layout/include_smartspace_view_subtitle" />
+
+        <include layout="@layout/include_smartspace_view_supplemental" />
+
+    </LinearLayout>
+</LinearLayout>

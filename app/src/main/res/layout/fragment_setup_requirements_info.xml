@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionGroup="true"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/setup_requirements_info_p1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/setup_requirements_info_p2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/setup_requirements_info_any"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_8"
+                android:background="@drawable/background_tabs"
+                android:minWidth="150dp"
+                app:tabIndicator="@drawable/indicator_tabs"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorHeight="56dp"
+                app:tabSelectedTextColor="?android:textColorPrimaryInverse"
+                app:tabTextAppearance="@style/TextAppearance.Tabs"
+                app:tabTextColor="@android:color/white">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/requirements_tab_any" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/setup_requirements_info_p3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/setup_requirements_info_all"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_8"
+                android:background="@drawable/background_tabs"
+                android:minWidth="150dp"
+                app:tabIndicator="@drawable/indicator_tabs"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorHeight="56dp"
+                app:tabSelectedTextColor="?android:textColorPrimaryInverse"
+                app:tabTextAppearance="@style/TextAppearance.Tabs"
+                app:tabTextColor="@android:color/white">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/requirements_tab_all" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/setup_requirements_info_p4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/setup_requirements_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_setup_controls"
+        android:padding="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:backgroundTint="@android:color/darker_gray">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/setup_requirements_controls_next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:outlineProvider="none"
+            android:text="@string/setup_targets_controls_next"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+            app:icon="@drawable/ic_arrow_right"
+            app:iconGravity="textEnd" />
+
+    </FrameLayout>
+
+</LinearLayout>

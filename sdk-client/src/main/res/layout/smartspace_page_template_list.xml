@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_template_root"
+    style="@style/SmartspacerPageTitle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    tools:layout_height="@dimen/smartspace_page_max_height">
+
+    <LinearLayout
+        android:id="@+id/smartspace_view_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/smartspace_view_list_item_1"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/smartspace_page_template_list_max_width"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="Bread"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+        <TextView
+            android:id="@+id/smartspace_view_list_item_2"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/smartspace_page_template_list_max_width"
+            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="Milk"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+        <TextView
+            android:id="@+id/smartspace_view_list_item_3"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/smartspace_page_template_list_max_width"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
+            tools:text="Cheese"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
+
+    </LinearLayout>
+
+    <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+        android:id="@+id/smartspace_view_list_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="16dp"
+        tools:src="@android:drawable/ic_input_add" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_title"
+            layout="@layout/include_smartspace_page_title" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_subtitle"
+            layout="@layout/include_smartspace_page_subtitle" />
+
+        <include
+            android:id="@+id/smartspace_page_template_basic_supplemental"
+            layout="@layout/include_smartspace_page_supplemental" />
+
+    </LinearLayout>
+
+</LinearLayout>

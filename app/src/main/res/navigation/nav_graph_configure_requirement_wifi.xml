@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_requirement_wifi"
+    app:startDestination="@id/wiFiRequirementConfigurationFragment">
+
+    <fragment
+        android:id="@+id/wiFiRequirementConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequirementConfigurationFragment"
+        android:label="@string/requirement_wifi_title"
+        tools:layout="@layout/fragment_configuration_requirement_wifi">
+        <action
+            android:id="@+id/action_wiFiRequirementConfigurationFragment_to_wiFiRequirementConfigurationSSIDBottomSheetFragment"
+            app:destination="@id/wiFiRequirementConfigurationSSIDBottomSheetFragment" />
+        <action
+            android:id="@+id/action_wiFiRequirementConfigurationFragment_to_wiFiRequirementConfigurationMACBottomSheetFragment"
+            app:destination="@id/wiFiRequirementConfigurationMACBottomSheetFragment" />
+        <action
+            android:id="@+id/action_wiFiRequirementConfigurationFragment_to_wiFiRequirementConfigurationPickerFragment"
+            app:destination="@id/wiFiRequirementConfigurationPickerFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/wiFiRequirementConfigurationSSIDBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.ssid.WiFiRequirementConfigurationSSIDBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_requirement_wifi_ssid_bottom_sheet">
+        <argument
+            android:name="smartspacer_id"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/wiFiRequirementConfigurationMACBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.mac.WiFiRequirementConfigurationMACBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_requirement_wifi_mac_bottom_sheet">
+        <argument
+            android:name="smartspacer_id"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/wiFiRequirementConfigurationPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.picker.WiFiRequirementConfigurationPickerFragment"
+        android:label="@string/requirement_wifi_configuration_pick_title"
+        tools:layout="@layout/fragment_settings_base">
+        <argument
+            android:name="smartspacer_id"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

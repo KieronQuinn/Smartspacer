@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+}
+rootProject.name = "Smartspacer"
+include ':app'
+include ':systemstubs'
+include ':sdk-core'
+include ':sdk-sample'
+include ':sdk-plugin'
+include ':sdk-client'
+include ':launcherclient'
+include ':proto'

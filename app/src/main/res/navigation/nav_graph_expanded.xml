@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_expanded"
+    app:startDestination="@id/expandedFragment">
+
+    <fragment
+        android:id="@+id/expandedFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedFragment"
+        android:label=""
+        tools:layout="@layout/fragment_expanded">
+        <action
+            android:id="@+id/action_expandedFragment_to_expandedAddWidgetBottomSheetFragment"
+            app:destination="@id/expandedAddWidgetBottomSheetFragment" />
+        <action
+            android:id="@+id/action_expandedFragment_to_expandedRearrangeFragment"
+            app:destination="@id/expandedRearrangeFragment" />
+        <action
+            android:id="@+id/action_expandedFragment_to_expandedWidgetOptionsBottomSheetFragment"
+            app:destination="@id/expandedWidgetOptionsBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/expandedAddWidgetBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_expanded_bottom_sheet_add_widget"/>
+    <fragment
+        android:id="@+id/expandedRearrangeFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.rearrange.ExpandedRearrangeFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_expanded_rearrange"/>
+    <dialog
+        android:id="@+id/expandedWidgetOptionsBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.options.ExpandedWidgetOptionsBottomSheetFragment"
+        android:label="ExpandedWidgetOptionsBottomSheetFragment" >
+        <argument
+            android:name="app_widget_id"
+            app:argType="integer" />
+    </dialog>
+</navigation>

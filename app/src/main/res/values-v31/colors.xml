@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icon_foreground">@android:color/system_neutral2_700</color>
+    <color name="icon_background">@android:color/system_accent1_100</color>
+    <color name="icon_primary">@android:color/system_accent2_300</color>
+    <color name="splash_background">@android:color/system_neutral1_50</color>
+
+    <color name="colorPrimary">@android:color/system_accent2_100</color>
+    <color name="colorAccent">@android:color/system_accent1_700</color>
+    <color name="licenses_background">@android:color/system_neutral1_50</color>
+    <color name="licenses_toolbar">@android:color/system_neutral1_100</color>
+
+    <color name="expanded_search_box_background_color">@android:color/system_neutral1_100</color>
+
+    <color name="search_icon_tint_primary">@color/search_icon_tint_m3_primary</color>
+    <color name="search_icon_tint_secondary">@color/search_icon_tint_m3_secondary</color>
+    <color name="search_icon_tint_tertiary">@color/search_icon_tint_m3_tertiary</color>
+    <color name="search_icon_tint_quaternary">@color/search_icon_tint_m3_quaternary</color>
+</resources>

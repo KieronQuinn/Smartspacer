@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@android:color/darker_gray">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_24"
+        tools:background="@drawable/background_permission_dialog"
+        tools:backgroundTint="@android:color/system_neutral2_100">
+
+        <ImageView
+            android:id="@+id/permission_smartspace_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_notification"
+            app:tint="?android:textColorPrimary" />
+
+        <TextView
+            android:id="@+id/permission_smartspace_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:gravity="center"
+            android:maxWidth="300dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer.Lighter"
+            android:textColor="?android:textColorPrimary"
+            tools:text="Allow Smartspacer to access widgets using Smartspacer?" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/permission_smartspace_allow"
+            style="@style/PermissionDialogButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:maxWidth="300dp"
+            android:text="@string/permission_dialog_smartspace_allow" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/permission_smartspace_deny"
+            style="@style/PermissionDialogButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4"
+            android:maxWidth="300dp"
+            android:text="@string/permission_dialog_smartspace_deny" />
+
+    </LinearLayout>
+
+</FrameLayout>

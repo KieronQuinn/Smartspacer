@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="TextAppearance.AppCompat.Large.Smartspacer" parent="TextAppearance.AppCompat.Large">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.ExtraLarge.Smartspacer" parent="TextAppearance.AppCompat.Large">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Medium.Smartspacer" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Medium.Smartspacer.Lighter" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Small.Smartspacer" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">@font/google_sans_text_regular</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Small.Smartspacer.Medium" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.Widget.AppCompat.Toolbar.Title.Smartspacer" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Smartspacer" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.Design.Hint.Smartspacer</item>
+        <item name="fontFamily">@font/google_sans_text</item>
+        <item name="android:fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="TextAppearance.Design.Hint.Smartspacer" parent="TextAppearance.Design.Hint">
+        <item name="fontFamily">@font/google_sans_text</item>
+        <item name="android:fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="Widget.Material3.CardView.Filled.Smartspacer" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">16dp</item>
+    </style>
+
+    <style name="Widget.Material3.Chip.Filter.Smartspacer" parent="@style/Widget.Material3.Chip.Filter">
+        <item name="chipStrokeColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.Material3.Chip.Icon.Smartspacer" parent="@style/Widget.Material3.Chip.Assist">
+        <item name="chipIconVisible">true</item>
+        <item name="chipStrokeColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.Material3.Chip.Icon.Smartspacer.Round" parent="Widget.Material3.Chip.Icon.Smartspacer">
+        <item name="chipCornerRadius">16dp</item>
+    </style>
+
+    <style name="TextAppearance.Tabs" parent="TextAppearance.AppCompat.Small.Smartspacer">
+        <item name="android:textFontWeight" tools:ignore="NewApi">500</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Tooltip.Smartspacer" parent="Widget.MaterialComponents.Tooltip">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small.Smartspacer.Medium</item>
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Popup" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="CollapsingToolbarTitle.Collapsed" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="CollapsingToolbarTitle.Expanded" parent="CollapsingToolbarTitle.Collapsed">
+        <item name="android:textSize">36dp</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Material3.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">@bool/lightStatusNav</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog.Dark" parent="@style/Theme.Material3.Dark.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet.Dark</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">@bool/lightStatusNav</item>
+        <item name="android:navigationBarColor">@color/cardview_dark_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded_bg_light</item>
+    </style>
+
+    <style name="BottomSheet.Dark" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded_bg_dark</item>
+    </style>
+
+    <style name="PermissionDialogButton" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small.Smartspacer.Medium</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">0dp</item>
+    </style>
+
+    <!-- Smartspacer widget views -->
+
+    <style name="TextAppearance.Smartspacer.Widget.Title.Preview" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/smartspace_view_title_size</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Widget.Title" parent="TextAppearance.Smartspacer.Widget.Title.Preview">
+        <item name="android:fontFamily">google-sans</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Widget.Subtitle.Preview" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/smartspace_view_subtitle_size</item>
+    </style>
+
+    <style name="TextAppearance.Smartspacer.Widget.Subtitle" parent="TextAppearance.Smartspacer.Widget.Subtitle.Preview">
+        <item name="android:fontFamily">google-sans-text</item>
+    </style>
+
+    <style name="WidgetRoot">
+        <item name="android:paddingStart">@dimen/smartspace_view_margin</item>
+        <item name="android:paddingEnd">@dimen/smartspace_view_margin</item>
+    </style>
+
+    <style name="WidgetTitle" parent="@android:style/Widget.TextView">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="WidgetSubtitle" parent="WidgetTitle">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineHeight">@dimen/smartspace_view_icon_size</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="Widget.Material3.ExtendedFloatingActionButton.Smartspacer" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Primary">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium.Smartspacer</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="iconTint">?android:textColorPrimary</item>
+    </style>
+    
+    <style name="WallpaperFadeTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextClock xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_title"
+    style="@style/WidgetTitle"
+    tools:text="Mon, 1 Jan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title"
+    tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title.Preview" />

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_template_root"
+    style="@style/WidgetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:layout_height="@dimen/smartspace_view_max_height">
+
+    <LinearLayout
+        android:id="@+id/smartspace_view_carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_carousel_column_1"
+            android:minWidth="@dimen/smartspace_view_template_carousel_column_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_1_header"
+                style="@style/WidgetSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="M"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+            <ImageView
+                android:id="@+id/smartspace_view_carousel_column_1_icon"
+                android:layout_width="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_height="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_gravity="center_horizontal"
+                tools:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_1_footer"
+                style="@style/WidgetSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                android:layout_gravity="center_horizontal"
+                tools:text="24°"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_carousel_column_2"
+            android:minWidth="@dimen/smartspace_view_template_carousel_column_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_2_header"
+                style="@style/WidgetSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="T"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+            <ImageView
+                android:id="@+id/smartspace_view_carousel_column_2_icon"
+                android:layout_width="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_height="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_gravity="center_horizontal"
+                tools:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_2_footer"
+                style="@style/WidgetSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="24°"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_carousel_column_3"
+            android:minWidth="@dimen/smartspace_view_template_carousel_column_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_3_header"
+                style="@style/WidgetSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="W"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+            <ImageView
+                android:id="@+id/smartspace_view_carousel_column_3_icon"
+                android:layout_width="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_height="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_gravity="center_horizontal"
+                tools:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_3_footer"
+                style="@style/WidgetSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="24°"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_carousel_column_4"
+            android:minWidth="@dimen/smartspace_view_template_carousel_column_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_4_header"
+                style="@style/WidgetSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="T"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+            <ImageView
+                android:id="@+id/smartspace_view_carousel_column_4_icon"
+                android:layout_width="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_height="@dimen/smartspace_view_template_carousel_column_size"
+                android:layout_gravity="center_horizontal"
+                tools:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/smartspace_view_carousel_column_4_footer"
+                style="@style/WidgetSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+                android:textSize="@dimen/smartspace_view_template_carousel_column_text_size"
+                tools:text="24°"
+                tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_smartspace_view_title" />
+
+        <include layout="@layout/include_smartspace_view_subtitle_and_action" />
+
+        <include layout="@layout/include_smartspace_view_supplemental" />
+
+    </LinearLayout>
+</LinearLayout>

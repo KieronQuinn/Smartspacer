@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="smartspace_page_margin_16">16dp</dimen>
+    <dimen name="smartspace_page_title_size">20sp</dimen>
+    <dimen name="smartspace_page_subtitle_size">16sp</dimen>
+    <dimen name="smartspace_page_max_height">112dp</dimen>
+    <dimen name="smartspace_page_icon_size">20sp</dimen>
+    <dimen name="smartspace_page_icon_margin">4dp</dimen>
+    <dimen name="smartspace_page_action_margin">8dp</dimen>
+    <dimen name="smartspace_page_margin">8dp</dimen>
+    <dimen name="smartspace_page_space">9dp</dimen>
+    <dimen name="smartspace_page_template_images_image_height">80dp</dimen>
+    <dimen name="smartspace_page_template_images_image_width">112dp</dimen>
+    <dimen name="smartspace_page_template_carousel_column_size">24dp</dimen>
+    <dimen name="smartspace_page_template_carousel_text_size">12sp</dimen>
+    <dimen name="smartspace_page_template_button_max_size">80dp</dimen>
+    <dimen name="smartspace_page_template_list_max_width">160dp</dimen>
+    <dimen name="smartspace_page_feature_commute_time_image_width">112dp</dimen>
+    <dimen name="smartspace_page_feature_commute_time_image_height">63dp</dimen>
+    <dimen name="smartspace_page_feature_doorbell_image_height">80dp</dimen>
+    <dimen name="smartspace_page_feature_doorbell_image_default_padding">16dp</dimen>
+    <dimen name="smartspace_page_indicator_dot_margin">3dp</dimen>
+    <dimen name="smartspace_page_indicator_dot_size">6dp</dimen>
+    <dimen name="smartspace_dismiss_margin">16dp</dimen>
+    <dimen name="smartspace_height">104dp</dimen>
+    <dimen name="smartspace_page_indicator_padding_start">2dp</dimen>
+    <dimen name="smartspace_page_indicator_padding_top_bottom">8dp</dimen>
+    <dimen name="smartspace_margin_start_launcher">16dp</dimen>
+    <dimen name="smartspace_long_press_popup_width">200dp</dimen>
+    <dimen name="smartspace_long_press_popup_item_height">56dp</dimen>
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:transitionGroup="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_24">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/configuration_notification_association_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/configuration_notification_association_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/configuration_notification_association_subcontent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/configuration_notification_association_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/configuration_notification_association_button"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/configuration_notification_association_read_more"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="@string/configuration_notification_association_read_more"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

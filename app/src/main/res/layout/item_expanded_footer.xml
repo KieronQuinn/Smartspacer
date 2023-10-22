@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/margin_8"
+    android:paddingEnd="@dimen/margin_8"
+    android:layout_margin="@dimen/margin_16">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expanded_footer_button"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:iconTint="?android:textColorPrimary"
+        app:backgroundTint="?android:colorControlHighlight"
+        app:icon="@drawable/ic_fab_add" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expanded_footer_button_wide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/expanded_footer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        android:textColor="?android:textColorPrimary"
+        app:iconTint="?android:textColorPrimary"
+        app:backgroundTint="?android:colorControlHighlight"
+        app:icon="@drawable/ic_fab_add" />
+
+</FrameLayout>

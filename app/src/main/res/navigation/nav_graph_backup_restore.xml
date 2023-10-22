@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_backup_restore"
+    app:startDestination="@id/backupRestoreFragment">
+
+    <fragment
+        android:id="@+id/backupRestoreFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.BackupRestoreFragment"
+        android:label="@string/backup_restore_title"
+        tools:layout="@layout/fragment_settings_base">
+        <action
+            android:id="@+id/action_backupRestoreFragment_to_backupFragment"
+            app:destination="@id/backupFragment" />
+        <action
+            android:id="@+id/action_backupRestoreFragment_to_restoreFragment"
+            app:destination="@id/restoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backupFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.backup.BackupFragment"
+        android:label="@string/backup_title"
+        tools:layout="@layout/fragment_backup">
+        <argument
+            android:name="uri"
+            app:argType="android.net.Uri" />
+    </fragment>
+    <fragment
+        android:id="@+id/restoreFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.RestoreFragment"
+        android:label="@string/restore_title"
+        tools:layout="@layout/fragment_restore">
+        <argument
+            android:name="uri"
+            app:argType="android.net.Uri" />
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreTargetsFragment"
+            app:destination="@id/restoreTargetsFragment"
+            app:popUpTo="@id/backupRestoreFragment"/>
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreRequirementsFragment"
+            app:destination="@id/restoreRequirementsFragment" />
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreComplicationsFragment"
+            app:destination="@id/restoreComplicationsFragment" />
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreWidgetsFragment"
+            app:destination="@id/restoreWidgetsFragment" />
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreSettingsFragment"
+            app:destination="@id/restoreSettingsFragment" />
+        <action
+            android:id="@+id/action_restoreFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restoreTargetsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.targets.RestoreTargetsFragment"
+        android:label="@string/restore_target_title"
+        tools:layout="@layout/fragment_restore_targets">
+        <argument
+            android:name="config"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.BackupRepository$RestoreConfig" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_widgetPermissionDialogFragment2"
+            app:destination="@id/widgetPermissionDialogFragment2" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_notificationPermissionDialogFragment4"
+            app:destination="@id/notificationPermissionDialogFragment4" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_restoreComplicationsFragment"
+            app:destination="@id/restoreComplicationsFragment" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_restoreRequirementsFragment"
+            app:destination="@id/restoreRequirementsFragment" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_restoreWidgetsFragment"
+            app:destination="@id/restoreWidgetsFragment" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_restoreSettingsFragment"
+            app:destination="@id/restoreSettingsFragment" />
+        <action
+            android:id="@+id/action_restoreTargetsFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/widgetPermissionDialogFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.WidgetPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_widget">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <dialog
+        android:id="@+id/notificationPermissionDialogFragment4"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.NotificationPermissionDialogFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_notification">
+        <argument
+            android:name="grant"
+            app:argType="com.kieronquinn.app.smartspacer.model.database.Grant" />
+    </dialog>
+    <fragment
+        android:id="@+id/restoreComplicationsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.complications.RestoreComplicationsFragment"
+        android:label="@string/restore_complications_title"
+        tools:layout="@layout/fragment_restore_complications">
+        <argument
+            android:name="config"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.BackupRepository$RestoreConfig" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_widgetPermissionDialogFragment2"
+            app:destination="@id/widgetPermissionDialogFragment2" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_notificationPermissionDialogFragment4"
+            app:destination="@id/notificationPermissionDialogFragment4" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_restoreRequirementsFragment"
+            app:destination="@id/restoreRequirementsFragment" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_restoreWidgetsFragment"
+            app:destination="@id/restoreWidgetsFragment" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_restoreSettingsFragment"
+            app:destination="@id/restoreSettingsFragment" />
+        <action
+            android:id="@+id/action_restoreComplicationsFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restoreRequirementsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.requirements.RestoreRequirementsFragment"
+        android:label="@string/restore_requirements_title"
+        tools:layout="@layout/fragment_restore_requirements">
+        <argument
+            android:name="config"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.BackupRepository$RestoreConfig" />
+        <action
+            android:id="@+id/action_restoreRequirementsFragment_to_restoreWidgetsFragment"
+            app:destination="@id/restoreWidgetsFragment" />
+        <action
+            android:id="@+id/action_restoreRequirementsFragment_to_restoreSettingsFragment"
+            app:destination="@id/restoreSettingsFragment" />
+        <action
+            android:id="@+id/action_restoreRequirementsFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restoreWidgetsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.widgets.RestoreWidgetsFragment"
+        android:label="@string/restore_title"
+        tools:layout="@layout/fragment_restore_widgets">
+        <argument
+            android:name="config"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.BackupRepository$RestoreConfig" />
+        <action
+            android:id="@+id/action_restoreWidgetsFragment_to_restoreSettingsFragment"
+            app:destination="@id/restoreSettingsFragment"
+            app:popUpTo="@id/restoreWidgetsFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_restoreWidgetsFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment"
+            app:popUpTo="@id/restoreWidgetsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/restoreSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.settings.RestoreSettingsFragment"
+        android:label="@string/restore_title"
+        tools:layout="@layout/fragment_restore_settings">
+        <argument
+            android:name="config"
+            app:argType="com.kieronquinn.app.smartspacer.repositories.BackupRepository$RestoreConfig" />
+        <action
+            android:id="@+id/action_restoreSettingsFragment_to_restoreCompleteFragment"
+            app:destination="@id/restoreCompleteFragment"
+            app:popUpTo="@id/restoreSettingsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/restoreCompleteFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.backuprestore.restore.complete.RestoreCompleteFragment"
+        android:label="@string/restore_title"
+        tools:layout="@layout/fragment_restore_complete" />
+
+</navigation>

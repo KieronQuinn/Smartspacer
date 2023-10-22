@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Copied from Tap, Tap - Placeholder -->
+
+    <!-- DO NOT TRANSLATE THESE -->
+    <!-- <string name="translators_portuguese_xx_content" translatable="false"></string> -->
+
+    <!-- You MUST add a language to all THREE translators arrays, with the heading, content and icon -->
+    <array name="about_translators_headings">
+
+    </array>
+
+    <array name="about_translators_content">
+
+    </array>
+
+    <array name="about_translators_flags">
+
+    </array>
+
+</resources>
