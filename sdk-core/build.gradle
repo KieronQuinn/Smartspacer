@@ -49,7 +49,7 @@ project.afterEvaluate {
                 setArtifactId "sdk-core"
                 version "1.0.0"
 
-                artifact bundleDebugAar
+                artifact bundleReleaseAar
             }
         }
     }

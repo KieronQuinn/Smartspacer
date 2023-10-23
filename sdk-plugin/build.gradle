@@ -47,7 +47,7 @@ project.afterEvaluate {
                 setArtifactId "sdk-plugin"
                 version "1.0.0"
 
-                artifact bundleDebugAar
+                artifact bundleReleaseAar
             }
         }
     }

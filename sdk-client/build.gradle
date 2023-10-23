@@ -62,9 +62,9 @@ project.afterEvaluate {
             library(MavenPublication) {
                 setGroupId "com.kieronquinn.app.smartspacer"
                 setArtifactId "sdk-client"
-                version "0.0.5l"
+                version "1.0.0"
 
-                artifact bundleDebugAar
+                artifact bundleReleaseAar
 
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
