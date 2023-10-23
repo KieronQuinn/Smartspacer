@@ -29,7 +29,7 @@ Interested in finding out more about Smartspacer? Check out [this Medium Article
 
 ## Plugin & Client SDK
 
-If you are a developer, and you're interested in making a Smartspacer Plugin, or integrating Smartspacer into your launcher, check out the SDK Documentation here.
+If you are a developer, and you're interested in making a Smartspacer Plugin, or integrating Smartspacer into your launcher, check out the SDK Documentation [here](https://github.com/KieronQuinn/Smartspacer/wiki/3.-SDK:-Creating-a-Target).
 
 ## Licences 
 
