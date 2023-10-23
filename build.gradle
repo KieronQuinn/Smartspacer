@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 buildscript {
     ext.nav_version = "2.7.4"
     ext.protobuf_version = '0.9.0'
@@ -19,8 +21,21 @@ plugins {
     id 'com.google.devtools.ksp' version '1.9.10-1.0.13' apply false
     id "com.google.gms.google-services" version "4.3.15" apply false
     id "com.google.firebase.crashlytics" version "2.9.9" apply false
+    id "com.vanniktech.maven.publish" version "0.25.3" apply false
 }
 
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
+allprojects {
+    plugins.withId("com.vanniktech.maven.publish") {
+        mavenPublishing {
+            publishToMavenCentral(SonatypeHost.S01)
+            signAllPublications()
+        }
+    }
+
+    //JavaDoc generation is currently broken on Java 17: https://github.com/Kotlin/dokka/issues/2956
+    tasks.configureEach { task ->
+        if(task.name.contains("javaDocReleaseGeneration")) {
+            task.enabled = false
+        }
+    }
 }

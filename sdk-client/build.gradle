@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
+    id 'com.vanniktech.maven.publish'
 }
 
 android {
@@ -36,68 +37,43 @@ android {
     }
 }
 
-def pomDependencies = [
-    new Dependency('com.kieronquinn.app.smartspacer', 'sdk-core', '0.0.1p', false),
-    new Dependency('androidx.core', 'core-ktx', '1.10.1'),
-    new Dependency('androidx.fragment', 'fragment', '1.6.0'),
-    new Dependency('androidx.constraintlayout', 'constraintlayout', '2.1.4'),
-    new Dependency('androidx.lifecycle', 'lifecycle-service', '2.6.1'),
-    new Dependency('androidx.lifecycle', 'lifecycle-runtime-ktx', '2.6.1'),
-    new Dependency('org.jetbrains.kotlinx', 'kotlinx-coroutines-core', '1.7.1'),
-    new Dependency('com.github.skydoves', 'balloon', '1.4.7')
-]
-
 dependencies {
-    pomDependencies.forEach {
-        if(it.includeInGradle) {
-            implementation(it.toGradleNotation())
-        }
-    }
-    api project(path: ':sdk-core')
+    implementation('com.kieronquinn.smartspacer:sdk-core:1.0.0')
+    implementation('androidx.core:core-ktx:1.12.0')
+    implementation('androidx.fragment:fragment-ktx:1.6.1')
+    implementation('androidx.constraintlayout:constraintlayout:2.1.4')
+    implementation('androidx.lifecycle:lifecycle-service:2.6.2')
+    implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.6.2')
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3')
+    implementation('com.github.skydoves:balloon:1.4.7')
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            library(MavenPublication) {
-                setGroupId "com.kieronquinn.app.smartspacer"
-                setArtifactId "sdk-client"
-                version "1.0.0"
+mavenPublishing {
+    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.0.0")
 
-                artifact bundleReleaseAar
-
-                pom.withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-                    pomDependencies.forEach {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.groupId)
-                        dependencyNode.appendNode('artifactId', it.artifactId)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
+    pom {
+        name = "Smartspacer Client SDK"
+        description = "SDK for showing Smartspacer Targets & Complications in your app"
+        inceptionYear = "2023"
+        url = "https://github.com/KieronQuinn/Smartspacer"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
+        developers {
+            developer {
+                id = "KieronQuinn"
+                name = "Kieron Quinn"
+                url = "https://github.com/KieronQuinn"
+            }
+        }
+        scm {
+            url = "https://github.com/username/mylibrary/"
+            connection = "scm:git:git://github.com/KieronQuinn/Smartspacer.git"
+            developerConnection = "scm:git:ssh://git@github.com/KieronQuinn/Smartspacer.git"
+        }
     }
-}
-
-class Dependency {
-
-    String groupId, artifactId, version
-    boolean includeInGradle
-
-    Dependency(String groupId, String artifactId, String version){
-        this(groupId, artifactId, version, true)
-    }
-
-    Dependency(String groupId, String artifactId, String version, boolean includeInGradle){
-        this.groupId = groupId
-        this.artifactId = artifactId
-        this.version = version
-        this.includeInGradle = includeInGradle
-    }
-
-    String toGradleNotation(){
-        return "${groupId}:${artifactId}:${version}"
-    }
-
 }

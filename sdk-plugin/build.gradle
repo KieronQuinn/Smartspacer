@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
+    id 'com.vanniktech.maven.publish'
 }
 
 android {
@@ -36,19 +37,35 @@ android {
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.12.0'
-    api project(path: ':sdk-core')
+    implementation('com.kieronquinn.smartspacer:sdk-core:1.0.0')
 }
 
-project.afterEvaluate {
-    publishing {
-        publications {
-            library(MavenPublication) {
-                setGroupId "com.kieronquinn.app.smartspacer"
-                setArtifactId "sdk-plugin"
-                version "1.0.0"
+mavenPublishing {
+    coordinates("com.kieronquinn.smartspacer", "sdk-plugin", "1.0.0")
 
-                artifact bundleReleaseAar
+    pom {
+        name = "Smartspacer Plugin SDK"
+        description = "SDK used to create Plugins adding Smartspacer Targets, Complications and Requirements"
+        inceptionYear = "2023"
+        url = "https://github.com/KieronQuinn/Smartspacer"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
+        }
+        developers {
+            developer {
+                id = "KieronQuinn"
+                name = "Kieron Quinn"
+                url = "https://github.com/KieronQuinn"
+            }
+        }
+        scm {
+            url = "https://github.com/username/mylibrary/"
+            connection = "scm:git:git://github.com/KieronQuinn/Smartspacer.git"
+            developerConnection = "scm:git:ssh://git@github.com/KieronQuinn/Smartspacer.git"
         }
     }
 }
