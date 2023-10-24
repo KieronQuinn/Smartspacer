@@ -47,7 +47,7 @@ interface BaseExpandedAdapter: KoinComponent {
         itemExpandedWidgetDragLayer.isVisible = isRearrange
         itemExpandedWidgetConfigure.setTextColor(tintColour)
         val longClickListener = View.OnLongClickListener {
-            if(widget.isCustom){
+            if(widget.isCustom && this@BaseExpandedAdapter is ExpandedAdapter){
                 onCustomWidgetLongClicked(it, widget)
             }else{
                 onWidgetLongClicked(this@setup, widget.appWidgetId)

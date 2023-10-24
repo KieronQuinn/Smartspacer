@@ -89,8 +89,12 @@ dependencies {
     ksp "androidx.room:room-compiler:$room_version"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
-    implementation project(path: ':sdk-plugin')
-    implementation project(path: ':sdk-client')
+    implementation(project(path: ':sdk-plugin')) {
+        exclude group: "com.kieronquinn.smartspacer", module: "sdk-core"
+    }
+    implementation(project(path: ':sdk-client')) {
+        exclude group: "com.kieronquinn.smartspacer", module: "sdk-core"
+    }
     implementation project(path: ':sdk-core')
     implementation project(path: ':launcherclient')
 

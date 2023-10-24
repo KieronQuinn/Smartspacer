@@ -27,13 +27,29 @@ class SmartspacerClient constructor(context: Context) {
     companion object {
         private const val ACTION_MANAGER = "com.kieronquinn.app.smartspacer.MANAGER"
         private const val TAG = "SmartspacerClient"
+        private val instanceLock = Object()
 
         @JvmStatic
         private var INSTANCE: SmartspacerClient? = null
 
+        /**
+         *  Gets the current instance, or creates a new instance of Smartspacer Client
+         */
         fun getInstance(context: Context): SmartspacerClient {
-            return INSTANCE ?: SmartspacerClient(context).also {
-                INSTANCE = it
+            return synchronized(instanceLock) {
+                INSTANCE ?: SmartspacerClient(context).also {
+                    INSTANCE = it
+                }
+            }
+        }
+
+        /**
+         *  If there is an instance of the client, closes it and then clears the instance.
+         */
+        fun close() {
+            synchronized(instanceLock) {
+                INSTANCE?.close()
+                INSTANCE = null
             }
         }
     }

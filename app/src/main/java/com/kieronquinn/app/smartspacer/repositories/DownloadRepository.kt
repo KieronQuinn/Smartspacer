@@ -134,10 +134,16 @@ class DownloadRepositoryImpl(private val context: Context): DownloadRepository {
                         sizeFormatted
                     )
                 }else ""
-                DownloadState.Progress(id, progress.roundToInt(), caption)
+                DownloadState.Progress(id, progress.round(), caption)
             }
         }
     }.stateIn(scope, SharingStarted.Eagerly, null)
+
+    private fun Double.round(): Int {
+        return if(!isNaN()){
+            roundToInt()
+        } else 0
+    }
 
     override fun cancelDownload(id: Long) {
         downloadManager.remove(id)

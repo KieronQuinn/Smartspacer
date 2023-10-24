@@ -49,7 +49,7 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.0.0")
+    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.0.1")
 
     pom {
         name = "Smartspacer Client SDK"
