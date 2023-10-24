@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-         This option is for general issues only. To report a bug or suggest a feature, go back and use those options. If you want help, please join the Discord if you are able to.
+         This option is for general issues only. To report a bug or suggest a feature, go back and use those options. If you want help, please join the Discord if you are able to (linked in the README).
   - type: textarea
     id: issue
     attributes:
