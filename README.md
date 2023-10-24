@@ -4,6 +4,8 @@
 
 Smartspacer is a customisable widget for Android, but with a difference: It can upgrade the built in At a Glance on Pixels - without root!
 
+[![Crowdin](https://badges.crowdin.net/smartspacer/localized.svg)](https://crowdin.com/project/smartspacer)
+
 ## Features
 
 - Drop-in At a Glance replacement, while keeping existing At a Glance functionality
