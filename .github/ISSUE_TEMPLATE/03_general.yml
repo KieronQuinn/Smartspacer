@@ -1,0 +1,16 @@
+name: Other
+description: A general issue, for example to report a problem with SDK documentation
+title: "[Other] "
+labels:
+body:
+  - type: markdown
+    attributes:
+      value: |
+         This option is for general issues only. To report a bug or suggest a feature, go back and use those options. If you want help, please join the Discord if you are able to.
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: Describe your issue
+    validations:
+      required: true
