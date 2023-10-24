@@ -1,7 +1,6 @@
 name: Other
 description: A general issue, for example to report a problem with SDK documentation
 title: "[Other] "
-labels:
 body:
   - type: markdown
     attributes:
