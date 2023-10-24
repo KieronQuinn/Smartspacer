@@ -1,28 +1,17 @@
-"project_id_env": "CROWDIN_PROJECT_ID"
-"api_token_env": "CROWDIN_PERSONAL_TOKEN"
-"base_path": "."
-
-"preserve_hierarchy": true
-
-"files": [
-    {
-        "source": "app/src/main/res/values/strings.xml",
-        "translation": "app/src/main/res/values-%android_code%/strings.xml",
-        "languages_mapping": {
-            "android_code": {
-                "it": "it",
-                "ja": "ja"
-            }
-        }
-    },
-    {
-        "source": "sdk-client/src/main/res/values/strings.xml",
-        "translation": "sdk-client/src/main/res/values-%android_code%/strings.xml",
-        "languages_mapping": {
-            "android_code": {
-                "it": "it",
-                "ja": "ja"
-            }
-        }
-    }
-]
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
+base_path: .
+preserve_hierarchy: 1
+files:
+  - source: app/src/main/res/values/strings.xml
+    translation: app/src/main/res/values-%android_code%/strings.xml
+    languages_mapping:
+      android_code:
+        it: it
+        ja: ja
+  - source: sdk-client/src/main/res/values/strings.xml
+    translation: sdk-client/src/main/res/values-%android_code%/strings.xml
+    languages_mapping:
+      android_code:
+        it: it
+        ja: ja
