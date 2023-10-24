@@ -32,7 +32,7 @@
     <string name="tint_colour_white">Blanco</string>
     <string name="tint_colour_white_content">El texto e iconos en el widget siempre serán blancos</string>
     <string name="tint_colour_black">Negro</string>
-    <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
+    <string name="tint_colour_black_content">El texto e iconos en el widget siempre serán negros</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
     <string name="widget_loading_smartspacer">Cargando…</string>
