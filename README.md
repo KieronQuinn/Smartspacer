@@ -4,6 +4,8 @@
 
 Smartspacer is a customisable widget for Android, but with a difference: It can upgrade the built in At a Glance on Pixels - without root!
 
+[![Crowdin](https://badges.crowdin.net/smartspacer/localized.svg)](https://crowdin.com/project/smartspacer)
+
 ## Features
 
 - Drop-in At a Glance replacement, while keeping existing At a Glance functionality
@@ -31,6 +33,18 @@ Interested in finding out more about Smartspacer? Check out [this Medium Article
 
 If you are a developer, and you're interested in making a Smartspacer Plugin, or integrating Smartspacer into your launcher, check out the SDK Documentation [here](https://github.com/KieronQuinn/Smartspacer/wiki/3.-SDK:-Creating-a-Target).
 
+The SDK Sample contains examples for both plugins and clients
+
 ## Licences 
 
 The Smartspacer app is licensed under the [GNU GPL v3 licence](https://github.com/KieronQuinn/Smartspacer/blob/main/LICENSE), the SDK is licensed under [Apache 2.0](https://github.com/KieronQuinn/Smartspacer/blob/main/sdk-core/LICENSE)
+
+## Frequently Asked Questions
+
+FAQs can be found [here](https://github.com/KieronQuinn/Smartspacer/blob/main/FAQ.md)
+
+## Discord
+
+Join the Smartspacer Discord Server for any further queries
+
+[![Discord Invite](https://i.imgur.com/c1q3vLH.png)](https://discord.gg/CfbCFeuSZJ)
