@@ -1,7 +1,7 @@
 name: Suggestion
 description: Submit a suggestion for Smartspacer
 title: "[Suggestion] "
-labels: ["bug"]
+labels: ["suggestion"]
 body:
   - type: markdown
     attributes:
