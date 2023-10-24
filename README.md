@@ -42,3 +42,9 @@ The Smartspacer app is licensed under the [GNU GPL v3 licence](https://github.co
 ## Frequently Asked Questions
 
 FAQs can be found [here](https://github.com/KieronQuinn/Smartspacer/blob/main/FAQ.md)
+
+## Discord
+
+Join the Smartspacer Discord Server for any further queries
+
+[![Discord Invite](https://i.imgur.com/c1q3vLH.png)](https://discord.gg/CfbCFeuSZJ)
