@@ -1,0 +1,22 @@
+name: Suggestion
+description: Submit a suggestion for Smartspacer
+title: "[Suggestion] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+         Thank you for submitting a Suggestion. Please note that this is not for reporting plugin issues or plugin requests.
+         
+         For plugin issues, please go to the plugin in question's repository. Plugins my me can be found at https://github.com/KieronQuinn/SmartspacerPlugins.
+         
+         For plugin requests, please go to https://github.com/KieronQuinn/SmartspacerPlugins/issues and make a Plugin Request.
+         
+         Make sure the suggestion has not been made already, duplicate suggestions will be closed.
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggestion
+      description: Describe your suggestion
+    validations:
+      required: true

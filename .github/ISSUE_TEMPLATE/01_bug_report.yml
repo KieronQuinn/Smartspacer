@@ -1,0 +1,24 @@
+name: Bug Report
+description: Submit a bug report for Smartspacer
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+         Thank you for submitting a Bug Report. Please note that this is not for reporting plugin issues or plugin requests.
+         
+         For plugin issues, please go to the plugin in question's repository. Plugins my me can be found at https://github.com/KieronQuinn/SmartspacerPlugins.
+         
+         For plugin requests, please go to https://github.com/KieronQuinn/SmartspacerPlugins/issues and make a Plugin Request.
+         
+         If you are reporting a crash, please enable the Analytics & Crash Reporting option, or provide a log.
+         
+         Make sure the bug has not been reported already, duplicate reports will be closed.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the bug
+    validations:
+      required: true

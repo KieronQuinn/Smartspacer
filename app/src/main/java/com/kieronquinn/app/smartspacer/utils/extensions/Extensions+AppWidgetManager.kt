@@ -17,6 +17,11 @@ fun AppWidgetManager.bindRemoteViewsService(
     flags: Int = Context.BIND_AUTO_CREATE or 0x02000000 //BIND_FOREGROUND_SERVICE_WHILE_AWAKE
 ): Boolean {
     val dispatcher = context.getServiceDispatcher(serviceConnection, handler, flags)
-    return Refine.unsafeCast<AppWidgetManagerHidden>(this)
-        .bindRemoteViewsService(context, appWidgetId, intent, dispatcher, flags)
+    return try {
+        Refine.unsafeCast<AppWidgetManagerHidden>(this)
+            .bindRemoteViewsService(context, appWidgetId, intent, dispatcher, flags)
+    }catch (e: SecurityException) {
+        //App installed on another user, seems to be Xiaomi issue
+        return false
+    }
 }

@@ -213,7 +213,8 @@ class ShizukuServiceRepositoryImpl(
         if(!requestPermission())
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.PERMISSION_DENIED)
         val result = try {
-            block(getService())
+            block(getService()
+                ?: return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE))
         }catch (e: DeadObjectException){
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
@@ -242,7 +243,8 @@ class ShizukuServiceRepositoryImpl(
         if(!requestPermission())
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.PERMISSION_DENIED)
         val result = try {
-            block(getSuiService())
+            block(getSuiService()
+                ?: return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE))
         }catch (e: DeadObjectException){
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
@@ -309,7 +311,7 @@ class ShizukuServiceRepositoryImpl(
     }
 
     private suspend fun getService() = shizukuServiceLock.withLock {
-        suspendCoroutine<ISmartspacerShizukuService> {
+        suspendCoroutine {
             var hasResumed = false
             val serviceConnection = object: ServiceConnection {
                 override fun onServiceConnected(component: ComponentName, binder: IBinder) {
@@ -331,12 +333,17 @@ class ShizukuServiceRepositoryImpl(
                     }
                 }
             }
-            Shizuku.bindUserService(userServiceArgs, serviceConnection)
+            try {
+                Shizuku.bindUserService(userServiceArgs, serviceConnection)
+            }catch (e: DeadObjectException) {
+                //Shizuku died
+                it.resume(null)
+            }
         }
     }
 
     private suspend fun getSuiService() = suiServiceLock.withLock {
-        suspendCoroutine<ISmartspacerSuiService> {
+        suspendCoroutine {
             var hasResumed = false
             val serviceConnection = object: ServiceConnection {
                 override fun onServiceConnected(component: ComponentName, binder: IBinder) {
@@ -358,7 +365,12 @@ class ShizukuServiceRepositoryImpl(
                     }
                 }
             }
-            Shizuku.bindUserService(suiUserServiceArgs, serviceConnection)
+            try {
+                Shizuku.bindUserService(suiUserServiceArgs, serviceConnection)
+            }catch (e: DeadObjectException) {
+                //Shizuku died
+                it.resume(null)
+            }
         }
     }
 

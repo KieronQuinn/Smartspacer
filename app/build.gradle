@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.0.8'
-def tagCode = 108
+def tagName = '1.1'
+def tagCode = 110
 
 android {
     compileSdk 34
