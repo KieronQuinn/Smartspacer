@@ -147,7 +147,7 @@
     <string name="notification_channel_updates_title">Mises à jour de Smartspacer</string>
     <string name="notification_channel_updates_content">Notifications affichées lorsqu\'une mise à jour de Smartspacer est disponible</string>
     <string name="notification_channel_plugin_updates_title">Mises à jour des plugins</string>
-    <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
+    <string name="notification_channel_plugin_updates_content">Notifications affichées lorsqu\'une mise à jour de plugin Smartspacer est disponible</string>
     <string name="notification_plugin_updates_title">Mises à jour de plugins dispnibles</string>
     <string name="notification_plugin_updates_content_one">%1d mise à jour de plugin disponible, appuyez pour plus d\'infos</string>
     <string name="notification_plugin_updates_content_other">%1d mises à jour de plugins disponibles, appuyez pour plus d\'infos</string>
@@ -367,7 +367,7 @@
     <string name="settings_plugins">Plugins</string>
     <string name="settings_options">Options</string>
     <string name="settings_enable_update_check_title">Rechercher automatiquement les mises à jour</string>
-    <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
+    <string name="settings_enable_update_check_content">Rechercher automatiquement les mises à jour de Smartspacer et afficher une notification si une mise à jour est disponible</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
@@ -693,7 +693,7 @@
     <string name="plugin_settings_content">Change settings related to the Smartspacer Plugin Repository, including disabling it entirely if you wish</string>
     <string name="plugin_settings_enabled">Enable Plugin Repository</string>
     <string name="plugin_settings_update_check_enabled_title">Rechercher automatiquement les mises à jour</string>
-    <string name="plugin_settings_update_check_enabled_content">Check for updates to Smartspacer plugins once a day and notify you when any are available</string>
+    <string name="plugin_settings_update_check_enabled_content">Rechercher les mises à jour des plugins Smartspacer une fois par jour et vous informer si une mise à jour est disponible</string>
     <string name="plugin_settings_url_title">Plugin Repository URL</string>
     <string name="plugin_settings_url_content"><b>Advanced:</b> Change the URL to load plugin repository data from</string>
     <string name="plugin_settings_footer">The Smartspacer Plugin Repository allows you to install and manage Smartspacer plugins as well as find plugins compatible with apps installed on your device</string>
