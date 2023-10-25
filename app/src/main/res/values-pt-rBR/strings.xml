@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smartspacer</string>
+    <string name="app_name">Espaçador inteligente</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
     <string name="dummy_home_open_settings">Open Settings</string>
