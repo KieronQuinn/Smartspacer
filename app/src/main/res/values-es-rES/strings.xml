@@ -275,9 +275,9 @@
     <string name="requirements_tab_any">Cualquiera de</string>
     <string name="requirements_tab_all">Todo de</string>
     <string name="fab_requirements_add">Agregar condición</string>
-    <string name="requirement_not_available">This Requirement is no longer available, tap to remove</string>
+    <string name="requirement_not_available">Esta condición no está disponible, presiona para removerla</string>
     <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
-    <string name="requirement_time_date_title"> Time &amp; Date</string>
+    <string name="requirement_time_date_title"> Fecha y hora</string>
     <string name="requirement_time_date_content_generic">Only show between specified times on specified days</string>
     <string name="requirement_time_date_content">Only show between %1s and %1s on %1s</string>
     <string name="requirement_time_date_content_all_days">Only show between %1s and %1s, every day</string>
@@ -291,8 +291,8 @@
     <string name="requirement_geofence">Location</string>
     <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
     <string name="requirement_geofence_content">Only show when at or near %1s</string>
-    <string name="requirement_geofence_title">Location</string>
-    <string name="requirement_geofence_bottom_sheet_title">Options</string>
+    <string name="requirement_geofence_title">Ubicación</string>
+    <string name="requirement_geofence_bottom_sheet_title">Opciones</string>
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
     <string name="requirement_geofence_configuration_setting_name_content">Set a name for this location</string>
     <string name="requirement_geofence_configuration_setting_radius_title">Radius</string>
