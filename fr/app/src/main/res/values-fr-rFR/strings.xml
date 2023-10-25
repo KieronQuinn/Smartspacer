@@ -3,23 +3,23 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
+    <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
+    <string name="notification_service">Service de notification Smartspacer</string>
+    <string name="loading">Chargement…</string>
+    <string name="saving">Enregistrement…</string>
+    <string name="search">Rechercher</string>
+    <string name="delete">Supprimer</string>
+    <string name="save">Enregistrer</string>
+    <string name="close">Fermer</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="menu_rerun_setup">Exécuter à nouveau l\'assistant</string>
+    <string name="bottom_nav_targets">Cibles</string>
     <string name="bottom_nav_complications">Complications</string>
     <string name="bottom_nav_plugins">Plugins</string>
-    <string name="bottom_nav_settings">Settings</string>
+    <string name="bottom_nav_settings">Paramètres</string>
     <string name="download_size">%1s / %1s</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
-    <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
+    <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
+    <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Informations sur l\'application et autoriser les paramètres restreints.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
