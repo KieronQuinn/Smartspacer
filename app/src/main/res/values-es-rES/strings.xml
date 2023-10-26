@@ -139,11 +139,11 @@
     <string name="notification_channel_accessibility_title">Servicio de accesibilidad</string>
     <string name="notification_channel_accessibility_content">Mensajes acerca del servicio de accesibilidad se Smartspacer</string>
     <string name="notification_channel_native_title">Smartspace nativo</string>
-    <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
+    <string name="notification_channel_native_content">Mensajes sobre el servicio Shizuku de Smartspacer</string>
     <string name="notification_channel_oem_title">Smartspace OEM</string>
     <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
     <string name="notification_channel_shizuku_reminder_title">Recordatorio de Shizuku</string>
-    <string name="notification_channel_shizuku_reminder_content">Notification shown as a reminder to start Shizuku after rebooting</string>
+    <string name="notification_channel_shizuku_reminder_content">Notificación mostrada como un recordatorio a iniciar Shizuku después de reiniciar</string>
     <string name="notification_channel_updates_title">Actualizaciones de Smartspacer</string>
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Actualización de extensiones</string>
