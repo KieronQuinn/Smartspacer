@@ -17,7 +17,6 @@ import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationListenerSe
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
 import com.kieronquinn.app.smartspacer.utils.extensions.getNotificationListenerIntent
-import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.shouldShowRequireSideload
@@ -60,7 +59,7 @@ class ConfigurationNotificationEnableFragment: BoundFragment<FragmentConfigurati
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun setupRestrictedCard() = with(binding.configurationNotificationContent) {
-        val shouldShow = !isAtLeastU() || requireContext().wasInstalledWithSession()
+        val shouldShow = requireContext().wasInstalledWithSession()
         configurationNotificationInfo.isVisible = shouldShow
         configurationNotificationInfo.applyBackgroundTint(monet)
         configurationNotificationInfoButton.applyMonet()

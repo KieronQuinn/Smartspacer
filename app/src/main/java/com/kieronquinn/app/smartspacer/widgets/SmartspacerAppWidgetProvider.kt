@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
+import android.os.DeadSystemException
 import android.view.View
 import android.widget.RemoteViews
 import androidx.core.widget.RemoteViewsCompat.setImageViewColorFilter
@@ -79,7 +80,11 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
             }
             RemoteViews(landscape, portrait)
         } ?: RemoteViews(packageName, R.layout.widget_smartspacer_loading)
-        appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
+        try {
+            appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
+        }catch (e: DeadSystemException) {
+            //OS is shutting down
+        }
     }
 
     private fun Context.container(

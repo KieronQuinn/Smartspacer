@@ -602,6 +602,7 @@
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
+    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
 
     <!-- Music Target -->
     <string name="target_music_title">Music</string>
