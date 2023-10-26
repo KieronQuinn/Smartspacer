@@ -538,6 +538,7 @@
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Отключить оптимизацию аккумулятора</string>
     <string name="notification_battery_optimisation_content">Smartspacer требует отключения оптимизации батареи для обновления Целей и Дополнений в фоновом режиме, нажмите для настройки</string>
+    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Музыка</string>
     <string name="target_music_description">Отображает музыку, которая сейчас играет на устройстве</string>
