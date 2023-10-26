@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
+import android.widget.Toast
 import com.judemanutd.autostarter.AutoStartPermissionHelper
 import com.kieronquinn.app.smartspacer.BuildConfig
+import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.utils.extensions.getIgnoreBatteryOptimisationsIntent
 
 interface BatteryOptimisationRepository {
@@ -38,7 +40,15 @@ class BatteryOptimisationRepositoryImpl(
     }
 
     override fun startOemOptimisationSettings(context: Context) {
-        autoStarter.getAutoStartPermission(context, open = true, newTask = true)
+        try {
+            autoStarter.getAutoStartPermission(context, open = true, newTask = true)
+        }catch (e: Exception) {
+            Toast.makeText(
+                context,
+                R.string.notification_battery_optimisation_failed_toast,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 }

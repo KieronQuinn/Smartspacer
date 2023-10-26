@@ -73,12 +73,15 @@ class PluginRepositoryViewModelImpl(
         }
         val items = ArrayList<Plugin>()
         if(!available){
-            val pluginsWithUpdates = filteredPlugins.filter {
+            val installedPlugins = filteredPlugins.filter {
+                it.isInstalled
+            }
+            val pluginsWithUpdates = installedPlugins.filter {
                 it is Plugin.Remote && it.updateAvailable
             }.sortedBy {
                 it.name.toString().lowercase()
             }
-            val pluginsWithoutUpdates = filteredPlugins.filterNot {
+            val pluginsWithoutUpdates = installedPlugins.filterNot {
                 it is Plugin.Remote && it.updateAvailable
             }.sortedBy {
                 it.name.toString().lowercase()
