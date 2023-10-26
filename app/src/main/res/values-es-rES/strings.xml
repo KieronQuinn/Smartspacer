@@ -156,8 +156,8 @@
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
     <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable</string>
     <string name="fab_targets_add">Agregar objetivo</string>
-    <string name="targets_empty_label">No Targets added</string>
-    <string name="target_not_available">This Target is no longer available, tap to remove</string>
+    <string name="targets_empty_label">No hay ningunos Objetivos</string>
+    <string name="target_not_available">Este objetivo no está disponible no más, pulsa a removerlo</string>
     <string name="target_not_available_alt">This Target failed to load, if the issue persists please contact the Target\'s developer</string>
     <string name="fab_complications_add">Añadir compilación</string>
     <string name="complications_empty_label">No hay compilaciones añadidas</string>
@@ -230,14 +230,14 @@
     <string name="complication_edit_show_on_music_title">Mostrar mientras la música está en reproducción</string>
     <string name="complication_edit_show_on_music_content">Mostrar esta complicación en Always On Display mientras la música está en reproducción</string>
     <string name="complication_edit_show_on_music_content_oem">Mostrar esta complicación en Always On Display (si está disponible) mientras la música está en reproducción</string>
-    <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
+    <string name="complication_edit_show_on_music_content_incompatible">Requiere Smartspace Nativo con soporte para la pantalla de bloqueo</string>
     <string name="complication_edit_expanded_header">Smartspace extendido</string>
     <string name="complication_edit_expanded_show_when_locked_title">Mostrar mientras está bloqueado</string>
     <string name="complication_edit_expanded_show_when_locked_content">Mostrar esta complicación en Smartspace extendido mientras está bloqueado</string>
     <string name="complication_edit_settings_header">Configuración</string>
     <string name="complication_edit_requirements_title">Requerimientos</string>
     <string name="complication_edit_requirements_content">Establecer las condiciones para que esta complicación aparezca</string>
-    <string name="complication_edit_requirements_content_any_one">%1d Any Requirement configured</string>
+    <string name="complication_edit_requirements_content_any_one">%1d Cualquiera requisito configurado</string>
     <string name="complication_edit_requirements_content_any_other">%1d Any Requirements configured</string>
     <string name="complication_edit_requirements_content_all_one">%1d All Requirement configured</string>
     <string name="complication_edit_requirements_content_all_other">%1d All Requirements configured</string>
