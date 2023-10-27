@@ -141,11 +141,11 @@
     <string name="notification_channel_native_title">Smartspace nativo</string>
     <string name="notification_channel_native_content">Mensajes sobre el servicio Shizuku de Smartspacer</string>
     <string name="notification_channel_oem_title">Smartspace OEM</string>
-    <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
+    <string name="notification_channel_oem_content">Mensajes relacionados con el Servicio OEM Smartspace de Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Recordatorio de Shizuku</string>
     <string name="notification_channel_shizuku_reminder_content">Notificación mostrada como un recordatorio a iniciar Shizuku después de reiniciar</string>
     <string name="notification_channel_updates_title">Actualizaciones de Smartspacer</string>
-    <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
+    <string name="notification_channel_updates_content">Las notificaciones se muestran cuando haya una actualización disponible para Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Actualización de extensiones</string>
     <string name="notification_channel_plugin_updates_content">Las notificaciones se mostrarán cuando haya una actualización de extensiones de Smartspacer</string>
     <string name="notification_plugin_updates_title">Actualización de extensiones disponible</string>
