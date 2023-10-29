@@ -283,10 +283,10 @@
     <string name="requirement_time_date_content_all_days">Only show between %1s and %1s, every day</string>
     <string name="requirement_time_date_configuration_title">Time &amp; Date</string>
     <string name="requirement_time_date_configuration_content">Set the days and times when this item should be shown</string>
-    <string name="requirement_time_date_configuration_start_time">Start Time</string>
-    <string name="requirement_time_date_configuration_end_time">End Time</string>
-    <string name="requirement_time_date_configuration_toast_end_time_invalid">End Time must be after Start Time</string>
-    <string name="requirement_time_date_configuration_toast_start_time_invalid">Start Time must be before End Time</string>
+    <string name="requirement_time_date_configuration_start_time">Hora de inicio</string>
+    <string name="requirement_time_date_configuration_end_time">Hora de finalización</string>
+    <string name="requirement_time_date_configuration_toast_end_time_invalid">La hora de finalización debe ser posterior a la hora de inicio</string>
+    <string name="requirement_time_date_configuration_toast_start_time_invalid">La hora inicial debe ser anterior a la hora de finalización</string>
     <string name="requirement_time_date_configuration_pick_a_day">Please select at least one day</string>
     <string name="requirement_geofence">Location</string>
     <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
