@@ -59,11 +59,11 @@
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.</string>
     <string name="target_notification_label">Benachrichtigungen</string>
-    <string name="target_notification_description">Shows notifications from an app</string>
-    <string name="target_notification_description_selected">Shows notifications from %1s</string>
-    <string name="target_notification_description_selected_with_channels">Shows notifications from %1s (%1d %1s)</string>
+    <string name="target_notification_description">Zeigt Benachrichtigungen einer App an</string>
+    <string name="target_notification_description_selected">Zeigt Benachrichtigungen von %1s</string>
+    <string name="target_notification_description_selected_with_channels">Zeigt Benachrichtigungen von %1s (%1d %1s)</string>
     <string name="target_notification_description_channels_one">kanal</string>
-    <string name="target_notification_description_channels_other">channels</string>
+    <string name="target_notification_description_channels_other">Kanäle</string>
     <string name="target_now_playing_label">Pixel Now Playing</string>
     <string name="target_now_playing_description">Shows the currently playing song from Pixel Now Playing</string>
     <string name="target_now_playing_description_unavailable">This target requires Now Playing on a Pixel</string>
@@ -124,12 +124,12 @@
     <string name="plugin_requirement_default_label">Plugin Requirement</string>
     <string name="permission_sdk_label">Read Smartspacer targets &amp; complications</string>
     <string name="permission_sdk_description">Allows access to read and interact with Smartspacer targets &amp; complications</string>
-    <string name="notification_channel_background_service_title">Background Service</string>
+    <string name="notification_channel_background_service_title">Hintergrunddienst</string>
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
     <string name="notification_title_background_service">Smartspacer is running</string>
     <string name="notification_content_background_service">Smartspacer is running in the background, tap to hide</string>
     <string name="notification_background_service_title">@string/app_name</string>
-    <string name="notification_background_service_subtitle">Smartspacer is running in the background</string>
+    <string name="notification_background_service_subtitle">Smartspacer läuft im Hintergrund</string>
     <string name="notification_channel_safe_mode_title">Sicherer Modus</string>
     <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
     <string name="notification_safe_mode_title">@string/app_name</string>
@@ -138,7 +138,7 @@
     <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
     <string name="notification_channel_accessibility_title">Accessibility Service</string>
     <string name="notification_channel_accessibility_content">Messages about Smartspacer\'s Accessibility Service</string>
-    <string name="notification_channel_native_title">Native Smartspace</string>
+    <string name="notification_channel_native_title">Nativer Smartspace</string>
     <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
     <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
@@ -211,23 +211,23 @@
     <string name="target_edit_requirements_content_all_one">%1d All Requirement configured</string>
     <string name="target_edit_requirements_content_all_other">%1d All Requirements configured</string>
     <string name="target_edit_requirements_content_both">%1d Any and %1d All Requirements configured</string>
-    <string name="target_edit_external_title">More Settings</string>
+    <string name="target_edit_external_title">Weitere Einstellungen</string>
     <string name="target_edit_external_content">Configure more settings in %1s</string>
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
-    <string name="complication_edit_title">Edit Complication</string>
-    <string name="complication_edit_target_header">Complication</string>
+    <string name="complication_edit_title">Komplikation bearbeiten</string>
+    <string name="complication_edit_target_header">Komplikation</string>
     <string name="complication_edit_show_on_home_title">Show on Home Screen</string>
     <string name="complication_edit_show_on_home_content">Show this complication on your home screen</string>
     <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
     <string name="complication_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
-    <string name="complication_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
+    <string name="complication_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
     <string name="complication_edit_show_on_lock_screen_content">Show this complication on your lock screen and always on display, when music is not playing</string>
     <string name="complication_edit_show_on_lock_screen_content_oem">Show this complication on your lock screen and always on display (if available), when music is not playing</string>
     <string name="complication_edit_show_on_lock_screen_content_widget">Show this complication on widgets added to your lock screen</string>
     <string name="complication_edit_show_on_expanded_title">Show on Expanded Smartspace</string>
     <string name="complication_edit_show_on_expanded_content">Show this Complication on Expanded Smartspace</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Expanded Smartspace is disabled</string>
-    <string name="complication_edit_show_on_music_title">Show While Music is Playing</string>
+    <string name="complication_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
     <string name="complication_edit_show_on_music_content">Show this complication on your always on display while music is playing</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
@@ -242,17 +242,17 @@
     <string name="complication_edit_requirements_content_all_one">%1d All Requirement configured</string>
     <string name="complication_edit_requirements_content_all_other">%1d All Requirements configured</string>
     <string name="complication_edit_requirements_content_both">%1d Any and %1d All Requirements configured</string>
-    <string name="complication_edit_external_title">More Settings</string>
+    <string name="complication_edit_external_title">Weitere Einstellungen</string>
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
     <string name="requirement_edit_invert">Invert this requirement</string>
-    <string name="safe_mode_title">Safe Mode</string>
+    <string name="safe_mode_title">Sicherer Modus</string>
     <string name="safe_mode_content">Smartspacer hat den sicheren Modus aktiviert, weil eine App abgestürzt ist, um einen Absturz-Loop zu verhindern. Diese Abstürze werden normalerweise durch ein fehlerhaftes Ziel oder eine fehlerhafte Komplikation verursacht, daher solltest du nach Updates für deine Plugins suchen, wenn sie weiterhin auftreten.</string>
-    <string name="safe_mode_relaunch">Relaunch Smartspacer</string>
+    <string name="safe_mode_relaunch">Smartspacer neu starten</string>
     <string name="feedback_loop_title">Feedback Loop</string>
     <string name="feedback_loop_content">Smartspacer hat eine Rückkopplungsschleife zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"At a Glance\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
-    <string name="feedback_loop_relaunch_wait">Wait %1s seconds</string>
+    <string name="feedback_loop_relaunch_wait">Warte %1s Sekunden</string>
     <string name="feedback_loop_relaunch">Restart Smartspacer</string>
     <string name="configuration_notification_enable_title">Enable Notification Access</string>
     <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
@@ -272,14 +272,14 @@
     <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
     <string name="requirements_title">Requirements</string>
     <string name="requirements_empty_label">No Requirements added for this type</string>
-    <string name="requirements_tab_any">Any of</string>
-    <string name="requirements_tab_all">All of</string>
+    <string name="requirements_tab_any">Eines von</string>
+    <string name="requirements_tab_all">Alle von</string>
     <string name="fab_requirements_add">Add Requirement</string>
     <string name="requirement_not_available">This Requirement is no longer available, tap to remove</string>
     <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
-    <string name="requirement_time_date_title"> Time &amp; Date</string>
+    <string name="requirement_time_date_title"> Zeit &amp; Datum</string>
     <string name="requirement_time_date_content_generic">Only show between specified times on specified days</string>
-    <string name="requirement_time_date_content">Only show between %1s and %1s on %1s</string>
+    <string name="requirement_time_date_content">Nur zwischen %1s und %1s auf %1s anzeigen</string>
     <string name="requirement_time_date_content_all_days">Only show between %1s and %1s, every day</string>
     <string name="requirement_time_date_configuration_title">Zeit &amp; Datum</string>
     <string name="requirement_time_date_configuration_content">Set the days and times when this item should be shown</string>
@@ -290,7 +290,7 @@
     <string name="requirement_time_date_configuration_pick_a_day">Please select at least one day</string>
     <string name="requirement_geofence">Standort</string>
     <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
-    <string name="requirement_geofence_content">Only show when at or near %1s</string>
+    <string name="requirement_geofence_content">Nur anzeigen wenn bei oder in der Nähe von %1s</string>
     <string name="requirement_geofence_title">Standort</string>
     <string name="requirement_geofence_bottom_sheet_title">Options</string>
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
@@ -301,11 +301,11 @@
     <string name="requirement_geofence_configuration_loitering_delay_title">Loitering Delay</string>
     <string name="requirement_geofence_configuration_loitering_delay_content">Set how long you must be within the location radius before this requirement is met</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_none">Keine Verzögerung</string>
-    <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minute</string>
-    <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutes</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsiveness</string>
+    <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d Minute</string>
+    <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d Minuten</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_title">Empfindlichkeit</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Lege fest, wie reaktionsfreudig diese Standortanforderung sein soll - längere Dauer spart Akku, kann jedoch langsamer auf Standortänderungen reagieren</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d seconds</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d Sekunden</string>
     <string name="requirement_geofence_configuration_background_location_title">Enable Background Location</string>
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Grant Permission</string>
@@ -341,25 +341,25 @@
     <string name="requirement_app_prediction_incompatible">This Requirement is not compatible with your device as it does not have an System App Prediction Service</string>
     <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
     <string name="requirement_app_prediction_configuration_title">App auswählen</string>
-    <string name="permission_dialog_widget_title_prefix">Allow</string>
+    <string name="permission_dialog_widget_title_prefix">Zulassen</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
     <string name="permission_dialog_widget_title_unknown">Unknown</string>
     <string name="permission_dialog_widget_allow_once">Einmal erlauben</string>
     <string name="permission_dialog_widget_allow_always">Immer erlauben</string>
-    <string name="permission_dialog_widget_deny">Deny</string>
-    <string name="permission_dialog_notification_title_prefix">Allow</string>
+    <string name="permission_dialog_widget_deny">Verweigern</string>
+    <string name="permission_dialog_notification_title_prefix">Zulassen</string>
     <string name="permission_dialog_notification_title_suffix">to access app notifications using Smartspacer?</string>
     <string name="permission_dialog_notification_title_warning">You may be asked for system permission after this step</string>
-    <string name="permission_dialog_notification_title_unknown">Unknown</string>
-    <string name="permission_dialog_notification_allow_once">Allow once</string>
+    <string name="permission_dialog_notification_title_unknown">Unbekannt</string>
+    <string name="permission_dialog_notification_allow_once">Einmal erlauben</string>
     <string name="permission_dialog_notification_allow_always">Immer zulassen</string>
     <string name="permission_dialog_notification_deny">Verweigern</string>
     <string name="settings_integrations">Integrationen</string>
-    <string name="settings_enhanced_title">Enhanced Mode</string>
+    <string name="settings_enhanced_title">Erweiterter Modus</string>
     <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
     <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
-    <string name="settings_native_smartspace_settings_title">Native Smartspace</string>
+    <string name="settings_native_smartspace_settings_title">Nativer Smartspace</string>
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
@@ -410,11 +410,11 @@
     <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
-    <string name="compatibility_label_systemui">Lock Screen</string>
+    <string name="compatibility_label_systemui">Sperrbildschirm</string>
     <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">Los geht\'s</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
@@ -433,7 +433,7 @@
     <string name="setup_targets_info_example_one_title">Schwerer Verkehr in der Nähe</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Einkaufsliste</string>
-    <string name="setup_targets_info_example_two_subtitle">8 items</string>
+    <string name="setup_targets_info_example_two_subtitle">8 Elemente</string>
     <string name="setup_targets_info_example_two_item_1">Brot</string>
     <string name="setup_targets_info_example_two_item_2">Milch</string>
     <string name="setup_targets_info_example_two_item_3">Eier</string>
@@ -454,7 +454,7 @@
     <string name="setup_complications_example_weather">20°</string>
     <string name="setup_complications_caption_weather">Example of a Complication showing weather conditions</string>
     <!-- Setup > Add Complications -->
-    <string name="setup_complications_title">Add Complications</string>
+    <string name="setup_complications_title">Komplikationen hinzufügen</string>
     <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
     <string name="setup_complications_controls_next">Weiter</string>
     <string name="setup_complications_controls_skip">Überspringen</string>
@@ -515,7 +515,7 @@
     <string name="native_switch">Enable Native Smartspace</string>
     <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch_content_many">%1s und %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Kompatibilität</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
@@ -570,13 +570,13 @@
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
-    <string name="target_permission_request_content">Tap to grant</string>
+    <string name="target_permission_request_content">Zum gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Allow</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
     <string name="permission_dialog_smartspace_title_unknown">Unknown</string>
-    <string name="permission_dialog_smartspace_allow">Allow</string>
-    <string name="permission_dialog_smartspace_deny">Deny</string>
+    <string name="permission_dialog_smartspace_allow">Zulassen</string>
+    <string name="permission_dialog_smartspace_deny">Verweigern</string>
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Expanded Smartspace is disabled</string>
     <string name="expanded_disabled_settings">Settings</string>
@@ -702,7 +702,7 @@
     <string name="snackbar_update">Update Verfügbar</string>
     <string name="snackbar_update_button">Update</string>
     <string name="update_heading">Smartspacer version %1s</string>
-    <string name="update_subheading">Current version %1s</string>
+    <string name="update_subheading">Aktuelle Version %1s</string>
     <string name="update_changes">Changes</string>
     <string name="update_open_installer">Start Install</string>
     <string name="update_done">Download Complete</string>
@@ -729,7 +729,7 @@
     <string name="permissions_deny">Verweigern</string>
     <string name="permissions_ask_every_time">Jedes Mal fragen</string>
     <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
-    <string name="permissions_title">Permissions</string>
+    <string name="permissions_title">Berechtigungen</string>
     <string name="permissions_content">Manage permissions granted to Plugins &amp; apps integrating Smartspacer</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
@@ -810,11 +810,11 @@
     <string name="wallpaper_colour_picker_title">Wallpaper Colour</string>
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
-    <string name="target_digital_wellbeing_label">Digital Wellbeing</string>
+    <string name="target_digital_wellbeing_label">Digitales Wohlbefinden</string>
     <string name="target_digital_wellbeing_description">Shows the screen time and top 3 apps from Digital Wellbeing</string>
     <string name="target_digital_wellbeing_unsupported">Dieses Ziel erfordert die App digitales Wohlbefinden</string>
     <!-- Digital Wellbeing Complication -->
-    <string name="complication_digital_wellbeing_label">Digital Wellbeing</string>
+    <string name="complication_digital_wellbeing_label">Digitales Wohlbefinden</string>
     <string name="complication_digital_wellbeing_description">Shows the screen on time from Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
     <!-- Calendar Target -->
@@ -823,13 +823,13 @@
     <string name="target_calendar_description_filled">Shows Calendar events from %1s</string>
     <string name="target_calendar_configuration_title">Settings</string>
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
-    <string name="target_calendar_title_default">Untitled Event</string>
+    <string name="target_calendar_title_default">Unbenanntes Ereignis</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s - Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Gestern, %1s - %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s - Morgen, %1s</string>
     <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
     <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
-    <string name="target_calendar_subtitle_all_day">All Day</string>
+    <string name="target_calendar_subtitle_all_day">Ganztägig</string>
     <string name="target_calendar_settings_calendars">Select Calendars</string>
     <string name="target_calendar_settings_settings">Settings</string>
     <string name="target_calendar_settings_show_all_day_title">Show All Day Events</string>
