@@ -152,7 +152,7 @@
     <string name="notification_plugin_updates_content_one">%1d actualización de una extensión está disponible, presiona para ver más</string>
     <string name="notification_plugin_updates_content_other">%1d actualizaciones de extensiones están disponibles, presiona para ver más</string>
     <string name="notification_location_permission_required_title">Ubicación en segundo plano</string>
-    <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
+    <string name="notification_location_permission_required_content">Smartspacer requiere acceso de la ubicación en segundo plano, presiona para permitir</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
     <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable</string>
     <string name="fab_targets_add">Agregar objetivo</string>
