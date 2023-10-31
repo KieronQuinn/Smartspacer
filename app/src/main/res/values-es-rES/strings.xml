@@ -344,8 +344,8 @@
     <string name="permission_dialog_widget_title_prefix">Permitir</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
-    <string name="permission_dialog_widget_title_unknown">Unknown</string>
-    <string name="permission_dialog_widget_allow_once">Allow once</string>
+    <string name="permission_dialog_widget_title_unknown">Desconocido</string>
+    <string name="permission_dialog_widget_allow_once">Permitir solo esta vez</string>
     <string name="permission_dialog_widget_allow_always">Permitir siempre</string>
     <string name="permission_dialog_widget_deny">Denegar</string>
     <string name="permission_dialog_notification_title_prefix">Permitir</string>
@@ -357,8 +357,8 @@
     <string name="permission_dialog_notification_deny">No permitir</string>
     <string name="settings_integrations">Integraciones</string>
     <string name="settings_enhanced_title">Modo mejorado</string>
-    <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
-    <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
+    <string name="settings_enhanced_content">Permite a Smartspacer interactuar e integrarse con funciones del sistema</string>
+    <string name="settings_enhanced_content_unsupported">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_title">Smartspace nativo</string>
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
