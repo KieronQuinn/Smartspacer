@@ -257,7 +257,7 @@
     <string name="configuration_notification_enable_title">Habilitar acceso a notificaciones</string>
     <string name="configuration_notification_enable_content">Permite el acceso de Smartspacer a las notificaciones &amp; del dispositivo en la configuración del sistema</string>
     <string name="configuration_notification_enable_button">Permitir acceso a las notificaciones</string>
-    <string name="configuration_accessibility_enable_title">Enable Accessibility Service</string>
+    <string name="configuration_accessibility_enable_title">Activar Servicio de Accesibilidad</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
     <string name="target_notification_configuration_title">Ajustes de notificaciones</string>
