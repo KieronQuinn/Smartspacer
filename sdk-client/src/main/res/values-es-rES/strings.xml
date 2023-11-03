@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="smartspace_accessibility_smartspace_page">Page %1$d of %2$d</string>
+    <string name="smartspace_accessibility_smartspace_page">Página %1$d de %2$d</string>
     <string name="smartspace_long_press_popup_dismiss">Descartar</string>
     <string name="smartspace_long_press_popup_feedback">Comentarios</string>
     <string name="smartspace_long_press_popup_about">Acerca de este contenido</string>
