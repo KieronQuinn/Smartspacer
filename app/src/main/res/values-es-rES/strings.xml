@@ -209,10 +209,10 @@
     <string name="target_edit_requirements_content_any_one">%1d condición configurada</string>
     <string name="target_edit_requirements_content_any_other">%1d condiciones configuradas</string>
     <string name="target_edit_requirements_content_all_one">%1d todas las condiciones configuradas</string>
-    <string name="target_edit_requirements_content_all_other">%1d All Requirements configured</string>
+    <string name="target_edit_requirements_content_all_other">%1d Todos requisitos configurados</string>
     <string name="target_edit_requirements_content_both">%1d cualquier y %1d todas las condiciones configuradas</string>
     <string name="target_edit_external_title">Más configuraciones</string>
-    <string name="target_edit_external_content">Configure more settings in %1s</string>
+    <string name="target_edit_external_content">Configurar más ajustes en %1s</string>
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
     <string name="complication_edit_title">Editar complicación</string>
     <string name="complication_edit_target_header">Complicación</string>
@@ -238,10 +238,10 @@
     <string name="complication_edit_requirements_title">Requerimientos</string>
     <string name="complication_edit_requirements_content">Establecer las condiciones para que esta complicación aparezca</string>
     <string name="complication_edit_requirements_content_any_one">%1d Cualquiera requisito configurado</string>
-    <string name="complication_edit_requirements_content_any_other">%1d Any Requirements configured</string>
-    <string name="complication_edit_requirements_content_all_one">%1d All Requirement configured</string>
-    <string name="complication_edit_requirements_content_all_other">%1d All Requirements configured</string>
-    <string name="complication_edit_requirements_content_both">%1d Any and %1d All Requirements configured</string>
+    <string name="complication_edit_requirements_content_any_other">%1d Cualquiera requisito configurado</string>
+    <string name="complication_edit_requirements_content_all_one">%1d Todos requisitos configurados</string>
+    <string name="complication_edit_requirements_content_all_other">%1d Todos requisitos configurados</string>
+    <string name="complication_edit_requirements_content_both">%1d Cualquiera y %1d todos requisitos configurados</string>
     <string name="complication_edit_external_title">Más configuraciones</string>
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
@@ -494,7 +494,7 @@
     <string name="enhanced_mode_request_sui_title">Sui</string>
     <string name="enhanced_mode_request_sui_button">Get Sui</string>
     <string name="enhanced_mode_request_shizuku_error_title">Shizuku no iniciado</string>
-    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku must be started before Smartspacer can use it, open Shizuku and follow the instructions</string>
+    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku debe iniciarse antes de que Smartspacer pueda usarlo, abre Shizuku y sigue las instrucciones</string>
     <string name="enhanced_mode_request_shizuku_error_open">Abrir Shizuku</string>
     <!-- Enhanced Mode -->
     <string name="enhanced_mode_title">Modo mejorado</string>
