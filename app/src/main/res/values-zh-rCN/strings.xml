@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
     <string name="dummy_home_content">该页面用于在 Smartspacer 扩展中应用效果不佳的小组件。\n\nSmartspacer 不能作为启动器使用，请选择其他启动器。</string>
     <string name="dummy_home_open_settings">打开设置</string>
     <string name="notification_service">Smartspacer 通知服务</string>
@@ -49,13 +50,17 @@
     <string name="widget_configuration_type_lock_content_disabled">不适用于该组件。请注意 Smartspacer 无法让小组件在锁屏上显示，你需要从 Google Play 商店下载诸如「Lockscreen Widgets」这样的应用来达成该操作。</string>
     <string name="widget_configuration_page">页面控制</string>
     <string name="widget_configuration_page_single_title">单页</string>
-    <string name="widget_configuration_page_single_content">将小组件锁定为只显示一页对象和附件（如果空间允许）。这意味着你只能在小组间中看见优先级较高的对象/附件。</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
     <string name="widget_configuration_page_controls_title">分页</string>
     <string name="widget_configuration_page_controls_content">允许你根据需要配置包含多个对象和附件的页面，可通过箭头按钮在页面间切换（按钮 &amp; 页面提示将在只有一个页面时隐藏）</string>
     <string name="widget_configuration_page_no_controls_title">无箭头按钮的分页</string>
     <string name="widget_configuration_page_no_controls_content">与分页模式相同，但没有箭头提示。点击圆点提示符来在不同页面间切换，抵达最后一页时会自动循环至首页。</string>
+    <string name="widget_configuration_animation">Animation</string>
+    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
+    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">颜色</string>
     <string name="widget_configuration_apply">应用</string>
+    <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
     <string name="accessibility_service_description">启用 Smartspacer 小组件来保持对象和附件更新，避免长时间后台运行带来的电量消耗。</string>
     <string name="target_notification_label">通知</string>
@@ -521,11 +526,22 @@
     <string name="native_switch_compatibility_item">• %1s：</string>
     <string name="native_switch_compatibility_available"><b>可用</b></string>
     <string name="native_switch_compatibility_not_available"><b>不可用</b></string>
+    <!-- Native Mode Restart -->
+    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">重新启用本机 Smartspace</string>
     <string name="notification_native_mode_enable_content">重启后你必须再次启用 Smartspacer 的本机 Smartspace 模式，点击启用</string>
     <string name="notification_native_mode_enable_dismiss">不再显示</string>
     <string name="notification_native_mode_enable_now">现在启用</string>
+    <!-- Native Mode restart notification -->
+    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">需要 Shizuku</string>
     <string name="notification_shizuku_content_app_prediction">应用预测条件需要启用 Shizuku，点击开启</string>
@@ -583,6 +599,12 @@
     <string name="expanded_widget_configure">点击配置小组件</string>
     <string name="expanded_widget_deleted">已卸载该组件，点击移除</string>
     <string name="expanded_widget_deleted_rearrange">已卸载小组件</string>
+    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
+    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
+    <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
+    <string name="expanded_permission_later">Later</string>
+    <string name="expanded_permission_grant">Grant</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">扩展 Smartspace 面板</string>
     <string name="expanded_settings_title_short">扩展面板</string>
@@ -676,6 +698,7 @@
     <string name="plugin_repository_empty_button_browse">浏览扩展</string>
     <string name="plugin_repository_update_available">有可用更新！</string>
     <string name="plugin_repository_recommended">建议使用：</string>
+    <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">安装</string>
     <string name="plugin_details_start_install">开始安装</string>
     <string name="plugin_details_open">打开</string>
