@@ -2,36 +2,36 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
-    <string name="bottom_nav_complications">Complications</string>
-    <string name="bottom_nav_plugins">Plugins</string>
-    <string name="bottom_nav_settings">Settings</string>
+    <string name="dummy_home_content">Ten ekran istnieje, aby działały źle zaimplementowane widżety używane przez wtyczki Smartspacer.\n\nSmartspacer nie może działać jak launcher, wybierz inny launcher.</string>
+    <string name="dummy_home_open_settings">Otwórz ustawienia</string>
+    <string name="notification_service">Usługa powiadomień Smartspacer</string>
+    <string name="loading">Wczytywanie…</string>
+    <string name="saving">Zapisywanie…</string>
+    <string name="search">Wyszukaj</string>
+    <string name="delete">Usuń</string>
+    <string name="save">Zapisz</string>
+    <string name="close">Zamknij</string>
+    <string name="reset">Przywróć do ustawień domyślnych</string>
+    <string name="menu_rerun_setup">Uruchom ponownie konfigurację</string>
+    <string name="bottom_nav_targets">Cele</string>
+    <string name="bottom_nav_complications">Kompilacje</string>
+    <string name="bottom_nav_plugins">Pluginy</string>
+    <string name="bottom_nav_settings">Ustawienia</string>
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
-    <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_button">Open App Info</string>
-    <string name="restricted_mode_warning_button">Grant Permission with Shizuku</string>
-    <string name="target_sensitive_title">Contents hidden</string>
+    <string name="restricted_mode_content_accessibility">Od Androida 13, Google dodało kontrolę bezpieczeństwa do ustawień, uniemożliwiając aplikacjom z poza sklepu Play korzystania z Usług Dostępności.\n\n<b>Jeśli widzisz wiadomość o ograniczonych ustawieniach podczas próby włączenia usługi ułatwień dostępu, musisz otworzyć informacje o aplikacji i zezwolić na ograniczone ustawienia.</b></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Od Androida 14, Google uniemożliwiło aplikacjom zainstalowanym za pomocą Instalatora Pakietów korzystanie z usług ułatwień dostępu.<br><br><b>Jeśli widzisz wiadomość o ograniczonych ustawieniach, musisz odinstalować Smartspacer i ponownie zainstalować go za pomocą aplikacji opartej na instalatorze sesji, takiej jak <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APK Installer (SAI)</a> lub <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Instalacja na górze (bez ponownej instalacji) NIE jest wystarczająca.<br><br></b>Alternatywnie, z włączonym Trybem Ulepszonym, Smartspacer ominie ten wymóg (nie może być wykonany bez Shizuku lub roota).]]></string>
+    <string name="restricted_mode_content_notification">Od Androida 13, Google dodało kontrolę bezpieczeństwa do ustawień, uniemożliwiając aplikacjom z poza sklepu Play dostępu do powiadomień.\n\n<b>Jeśli widzisz wiadomość o ograniczonych ustawieniach podczas próby włączenia usługi ułatwień dostępu, musisz otworzyć informacje o aplikacji i zezwolić na ograniczone ustawienia.</b></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Od Androida 14, Google uniemożliwiło aplikacjom zainstalowanym za pomocą Instalatora Pakietów dostępu do powiadomień.<br><br><b>Jeśli widzisz wiadomość o ograniczonych ustawieniach, musisz odinstalować Smartspacer i ponownie zainstalować go za pomocą aplikacji opartej na instalatorze sesji, takiej jak <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APK Installer (SAI)</a> lub <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Instalacja, taka jak na górze (bez ponownej instalacji) NIE jest wystarczająca.<br><br></b>Alternatywnie, z włączonym Trybem Ulepszonym, Smartspacer ominie ten wymóg (nie może być wykonany bez Shizuku lub roota).]]></string>
+    <string name="restricted_mode_button">Otwórz informacje o aplikacji</string>
+    <string name="restricted_mode_warning_button">Udziel uprawnień używając Shizuku</string>
+    <string name="target_sensitive_title">Ukryta zawartość</string>
     <!-- Shared by widget & expanded -->
-    <string name="tint_colour_automatic">Automatic (Wallpaper Based)</string>
-    <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
-    <string name="tint_colour_white">White</string>
-    <string name="tint_colour_white_content">Text and icons in the widget will always be white</string>
-    <string name="tint_colour_black">Black</string>
+    <string name="tint_colour_automatic">Automatycznie (na podstawie tapety)</string>
+    <string name="tint_colour_automatic_content">Tekst i ikony w widżecie automatycznie będą przyciemnione, aby były widoczne na tapecie</string>
+    <string name="tint_colour_white">Biały</string>
+    <string name="tint_colour_white_content">Tekst i ikony w widżecie zawsze będą białe</string>
+    <string name="tint_colour_black">Czarny</string>
     <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
@@ -538,6 +538,7 @@
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
+    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Music</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>

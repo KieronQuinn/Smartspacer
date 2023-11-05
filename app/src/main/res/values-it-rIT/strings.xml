@@ -34,7 +34,7 @@
     <string name="tint_colour_black">Nero</string>
     <string name="tint_colour_black_content">Testo e icone nel widget saranno sempre nere</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
-    <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
+    <string name="widget_description_smartspacer">Mostra Target e Complicazioni Smartspacer</string>
     <string name="widget_loading_smartspacer">Caricamento…</string>
     <string name="widget_loading_smartspacer_subtitle">Controlla le opzioni di Accessibilità per Smartspacer se questo messaggio persiste</string>
     <string name="widget_configuration_title">Widget di Smartspacer</string>
@@ -97,16 +97,16 @@
     <string name="target_greeting_configuration_name_title">Greeting Name</string>
     <string name="target_greeting_configuration_name_content">Your name to show in the greeting: %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Your name to show in the greeting</string>
-    <string name="target_greeting_configuration_title">Settings</string>
-    <string name="target_greeting_configuration_description">Set your name, dynamically hide the Target and hide the title on the AoD</string>
+    <string name="target_greeting_configuration_title">Impostazioni</string>
+    <string name="target_greeting_configuration_description">Imposta il tuo nome, nascondi dinamicamente il Target e nascondi il titolo sull\'AoD</string>
     <string name="target_greeting_configuration_open_expanded_title">Open Expanded Smartspace</string>
     <string name="target_greeting_configuration_open_expanded_content">Open Expanded Smartspace on click, rather than doing nothing</string>
     <string name="target_at_a_glance_label">At a Glance (Widget)</string>
-    <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
-    <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
-    <string name="target_google_weather_forecast_title">Google Weather Forecast</string>
-    <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
-    <string name="target_google_weather_forecast_incompatible">This Target requires Android 12+ and the Google App</string>
+    <string name="target_at_a_glance_description">Limita target da At a Glance di Google, caricati utilizzando il widget di Google</string>
+    <string name="target_at_a_glance_description_unsupported">Questo Target richiede l\'app Google</string>
+    <string name="target_google_weather_forecast_title">Previsioni Meteo Google</string>
+    <string name="target_google_weather_forecast_content">Mostra meteo attuale e le previsioni per le prossime quattro ore da Google Meteo</string>
+    <string name="target_google_weather_forecast_incompatible">Questo Target richiede Android 12+ e l\'app Google</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Tap to enable</string>
     <string name="complication_default_label">At a Glance Complications</string>
@@ -538,6 +538,7 @@
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
+    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Music</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
