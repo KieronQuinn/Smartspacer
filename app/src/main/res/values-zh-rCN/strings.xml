@@ -12,13 +12,13 @@
     <string name="save">保存</string>
     <string name="close">关闭</string>
     <string name="reset">重置</string>
-    <string name="menu_rerun_setup">重新运行设置指引</string>
+    <string name="menu_rerun_setup">重新开始设置向导</string>
     <string name="bottom_nav_targets">对象</string>
     <string name="bottom_nav_complications">附件</string>
     <string name="bottom_nav_plugins">扩展</string>
     <string name="bottom_nav_settings">设置</string>
     <string name="download_size">%1s / %1s</string>
-    <string name="toast_restricted_mode">在弹出菜单中允许受限制的设置</string>
+    <string name="toast_restricted_mode">在弹出的菜单中允许受限制的设置</string>
     <string name="restricted_mode_content_accessibility">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用使用无障碍服务。\n\n<b>如果你在启用无障碍服务时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[从 Android 14 开始 Google 不再允许安装包管理器旁加载安装的应用使用无障碍服务。<br><br><b>如果你看到一则受限制设置的信息，则需要卸载 Smartspacer，并通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 来重装。直接安装（而不先卸载）是不行的。<br><br></b>另外，启用增强模式后，Smartspacer 可以绕过这一要求（该模式需要 Shizuku 或 root）。]]></string>
     <string name="restricted_mode_content_notification">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用读取通知。\n\n<b>如果你在允许通知读取时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
