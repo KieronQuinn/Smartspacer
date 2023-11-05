@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
     <string name="dummy_home_content">Ten ekran istnieje, aby działały źle zaimplementowane widżety używane przez wtyczki Smartspacer.\n\nSmartspacer nie może działać jak launcher, wybierz inny launcher.</string>
     <string name="dummy_home_open_settings">Otwórz ustawienia</string>
     <string name="notification_service">Usługa powiadomień Smartspacer</string>
@@ -49,13 +50,17 @@
     <string name="widget_configuration_type_lock_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page">Page Controls</string>
     <string name="widget_configuration_page_single_title">Single Page</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
     <string name="widget_configuration_page_controls_title">Paged</string>
     <string name="widget_configuration_page_controls_content">Allow as many pages of Targets and Complications as you configure, with arrow buttons to move between the pages (buttons &amp; indicator will be hidden when there\'s only one page)</string>
     <string name="widget_configuration_page_no_controls_title">Paged Without Arrow Buttons</string>
     <string name="widget_configuration_page_no_controls_content">Same as paged, but without the arrow keys. Tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_animation">Animation</string>
+    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
+    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">Colour</string>
     <string name="widget_configuration_apply">Apply</string>
+    <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.</string>
     <string name="target_notification_label">Notifications</string>
@@ -521,11 +526,22 @@
     <string name="native_switch_compatibility_item">• %1s:</string>
     <string name="native_switch_compatibility_available"><b>Available</b></string>
     <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <!-- Native Mode Restart -->
+    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
     <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
     <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
     <string name="notification_native_mode_enable_now">Enable Now</string>
+    <!-- Native Mode restart notification -->
+    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku Required</string>
     <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
@@ -583,6 +599,12 @@
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
     <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
+    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
+    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
+    <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
+    <string name="expanded_permission_later">Later</string>
+    <string name="expanded_permission_grant">Grant</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Expanded Smartspace</string>
     <string name="expanded_settings_title_short">Expanded</string>
@@ -676,6 +698,7 @@
     <string name="plugin_repository_empty_button_browse">Browse Plugins</string>
     <string name="plugin_repository_update_available">Update Available!</string>
     <string name="plugin_repository_recommended">Recommended for:</string>
+    <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">Install</string>
     <string name="plugin_details_start_install">Start Install</string>
     <string name="plugin_details_open">Open</string>
