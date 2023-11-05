@@ -15,6 +15,7 @@ import com.kieronquinn.app.smartspacer.model.database.ExpandedAppWidget
 import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.ExpandedCustomWidgetBackup
+import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getHeight
@@ -118,7 +119,11 @@ interface ExpandedRepository {
     /**
      *  Creates an [AppWidgetHostView] for a given [widget] and [sessionId]
      */
-    fun createHost(widget: Item.Widget, sessionId: String): ExpandedAppWidgetHostView
+    fun createHost(
+        widget: Item.Widget,
+        sessionId: String,
+        handler: SmartspacerBasePageView.SmartspaceTargetInteractionListener
+    ): ExpandedAppWidgetHostView
 
     /**
      *  Destroys the attached AppWidgetHostViews in the map for a given [sessionId]
@@ -298,7 +303,11 @@ class ExpandedRepositoryImpl(
         return appWidgetHost.getIntentSenderForConfigureActivity(appWidgetId, 0)
     }
 
-    override fun createHost(widget: Item.Widget, sessionId: String): ExpandedAppWidgetHostView {
+    override fun createHost(
+        widget: Item.Widget,
+        sessionId: String,
+        handler: SmartspacerBasePageView.SmartspaceTargetInteractionListener
+    ): ExpandedAppWidgetHostView {
         val appWidgetId = widget.appWidgetId
             ?: throw RuntimeException("Cannot create a widget without an ID!")
         val width = if(widget.width == 0){
@@ -320,7 +329,7 @@ class ExpandedRepositoryImpl(
             return it
         }
         return appWidgetHost.createView(
-            widgetContext, appWidgetId, sessionId, widget.provider
+            widgetContext, appWidgetId, sessionId, widget.provider, handler
         ).apply {
             this as ExpandedAppWidgetHostView
             updateSizeIfNeeded(width, height)

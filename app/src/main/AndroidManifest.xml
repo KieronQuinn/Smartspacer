@@ -258,6 +258,39 @@
             </intent-filter>
         </activity-alias>
 
+        <activity-alias
+            android:name=".ui.activities.NativeReconnectActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity
+            android:name=".ui.activities.WidgetOptionsMenuActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Smartspacer.Dialog"/>
+
+        <activity
+            android:name=".ui.activities.AtAGlanceAboutActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Smartspacer.Transparent"/>
+
+        <activity
+            android:name=".ui.activities.OverlayTrampolineActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"
+            android:theme="@style/Theme.Smartspacer.Transparent"/>
+
         <service
             android:name=".service.SmartspacerSmartspaceService"
             android:exported="true"
@@ -796,6 +829,19 @@
         <meta-data
             android:name="firebase_crashlytics_collection_enabled"
             android:value="false" />
+
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true"/>
+        <meta-data
+            android:name="xposeddescription"
+            android:value="@string/xposed_desc"/>
+        <meta-data
+            android:name="xposedminversion"
+            android:value="90"/>
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposed_scope"/>
 
     </application>
 

@@ -29,7 +29,6 @@ import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onLongClicked
-import com.kieronquinn.app.smartspacer.utils.extensions.setInteractionHandler
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.core.component.KoinComponent
 
@@ -60,9 +59,8 @@ interface BaseExpandedAdapter: KoinComponent {
             itemExpandedWidgetContainer.isVisible = true
             itemExpandedWidgetContainer.run {
                 removeAllViews()
-                val appWidgetHostView = expandedRepository.createHost(widget, sessionId)
+                val appWidgetHostView = expandedRepository.createHost(widget, sessionId, handler)
                 appWidgetHostView.removeFromParentIfNeeded()
-                appWidgetHostView.setInteractionHandler(handler)
                 appWidgetHostView.setOnLightBackground(widget.isDark)
                 addView(appWidgetHostView)
                 appWidgetHostView.setAppWidget(widget.appWidgetId, widget.provider)

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_16"
+    tools:background="@drawable/bottom_sheet_rounded_bg_dark"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/permission_display_over_other_apps_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margin_16"
+        android:text="@string/expanded_permission_title_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/permission_display_over_other_apps_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/expanded_permission_content_sheet"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintTop_toBottomOf="@id/permission_display_over_other_apps_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/permission_display_over_other_apps_positive"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@string/expanded_permission_grant"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/permission_display_over_other_apps_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/permission_display_over_other_apps_negative"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@string/expanded_permission_later"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/permission_display_over_other_apps_positive"
+        app:layout_constraintTop_toTopOf="@id/permission_display_over_other_apps_positive" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

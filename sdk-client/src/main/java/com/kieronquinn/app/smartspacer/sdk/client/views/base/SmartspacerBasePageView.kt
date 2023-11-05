@@ -1,8 +1,10 @@
 package com.kieronquinn.app.smartspacer.sdk.client.views.base
 
+import android.app.PendingIntent
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RestrictTo
 import androidx.viewbinding.ViewBinding
 import com.kieronquinn.app.smartspacer.sdk.client.utils.whenResumed
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -51,6 +53,11 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
         fun launch(unlock: Boolean, block: () -> Unit) {
             return block()
         }
+
+        @RestrictTo(RestrictTo.Scope.LIBRARY)
+        fun shouldTrampolineLaunches(): Boolean = false
+        @RestrictTo(RestrictTo.Scope.LIBRARY)
+        fun trampolineLaunch(pendingIntent: PendingIntent) {}
     }
 
 }

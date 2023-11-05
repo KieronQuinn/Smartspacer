@@ -283,7 +283,8 @@ abstract class TargetMerger {
                 subtitleSupplementalItem = base?.subItemInfo
                     ?: templateData?.subtitleSupplementalItem
                     ?: base?.generateSubItemInfo()
-            )
+            ),
+            canBeDismissed = false
         )
     }
 

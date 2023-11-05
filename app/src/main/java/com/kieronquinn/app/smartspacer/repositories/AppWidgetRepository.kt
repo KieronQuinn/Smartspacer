@@ -54,7 +54,8 @@ interface AppWidgetRepository {
         uiSurface: UiSurface,
         tintColour: TintColour,
         multiPage: Boolean,
-        showControls: Boolean
+        showControls: Boolean,
+        animate: Boolean = true
     )
     fun deleteAppWidget(appWidgetId: Int)
     fun migrateAppWidget(oldAppWidgetId: Int, newAppWidgetId: Int)
@@ -129,7 +130,8 @@ class AppWidgetRepositoryImpl(
         uiSurface: UiSurface,
         tintColour: TintColour,
         multiPage: Boolean,
-        showControls: Boolean
+        showControls: Boolean,
+        animate: Boolean
     ) {
         val widget = AppWidget(
             appWidgetId,
@@ -137,7 +139,8 @@ class AppWidgetRepositoryImpl(
             surface = uiSurface,
             tintColour = tintColour,
             multiPage = multiPage,
-            showControls = showControls
+            showControls = showControls,
+            animate = animate
         )
         scope.launch {
             databaseRepository.addAppWidget(widget)

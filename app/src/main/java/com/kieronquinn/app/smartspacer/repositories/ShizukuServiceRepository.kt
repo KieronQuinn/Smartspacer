@@ -4,7 +4,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
-import android.os.DeadObjectException
 import android.os.IBinder
 import android.os.RemoteException
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -203,7 +202,7 @@ class ShizukuServiceRepositoryImpl(
             }
             val result = try {
                 block(it)
-            }catch (e: DeadObjectException){
+            }catch (e: RuntimeException){
                 return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
             }
             return@withTimeout ShizukuServiceResponse.Success(result)
@@ -215,7 +214,7 @@ class ShizukuServiceRepositoryImpl(
         val result = try {
             block(getService()
                 ?: return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE))
-        }catch (e: DeadObjectException){
+        }catch (e: RuntimeException){
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
         return@withTimeout ShizukuServiceResponse.Success(result)
@@ -233,7 +232,7 @@ class ShizukuServiceRepositoryImpl(
             }
             val result = try {
                 block(it)
-            }catch (e: DeadObjectException){
+            }catch (e: RuntimeException){
                 return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
             }
             return@withTimeout ShizukuServiceResponse.Success(result)
@@ -245,7 +244,7 @@ class ShizukuServiceRepositoryImpl(
         val result = try {
             block(getSuiService()
                 ?: return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE))
-        }catch (e: DeadObjectException){
+        }catch (e: RuntimeException){
             return@withTimeout ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
         return@withTimeout ShizukuServiceResponse.Success(result)
@@ -258,7 +257,7 @@ class ShizukuServiceRepositoryImpl(
             shizukuService.value?.let {
                 ShizukuServiceResponse.Success(block(it))
             } ?: ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
-        }catch (e: DeadObjectException){
+        }catch (e: RuntimeException){
             ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
     }
@@ -270,7 +269,7 @@ class ShizukuServiceRepositoryImpl(
             suiService.value?.let {
                 ShizukuServiceResponse.Success(block(it))
             } ?: ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
-        }catch (e: DeadObjectException){
+        }catch (e: RuntimeException){
             ShizukuServiceResponse.Failed(FailureReason.NOT_AVAILABLE)
         }
     }
@@ -335,7 +334,7 @@ class ShizukuServiceRepositoryImpl(
             }
             try {
                 Shizuku.bindUserService(userServiceArgs, serviceConnection)
-            }catch (e: DeadObjectException) {
+            }catch (e: RuntimeException) {
                 //Shizuku died
                 it.resume(null)
             }
@@ -367,7 +366,7 @@ class ShizukuServiceRepositoryImpl(
             }
             try {
                 Shizuku.bindUserService(suiUserServiceArgs, serviceConnection)
-            }catch (e: DeadObjectException) {
+            }catch (e: RuntimeException) {
                 //Shizuku died
                 it.resume(null)
             }

@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManagerHidden
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.Build
 import android.os.Handler
 import dev.rikka.tools.refine.Refine
 
@@ -23,5 +24,12 @@ fun AppWidgetManager.bindRemoteViewsService(
     }catch (e: SecurityException) {
         //App installed on another user, seems to be Xiaomi issue
         return false
+    }
+}
+
+fun AppWidgetManager.noteAppWidgetTappedCompat(appWidgetId: Int) {
+    this as AppWidgetManagerHidden
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        noteAppWidgetTapped(appWidgetId)
     }
 }

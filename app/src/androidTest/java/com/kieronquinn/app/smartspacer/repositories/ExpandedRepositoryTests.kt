@@ -10,6 +10,7 @@ import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacer
 import com.kieronquinn.app.smartspacer.model.database.ExpandedAppWidget
 import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
+import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.test.BaseTest
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.mockSmartspacerSetting
@@ -33,6 +34,7 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
     private val appWidgetManagerMock = mock<AppWidgetManager>()
     private val appWidgetHostMock = mock<AppWidgetHost>()
     private val expandedWidgetUseGoogleSansMock = mockSmartspacerSetting(false)
+    private val mockListener = mock<SmartspaceTargetInteractionListener>()
 
     private val settingsRepositoryMock = mock<SmartspacerSettingsRepository> {
         every { expandedWidgetUseGoogleSans } returns expandedWidgetUseGoogleSansMock
@@ -131,7 +133,7 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             provider = mockComponent
         }
         val mockView = mock<ExpandedAppWidgetHostView>()
-        every { appWidgetHostMock.createView(any(), any(), any(), any()) } returns mockView
+        every { appWidgetHostMock.createView(any(), any(), any(), any(), any()) } returns mockView
         val mockWidget = Item.Widget(
             provider,
             randomInt(),
@@ -144,10 +146,10 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             isDark = true
         )
         val sessionId = randomString()
-        sut.createHost(mockWidget, sessionId)
+        sut.createHost(mockWidget, sessionId, mockListener)
         verify {
             appWidgetHostMock.createView(
-                any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider
+                any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider, mockListener
             )
         }
         verify {
@@ -163,7 +165,7 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             provider = mockComponent
         }
         val mockView = mock<ExpandedAppWidgetHostView>()
-        every { appWidgetHostMock.createView(any(), any(), any(), any()) } returns mockView
+        every { appWidgetHostMock.createView(any(), any(), any(), any(), any()) } returns mockView
         val mockWidget = Item.Widget(
             provider,
             randomInt(),
@@ -176,10 +178,10 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             isDark = true
         )
         val sessionId = randomString()
-        sut.createHost(mockWidget, sessionId)
+        sut.createHost(mockWidget, sessionId, mockListener)
         verify {
             appWidgetHostMock.createView(
-                any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider
+                any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider, mockListener
             )
         }
         verify {

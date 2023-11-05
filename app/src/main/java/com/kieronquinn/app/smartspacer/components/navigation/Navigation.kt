@@ -21,7 +21,7 @@ interface BaseNavigation {
 
     suspend fun navigate(navDirections: NavDirections, extras: FragmentNavigator.Extras? = null)
     suspend fun navigate(@IdRes id: Int, arguments: Bundle? = null)
-    suspend fun navigate(intent: Intent)
+    suspend fun navigate(intent: Intent, errorCallback: () -> Unit = {})
     suspend fun navigate(event: NavigationEvent)
     suspend fun navigate(uri: Uri)
     suspend fun navigateUpTo(@IdRes id: Int, popInclusive: Boolean = false)
@@ -29,6 +29,7 @@ interface BaseNavigation {
     suspend fun navigateWithContext(method: (Context) -> Unit)
     suspend fun restartActivity()
     suspend fun finish()
+    suspend fun finishAndRemoveTask()
     suspend fun phoenix()
 
 }
@@ -43,6 +44,7 @@ sealed class NavigationEvent {
     object Back: NavigationEvent()
     object RestartActivity: NavigationEvent()
     object Finish: NavigationEvent()
+    object FinishAndRemoveTask: NavigationEvent()
     object Phoenix: NavigationEvent()
 }
 
@@ -67,8 +69,8 @@ open class NavigationImpl: BaseNavigation {
         _navigationBus.emit(NavigationEvent.PopupTo(id, popInclusive))
     }
 
-    override suspend fun navigate(intent: Intent) {
-        _navigationBus.emit(NavigationEvent.Intent(intent))
+    override suspend fun navigate(intent: Intent, errorCallback: () -> Unit) {
+        _navigationBus.emit(NavigationEvent.Intent(intent, errorCallback))
     }
 
     override suspend fun navigate(event: NavigationEvent) {
@@ -89,6 +91,10 @@ open class NavigationImpl: BaseNavigation {
 
     override suspend fun finish() {
         _navigationBus.emit(NavigationEvent.Finish)
+    }
+
+    override suspend fun finishAndRemoveTask() {
+        _navigationBus.emit(NavigationEvent.FinishAndRemoveTask)
     }
 
     override suspend fun phoenix() {
@@ -117,7 +123,7 @@ class DummyNavigation: BaseNavigation {
         //No-op
     }
 
-    override suspend fun navigate(intent: Intent) {
+    override suspend fun navigate(intent: Intent, errorCallback: () -> Unit) {
         //No-op
     }
 
@@ -138,6 +144,10 @@ class DummyNavigation: BaseNavigation {
     }
 
     override suspend fun finish() {
+        //No-op
+    }
+
+    override suspend fun finishAndRemoveTask() {
         //No-op
     }
 
@@ -166,6 +176,10 @@ class ExpandedNavigationImpl: NavigationImpl(), ExpandedNavigation
 //Shared navigation for all configuration activities that have multiple screens
 interface ConfigurationNavigation: BaseNavigation
 class ConfigurationNavigationImpl: NavigationImpl(), ConfigurationNavigation
+
+//Navigation used for widget options
+interface WidgetOptionsNavigation: BaseNavigation
+class WidgetOptionsNavigationImpl: NavigationImpl(), WidgetOptionsNavigation
 
 suspend fun NavHostFragment.setupWithNavigation(navigation: BaseNavigation) {
     navigation.navigationBus.collect {
@@ -196,6 +210,9 @@ suspend fun NavHostFragment.setupWithNavigation(navigation: BaseNavigation) {
             }
             is NavigationEvent.Finish -> {
                 requireActivity().finish()
+            }
+            is NavigationEvent.FinishAndRemoveTask -> {
+                requireActivity().finishAndRemoveTask()
             }
             is NavigationEvent.Phoenix -> {
                 val mainIntent = Intent(requireContext(), MainActivity::class.java).apply {

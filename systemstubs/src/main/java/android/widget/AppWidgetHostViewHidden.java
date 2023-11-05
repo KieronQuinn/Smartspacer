@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
 import android.widget.RemoteViewsHidden.InteractionHandler;
+import android.widget.RemoteViewsHidden.OnClickHandler;
 
 import androidx.annotation.Nullable;
 
@@ -18,6 +19,10 @@ public class AppWidgetHostViewHidden extends AppWidgetHostView implements AppWid
     }
 
     public AppWidgetHostViewHidden(Context context, InteractionHandler interactionHandler) {
+        super(context);
+    }
+
+    public AppWidgetHostViewHidden(Context context, OnClickHandler onClickHandler) {
         super(context);
     }
 
@@ -40,7 +45,7 @@ public class AppWidgetHostViewHidden extends AppWidgetHostView implements AppWid
      * should be made.
      * @param handler
      */
-    public void setOnClickHandler(RemoteViewsHidden.OnClickHandler handler) {
+    public void setOnClickHandler(OnClickHandler handler) {
         throw new RuntimeException("Stub!");
     }
 

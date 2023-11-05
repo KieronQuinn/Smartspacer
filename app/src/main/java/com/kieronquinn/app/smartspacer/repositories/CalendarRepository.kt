@@ -133,8 +133,12 @@ class CalendarRepositoryImpl(
             )
         ).flowOn(Dispatchers.IO).debounce(250L).mapLatest { calendar ->
             calendar.map { row ->
-                Calendar(row.getString(0), row.getString(1), row.getString(2))
-            }
+                Calendar(
+                    row.getString(0) ?: return@map null,
+                    row.getString(1) ?: return@map null,
+                    row.getString(2) ?: return@map null
+                )
+            }.filterNotNull()
         }
     }.flowOn(Dispatchers.IO).stateIn(scope, SharingStarted.Eagerly, null)
 

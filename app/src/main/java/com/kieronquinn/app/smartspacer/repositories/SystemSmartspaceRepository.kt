@@ -23,6 +23,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.service.SmartspacerSmartspaceService
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeFragment
+import com.kieronquinn.app.smartspacer.ui.screens.native.reconnect.NativeReconnectFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.getIdentifier
@@ -93,6 +94,20 @@ interface SystemSmartspaceRepository {
      *  Shows a notification reminding the user to re-enable the native service if required
      */
     fun showNativeStartReminderIfNeeded()
+
+    /**
+     *  Triggered when Android System Intelligence stops (by a crash, force stop or update),
+     *  displays a notification to the user to disable and re-enable Native Smartspace to allow a
+     *  reconnection.
+     */
+    fun onAsiStopped()
+
+    /**
+     *  Triggered when the System Smartspace Service detects a self-connection, and thus has
+     *  disabled itself, displays a notification to the user to disable and re-enable Native
+     *  Smartspace to fix and reconnect.
+     */
+    fun onFeedbackLoopDetected()
 
 }
 
@@ -249,6 +264,7 @@ class SystemSmartspaceRepositoryImpl(
                 shizuku.runWithService(block)
             }
             serviceRunning.emit(false)
+            setupService()
         }
     }
 
@@ -267,6 +283,14 @@ class SystemSmartspaceRepositoryImpl(
                 context.showNotification()
             }
         }
+    }
+
+    override fun onAsiStopped() {
+        context.showReconnectNotification(false)
+    }
+
+    override fun onFeedbackLoopDetected() {
+        context.showReconnectNotification(true)
     }
 
     private fun Context.showNotification() {
@@ -312,6 +336,43 @@ class SystemSmartspaceRepositoryImpl(
                 )
             )
             it.setTicker(getString(R.string.notification_native_mode_enable_title))
+        }
+    }
+
+    private fun Context.showReconnectNotification(feedbackLoop: Boolean) {
+        val content = if(feedbackLoop) {
+            R.string.notification_native_mode_restart_feedback_loop_content
+        }else{
+            R.string.notification_native_mode_restart_disconnect_content
+        }
+        notifications.showNotification(
+            NotificationId.RECONNECT_PROMPT,
+            NotificationChannel.ERROR
+        ) {
+            val notificationIntent = NativeReconnectFragment.createIntent(context, feedbackLoop)
+            val notificationJustReconnectIntent =
+                NativeReconnectFragment.createIntent(context, feedbackLoop, true)
+            it.setContentTitle(getString(R.string.notification_native_mode_restart_title))
+            it.setContentText(getString(content))
+            it.setSmallIcon(R.drawable.ic_notification)
+            it.setOngoing(false)
+            it.setAutoCancel(true)
+            val justReconnectIntent = PendingIntent.getActivity(
+                this,
+                NotificationId.RECONNECT_JUST_RECONNECT.ordinal,
+                notificationJustReconnectIntent,
+                PendingIntent_MUTABLE_FLAGS
+            )
+            it.setContentIntent(
+                PendingIntent.getActivity(
+                    this,
+                    NotificationId.RECONNECT_PROMPT.ordinal,
+                    notificationIntent,
+                    PendingIntent_MUTABLE_FLAGS
+                )
+            )
+            it.addAction(0, getString(R.string.notification_native_mode_restart_just_reconnect), justReconnectIntent)
+            it.setTicker(getString(R.string.notification_native_mode_restart_title))
         }
     }
 

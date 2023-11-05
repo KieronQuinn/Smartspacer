@@ -213,6 +213,13 @@ interface SmartspacerSettingsRepository {
     @IgnoreInBackup
     val analyticsEnabled: SmartspacerSetting<Boolean>
 
+    /**
+     *  Whether to prompt the user to enable Display Over Other apps when Smartspacer launches,
+     *  since the overlay is unable to launch it itself (ironically until this is granted)
+     */
+    @IgnoreInBackup
+    val requiresDisplayOverOtherAppsPermission: SmartspacerSetting<Boolean>
+
     enum class TargetCountLimit(val count: Int, @StringRes val label: Int, @StringRes val content: Int) {
         ONE(
             1,
@@ -377,6 +384,9 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_ANALYTICS_ENABLED = "analytics_enabled"
         private const val DEFAULT_ANALYTICS_ENABLED = false
+
+        private const val KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS = "requires_display_over_other_apps"
+        private const val DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS = false
     }
 
     override val sharedPreferences: SharedPreferences = context.getSharedPreferences(
@@ -416,6 +426,7 @@ class SmartspacerSettingsRepositoryImpl(
     override val donatePromptEnabled = boolean(KEY_DONATE_PROMPT_ENABLED, DEFAULT_DONATE_PROMPT_ENABLED)
     override val donatePromptDismissedAt = long(KEY_DONATE_PROMPT_DISMISSED_AT, DEFAULT_DONATE_PROMPT_DISMISSED_AT)
     override val analyticsEnabled = boolean(KEY_ANALYTICS_ENABLED, DEFAULT_ANALYTICS_ENABLED)
+    override val requiresDisplayOverOtherAppsPermission = boolean(KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS, DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS)
 
     override suspend fun setRestrictedModeKnownDisabledIfNeeded() {
         //Not sure if upgrading requires allowing unrestricted, so only setting on T+ for now

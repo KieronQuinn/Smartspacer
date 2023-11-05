@@ -17,6 +17,8 @@ import com.kieronquinn.app.smartspacer.model.database.SmartspacerDatabase
 import com.kieronquinn.app.smartspacer.repositories.*
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivityViewModel
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivityViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuViewModel
+import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.backuprestore.BackupRestoreViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.backuprestore.BackupRestoreViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.backuprestore.backup.BackupViewModel
@@ -111,11 +113,15 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.searchprovid
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.settings.searchprovider.ExpandedSettingsSearchProviderViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.native.reconnect.NativeReconnectViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.native.reconnect.NativeReconnectViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.NativeModeSettingsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.NativeModeSettingsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.pagelimit.NativeModePageLimitViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmartspaceViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmartspaceViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.permission.DisplayOverOtherAppsPermissionBottomSheetViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.permission.DisplayOverOtherAppsPermissionBottomSheetViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.permissions.PermissionsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.permissions.PermissionsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.repository.PluginRepositoryViewModel
@@ -246,6 +252,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single<SetupNavigation> { SetupNavigationImpl() }
         single<RootNavigation> { RootNavigationImpl() }
         single<ConfigurationNavigation> { ConfigurationNavigationImpl() }
+        single<WidgetOptionsNavigation> { WidgetOptionsNavigationImpl() }
         single<ExpandedNavigation> { ExpandedNavigationImpl() }
         single<DatabaseRepository> { DatabaseRepositoryImpl(get()) }
         single<RequirementsRepository> { RequirementsRepositoryImpl(get(), get()) }
@@ -390,6 +397,9 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<WiFiRequirementConfigurationMACBottomSheetViewModel> { WiFiRequirementConfigurationMACBottomSheetViewModelImpl(get(), get()) }
         viewModel<WiFiRequirementConfigurationPickerViewModel> { WiFiRequirementConfigurationPickerViewModelImpl(get(), get(), get(), get()) }
         viewModel<BlankTargetConfigurationViewModel> { BlankTargetConfigurationViewModelImpl(get()) }
+        viewModel<DisplayOverOtherAppsPermissionBottomSheetViewModel> { DisplayOverOtherAppsPermissionBottomSheetViewModelImpl(get()) }
+        viewModel<WidgetOptionsMenuViewModel> { WidgetOptionsMenuViewModelImpl(get(), get()) }
+        viewModel<NativeReconnectViewModel> { NativeReconnectViewModelImpl(get(), get()) }
     }
 
     override fun attachBaseContext(base: Context) {

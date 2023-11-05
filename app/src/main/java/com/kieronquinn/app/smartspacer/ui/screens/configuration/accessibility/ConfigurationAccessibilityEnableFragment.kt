@@ -61,7 +61,7 @@ class ConfigurationAccessibilityEnableFragment: BoundFragment<FragmentConfigurat
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun setupRestrictedCard() {
-        val shouldShow = requireContext().wasInstalledWithSession()
+        val shouldShow = !requireContext().wasInstalledWithSession()
         binding.configurationAccessibilityInfo.isVisible = shouldShow
         binding.configurationAccessibilityInfo.applyBackgroundTint(monet)
         binding.configurationAccessibilityInfoButton.applyMonet()

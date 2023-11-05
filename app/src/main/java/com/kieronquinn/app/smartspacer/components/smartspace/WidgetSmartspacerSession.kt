@@ -57,6 +57,7 @@ class WidgetSmartspacerSession(
     private val pageChangeLock = Mutex()
     private val multiPage = widget.multiPage
     private val showControls = widget.showControls
+    private val animate = widget.animate
 
     override val targetCount = if(widget.multiPage) {
         flowOf(Integer.MAX_VALUE)
@@ -84,7 +85,8 @@ class WidgetSmartspacerSession(
             val new = newPair.first
             old.target != null && new.target != null && old.target.equalsForUi(new.target)
         }.map {
-            val shouldAnimate = it.first.target != null && it.first.target?.smartspaceTargetId != id
+            val shouldAnimate = animate && it.first.target != null
+                    && it.first.target?.smartspaceTargetId != id
             id = it.first.target?.smartspaceTargetId
             val index = index.value
             val isFirst = index == 0
@@ -282,7 +284,8 @@ class WidgetSmartspacerSession(
         return SmartspaceTarget(
             smartspaceTargetId = UUID.randomUUID().toString(),
             featureType = SmartspaceTarget.FEATURE_WEATHER,
-            componentName = ComponentName("package_name", "class_name")
+            componentName = ComponentName("package_name", "class_name"),
+            canBeDismissed = false
         )
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:id="@android:id/background"
     android:clipToOutline="true"
     android:orientation="vertical">
 
@@ -49,6 +49,16 @@
         android:orientation="horizontal"
         android:paddingStart="@dimen/margin_8"
         android:paddingEnd="@dimen/margin_8">
+
+        <ImageButton
+            android:id="@+id/widget_smartspacer_kebab"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:background="@drawable/rounded_ripple_32"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_widget_kebab" />
 
         <ImageButton
             android:id="@+id/widget_smartspacer_previous"

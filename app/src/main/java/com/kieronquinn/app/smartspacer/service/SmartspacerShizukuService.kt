@@ -60,6 +60,7 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         const val SHELL_UID = Process.SHELL_UID
         const val ROOT_PACKAGE = "android"
         const val SHELL_PACKAGE = "com.android.shell"
+        private const val PACKAGE_ASI = "com.google.android.as"
     }
 
     private val canUseRoot = Process.myUid() == ROOT_UID
@@ -334,6 +335,7 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     private fun setupCrashListener() = scope.launch {
         activityManager.processDied().collect { uid ->
+            if(suppressCrash) return@collect
             val packages = packageManager.getPackagesForUid(uid) ?: return@collect
             packages.forEach { pkg ->
                 onPackageDied(pkg)
@@ -343,6 +345,15 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     @Synchronized
     private fun onPackageDied(packageName: String) {
+        if(packageName == PACKAGE_ASI) {
+            try {
+                crashListener?.onAsiStopped()
+            }catch (e: RemoteException){
+                //Remote process died
+                crashListener = null
+            }
+            return
+        }
         val timestamps = lastCrashTimestamps[packageName] ?: HashSet()
         val now = System.currentTimeMillis()
         timestamps.removeIf {

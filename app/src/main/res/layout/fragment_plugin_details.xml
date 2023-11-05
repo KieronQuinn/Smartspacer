@@ -257,6 +257,18 @@
             tools:text="Recommended for" />
 
         <TextView
+            android:id="@+id/plugin_details_changelog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:paddingBottom="@dimen/margin_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            app:layout_constraintTop_toBottomOf="@id/plugin_details_recommended"
+            tools:text="Changelog" />
+
+        <TextView
             android:id="@+id/plugin_details_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -264,8 +276,20 @@
             android:layout_marginTop="@dimen/margin_8"
             android:layout_marginEnd="@dimen/margin_16"
             android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
-            app:layout_constraintTop_toBottomOf="@id/plugin_details_recommended"
+            app:layout_constraintTop_toBottomOf="@id/plugin_details_changelog"
             tools:text="Plugin Description" />
+
+        <TextView
+            android:id="@+id/plugin_details_whats_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:paddingTop="@dimen/margin_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            app:layout_constraintTop_toBottomOf="@id/plugin_details_description"
+            tools:text="What's New" />
 
         <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
             android:layout_width="match_parent"
@@ -277,7 +301,7 @@
             android:paddingStart="@dimen/margin_8"
             android:paddingEnd="@dimen/margin_8"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/plugin_details_description"
+            app:layout_constraintTop_toBottomOf="@id/plugin_details_whats_new"
             tools:listitem="@layout/item_plugin_details_screenshot"
             tools:orientation="horizontal" />
 

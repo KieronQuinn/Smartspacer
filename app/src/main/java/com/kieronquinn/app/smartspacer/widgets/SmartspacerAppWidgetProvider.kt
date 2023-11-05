@@ -23,6 +23,7 @@ import com.kieronquinn.app.smartspacer.receivers.WidgetPageChangeReceiver.Direct
 import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
+import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -62,8 +63,6 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         val appWidgetManager = getSystemService(Context.APPWIDGET_SERVICE) as AppWidgetManager
         val config = appWidgetRepository.getAppWidget(appWidgetId)
         val state = appWidgetRepository.getSessionState(appWidgetId)
-        val animate = state?.animate ?: true
-        val dots = state?.dotConfig ?: emptyList()
         val textColour = when(config?.tintColour ?: TintColour.AUTOMATIC) {
             TintColour.AUTOMATIC -> getWallpaperTextColour()
             TintColour.WHITE -> Color.WHITE
@@ -72,10 +71,10 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         val iconColour = ColorStateList.valueOf(textColour)
         val remoteViews = state?.page?.view?.let {
             val sizes = appWidgetRepository.getAppWidgetSize(appWidgetId)
-            val portrait = container(appWidgetId, iconColour, state) {
+            val portrait = container(appWidgetId, iconColour, state, config?.ownerPackage) {
                 it.inflate(this, textColour, sizes.first.width())
             }
-            val landscape = container(appWidgetId, iconColour, state) {
+            val landscape = container(appWidgetId, iconColour, state, config?.ownerPackage) {
                 it.inflate(this, textColour, sizes.second.width())
             }
             RemoteViews(landscape, portrait)
@@ -91,6 +90,7 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         appWidgetId: Int,
         iconColour: ColorStateList,
         state: WidgetSmartspacerSessionState,
+        owner: String?,
         child: () -> RemoteViews
     ): RemoteViews {
         val container = RemoteViews(packageName, R.layout.widget_smartspacer)
@@ -115,15 +115,28 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         container.setViewEnabled(R.id.widget_smartspacer_next, !state.isLast)
         container.setImageViewImageAlpha(R.id.widget_smartspacer_previous, if(state.isFirst) 0.5f else 1f)
         container.setImageViewImageAlpha(R.id.widget_smartspacer_next, if(state.isLast) 0.5f else 1f)
+        container.setViewVisibility(R.id.widget_smartspacer_next, (!state.isOnlyPage).visibility)
+        container.setViewVisibility(R.id.widget_smartspacer_previous, (!state.isOnlyPage).visibility)
         //No point showing arrows or dots if there's only one page
         container.setViewVisibility(R.id.widget_smartspacer_dots, (!state.isOnlyPage).visibility)
-        val showControls = state.showControls && !state.isOnlyPage
-        container.setViewVisibility(R.id.widget_smartspacer_controls, showControls.visibility)
+        container.setViewVisibility(R.id.widget_smartspacer_controls, state.showControls.visibility)
         container.setOnClickPendingIntent(
             R.id.widget_smartspacer_next,
             getPendingIntentForDirection(appWidgetId, Direction.NEXT)
         )
         container.setImageViewImageTintListCompat(R.id.widget_smartspacer_next, iconColour)
+        val kebabPendingIntent = WidgetOptionsMenuActivity.getIntent(
+            this, state.page.holder.page, appWidgetId, owner
+        ).let {
+            PendingIntent.getActivity(
+                this,
+                state.page.holder.page.hashCode(),
+                it,
+                PendingIntent_MUTABLE_FLAGS
+            )
+        }
+        container.setImageViewImageTintListCompat(R.id.widget_smartspacer_kebab, iconColour)
+        container.setOnClickPendingIntent(R.id.widget_smartspacer_kebab, kebabPendingIntent)
         state.dotConfig.getDots(packageName, iconColour).forEach {
             container.addView(R.id.widget_smartspacer_dots, it)
         }

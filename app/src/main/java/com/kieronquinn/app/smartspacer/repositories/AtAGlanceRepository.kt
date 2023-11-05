@@ -15,7 +15,8 @@ interface AtAGlanceRepository {
         val subtitle: CharSequence,
         val icon: Bitmap,
         val clickIntent: Intent? = null,
-        val clickPendingIntent: PendingIntent? = null
+        val clickPendingIntent: PendingIntent? = null,
+        val optionsIntent: Intent? = null
     )
 
 }

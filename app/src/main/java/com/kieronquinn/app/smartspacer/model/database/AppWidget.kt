@@ -23,7 +23,9 @@ data class AppWidget(
     @ColumnInfo(name = "multi_page")
     val multiPage: Boolean,
     @ColumnInfo("show_controls")
-    val showControls: Boolean
+    val showControls: Boolean,
+    @ColumnInfo("animate")
+    val animate: Boolean = true
 ): Parcelable {
 
     fun cloneWithId(newAppWidgetId: Int): AppWidget {
@@ -33,7 +35,8 @@ data class AppWidget(
             surface,
             tintColour,
             multiPage,
-            showControls
+            showControls,
+            animate
         )
     }
 

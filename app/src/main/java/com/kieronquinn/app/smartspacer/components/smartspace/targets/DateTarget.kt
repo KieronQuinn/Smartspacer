@@ -22,7 +22,9 @@ class DateTarget: SmartspacerTargetProvider() {
                 //In the event there's no targets or complications, a date will be shown anyway
                 hideIfNoComplications = true,
                 templateData = BasicTemplateData()
-            )
+            ).apply {
+                canBeDismissed = false
+            }
         )
     }
 

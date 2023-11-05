@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_native_reconnect"
+    app:startDestination="@id/nativeReconnectFragment">
+
+    <fragment
+        android:id="@+id/nativeReconnectFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.native.reconnect.NativeReconnectFragment"
+        android:label="@string/native_restart_title"
+        tools:layout="@layout/fragment_native_reconnect" />
+
+</navigation>

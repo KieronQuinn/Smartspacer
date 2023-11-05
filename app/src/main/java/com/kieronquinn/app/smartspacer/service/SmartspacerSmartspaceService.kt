@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Intent
 import android.provider.Settings
+import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
@@ -69,6 +70,10 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             it.setCrashListener(object: ISmartspacerCrashListener.Stub() {
                 override fun onPackageCrashed(packageName: String) {
                     trySend(packageName)
+                }
+
+                override fun onAsiStopped() {
+                    systemSmartspace.onAsiStopped()
                 }
             })
         }
@@ -142,6 +147,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         if(config.packageName == BuildConfig.APPLICATION_ID){
             //Feedback loop! Service has been force stopped & restarted too fast, reject
             onDestroySmartspaceSession(sessionId)
+            systemSmartspace.onFeedbackLoopDetected()
             return
         }
         systemSmartspace.notifyServiceRunning()

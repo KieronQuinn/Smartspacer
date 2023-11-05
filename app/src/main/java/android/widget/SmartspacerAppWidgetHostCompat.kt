@@ -26,8 +26,10 @@ import android.os.*
 import com.android.internal.appwidget.IAppWidgetHost
 import com.android.internal.appwidget.IAppWidgetService
 import com.kieronquinn.app.smartspacer.BuildConfig
+import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.extensions.resetAppWidget
+import com.kieronquinn.app.smartspacer.utils.extensions.setInteractionHandler
 import com.kieronquinn.app.smartspacer.utils.extensions.viewDataChanged
 import dev.rikka.tools.refine.Refine
 import java.lang.ref.WeakReference
@@ -291,9 +293,11 @@ open class SmartspacerAppWidgetHostCompat @JvmOverloads constructor(
         context: Context,
         appWidgetId: Int,
         id: String = UUID.randomUUID().toString(),
-        appWidget: AppWidgetProviderInfo?
+        appWidget: AppWidgetProviderInfo?,
+        interactionListener: SmartspaceTargetInteractionListener
     ): ExpandedAppWidgetHostView {
         val view = onCreateView(context, appWidgetId, appWidget) as ExpandedAppWidgetHostView
+        view.setInteractionHandler(interactionListener)
         view.setAppWidget(appWidgetId, appWidget)
         view.id = addListener(appWidgetId, id, view)
         val views = try {

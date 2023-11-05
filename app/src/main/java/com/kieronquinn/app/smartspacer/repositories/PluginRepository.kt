@@ -308,6 +308,8 @@ interface PluginApi {
             val icon: String?,
             @SerializedName("description")
             val description: String,
+            @SerializedName("changelog")
+            val changelog: String? = null,
             @SerializedName("screenshots")
             val screenshots: List<String>? = null,
             @SerializedName("download_url")

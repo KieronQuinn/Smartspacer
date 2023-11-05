@@ -10,6 +10,7 @@ import android.util.SizeF
 import android.widget.AppWidgetHostViewHidden
 import android.widget.RemoteViewsHidden.InteractionHandler
 import android.widget.RemoteViewsHidden.OnClickHandler
+import androidx.annotation.RequiresApi
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener.Companion.launchAction
 import dev.rikka.tools.refine.Refine
@@ -47,20 +48,51 @@ fun AppWidgetHostView.setInteractionHandler(
     interactionListener: SmartspaceTargetInteractionListener
 ) {
     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        val handler = InteractionHandler { view, pendingIntent, response ->
-            interactionListener.launchAction(pendingIntent?.isActivity ?: true) {
-                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }
-            true
-        }
+        val handler = interactionListener
+            .getInteractionHandler(appWidgetId, interactionListener.shouldTrampolineLaunches())
         Refine.unsafeCast<AppWidgetHostViewHidden>(this).setInteractionHandler(handler)
     }else{
-        val handler = OnClickHandler { view, pendingIntent, response ->
-            interactionListener.launchAction(true) {
+        val handler = interactionListener
+            .getOnClickHandler(appWidgetId, interactionListener.shouldTrampolineLaunches())
+        Refine.unsafeCast<AppWidgetHostViewHidden>(this).setOnClickHandler(handler)
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.S)
+fun SmartspaceTargetInteractionListener.getInteractionHandler(
+    appWidgetId: Int?,
+    trampoline: Boolean
+): InteractionHandler {
+    return InteractionHandler { view, pendingIntent, response ->
+        launchAction(pendingIntent?.isActivity ?: true) {
+            appWidgetId?.let {
+                AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+            }
+            if(trampoline) {
+                RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+            }else{
                 RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
             }
-            true
         }
-        Refine.unsafeCast<AppWidgetHostViewHidden>(this).setOnClickHandler(handler)
+        true
+    }
+}
+
+fun SmartspaceTargetInteractionListener.getOnClickHandler(
+    appWidgetId: Int?,
+    trampoline: Boolean
+): OnClickHandler {
+    return OnClickHandler { view, pendingIntent, response ->
+        launchAction(true) {
+            appWidgetId?.let {
+                AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+            }
+            if(trampoline){
+                RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+            }else{
+                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+            }
+        }
+        true
     }
 }

@@ -23,7 +23,7 @@ import com.kieronquinn.app.smartspacer.utils.room.GsonConverter
     Target::class,
     TargetData::class,
     Widget::class
-], version = 3, exportSchema = false)
+], version = 4, exportSchema = false)
 @TypeConverters(GsonConverter::class)
 abstract class SmartspacerDatabase: RoomDatabase() {
 
@@ -33,7 +33,7 @@ abstract class SmartspacerDatabase: RoomDatabase() {
                 context,
                 SmartspacerDatabase::class.java,
                 "smartspacer"
-            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build()
         }
 
         private val MIGRATION_1_2 = object: Migration(1, 2) {
@@ -46,6 +46,12 @@ abstract class SmartspacerDatabase: RoomDatabase() {
         private val MIGRATION_2_3 = object: Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE Requirement ADD COLUMN invert INTEGER NOT NULL DEFAULT '0'")
+            }
+        }
+
+        private val MIGRATION_3_4 = object: Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE AppWidget ADD COLUMN animate INTEGER NOT NULL DEFAULT '1'")
             }
         }
     }
