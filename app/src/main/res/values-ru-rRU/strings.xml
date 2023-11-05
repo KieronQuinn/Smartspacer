@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Пространство</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
+    <string name="xposed_desc"><b>Опционально</b>: включите этот модуль, выбрав ваш лаунчер или мост Google Feed (Lawnfeed), чтобы заменить ленту новостей Google на Расширенное пространство</string>
     <string name="dummy_home_content">Этот экран существует для того, чтобы обойти ограничения, вызванные неправильно написанными Виджетами.\n\nSmartspacer - не лаунчер. Пожалуйста, установите другой лаунчер по умолчанию.</string>
     <string name="dummy_home_open_settings">Открыть настройки</string>
     <string name="notification_service">Служба уведомлений Smartspacer</string>
@@ -50,17 +50,17 @@
     <string name="widget_configuration_type_lock_content_disabled">Недоступно для этого виджета. Обратите внимание, что Smartspacer не может отображать виджеты на экране блокировки - установите Lockscreen Widgets из Google Play, чтобы сделать это.</string>
     <string name="widget_configuration_page">Управление страницами</string>
     <string name="widget_configuration_page_single_title">Одна страница</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
+    <string name="widget_configuration_page_single_content">Отображать только одну Цель и её Дополнения (если есть) на виджете. Это значит, что вы будете видеть только самые верхние Цели/Дополнения на виджете.\n<b>Важно:</b> использование этой опции означает, что вы не сможете открыть меню опций для Цели, и закрыть её можно будет только из Расширенного пространства</string>
     <string name="widget_configuration_page_controls_title">Постранично</string>
     <string name="widget_configuration_page_controls_content">Позволить использование любого количества Целей и Дополнений. Перемещение по страницам осуществляется с помощью стрелок (стрелки и индикатор будут спрятаны, если на виджете всего одна страница)</string>
     <string name="widget_configuration_page_no_controls_title">Постранично без стрелок</string>
     <string name="widget_configuration_page_no_controls_content">То же, что и Постранично, но без кнопок со стрелками. Нажмите на точки индикатора, чтобы перейти на следующую страницу. Вы вернётесь на первую страницу, когда дойдёте до конца.</string>
-    <string name="widget_configuration_animation">Animation</string>
-    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
-    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
+    <string name="widget_configuration_animation">Анимация</string>
+    <string name="widget_configuration_animation_switch_title">Анимировать изменения</string>
+    <string name="widget_configuration_animation_switch_content">Плавные переходы между изменениями в виджете - где это возможно</string>
     <string name="widget_configuration_colour">Цвет</string>
     <string name="widget_configuration_apply">Применить</string>
-    <string name="widget_options_configure">Configure Widget</string>
+    <string name="widget_options_configure">Настроить виджет</string>
     <string name="accessibility_service_label">Служба виджетов Smartspacer</string>
     <string name="accessibility_service_description">Позволяет виджетам Smartspacer поддерживать Цели и Дополнения актуальными, не расходуя заряд батареи на их постоянную работу.</string>
     <string name="target_notification_label">Уведомления</string>
@@ -527,21 +527,21 @@
     <string name="native_switch_compatibility_available"><b>Доступно</b></string>
     <string name="native_switch_compatibility_not_available"><b>Недоступно</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_title">Нативный режим</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer обнаружил циклический сбой при включении Нативного режима. Чтобы удостовериться, что все Цели и Дополнения работают корректно, Нативный режим нужно перезапустить.</string>
+    <string name="native_restart_disconnect_content">Smartspacer отключился от \"Самое главное\". Чтобы убедиться, что все Цели и Дополнения работают корректно, Нативный режим должен быть перезапущен.</string>
+    <string name="native_restart_info"><b>Важно:</b> при перезапуске Нативного Режима, Smartspacer перезапускает Графический интерфейс системы. <b>Вы можете увидеть уведомление о том, что Интерфейс системы остановился, а затем ваш экран блокировки</b>. Это нормально, закройте уведомление и разблокируйте устройство, чтобы продолжить.</string>
+    <string name="native_restart_button">Перезапустить сейчас</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Включить Нативный режим</string>
     <string name="notification_native_mode_enable_content">После перезагрузки нужно включить Нативный режим, нажмите для включения</string>
     <string name="notification_native_mode_enable_dismiss">Больше не показывать</string>
     <string name="notification_native_mode_enable_now">Включить сейчас</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_title">Перезапустить Нативный режим</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer обнаружил циклический сбой при запуске Нативного режима. Нажмите, чтобы попробовать снова.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer был отключен от \"Самое главное\", нажмите для переподключения.</string>
+    <string name="notification_native_mode_restart_just_reconnect">Переподключиться</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Требуется Shizuku</string>
     <string name="notification_shizuku_content_app_prediction">Требованию Подсказок приложений нужен запущенный Shizuku, нажмите, чтобы открыть</string>
@@ -599,12 +599,12 @@
     <string name="expanded_widget_configure">Нажмите, чтобы настроить виджет</string>
     <string name="expanded_widget_deleted">Этот виджет был удален, нажмите для удаления</string>
     <string name="expanded_widget_deleted_rearrange">Виджет удалён</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
-    <string name="expanded_permission_title_short">Display Over Other Apps</string>
-    <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
-    <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
-    <string name="expanded_permission_later">Later</string>
-    <string name="expanded_permission_grant">Grant</string>
+    <string name="expanded_permission_title">Разрешить отображение поверх других приложений</string>
+    <string name="expanded_permission_title_short">Поверх других приложений</string>
+    <string name="expanded_permission_content">Замена ленты новостей Google Discover требует это разрешение, чтобы вы могли запускать приложения из оверлея. Откройте Smartspacer для выдачи разрешения или выдайте его вручную в системных настройках.</string>
+    <string name="expanded_permission_content_sheet">Замена ленты новостей Google Discover требует это разрешение, чтобы вы могли запускать приложения из оверлея.</string>
+    <string name="expanded_permission_later">Позже</string>
+    <string name="expanded_permission_grant">Предоставить</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Расширенное Пространство</string>
     <string name="expanded_settings_title_short">Расширенное пространство</string>
@@ -698,7 +698,7 @@
     <string name="plugin_repository_empty_button_browse">Обзор плагинов</string>
     <string name="plugin_repository_update_available">Доступно обновление!</string>
     <string name="plugin_repository_recommended">Рекомендуется для:</string>
-    <string name="plugin_repository_changelog"><b>What\'s New</b></string>
+    <string name="plugin_repository_changelog"><b>Что нового</b></string>
     <string name="plugin_details_install">Установить</string>
     <string name="plugin_details_start_install">Установить</string>
     <string name="plugin_details_open">Открыть</string>
