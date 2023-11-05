@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Process
+import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.core.app.ActivityOptionsCompat
@@ -31,6 +32,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -39,6 +41,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.UUID
@@ -49,6 +52,7 @@ abstract class ExpandedViewModel: ViewModel() {
     abstract val overlayDrag: Flow<Unit>
     abstract val exitBus: Flow<Boolean>
 
+    abstract fun setup(isOverlay: Boolean)
     abstract fun onResume()
     abstract fun onPause()
     abstract fun setTopInset(inset: Int)
@@ -79,8 +83,9 @@ abstract class ExpandedViewModel: ViewModel() {
     abstract fun onWidgetConfigureResult(success: Boolean)
 
     sealed class State {
-        object Loading: State()
-        object Disabled: State()
+        data object Loading: State()
+        data object Disabled: State()
+        data object PermissionRequired: State()
         data class Loaded(
             val isLocked: Boolean,
             val lightStatusIcons: Boolean,
@@ -166,6 +171,8 @@ class ExpandedViewModelImpl(
     private val items = MutableSharedFlow<List<Item>>()
     private val appWidgetManager = AppWidgetManager.getInstance(context)
     private var widgetBindState: WidgetBindState? = null
+    private val isOverlay = MutableStateFlow<Boolean?>(null)
+    private val isResumed = MutableStateFlow(false)
 
     private val session = ExpandedSmartspacerSession(
         context,
@@ -177,32 +184,64 @@ class ExpandedViewModelImpl(
         this@ExpandedViewModelImpl.items.emit(items)
     }
 
+    private val hasDisplayOverOtherAppsPermission = combine(
+        isOverlay.filterNotNull(),
+        isResumed
+    ) { overlay, resumed ->
+        //If not overlay or the overlay hasn't opened yet, permission isn't required
+        if(!overlay || !resumed) return@combine true
+        Settings.canDrawOverlays(context)
+    }
+
     override val state = combine(
         settingsRepository.expandedModeEnabled.asFlow(),
         isLocked,
-        items
-    ) { expanded, locked, list ->
-        if (expanded) {
-            val search = list.filterIsInstance<Item.Search>().firstOrNull()
-            val isLightStatusBar = search?.isLightStatusBar ?: false
-            State.Loaded(locked, isLightStatusBar, list)
-        } else {
-            State.Disabled
+        items,
+        hasDisplayOverOtherAppsPermission
+    ) { expanded, locked, list, permission ->
+        when {
+            !permission && expanded -> {
+                State.PermissionRequired
+            }
+            expanded -> {
+                val search = list.filterIsInstance<Item.Search>().firstOrNull()
+                val isLightStatusBar = search?.isLightStatusBar ?: false
+                State.Loaded(locked, isLightStatusBar, list)
+            }
+            else -> {
+                State.Disabled
+            }
         }
-    }.flowOn(Dispatchers.IO).stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
+    }.flowOn(Dispatchers.IO).onEach {
+        if(it is State.PermissionRequired) {
+            settingsRepository.requiresDisplayOverOtherAppsPermission.set(true)
+        }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
 
     override val exitBus = isLocked.drop(1).mapLatest {
         it && settingsRepository.expandedCloseWhenLocked.get()
     }.filterNotNull()
 
-    override val overlayDrag = expandedRepository.overlayDragProgressChanged.map { Unit }
+    override val overlayDrag = expandedRepository.overlayDragProgressChanged.map {}
+
+    override fun setup(isOverlay: Boolean) {
+        viewModelScope.launch {
+            this@ExpandedViewModelImpl.isOverlay.emit(isOverlay)
+        }
+    }
 
     override fun onPause() {
         session.onPause()
+        viewModelScope.launch {
+            isResumed.emit(false)
+        }
     }
 
     override fun onResume() {
         session.onResume()
+        viewModelScope.launch {
+            isResumed.emit(true)
+        }
     }
 
     override fun setTopInset(inset: Int) {

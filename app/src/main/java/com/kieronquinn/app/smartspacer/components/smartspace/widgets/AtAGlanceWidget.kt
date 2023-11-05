@@ -121,10 +121,12 @@ class AtAGlanceWidget : GlanceWidget() {
         super.onAdapterConnected(smartspacerId, adapter)
         val adapterItem = adapter.getViewAt(0) ?: return
         val intent = adapterItem.onClickResponses.firstOrNull()?.response?.fillInIntent
+        val optionsIntent = adapterItem.onClickResponses.lastOrNull()?.response?.fillInIntent
         val views = adapterItem.remoteViews.load() as ViewGroup
         val state = views.getStateFromFlatView(true)?.copy(
             clickIntent = intent,
-            clickPendingIntent = adapter.adapterViewPendingIntent
+            clickPendingIntent = adapter.adapterViewPendingIntent,
+            optionsIntent = optionsIntent
         )
         atAGlance.setState(state)
         notifyChange(smartspacerId)

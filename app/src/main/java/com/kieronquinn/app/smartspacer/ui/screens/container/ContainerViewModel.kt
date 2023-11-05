@@ -25,6 +25,7 @@ abstract class ContainerViewModel(scope: CoroutineScope?): BaseViewModel(scope) 
     abstract fun setCanShowSnackbar(showSnackbar: Boolean)
     abstract fun onUpdateClicked()
     abstract fun onUpdateDismissed()
+    abstract fun showDisplayOverOtherAppsDialogIfNeeded()
 
 }
 
@@ -38,6 +39,8 @@ class ContainerViewModelImpl(
 
     private val canShowSnackbar = MutableStateFlow(false)
     private val hasDismissedSnackbar = MutableStateFlow(false)
+    private val requiresDisplayOverOtherAppsPermission =
+        settingsRepository.requiresDisplayOverOtherAppsPermission
 
     private val gitHubUpdate = flow {
         emit(updateRepository.getUpdate())
@@ -77,6 +80,14 @@ class ContainerViewModelImpl(
     override fun onUpdateDismissed() {
         vmScope.launch {
             hasDismissedSnackbar.emit(true)
+        }
+    }
+
+    override fun showDisplayOverOtherAppsDialogIfNeeded() {
+        vmScope.launch {
+            if(!requiresDisplayOverOtherAppsPermission.get()) return@launch
+            requiresDisplayOverOtherAppsPermission.set(false)
+            navigation.navigate(R.id.action_global_displayOverOtherAppsPermissionBottomSheetFragment)
         }
     }
 

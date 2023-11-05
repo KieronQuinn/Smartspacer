@@ -31,6 +31,7 @@ import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.DoorbellState
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
 import com.kieronquinn.app.smartspacer.ui.activities.permission.notification.NotificationPermissionActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.isFourByOne
 import org.koin.android.ext.android.get
@@ -301,7 +302,10 @@ class MusicTarget: SmartspacerTargetProvider() {
                 setOf(packageName)
             ),
             widget = findSuitableWidget()?.let {
-                ExpandedState.Widget(it)
+                ExpandedState.Widget(
+                    info = it,
+                    width = provideContext().getDisplayPortraitWidth()
+                )
             }
         )
     }

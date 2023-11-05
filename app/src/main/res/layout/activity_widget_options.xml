@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@android:color/darker_gray">
+
+    <LinearLayout
+        android:id="@+id/widget_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:clipToOutline="true"
+        android:outlineProvider="background"
+        android:background="@drawable/background_permission_dialog_no_colour"
+        tools:background="@drawable/background_permission_dialog"
+        tools:backgroundTint="@android:color/system_neutral2_100">
+
+        <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+            android:id="@+id/widget_options_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_settings_text_item"
+            tools:itemCount="3"
+            android:minWidth="300dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/widget_options_close"
+            style="@style/PermissionDialogButton"
+            app:cornerRadius="@dimen/margin_16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:maxWidth="300dp"
+            android:text="@string/close" />
+
+    </LinearLayout>
+
+</FrameLayout>

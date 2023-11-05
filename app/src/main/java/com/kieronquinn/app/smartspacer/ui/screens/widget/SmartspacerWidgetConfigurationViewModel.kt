@@ -33,6 +33,7 @@ abstract class SmartspacerWidgetConfigurationViewModel(scope: CoroutineScope?): 
     abstract fun onPageSingleClicked()
     abstract fun onPageControlsClicked()
     abstract fun onPageNoControlsClicked()
+    abstract fun onAnimateChanged(enabled: Boolean)
     abstract fun onColourAutomaticClicked()
     abstract fun onColourWhiteClicked()
     abstract fun onColourBlackClicked()
@@ -129,6 +130,13 @@ class SmartspacerWidgetConfigurationViewModelImpl(
         }
     }
 
+    override fun onAnimateChanged(enabled: Boolean) {
+        vmScope.launch {
+            val current = appWidget.value ?: return@launch
+            appWidget.emit(current.copy(animate = enabled))
+        }
+    }
+
     override fun onColourAutomaticClicked() {
         vmScope.launch {
             val current = appWidget.value ?: return@launch
@@ -166,7 +174,8 @@ class SmartspacerWidgetConfigurationViewModelImpl(
                 current.surface,
                 current.tintColour,
                 current.multiPage,
-                current.showControls
+                current.showControls,
+                current.animate
             )
             closeBus.emit(Unit)
         }

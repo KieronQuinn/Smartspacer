@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.1.1'
-def tagCode = 111
+def tagName = '1.2'
+def tagCode = 120
 
 android {
     compileSdk 34
@@ -155,6 +155,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
+
+    //Xposed for Discover replacement
+    compileOnly("de.robv.android.xposed:api:82")
 
     androidTestImplementation 'androidx.test:core-ktx:1.5.0'
     androidTestImplementation 'androidx.test:rules:1.5.0'

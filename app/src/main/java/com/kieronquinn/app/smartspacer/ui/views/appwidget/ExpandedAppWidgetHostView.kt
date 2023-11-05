@@ -4,10 +4,19 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.view.ViewGroup
+import android.widget.RemoteViewsHidden
 import androidx.core.os.bundleOf
 import com.kieronquinn.app.smartspacer.ui.views.RoundedCornersEnforcingAppWidgetHostView
 
-class ExpandedAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWidgetHostView(context) {
+class ExpandedAppWidgetHostView: RoundedCornersEnforcingAppWidgetHostView {
+
+    constructor(context: Context): super(context)
+    constructor(
+        context: Context, interactionHandler: RemoteViewsHidden.InteractionHandler
+    ): super(context, interactionHandler)
+    constructor(
+        context: Context, onClickHandler: RemoteViewsHidden.OnClickHandler
+    ): super(context, onClickHandler)
 
     private val appWidgetManager = AppWidgetManager.getInstance(context.applicationContext)
     private var widgetWidth = 0

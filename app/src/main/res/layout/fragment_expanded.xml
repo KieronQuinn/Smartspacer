@@ -81,6 +81,57 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="expanded_disabled_icon,expanded_disabled_title,expanded_disabled_button" />
 
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/expanded_permission">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_16">
+
+            <ImageView
+                android:id="@+id/expanded_permission_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_permissions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/expanded_permission_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:text="@string/expanded_permission_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+                android:textColor="?android:textColorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/expanded_permission_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/expanded_permission_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="4dp"
+                android:text="@string/expanded_permission_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/expanded_permission_icon"
+                app:layout_constraintTop_toBottomOf="@id/expanded_permission_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
     <FrameLayout
         android:id="@+id/expanded_unlock_container"
         android:layout_width="match_parent"

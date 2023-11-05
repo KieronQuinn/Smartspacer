@@ -15,25 +15,14 @@ import android.widget.RemoteViews
 import android.widget.RemoteViews.RemoteCollectionItems
 import android.widget.RemoteViews.RemoteResponse
 import android.widget.RemoteViewsHidden
-import android.widget.RemoteViewsHidden.InteractionHandler
-import android.widget.RemoteViewsHidden.OnClickHandler
 import androidx.annotation.RequiresApi
 import com.kieronquinn.app.smartspacer.providers.SmartspacerWidgetProxyContentProvider.Companion.createSmartspacerWidgetProxyUri
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
-import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener.Companion.launchAction
+import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import dev.rikka.tools.refine.Refine
 import java.lang.reflect.Field
 import java.util.concurrent.CompletableFuture
-import kotlin.Any
-import kotlin.Boolean
-import kotlin.Int
 import kotlin.Pair
-import kotlin.String
-import kotlin.Suppress
-import kotlin.apply
-import kotlin.getValue
-import kotlin.lazy
-import kotlin.let
 import android.os.Parcelable as RemoteViewsAction
 import android.util.Pair as AndroidPair
 
@@ -212,22 +201,25 @@ fun RemoteViews.apply(
     interactionListener: SmartspaceTargetInteractionListener
 ): View {
     return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        val handler = InteractionHandler { view, pendingIntent, response ->
-            interactionListener.launchAction(pendingIntent?.isActivity ?: true) {
-                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }
-            true
-        }
+        val handler = interactionListener
+            .getInteractionHandler(null, interactionListener.shouldTrampolineLaunches())
         Refine.unsafeCast<RemoteViewsHidden>(this).apply(context, parent, handler)
     }else{
-        val handler = OnClickHandler { view, pendingIntent, response ->
-            interactionListener.launchAction(true) {
-                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }
-            true
-        }
+        val handler = interactionListener
+            .getOnClickHandler(null, interactionListener.shouldTrampolineLaunches())
         Refine.unsafeCast<RemoteViewsHidden>(this).apply(context, parent, handler)
     }
+}
+
+fun RemoteViews_trampolinePendingIntent(
+    view: View,
+    pendingIntent: PendingIntent,
+    options: AndroidPair<Intent, ActivityOptions>
+): Boolean {
+    OverlayTrampolineActivity.trampoline(
+        view.context, pendingIntent, options.second, options.first
+    )
+    return true
 }
 
 fun RemoteViews_startPendingIntent(

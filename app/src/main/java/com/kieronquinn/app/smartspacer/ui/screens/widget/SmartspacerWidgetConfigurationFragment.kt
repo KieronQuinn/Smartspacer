@@ -24,12 +24,18 @@ import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.screens.widget.SmartspacerWidgetConfigurationViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
+import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerWidgetConfigurationBinding>(FragmentSmartspacerWidgetConfigurationBinding::inflate), BackAvailable, LockCollapsed {
+
+    companion object {
+        const val EXTRA_CALLING_PACKAGE = "calling_package"
+    }
 
     private val viewModel by viewModel<SmartspacerWidgetConfigurationViewModel>()
 
@@ -48,12 +54,14 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
         setupPageControlsCard()
         setupPageNoControlsCard()
         setupColourAutomaticCard()
+        setupAnimateCard()
         setupColourWhiteCard()
         setupColourBlackCard()
         setupHomeButton()
         setupHomeRadioButton()
         setupLockButton()
         setupLockRadioButton()
+        setupAnimateSwitch()
         setupColourAutomaticButton()
         setupColourAutomaticRadioButton()
         setupColourWhiteButton()
@@ -81,9 +89,10 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
-        val calling = requireActivity().callingPackage ?: ""
+        val calling = requireActivity().callingPackage
+            ?: getFallbackCallingPackage() ?: ""
         if(appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID){
-            requireActivity().setResult(Activity.RESULT_CANCELED)
+            requireActivity().setResult(Activity.RESULT_CANCELED, Intent())
             requireActivity().finish()
             return
         }
@@ -96,6 +105,13 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
             showControls = true
         )
         viewModel.setupWithAppWidget(appWidget)
+    }
+
+    private fun getFallbackCallingPackage() = with(requireActivity().intent) {
+        if(hasExtra(EXTRA_CALLING_PACKAGE)) {
+            verifySecurity()
+            getStringExtra(EXTRA_CALLING_PACKAGE)
+        }else null
     }
 
     private fun setupScroll() = with(binding.smartspacerWidgetConfigurationScroll) {
@@ -179,6 +195,11 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
         backgroundTintList = ColorStateList.valueOf(background)
     }
 
+    private fun setupAnimateCard() = with(binding.smartspacerWidgetConfigurationAnimateCard) {
+        val background = monet.getPrimaryColor(context, !context.isDarkMode)
+        backgroundTintList = ColorStateList.valueOf(background)
+    }
+
     private fun setupHomeButton() = with(binding.smartspacerWidgetConfigurationTypeHome) {
         whenResumed {
             onClicked().collect {
@@ -210,6 +231,30 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
             onClicked().collect {
                 viewModel.onLockClicked()
             }
+        }
+    }
+
+    private fun setupAnimateSwitch() = with(binding.smartspacerWidgetConfigurationAnimateSetting) {
+        itemSettingsSwitchTitle.setText(R.string.widget_configuration_animation_switch_title)
+        itemSettingsSwitchContent.setText(R.string.widget_configuration_animation_switch_content)
+        itemSettingsSwitchContent.isVisible = true
+        itemSettingsSwitchSpace.isVisible = true
+        itemSettingsSwitchIcon.isVisible = false
+        itemSettingsSwitchSwitch.setOnCheckedChangeListener(null)
+        itemSettingsSwitchSwitch.isEnabled = true
+        itemSettingsSwitchSwitch.applyMonet()
+        root.run {
+            background = null
+            isClickable = false
+            isFocusable = false
+        }
+        whenResumed {
+            itemSettingsSwitchSwitch.onChanged().collect {
+                viewModel.onAnimateChanged(it)
+            }
+        }
+        binding.smartspacerWidgetConfigurationAnimateRoot.setOnClickListener {
+            itemSettingsSwitchSwitch.toggle()
         }
     }
 
@@ -331,7 +376,7 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
                 binding.smartspacerWidgetConfigurationApply.isVisible = false
             }
             is State.Close -> {
-                requireActivity().setResult(Activity.RESULT_CANCELED)
+                requireActivity().setResult(Activity.RESULT_CANCELED, Intent())
                 requireActivity().finish()
             }
             is State.Loaded -> {
@@ -344,6 +389,8 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
                     state.appWidget.surface == UiSurface.HOMESCREEN
                 binding.smartspacerWidgetConfigurationTypeLockRadio.isChecked =
                     state.appWidget.surface == UiSurface.LOCKSCREEN
+                binding.smartspacerWidgetConfigurationAnimateSetting.itemSettingsSwitchSwitch
+                    .isChecked = state.appWidget.animate
                 binding.smartspacerWidgetConfigurationColourAutomaticRadio.isChecked =
                     state.appWidget.tintColour == TintColour.AUTOMATIC
                 binding.smartspacerWidgetConfigurationColourWhiteRadio.isChecked =
@@ -377,7 +424,7 @@ class SmartspacerWidgetConfigurationFragment: BoundFragment<FragmentSmartspacerW
         whenResumed {
             viewModel.closeBus.collect {
                 requireActivity().let {
-                    it.setResult(Activity.RESULT_OK)
+                    it.setResult(Activity.RESULT_OK, Intent())
                     it.finish()
                 }
             }

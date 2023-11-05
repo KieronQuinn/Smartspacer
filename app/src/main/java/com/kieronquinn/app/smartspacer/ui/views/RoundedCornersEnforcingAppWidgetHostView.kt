@@ -7,11 +7,21 @@ import android.graphics.Rect
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.AppWidgetHostViewHidden
+import android.widget.RemoteViewsHidden.InteractionHandler
+import android.widget.RemoteViewsHidden.OnClickHandler
 import androidx.core.view.setPadding
 import com.kieronquinn.app.smartspacer.utils.appwidget.RoundedCornerEnforcement
 import com.kieronquinn.app.smartspacer.utils.extensions.setRecursiveLongClickListener
 
-open class RoundedCornersEnforcingAppWidgetHostView(context: Context): AppWidgetHostViewHidden(context) {
+open class RoundedCornersEnforcingAppWidgetHostView: AppWidgetHostViewHidden {
+
+    constructor(context: Context): super(context)
+    constructor(
+        context: Context, interactionHandler: InteractionHandler
+    ): super(context, interactionHandler)
+    constructor(
+        context: Context, onClickHandler: OnClickHandler
+    ): super(context, onClickHandler)
 
     private val mEnforcedRectangle: Rect = Rect()
     private var mEnforcedCornerRadius = RoundedCornerEnforcement.computeEnforcedRadius(getContext())

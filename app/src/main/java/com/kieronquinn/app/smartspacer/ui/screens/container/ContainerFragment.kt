@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.container
 
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDestination
@@ -77,6 +78,13 @@ class ContainerFragment: BaseContainerFragment<FragmentContainerBinding>(Fragmen
         setupUpdateBadge()
         setupUpdateSnackbar()
         setupPluginRepository()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(!Settings.canDrawOverlays(requireContext())) {
+            viewModel.showDisplayOverOtherAppsDialogIfNeeded()
+        }
     }
 
     private fun setupPluginRepository() {

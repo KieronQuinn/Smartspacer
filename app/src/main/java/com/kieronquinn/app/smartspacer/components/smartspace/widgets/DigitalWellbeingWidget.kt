@@ -29,7 +29,7 @@ class DigitalWellbeingWidget: SmartspacerWidgetProvider() {
         private const val ID_APP1_NAME = "com.google.android.apps.wellbeing:id/app1_name"
         private const val ID_APP2_TIME = "com.google.android.apps.wellbeing:id/app2_time"
         private const val ID_APP2_NAME = "com.google.android.apps.wellbeing:id/app2_name"
-        private const val ID_APP3_TIME = "com.google.android.apps.wellbeing:id/app2_time"
+        private const val ID_APP3_TIME = "com.google.android.apps.wellbeing:id/app3_time"
         private const val ID_APP3_NAME = "com.google.android.apps.wellbeing:id/app3_name"
 
         fun getProviderInfo(): AppWidgetProviderInfo? {

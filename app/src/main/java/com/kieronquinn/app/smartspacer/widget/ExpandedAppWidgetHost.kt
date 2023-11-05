@@ -7,7 +7,9 @@ import android.content.Context
 import android.content.IntentSender
 import android.widget.SmartspacerAppWidgetHost
 import android.widget.SmartspacerAppWidgetHostCompat
+import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
+import com.kieronquinn.app.smartspacer.utils.extensions.getInteractionHandler
 
 class ExpandedAppWidgetHost {
 
@@ -47,12 +49,17 @@ class ExpandedAppWidgetHost {
 
         private val impl = ExpandedAppWidgetHost()
 
+        @SuppressLint("NewApi")
         override fun createView(
             context: Context,
             appWidgetId: Int,
             id: String,
-            appWidget: AppWidgetProviderInfo?
+            appWidget: AppWidgetProviderInfo?,
+            listener: SmartspaceTargetInteractionListener
         ): AppWidgetHostView {
+            val handler = listener
+                .getInteractionHandler(appWidgetId, listener.shouldTrampolineLaunches())
+            setInteractionHandler(handler)
             return super.createView(context, appWidgetId, appWidget)
         }
 
@@ -95,9 +102,9 @@ interface AppWidgetHost {
         context: Context,
         appWidgetId: Int,
         id: String,
-        appWidget: AppWidgetProviderInfo?
+        appWidget: AppWidgetProviderInfo?,
+        listener: SmartspaceTargetInteractionListener
     ): AppWidgetHostView
-
     fun destroyView(view: ExpandedAppWidgetHostView)
     fun allocateAppWidgetId(): Int
     fun deleteAppWidgetId(appWidgetId: Int)

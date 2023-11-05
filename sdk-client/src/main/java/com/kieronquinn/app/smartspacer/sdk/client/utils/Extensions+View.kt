@@ -39,7 +39,13 @@ fun View.setOnClick(
             action.pendingIntent != null -> {
                 {
                     try {
-                        action.pendingIntent?.sendSafely()
+                        val pendingIntent = action.pendingIntent
+                        if(interactionListener?.shouldTrampolineLaunches() == true
+                            && pendingIntent != null) {
+                            interactionListener.trampolineLaunch(pendingIntent)
+                        }else{
+                            action.pendingIntent?.sendSafely()
+                        }
                     } catch (e: Exception) {
                         interactionListener?.onInteraction(target, action.id.toString())
                     }
@@ -82,7 +88,13 @@ fun View.setOnClick(
             action.pendingIntent != null && !action.skipPendingIntent -> {
                 {
                     try {
-                        action.pendingIntent?.sendSafely()
+                        val pendingIntent = action.pendingIntent
+                        if(interactionListener?.shouldTrampolineLaunches() == true
+                            && pendingIntent != null) {
+                            interactionListener.trampolineLaunch(pendingIntent)
+                        }else{
+                            action.pendingIntent?.sendSafely()
+                        }
                     } catch (e: Exception) {
                         interactionListener?.onInteraction(target, action.id)
                     }

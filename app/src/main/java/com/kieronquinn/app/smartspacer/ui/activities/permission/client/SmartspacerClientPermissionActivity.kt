@@ -23,6 +23,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
+import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.android.ext.android.inject
 import java.util.UUID
@@ -73,10 +74,14 @@ class SmartspacerClientPermissionActivity: BoundActivity<ActivityPermissionSmart
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         intent.verifySecurity()
-        setupMonet()
-        setupTitle()
-        setupAllow()
-        setupDeny()
+        whenCreated {
+            monet.awaitMonetReady()
+            setupMonet()
+            setupMonet()
+            setupTitle()
+            setupAllow()
+            setupDeny()
+        }
     }
 
     private fun setupMonet(){

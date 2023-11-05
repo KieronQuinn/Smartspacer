@@ -231,6 +231,7 @@ class PluginDetailsFragment: BoundFragment<FragmentPluginDetailsBinding>(Fragmen
 
     private fun setupWithPlugin(state: State.Loaded) = with(binding) {
         val remote = state.remote as RemotePluginInfo.UpdateJson
+        state.viewState
         if(remote.icon != null){
             glide.load(remote.icon).transition(withCrossFade())
                 .transform(SystemIconShapeTransformation()).into(pluginDetailsIcon)
@@ -245,6 +246,34 @@ class PluginDetailsFragment: BoundFragment<FragmentPluginDetailsBinding>(Fragmen
         pluginDetailsAuthor.text = state.plugin.author
         pluginDetailsDescription.text = markwon.toMarkdown(state.remote.description)
         pluginDetailsDescription.movementMethod = BetterLinkMovementMethod.getInstance()
+        if(!state.remote.changelog.isNullOrEmpty()) {
+            if((state.viewState as? PluginViewState.Installed)?.upToDate == false) {
+                //Show Changelog before description
+                pluginDetailsWhatsNew.isVisible = false
+                pluginDetailsChangelog.isVisible = true
+                pluginDetailsChangelog.text = markwon.toMarkdown(state.remote.changelog)
+                    .formatChangelog()
+                pluginDetailsChangelog.movementMethod = BetterLinkMovementMethod.getInstance()
+            }else{
+                //Show Changelog after description
+                pluginDetailsChangelog.isVisible = false
+                pluginDetailsWhatsNew.isVisible = true
+                pluginDetailsWhatsNew.text = markwon.toMarkdown(state.remote.changelog)
+                    .formatChangelog()
+                pluginDetailsWhatsNew.movementMethod = BetterLinkMovementMethod.getInstance()
+            }
+        }else{
+            //No Changelog to show
+            pluginDetailsWhatsNew.isVisible = false
+            pluginDetailsChangelog.isVisible = false
+        }
+    }
+
+    private fun CharSequence.formatChangelog(): CharSequence {
+        return SpannableStringBuilder().apply {
+            appendLine(getText(R.string.plugin_repository_changelog))
+            append(this@formatChangelog)
+        }
     }
 
     override fun getTitle(): CharSequence {

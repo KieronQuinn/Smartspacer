@@ -2,6 +2,7 @@ package android.appwidget;
 
 import android.content.Context;
 import android.widget.RemoteViews;
+import android.widget.RemoteViewsHidden.InteractionHandler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,13 @@ public class AppWidgetHostHidden extends AppWidgetHost {
      * @param appWidgetId The ID of the app widget for which the listener is to be deleted
      */
     public void removeListener(int appWidgetId) {
+        throw new RuntimeException("Stub!");
+    }
+
+    /**
+     * Set the host's interaction handler.
+     */
+    public void setInteractionHandler(InteractionHandler interactionHandler) {
         throw new RuntimeException("Stub!");
     }
 

@@ -104,6 +104,10 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.configuration.appwidget.SmartspacerAppWidgetConfigureActivity",
             R.navigation.nav_graph_configure_widget
         ),
+        NATIVE_RECONNECT(
+            ".ui.activities.NativeReconnectActivity",
+            R.navigation.nav_graph_native_reconnect
+        ),
     }
 
 }

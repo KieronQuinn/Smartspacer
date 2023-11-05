@@ -20,4 +20,13 @@
     <action
         android:id="@+id/action_global_updateFragment"
         app:destination="@id/updateFragment" />
+    <dialog
+        android:id="@+id/displayOverOtherAppsPermissionBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.permission.DisplayOverOtherAppsPermissionBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_permission_display_over_other_apps"/>
+    <action
+        android:id="@+id/action_global_displayOverOtherAppsPermissionBottomSheetFragment"
+        app:destination="@id/displayOverOtherAppsPermissionBottomSheetFragment"
+        app:launchSingleTop="true" />
 </navigation>

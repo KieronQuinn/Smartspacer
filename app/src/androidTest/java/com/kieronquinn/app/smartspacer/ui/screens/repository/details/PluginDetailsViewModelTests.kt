@@ -47,6 +47,7 @@ class PluginDetailsViewModelTests: BaseTest<PluginDetailsViewModel>() {
             return RemotePluginInfo.UpdateJson(
                 randomString(),
                 randomString(),
+                randomString(),
                 emptyList(),
                 randomString(),
                 randomString(),

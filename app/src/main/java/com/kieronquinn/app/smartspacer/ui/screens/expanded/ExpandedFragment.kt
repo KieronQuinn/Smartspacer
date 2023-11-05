@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded
 import android.app.Activity
 import android.app.KeyguardManager
 import android.app.KeyguardManager.KeyguardDismissCallback
+import android.app.PendingIntent
 import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
 import android.content.Context
@@ -52,6 +53,7 @@ import com.kieronquinn.app.smartspacer.sdk.utils.getParcelableCompat
 import com.kieronquinn.app.smartspacer.sdk.utils.shouldExcludeFromSmartspacer
 import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
+import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.State
@@ -195,6 +197,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         setupDisabledButton()
         setupClose()
         handleLaunchActionIfNeeded()
+        viewModel.setup(isOverlay)
     }
 
     override fun onDestroyView() {
@@ -217,6 +220,9 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             monet.getAccentColor(requireContext())
         )
         binding.expandedDisabledButton.applyMonet()
+        binding.expandedPermission.backgroundTintList = ColorStateList.valueOf(
+            monet.getBackgroundColor(requireContext())
+        )
     }
 
     private fun setupInsets() = with(binding) {
@@ -291,18 +297,28 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 binding.expandedRecyclerView.isVisible = false
                 binding.expandedUnlockContainer.isVisible = false
                 binding.expandedDisabled.isVisible = false
+                binding.expandedPermission.isVisible = false
             }
             is State.Disabled -> {
                 binding.expandedLoading.isVisible = false
                 binding.expandedRecyclerView.isVisible = false
                 binding.expandedUnlockContainer.isVisible = false
                 binding.expandedDisabled.isVisible = true
+                binding.expandedPermission.isVisible = false
+            }
+            is State.PermissionRequired -> {
+                binding.expandedLoading.isVisible = false
+                binding.expandedRecyclerView.isVisible = false
+                binding.expandedUnlockContainer.isVisible = false
+                binding.expandedDisabled.isVisible = false
+                binding.expandedPermission.isVisible = true
             }
             is State.Loaded -> {
                 binding.expandedLoading.isVisible = false
                 binding.expandedRecyclerView.isVisible = true
                 binding.expandedUnlockContainer.isVisible = state.isLocked && !isOverlay
                 binding.expandedDisabled.isVisible = false
+                binding.expandedPermission.isVisible = false
                 setStatusBarLight(state.lightStatusIcons)
                 adapter.submitList(state.items) {
                     whenResumed {
@@ -698,6 +714,12 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         lastSwipe = System.currentTimeMillis()
         popup?.dismiss()
         popup = null
+    }
+
+    override fun shouldTrampolineLaunches(): Boolean = isOverlay
+
+    override fun trampolineLaunch(pendingIntent: PendingIntent) {
+        OverlayTrampolineActivity.trampoline(requireContext(), pendingIntent)
     }
 
     private fun getAndClearOverlayAction(): OpenFromOverlayAction? {

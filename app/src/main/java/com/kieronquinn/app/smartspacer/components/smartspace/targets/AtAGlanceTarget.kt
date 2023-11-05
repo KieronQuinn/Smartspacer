@@ -15,6 +15,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate
+import com.kieronquinn.app.smartspacer.ui.activities.AtAGlanceAboutActivity
 import com.kieronquinn.app.smartspacer.ui.activities.TrampolineActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
 import org.koin.android.ext.android.inject
@@ -46,7 +47,11 @@ class AtAGlanceTarget: SmartspacerTargetProvider() {
                 subtitle = Text(state.subtitle),
                 icon = Icon(AndroidIcon.createWithBitmap(state.icon)),
                 onClick = TapAction(pendingIntent = click)
-            ).create()
+            ).create().apply {
+                if(state.optionsIntent != null) {
+                    aboutIntent = AtAGlanceAboutActivity.createIntent(provideContext())
+                }
+            }
         )
     }
 
