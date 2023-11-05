@@ -156,7 +156,7 @@ class MusicTarget: SmartspacerTargetProvider() {
                 loadTargetWithoutArt(settings)
             }
         }.also {
-            it?.expandedState = getExpandedState()
+            it?.expandedState = getExpandedState(smartspacerId)
         }
     }
 
@@ -296,7 +296,7 @@ class MusicTarget: SmartspacerTargetProvider() {
      *  Finds a suitable app widget (4x1) and shows it and any app shortcuts for this app in the
      *  expanded state.
      */
-    private fun MediaContainer.getExpandedState(): ExpandedState {
+    private fun MediaContainer.getExpandedState(id: String): ExpandedState {
         return ExpandedState(
             appShortcuts = ExpandedState.AppShortcuts(
                 setOf(packageName)
@@ -304,6 +304,7 @@ class MusicTarget: SmartspacerTargetProvider() {
             widget = findSuitableWidget()?.let {
                 ExpandedState.Widget(
                     info = it,
+                    id = id,
                     width = provideContext().getDisplayPortraitWidth()
                 )
             }
