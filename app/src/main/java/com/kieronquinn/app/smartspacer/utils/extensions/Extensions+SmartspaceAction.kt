@@ -147,3 +147,15 @@ fun List<SystemSmartspaceAction>?.equalsCompat(other: Any?): Boolean {
 fun SmartspaceAction.shouldShowOnSurface(surface: UiSurface): Boolean {
     return limitToSurfaces.isEmpty() || limitToSurfaces.contains(surface)
 }
+
+/**
+ *  Removes potentially unblobable data such as icons from the action to go into the
+ *  pending intent
+ */
+fun SmartspaceAction.stripData(): SmartspaceAction {
+    return copy(
+        icon = null,
+        extras = Bundle.EMPTY,
+        subItemInfo = null
+    )
+}
