@@ -25,6 +25,7 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositor
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
+import com.kieronquinn.app.smartspacer.utils.extensions.stripData
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -126,7 +127,7 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         )
         container.setImageViewImageTintListCompat(R.id.widget_smartspacer_next, iconColour)
         val kebabPendingIntent = WidgetOptionsMenuActivity.getIntent(
-            this, state.page.holder.page, appWidgetId, owner
+            this, state.page.holder.page.stripData(), appWidgetId, owner
         ).let {
             PendingIntent.getActivity(
                 this,
