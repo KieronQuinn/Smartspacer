@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Aktiviere dieses Modul auf deinem Launcher oder der Google Feed Bridge des Launchers, um Google Discover durch erweiterte Smartspace zu ersetzen</string>
     <string name="dummy_home_content">Dieser Bildschirm existiert, um schlecht implementierte Widgets von Smartspacer Plugins zu umgehen.\n\nSmartspacer kann nicht als launcher fungieren, bitte wähle einen anderen launcher aus.</string>
     <string name="dummy_home_open_settings">Einstellungen öffnen</string>
     <string name="notification_service">Smartspacer Benachrichtigungsdienst</string>
