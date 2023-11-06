@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
+    <string name="xposed_desc"><b>可选</b>: 启用这个模块并将作用域设置为您的启动器或启动器的 Google Feed 提供组件可以将 Google Feed 页面替换为 Expanded Smartspace。</string>
     <string name="dummy_home_content">该页面用于在 Smartspacer 扩展中应用效果不佳的小组件。\n\nSmartspacer 不能作为启动器使用，请选择其他启动器。</string>
     <string name="dummy_home_open_settings">打开设置</string>
     <string name="notification_service">Smartspacer 通知服务</string>
@@ -55,7 +55,7 @@
     <string name="widget_configuration_page_controls_content">允许你根据需要配置包含多个对象和附件的页面，可通过箭头按钮在页面间切换（按钮 &amp; 页面提示将在只有一个页面时隐藏）</string>
     <string name="widget_configuration_page_no_controls_title">无箭头按钮的分页</string>
     <string name="widget_configuration_page_no_controls_content">与分页模式相同，但没有箭头提示。点击圆点提示符来在不同页面间切换，抵达最后一页时会自动循环至首页。</string>
-    <string name="widget_configuration_animation">Animation</string>
+    <string name="widget_configuration_animation">动画效果</string>
     <string name="widget_configuration_animation_switch_title">Animate Changes</string>
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">颜色</string>
