@@ -260,7 +260,7 @@
     <string name="feedback_loop_relaunch_wait">Espera %1s segundos</string>
     <string name="feedback_loop_relaunch">Reiniciar Smartspacer</string>
     <string name="configuration_notification_enable_title">Habilitar acceso a notificaciones</string>
-    <string name="configuration_notification_enable_content">Permite el acceso de Smartspacer a las notificaciones &amp; del dispositivo en la configuración del sistema</string>
+    <string name="configuration_notification_enable_content">Permite el acceso de Smartspacer a las notificaciones del dispositivo en la configuración del sistema</string>
     <string name="configuration_notification_enable_button">Permitir acceso a las notificaciones</string>
     <string name="configuration_accessibility_enable_title">Activar Servicio de Accesibilidad</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
@@ -538,7 +538,7 @@
     <string name="notification_native_mode_enable_dismiss">No mostrar de nuevo</string>
     <string name="notification_native_mode_enable_now">Activar ahora</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
+    <string name="notification_native_mode_restart_title">Reconectar Smartspace nativo</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
@@ -686,8 +686,8 @@
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
     <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
     <string name="battery_optimisation_footer_link">Learn More</string>
-    <string name="plugin_repository_tab_installed">Installed</string>
-    <string name="plugin_repository_tab_available">Available</string>
+    <string name="plugin_repository_tab_installed">Instaladas</string>
+    <string name="plugin_repository_tab_available">Disponibles</string>
     <string name="plugin_repository_empty_title_not_found">Not Found</string>
     <string name="plugin_repository_empty_subtitle_not_found">No se encontraron extensiones que coincidan con este término de búsqueda</string>
     <string name="plugin_repository_empty_title_empty">No hay extensiones cargadas</string>
@@ -697,9 +697,9 @@
     <string name="plugin_repository_empty_subtitle_browse">Aún no tienes ninguna extensión instalada.</string>
     <string name="plugin_repository_empty_button_browse">Explorar extensiones</string>
     <string name="plugin_repository_update_available">¡Actualización disponible!</string>
-    <string name="plugin_repository_recommended">Recommended for:</string>
+    <string name="plugin_repository_recommended">Recomendada para:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
-    <string name="plugin_details_install">Install</string>
+    <string name="plugin_details_install">Instalar</string>
     <string name="plugin_details_start_install">Start Install</string>
     <string name="plugin_details_open">Open</string>
     <string name="plugin_details_update">Update</string>
@@ -912,7 +912,7 @@
     <string name="target_blank_settings_title">Configuración</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Gmail Complication -->
-    <string name="complication_gmail_label">Gmail Unread</string>
+    <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
     <string name="complication_gmail_description_filled_one">Show the number of unread Gmail emails at %1s in %1d label</string>
     <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
@@ -925,17 +925,17 @@
     <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS no leídos</string>
-    <string name="complication_sms_description">Show the number of unread SMS/RCS messages</string>
+    <string name="complication_sms_description">Muestra el número de mensajes SMS/RCS no leídos</string>
     <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Llamadas perdidas</string>
-    <string name="complication_missed_calls_description">Show the number of missed calls</string>
+    <string name="complication_missed_calls_description">Muestra el número de llamadas perdidas</string>
     <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
     <!-- Next Alarm Complication -->
     <string name="complication_alarm_label">Siguiente alarma</string>
     <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
-    <string name="complication_blank_title">Blank Complication</string>
-    <string name="complication_blank_content">Useful for minimal setups or spacers</string>
+    <string name="complication_blank_title">Complicación vacía</string>
+    <string name="complication_blank_content">Útil para configuraciones mínimas o espaciadores</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Recent App</string>
     <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
