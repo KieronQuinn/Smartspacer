@@ -368,7 +368,7 @@
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opción requiere Modo mejorado</string>
-    <string name="settings_targets_complications">Targets &amp; Complications</string>
+    <string name="settings_targets_complications">Objetivos y complicaciones</string>
     <string name="settings_plugins">Extensiones</string>
     <string name="settings_options">Opciones</string>
     <string name="settings_enable_update_check_title">Buscar actualizaciones automáticamente</string>
@@ -377,7 +377,7 @@
     <string name="settings_enable_analytics_content">Permite enviar informes de bloqueos anónimos y estadísticas básicas a Firebase, para ayudar a corregir errores</string>
     <string name="settings_hide_sensitive_contents_title">Ocultar objetivos sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Ocultar contenido sensible</string>
-    <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
+    <string name="settings_hide_sensitive_contents_content">Ocultar objetivos en la pantalla de bloqueo que hayan sido marcados como sensibles: %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">No ocultar</string>
     <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Ocultar contenidos</string>
@@ -820,7 +820,7 @@
     <string name="libraries">Librerías de terceros</string>
     <string name="donate">Donar</string>
     <string name="twitter">Sígueme en X</string>
-    <string name="about_version">Versión %1s\nCreada por Kieron Quinn</string>
+    <string name="about_version">Versión %1s\nCreado por Kieron Quinn</string>
     <string name="about_contributors">Contribuidores</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Íconos</string>
