@@ -56,8 +56,8 @@
     <string name="widget_configuration_page_no_controls_title">Paginado sin botones de flechas</string>
     <string name="widget_configuration_page_no_controls_content">Igual que el paginado, pero sin las flechas. Pulsa los indicadores para pasar a la siguiente página, volviendo a la primera página una vez que se alcance el final.</string>
     <string name="widget_configuration_animation">Animación</string>
-    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
-    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
+    <string name="widget_configuration_animation_switch_title">Animar los cambios</string>
+    <string name="widget_configuration_animation_switch_content">Desvanecer entre los cambios al widget siempre que sea posible</string>
     <string name="widget_configuration_colour">Color</string>
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar widget</string>
@@ -218,7 +218,7 @@
     <string name="target_edit_requirements_content_both">%1d cualquier y %1d todas las condiciones configuradas</string>
     <string name="target_edit_external_title">Más configuraciones</string>
     <string name="target_edit_external_content">Configurar más ajustes en %1s</string>
-    <string name="target_edit_external_error">Failed to launch settings for this Target</string>
+    <string name="target_edit_external_error">Error al iniciar la configuración para este objetivo</string>
     <string name="complication_edit_title">Editar complicación</string>
     <string name="complication_edit_target_header">Complicación</string>
     <string name="complication_edit_show_on_home_title">Mostrar en pantalla principal</string>
@@ -264,7 +264,7 @@
     <string name="configuration_notification_enable_button">Permitir acceso a las notificaciones</string>
     <string name="configuration_accessibility_enable_title">Activar Servicio de Accesibilidad</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
-    <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
+    <string name="configuration_accessibility_enable_button">Activar servicio de accesibilidad</string>
     <string name="target_notification_configuration_title">Ajustes de notificaciones</string>
     <string name="target_notification_configuration_content">Elegir que aplicación y canales mostrar notificaciones</string>
     <string name="configuration_notification_association_title">Otorgar permisos</string>
@@ -344,10 +344,10 @@
     <string name="requirement_app_prediction_content">Only show when %1s is in the top 5 suggestions</string>
     <string name="requirement_app_prediction_generic_label">Aplicación desconocida</string>
     <string name="requirement_app_prediction_incompatible">Esta regla no es compatible con tu dispositivo, ya que no tiene el servicio de predicción de aplicaciones del sistema</string>
-    <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
+    <string name="requirement_app_prediction_enhanced">Esta regla requiere de modo mejorado, actívalo desde configuración</string>
     <string name="requirement_app_prediction_configuration_title">Seleccionar aplicación</string>
     <string name="permission_dialog_widget_title_prefix">Permitir</string>
-    <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
+    <string name="permission_dialog_widget_title_suffix">para acceder a los widgets usando Smartspace?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
     <string name="permission_dialog_widget_title_unknown">Desconocido</string>
     <string name="permission_dialog_widget_allow_once">Permitir solo esta vez</string>
@@ -366,27 +366,27 @@
     <string name="settings_enhanced_content_unsupported">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_title">Smartspace nativo</string>
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
-    <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
+    <string name="settings_native_smartspace_settings_content_incompatible">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opción requiere Modo mejorado</string>
     <string name="settings_targets_complications">Objetivos y complicaciones</string>
     <string name="settings_plugins">Extensiones</string>
     <string name="settings_options">Opciones</string>
     <string name="settings_enable_update_check_title">Buscar actualizaciones automáticamente</string>
-    <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
+    <string name="settings_enable_update_check_content">Comprobar automáticamente las actualizaciones de Smartspacer y mostrar una notificación si una está disponible</string>
     <string name="settings_enable_analytics_title">Usar estadísticas e informe de fallos</string>
     <string name="settings_enable_analytics_content">Permite enviar informes de bloqueos anónimos y estadísticas básicas a Firebase, para ayudar a corregir errores</string>
     <string name="settings_hide_sensitive_contents_title">Ocultar objetivos sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Ocultar contenido sensible</string>
     <string name="settings_hide_sensitive_contents_content">Ocultar objetivos en la pantalla de bloqueo que hayan sido marcados como sensibles: %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">No ocultar</string>
-    <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
+    <string name="settings_hide_sensitive_contents_disabled_content">Mostrar siempre los objetivos y su contenido</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Ocultar contenidos</string>
-    <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
+    <string name="settings_hide_sensitive_contents_hide_contents_content">Mostrar el objetivo, pero ocultar su contenido</string>
     <string name="settings_hide_sensitive_contents_hide">Ocultar objetivo</string>
     <string name="settings_hide_sensitive_contents_hide_content">Ocultar el objetivo completamente</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Básico</string>
-    <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
+    <string name="compatibility_feature_basic_content">Permite mostrar un título y un subtítulo con icono. Cualquier objetivo no soportado volverá a este estilo.</string>
     <string name="compatibility_feature_combination_title">Botón</string>
     <string name="compatibility_feature_combination_content">Allows showing a button in addition to the title &amp; subtitle.</string>
     <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
@@ -429,11 +429,11 @@
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notificaciones</string>
     <string name="setup_notifications_content">Smartspacer utiliza notificaciones para mostrar información, advertencias y errores, así como recordatorios relacionados con el modo Enchanced, si está activado.</string>
-    <string name="setup_notifications_request">Grant Permission</string>
+    <string name="setup_notifications_request">Otorgar permiso</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Objetivos</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
+    <string name="setup_targets_info_p1"><b>Objetivos</b> son páginas de información mostradas en Smartspace, normalmente consistentes en al menos un título, subtítulo y icono. Muchos objetivos también tienen información adicional -donde sea compatible - como imágenes o listas.</string>
+    <string name="setup_targets_info_p2">Los objetivos pueden ser dinámicos, mostrando y ocultando lo que sea necesario, también, pueden ser estáticos y mostrarse todo el tiempo. Puedes personalizar cuándo quieres que aparezcas usando <b>reglas</b>, que son configuraciones proporcionadas por muchos objetivos (que son accesibles pulsando cualquier objetivo en la interfaz de usuario de Smartspacer).</string>
     <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
     <string name="setup_targets_info_example_one_title">Mucho tráfico cercano</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
@@ -490,11 +490,11 @@
     <string name="setup_complete_title">Todo listo</string>
     <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
     <!-- Enhanced Mode > Request -->
-    <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
+    <string name="enhanced_mode_request_loading_title">Solicitando permiso…</string>
     <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
-    <string name="enhanced_mode_request_shizuku_button">Get Shizuku</string>
+    <string name="enhanced_mode_request_shizuku_button">Obtener Shizuku</string>
     <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
     <string name="enhanced_mode_request_sui_button">Obtener Sui</string>
@@ -531,7 +531,7 @@
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_button">Reconectar</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reactivar Smartspace nativo</string>
     <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
@@ -541,15 +541,15 @@
     <string name="notification_native_mode_restart_title">Reconectar Smartspace nativo</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_just_reconnect">Reconectar</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku requerido</string>
     <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_at_a_glance_target">El objetivo \"De un vistazo\" requiere que Shizuku haya iniciado, presiona para abrir</string>
-    <string name="notification_shizuku_content_at_a_glance_complication">The At a Glance Complication requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_content_at_a_glance_complication">La complicación \"De un vistazo\" requiere que Shizuku haya iniciado, presiona para abrir</string>
     <!-- Sui service notifications -->
-    <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
+    <string name="notification_sui_title">Sui o Shizuku como root</string>
     <string name="notification_sui_content_oem_smartspace">Smartspace OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Desactivar las optimizaciones de la batería</string>
@@ -560,7 +560,7 @@
     <string name="target_music_description">Displays the currently playing on-device music track</string>
     <string name="target_music_setting_show_album_art_title">Mostrar portada del álbum</string>
     <string name="target_music_setting_show_album_art_content">Muestra la imagen de portada del álbum para la canción de reproducción actual, si está disponible. Esta puede estar recortada.</string>
-    <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
+    <string name="target_music_setting_use_doorbell_title">Mostrar portada de álbum cuadrada</string>
     <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
     <string name="target_music_setting_use_notification_icon_title">Notification Icon Fallback</string>
     <string name="target_music_setting_use_notification_icon_content">If the Media Session doesn\'t declare an icon, attempt to load one from the app\'s notification. This can lead to solid colour icons with some players, disable this option if this happens.</string>
@@ -571,7 +571,7 @@
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Configuración de Smartspace nativo</string>
     <string name="native_mode_settings_title">Native Smartspace</string>
-    <string name="native_mode_settings_target_limit_title">Page Limit</string>
+    <string name="native_mode_settings_target_limit_title">Límite de páginas</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Pixel Launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Single page</string>
@@ -588,9 +588,9 @@
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
     <string name="target_permission_request_content">Tap to grant</string>
     <!-- Smartspacer Permission Request -->
-    <string name="permission_dialog_smartspace_title_prefix">Allow</string>
+    <string name="permission_dialog_smartspace_title_prefix">Permitir</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
-    <string name="permission_dialog_smartspace_title_unknown">Unknown</string>
+    <string name="permission_dialog_smartspace_title_unknown">Desconocido</string>
     <string name="permission_dialog_smartspace_allow">Permitir</string>
     <string name="permission_dialog_smartspace_deny">Denegar</string>
     <!-- Expanded Smartspace -->
@@ -603,8 +603,8 @@
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
-    <string name="expanded_permission_later">Later</string>
-    <string name="expanded_permission_grant">Grant</string>
+    <string name="expanded_permission_later">Más tarde</string>
+    <string name="expanded_permission_grant">Permitir</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Smartspace extendido</string>
     <string name="expanded_settings_title_short">Extendido</string>
@@ -614,21 +614,21 @@
     <string name="expanded_settings_header_search">Buscar</string>
     <string name="expanded_settings_show_search_box_title">Mostrar cuadro de búsqueda</string>
     <string name="expanded_settings_show_search_box_content">Mostrar cuadro de búsqueda en la parte superior del Smartspace extendido</string>
-    <string name="expanded_settings_search_provider_title">Search Provider</string>
+    <string name="expanded_settings_search_provider_title">Proveedor de búsqueda</string>
     <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
     <string name="expanded_settings_show_doodle_title">Mostrar Doodle de Google</string>
     <string name="expanded_settings_show_doodle_content">Mostrar el Doodle de hoy en la parte superior del Smartspace extendido</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
-    <string name="expanded_settings_open_mode_home_screen_title">Open from Home Screen</string>
+    <string name="expanded_settings_header_behaviour">Comportamiento</string>
+    <string name="expanded_settings_open_mode_home_screen_title">Abrir desde la pantalla de inicio</string>
     <string name="expanded_settings_open_mode_home_screen_title_short">Pantalla principal</string>
     <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
-    <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
-    <string name="expanded_settings_open_mode_lock_screen_title_short">Lock Screen</string>
+    <string name="expanded_settings_open_mode_lock_screen_title">Abrir desde la pantalla de bloqueo</string>
+    <string name="expanded_settings_open_mode_lock_screen_title_short">Pantalla de bloqueo</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the lock screen: %1s</string>
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
-    <string name="expanded_settings_header_style">Style</string>
+    <string name="expanded_settings_header_style">Estilo</string>
     <string name="expanded_settings_blur_background_title">Desenfoque de fondo</string>
     <string name="expanded_settings_blur_background_content">Apply a background blur to Expanded Smartspace, obscuring the wallpaper. <b>May not work properly with all launchers if you are using Discover Killer.</b> When disabled, the wallpaper will be dimmed instead.</string>
     <string name="expanded_settings_blur_background_incompatible">No es compatible con tu dispositivo</string>
@@ -638,9 +638,9 @@
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_open_mode_always_title">Always</string>
+    <string name="expanded_settings_open_mode_always_title">Siempre</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_tint_colour">Tint Colour</string>
+    <string name="expanded_settings_tint_colour">Tono</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">Smartspace OEM</string>
@@ -651,14 +651,14 @@
     <string name="oem_smartspace_more_info">Más información</string>
     <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
     <string name="oem_smartspace_switch">Usar Smartspace OEM</string>
-    <string name="oem_smartspace_apps">Compatible Apps</string>
+    <string name="oem_smartspace_apps">Aplicaciones compatibles</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Configuración</string>
     <string name="oem_smartspace_label_systemui">Pantalla de bloqueo</string>
     <string name="oem_smartspace_hide_incompatible_title">Ocultar objetivos incompatibles</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
-    <string name="expanded_search_box_search">Search…</string>
-    <string name="expanded_footer">Add Widget</string>
+    <string name="expanded_search_box_search">Buscar…</string>
+    <string name="expanded_footer">Agregar widget</string>
     <string name="expanded_custom_widget_delete">Quitar</string>
     <string name="expanded_custom_widget_options">Configuración</string>
     <string name="expanded_custom_widget_rearrange">Reordenar</string>
@@ -680,7 +680,7 @@
     <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
     <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
-    <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
+    <string name="battery_optimisation_schedule_exact_alarm_title">Permitir alarmas y recordatorios</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
@@ -700,11 +700,11 @@
     <string name="plugin_repository_recommended">Recomendada para:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">Instalar</string>
-    <string name="plugin_details_start_install">Start Install</string>
-    <string name="plugin_details_open">Open</string>
-    <string name="plugin_details_update">Update</string>
+    <string name="plugin_details_start_install">Iniciar instalación</string>
+    <string name="plugin_details_open">Abrir</string>
+    <string name="plugin_details_update">Actualizar</string>
     <string name="plugin_details_uninstall">Desinstalar</string>
-    <string name="plugin_details_install_companion">Get required app</string>
+    <string name="plugin_details_install_companion">Obtener app requerida</string>
     <string name="plugin_details_error_title">Error</string>
     <string name="plugin_details_error_content">Error al cargar los detalles de la extensión. Comprueba tu conexión y si el problema persiste, ponte en contacto con el desarrollador de la extensión.</string>
     <string name="plugin_details_incompatible_incompatible_sdk">Esta extensión no es compatible con tu dispositivo, ya que requiere una versión más reciente de Android (API %1d)</string>
@@ -716,34 +716,34 @@
     <string name="plugin_settings_title">Repositorio de extensiones</string>
     <string name="plugin_settings_content">Cambia la configuración relacionada con el repositorio de extensiones de Smartspacer, incluyendo desactivarlo completamente si lo deseas</string>
     <string name="plugin_settings_enabled">Usar repositorio de extensiones</string>
-    <string name="plugin_settings_update_check_enabled_title">Automatically Check for Updates</string>
+    <string name="plugin_settings_update_check_enabled_title">Buscar actualizaciones automáticamente</string>
     <string name="plugin_settings_update_check_enabled_content">Buscar actualizaciones de las extensiones de Smartspacer una vez al día y notificarte cuando estén disponibles</string>
     <string name="plugin_settings_url_title">URL del repositorio de extensiones</string>
     <string name="plugin_settings_url_content"><b>Advanced:</b> Change the URL to load plugin repository data from</string>
-    <string name="plugin_settings_footer">The Smartspacer Plugin Repository allows you to install and manage Smartspacer plugins as well as find plugins compatible with apps installed on your device</string>
+    <string name="plugin_settings_footer">El repositorio de plugins de Smartspacer te permite instalar y administrar plugins de Smartspacer así como encontrar plugins compatibles con aplicaciones instaladas en tu dispositivo</string>
     <!-- Update downloader -->
-    <string name="snackbar_update">Update available</string>
-    <string name="snackbar_update_button">Update</string>
-    <string name="update_heading">Smartspacer version %1s</string>
-    <string name="update_subheading">Current version %1s</string>
-    <string name="update_changes">Changes</string>
-    <string name="update_open_installer">Start Install</string>
-    <string name="update_done">Download Complete</string>
+    <string name="snackbar_update">Actualización disponible</string>
+    <string name="snackbar_update_button">Actualizar</string>
+    <string name="update_heading">Versión de Smartspacer %1s</string>
+    <string name="update_subheading">Versión actual %1s</string>
+    <string name="update_changes">Cambios</string>
+    <string name="update_open_installer">Iniciar instalación</string>
+    <string name="update_done">Descarga completa</string>
     <string name="update_loading">Cargando…</string>
     <string name="update_fab">Descargar</string>
     <string name="download_manager_description">Descargando actualización…</string>
-    <string name="update_downloader_downloading_title">Downloading update…</string>
+    <string name="update_downloader_downloading_title">Descargando actualización…</string>
     <string name="update_downloader_downloading_failed">Error de descarga</string>
-    <string name="update_downloader_github">Download via browser</string>
-    <string name="update_notification_title">Smartspacer update available</string>
-    <string name="update_notification_content">An update is available for Smartspacer (%1s to %1s)</string>
+    <string name="update_downloader_github">Descargar a través del navegador</string>
+    <string name="update_notification_title">Actualización de Smartspacer disponible</string>
+    <string name="update_notification_content">Una actualización está disponible para Smartspacer (%1s a %1s)</string>
     <!-- Donate info -->
     <string name="donate_prompt_title">¿Estás disfrutando de Smartspacer?</string>
     <string name="donate_prompt_content">Si encuentras un Smartspacer útil, por favor considera hacer una donación. Presiona para más información.</string>
     <string name="donate_prompt_dismiss">Descartar</string>
     <string name="donate_paragraph_1">Gracias por considerar hacer una donación. Smartspacer es una aplicación compleja y se ha tomado mucho tiempo en el desarrollo, aunque está disponible de forma gratuita y es de código abierto.</string>
-    <string name="donate_paragraph_2">If you would like to donate, currently the only available option is PayPal (linked below). Other options may be available in the future, if required - open a GitHub issue if you have a suggestion. Additionally, direct payment options such as Wise can be provided on request.</string>
-    <string name="donate_paragraph_3">If you have already donated or are unable to at this time, you can hide the donation prompt banner permanently below (you will still be able to access this screen from the bottom of the settings).</string>
+    <string name="donate_paragraph_2">Si deseas donar, actualmente la única opción disponible es PayPal (enlazado a continuación). Otras opciones pueden estar disponibles en el futuro, si es necesario - abre un issue en GitHub si tienes alguna sugerencia. Adicionalmente, pueden proporcionarse opciones de pago directas como Wise bajo petición.</string>
+    <string name="donate_paragraph_3">Si ya has donado o no puedes hacerlo en este momento, puedes ocultar el banner de donación permanentemente debajo (todavía podrás acceder a esta pantalla desde la parte inferior de la configuración).</string>
     <string name="donate_disable">Ocultar mensaje de donación</string>
     <string name="donate_paypal">PayPal</string>
     <!-- Permissions settings -->
@@ -778,7 +778,7 @@
     <string name="restore_error">Error al restaurar copia de seguridad</string>
     <string name="restore_error_failed_to_read">Error al leer la copia de seguridad</string>
     <string name="restore_error_failed_to_load">Error al cargar la copia de seguridad desde el archivo</string>
-    <string name="restore_restore_targets_title">Targets</string>
+    <string name="restore_restore_targets_title">Objetivos</string>
     <string name="restore_restore_targets_content">Restore your targets &amp; their configuration</string>
     <string name="restore_restore_targets_content_empty">No Targets found to restore</string>
     <string name="restore_restore_complications_title">Complicaciones</string>
@@ -799,11 +799,11 @@
     <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
     <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
     <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
-    <string name="restore_complications_title">Complications</string>
+    <string name="restore_complications_title">Complicaciones</string>
     <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
     <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
     <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
-    <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
+    <string name="restore_complication_footer">Selecciona una complicación para restaurarla.\n<b>Las complicaciones son agregadas en el orden de la restauración</b></string>
     <string name="restore_requirements_title">Reglas</string>
     <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
     <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
@@ -811,8 +811,8 @@
     <string name="restore_requirements_collision"><b>Adding this Requirement will overwrite your current config</b></string>
     <string name="restore_requirements_for">Requirement for: %1s</string>
     <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
-    <string name="restore_settings_title">Restoring Smartspacer settings…</string>
-    <string name="restore_complete_title">Restore complete</string>
+    <string name="restore_settings_title">Restaurando configuración de Smartspacer…</string>
+    <string name="restore_complete_title">Restauración completa</string>
     <string name="restore_page_controls_next">Siguiente</string>
     <!-- About Footer -->
     <string name="xda_thread">Hilo en XDA</string>
@@ -847,14 +847,14 @@
     <string name="target_calendar_configuration_title">Configuración</string>
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
     <string name="target_calendar_title_default">Evento sin título</string>
-    <string name="target_calendar_title_with_time">%1s in %1dm</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s - %1s</string>
+    <string name="target_calendar_title_with_time">%1s en %1dm</string>
+    <string name="target_calendar_subtitle_with_yesterday">Ayer, %1s - %1s</string>
     <string name="target_calendar_subtitle_with_tomorrow">%1s - Tomorrow, %1s</string>
     <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
     <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
-    <string name="target_calendar_subtitle_all_day">All Day</string>
-    <string name="target_calendar_settings_calendars">Select Calendars</string>
-    <string name="target_calendar_settings_settings">Settings</string>
+    <string name="target_calendar_subtitle_all_day">Todo el día</string>
+    <string name="target_calendar_settings_calendars">Seleccionar calendarios</string>
+    <string name="target_calendar_settings_settings">Configuración</string>
     <string name="target_calendar_settings_show_all_day_title">Mostrar todos los eventos del día</string>
     <string name="target_calendar_settings_show_all_day_content">Mostrar eventos que duran todo el día</string>
     <string name="target_calendar_settings_show_location_title">Mostrar ubicación</string>
@@ -864,7 +864,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
-    <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
+    <string name="target_calendar_settings_clear_dismissed_events_title">Borrar eventos descartados</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
     <string name="target_calendar_settings_permission_toast">Grant Smartspacer the Calendar permission</string>
     <string name="target_calendar_pre_event_time_1_minute">1 minuto</string>
@@ -944,7 +944,7 @@
     <string name="requirement_recent_apps_description_unsupported">Este requerimiento requiere de Modo mejorado, actívalo desde configuración</string>
     <string name="requirement_recent_apps_configuration_app_title">Selected App</string>
     <string name="requirement_recent_apps_configuration_app_content">Not selected</string>
-    <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
+    <string name="requirement_recent_apps_configuration_limit_title">Límite</string>
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Ilimitado</string>
