@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou dans son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
+    <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
     <string name="loading">Chargement…</string>
@@ -22,18 +22,18 @@
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Informations sur l\'application et autoriser les paramètres restreints.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
-    <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
+    <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Informations sur l\'application et autoriser les paramètres restreints.</b></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les informations sur l\'application</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenu masqué</string>
     <!-- Shared by widget & expanded -->
     <string name="tint_colour_automatic">Automatique (à partir du fond d\'écran)</string>
-    <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
+    <string name="tint_colour_automatic_content">La couleur du texte et des icônes sera ajustée automatiquement en fonction du fond d\'écran pour améliorer la lisibilité</string>
     <string name="tint_colour_white">Blanc</string>
-    <string name="tint_colour_white_content">Text and icons in the widget will always be white</string>
+    <string name="tint_colour_white_content">Le texte et les icônes seront toujours blancs</string>
     <string name="tint_colour_black">Noir</string>
-    <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
+    <string name="tint_colour_black_content">Le texte et les icônes seront toujours noirs</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Afficher les cibles et les complications Smartspacer</string>
     <string name="widget_loading_smartspacer">Chargement…</string>
@@ -45,19 +45,19 @@
     <string name="widget_configuration_type_title">Sélectionner un type de widget</string>
     <string name="widget_configuration_type_home_title">Écran d\'accueil</string>
     <string name="widget_configuration_type_home_content">Ce widget s\'affiche sur l\'écran d\'accueil et devrait afficher les cibles et les complications devant apparaître sur l\'écran d\'accueil</string>
-    <string name="widget_configuration_type_lock_title">Lock Screen</string>
+    <string name="widget_configuration_type_lock_title">Écran de verrouillage</string>
     <string name="widget_configuration_type_lock_content">Ce widget s\'affiche sur l\'écran de verrouillage et devrait afficher les cibles et les complications devant apparaître sur l\'écran de verrouillage</string>
-    <string name="widget_configuration_type_lock_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
-    <string name="widget_configuration_page">Page Controls</string>
-    <string name="widget_configuration_page_single_title">Single Page</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
-    <string name="widget_configuration_page_controls_title">Paged</string>
-    <string name="widget_configuration_page_controls_content">Allow as many pages of Targets and Complications as you configure, with arrow buttons to move between the pages (buttons &amp; indicator will be hidden when there\'s only one page)</string>
-    <string name="widget_configuration_page_no_controls_title">Paged Without Arrow Buttons</string>
-    <string name="widget_configuration_page_no_controls_content">Same as paged, but without the arrow keys. Tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_type_lock_content_disabled">Indisponible pour ce widget. Veuillez noter que Smartspacer ne permet pas l\'activation des widgets sur l\'écran de verrouillage. Pour cela, téléchargez une application sur Google Play telle que « Lockscreen Widgets ».</string>
+    <string name="widget_configuration_page">Contrôle des pages</string>
+    <string name="widget_configuration_page_single_title">Une seule page</string>
+    <string name="widget_configuration_page_single_content">Forcer le widget à n\'afficher qu\'une seule page de cibles et complications (si l\'espace le permet). Cela signifie que vous ne verrez que la première cible et la première complication dans le widget.\n<b>Important :</b> l\'utilisation de cette option implique que vous ne pourrez pas ouvrir le menu des options des cibles, et que vous ne pourrez la fermer uniquement depuis Smartspace étendu.</string>
+    <string name="widget_configuration_page_controls_title">Plusieurs pages</string>
+    <string name="widget_configuration_page_controls_content">Permettre d\'avoir autant de pages de cibles et de complications que configuré, avec des flèches vous permettant de changer de page (masquées lorsqu\'il n\'y a qu\'une page).</string>
+    <string name="widget_configuration_page_no_controls_title">Plusieurs pages sans flèches</string>
+    <string name="widget_configuration_page_no_controls_content">Identique à « Plusieurs pages », mais sans les flèches. Appuyez sur les points pour passer à la page suivante, vous reviendrez à la première page lorsque vous appuierez dessus en étant à la dernière page.</string>
     <string name="widget_configuration_animation">Animation</string>
-    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
-    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
+    <string name="widget_configuration_animation_switch_title">Animer les modifications</string>
+    <string name="widget_configuration_animation_switch_content">Dès que possible, appliquer un fondu lorsque le widget est modifié</string>
     <string name="widget_configuration_colour">Couleur</string>
     <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configure Widget</string>
@@ -70,11 +70,11 @@
     <string name="target_notification_description_channels_one">channel</string>
     <string name="target_notification_description_channels_other">channels</string>
     <string name="target_now_playing_label">En écoute Pixel</string>
-    <string name="target_now_playing_description">Affiche la chanson en cours fournie par la fonction En écoute des Pixel</string>
+    <string name="target_now_playing_description">Affiche la chanson en cours de lecture à l\'aide de la fonction En écoute des Pixel</string>
     <string name="target_now_playing_description_unavailable">Cette cible ne fonctionne que sur les Pixel avec la fonction En écoute</string>
     <string name="target_now_playing_shortcut_history">Historique</string>
     <string name="target_ambient_music_mod_label">En écoute (Ambient Music Mod)</string>
-    <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>
+    <string name="target_ambient_music_mod_description">Affiche la chanson en cours de lecture à l\'aide d\'Ambient Music Mod</string>
     <string name="target_ambient_music_mod_description_unavailable">Cette cible requiert Ambient Music Mod</string>
     <string name="target_default_label">Aperçu (Smartspace)</string>
     <string name="target_default_description">Cibles de l\'Aperçu Google, chargées par Smartspace</string>
@@ -170,11 +170,11 @@
     <string name="complication_not_available_alt">This Complication failed to load, if the issue persists please contact the Complication\'s developer</string>
     <string name="targets_add_empty_label">No Targets left to add</string>
     <string name="targets_add_incompatible_generic">This Target is not compatible with your device</string>
-    <string name="targets_add_incompatible_widget">The widget required for this Target is not available</string>
+    <string name="targets_add_incompatible_widget">Le widget requis pour cette cible est indisponible</string>
     <string name="targets_add_failed_to_launch_setup">Failed to launch the setup for this Target</string>
     <string name="complications_add_empty_label">No Complications left to add</string>
     <string name="complications_add_incompatible_generic">This Complication is not compatible with your device</string>
-    <string name="complications_add_incompatible_widget">The widget required for this Complication is not available</string>
+    <string name="complications_add_incompatible_widget">Le widget requis pour cette complication est indisponible</string>
     <string name="complications_add_failed_to_launch_setup">Failed to launch the setup for this Complication</string>
     <string name="requirements_add_empty_label">No Requirements left to add</string>
     <string name="requirements_add_incompatible_generic">This Requirement is not compatible with your device</string>
@@ -525,7 +525,7 @@
     <string name="native_switch_compatibility">Compatibility</string>
     <string name="native_switch_compatibility_item">• %1s :</string>
     <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Indisponible</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Smartspace natif</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
@@ -559,7 +559,7 @@
     <string name="target_music_title">Musique</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
     <string name="target_music_setting_show_album_art_title">Show Album Art</string>
-    <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
+    <string name="target_music_setting_show_album_art_content">Affiche la jaquette de la piste en cours de lecture, si disponible. Elle pourrait être rognée.</string>
     <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
     <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
     <string name="target_music_setting_use_notification_icon_title">Notification Icon Fallback</string>
@@ -640,8 +640,8 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Toujours</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_tint_colour">Tint Colour</string>
-    <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
+    <string name="expanded_settings_tint_colour">Couleur</string>
+    <string name="expanded_settings_tint_colour_content">Couleur à utiliser pour le texte et les icônes de Smartspace étendu : %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">Smartspace OEM</string>
     <string name="oem_smartspace_content">Options for Smartspacer showing in legacy Launchers and on the Lock Screen on some devices</string>
@@ -708,7 +708,7 @@
     <string name="plugin_details_error_title">Erreur</string>
     <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer.</string>
     <string name="plugin_details_incompatible_incompatible_sdk">This plugin is not compatible with your device as it requires a newer version of Android (API %1d)</string>
-    <string name="plugin_details_incompatible_missing_feature">This plugin is not compatible with your device as it requires a feature that is not available (%1s)</string>
+    <string name="plugin_details_incompatible_missing_feature">Ce plugin est incompatible avec votre appareil car il requiert une fonctionnalité indisponible (%1s)</string>
     <string name="plugin_details_incompatible_missing_app">This plugin requires you to have a companion app installed, tap to download</string>
     <string name="plugin_details_incompatible_outdated">Ce plugin nécessite une version plus récente de Smartspacer, veuillez mettre à jour Smartspacer pour pouvoir l\'installer</string>
     <string name="plugin_details_downloading_title">Downloading plugin…</string>
