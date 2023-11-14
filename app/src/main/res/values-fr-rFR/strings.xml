@@ -64,11 +64,11 @@
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.</string>
     <string name="target_notification_label">Notifications</string>
-    <string name="target_notification_description">Shows notifications from an app</string>
-    <string name="target_notification_description_selected">Shows notifications from %1s</string>
-    <string name="target_notification_description_selected_with_channels">Shows notifications from %1s (%1d %1s)</string>
-    <string name="target_notification_description_channels_one">channel</string>
-    <string name="target_notification_description_channels_other">channels</string>
+    <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
+    <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
+    <string name="target_notification_description_selected_with_channels">Affiche les notifications provenant de %1s (%1d %1s)</string>
+    <string name="target_notification_description_channels_one">catégorie</string>
+    <string name="target_notification_description_channels_other">catégories</string>
     <string name="target_now_playing_label">En écoute Pixel</string>
     <string name="target_now_playing_description">Affiche la chanson en cours de lecture à l\'aide de la fonction En écoute des Pixel</string>
     <string name="target_now_playing_description_unavailable">Cette cible ne fonctionne que sur les Pixel avec la fonction En écoute</string>
@@ -112,7 +112,7 @@
     <string name="target_google_weather_forecast_title">Prévisions météo Google</string>
     <string name="target_google_weather_forecast_content">Affiche la météo actuelle et les prévisions sur 4 heures de Google Météo</string>
     <string name="target_google_weather_forecast_incompatible">Cette cible requiert Android 12+ et l\'application Google</string>
-    <string name="target_notification_warning_title">Notification Listener Disabled</string>
+    <string name="target_notification_warning_title">Auditeur de notifications désactivé</string>
     <string name="target_notification_warning_description">Appuyer pour activer</string>
     <string name="complication_default_label">Complications Aperçu</string>
     <string name="complication_default_description">Complications de l\'Aperçu Google, avec la météo</string>
@@ -265,8 +265,8 @@
     <string name="configuration_accessibility_enable_title">Enable Accessibility Service</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
-    <string name="target_notification_configuration_title">Notification Settings</string>
-    <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
+    <string name="target_notification_configuration_title">Paramètres des notifications</string>
+    <string name="target_notification_configuration_content">Sélectionnez les applications et les catégories des notifications à afficher</string>
     <string name="configuration_notification_association_title">Grant Permissions</string>
     <string name="configuration_notification_association_content">In order to allow Smartspacer to access a list of other apps\' notification channels so you can pick which to show, you must set a companion device or network for this app. This is a (rather odd) Android system requirement, and is the only way to get a list of channels without root. This only needs to be done once.</string>
     <string name="configuration_notification_association_subcontent">Tap the \"Set Companion\" button below, and select any device or connection from the list that appears.\n\n<b>It does not matter if the device/connection is yours, or whether you will be in range of it while using Smartspacer. Smartspacer does not pair or connect to the device you pick</b>. You may also need to have GPS enabled for devices and connections to appear in the dialog.</string>
@@ -897,11 +897,11 @@
     <string name="target_default_settings_hide_food">Commandes d\'aliments et d\'articles ménagers</string>
     <string name="target_default_settings_cross_device_timer">Minuteur partagé entre les appareils</string>
     <!-- Notification Target -->
-    <string name="target_notification_configuration_app_title">Select App</string>
-    <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
-    <string name="target_notification_configuration_settings">Settings</string>
-    <string name="target_notification_channels">Notification Channels</string>
-    <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
+    <string name="target_notification_configuration_app_title">Sélectionnez une application</string>
+    <string name="target_notification_configuration_app_content">Sélectionnez une application dont il faut afficher les notifications</string>
+    <string name="target_notification_configuration_settings">Paramètres</string>
+    <string name="target_notification_channels">Catégories de notifications</string>
+    <string name="target_notification_channels_empty">Cette application n\'utilise pas les catégories de notifications, toutes ses notifications seront donc affichées</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Blank Target</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
