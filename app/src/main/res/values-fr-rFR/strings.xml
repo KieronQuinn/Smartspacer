@@ -535,7 +535,7 @@
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
     <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
-    <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
+    <string name="notification_native_mode_enable_dismiss">Ne plus afficher</string>
     <string name="notification_native_mode_enable_now">Enable Now</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
@@ -740,7 +740,7 @@
     <!-- Donate info -->
     <string name="donate_prompt_title">Enjoying Smartspacer?</string>
     <string name="donate_prompt_content">If you find Smartspacer useful, please consider making a donation. Tap for more info.</string>
-    <string name="donate_prompt_dismiss">Ignorer</string>
+    <string name="donate_prompt_dismiss">Fermer</string>
     <string name="donate_paragraph_1">Thank you for considering making a donation. Smartspacer is a complex app and has taken a lot of time in development, even though it is available for free and is open source.</string>
     <string name="donate_paragraph_2">If you would like to donate, currently the only available option is PayPal (linked below). Other options may be available in the future, if required - open a GitHub issue if you have a suggestion. Additionally, direct payment options such as Wise can be provided on request.</string>
     <string name="donate_paragraph_3">If you have already donated or are unable to at this time, you can hide the donation prompt banner permanently below (you will still be able to access this screen from the bottom of the settings).</string>
