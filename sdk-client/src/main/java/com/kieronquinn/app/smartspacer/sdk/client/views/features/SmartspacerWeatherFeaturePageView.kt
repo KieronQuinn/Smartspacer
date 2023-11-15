@@ -38,8 +38,7 @@ class SmartspacerWeatherFeaturePageView(context: Context): SmartspacerBaseFeatur
                 context.launchCalendar()
             }
             setOnLongClickListener {
-                interactionListener?.onLongPress(target)
-                false
+                interactionListener?.onLongPress(target) ?: false
             }
         }
     }

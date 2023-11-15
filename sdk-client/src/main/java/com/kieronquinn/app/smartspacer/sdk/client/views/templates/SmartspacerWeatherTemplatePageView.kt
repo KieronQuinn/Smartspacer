@@ -42,8 +42,7 @@ class SmartspacerWeatherTemplatePageView(context: Context): SmartspacerBaseTempl
                 context.launchCalendar()
             }
             setOnLongClickListener {
-                interactionListener?.onLongPress(target)
-                false
+                interactionListener?.onLongPress(target) ?: false
             }
         }
     }

@@ -18,8 +18,7 @@ fun View.setOnClick(
     interactionListener: SmartspaceTargetInteractionListener?
 ) {
     setOnLongClickListener {
-        interactionListener?.onLongPress(target)
-        false
+        interactionListener?.onLongPress(target) ?: false
     }
     if(action == null) return
     setOnClickListener {
@@ -67,8 +66,7 @@ fun View.setOnClick(
     interactionListener: SmartspaceTargetInteractionListener?
 ) {
     setOnLongClickListener {
-        interactionListener?.onLongPress(target)
-        false
+        interactionListener?.onLongPress(target) ?: false
     }
     if(action == null) return
     setOnClickListener {

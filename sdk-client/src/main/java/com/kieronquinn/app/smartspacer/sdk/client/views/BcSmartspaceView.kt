@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.util.AttributeSet
-import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
 import android.view.View.MeasureSpec.makeMeasureSpec
@@ -235,10 +234,9 @@ open class BcSmartspaceView @JvmOverloads constructor(
         provider.onTargetInteraction(target, actionId)
     }
 
-    override fun onLongPress(target: SmartspaceTarget) {
-        val current = adapter.getTargetAtPosition(viewPager.currentItem) ?: return
-        if(current != target) return //Page has changed
-        performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
+    override fun onLongPress(target: SmartspaceTarget): Boolean {
+        val current = adapter.getTargetAtPosition(viewPager.currentItem) ?: return false
+        if(current != target) return false //Page has changed
         val background = context.getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
         val launchIntent = context.packageManager.getLaunchIntentForPackage(SMARTSPACER_PACKAGE_NAME)
@@ -252,7 +250,7 @@ open class BcSmartspaceView @JvmOverloads constructor(
         val shouldShowDismiss = target.featureType != SmartspaceTarget.FEATURE_WEATHER
                 && target.canBeDismissed
         if(!shouldShowDismiss && !shouldShowSettings && feedbackIntent == null
-            && aboutIntent == null) return
+            && aboutIntent == null) return false
         val dismissAction = if(shouldShowDismiss){
             ::dismissAction
         }else null
@@ -268,6 +266,7 @@ open class BcSmartspaceView @JvmOverloads constructor(
             feedbackIntent,
             launchIntent
         )
+        return true
     }
 
     private fun dismissAction(smartspaceTarget: SmartspaceTarget) {

@@ -49,7 +49,7 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
         }
 
         fun onInteraction(target: SmartspaceTarget, actionId: String?)
-        fun onLongPress(target: SmartspaceTarget)
+        fun onLongPress(target: SmartspaceTarget): Boolean
         fun launch(unlock: Boolean, block: () -> Unit) {
             return block()
         }
