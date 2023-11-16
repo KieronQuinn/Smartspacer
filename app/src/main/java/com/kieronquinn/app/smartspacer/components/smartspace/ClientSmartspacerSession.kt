@@ -39,6 +39,7 @@ class ClientSmartspacerSession(
     private val databaseRepository by inject<DatabaseRepository>()
 
     var lastTargets: List<SmartspaceTarget>? = null
+    val owner = config.packageName
 
     private val permissions = databaseRepository.getGrants().map {
         it.firstOrNull { grant -> grant.packageName == config.packageName }

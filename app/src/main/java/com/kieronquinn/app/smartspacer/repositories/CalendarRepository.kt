@@ -199,11 +199,16 @@ class CalendarRepositoryImpl(
 
     private fun CalendarData.filter(): List<CalendarEvent> {
         val preEventTime = data.preEventTime.length
+        val postEventTime = data.postEventTime?.length
         val showAllDay = data.showAllDay
         val showUnconfirmed = data.showUnconfirmed
         val now = ZonedDateTime.now().atStartOfMinute().toInstant()
         return events.filter {
-            it.endTime == now || it.endTime.isAfter(now)
+            if(postEventTime != null && it.startTime.isBefore(now)) {
+                Duration.between(it.startTime, now) < postEventTime
+            }else{
+                it.endTime == now || it.endTime.isAfter(now)
+            }
         }.filter {
             it.status == CalendarContract.Events.STATUS_CONFIRMED || showUnconfirmed
         }.filter {
@@ -234,8 +239,13 @@ class CalendarRepositoryImpl(
                 if(!event.isAllDay && eventStartTime.isAfter(now)) {
                     allEvents.add(Triple(eventStartTime, it.value, event))
                 }
+                val postEventTime = it.value.data.postEventTime?.length
                 //Include the whole end minute so it doesn't disappear exactly on the end time
-                val eventEndTime = event.endTime.plusMillis(60_000L)
+                val endTime = event.endTime.plusMillis(60_000L)
+                val eventEndTime = if (postEventTime != null) {
+                    //User has specified how long to show it for, clipped at the end time
+                    (event.startTime + postEventTime).coerceAtMost(endTime)
+                } else endTime
                 if(eventEndTime.isAfter(now)) {
                     allEvents.add(Triple(eventEndTime, it.value, event))
                 }

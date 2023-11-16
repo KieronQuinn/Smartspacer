@@ -1,8 +1,10 @@
 package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
+import android.os.Build
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.ktx.setCustomKeys
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
@@ -23,7 +25,16 @@ class AnalyticsRepositoryImpl(
     private fun setupState() = scope.launch {
         settingsRepository.analyticsEnabled.asFlow().collect {
             FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(it)
-            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(it)
+            FirebaseCrashlytics.getInstance().apply {
+                setCrashlyticsCollectionEnabled(it)
+                setupCrashlytics()
+            }
+        }
+    }
+
+    private fun FirebaseCrashlytics.setupCrashlytics() {
+        setCustomKeys {
+            key("fingerprint", Build.FINGERPRINT)
         }
     }
 

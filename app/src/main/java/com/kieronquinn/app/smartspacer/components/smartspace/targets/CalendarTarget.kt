@@ -271,6 +271,8 @@ class CalendarTarget: SmartspacerTargetProvider() {
         val id: String,
         @SerializedName("pre_event_time")
         val preEventTime: PreEventTime = PreEventTime.FIFTEEN_MINUTES,
+        @SerializedName("post_event_time")
+        val postEventTime: PostEventTime? = PostEventTime.AT_END,
         @SerializedName("show_all_day")
         val showAllDay: Boolean = false,
         @SerializedName("show_location")
@@ -285,6 +287,32 @@ class CalendarTarget: SmartspacerTargetProvider() {
         val dismissedEvents: Set<String> = emptySet()
     ) {
         enum class PreEventTime(val length: Duration, @StringRes val label: Int) {
+            ONE_MINUTE(
+                Duration.ofMinutes(1), R.string.target_calendar_pre_event_time_1_minute
+            ),
+            FIVE_MINUTES(
+                Duration.ofMinutes(5), R.string.target_calendar_pre_event_time_5_minutes
+            ),
+            TEN_MINUTES(
+                Duration.ofMinutes(10), R.string.target_calendar_pre_event_time_10_minutes
+            ),
+            FIFTEEN_MINUTES(
+                Duration.ofMinutes(15), R.string.target_calendar_pre_event_time_15_minutes
+            ),
+            THIRTY_MINUTES(
+                Duration.ofMinutes(30), R.string.target_calendar_pre_event_time_30_minutes
+            ),
+            ONE_HOUR(
+                Duration.ofHours(1), R.string.target_calendar_pre_event_time_1_hour
+            ),
+            TWO_HOURS(
+                Duration.ofHours(2), R.string.target_calendar_pre_event_time_2_hours
+            )
+        }
+        enum class PostEventTime(val length: Duration?, @StringRes val label: Int) {
+            AT_END(
+                null, R.string.target_calendar_post_event_time_at_end
+            ),
             ONE_MINUTE(
                 Duration.ofMinutes(1), R.string.target_calendar_pre_event_time_1_minute
             ),

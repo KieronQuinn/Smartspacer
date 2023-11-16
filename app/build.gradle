@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.2.2'
-def tagCode = 122
+def tagName = '1.3'
+def tagCode = 130
 
 android {
     compileSdk 34
@@ -76,14 +76,14 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "androidx.fragment:fragment-ktx:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.6.2"
     implementation "androidx.activity:activity-ktx:1.8.0"
     implementation "androidx.work:work-runtime-ktx:2.8.1"
     implementation "androidx.core:core-remoteviews:1.0.0"
     implementation "androidx.security:security-crypto:1.1.0-alpha06"
     implementation project(path: ':proto')
 
-    def room_version = "2.5.2"
+    def room_version = "2.6.0"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
@@ -110,7 +110,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 
     //Shizuku for Shell service
-    def shizuku_version = '12.1.0'
+    def shizuku_version = '13.1.5'
     implementation "dev.rikka.shizuku:api:$shizuku_version"
     implementation "dev.rikka.shizuku:provider:$shizuku_version"
 

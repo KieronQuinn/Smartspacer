@@ -85,8 +85,8 @@ class ExpandedRearrangeAdapter(
         //No-op
     }
 
-    override fun onLongPress(target: SmartspaceTarget) {
-        //No-op
+    override fun onLongPress(target: SmartspaceTarget): Boolean {
+        return false
     }
 
     override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?) {

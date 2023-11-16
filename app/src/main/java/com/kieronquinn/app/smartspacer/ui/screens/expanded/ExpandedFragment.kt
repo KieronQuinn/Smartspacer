@@ -26,9 +26,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
@@ -59,6 +59,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.E
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
+import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
@@ -191,13 +192,15 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         setupState()
         setupMonet()
         setupInsets()
-        setupRecyclerView()
         setupUnlock()
         setupOverlaySwipe()
         setupDisabledButton()
         setupClose()
         handleLaunchActionIfNeeded()
         viewModel.setup(isOverlay)
+        whenCreated {
+            setupRecyclerView()
+        }
     }
 
     override fun onDestroyView() {
@@ -250,8 +253,17 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
     }
 
-    private fun setupRecyclerView() = with(binding.expandedRecyclerView) {
-        layoutManager = LinearLayoutManager(context)
+    private suspend fun View.getColumnSpan(): Int {
+        awaitPost()
+        val maxWidth = context.getDisplayPortraitWidth()
+        return (measuredWidth / maxWidth).coerceAtLeast(1)
+    }
+
+    private suspend fun setupRecyclerView() = with(binding.expandedRecyclerView) {
+        layoutManager = StaggeredGridLayoutManager(
+            binding.expandedNestedScroll.getColumnSpan(),
+            StaggeredGridLayoutManager.VERTICAL
+        )
         adapter = this@ExpandedFragment.adapter
         itemAnimator = PulseControlledItemAnimator()
         setOnScrollChangeListener(this@ExpandedFragment)
@@ -482,7 +494,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         viewModel.onTargetInteraction(target, actionId)
     }
 
-    override fun onLongPress(target: SmartspaceTarget) {
+    override fun onLongPress(target: SmartspaceTarget): Boolean {
         val canDismiss = target.canBeDismissed &&
                 target.featureType != SmartspaceTarget.FEATURE_WEATHER
         val aboutIntent = target.baseAction?.extras
@@ -491,14 +503,14 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         val feedbackIntent = target.baseAction?.extras
             ?.getParcelableCompat(KEY_EXTRA_FEEDBACK_INTENT, Intent::class.java)
             ?.takeIf { !it.shouldExcludeFromSmartspacer() }
-        if(!canDismiss && aboutIntent == null && feedbackIntent == null) return
+        if(!canDismiss && aboutIntent == null && feedbackIntent == null) return false
         val position = adapter.currentList.indexOfFirst { item ->
             item is Item.Target && item.target == target
         }
-        if(position == -1) return
+        if(position == -1) return false
         val holder = binding.expandedRecyclerView.findViewHolderForAdapterPosition(position)
-            ?: return
-        showPopup(holder.itemView, target, canDismiss, aboutIntent, feedbackIntent)
+            ?: return false
+        return showPopup(holder.itemView, target, canDismiss, aboutIntent, feedbackIntent)
     }
 
     override fun launch(unlock: Boolean, block: () -> Unit) {
@@ -561,10 +573,10 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 return //Likely a swipe
             }
         }
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popupView = SmartspaceExpandedLongPressPopupWidgetBinding.inflate(layoutInflater)
         val background = requireContext().getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
-        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popup = Balloon.Builder(requireContext())
             .setLayout(popupView)
             .setHeight(BalloonSizeSpec.WRAP)
@@ -599,16 +611,15 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         canDismiss: Boolean,
         aboutIntent: Intent?,
         feedbackIntent: Intent?
-    ) {
+    ): Boolean {
         lastSwipe?.let {
             if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return //Likely a swipe
+                return false //Likely a swipe
             }
         }
         val popupView = SmartspaceExpandedLongPressPopupBinding.inflate(layoutInflater)
         val background = requireContext().getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
-        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popup = Balloon.Builder(requireContext())
             .setLayout(popupView)
             .setHeight(BalloonSizeSpec.WRAP)
@@ -644,6 +655,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             viewModel.onTargetDismiss(target)
         }
         this.popup = popup
+        return true
     }
 
     override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget) {
@@ -652,10 +664,10 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 return //Likely a swipe
             }
         }
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popupView = SmartspaceExpandedLongPressPopupCustomWidgetBinding.inflate(layoutInflater)
         val background = requireContext().getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
-        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popup = Balloon.Builder(requireContext())
             .setLayout(popupView)
             .setHeight(BalloonSizeSpec.WRAP)

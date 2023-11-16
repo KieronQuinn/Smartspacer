@@ -136,6 +136,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.sensitive.SettingsHideSensitiveViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.setup.analytics.SetupAnalyticsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.setup.analytics.SetupAnalyticsViewModelImpl
@@ -400,6 +402,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<DisplayOverOtherAppsPermissionBottomSheetViewModel> { DisplayOverOtherAppsPermissionBottomSheetViewModelImpl(get()) }
         viewModel<WidgetOptionsMenuViewModel> { WidgetOptionsMenuViewModelImpl(get(), get()) }
         viewModel<NativeReconnectViewModel> { NativeReconnectViewModelImpl(get(), get()) }
+        viewModel<DumpSmartspacerViewModel> { DumpSmartspacerViewModelImpl(get()) }
     }
 
     override fun attachBaseContext(base: Context) {

@@ -21,6 +21,7 @@ import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerComplicationUpdateReceiver
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerTargetUpdateReceiver
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerUpdateReceiver
+import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerVisibilityChangedReceiver
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.fixActionsIfNeeded
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
@@ -36,6 +37,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -74,6 +76,11 @@ interface SmartspaceRepository {
      *  Set the visibility of a given smartspace session ID
      */
     fun setSmartspaceVisible(sessionId: SmartspaceSessionId, visible: Boolean)
+
+    /**
+     *  Clears the visibility state of a session when it is destroyed
+     */
+    fun onSessionDestroyed(sessionId: SmartspaceSessionId)
 
     /**
      *  Notifies a target and action with given IDs that a click has occurred
@@ -195,6 +202,15 @@ class SmartspaceRepositoryImpl(
 
     override fun setSmartspaceVisible(sessionId: SmartspaceSessionId, visible: Boolean) {
         smartspaceVisible[sessionId.id] = visible
+        notifySessionVisibilityChanged()
+    }
+
+    override fun onSessionDestroyed(sessionId: SmartspaceSessionId) {
+        smartspaceVisible.remove(sessionId.id)
+        notifySessionVisibilityChanged()
+    }
+
+    private fun notifySessionVisibilityChanged() {
         targetsRepository.setSmartspaceVisibility(smartspaceVisible.values.any { it })
     }
 
@@ -511,11 +527,31 @@ class SmartspaceRepositoryImpl(
         }.flatten()
     }
 
+    private fun setupSmartspaceVisibilityBroadcasts() = scope.launch {
+        val packages = combine(
+            availableTargets,
+            availableComplications
+        ) { targets, complications ->
+            targets.map { it.sourcePackage } + complications.map { it.sourcePackage }
+        }.map {
+            it.toSet()
+        }.stateIn(scope, SharingStarted.Eagerly, emptySet())
+        targetsRepository.smartspaceVisible.collect { visible ->
+            val timestamp = System.currentTimeMillis()
+            packages.value.forEach {
+                SmartspacerVisibilityChangedReceiver.sendVisibilityChangedBroadcast(
+                    context, visible, it, timestamp
+                )
+            }
+        }
+    }
+
     init {
         notifyDefaultHomeTargets()
         notifyDefaultHomeActions()
         notifyDefaultLockTargets()
         notifyDefaultLockActions()
+        setupSmartspaceVisibilityBroadcasts()
     }
 
 }

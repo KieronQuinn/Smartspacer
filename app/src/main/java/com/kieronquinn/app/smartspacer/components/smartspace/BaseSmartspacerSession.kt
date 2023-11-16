@@ -172,6 +172,7 @@ abstract class BaseSmartspacerSession<T, I>(
         whenCreated {
             dispatcher.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         }
+        smartspaceRepository.onSessionDestroyed(smartspaceSessionId)
     }
 
     open fun Flow<List<T>>.filterDistinct(): Flow<List<T>> {

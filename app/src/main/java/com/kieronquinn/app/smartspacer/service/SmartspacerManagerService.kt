@@ -28,6 +28,11 @@ class SmartspacerManagerService: Service() {
         startForeground(NotificationId.MANAGER_SERVICE, createNotification())
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        smartspaceManager.onServiceDestroy()
+    }
+
     private fun createNotification(): Notification {
         return notifications.showNotification(
             NotificationId.MANAGER_SERVICE,

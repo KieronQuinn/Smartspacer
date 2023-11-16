@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dump_scrollable"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/margin_16">
+
+        <TextView
+            android:id="@+id/dump_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Mono"
+            tools:text="Content" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dump_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@string/settings_dump_button"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
+
+</LinearLayout>
