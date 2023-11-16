@@ -30,7 +30,7 @@ abstract class SmartspacerComplicationUpdateReceiver: BroadcastReceiver() {
         }
     }
 
-    override fun onReceive(context: Context, intent: Intent) {
+    final override fun onReceive(context: Context, intent: Intent) {
         if(intent.action != ACTION_COMPLICATION_UPDATE) return
         val complicationIds = intent.getStringArrayExtra(KEY_COMPLICATION_IDS) ?: return
         val authorities = intent.getStringArrayExtra(KEY_COMPLICATION_AUTHORITIES) ?: return

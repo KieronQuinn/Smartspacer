@@ -30,7 +30,7 @@ abstract class SmartspacerTargetUpdateReceiver: BroadcastReceiver() {
         }
     }
 
-    override fun onReceive(context: Context, intent: Intent) {
+    final override fun onReceive(context: Context, intent: Intent) {
         if(intent.action != ACTION_TARGET_UPDATE) return
         val targetIds = intent.getStringArrayExtra(KEY_TARGET_IDS) ?: return
         val authorities = intent.getStringArrayExtra(KEY_TARGET_AUTHORITIES) ?: return

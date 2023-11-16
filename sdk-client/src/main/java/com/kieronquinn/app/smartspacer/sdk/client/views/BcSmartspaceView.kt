@@ -117,6 +117,15 @@ open class BcSmartspaceView @JvmOverloads constructor(
         }
     }
 
+    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
+        super.onWindowFocusChanged(hasWindowFocus)
+        if(hasWindowFocus){
+            onResume()
+        }else{
+            onPause()
+        }
+    }
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         provider.onCreate()

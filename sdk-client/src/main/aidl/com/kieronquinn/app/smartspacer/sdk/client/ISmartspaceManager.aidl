@@ -15,6 +15,8 @@ interface ISmartspaceManager {
     boolean checkCallingPermission() = 7;
     IntentSender createPermissionRequestIntentSender() = 8;
 
+    void onDestroy() = 9;
+
     boolean ping() = 999;
 
 }

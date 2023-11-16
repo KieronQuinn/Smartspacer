@@ -86,6 +86,9 @@ class SmartspacerClient constructor(context: Context) {
      *  Disconnects the service, if it is still connected.
      */
     fun close() {
+        runWithServiceIfAvailable {
+            it.onDestroy()
+        }
         serviceConnection?.let {
             try {
                 applicationContext.unbindService(it)
@@ -163,6 +166,17 @@ class SmartspacerClient constructor(context: Context) {
             getService()?.let { block(it) }
         }catch (e: RemoteException){
             Log.e(TAG, "Error running remote call", e)
+            null
+        }
+    }
+
+    private fun <T> runWithServiceIfAvailable(
+        block: (ISmartspaceManager) -> T?
+    ): T? {
+        return try {
+            block(service ?: return null)
+        }catch (e: RemoteException){
+            //Service died
             null
         }
     }

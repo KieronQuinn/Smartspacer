@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.sdk.utils
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.RestrictTo
+import com.kieronquinn.app.smartspacer.sdk.annotations.DisablingTrim
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData.SubItemInfo
@@ -53,13 +54,16 @@ sealed class ComplicationTemplate {
         val icon: Icon? = null,
         val content: Text? = null,
         val onClick: TapAction?,
-        val extras: Bundle = Bundle.EMPTY
+        val extras: Bundle = Bundle.EMPTY,
+        val trimToFit: TrimToFit = TrimToFit.Enabled
     ): ComplicationTemplate() {
 
         override fun create(): SmartspaceAction {
-            //Trim the content to max 6 chars to fit in Native Smartspace
             content?.text?.let {
-                content.text = it.takeEllipsised(SUBTITLE_MAX_LENGTH)
+                if(trimToFit is TrimToFit.Enabled) {
+                    //Trim the content to max 6 chars to fit in Native Smartspace
+                    content.text = it.takeEllipsised(SUBTITLE_MAX_LENGTH)
+                }
             }
             //If the icon isn't tinted, also include the subcardType extra to disable legacy tinting
             val extrasCompat = Bundle().apply {
@@ -90,4 +94,10 @@ sealed class ComplicationTemplate {
 
     abstract fun create(): SmartspaceAction
 
+}
+
+sealed class TrimToFit {
+    data object Enabled: TrimToFit()
+    @DisablingTrim
+    data object Disabled: TrimToFit()
 }
