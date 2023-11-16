@@ -47,6 +47,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
         <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
+        <item name="android:overScrollMode">@integer/overscroll_enabled</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowShowWallpaper">true</item>
         <item name="android:windowAnimationStyle">@style/WallpaperFadeTransition</item>

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.Window
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -22,6 +23,7 @@ import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
+import kotlinx.parcelize.Parcelize
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.kieronquinn.app.smartspacer.sdk.client.R as ClientR
@@ -29,10 +31,9 @@ import com.kieronquinn.app.smartspacer.sdk.client.R as ClientR
 class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(ActivityWidgetOptionsBinding::inflate) {
 
     companion object {
-        private const val KEY_TARGET = "target"
-        private const val KEY_APP_WIDGET_ID = "app_widget_id"
-        private const val KEY_OWNER = "owner"
+        private const val KEY_CONFIG = "config"
 
+        @OptIn(LimitedNativeSupport::class)
         fun getIntent(
             context: Context,
             target: SmartspaceTarget,
@@ -40,9 +41,15 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
             owner: String?
         ): Intent {
             return Intent(context, WidgetOptionsMenuActivity::class.java).apply {
-                putExtra(KEY_TARGET, target)
-                putExtra(KEY_APP_WIDGET_ID, appWidgetId)
-                putExtra(KEY_OWNER, owner)
+                val config = WidgetOptionsMenuConfig(
+                    appWidgetId,
+                    owner,
+                    target.smartspaceTargetId,
+                    target.canBeDismissed,
+                    target.aboutIntent,
+                    target.feedbackIntent
+                )
+                putExtra(KEY_CONFIG, config)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
@@ -54,16 +61,8 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
     private val viewModel by viewModel<WidgetOptionsMenuViewModel>()
     private val navigation by inject<WidgetOptionsNavigation>()
 
-    private val target by lazy {
-        intent.getParcelableExtraCompat(KEY_TARGET, SmartspaceTarget::class.java)
-    }
-
-    private val appWidgetId by lazy {
-        intent.getIntExtra(KEY_APP_WIDGET_ID, -1).takeIf { it != -1 }
-    }
-
-    private val owner by lazy {
-        intent.getStringExtra(KEY_OWNER)
+    private val config by lazy {
+        intent.getParcelableExtraCompat(KEY_CONFIG, WidgetOptionsMenuConfig::class.java)
     }
 
     private val adapter by lazy {
@@ -101,11 +100,9 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
         }
     }
 
-    @OptIn(LimitedNativeSupport::class)
     private fun loadItems(): List<BaseSettingsItem> {
-        val target = target ?: return emptyList()
-        val appWidgetId = appWidgetId ?: return emptyList()
-        val owner = owner ?: return emptyList()
+        val appWidgetId = config?.appWidgetId ?: return emptyList()
+        val owner = config?.owner ?: return emptyList()
         return listOfNotNull(
             GenericSettingsItem.Setting(
                 getString(ClientR.string.smartspace_long_press_popup_dismiss),
@@ -115,9 +112,9 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
                     ClientR.drawable.ic_smartspace_long_press_dismiss
                 )
             ) {
-                viewModel.onDismissClicked(target)
+                viewModel.onDismissClicked(config?.targetId ?: return@Setting)
                 finishAndRemoveTask()
-            }.takeIf { target.canBeDismissed },
+            }.takeIf { config?.canBeDismissed ?: false },
             GenericSettingsItem.Setting(
                 getString(ClientR.string.smartspace_long_press_popup_about),
                 "",
@@ -126,10 +123,10 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
                     ClientR.drawable.ic_smartspace_long_press_about
                 )
             ) {
-                viewModel.onAboutClicked(target, ::onError)
+                viewModel.onAboutClicked(config?.aboutIntent ?: return@Setting, ::onError)
                 finishAndRemoveTask()
-            }.takeIf { target.aboutIntent != null &&
-                    target.aboutIntent?.shouldExcludeFromSmartspacer() == false },
+            }.takeIf { config?.aboutIntent != null &&
+                    config?.aboutIntent?.shouldExcludeFromSmartspacer() == false },
             GenericSettingsItem.Setting(
                 getString(ClientR.string.smartspace_long_press_popup_settings),
                 "",
@@ -149,10 +146,12 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
                     ClientR.drawable.ic_smartspace_long_press_feedback
                 )
             ) {
-                viewModel.onAboutClicked(target, ::onError)
+                viewModel.onFeedbackClicked(
+                    config?.feedbackIntent ?: return@Setting, ::onError
+                )
                 finishAndRemoveTask()
-            }.takeIf { target.feedbackIntent != null &&
-                    target.aboutIntent?.shouldExcludeFromSmartspacer() == false },
+            }.takeIf { config?.feedbackIntent != null &&
+                    config?.feedbackIntent?.shouldExcludeFromSmartspacer() == false },
             GenericSettingsItem.Setting(
                 getString(R.string.widget_options_configure),
                 "",
@@ -190,5 +189,15 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
 
     inner class Adapter(list: List<BaseSettingsItem>):
         BaseSettingsAdapter(binding.widgetOptionsList, list)
+
+    @Parcelize
+    data class WidgetOptionsMenuConfig(
+        val appWidgetId: Int,
+        val owner: String?,
+        val targetId: String,
+        val canBeDismissed: Boolean,
+        val aboutIntent: Intent?,
+        val feedbackIntent: Intent?
+    ): Parcelable
 
 }

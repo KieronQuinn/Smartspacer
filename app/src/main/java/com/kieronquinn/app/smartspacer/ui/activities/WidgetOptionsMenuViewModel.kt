@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.kieronquinn.app.smartspacer.components.navigation.WidgetOptionsNavigation
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.sdk.annotations.LimitedNativeSupport
-import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
 import com.kieronquinn.app.smartspacer.ui.screens.widget.SmartspacerWidgetConfigurationFragment
@@ -16,9 +15,9 @@ import kotlinx.coroutines.launch
 
 abstract class WidgetOptionsMenuViewModel: ViewModel() {
 
-    abstract fun onDismissClicked(target: SmartspaceTarget)
-    abstract fun onAboutClicked(target: SmartspaceTarget, errorCallback: () -> Unit)
-    abstract fun onFeedbackClicked(target: SmartspaceTarget, errorCallback: () -> Unit)
+    abstract fun onDismissClicked(targetId: String)
+    abstract fun onAboutClicked(aboutIntent: Intent, errorCallback: () -> Unit)
+    abstract fun onFeedbackClicked(feedbackIntent: Intent, errorCallback: () -> Unit)
     abstract fun onSettingsClicked(context: Context)
     abstract fun onConfigureClicked(context: Context, appWidgetId: Int, owner: String)
 
@@ -30,23 +29,21 @@ class WidgetOptionsMenuViewModelImpl(
     private val smartspaceRepository: SmartspaceRepository
 ): WidgetOptionsMenuViewModel() {
 
-    override fun onDismissClicked(target: SmartspaceTarget) {
+    override fun onDismissClicked(targetId: String) {
         viewModelScope.launch {
-            smartspaceRepository.notifyDismissEvent(target.smartspaceTargetId)
+            smartspaceRepository.notifyDismissEvent(targetId)
         }
     }
 
-    override fun onAboutClicked(target: SmartspaceTarget, errorCallback: () -> Unit) {
+    override fun onAboutClicked(aboutIntent: Intent, errorCallback: () -> Unit) {
         viewModelScope.launch {
-            val intent = target.aboutIntent ?: return@launch
-            navigation.navigate(intent, errorCallback)
+            navigation.navigate(aboutIntent, errorCallback)
         }
     }
 
-    override fun onFeedbackClicked(target: SmartspaceTarget, errorCallback: () -> Unit) {
+    override fun onFeedbackClicked(feedbackIntent: Intent, errorCallback: () -> Unit) {
         viewModelScope.launch {
-            val intent = target.feedbackIntent ?: return@launch
-            navigation.navigate(intent, errorCallback)
+            navigation.navigate(feedbackIntent, errorCallback)
         }
     }
 

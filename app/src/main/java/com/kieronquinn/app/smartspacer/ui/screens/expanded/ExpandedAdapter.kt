@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
-import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -165,12 +165,16 @@ class ExpandedAdapter(
     }
 
     private fun ViewHolder.StatusBarSpace.setup(item: Item.StatusBarSpace) = with(binding) {
-        root.updateLayoutParams<RecyclerView.LayoutParams> {
+        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
             height = item.topInset
+            isFullSpan = true
         }
     }
 
     private fun ViewHolder.Search.setup(item: Item.Search) = with(binding) {
+        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
+            isFullSpan = true
+        }
         expandedDoodle.isVisible = item.doodleImage != null
         expandedSearchBox.root.isVisible = item.searchApp != null
         root.updatePadding(top = item.topInset)
@@ -252,6 +256,9 @@ class ExpandedAdapter(
 
     @Synchronized
     private fun ViewHolder.Complications.setup(complications: Item.Complications) = with(binding) {
+        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
+            isFullSpan = true
+        }
         val tintColour = getTintColour(complications.isDark)
         root.run {
             layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW).apply {
@@ -304,6 +311,9 @@ class ExpandedAdapter(
     }
 
     private fun ViewHolder.Footer.setup(footer: Item.Footer) = with(binding) {
+        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
+            isFullSpan = true
+        }
         val tintColour = getTintColour(footer.isDark)
         expandedFooterButton.isVisible = footer.hasClickedAdd
         expandedFooterButton.setTextColor(tintColour)

@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_nav_graph_include_donate"
             app:destination="@id/nav_graph_include_donate" />
+        <action
+            android:id="@+id/action_settingsFragment_to_dumpSmartspacerFragment"
+            app:destination="@id/dumpSmartspacerFragment" />
     </fragment>
     <fragment
         android:id="@+id/nativeModeFragment2"
@@ -206,5 +209,10 @@
         android:label="@string/about_contributors"
         tools:layout="@layout/fragment_settings_base"/>
     <include app:graph="@navigation/nav_graph_include_donate" />
+    <fragment
+        android:id="@+id/dumpSmartspacerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerFragment"
+        android:label="@string/settings_dump_title_short"
+        tools:layout="@layout/fragment_dump" />
 
 </navigation>

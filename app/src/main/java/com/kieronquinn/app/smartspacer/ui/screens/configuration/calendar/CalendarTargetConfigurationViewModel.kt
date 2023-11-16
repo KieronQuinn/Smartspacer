@@ -12,6 +12,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget.TargetData
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget.TargetData.PostEventTime
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget.TargetData.PreEventTime
 import com.kieronquinn.app.smartspacer.model.database.TargetDataType
 import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
@@ -45,6 +46,7 @@ abstract class CalendarTargetConfigurationViewModel(scope: CoroutineScope?): Bas
     abstract fun onShowUnconfirmedChanged(enabled: Boolean)
     abstract fun onUseAlternativeIdsChanged(enabled: Boolean)
     abstract fun onPreEventTimeChanged(time: PreEventTime)
+    abstract fun onPostEventTimeChanged(time: PostEventTime)
     abstract fun onClearDismissEventsClicked()
 
     sealed class State {
@@ -162,6 +164,12 @@ class CalendarTargetConfigurationViewModelImpl(
     override fun onPreEventTimeChanged(time: PreEventTime) {
         updateTargetData {
             it.copy(preEventTime = time)
+        }
+    }
+
+    override fun onPostEventTimeChanged(time: PostEventTime) {
+        updateTargetData {
+            it.copy(postEventTime = time)
         }
     }
 

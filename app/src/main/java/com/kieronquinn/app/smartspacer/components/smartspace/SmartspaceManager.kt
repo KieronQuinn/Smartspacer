@@ -17,9 +17,11 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTargetEvent
 import com.kieronquinn.app.smartspacer.sdk.utils.ParceledListSlice
 import com.kieronquinn.app.smartspacer.ui.activities.permission.client.SmartspacerClientPermissionActivity
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -122,6 +124,25 @@ class SmartspaceManager(private val context: Context): ISmartspaceManager.Stub()
     override fun checkCallingPermission(): Boolean {
         val calling = getCallingPackage() ?: return false
         return getGrantForPackage(calling)?.smartspace ?: false
+    }
+
+    override fun onDestroy() {
+        val callingPackage = getCallingPackage() ?: return
+        scope.launch {
+            sessionsLock.withLock {
+                val ownedSessions = sessions.filter { it.value.owner == callingPackage }
+                ownedSessions.forEach { destroySmartspaceSession(it.key.toBundle()) }
+            }
+        }
+    }
+
+    fun onServiceDestroy() {
+        scope.launch {
+            sessionsLock.withLock {
+                sessions.forEach { destroySmartspaceSession(it.key.toBundle()) }
+            }
+        }
+        scope.cancel()
     }
 
     private fun getGrantForPackage(packageName: String) = runBlocking {

@@ -246,6 +246,22 @@ class CalendarTargetConfigurationViewModelTests: BaseTest<CalendarTargetConfigur
     }
 
     @Test
+    fun testOnPostEventTimeChanged() = runTest {
+        sut.state.test {
+            assertTrue(awaitItem() is State.Loading)
+            sut.setupWithId(mockId)
+            val item = awaitItem()
+            assertTrue(item is State.Loaded)
+            item as State.Loaded
+            sut.onPostEventTimeChanged(TargetData.PostEventTime.ONE_HOUR)
+            val updateItem = awaitItem()
+            assertTrue(updateItem is State.Loaded)
+            updateItem as State.Loaded
+            assertTrue(updateItem.targetData.postEventTime == TargetData.PostEventTime.ONE_HOUR)
+        }
+    }
+
+    @Test
     fun testOnClearDismissEventsClicked() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)

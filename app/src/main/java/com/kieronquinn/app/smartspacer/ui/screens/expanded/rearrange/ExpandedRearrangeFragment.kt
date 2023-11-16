@@ -161,8 +161,8 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         //No-op
     }
 
-    override fun onLongPress(target: SmartspaceTarget) {
-        //No-op
+    override fun onLongPress(target: SmartspaceTarget): Boolean {
+        return false
     }
 
     override fun onDoodleClicked(doodleImage: DoodleImage) {

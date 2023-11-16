@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.Adapter
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.ViewHolder
@@ -82,6 +83,7 @@ open class LifecycleAwareRecyclerView : RecyclerView {
             val firstItem = when(layoutManager){
                 is LinearLayoutManager -> layoutManager.findFirstVisibleItemPosition()
                 is FlexboxLayoutManager -> layoutManager.findFirstVisibleItemPosition()
+                is StaggeredGridLayoutManager -> layoutManager.findFirstVisibleItemPosition()
                 else -> throw Exception("Unsupported LayoutManager type")
             }
             val lastItem = when(layoutManager){
@@ -127,10 +129,12 @@ open class LifecycleAwareRecyclerView : RecyclerView {
             val layoutManager = recyclerView.layoutManager
             val firstItem = when(layoutManager){
                 is LinearLayoutManager -> layoutManager.findFirstVisibleItemPosition()
+                is StaggeredGridLayoutManager -> layoutManager.findFirstVisibleItemPosition()
                 else -> throw Exception("Unsupported LayoutManager type")
             }
             val lastItem = when(layoutManager){
                 is LinearLayoutManager -> layoutManager.findLastVisibleItemPosition()
+                is StaggeredGridLayoutManager -> layoutManager.findLastVisibleItemPosition()
                 else -> throw Exception("Unsupported LayoutManager type")
             }
             val viewHolders = ArrayList<ViewHolder>()
@@ -143,4 +147,12 @@ open class LifecycleAwareRecyclerView : RecyclerView {
 
     }
 
+}
+
+private fun StaggeredGridLayoutManager.findFirstVisibleItemPosition(): Int {
+    return findFirstVisibleItemPositions(null).min()
+}
+
+private fun StaggeredGridLayoutManager.findLastVisibleItemPosition(): Int {
+    return findLastVisibleItemPositions(null).max()
 }

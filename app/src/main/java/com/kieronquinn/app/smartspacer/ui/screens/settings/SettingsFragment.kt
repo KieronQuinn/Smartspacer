@@ -151,6 +151,13 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_analytics),
             onChanged = viewModel::onEnableAnalyticsChanged
         ),
+        Header(getString(R.string.settings_debug_header)),
+        Setting(
+            getString(R.string.settings_dump_title),
+            getString(R.string.settings_dump_content),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_debug),
+            onClick = viewModel::onDebugClicked,
+        ),
         SettingsSettingsItem.About(
             viewModel::onContributorsClicked,
             viewModel::onDonateClicked,

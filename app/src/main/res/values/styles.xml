@@ -22,6 +22,10 @@
         <item name="android:fontFamily">@font/google_sans_text_regular</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Small.Smartspacer.Mono" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">@font/google_sans_mono</item>
+    </style>
+
     <style name="TextAppearance.AppCompat.Small.Smartspacer.Medium" parent="TextAppearance.AppCompat.Small">
         <item name="android:fontFamily">@font/google_sans_text_medium</item>
     </style>

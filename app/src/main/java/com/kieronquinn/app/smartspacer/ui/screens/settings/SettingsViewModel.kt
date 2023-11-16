@@ -35,6 +35,7 @@ abstract class SettingsViewModel: ViewModel() {
     abstract fun onPluginRepositoryClicked()
     abstract fun onCheckForUpdatesChanged(enabled: Boolean)
     abstract fun onEnableAnalyticsChanged(enabled: Boolean)
+    abstract fun onDebugClicked()
 
     abstract fun onContributorsClicked()
     abstract fun onDonateClicked()
@@ -198,6 +199,12 @@ class SettingsViewModelImpl(
     override fun onEnableAnalyticsChanged(enabled: Boolean) {
         viewModelScope.launch {
             analyticsEnabled.set(enabled)
+        }
+    }
+
+    override fun onDebugClicked() {
+        viewModelScope.launch {
+            navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToDumpSmartspacerFragment())
         }
     }
 

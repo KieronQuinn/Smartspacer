@@ -1,9 +1,9 @@
 import com.vanniktech.maven.publish.SonatypeHost
 
 buildscript {
-    ext.nav_version = "2.7.4"
+    ext.nav_version = "2.7.5"
     ext.protobuf_version = '0.9.0'
-    ext.refine_version = '4.3.0'
+    ext.refine_version = '4.4.0'
     dependencies {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.protobuf:protobuf-gradle-plugin:$protobuf_version"

@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget.TargetData.PostEventTime
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.CalendarTarget.TargetData.PreEventTime
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
@@ -80,6 +81,7 @@ class CalendarTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable
     }
 
     private fun State.Loaded.loadItems(): List<BaseSettingsItem> {
+        val postEventTime = targetData.postEventTime ?: PostEventTime.AT_END
         return listOf<BaseSettingsItem>(
             GenericSettingsItem.Header(getString(R.string.target_calendar_settings_calendars)),
             *calendars.map {
@@ -138,6 +140,18 @@ class CalendarTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable
                 targetData.preEventTime,
                 viewModel::onPreEventTimeChanged,
                 PreEventTime.values().toList()
+            ) {
+                it.label
+            },
+            GenericSettingsItem.Dropdown(
+                getString(R.string.target_calendar_settings_post_event_time_title),
+                getString(postEventTime.label),
+                ContextCompat.getDrawable(
+                    requireContext(), R.drawable.ic_target_calendar_settings_post_event_time
+                ),
+                postEventTime,
+                viewModel::onPostEventTimeChanged,
+                PostEventTime.values().toList()
             ) {
                 it.label
             },

@@ -65,7 +65,7 @@ private val reflectionActionClass by lazy {
 }
 
 private val reflectionActionValueField by lazy {
-    reflectionActionClass.getDeclaredField("value").apply {
+    reflectionActionClass.getDeclaredField("value", "mValue").apply {
         isAccessible = true
     }
 }
@@ -73,10 +73,6 @@ private val reflectionActionValueField by lazy {
 private val mApplicationField by lazy {
     RemoteViews::class.java.getField("mApplication")
 }
-
-var RemoteViews.mApplication
-    get() = mApplicationField.get(this) as? ApplicationInfo
-    set(value) = mApplicationField.set(this, value)
 
 fun RemoteViewsAction.isRemoteViewsAdapterIntent(): Boolean {
     return this::class.java == setRemoteViewsAdapterIntentClass
@@ -91,13 +87,13 @@ fun RemoteViewsAction.isOnClickResponse(): Boolean {
 }
 
 fun RemoteViewsAction.getId(): Int {
-    return actionClass.getDeclaredField("viewId").apply {
+    return actionClass.getDeclaredField("viewId", "mViewId").apply {
         isAccessible = true
     }.get(this) as Int
 }
 
 fun RemoteViewsAction.extractAdapterIntent(): Pair<Int, Intent> {
-    val intent = setRemoteViewsAdapterIntentClass.getDeclaredField("intent").apply {
+    val intent = setRemoteViewsAdapterIntentClass.getDeclaredField("intent", "mIntent").apply {
         isAccessible = true
     }.get(this) as Intent
     return Pair(getId(), intent)
@@ -238,4 +234,16 @@ fun RemoteViews_startPendingIntent(
 fun RemoteResponse.getLaunchOptions(view: View): AndroidPair<Intent, ActivityOptions>{
     return RemoteResponse::class.java.getMethod("getLaunchOptions", View::class.java)
         .invoke(this, view) as AndroidPair<Intent, ActivityOptions>
+}
+
+private fun Class<*>.getDeclaredField(vararg options: String): Field {
+    var lastException = NoSuchFieldException()
+    return options.firstNotNullOfOrNull {
+        try {
+            getDeclaredField(it)
+        }catch (e: NoSuchFieldException) {
+            lastException = e
+            null
+        }
+    } ?: throw lastException
 }
