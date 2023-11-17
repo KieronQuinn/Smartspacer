@@ -71,7 +71,7 @@
     <string name="target_notification_description_channels_other">catégories</string>
     <string name="target_now_playing_label">En écoute Pixel</string>
     <string name="target_now_playing_description">Affiche la chanson en cours de lecture à l\'aide de la fonction En écoute des Pixel</string>
-    <string name="target_now_playing_description_unavailable">Cette cible ne fonctionne que sur les Pixel avec la fonction En écoute</string>
+    <string name="target_now_playing_description_unavailable">Cette cible requiert la fonction En écoute des Pixel</string>
     <string name="target_now_playing_shortcut_history">Historique</string>
     <string name="target_ambient_music_mod_label">En écoute (Ambient Music Mod)</string>
     <string name="target_ambient_music_mod_description">Affiche la chanson en cours de lecture à l\'aide d\'Ambient Music Mod</string>
@@ -195,7 +195,7 @@
     <string name="target_edit_show_on_music_title">Show While Music is Playing</string>
     <string name="target_edit_show_on_music_content">Show this target on your always on display while music is playing</string>
     <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
-    <string name="target_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
+    <string name="target_edit_show_on_music_content_incompatible">Requiert Smartspace natif avec prise en charge de l\'écran de verrouillage</string>
     <string name="target_edit_expanded_header">Smartspace étendu</string>
     <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="target_edit_expanded_show_when_locked_content">Show this Target in Expanded Smartspace when locked</string>
@@ -235,7 +235,7 @@
     <string name="complication_edit_show_on_music_title">Show While Music is Playing</string>
     <string name="complication_edit_show_on_music_content">Show this complication on your always on display while music is playing</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
-    <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
+    <string name="complication_edit_show_on_music_content_incompatible">Requiert Smartspace natif avec prise en charge de l\'écran de verrouillage</string>
     <string name="complication_edit_expanded_header">Smartspace étendu</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
@@ -362,32 +362,32 @@
     <string name="permission_dialog_notification_deny">Interdire</string>
     <string name="settings_integrations">Integrations</string>
     <string name="settings_enhanced_title">Mode amélioré</string>
-    <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
-    <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
+    <string name="settings_enhanced_content">Permet à Smartspacer d\'interagir et de s\'intégrer aux fonctionnalités système</string>
+    <string name="settings_enhanced_content_unsupported">Cet option est incompatible avec votre appareil</string>
     <string name="settings_native_smartspace_settings_title">Smartspace natif</string>
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
-    <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
+    <string name="settings_native_smartspace_settings_content_incompatible">Cet option est incompatible avec votre appareil</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Cette option nécessite l\'activation du mode amélioré</string>
     <string name="settings_targets_complications">Targets &amp; Complications</string>
     <string name="settings_plugins">Plugins</string>
     <string name="settings_options">Options</string>
     <string name="settings_enable_update_check_title">Rechercher automatiquement les mises à jour</string>
     <string name="settings_enable_update_check_content">Rechercher automatiquement les mises à jour de Smartspacer et afficher une notification si une mise à jour est disponible</string>
-    <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
-    <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
-    <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
-    <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
-    <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
-    <string name="settings_hide_sensitive_contents_disabled">Do not hide</string>
-    <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
-    <string name="settings_hide_sensitive_contents_hide_contents">Hide contents</string>
-    <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
-    <string name="settings_hide_sensitive_contents_hide">Hide target</string>
-    <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
+    <string name="settings_enable_analytics_title">Activer les statistiques et les rapports de plantage</string>
+    <string name="settings_enable_analytics_content">Autoriser l\'envoi à Firebase de rapports de plantage anonymes et de statistiques de base pour aider à corriger les bugs</string>
+    <string name="settings_hide_sensitive_contents_title">Masquer les cibles sensibles</string>
+    <string name="settings_hide_sensitive_contents_title_short">Cibles sensibles</string>
+    <string name="settings_hide_sensitive_contents_content">Masquer les cibles sur l\'écran de verrouillage lorsqu\'elles sont marquées comme sensibles : %1s</string>
+    <string name="settings_hide_sensitive_contents_disabled">Ne pas masquer</string>
+    <string name="settings_hide_sensitive_contents_disabled_content">Toujours afficher les cibles et leur contenu</string>
+    <string name="settings_hide_sensitive_contents_hide_contents">Masquer le contenu</string>
+    <string name="settings_hide_sensitive_contents_hide_contents_content">Afficher la cible mais masquer son contenu</string>
+    <string name="settings_hide_sensitive_contents_hide">Masquer la cible</string>
+    <string name="settings_hide_sensitive_contents_hide_content">Masquer complètement la cible</string>
     <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
+    <string name="settings_dump_title">Dumper les cibles et les actions</string>
+    <string name="settings_dump_content">Afficher les informations sur le contenu et de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
+    <string name="settings_dump_title_short">Dumper</string>
     <string name="settings_dump_button">Write to File</string>
     <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
@@ -510,7 +510,7 @@
     <!-- Enhanced Mode -->
     <string name="enhanced_mode_title">Mode amélioré</string>
     <string name="enhanced_mode_enable_title">Activer le mode amélioré</string>
-    <string name="enhanced_mode_enable_subtitle">Nécessite Shizuku ou Sui</string>
+    <string name="enhanced_mode_enable_subtitle">Requiert Shizuku ou Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
     <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrate into the Smartspace in the Pixel Launcher</string>
@@ -551,7 +551,7 @@
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku Required</string>
     <string name="notification_shizuku_content_app_prediction">La condition Suggestion d\'application nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
-    <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_content_recent_task">La condition Tâche récente nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <string name="notification_shizuku_content_at_a_glance_target">La cible Aperçu nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <string name="notification_shizuku_content_at_a_glance_complication">La complication Aperçu nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <!-- Sui service notifications -->
@@ -578,7 +578,7 @@
     <string name="native_mode_settings_menu_title">Paramètres de Smartspace natif</string>
     <string name="native_mode_settings_title">Smartspace natif</string>
     <string name="native_mode_settings_target_limit_title">Page Limit</string>
-    <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
+    <string name="native_mode_settings_target_limit_content">Nombre maximum de pages de cibles et de complications à afficher : %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Pixel Launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Single page</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
