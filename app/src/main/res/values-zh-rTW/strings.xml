@@ -3,7 +3,7 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>選擇性</b>：在您的啟動器或啟動器的 Google Feed 橋接上啟用此模塊，以用擴展的 Smartspace 替換 Google Discover</string>
-    <string name="dummy_home_content">此畫面存在，用以解決 Smartspacer 插件使用的實作不佳的小工具問題。\n\nSmartspacer 無法作為啟動器，請選擇不同的啟動器。</string>
+    <string name="dummy_home_content">這個畫面的存在是為了解決 Smartspacer 外掛使用的功能組件執行不佳的問題。\n\nSmartspacer 無法充當啟動器，請選擇其他啟動器。</string>
     <string name="dummy_home_open_settings">開啟設定</string>
     <string name="notification_service">Smartspacer 通知服務</string>
     <string name="loading">載入中…</string>
@@ -16,7 +16,7 @@
     <string name="menu_rerun_setup">重新設定</string>
     <string name="bottom_nav_targets">目標</string>
     <string name="bottom_nav_complications">複雜功能</string>
-    <string name="bottom_nav_plugins">插件</string>
+    <string name="bottom_nav_plugins">外掛</string>
     <string name="bottom_nav_settings">設定</string>
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">在溢出菜單中允許受限設定</string>
@@ -277,7 +277,7 @@
     <string name="configuration_notification_picker_error">獲取通知頻道時發生錯誤</string>
     <string name="requirements_title">需求</string>
     <string name="requirements_empty_label">此類型尚未添加需求</string>
-    <string name="requirements_tab_any">任一</string>
+    <string name="requirements_tab_any">任何一個</string>
     <string name="requirements_tab_all">全部</string>
     <string name="fab_requirements_add">新增需求</string>
     <string name="requirement_not_available">此需求不再可用，點擊移除</string>
@@ -384,12 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">顯示目標，但隱藏其內容</string>
     <string name="settings_hide_sensitive_contents_hide">隱藏目標</string>
     <string name="settings_hide_sensitive_contents_hide_content">完全隱藏目標</string>
-    <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
-    <string name="settings_dump_button">Write to File</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_debug_header">偵錯</string>
+    <string name="settings_dump_title">導出目標與動作</string>
+    <string name="settings_dump_content">顯示當前目標與動作的內容及偵錯資訊，並將其寫入檔案以協助故障排除</string>
+    <string name="settings_dump_title_short">導出</string>
+    <string name="settings_dump_button">寫入檔案</string>
+    <string name="settings_dump_complete">已寫入檔案</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">基本</string>
     <string name="compatibility_feature_basic_content">允許顯示標題和子標題以及圖標。任何不支援的目標都會回退到這種風格。</string>
@@ -439,8 +439,8 @@
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">目標</string>
     <string name="setup_targets_info_p1"><b>目標</b>是在 Smartspace 上顯示的資訊頁面，通常至少包含標題、副標題和圖示。許多目標還支援額外資訊，如圖片或列表。</string>
-    <string name="setup_targets_info_p2">目標可以是動態的，根據需要顯示或隱藏，或者是靜態的，始終顯示。您可以進一步使用<b>要求</b>來自訂它們的出現時機，以及許多目標提供的設定（通過在 Smartspacer 的使用者介面中點擊目標來存取）。</string>
-    <string name="setup_targets_info_p3">Smartspacer 的資訊一覽整合由「資訊一覽」目標提供，可以顯示來自 Google 的常規資訊，如日曆事件和航班。請注意，如果沒有可用資訊，它不會<b>總是</b>顯示今天的日期，如果您想要日期始終可見，應該另外添加「日期」目標。</string>
+    <string name="setup_targets_info_p2">目標可以靈活變化，需要時出現，不需要時就隱藏，或者選擇一直固定展示。你還可以透過 <b> 要求 </b> 進行更多自訂，比如調整很多目標的設定（只要在 Smartspacer 的介面點擊某個目標就能設定）。</string>
+    <string name="setup_targets_info_p3">Smartspacer 的「資訊一覽」整合是透過「資訊一覽」目標來提供的，它可以顯示來自 Google 的常規資訊，例如日曆事件和航班資訊。請注意，如果沒有可用資訊，這並<b>不會</b>總是顯示今天的日期，如果您希望始終顯示日期，則應該另外添加「日期」目標。</string>
     <string name="setup_targets_info_example_one_title">附近交通擁堵</string>
     <string name="setup_targets_info_example_one_subtitle">Google 地圖</string>
     <string name="setup_targets_info_example_two_title">購物清單</string>
@@ -870,7 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">使用替代事件 ID</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">在駁回事件時，根據事件的標題、開始和結束時間而不是系統提供的 ID，為每個事件創建 ID。這在您使用應用程式或服務同步行事曆帳戶間，並在事情改變時重新創建新事件時非常有用。</string>
     <string name="target_calendar_settings_pre_event_time_title">在開始前顯示事件時間</string>
-    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
+    <string name="target_calendar_settings_post_event_time_title">在活動開始後顯示持續時間</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">清除已忽略的事件</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">重置已忽略事件的列表，如果事件仍然有效則允許隱藏的事件再次顯示</string>
     <string name="target_calendar_settings_permission_toast">授予 Smartspacer 行事曆權限</string>
@@ -881,7 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 分鐘</string>
     <string name="target_calendar_pre_event_time_1_hour">1 小時</string>
     <string name="target_calendar_pre_event_time_2_hours">2 小時</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">直到活動結束</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">資訊一覽設定</string>
     <string name="target_default_settings_more_content">在 Google App 中設定更多設定</string>
