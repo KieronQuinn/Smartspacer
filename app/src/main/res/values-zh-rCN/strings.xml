@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">在弹出的菜单中允许受限制的设置</string>
     <string name="restricted_mode_content_accessibility">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用使用无障碍服务。\n\n<b>如果你在启用无障碍服务时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[从 Android 14 开始 Google 不再允许安装包管理器旁加载安装的应用使用无障碍服务。<br><br><b>如果你看到一则受限制设置的信息，则需要卸载 Smartspacer，并通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 来重装。直接安装（而不先卸载）是不行的。<br><br></b>另外，启用增强模式后，Smartspacer 可以绕过这一要求（该模式需要 Shizuku 或 root）。]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[从 Android 14 开始 Google 不再允许通过软件包安装程序安装的应用使用无障碍服务。<br><br><b>如果你看到一则受限制设置的信息，则需要先卸载 Smartspacer，再通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 重新安装。直接安装（而不先卸载）是不行的。<br><br></b>另外，如果启用了增强模式，Smartspacer 可以绕过这一限制（该模式需要 Shizuku 或 root）。]]></string>
     <string name="restricted_mode_content_notification">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用读取通知。\n\n<b>如果你在允许通知读取时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[从 Android 14 开始 Google 不再允许安装包管理器旁加载安装的应用读取通知。<br><br><b>如果你看到一则受限制设置的信息，则需要卸载 Smartspacer，并通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 来重装。直接安装（而不先卸载）是不行的。<br><br></b>另外，启用增强模式后，Smartspacer 可以绕过这一要求（该模式需要 Shizuku 或 root）。]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[从 Android 14 开始 Google 不再允许通过软件包安装程序安装的应用使用读取通知。<br><br><b>如果你看到一则受限制设置的信息，则需要先卸载 Smartspacer，再通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 重新安装。直接安装（而不先卸载）是不行的。<br><br></b>另外，如果启用了增强模式，Smartspacer 可以绕过这一限制（该模式需要 Shizuku 或 root）。]]></string>
     <string name="restricted_mode_button">打开应用信息</string>
     <string name="restricted_mode_warning_button">通过 Shizuku 授权</string>
     <string name="target_sensitive_title">隐藏的内容</string>
@@ -384,6 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">显示对象，但隐藏其内容</string>
     <string name="settings_hide_sensitive_contents_hide">隐藏对象</string>
     <string name="settings_hide_sensitive_contents_hide_content">隐藏整个对象</string>
+    <string name="settings_debug_header">Debug</string>
+    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
+    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
+    <string name="settings_dump_title_short">Dump</string>
+    <string name="settings_dump_button">Write to File</string>
+    <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">基本</string>
     <string name="compatibility_feature_basic_content">允许显示标题 &amp; 子标题以及图标。任何不支持的对象都会回落至该样式。</string>
@@ -600,7 +606,7 @@
     <string name="expanded_widget_deleted">已卸载该组件，点击移除</string>
     <string name="expanded_widget_deleted_rearrange">已卸载小组件</string>
     <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
-    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_permission_title_short">显示在其他应用的上层</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
     <string name="expanded_permission_later">Later</string>
@@ -698,7 +704,7 @@
     <string name="plugin_repository_empty_button_browse">浏览扩展</string>
     <string name="plugin_repository_update_available">有可用更新！</string>
     <string name="plugin_repository_recommended">建议使用：</string>
-    <string name="plugin_repository_changelog"><b>What\'s New</b></string>
+    <string name="plugin_repository_changelog"><b>新增</b></string>
     <string name="plugin_details_install">安装</string>
     <string name="plugin_details_start_install">开始安装</string>
     <string name="plugin_details_open">打开</string>
@@ -864,6 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">使用替代事件 ID</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">消除事件时不使用系统提供的 ID，而是基于标题、开始和结束时间为每个事件创建 ID。当你借助应用或服务在多个账户间同步日历时很有用，这种方式会在细节变动时自动帮你创建新的事件。</string>
     <string name="target_calendar_settings_pre_event_time_title">在开始前显示事件时间</string>
+    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">清除已消除事件</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">重设已消除的事件列表，使已隐藏事件在再次生效时重新显示</string>
     <string name="target_calendar_settings_permission_toast">授予 Smartspacer 日历权限</string>
@@ -874,6 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 分钟</string>
     <string name="target_calendar_pre_event_time_1_hour">1 小时</string>
     <string name="target_calendar_pre_event_time_2_hours">2 小时</string>
+    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">资讯一览设置</string>
     <string name="target_default_settings_more_content">在 Google 应用中配置更多设定</string>
