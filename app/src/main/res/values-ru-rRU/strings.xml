@@ -384,12 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Показывать Цель, но не показывать её содержимое</string>
     <string name="settings_hide_sensitive_contents_hide">Прятать Цель</string>
     <string name="settings_hide_sensitive_contents_hide_content">Полностью скрыть Цель</string>
-    <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
-    <string name="settings_dump_button">Write to File</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_debug_header">Отладка</string>
+    <string name="settings_dump_title">Дамп Целей и Действий</string>
+    <string name="settings_dump_content">Показать содержимое и отладочную информацию для текущих Целей и Действий и сохранить их в файл в отладочных целях</string>
+    <string name="settings_dump_title_short">Дамп</string>
+    <string name="settings_dump_button">Сохранить в файл</string>
+    <string name="settings_dump_complete">Сохранено в файл</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Простой</string>
     <string name="compatibility_feature_basic_content">Позволяет показать заголовок и подзаголовок с иконкой. Любые неподдерживаемые Цели будут возвращаться к этому стилю.</string>
@@ -870,7 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">Использовать альтернативные ID события</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Создавать идентификаторы для каждого события на основе их названия, времени начала и окончания, вместо использования системных, при отклонении событий. Это полезно, если вы используете приложение или службу, которые синхронизируют календари между аккаунтами, и пересоздают новые события при изменениях.</string>
     <string name="target_calendar_settings_pre_event_time_title">Показать событие за время до начала</string>
-    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
+    <string name="target_calendar_settings_post_event_time_title">Показывать событие на время после начала</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Очистить отклонённые события</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Сбросить список отклонённых событий, позволяя скрытым событиям появиться вновь, если они всё ещё действительны</string>
     <string name="target_calendar_settings_permission_toast">Предоставьте Smartspacer доступ к календарю</string>
@@ -881,7 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 минут</string>
     <string name="target_calendar_pre_event_time_1_hour">1 час</string>
     <string name="target_calendar_pre_event_time_2_hours">2 часа</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">До окончания события</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Настройки \"Самое главное\"</string>
     <string name="target_default_settings_more_content">Больше настроек в приложении Google</string>
