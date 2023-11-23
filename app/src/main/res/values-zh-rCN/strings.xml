@@ -50,17 +50,17 @@
     <string name="widget_configuration_type_lock_content_disabled">不适用于该组件。请注意 Smartspacer 无法让小组件在锁屏上显示，你需要从 Google Play 商店下载诸如「Lockscreen Widgets」这样的应用来达成该操作。</string>
     <string name="widget_configuration_page">页面控制</string>
     <string name="widget_configuration_page_single_title">单页</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
+    <string name="widget_configuration_page_single_content">将小组件锁定为显示一页的对象和附件内容（如果空间允许的话）。这意味着你只会在小组件中看到优先级最高的对象/附件。\n<b>重要：</b>使用该选项意味着你无法打开对象的选项菜单，并且只能从扩展 Smartspace 面板中将其移除</string>
     <string name="widget_configuration_page_controls_title">分页</string>
     <string name="widget_configuration_page_controls_content">允许你根据需要配置包含多个对象和附件的页面，可通过箭头按钮在页面间切换（按钮 &amp; 页面提示将在只有一个页面时隐藏）</string>
     <string name="widget_configuration_page_no_controls_title">无箭头按钮的分页</string>
     <string name="widget_configuration_page_no_controls_content">与分页模式相同，但没有箭头提示。点击圆点提示符来在不同页面间切换，抵达最后一页时会自动循环至首页。</string>
     <string name="widget_configuration_animation">动画效果</string>
-    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
-    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
+    <string name="widget_configuration_animation_switch_title">动画更改</string>
+    <string name="widget_configuration_animation_switch_content">尽可能在小组件更改时使用淡出效果</string>
     <string name="widget_configuration_colour">颜色</string>
     <string name="widget_configuration_apply">应用</string>
-    <string name="widget_options_configure">Configure Widget</string>
+    <string name="widget_options_configure">配置小组件</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
     <string name="accessibility_service_description">启用 Smartspacer 小组件来保持对象和附件更新，避免长时间后台运行带来的电量消耗。</string>
     <string name="target_notification_label">通知</string>
@@ -384,12 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">显示对象，但隐藏其内容</string>
     <string name="settings_hide_sensitive_contents_hide">隐藏对象</string>
     <string name="settings_hide_sensitive_contents_hide_content">隐藏整个对象</string>
-    <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
-    <string name="settings_dump_button">Write to File</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_debug_header">调试</string>
+    <string name="settings_dump_title">转存对象 &amp; 操作</string>
+    <string name="settings_dump_content">显示当前对象 &amp; 操作的内容与调试信息，并将其写入文件以协助问题解决</string>
+    <string name="settings_dump_title_short">转存</string>
+    <string name="settings_dump_button">写入文件</string>
+    <string name="settings_dump_complete">已写入文件</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">基本</string>
     <string name="compatibility_feature_basic_content">允许显示标题 &amp; 子标题以及图标。任何不支持的对象都会回落至该样式。</string>
@@ -533,21 +533,21 @@
     <string name="native_switch_compatibility_available"><b>可用</b></string>
     <string name="native_switch_compatibility_not_available"><b>不可用</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_title">本机 Smartspace</string>
+    <string name="native_restart_feedback_loop_content">启用本机 Smartspace 时 Smartspacer 遇到了一个循环反馈。为确保对象 &amp; 附件正常工作，本机 Smartspace 必须重启以重新连接。</string>
+    <string name="native_restart_disconnect_content">Smartspacer 已与资讯一览断开连接。为确保所有对象 &amp; 附件正常工作，本机 Smartspace 必须重启以重新连接。</string>
+    <string name="native_restart_info"><b>重要：</b>与 Smartspace 重新连接时，Smartspacer 将会重启系统界面。<b>你可能会看到一则消息说系统界面已停止运行，随后进入锁屏。</b>这是正常现象，关闭消息提示并解锁设备以继续。</string>
+    <string name="native_restart_button">现在重连</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">重新启用本机 Smartspace</string>
     <string name="notification_native_mode_enable_content">重启后你必须再次启用 Smartspacer 的本机 Smartspace 模式，点击启用</string>
     <string name="notification_native_mode_enable_dismiss">不再显示</string>
     <string name="notification_native_mode_enable_now">现在启用</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_title">重新连接本机 Smartspace</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">启用本机 Smartspace 时 Smartspacer 遇到了一个循环反馈。点击重新连接并重试。</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer 已与资讯一览断开连接，点击重连。</string>
+    <string name="notification_native_mode_restart_just_reconnect">现在重连</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">需要 Shizuku</string>
     <string name="notification_shizuku_content_app_prediction">应用预测条件需要启用 Shizuku，点击开启</string>
@@ -605,12 +605,12 @@
     <string name="expanded_widget_configure">点击配置小组件</string>
     <string name="expanded_widget_deleted">已卸载该组件，点击移除</string>
     <string name="expanded_widget_deleted_rearrange">已卸载小组件</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
+    <string name="expanded_permission_title">允许显示在其他应用的上层权限</string>
     <string name="expanded_permission_title_short">显示在其他应用的上层</string>
-    <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
-    <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
-    <string name="expanded_permission_later">Later</string>
-    <string name="expanded_permission_grant">Grant</string>
+    <string name="expanded_permission_content">用扩展 Smartspace 面板取代 Google 探索时间流需要该权限以从叠加层启动应用。你可以打开 Smartspacer 或在 Smartspacer 的应用信息界面中手动授权。</string>
+    <string name="expanded_permission_content_sheet">用扩展 Smartspace 面板取代 Google 探索时间流需要该权限以从叠加层启动应用。</string>
+    <string name="expanded_permission_later">稍后再说</string>
+    <string name="expanded_permission_grant">授予</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">扩展 Smartspace 面板</string>
     <string name="expanded_settings_title_short">扩展面板</string>
@@ -870,7 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">使用替代事件 ID</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">消除事件时不使用系统提供的 ID，而是基于标题、开始和结束时间为每个事件创建 ID。当你借助应用或服务在多个账户间同步日历时很有用，这种方式会在细节变动时自动帮你创建新的事件。</string>
     <string name="target_calendar_settings_pre_event_time_title">在开始前显示事件时间</string>
-    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
+    <string name="target_calendar_settings_post_event_time_title">显示那之后的事件</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">清除已消除事件</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">重设已消除的事件列表，使已隐藏事件在再次生效时重新显示</string>
     <string name="target_calendar_settings_permission_toast">授予 Smartspacer 日历权限</string>
@@ -881,7 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 分钟</string>
     <string name="target_calendar_pre_event_time_1_hour">1 小时</string>
     <string name="target_calendar_pre_event_time_2_hours">2 小时</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">直到事件结束</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">资讯一览设置</string>
     <string name="target_default_settings_more_content">在 Google 应用中配置更多设定</string>
