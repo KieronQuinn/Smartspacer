@@ -386,7 +386,7 @@
     <string name="settings_hide_sensitive_contents_hide_content">Ocultar el objetivo completamente</string>
     <string name="settings_debug_header">Debug</string>
     <string name="settings_dump_title">Volcar objetivos y acciones</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
+    <string name="settings_dump_content">Muestra el contenido y la información de depuración de las acciones y objetivos actuales, y se escriben en un archivo para ayudar a encontrar problemas</string>
     <string name="settings_dump_title_short">Volcado</string>
     <string name="settings_dump_button">Write to File</string>
     <string name="settings_dump_complete">Written to file</string>
@@ -438,10 +438,10 @@
     <string name="setup_notifications_request">Otorgar permiso</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Objetivos</string>
-    <string name="setup_targets_info_p1"><b>Objetivos</b> son páginas de información mostradas en Smartspace, normalmente consistentes en al menos un título, subtítulo y icono. Muchos objetivos también tienen información adicional -donde sea compatible - como imágenes o listas.</string>
+    <string name="setup_targets_info_p1">Los <b>objetivos</b> son páginas de información mostradas en Smartspace, normalmente consistentes en al menos un título, subtítulo y icono. Muchos objetivos también tienen información adicional -donde sea compatible - como imágenes o listas.</string>
     <string name="setup_targets_info_p2">Los objetivos pueden ser dinámicos, mostrando y ocultando lo que sea necesario, también, pueden ser estáticos y mostrarse todo el tiempo. Puedes personalizar cuándo quieres que aparezcas usando <b>reglas</b>, que son configuraciones proporcionadas por muchos objetivos (que son accesibles pulsando cualquier objetivo en la interfaz de usuario de Smartspacer).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Mucho tráfico cercano</string>
+    <string name="setup_targets_info_p3">La integración De un vistazo de Smartspacer es proporcionado por el objetivo \"De un vistazo\", que puede mostrar la información regular de Google, como eventos del calendario y vuelos. Ten en cuenta que esto <b>NO</b> siempre muestra la fecha de hoy si no hay información disponible, debes agregar el objetivo \"Fecha\" por separado si deseas tener siempre la fecha visible.</string>
+    <string name="setup_targets_info_example_one_title">Mucho tráfico</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Lista de compras</string>
     <string name="setup_targets_info_example_two_subtitle">8 elementos</string>
@@ -511,11 +511,11 @@
     <string name="enhanced_mode_title">Modo mejorado</string>
     <string name="enhanced_mode_enable_title">Usar modo mejorado</string>
     <string name="enhanced_mode_enable_subtitle">Requiere Shizuku o Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>El modo mejorado le permite a Smartspacer a:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrate into the Smartspace in the Pixel Launcher</string>
+    <string name="enhanced_mode_enable_content_header"><b>El modo mejorado le permite a Smartspacer:</b></string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrar en el Smartspace de la pantalla de bloqueo</string>
+    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrar en el Smartspace en Pixel Launcher</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
+    <string name="enhanced_mode_enable_content_system">• Mostrar objetivos y complicaciones del Smartspace del sistema en Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
     <string name="enhanced_mode_skip_button">Omitir</string>
@@ -558,7 +558,7 @@
     <string name="notification_sui_title">Sui o Shizuku como root</string>
     <string name="notification_sui_content_oem_smartspace">Smartspace OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Desactivar las optimizaciones de la batería</string>
+    <string name="notification_battery_optimisation_title">Desactivar las optimizaciones de batería</string>
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
@@ -682,9 +682,9 @@
     <string name="expanded_custom_widget_options_show_when_locked_title">Mostrar cuando está bloqueado</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Mostrar este widget en el espacio expandido cuando el dispositivo esté bloqueado</string>
     <string name="add_widget_empty_label">No se encontraron widgets</string>
-    <string name="battery_optimisation_title">Battery Optimisation</string>
+    <string name="battery_optimisation_title">Optimización de batería</string>
     <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
-    <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
+    <string name="battery_optimisation_system_title">Desactivar las optimizaciones de batería</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Permitir alarmas y recordatorios</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
