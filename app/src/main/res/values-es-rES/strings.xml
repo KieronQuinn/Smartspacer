@@ -385,9 +385,9 @@
     <string name="settings_hide_sensitive_contents_hide">Ocultar objetivo</string>
     <string name="settings_hide_sensitive_contents_hide_content">Ocultar el objetivo completamente</string>
     <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
+    <string name="settings_dump_title">Volcar objetivos y acciones</string>
     <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
+    <string name="settings_dump_title_short">Volcado</string>
     <string name="settings_dump_button">Write to File</string>
     <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
@@ -563,7 +563,7 @@
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Música</string>
-    <string name="target_music_description">Displays the currently playing on-device music track</string>
+    <string name="target_music_description">Muestra la canción actual que se está reproduciendo en el dispositivo</string>
     <string name="target_music_setting_show_album_art_title">Mostrar portada del álbum</string>
     <string name="target_music_setting_show_album_art_content">Muestra la imagen de portada del álbum para la canción de reproducción actual, si está disponible. Esta puede estar recortada.</string>
     <string name="target_music_setting_use_doorbell_title">Mostrar portada de álbum cuadrada</string>
@@ -745,7 +745,7 @@
     <string name="update_notification_content">Una actualización está disponible para Smartspacer (%1s a %1s)</string>
     <!-- Donate info -->
     <string name="donate_prompt_title">¿Estás disfrutando de Smartspacer?</string>
-    <string name="donate_prompt_content">Si encuentras un Smartspacer útil, por favor considera hacer una donación. Presiona para más información.</string>
+    <string name="donate_prompt_content">Si crees que Smartspacer es útil, por favor considera hacer una donación. Presiona para más información.</string>
     <string name="donate_prompt_dismiss">Descartar</string>
     <string name="donate_paragraph_1">Gracias por considerar hacer una donación. Smartspacer es una aplicación compleja y se ha tomado mucho tiempo en el desarrollo, aunque está disponible de forma gratuita y es de código abierto.</string>
     <string name="donate_paragraph_2">Si deseas donar, actualmente la única opción disponible es PayPal (enlazado a continuación). Otras opciones pueden estar disponibles en el futuro, si es necesario - abre un issue en GitHub si tienes alguna sugerencia. Adicionalmente, pueden proporcionarse opciones de pago directas como Wise bajo petición.</string>
