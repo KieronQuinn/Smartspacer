@@ -140,13 +140,13 @@
     <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">Smartspacer est entré en mode sans échec à cause du crash de %1s. Appuyez pour plus d\'infos.</string>
     <string name="notification_channel_error_title">Erreurs</string>
-    <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
+    <string name="notification_channel_error_content">Notifications affichées lorsque Smartspacer rencontre un problème</string>
     <string name="notification_channel_accessibility_title">Service d\'accessibilité</string>
     <string name="notification_channel_accessibility_content">Messages à propos du service d\'accessibilité de Smartspacer</string>
     <string name="notification_channel_native_title">Smartspace natif</string>
-    <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
+    <string name="notification_channel_native_content">Messages au sujet du service Shizuku de Smartspacer</string>
     <string name="notification_channel_oem_title">Smartspace OEM</string>
-    <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
+    <string name="notification_channel_oem_content">Messages au sujet du service Smartspace OEM de Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Rappel Shizuku</string>
     <string name="notification_channel_shizuku_reminder_content">Notification pour vous rappeler de démarrer Shizuku après un redémarrage</string>
     <string name="notification_channel_updates_title">Mises à jour de Smartspacer</string>
@@ -259,9 +259,9 @@
     <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again.</string>
     <string name="feedback_loop_relaunch_wait">Wait %1s seconds</string>
     <string name="feedback_loop_relaunch">Restart Smartspacer</string>
-    <string name="configuration_notification_enable_title">Enable Notification Access</string>
-    <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
-    <string name="configuration_notification_enable_button">Allow notification access</string>
+    <string name="configuration_notification_enable_title">Activer l\'accès aux notifications</string>
+    <string name="configuration_notification_enable_content">Autorisez Smartspacer à accéder aux notifications de l\'appareil et des applications dans les paramètres système.</string>
+    <string name="configuration_notification_enable_button">Autoriser l\'accès aux notifications</string>
     <string name="configuration_accessibility_enable_title">Activer le service d\'accessibilité</string>
     <string name="configuration_accessibility_enable_content">Activez le service d\'accessibilité de Smartspacer dans les paramètres système.\n\n<b>Notez que</b> malgré l\'avertissement système, Smartspacer ne lit aucune donnée et n\'interagit pas avec votre appareil, le service est utilisé uniquement pour connaître les applications en cours d\'exécution.</string>
     <string name="configuration_accessibility_enable_button">Activer le service d\'accessibilité</string>
@@ -273,8 +273,8 @@
     <string name="configuration_notification_association_button">Set Companion</string>
     <string name="configuration_notification_association_read_more">En savoir plus sur cette condition</string>
     <string name="configuration_notification_association_toast">An error occurred, please try again</string>
-    <string name="configuration_notification_picker_empty">No notifications found</string>
-    <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
+    <string name="configuration_notification_picker_empty">Aucune notification trouvée</string>
+    <string name="configuration_notification_picker_error">Une erreur s\'est produite lors de la récupération des catégories de notifications</string>
     <string name="requirements_title">Conditions</string>
     <string name="requirements_empty_label">Aucune condition ajoutée pour ce type</string>
     <string name="requirements_tab_any">N\'importe laquelle</string>
@@ -540,16 +540,16 @@
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
+    <string name="notification_native_mode_enable_content">Vous devez réactiver le mode Smartspace natif de Smartspacer à chaque redémarrage, appuyez pour activer</string>
     <string name="notification_native_mode_enable_dismiss">Ne plus afficher</string>
-    <string name="notification_native_mode_enable_now">Enable Now</string>
+    <string name="notification_native_mode_enable_now">Activer</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
+    <string name="notification_native_mode_restart_title">Reconnecter Smartspace natif</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
+    <string name="notification_shizuku_title">Shizuku requis</string>
     <string name="notification_shizuku_content_app_prediction">La condition Suggestion d\'application nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <string name="notification_shizuku_content_recent_task">La condition Tâche récente nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <string name="notification_shizuku_content_at_a_glance_target">La cible Aperçu nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
@@ -560,7 +560,7 @@
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
     <string name="notification_battery_optimisation_content">L\'utilisation de la batterie par Smartspacer ne doit pas être restreinte afin de mettre à jour en arrière-plan les cibles et les complications, appuyez pour lever les restrictions</string>
-    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
+    <string name="notification_battery_optimisation_failed_toast">Échec de l\'ouverture des paramètres, veuillez accorder l\'autorisation manuellement</string>
     <!-- Music Target -->
     <string name="target_music_title">Musique</string>
     <string name="target_music_description">Affiche la chanson en cours de lecture sur cet appareil</string>
