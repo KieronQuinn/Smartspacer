@@ -1,1 +1,1 @@
--keep class com.kieronquinn.app.smartspacer.sdk.**
+-keep class com.kieronquinn.app.smartspacer.sdk.** { *; }
