@@ -160,19 +160,19 @@
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
     <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable</string>
-    <string name="fab_targets_add">Add Target</string>
-    <string name="targets_empty_label">No Targets added</string>
+    <string name="fab_targets_add">Ajouter une cible</string>
+    <string name="targets_empty_label">Aucune cible ajoutée</string>
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
     <string name="target_not_available_alt">This Target failed to load, if the issue persists please contact the Target\'s developer</string>
-    <string name="fab_complications_add">Add Complication</string>
+    <string name="fab_complications_add">Ajouter une complication</string>
     <string name="complications_empty_label">Aucune complication ajoutée</string>
     <string name="complication_not_available">This Complication is no longer available, tap to remove</string>
     <string name="complication_not_available_alt">This Complication failed to load, if the issue persists please contact the Complication\'s developer</string>
-    <string name="targets_add_empty_label">No Targets left to add</string>
+    <string name="targets_add_empty_label">Il ne reste plus aucune cible à ajouter</string>
     <string name="targets_add_incompatible_generic">This Target is not compatible with your device</string>
     <string name="targets_add_incompatible_widget">Le widget requis pour cette cible est indisponible</string>
     <string name="targets_add_failed_to_launch_setup">Failed to launch the setup for this Target</string>
-    <string name="complications_add_empty_label">No Complications left to add</string>
+    <string name="complications_add_empty_label">Il ne reste plus aucune complication à ajouter</string>
     <string name="complications_add_incompatible_generic">This Complication is not compatible with your device</string>
     <string name="complications_add_incompatible_widget">Le widget requis pour cette complication est indisponible</string>
     <string name="complications_add_failed_to_launch_setup">Failed to launch the setup for this Complication</string>
@@ -181,11 +181,11 @@
     <string name="requirements_add_failed_to_launch_setup">Échec du lancement de l\'assistant de configuration de cette condition</string>
     <string name="target_edit_title">Modifier la cible</string>
     <string name="target_edit_target_header">Cible</string>
-    <string name="target_edit_show_on_home_title">Show on Home Screen</string>
+    <string name="target_edit_show_on_home_title">Afficher sur l\'écran d\'accueil</string>
     <string name="target_edit_show_on_home_content">Show this target on your home screen</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
     <string name="target_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
-    <string name="target_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
+    <string name="target_edit_show_on_lock_screen_title_widget">Afficher sur l\'écran de verrouillage</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
@@ -197,7 +197,7 @@
     <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
     <string name="target_edit_show_on_music_content_incompatible">Requiert Smartspace natif avec prise en charge de l\'écran de verrouillage</string>
     <string name="target_edit_expanded_header">Smartspace étendu</string>
-    <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
+    <string name="target_edit_expanded_show_when_locked_title">Afficher lorsque l\'appareil est verrouillé</string>
     <string name="target_edit_expanded_show_when_locked_content">Show this Target in Expanded Smartspace when locked</string>
     <string name="target_edit_expanded_show_widget_title">Show Widget</string>
     <string name="target_edit_expanded_show_widget_content">Show the widget associated with this Target, if available</string>
@@ -216,7 +216,7 @@
     <string name="target_edit_requirements_content_all_one">%1d condition configurée</string>
     <string name="target_edit_requirements_content_all_other">%1d conditions configurées</string>
     <string name="target_edit_requirements_content_both">%1d + %1d conditions configurées</string>
-    <string name="target_edit_external_title">More Settings</string>
+    <string name="target_edit_external_title">Plus de paramètres</string>
     <string name="target_edit_external_content">Configurer d\'autres paramètres dans %1s</string>
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
     <string name="complication_edit_title">Edit Complication</string>
@@ -384,7 +384,7 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Afficher la cible mais masquer son contenu</string>
     <string name="settings_hide_sensitive_contents_hide">Masquer la cible</string>
     <string name="settings_hide_sensitive_contents_hide_content">Masquer complètement la cible</string>
-    <string name="settings_debug_header">Debug</string>
+    <string name="settings_debug_header">Débogage</string>
     <string name="settings_dump_title">Dumper les cibles et les actions</string>
     <string name="settings_dump_content">Afficher les informations sur le contenu et de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
     <string name="settings_dump_title_short">Dumper</string>
@@ -397,7 +397,7 @@
     <string name="compatibility_feature_combination_content">Allows showing a button in addition to the title &amp; subtitle.</string>
     <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
     <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_doorbell_title">Doorbell</string>
+    <string name="compatibility_feature_doorbell_title">Sonnette</string>
     <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
     <string name="compatibility_feature_flight_title">Vol</string>
     <string name="compatibility_feature_flight_content">Allows showing basic flight information such as flight number and airline in addition to the title &amp; subtitle.</string>
@@ -411,7 +411,7 @@
     <string name="compatibility_feature_sports_content">Allows displaying a score for two teams in addition to the title &amp; subtitle</string>
     <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
     <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
-    <string name="compatibility_template_carousel_title">Carousel</string>
+    <string name="compatibility_template_carousel_title">Carrousel</string>
     <string name="compatibility_template_carousel_content">Allows showing up to four icons with a header and footer, in addition to the title &amp; subtitle</string>
     <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
     <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
@@ -451,7 +451,7 @@
     <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
     <string name="setup_targets_caption_list">Example of a Target with a list</string>
     <!-- Setup > Add Targets -->
-    <string name="setup_targets_title">Add Targets</string>
+    <string name="setup_targets_title">Ajouter des cibles</string>
     <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
     <string name="setup_targets_controls_next">Suivant</string>
     <string name="setup_targets_controls_skip">Passer</string>
@@ -572,7 +572,7 @@
     <string name="target_music_setting_use_notification_icon_content">If the Media Session doesn\'t declare an icon, attempt to load one from the app\'s notification. This can lead to solid colour icons with some players, disable this option if this happens.</string>
     <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
-    <string name="target_music_setting_setting_title">Settings</string>
+    <string name="target_music_setting_setting_title">Paramètres</string>
     <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Paramètres de Smartspace natif</string>
@@ -601,7 +601,7 @@
     <string name="permission_dialog_smartspace_deny">Interdire</string>
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Smartspace étendu est désactivé</string>
-    <string name="expanded_disabled_settings">Settings</string>
+    <string name="expanded_disabled_settings">Paramètres</string>
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
     <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
@@ -659,7 +659,7 @@
     <string name="oem_smartspace_switch">Activer Smartspace OEM</string>
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
-    <string name="oem_smartspace_settings">Settings</string>
+    <string name="oem_smartspace_settings">Paramètres</string>
     <string name="oem_smartspace_label_systemui">Lock Screen</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
@@ -847,25 +847,25 @@
     <string name="complication_digital_wellbeing_description">Affiche le temps d\'utilisation du Bien-être numérique</string>
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Calendar Target -->
-    <string name="target_calendar_label">Calendar</string>
+    <string name="target_calendar_label">Agenda</string>
     <string name="target_calendar_description">Shows Calendar events from selected calendars</string>
     <string name="target_calendar_description_filled">Shows Calendar events from %1s</string>
-    <string name="target_calendar_configuration_title">Settings</string>
+    <string name="target_calendar_configuration_title">Paramètres</string>
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
-    <string name="target_calendar_title_default">Untitled Event</string>
-    <string name="target_calendar_title_with_time">%1s in %1dm</string>
+    <string name="target_calendar_title_default">Événement sans titre</string>
+    <string name="target_calendar_title_with_time">%1s dans %1d min</string>
     <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s - %1s</string>
     <string name="target_calendar_subtitle_with_tomorrow">%1s - Tomorrow, %1s</string>
     <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
     <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Toute la journée</string>
-    <string name="target_calendar_settings_calendars">Select Calendars</string>
-    <string name="target_calendar_settings_settings">Settings</string>
-    <string name="target_calendar_settings_show_all_day_title">Show All Day Events</string>
+    <string name="target_calendar_settings_calendars">Sélectionner des agendas</string>
+    <string name="target_calendar_settings_settings">Paramètres</string>
+    <string name="target_calendar_settings_show_all_day_title">Afficher les événements qui durent toute la journée</string>
     <string name="target_calendar_settings_show_all_day_content">Show events which last all day</string>
-    <string name="target_calendar_settings_show_location_title">Show Location</string>
+    <string name="target_calendar_settings_show_location_title">Afficher le lieu</string>
     <string name="target_calendar_settings_show_location_content">Show event locations, where available</string>
-    <string name="target_calendar_settings_show_unconfirmed_title">Show Unconfirmed</string>
+    <string name="target_calendar_settings_show_unconfirmed_title">Afficher les événements non confirmés</string>
     <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
@@ -874,14 +874,14 @@
     <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
     <string name="target_calendar_settings_permission_toast">Accordez à Smartspacer l\'autorisation Agenda</string>
-    <string name="target_calendar_pre_event_time_1_minute">1 minute</string>
-    <string name="target_calendar_pre_event_time_5_minutes">5 minutes</string>
-    <string name="target_calendar_pre_event_time_10_minutes">10 minutes</string>
-    <string name="target_calendar_pre_event_time_15_minutes">15 minutes</string>
-    <string name="target_calendar_pre_event_time_30_minutes">30 minutes</string>
+    <string name="target_calendar_pre_event_time_1_minute">1 minute</string>
+    <string name="target_calendar_pre_event_time_5_minutes">5 minutes</string>
+    <string name="target_calendar_pre_event_time_10_minutes">10 minutes</string>
+    <string name="target_calendar_pre_event_time_15_minutes">15 minutes</string>
+    <string name="target_calendar_pre_event_time_30_minutes">30 minutes</string>
     <string name="target_calendar_pre_event_time_1_hour">1 heure</string>
     <string name="target_calendar_pre_event_time_2_hours">2 heures</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">Jusqu\'à la fin de l\'événement</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Paramètres Aperçu</string>
     <string name="target_default_settings_more_content">Configurer d\'autres paramètres dans l\'application Google</string>
@@ -911,13 +911,13 @@
     <string name="target_notification_channels">Catégories de notifications</string>
     <string name="target_notification_channels_empty">Cette application n\'utilise pas les catégories de notifications, toutes ses notifications seront donc affichées</string>
     <!-- Blank Target -->
-    <string name="target_blank_title">Blank Target</string>
+    <string name="target_blank_title">Cible vide</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
-    <string name="target_blank_settings_show_complications_title">Show Complications</string>
+    <string name="target_blank_settings_show_complications_title">Afficher des complications</string>
     <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Masquer s\'il n\'y a aucune complication</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
-    <string name="target_blank_settings_title">Settings</string>
+    <string name="target_blank_settings_title">Paramètres</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus Gmail</string>
