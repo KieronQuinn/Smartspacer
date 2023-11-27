@@ -247,7 +247,7 @@
     <string name="complication_edit_requirements_content_all_one">%1d condition configurée</string>
     <string name="complication_edit_requirements_content_all_other">%1d conditions configurées</string>
     <string name="complication_edit_requirements_content_both">%1d + %1d conditions configurées</string>
-    <string name="complication_edit_external_title">More Settings</string>
+    <string name="complication_edit_external_title">Plus de paramètres</string>
     <string name="complication_edit_external_content">Configurer d\'autres paramètres dans %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
     <string name="requirement_edit_external_error">Échec du lancement des paramètres de cette condition</string>
