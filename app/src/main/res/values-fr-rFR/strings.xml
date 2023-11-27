@@ -113,7 +113,7 @@
     <string name="target_google_weather_forecast_content">Affiche la météo actuelle et les prévisions sur 4 heures de Google Météo</string>
     <string name="target_google_weather_forecast_incompatible">Cette cible requiert Android 12+ et l\'application Google</string>
     <string name="target_notification_warning_title">Auditeur de notifications désactivé</string>
-    <string name="target_notification_warning_description">Appuyer pour activer</string>
+    <string name="target_notification_warning_description">Appuyez pour activer</string>
     <string name="complication_default_label">Complications Aperçu</string>
     <string name="complication_default_description">Complications de l\'Aperçu Google, avec la météo</string>
     <string name="complication_default_description_recommended">Complications de l\'Aperçu Google, avec la météo <b>(recommandé)</b></string>
@@ -205,8 +205,8 @@
     <string name="target_edit_expanded_show_remoteviews_content">Afficher du contenu additionnel fourni par cette cible, si disponible</string>
     <string name="target_edit_expanded_show_shortcuts_title">Afficher les raccourcis</string>
     <string name="target_edit_expanded_show_shortcuts_content">Afficher les raccourcis associés à cette cible, si disponibles</string>
-    <string name="target_edit_expanded_show_app_shortcuts_title">Afficher les raccourcis d\'applications</string>
-    <string name="target_edit_expanded_show_app_shortcuts_content">Afficher les raccourcis d\'applications associés à cette cible, si disponibles</string>
+    <string name="target_edit_expanded_show_app_shortcuts_title">Afficher les raccourcis d\'application</string>
+    <string name="target_edit_expanded_show_app_shortcuts_content">Afficher les raccourcis d\'application associés à cette cible, si disponibles</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Nécessite l\'activation du mode amélioré</string>
     <string name="target_edit_settings_header">Paramètres</string>
     <string name="target_edit_requirements_title">Conditions</string>
@@ -422,7 +422,7 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Écran de verrouillage</string>
-    <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
+    <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Commencer</string>
@@ -485,19 +485,19 @@
     <string name="setup_expanded_info_p1"><b>Smartspace étendu</b> est une version de Smartspace s\'affichant en plein écran. Vous y trouverez toutes les cibles et les complications disponibles, ainsi que des informations dynamiques supplémentaires fournies par les cibles telles que les widgets et les raccourcis. Vous pouvez également ajouter des widgets personnalisés à cet écran.</string>
     <string name="setup_expanded_info_p2">Smartspace étendu est conçu pour être un moyen de lire toutes les informations actuelles en un coup d\'œil. Vous pouvez choisir de l\'ouvrir en appuyant sur une cible et que des informations dynamiques supplémentaires sont disponibles. Cela peut être utile si vous voulez accéder facilement à des informations contextuelles en un seul geste.</string>
     <string name="setup_expanded_open_title">Ouvrir dynamiquement Smartspace étendu</string>
-    <string name="setup_expanded_open_content">Lorsque cette option est activée, Smartspace étendu s\'ouvre pour afficher des widgets ou des raccourcis lorsque vous appuyez sur une cible qui comporte des informations additionnelles</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_open_content">Lorsque cette option est activée, Smartspace étendu s\'ouvre lorsque vous appuyez sur une cible qui comporte des informations additionnelles pour afficher des widgets ou des raccourcis</string>
+    <string name="setup_expanded_info_footer">Vous pouvez accéder à des options supplémentaires, ainsi que choisir d\'ouvrir toujours Smartspace étendu lorsque vous appuyez sur une cible (même si elle ne comporte pas d\'information additionnelle) dans Paramètres &gt; Smartspace étendu à la fin de l\'assistant de configuration.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
+    <string name="setup_plugins_info_p1">Vous pouvez télécharger des <b>plugins</b> additionnels fournissant des cibles, des complications et des conditions additionnelles dans l\'onglet Plugins de la barre de navigation.</string>
+    <string name="setup_plugins_info_p2">Une fois installé, ces éléments additionnels s\'utilisent comme tout autre élément en appuyant sur les boutons <b>Ajouter une cible</b> et <b>Ajouter une complication</b>, ou en sélectionnant <b>Ajouter une condition</b> dans les paramètres des conditions accessibles en appuyant sur une cible ou une complication.</string>
     <string name="setup_plugins_info_finish">Terminer</string>
     <!-- Setup > Complete -->
-    <string name="setup_complete_title">Setup Complete</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_title">Configuration terminée</string>
+    <string name="setup_complete_content">Les cibles, les complications et les widgets peuvent nécessiter des autorisations supplémentaires. Nous vous demanderons de les accorder lorsque ce sera nécessaire.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Demande d\'autorisation…</string>
-    <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
+    <string name="enhanced_mode_request_loading_subtitle">Accordez l\'autorisation Shizuku ou Sui si on vous le demande</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku est une application ne nécessitant pas un accès root et qui permet aux applications telles que Smartspacer d\'exécuter du code avec certains privilèges. Shizuku fonctionne en exécutant une commande par ADB (Android Debug Bridge) après chaque redémarrage. Sur Android 11+, il est possible de démarrer Shizuku sans ordinateur, mais si vous êtes sur une version antérieure, vous devrez connecter votre appareil à un ordinateur à chaque redémarrage pour démarrer Shizuku.</string>
     <string name="enhanced_mode_request_shizuku_button">Obtenir Shizuku</string>
@@ -505,47 +505,47 @@
     <string name="enhanced_mode_request_sui_title">Sui</string>
     <string name="enhanced_mode_request_sui_button">Obtenir Sui</string>
     <string name="enhanced_mode_request_shizuku_error_title">Shizuku non démarré</string>
-    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku must be started before Smartspacer can use it, open Shizuku and follow the instructions</string>
+    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku doit être démarré avant que Smartspacer ne puisse l\'utiliser, ouvrez Shizuku et suivez les instructions</string>
     <string name="enhanced_mode_request_shizuku_error_open">Ouvrir Shizuku</string>
     <!-- Enhanced Mode -->
     <string name="enhanced_mode_title">Mode amélioré</string>
     <string name="enhanced_mode_enable_title">Activer le mode amélioré</string>
     <string name="enhanced_mode_enable_subtitle">Requiert Shizuku ou Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrate into the Smartspace in the Pixel Launcher</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
+    <string name="enhanced_mode_enable_content_header"><b>Le mode amélioré permet à Smartspacer de :</b></string>
+    <string name="enhanced_mode_enable_content_native_systemui">• S\'intégrer à Smartspace sur l\'écran de verrouillage</string>
+    <string name="enhanced_mode_enable_content_native_pixel_launcher">• S\'intégrer à Smartspace dans le Pixel Launcher</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• S\'intégrer au Smartspace OEM (si disponible)</string>
+    <string name="enhanced_mode_enable_content_system">• Afficher les cibles et les complications du Smartspace système dans Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Utiliser les suggestions d\'application du système en tant que condition</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Utiliser les applications récentes en tant que condition</string>
     <string name="enhanced_mode_skip_button">Passer</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_skip_info">Vous pouvez toujours utiliser les widgets, les cibles, les complications et les plugins de Smartspacer sans activer le mode amélioré</string>
+    <string name="enhanced_mode_disable_toast">Vous devrez peut-être redémarrer votre appareil pour que les modifications soient prises en compte</string>
     <!-- Native Mode -->
     <string name="native_title">Smartspace natif</string>
     <string name="native_switch">Activer Smartspace natif</string>
     <string name="native_switch_info"><b>Important :</b> lorsque vous activez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch_content">Smartspace natif intègre Smartspacer à votre %1s, afin d\'y afficher les cibles et les complications Smartspacer.\nVous devrez réactiver Smartspace natif à chaque redémarrage à cause de limitations système.</string>
+    <string name="native_switch_content_many">%1s et au %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Compatibilité</string>
     <string name="native_switch_compatibility_item">• %1s :</string>
     <string name="native_switch_compatibility_available"><b>Disponible</b></string>
     <string name="native_switch_compatibility_not_available"><b>Indisponible</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Smartspace natif</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
+    <string name="native_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
     <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_button">Reconnecter</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
+    <string name="notification_native_mode_enable_title">Réactiver Smartspace natif</string>
     <string name="notification_native_mode_enable_content">Vous devez réactiver le mode Smartspace natif de Smartspacer à chaque redémarrage, appuyez pour activer</string>
     <string name="notification_native_mode_enable_dismiss">Ne plus afficher</string>
     <string name="notification_native_mode_enable_now">Activer</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconnecter Smartspace natif</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspace a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
     <!-- Shizuku Start Notifications -->
@@ -558,18 +558,18 @@
     <string name="notification_sui_title">Sui ou Shizuku en root requis</string>
     <string name="notification_sui_content_oem_smartspace">Smartspace OEM nécessite le démarrage de Shizuku en root, ou Sui. Smartspacer n\'a pas pu se connecter, le service a donc été désactivé.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
+    <string name="notification_battery_optimisation_title">Désactiver l\'optimisation de la batterie</string>
     <string name="notification_battery_optimisation_content">L\'utilisation de la batterie par Smartspacer ne doit pas être restreinte afin de mettre à jour en arrière-plan les cibles et les complications, appuyez pour lever les restrictions</string>
     <string name="notification_battery_optimisation_failed_toast">Échec de l\'ouverture des paramètres, veuillez accorder l\'autorisation manuellement</string>
     <!-- Music Target -->
     <string name="target_music_title">Musique</string>
     <string name="target_music_description">Affiche la chanson en cours de lecture sur cet appareil</string>
-    <string name="target_music_setting_show_album_art_title">Show Album Art</string>
+    <string name="target_music_setting_show_album_art_title">Afficher la jaquette</string>
     <string name="target_music_setting_show_album_art_content">Affiche la jaquette de la piste en cours de lecture, si elle est disponible. La jaquette pourrait être rognée.</string>
-    <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
-    <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
-    <string name="target_music_setting_use_notification_icon_title">Notification Icon Fallback</string>
-    <string name="target_music_setting_use_notification_icon_content">If the Media Session doesn\'t declare an icon, attempt to load one from the app\'s notification. This can lead to solid colour icons with some players, disable this option if this happens.</string>
+    <string name="target_music_setting_use_doorbell_title">Afficher la jaquette au format carré</string>
+    <string name="target_music_setting_use_doorbell_content">Essayer d\'afficher la jaquette au format carré plutôt qu\'au format rectangulaire, évitant le rognage. <b>Important :</b> si vous utilisez Smartspace natif, cela ne fonctionne pas sur l\'écran d\'accueil et n\'apparaît pas du tout sur certains appareils.</string>
+    <string name="target_music_setting_use_notification_icon_title">Utiliser l\'icône de la notification si nécessaire</string>
+    <string name="target_music_setting_use_notification_icon_content">Si la session média ne déclare pas d\'icône, essayer d\'en charger une à partir de la notification de l\'application. Désactivez cette option si l\'icône est en couleur unie.</string>
     <string name="target_music_setting_clear_dismissed_title">Effacer la liste des applications ignorées</string>
     <string name="target_music_setting_clear_dismissed_content">Effacer la liste des applications qui ont été ignorées et permettre aux pistes de ces applications d\'apparaître à nouveau dans Smartspace</string>
     <string name="target_music_setting_setting_title">Paramètres</string>
@@ -582,14 +582,14 @@
     <string name="native_mode_settings_target_limit_warning"><b>Attention :</b> sur certains appareils et avec certaines cibles activées, vous pourriez rencontrer des plantages périodiques de l\'interface système et du Pixel Launcher si vous sélectionnez une option autre qu\'Une seule page.</string>
     <string name="native_mode_settings_target_limit_one">Une seule page</string>
     <string name="native_mode_settings_target_limit_one_content">Afficher uniquement la première page</string>
-    <string name="native_mode_settings_target_limit_automatic">Laisser l\'écran de verrouillage ou le lanceur décider</string>
+    <string name="native_mode_settings_target_limit_automatic">Laisser l\'écran de verrouillage ou le lanceur d\'applications décider</string>
     <string name="native_mode_settings_target_limit_automatic_content">Utiliser la limite définie par le lanceur d\'applications ou l\'écran de verrouillage</string>
     <string name="native_mode_settings_target_limit_unlimited">Forcer un nombre illimité de pages</string>
     <string name="native_mode_settings_target_limit_unlimited_content">Ignorer la limite définie par le lanceur d\'applications ou l\'écran de verrouillage et afficher autant de pages que possible</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
-    <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
-    <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
-    <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Masquer les cibles incompatibles</string>
+    <string name="native_mode_settings_hide_incompatible_targets_content">Masquer les cibles incompatibles avec votre appareil, plutôt que d\'afficher uniquement leur titre et leur sous-titre</string>
+    <string name="native_mode_settings_use_split_smartspace">Utiliser Smartspace séparé</string>
+    <string name="native_mode_settings_use_split_smartspace_content">Depuis Android 14, il existe un Smartspace dédié à l\'écran de verrouillage qui affiche la date et la météo en priorité par rapport aux cibles et aux complications standard. Smartspacer peut remplacer la météo avec votre première complication, mais cela pourrait ne pas fonctionner avec tous les styles d\'horloge, et votre première complication pourrait disparaître. Si cela se produit, désactivez cette option.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Autorisation Smartspacer nécessaire</string>
     <string name="target_permission_request_content">Appuyez pour autoriser</string>
@@ -602,9 +602,9 @@
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Smartspace étendu est désactivé</string>
     <string name="expanded_disabled_settings">Paramètres</string>
-    <string name="expanded_widget_configure">Tap to configure widget</string>
-    <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
-    <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
+    <string name="expanded_widget_configure">Appuyez pour configurer le widget</string>
+    <string name="expanded_widget_deleted">Ce widget a été désinstallé, appuyez pour enlever</string>
+    <string name="expanded_widget_deleted_rearrange">Widget désinstallé</string>
     <string name="expanded_permission_title">Autoriser la superposition sur d\'autres applis</string>
     <string name="expanded_permission_title_short">Superposition sur d\'autres applis</string>
     <string name="expanded_permission_content">Le remplacement du flux Google Discover par Smartspace étendu nécessite d\'accorder cette autorisation pour pouvoir lancer des applications à partir de la surcouche. Pour accorder cette autorisation, ouvrez Smartspacer ou accordez-la manuellement dans les Infos sur l\'appli.</string>
@@ -613,33 +613,33 @@
     <string name="expanded_permission_grant">Autoriser</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Smartspace étendu</string>
-    <string name="expanded_settings_title_short">Expanded</string>
-    <string name="expanded_settings_content">Show Smartspace Targets and Complications in a full screen view, with extra information including widgets, app shortcuts and more</string>
-    <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
+    <string name="expanded_settings_title_short">Smartspace étendu</string>
+    <string name="expanded_settings_content">Afficher les cibles et les complications Smartspace dans une vue plein écran avec des informations supplémentaires (widgets, raccourcis d\'application, etc.)</string>
+    <string name="expanded_settings_footer">Smartspace étendu affiche toutes les cibles et les complications Smartspace, ainsi que des informations comme les widgets et les raccourcis d\'application pour certaines cibles. Vous pouvez l\'ouvrir depuis l\'écran d\'accueil, l\'écran de verrouillage, ou un raccourci d\'application accessible depuis l\'icône de Smartspacer. Si vous utilisez Discover Killer, Smartspacer peut également remplacer votre flux Google Discover.</string>
     <string name="expanded_settings_switch">Activer Smartspace étendu</string>
-    <string name="expanded_settings_header_search">Search</string>
-    <string name="expanded_settings_show_search_box_title">Show Search Box</string>
-    <string name="expanded_settings_show_search_box_content">Show a search box at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_search_provider_title">Search Provider</string>
-    <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
-    <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
-    <string name="expanded_settings_show_doodle_title">Show Google Doodle</string>
-    <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
-    <string name="expanded_settings_open_mode_home_screen_title">Open from Home Screen</string>
-    <string name="expanded_settings_open_mode_home_screen_title_short">Home Screen</string>
-    <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
-    <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
-    <string name="expanded_settings_open_mode_lock_screen_title_short">Lock Screen</string>
-    <string name="expanded_settings_open_mode_lock_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the lock screen: %1s</string>
+    <string name="expanded_settings_header_search">Recherche</string>
+    <string name="expanded_settings_show_search_box_title">Afficher la barre de recherche</string>
+    <string name="expanded_settings_show_search_box_content">Afficher une barre de recherche en haut de Smartspace étendu</string>
+    <string name="expanded_settings_search_provider_title">Fournisseur de la recherche</string>
+    <string name="expanded_settings_search_provider_content">Sélectionner l\'application à lancer lorsque vous appuyez sur la barre de recherche : %1s</string>
+    <string name="expanded_settings_search_provider_content_unset">Sélectionner l\'application à lancer lorsque vous appuyez sur la barre de recherche</string>
+    <string name="expanded_settings_show_doodle_title">Afficher le Google Doodle</string>
+    <string name="expanded_settings_show_doodle_content">Afficher le Google Doodle du jour en haut de Smartspace étendu</string>
+    <string name="expanded_settings_header_behaviour">Comportement</string>
+    <string name="expanded_settings_open_mode_home_screen_title">Ouvrir à partir de l\'écran d\'accueil</string>
+    <string name="expanded_settings_open_mode_home_screen_title_short">Écran d\'accueil</string>
+    <string name="expanded_settings_open_mode_home_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran d\'accueil : %1s</string>
+    <string name="expanded_settings_open_mode_lock_screen_title">Ouvrir à partir de l\'écran de verrouillage</string>
+    <string name="expanded_settings_open_mode_lock_screen_title_short">Écran de verrouillage</string>
+    <string name="expanded_settings_open_mode_lock_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran de verrouillage : %1s</string>
     <string name="expanded_settings_close_when_locked_title">Fermer lorsque l\'appareil est verrouillé</string>
     <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque votre appareil est verrouillé</string>
     <string name="expanded_settings_header_style">Style</string>
-    <string name="expanded_settings_blur_background_title">Blur Background</string>
-    <string name="expanded_settings_blur_background_content">Apply a background blur to Expanded Smartspace, obscuring the wallpaper. <b>May not work properly with all launchers if you are using Discover Killer.</b> When disabled, the wallpaper will be dimmed instead.</string>
-    <string name="expanded_settings_blur_background_incompatible">Not compatible with your device</string>
-    <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
-    <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
+    <string name="expanded_settings_blur_background_title">Flouter l\'arrière-plan</string>
+    <string name="expanded_settings_blur_background_content">Appliquer un flou d\'arrière-plan à Smartspace étendu. <b>Cela pourrait ne pas fonctionner correctement avec tous les lanceurs d\'applications si vous utilisez Discover Killer.</b> Lorsque cette option est désactivée, à la place, le fond d\'écran est assombri.</string>
+    <string name="expanded_settings_blur_background_incompatible">Incompatible avec votre appareil</string>
+    <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
+    <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
@@ -660,7 +660,7 @@
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Paramètres</string>
-    <string name="oem_smartspace_label_systemui">Lock Screen</string>
+    <string name="oem_smartspace_label_systemui">Écran de verrouillage</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
     <string name="expanded_search_box_search">Rechercher…</string>
