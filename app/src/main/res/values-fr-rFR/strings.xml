@@ -434,58 +434,58 @@
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
-    <string name="setup_notifications_request">Grant Permission</string>
+    <string name="setup_notifications_content">Smartspacer utilise les notifications pour afficher des informations, des avertissements et des erreurs, ainsi que des rappels à propos du mode amélioré, s\'il est activé.</string>
+    <string name="setup_notifications_request">Accorder l\'autorisation</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Cibles</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
-    <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
-    <string name="setup_targets_info_example_two_title">Shopping List</string>
+    <string name="setup_targets_info_p1"><b>Les cibles</b> sont des pages d\'informations affichées dans Smartspace, généralement composées d\'un titre, d\'un sous-titre et d\'une icône. De nombreuses cibles affichent également des informations supplémentaires telles que des images ou des listes.</string>
+    <string name="setup_targets_info_p2">Les cibles peuvent être soit dynamiques et s\'afficher et se masquer suivant certaines conditions, ou statiques et s\'afficher en continu. Vous pouvez utiliser <b>les conditions</b> et modifier les paramètres mis à disposition par de nombreuses cibles pour choisir quand les afficher (paramètres accessibles en appuyant sur une cible dans l\'interface de Smartspacer).</string>
+    <string name="setup_targets_info_p3">L\'intégration de l\'Aperçu de Smartspacer est fournie par la cible « Aperçu », qui permet d\'afficher les informations habituelles de l\'Aperçu Google telles que les événements de l\'agenda et les vols. Veuillez noter que cette cible <b>n\'affiche pas toujours</b> la date du jour s\'il n\'y a aucune information disponible. Ajoutez la cible « Date » séparément si vous souhaitez que la date soit toujours visible.</string>
+    <string name="setup_targets_info_example_one_title">Circulation dense à proximité</string>
+    <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
+    <string name="setup_targets_info_example_two_title">Liste de courses</string>
     <string name="setup_targets_info_example_two_subtitle">8 éléments</string>
     <string name="setup_targets_info_example_two_item_1">Pain</string>
     <string name="setup_targets_info_example_two_item_2">Lait</string>
     <string name="setup_targets_info_example_two_item_3">Œufs</string>
-    <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
-    <string name="setup_targets_caption_list">Example of a Target with a list</string>
+    <string name="setup_targets_caption_google_maps">Exemple de cible avec une image</string>
+    <string name="setup_targets_caption_list">Exemple de cible avec une liste</string>
     <!-- Setup > Add Targets -->
     <string name="setup_targets_title">Ajouter des cibles</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
+    <string name="setup_targets_controls_label">Vous pourrez ajouter, modifier, supprimer et réorganiser les cibles dans les paramètres plus tard</string>
     <string name="setup_targets_controls_next">Suivant</string>
     <string name="setup_targets_controls_skip">Passer</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Complications</string>
-    <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
-    <string name="setup_complications_info_p2">Complications will be shown alongside Targets wherever space is available, or if no remaining Targets are available will be shown in additional pages alongside the date.</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
+    <string name="setup_complications_info_p1"><b>Les complications</b> sont des informations supplémentaires qui peuvent être affichées aux côtés des cibles. Il s\'agit généralement de courts textes et d\'icônes ; par exemple, le nombre d\'e-mails non lus, ou bien les conditions météo actuelles.</string>
+    <string name="setup_complications_info_p2">Les complications sont affichées aux côtés des cibles lorsqu\'il y a suffisamment d\'espace disponible. S\'il n\'y a plus de cibles, alors les complications sont affichées dans des pages supplémentaires aux côtés de la date.</string>
+    <string name="setup_complications_info_p3">Tout comme les cibles, les complications peuvent être dynamiques ou statiques, et peuvent être masquées s\'il n\'y a rien à afficher pour le moment. Vous pouvez utiliser <b>les conditions</b> et modifier les paramètres mis à disposition par de nombreuses complications pour choisir quand les afficher (paramètres accessibles en appuyant sur une complication dans l\'interface de Smartspacer).</string>
     <string name="setup_complications_example_gmail">8</string>
-    <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
-    <string name="setup_complications_example_weather">20 °</string>
+    <string name="setup_complications_caption_gmail">Exemple de complication affichant le nombre d\'e-mails non lus</string>
+    <string name="setup_complications_example_weather">20°</string>
     <string name="setup_complications_caption_weather">Exemple de complication affichant les conditions météo</string>
     <!-- Setup > Add Complications -->
     <string name="setup_complications_title">Ajouter des complications</string>
-    <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
+    <string name="setup_complications_controls_label">Vous pourrez ajouter, modifier, supprimer et réorganiser les complications dans les paramètres plus tard</string>
     <string name="setup_complications_controls_next">Suivant</string>
     <string name="setup_complications_controls_skip">Passer</string>
     <!-- Setup > Add Widget -->
-    <string name="setup_add_widget_title">Add Widget</string>
-    <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
+    <string name="setup_add_widget_title">Ajouter le widget</string>
+    <string name="setup_add_widget_content">Ajouter Smartspacer à votre écran d\'accueil</string>
+    <string name="setup_add_widget_lock"><![CDATA[Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Conditions</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_p1"><b>Les conditions</b> vous permettent de choisir quand afficher dans Smartspace une cible ou une complication. À l\'aide des conditions, vous pouvez créer des scénarios où des informations utiles seront affichées dans Smartspace.</string>
+    <string name="setup_requirements_info_p2"><b>Vous pouvez accéder aux conditions en appuyant sur une cible ou une complication dans l\'interface de Smartspacer, et en sélectionnant « Conditions » en bas des paramètres.</b></string>
+    <string name="setup_requirements_info_p3">Avec les conditions <b>« n\'importe laquelle »</b>, il faut que l\'une des conditions soit remplie pour que la cible ou la condition s\'affiche. Par exemple, vous pourriez utiliser la condition Wi-Fi pour afficher votre liste de courses dans Google Keep dès que votre appareil détecte les réseaux Wi-Fi de vos magasins favoris.</string>
+    <string name="setup_requirements_info_p4">Avec les conditions <b>« toutes »</b>, il faut que toutes les conditions soient remplies pour que la cible ou la condition s\'affiche. Par exemple, vous pourriez utiliser les conditions « Date et heure » et « Position » pour afficher votre carte d\'entrée à la salle de sport dans Google Wallet les mardis soir à proximité de la salle de sport.</string>
     <!-- Setup > Expanded -->
-    <string name="setup_expanded_title">Expanded</string>
+    <string name="setup_expanded_title">Smartspace étendu</string>
     <string name="setup_expanded_switch">Activer Smartspace étendu</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
+    <string name="setup_expanded_info_p1"><b>Smartspace étendu</b> est une version de Smartspace s\'affichant en plein écran. Vous y trouverez toutes les cibles et les complications disponibles, ainsi que des informations dynamiques supplémentaires fournies par les cibles telles que les widgets et les raccourcis. Vous pouvez également ajouter des widgets personnalisés à cet écran.</string>
+    <string name="setup_expanded_info_p2">Smartspace étendu est conçu pour être un moyen de lire toutes les informations actuelles en un coup d\'œil. Vous pouvez choisir de l\'ouvrir en appuyant sur une cible et que des informations dynamiques supplémentaires sont disponibles. Cela peut être utile si vous voulez accéder facilement à des informations contextuelles en un seul geste.</string>
+    <string name="setup_expanded_open_title">Ouvrir dynamiquement Smartspace étendu</string>
+    <string name="setup_expanded_open_content">Lorsque cette option est activée, Smartspace étendu s\'ouvre pour afficher des widgets ou des raccourcis lorsque vous appuyez sur une cible qui comporte des informations additionnelles</string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
@@ -524,7 +524,7 @@
     <!-- Native Mode -->
     <string name="native_title">Smartspace natif</string>
     <string name="native_switch">Activer Smartspace natif</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_switch_info"><b>Important :</b> lorsque vous activez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
     <string name="native_switch_content_many">%1s and %1s</string>
     <string name="native_switch_content_joiner">,</string>
@@ -536,7 +536,7 @@
     <string name="native_restart_title">Smartspace natif</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
@@ -573,7 +573,7 @@
     <string name="target_music_setting_clear_dismissed_title">Effacer la liste des applications ignorées</string>
     <string name="target_music_setting_clear_dismissed_content">Effacer la liste des applications qui ont été ignorées et permettre aux pistes de ces applications d\'apparaître à nouveau dans Smartspace</string>
     <string name="target_music_setting_setting_title">Paramètres</string>
-    <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
+    <string name="target_music_setting_setting_description">Choisir s\'il faut afficher la jaquette et effacer la liste des lecteurs ignorés</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Paramètres de Smartspace natif</string>
     <string name="native_mode_settings_title">Smartspace natif</string>
