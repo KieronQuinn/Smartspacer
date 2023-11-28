@@ -641,11 +641,11 @@
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
-    <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
-    <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
-    <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
+    <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
+    <string name="expanded_settings_open_mode_if_has_extras_content">Ouvre Smartspace étendu si la cible a des options supplémentaires accessibles depuis Smartspace étendu. Appuyer à nouveau sur la cible dans Smartspace étendu aura pour effet d\'exécuter l\'action originale de la cible.</string>
     <string name="expanded_settings_open_mode_always_title">Toujours</string>
-    <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_always_content">Toujours ouvrir Smartspace étendu. Appuyer à nouveau sur la cible dans Smartspace étendu aura pour effet d\'exécuter l\'action originale de la cible.</string>
     <string name="expanded_settings_tint_colour">Couleur</string>
     <string name="expanded_settings_tint_colour_content">Couleur à utiliser pour le texte et les icônes de Smartspace étendu : %1s</string>
     <!-- OEM Smartspace settings -->
