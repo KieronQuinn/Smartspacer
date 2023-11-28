@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">Deny</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enhanced mode, if enabled.</string>
     <string name="setup_notifications_request">Grant Permission</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Targets</string>
