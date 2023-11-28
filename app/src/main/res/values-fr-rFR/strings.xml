@@ -853,11 +853,11 @@
     <string name="target_calendar_configuration_title">Paramètres</string>
     <string name="target_calendar_configuration_description">Configurer les agendas à prendre en compte et les options d\'affichage des événements</string>
     <string name="target_calendar_title_default">Événement sans titre</string>
-    <string name="target_calendar_title_with_time">%1s dans %1d min</string>
-    <string name="target_calendar_subtitle_with_yesterday">Hier, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s – Demain, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
+    <string name="target_calendar_title_with_time">%1s dans %1d min</string>
+    <string name="target_calendar_subtitle_with_yesterday">hier %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – demain %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s %1s</string>
     <string name="target_calendar_subtitle_all_day">Toute la journée</string>
     <string name="target_calendar_settings_calendars">Sélectionner des agendas</string>
     <string name="target_calendar_settings_settings">Paramètres</string>
@@ -874,13 +874,13 @@
     <string name="target_calendar_settings_clear_dismissed_events_title">Effacer la liste des événements ignorés</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Réinitialiser la liste des événements ignorés afin de permettre aux événements masqués de s\'afficher à nouveau s\'ils sont encore valides</string>
     <string name="target_calendar_settings_permission_toast">Accordez à Smartspacer l\'autorisation Agenda</string>
-    <string name="target_calendar_pre_event_time_1_minute">1 minute</string>
-    <string name="target_calendar_pre_event_time_5_minutes">5 minutes</string>
-    <string name="target_calendar_pre_event_time_10_minutes">10 minutes</string>
-    <string name="target_calendar_pre_event_time_15_minutes">15 minutes</string>
-    <string name="target_calendar_pre_event_time_30_minutes">30 minutes</string>
-    <string name="target_calendar_pre_event_time_1_hour">1 heure</string>
-    <string name="target_calendar_pre_event_time_2_hours">2 heures</string>
+    <string name="target_calendar_pre_event_time_1_minute">1 minute</string>
+    <string name="target_calendar_pre_event_time_5_minutes">5 minutes</string>
+    <string name="target_calendar_pre_event_time_10_minutes">10 minutes</string>
+    <string name="target_calendar_pre_event_time_15_minutes">15 minutes</string>
+    <string name="target_calendar_pre_event_time_30_minutes">30 minutes</string>
+    <string name="target_calendar_pre_event_time_1_hour">1 heure</string>
+    <string name="target_calendar_pre_event_time_2_hours">2 heures</string>
     <string name="target_calendar_post_event_time_at_end">Jusqu\'à la fin de l\'événement</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Paramètres Aperçu</string>
