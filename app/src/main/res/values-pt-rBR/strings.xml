@@ -219,11 +219,11 @@
     <string name="target_edit_external_title">Configurações adicionais</string>
     <string name="target_edit_external_content">Configurar mais em %1s</string>
     <string name="target_edit_external_error">Falha ao iniciar a configuração deste destaque</string>
-    <string name="complication_edit_title">Edit Complication</string>
-    <string name="complication_edit_target_header">Complication</string>
-    <string name="complication_edit_show_on_home_title">Show on Home Screen</string>
-    <string name="complication_edit_show_on_home_content">Show this complication on your home screen</string>
-    <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
+    <string name="complication_edit_title">Editar complemento</string>
+    <string name="complication_edit_target_header">Complemento</string>
+    <string name="complication_edit_show_on_home_title">Exibir na tela inicial</string>
+    <string name="complication_edit_show_on_home_content">Exiba este complemento na sua tela inicial</string>
+    <string name="complication_edit_show_on_home_content_widget">Exiba este complemento em widgets adicionados à sua tela inicial</string>
     <string name="complication_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
     <string name="complication_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
     <string name="complication_edit_show_on_lock_screen_content">Show this complication on your lock screen and always on display, when music is not playing</string>
