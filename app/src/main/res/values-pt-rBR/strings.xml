@@ -490,31 +490,31 @@
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Extensões</string>
     <string name="setup_plugins_info_p1">Você pode baixar <b>Extensões</b> adicionais, oferecendo destaques, complementos e condições adicionais na guia de extensões na navegação inferior.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
-    <string name="setup_plugins_info_finish">Finish</string>
+    <string name="setup_plugins_info_p2">Uma vez instalados, eles são adicionados da mesma forma que os outros, utilizando os botões <b>Adicionar destaque</b> ou <b>Adicionar complemento</b>, ou selecionando <b>Adicionar condição</b> nas configurações de condições para destaques e complementos.</string>
+    <string name="setup_plugins_info_finish">Concluir</string>
     <!-- Setup > Complete -->
-    <string name="setup_complete_title">Setup Complete</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_title">Configuração concluída</string>
+    <string name="setup_complete_content">Destaques, complementos e widgets podem precisar de permissões adicionais, que serão solicitadas quando necessário.</string>
     <!-- Enhanced Mode > Request -->
-    <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
-    <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
+    <string name="enhanced_mode_request_loading_title">Solicitando permissão…</string>
+    <string name="enhanced_mode_request_loading_subtitle">Conceda permissão ao Shizuku/Sui, se solicitado</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
-    <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
-    <string name="enhanced_mode_request_shizuku_button">Get Shizuku</string>
-    <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
+    <string name="enhanced_mode_request_shizuku_content">Shizuku é um aplicativo que não requer acesso root e permite que aplicativos como o Smartspacer executem código com determinados privilégios. Shizuku funciona executando um comando através do ADB (Android Debug Bridge) após cada reinicialização. No Android 11+, é possível iniciar o Shizuku sem um computador, mas em versões mais antigas, será necessário conectar-se a um computador sempre que reiniciar para iniciar o Shizuku.</string>
+    <string name="enhanced_mode_request_shizuku_button">Obtenha o Shizuku</string>
+    <string name="enhanced_mode_request_sui_content">Sui é um módulo Magisk que permite que aplicativos como o Smartspacer executem código como root. Ele utiliza o mesmo framework que o Shizuku e, portanto, funciona com aplicativos compatíveis com o Shizuku, mas não requer inicialização manual após reinicializações, pois isso é feito automaticamente.\n<b>Se você não estiver familiarizado com root e/ou Magisk, use o Shizuku.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
-    <string name="enhanced_mode_request_sui_button">Get Sui</string>
-    <string name="enhanced_mode_request_shizuku_error_title">Shizuku not started</string>
-    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku must be started before Smartspacer can use it, open Shizuku and follow the instructions</string>
-    <string name="enhanced_mode_request_shizuku_error_open">Open Shizuku</string>
+    <string name="enhanced_mode_request_sui_button">Obtenha o Sui</string>
+    <string name="enhanced_mode_request_shizuku_error_title">Shizuku não iniciado</string>
+    <string name="enhanced_mode_request_shizuku_error_subtitle">O Shizuku deve ser iniciado antes que o Smartspacer possa usá-lo. Abra o Shizuku e siga as instruções</string>
+    <string name="enhanced_mode_request_shizuku_error_open">Abrir Shizuku</string>
     <!-- Enhanced Mode -->
-    <string name="enhanced_mode_title">Enhanced Mode</string>
-    <string name="enhanced_mode_enable_title">Enable Enhanced Mode</string>
-    <string name="enhanced_mode_enable_subtitle">Requires Shizuku or Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrate into the Smartspace in the Pixel Launcher</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
+    <string name="enhanced_mode_title">Modo Avançado</string>
+    <string name="enhanced_mode_enable_title">Usar Modo Avançado</string>
+    <string name="enhanced_mode_enable_subtitle">Requer Shizuku ou Sui</string>
+    <string name="enhanced_mode_enable_content_header"><b>O Modo Avançado permite que o Smartspacer:</b></string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrar o Smartspace na tela de bloqueio</string>
+    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrar o Smartspace no Pixel Launcher</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrar com Smartspace OEM (se disponível)</string>
     <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
