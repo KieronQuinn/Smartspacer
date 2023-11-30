@@ -125,7 +125,7 @@ class CalendarTarget: SmartspacerTargetProvider() {
             return resources.getString(R.string.target_calendar_subtitle_all_day)
         }
         return when {
-            startTime.isSameDay(now) && endTime.isSameDay(now) -> "$start - $end"
+            startTime.isSameDay(now) && endTime.isSameDay(now) -> "$start – $end"
             startTime.isYesterday(now) -> {
                 resources.getString(
                     R.string.target_calendar_subtitle_with_yesterday,
@@ -156,7 +156,7 @@ class CalendarTarget: SmartspacerTargetProvider() {
                     end
                 )
             }
-            else -> "$start - $end"
+            else -> "$start – $end"
         }
     }
 
