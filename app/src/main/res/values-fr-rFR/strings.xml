@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou dans son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou dans son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -50,7 +50,7 @@
     <string name="widget_configuration_type_lock_content_disabled">Indisponible pour ce widget. Veuillez noter que Smartspacer ne permet pas l\'activation des widgets sur l\'écran de verrouillage. Pour cela, téléchargez une application sur Google Play telle que « Lockscreen Widgets ».</string>
     <string name="widget_configuration_page">Contrôle des pages</string>
     <string name="widget_configuration_page_single_title">Une seule page</string>
-    <string name="widget_configuration_page_single_content">Forcer le widget à n\'afficher qu\'une seule page de cibles et complications (si l\'espace le permet). Cela signifie que vous ne verrez que la première cible et la première complication dans le widget.\n<b>Important :</b> l\'utilisation de cette option implique que vous ne pourrez pas ouvrir le menu des options des cibles, et que vous ne pourrez la fermer uniquement depuis Smartspace étendu.</string>
+    <string name="widget_configuration_page_single_content">Forcer le widget à n\'afficher qu\'une seule page de cibles et complications (si l\'espace le permet). Cela signifie que vous ne verrez que la première cible et la première complication dans le widget.\n<b>Important :</b> l\'utilisation de cette option implique que vous ne pourrez pas ouvrir le menu des options des cibles, et que vous ne pourrez la fermer uniquement depuis Smartspace étendu.</string>
     <string name="widget_configuration_page_controls_title">Plusieurs pages</string>
     <string name="widget_configuration_page_controls_content">Permettre d\'avoir autant de pages de cibles et de complications que configuré, avec des flèches vous permettant de changer de page (masquées lorsqu\'il n\'y a qu\'une page).</string>
     <string name="widget_configuration_page_no_controls_title">Plusieurs pages sans flèches</string>
@@ -100,7 +100,7 @@
     <string name="target_greeting_configuration_hide_title_on_aod_title">Masquer le titre sur l\'AoD</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Masquer le titre de la cible sur l\'affichage permanent (AoD) (Smartspace natif uniquement)</string>
     <string name="target_greeting_configuration_name_title">Votre nom</string>
-    <string name="target_greeting_configuration_name_content">Nom à afficher dans la salutation : %1s</string>
+    <string name="target_greeting_configuration_name_content">Nom à afficher dans la salutation : %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Nom à afficher dans la salutation</string>
     <string name="target_greeting_configuration_title">Paramètres</string>
     <string name="target_greeting_configuration_description">Définir votre nom, masquer dynamiquement la cible et masquer le titre sur l\'AoD</string>
@@ -124,9 +124,9 @@
     <string name="complication_google_weather_label">Google Météo</string>
     <string name="complication_google_weather_description">Affiche la météo récupérée par l\'application Google</string>
     <string name="complication_google_weather_description_unsupported">Cette cible requiert l\'application Google</string>
-    <string name="plugin_target_default_label">Cible du plugin</string>
-    <string name="plugin_action_default_label">Complication du plugin</string>
-    <string name="plugin_requirement_default_label">Exigences du plugin</string>
+    <string name="plugin_target_default_label">Cible de plugin</string>
+    <string name="plugin_action_default_label">Complication de plugin</string>
+    <string name="plugin_requirement_default_label">Condition de plugin</string>
     <string name="permission_sdk_label">Lire les cibles et les complications Smartspacer</string>
     <string name="permission_sdk_description">Permet de lire et d\'interagir avec les cibles et les complications Smartspacer</string>
     <string name="notification_channel_background_service_title">Service en arrière-plan</string>
@@ -324,7 +324,7 @@
     <string name="requirement_wifi_content_ssid_mac">%1s avec pour MAC %1s</string>
     <string name="requirement_wifi_configuration_in_range_title">Autoriser les réseaux non connectés (à proximité)</string>
     <string name="requirement_wifi_configuration_in_range_content">Lorsque cette option est activée, cette condition sera remplie lorsque le réseau spécifié est à proximité, sans y être connecté.</string>
-    <string name="requirement_wifi_configuration_in_range_warning"><b>Important :</b> Smartspacer ne recherche <b>pas</b> les réseaux tout seul. Pour que l\'option « Autoriser les réseaux non connectés » fonctionne correctement, vous devez activer le paramètre système « Notifier en cas de réseaux publics » pour rechercher les réseaux Wi-Fi en arrière-plan, ou bien rechercher manuellement les réseaux Wi-Fi.</string>
+    <string name="requirement_wifi_configuration_in_range_warning"><b>Important :</b> Smartspacer ne recherche <b>pas</b> les réseaux tout seul. Pour que l\'option « Autoriser les réseaux non connectés » fonctionne correctement, vous devez activer le paramètre système « Notifier en cas de réseaux publics » pour rechercher les réseaux Wi-Fi en arrière-plan, ou bien rechercher manuellement les réseaux Wi-Fi.</string>
     <string name="requirement_wifi_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
     <string name="requirement_wifi_configuration_background_location_content">Android demande aux applications souhaitant suivre les recherches Wi-Fi d\'avoir un accès à la position en arrière-plan. Veuillez accorder cette autorisation dans les paramètres pour continuer, en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez à l\'application.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Accorder l\'autorisation</string>
@@ -347,14 +347,14 @@
     <string name="requirement_app_prediction_enhanced">Cette condition nécessite l\'activation du mode amélioré, activez-le dans les paramètres</string>
     <string name="requirement_app_prediction_configuration_title">Sélectionnez une application</string>
     <string name="permission_dialog_widget_title_prefix">Autoriser</string>
-    <string name="permission_dialog_widget_title_suffix">d\'accéder aux widgets par Smartspacer ?</string>
+    <string name="permission_dialog_widget_title_suffix">d\'accéder aux widgets par Smartspacer ?</string>
     <string name="permission_dialog_widget_title_warning">Une autorisation système pourra vous être demandée à la suite de cette étape</string>
     <string name="permission_dialog_widget_title_unknown">Inconnu(e)</string>
     <string name="permission_dialog_widget_allow_once">Autoriser une fois</string>
     <string name="permission_dialog_widget_allow_always">Toujours autoriser</string>
     <string name="permission_dialog_widget_deny">Interdire</string>
     <string name="permission_dialog_notification_title_prefix">Autoriser</string>
-    <string name="permission_dialog_notification_title_suffix">d\'accéder aux notifications des applications par Smartspacer ?</string>
+    <string name="permission_dialog_notification_title_suffix">d\'accéder aux notifications des applications par Smartspacer ?</string>
     <string name="permission_dialog_notification_title_warning">Une autorisation système pourra vous être demandée à la suite de cette étape</string>
     <string name="permission_dialog_notification_title_unknown">Inconnu(e)</string>
     <string name="permission_dialog_notification_allow_once">Autoriser une fois</string>
@@ -377,7 +377,7 @@
     <string name="settings_enable_analytics_content">Autoriser la collecte de données basiques, et l\'envoi à Firebase de ces données et de rapports de plantage pour aider à corriger les bugs. Toutes les données envoyées sont anonymes.</string>
     <string name="settings_hide_sensitive_contents_title">Masquer les cibles sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Cibles sensibles</string>
-    <string name="settings_hide_sensitive_contents_content">Masquer les cibles sur l\'écran de verrouillage lorsqu\'elles sont marquées comme sensibles : %1s</string>
+    <string name="settings_hide_sensitive_contents_content">Masquer les cibles sur l\'écran de verrouillage lorsqu\'elles sont marquées comme sensibles : %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">Ne pas masquer</string>
     <string name="settings_hide_sensitive_contents_disabled_content">Toujours afficher les cibles et leur contenu</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Masquer le contenu</string>
@@ -457,7 +457,7 @@
     <string name="setup_targets_controls_skip">Passer</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Complications</string>
-    <string name="setup_complications_info_p1"><b>Les complications</b> sont des informations supplémentaires qui peuvent être affichées aux côtés des cibles. Il s\'agit généralement de courts textes et d\'icônes ; par exemple, le nombre d\'e-mails non lus, ou bien les conditions météo actuelles.</string>
+    <string name="setup_complications_info_p1"><b>Les complications</b> sont des informations supplémentaires qui peuvent être affichées aux côtés des cibles. Il s\'agit généralement de courts textes et d\'icônes ; par exemple, le nombre d\'e-mails non lus, ou bien les conditions météo actuelles.</string>
     <string name="setup_complications_info_p2">Les complications sont affichées aux côtés des cibles lorsqu\'il y a suffisamment d\'espace disponible. S\'il n\'y a plus de cibles, alors les complications sont affichées dans des pages supplémentaires aux côtés de la date.</string>
     <string name="setup_complications_info_p3">Tout comme les cibles, les complications peuvent être dynamiques ou statiques, et peuvent être masquées s\'il n\'y a rien à afficher pour le moment. Vous pouvez utiliser <b>les conditions</b> et modifier les paramètres mis à disposition par de nombreuses complications pour choisir quand les afficher (paramètres accessibles en appuyant sur une complication dans l\'interface de Smartspacer).</string>
     <string name="setup_complications_example_gmail">8</string>
@@ -472,7 +472,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Ajouter le widget</string>
     <string name="setup_add_widget_content">Ajouter Smartspacer à votre écran d\'accueil</string>
-    <string name="setup_add_widget_lock"><![CDATA[Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Conditions</string>
     <string name="setup_requirements_info_p1"><b>Les conditions</b> vous permettent de choisir quand afficher dans Smartspace une cible ou une complication. À l\'aide des conditions, vous pouvez créer des scénarios où des informations utiles seront affichées dans Smartspace.</string>
@@ -511,7 +511,7 @@
     <string name="enhanced_mode_title">Mode amélioré</string>
     <string name="enhanced_mode_enable_title">Activer le mode amélioré</string>
     <string name="enhanced_mode_enable_subtitle">Requiert Shizuku ou Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>Le mode amélioré permet à Smartspacer de :</b></string>
+    <string name="enhanced_mode_enable_content_header"><b>Le mode amélioré permet à Smartspacer de :</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• S\'intégrer à Smartspace sur l\'écran de verrouillage</string>
     <string name="enhanced_mode_enable_content_native_pixel_launcher">• S\'intégrer à Smartspace dans le Pixel Launcher</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• S\'intégrer au Smartspace OEM (si disponible)</string>
@@ -524,19 +524,19 @@
     <!-- Native Mode -->
     <string name="native_title">Smartspace natif</string>
     <string name="native_switch">Activer Smartspace natif</string>
-    <string name="native_switch_info"><b>Important :</b> lorsque vous activez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
+    <string name="native_switch_info"><b>Important :</b> lorsque vous activez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_switch_content">Smartspace natif intègre Smartspacer à votre %1s, afin d\'y afficher les cibles et les complications Smartspacer.\nVous devrez réactiver Smartspace natif à chaque redémarrage à cause de limitations système.</string>
     <string name="native_switch_content_many">%1s et au %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Compatibilité</string>
-    <string name="native_switch_compatibility_item">• %1s :</string>
+    <string name="native_switch_compatibility_item">• %1s :</string>
     <string name="native_switch_compatibility_available"><b>Disponible</b></string>
     <string name="native_switch_compatibility_not_available"><b>Indisponible</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Smartspace natif</string>
     <string name="native_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
     <string name="native_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
-    <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
+    <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_restart_button">Reconnecter</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Réactiver Smartspace natif</string>
@@ -567,7 +567,7 @@
     <string name="target_music_setting_show_album_art_title">Afficher la jaquette</string>
     <string name="target_music_setting_show_album_art_content">Affiche la jaquette de la piste en cours de lecture, si elle est disponible. La jaquette pourrait être rognée.</string>
     <string name="target_music_setting_use_doorbell_title">Afficher la jaquette au format carré</string>
-    <string name="target_music_setting_use_doorbell_content">Essayer d\'afficher la jaquette au format carré plutôt qu\'au format rectangulaire, évitant le rognage. <b>Important :</b> si vous utilisez Smartspace natif, cela ne fonctionne pas sur l\'écran d\'accueil et n\'apparaît pas du tout sur certains appareils.</string>
+    <string name="target_music_setting_use_doorbell_content">Essayer d\'afficher la jaquette au format carré plutôt qu\'au format rectangulaire, ce qui évite de la rogner. <b>Important :</b> si vous utilisez Smartspace natif, cela ne fonctionnera pas sur l\'écran d\'accueil et n\'apparaîtra pas du tout sur certains appareils.</string>
     <string name="target_music_setting_use_notification_icon_title">Utiliser l\'icône de la notification si nécessaire</string>
     <string name="target_music_setting_use_notification_icon_content">Si la session média ne déclare pas d\'icône, essayer d\'en charger une à partir de la notification de l\'application. Désactivez cette option si l\'icône est en couleur unie.</string>
     <string name="target_music_setting_clear_dismissed_title">Effacer la liste des applications ignorées</string>
@@ -578,8 +578,8 @@
     <string name="native_mode_settings_menu_title">Paramètres de Smartspace natif</string>
     <string name="native_mode_settings_title">Smartspace natif</string>
     <string name="native_mode_settings_target_limit_title">Limite de pages</string>
-    <string name="native_mode_settings_target_limit_content">Nombre maximum de pages de cibles et de complications à afficher : %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Attention :</b> sur certains appareils et avec certaines cibles activées, vous pourriez rencontrer des plantages périodiques de l\'interface système et du Pixel Launcher si vous sélectionnez une option autre qu\'Une seule page.</string>
+    <string name="native_mode_settings_target_limit_content">Nombre maximum de pages de cibles et de complications à afficher : %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Attention :</b> sur certains appareils et avec certaines cibles activées, vous pourriez rencontrer des plantages périodiques de l\'interface système et du Pixel Launcher si vous sélectionnez une option autre qu\'Une seule page.</string>
     <string name="native_mode_settings_target_limit_one">Une seule page</string>
     <string name="native_mode_settings_target_limit_one_content">Afficher uniquement la première page</string>
     <string name="native_mode_settings_target_limit_automatic">Laisser l\'écran de verrouillage ou le lanceur d\'applications décider</string>
@@ -595,7 +595,7 @@
     <string name="target_permission_request_content">Appuyez pour autoriser</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Autoriser</string>
-    <string name="permission_dialog_smartspace_title_suffix">d\'accéder aux cibles et aux complications Smartspacer ?</string>
+    <string name="permission_dialog_smartspace_title_suffix">d\'accéder aux cibles et aux complications Smartspacer ?</string>
     <string name="permission_dialog_smartspace_title_unknown">Inconnu(e)</string>
     <string name="permission_dialog_smartspace_allow">Autoriser</string>
     <string name="permission_dialog_smartspace_deny">Interdire</string>
@@ -621,17 +621,17 @@
     <string name="expanded_settings_show_search_box_title">Afficher la barre de recherche</string>
     <string name="expanded_settings_show_search_box_content">Afficher une barre de recherche en haut de Smartspace étendu</string>
     <string name="expanded_settings_search_provider_title">Fournisseur de la recherche</string>
-    <string name="expanded_settings_search_provider_content">Sélectionner l\'application à lancer lorsque vous appuyez sur la barre de recherche : %1s</string>
+    <string name="expanded_settings_search_provider_content">Sélectionner l\'application à lancer lorsque vous appuyez sur la barre de recherche : %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Sélectionner l\'application à lancer lorsque vous appuyez sur la barre de recherche</string>
     <string name="expanded_settings_show_doodle_title">Afficher le Google Doodle</string>
     <string name="expanded_settings_show_doodle_content">Afficher le Google Doodle du jour en haut de Smartspace étendu</string>
     <string name="expanded_settings_header_behaviour">Comportement</string>
     <string name="expanded_settings_open_mode_home_screen_title">Ouvrir à partir de l\'écran d\'accueil</string>
     <string name="expanded_settings_open_mode_home_screen_title_short">Écran d\'accueil</string>
-    <string name="expanded_settings_open_mode_home_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran d\'accueil : %1s</string>
+    <string name="expanded_settings_open_mode_home_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran d\'accueil : %1s</string>
     <string name="expanded_settings_open_mode_lock_screen_title">Ouvrir à partir de l\'écran de verrouillage</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Écran de verrouillage</string>
-    <string name="expanded_settings_open_mode_lock_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran de verrouillage : %1s</string>
+    <string name="expanded_settings_open_mode_lock_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran de verrouillage : %1s</string>
     <string name="expanded_settings_close_when_locked_title">Fermer lorsque l\'appareil est verrouillé</string>
     <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque votre appareil est verrouillé</string>
     <string name="expanded_settings_header_style">Style</string>
@@ -647,13 +647,13 @@
     <string name="expanded_settings_open_mode_always_title">Toujours</string>
     <string name="expanded_settings_open_mode_always_content">Toujours ouvrir Smartspace étendu. Appuyer à nouveau sur la cible dans Smartspace étendu aura pour effet d\'exécuter l\'action originale de la cible.</string>
     <string name="expanded_settings_tint_colour">Couleur</string>
-    <string name="expanded_settings_tint_colour_content">Couleur à utiliser pour le texte et les icônes de Smartspace étendu : %1s</string>
+    <string name="expanded_settings_tint_colour_content">Couleur à utiliser pour le texte et les icônes de Smartspace étendu : %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">Smartspace OEM</string>
     <string name="oem_smartspace_content">Options pour Smartspacer dans les lanceurs d\'applications classiques et sur l\'écran de verrouillage de certains appareils</string>
     <string name="oem_smartspace_content_enhanced">Cette option nécessite l\'activation du mode amélioré</string>
     <string name="oem_smartspace_incompatible">Désolé, l\'activation de cette option nécessite que votre appareil soit rooté à cause de limitations systèmes. Si c\'est déjà le cas, installez le module Magisk Sui ou démarrez Shizuku en root.</string>
-    <string name="oem_smartspace_info">Smartspace OEM affiche les cibles et les complications Smartspacer dans les lanceurs d\'applications et sur les écrans de verrouillage compatibles.\n\n<b>Veuillez noter que ce mode est bien plus limité par rapport aux autres :</b>\n— la cible est affichée uniquement avec son titre et son sous-titre, aucune image ou autre élément n\'est affiché ;\n— une seule cible et une seule complication affichées à la fois ;\n— certains fabricants n\'affichent pas les complications lorsque aucune cible n\'est disponible ;\n— la disposition des cibles et des complications pourrait être différente sur votre appareil à cause des modifications du fabricant ;\n— il se peut que vous ne puissiez pas accéder à toutes les options des cibles avec plusieurs complications ;\n— certains fabricants désactivent Smartspace par défaut, il faut donc exécuter une commande ou modifier un paramètre, accédez à la page du Wiki ci-dessous pour plus d\'infos.</string>
+    <string name="oem_smartspace_info">Smartspace OEM affiche les cibles et les complications Smartspacer dans les lanceurs d\'applications et sur les écrans de verrouillage compatibles.\n\n<b>Veuillez noter que ce mode est bien plus limité par rapport aux autres :</b>\n— la cible est affichée uniquement avec son titre et son sous-titre, aucune image ou autre élément n\'est affiché ;\n— une seule cible et une seule complication affichées à la fois ;\n— certains fabricants n\'affichent pas les complications lorsque aucune cible n\'est disponible ;\n— la disposition des cibles et des complications pourrait être différente sur votre appareil à cause des modifications du fabricant ;\n— il se peut que vous ne puissiez pas accéder à toutes les options des cibles avec plusieurs complications ;\n— certains fabricants désactivent Smartspace par défaut, il faudra alors exécuter une commande ou modifier un paramètre, accédez à la page du Wiki ci-dessous pour plus d\'infos.</string>
     <string name="oem_smartspace_more_info">Plus d\'infos</string>
     <string name="oem_smartspace_no_apps">Aucune application compatible avec Smartspace OEM n\'est installée sur votre appareil.</string>
     <string name="oem_smartspace_switch">Activer Smartspace OEM</string>
@@ -671,7 +671,7 @@
     <string name="expanded_custom_widget_rearrange_title">Faites glisser pour réorganiser</string>
     <string name="expanded_widget_reset_title">Réinitialiser</string>
     <string name="expanded_add_widget_title">Ajouter un widget</string>
-    <string name="expanded_add_widget_warning"><b>Remarque :</b> en raison d\'un bug dans le système Android, certains widgets pourraient ne pas se charger correctement.</string>
+    <string name="expanded_add_widget_warning"><b>Remarque :</b> en raison d\'un bug dans le système Android, certains widgets pourraient ne pas se charger correctement.</string>
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
@@ -702,8 +702,8 @@
     <string name="plugin_repository_empty_title_browse">Aucun plugin installé</string>
     <string name="plugin_repository_empty_subtitle_browse">Vous n\'avez installé aucun plugin.</string>
     <string name="plugin_repository_empty_button_browse">Parcourir les plugins</string>
-    <string name="plugin_repository_update_available">Mise à jour disponible !</string>
-    <string name="plugin_repository_recommended">Recommandé pour :</string>
+    <string name="plugin_repository_update_available">Mise à jour disponible !</string>
+    <string name="plugin_repository_recommended">Recommandé pour :</string>
     <string name="plugin_repository_changelog"><b>Quoi de neuf</b></string>
     <string name="plugin_details_install">Installer</string>
     <string name="plugin_details_start_install">Installer</string>
@@ -725,13 +725,13 @@
     <string name="plugin_settings_update_check_enabled_title">Rechercher automatiquement les mises à jour</string>
     <string name="plugin_settings_update_check_enabled_content">Rechercher les mises à jour des plugins Smartspacer une fois par jour et vous informer si une mise à jour est disponible</string>
     <string name="plugin_settings_url_title">URL du dépôt de plugins</string>
-    <string name="plugin_settings_url_content"><b>Avancé :</b> modifier l\'URL à utiliser pour le chargement des données sur les plugins</string>
+    <string name="plugin_settings_url_content"><b>Avancé :</b> modifier l\'URL à utiliser pour le chargement des données sur les plugins</string>
     <string name="plugin_settings_footer">Le dépôt de plugins Smartspacer vous permet d\'installer et de gérer les plugins Smartspacer ainsi que de trouver des plugins compatibles avec les applications installées sur votre appareil</string>
     <!-- Update downloader -->
     <string name="snackbar_update">Mise à jour disponible</string>
     <string name="snackbar_update_button">Mettre à jour</string>
     <string name="update_heading">Smartspacer version %1s</string>
-    <string name="update_subheading">Version actuelle : %1s</string>
+    <string name="update_subheading">Version actuelle : %1s</string>
     <string name="update_changes">Changements</string>
     <string name="update_open_installer">Installer</string>
     <string name="update_done">Téléchargement terminé</string>
@@ -744,7 +744,7 @@
     <string name="update_notification_title">Mise à jour de Smartspacer disponible</string>
     <string name="update_notification_content">Une mise à jour de Smartspacer est disponible (%1s > %1s)</string>
     <!-- Donate info -->
-    <string name="donate_prompt_title">Vous aimez Smartspacer ?</string>
+    <string name="donate_prompt_title">Vous aimez Smartspacer ?</string>
     <string name="donate_prompt_content">Si vous trouvez Smartspacer utile, pensez à faire un don. Appuyez pour plus d\'infos.</string>
     <string name="donate_prompt_dismiss">Fermer</string>
     <string name="donate_paragraph_1">Merci d\'avoir pris le temps de faire un don. Bien que Smartspacer soit disponible gratuitement et en open-source, c\'est une application complexe qui a pris très longtemps à développer.</string>
@@ -815,7 +815,7 @@
     <string name="restore_requirements_reason_not_added">La cible ou la complication à laquelle cette condition était attachée n\'a pas été ajoutée. Veuillez l\'ajouter avant de restaurer ses conditions.</string>
     <string name="restore_requirements_duplicate">Cette condition a déjà été ajoutée et ne peut pas être ajoutée plus d\'une fois. Supprimez la condition existante avant d\'effectuer la restauration.</string>
     <string name="restore_requirements_collision"><b>L\'ajout de cette condition écrasera votre configuration actuelle</b></string>
-    <string name="restore_requirements_for">Condition pour : %1s</string>
+    <string name="restore_requirements_for">Condition pour : %1s</string>
     <string name="restore_widgets_title">Restauration des widgets de Smartspace étendu…</string>
     <string name="restore_settings_title">Restauration des paramètres Smartspacer…</string>
     <string name="restore_complete_title">Restauration terminée</string>
@@ -885,7 +885,7 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Paramètres Aperçu</string>
     <string name="target_default_settings_more_content">Configurer d\'autres paramètres dans l\'application Google</string>
-    <string name="target_default_settings_hide_infobox"><b>Attention :</b> certaines cibles peuvent être indisponibles sur votre appareil. Les choix effectués sur cet écran ne sont pas synchronisés avec votre compte Google, les cibles masquées resteront donc affichées sur vos autres appareils.</string>
+    <string name="target_default_settings_hide_infobox"><b>Attention :</b> certaines cibles peuvent être indisponibles sur votre appareil. Les choix effectués sur cet écran ne sont pas synchronisés avec votre compte Google, les cibles masquées resteront donc affichées sur vos autres appareils.</string>
     <string name="target_default_settings_hide_title">Masquer des cibles</string>
     <string name="target_default_settings_hide_doorbell">Sonnette</string>
     <string name="target_default_settings_hide_package">Livraison de colis</string>
@@ -953,7 +953,7 @@
     <string name="requirement_recent_apps_configuration_app_title">Application sélectionnée</string>
     <string name="requirement_recent_apps_configuration_app_content">Aucune</string>
     <string name="requirement_recent_apps_configuration_limit_title">Limite</string>
-    <string name="requirement_recent_apps_configuration_limit_content">Nombre d\'applications récentes à prendre en compte dans la recherche de l\'application sélectionnée : %1s</string>
+    <string name="requirement_recent_apps_configuration_limit_content">Nombre d\'applications récentes à prendre en compte dans la recherche de l\'application sélectionnée : %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">Nombre d\'applications récentes à prendre en compte dans la recherche de l\'application sélectionnée</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Illimité</string>
 </resources>
