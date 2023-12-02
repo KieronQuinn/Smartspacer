@@ -944,10 +944,10 @@
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
     <string name="target_calendar_title_default">Untitled Event</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s - Tomorrow, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">All Day</string>
     <string name="target_calendar_settings_calendars">Select Calendars</string>
     <string name="target_calendar_settings_settings">Settings</string>
