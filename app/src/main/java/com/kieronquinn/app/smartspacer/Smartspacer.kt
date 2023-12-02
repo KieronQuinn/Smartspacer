@@ -463,10 +463,9 @@ class Smartspacer: Application(), Configuration.Provider {
         return getProcessName() != packageName
     }
 
-    override fun getWorkManagerConfiguration(): Configuration {
-        return Configuration.Builder()
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
             .setMaxSchedulerLimit(AlarmRepository.MAX_SCHEDULER_LIMIT)
             .build()
-    }
 
 }

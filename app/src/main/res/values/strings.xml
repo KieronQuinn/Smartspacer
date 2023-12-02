@@ -756,6 +756,8 @@
     <string name="expanded_custom_widget_options_span_x_content">The width for this widget, in cells</string>
     <string name="expanded_custom_widget_options_span_y_title">Height</string>
     <string name="expanded_custom_widget_options_span_y_content">The height for this widget, in rows</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Show when locked</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Show this widget in Expanded Smartspace when the device is locked</string>
     <string name="add_widget_empty_label">No Widgets found</string>

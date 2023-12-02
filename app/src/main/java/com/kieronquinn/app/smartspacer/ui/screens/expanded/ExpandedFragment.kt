@@ -5,6 +5,7 @@ import android.app.KeyguardManager
 import android.app.KeyguardManager.KeyguardDismissCallback
 import android.app.PendingIntent
 import android.appwidget.AppWidgetProviderInfo
+import android.appwidget.AppWidgetProviderInfo.WIDGET_FEATURE_RECONFIGURABLE
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -415,7 +416,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 binding.expandedNestedScroll.scrollTo(0, scrollTo)
             }
             is OpenFromOverlayAction.Options -> {
-                viewModel.onOptionsClicked(action.appWidgetId)
+                viewModel.onOptionsClicked(action.appWidgetId, action.canReconfigure)
             }
         }
     }
@@ -696,11 +697,14 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         popupView.expandedLongPressPopupOptions.setOnClickListener {
             popup.dismiss()
             val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
+            val canReconfigure = widget.provider.canReconfigure()
             if(isOverlay){
-                launchOverlayAction(OpenFromOverlayAction.Options(getScroll(), appWidgetId))
+                launchOverlayAction(
+                    OpenFromOverlayAction.Options(getScroll(), appWidgetId, canReconfigure)
+                )
             }else{
                 unlockAndInvoke {
-                    viewModel.onOptionsClicked(appWidgetId)
+                    viewModel.onOptionsClicked(appWidgetId, canReconfigure)
                 }
             }
         }
@@ -765,6 +769,10 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         scrollY
     }
 
+    private fun AppWidgetProviderInfo.canReconfigure(): Boolean {
+        return configure != null && widgetFeatures and WIDGET_FEATURE_RECONFIGURABLE != 0
+    }
+
     sealed class OpenFromOverlayAction(open val scrollPosition: Int): Parcelable {
         @Parcelize
         data class OpenTarget(val id: String): OpenFromOverlayAction(0)
@@ -783,7 +791,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             OpenFromOverlayAction(scrollPosition)
         @Parcelize
         data class Options(
-            override val scrollPosition: Int, val appWidgetId: Int
+            override val scrollPosition: Int, val appWidgetId: Int, val canReconfigure: Boolean
         ): OpenFromOverlayAction(scrollPosition)
     }
 

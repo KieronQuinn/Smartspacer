@@ -65,10 +65,6 @@ data class ExpandedState(
      *  displaying while locked, setting only [view] will apply to both. To display only when
      *  unlocked, set [unlocked] and leave [locked] and [view] as null (the same can be done for
      *  [locked] to set only the locked RemoteViews.
-     *
-     *  Please note that, for performance and UX reasons, the height of the RemoteViews is clipped
-     *  at `300dp`. Your RemoteViews will be wrapped in a scrollable View to handle this, if
-     *  required (Smartspacer automatically handles nested scrolling)
      */
     @Parcelize
     data class RemoteViews(

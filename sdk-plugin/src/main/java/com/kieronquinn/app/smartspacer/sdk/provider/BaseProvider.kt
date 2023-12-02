@@ -10,7 +10,6 @@ import android.os.Bundle
 import androidx.annotation.RestrictTo
 import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants
 
-@RestrictTo(RestrictTo.Scope.LIBRARY)
 abstract class BaseProvider: ContentProvider() {
 
     protected fun verifySecurity() {

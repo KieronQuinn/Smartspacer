@@ -64,7 +64,7 @@ abstract class ExpandedViewModel: ViewModel() {
     abstract fun onAppShortcutClicked(appShortcut: AppShortcut)
     abstract fun onAddWidgetClicked()
     abstract fun onAppWidgetReset(appWidgetId: Int)
-    abstract fun onOptionsClicked(appWidgetId: Int)
+    abstract fun onOptionsClicked(appWidgetId: Int, canReconfigure: Boolean)
     abstract fun onRearrangeClicked()
 
     abstract fun onConfigureWidgetClicked(
@@ -384,9 +384,9 @@ class ExpandedViewModelImpl(
         }
     }
 
-    override fun onOptionsClicked(appWidgetId: Int) {
+    override fun onOptionsClicked(appWidgetId: Int, canReconfigure: Boolean) {
         viewModelScope.launch {
-            navigation.navigate(ExpandedFragmentDirections.actionExpandedFragmentToExpandedWidgetOptionsBottomSheetFragment(appWidgetId))
+            navigation.navigate(ExpandedFragmentDirections.actionExpandedFragmentToExpandedWidgetOptionsBottomSheetFragment(appWidgetId, canReconfigure))
         }
     }
 
