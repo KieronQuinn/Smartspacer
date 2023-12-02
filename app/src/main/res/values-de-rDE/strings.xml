@@ -114,19 +114,19 @@
     <string name="target_google_weather_forecast_incompatible">This Target requires Android 12+ and the Google App</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Zum Aktivieren tippen</string>
-    <string name="complication_default_label">At a Glance Complications</string>
+    <string name="complication_default_label">Auf einen Blick Komplikationen</string>
     <string name="complication_default_description">Complications from Google At a Glance, including weather</string>
     <string name="complication_default_description_recommended">Complications from Google At a Glance, including weather <b>(recommended)</b></string>
     <string name="complication_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
     <string name="complication_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
-    <string name="complication_default_configuration_title">At a Glance settings</string>
+    <string name="complication_default_configuration_title">Auf einen Blick Einstellungen</string>
     <string name="complication_default_configuration_description">Configure more settings in the Google App</string>
     <string name="complication_google_weather_label">Google Wetter</string>
     <string name="complication_google_weather_description">Shows weather pulled from the Google App</string>
     <string name="complication_google_weather_description_unsupported">This Target requires the Google App</string>
-    <string name="plugin_target_default_label">Plugin Target</string>
+    <string name="plugin_target_default_label">Plugin Ziel</string>
     <string name="plugin_action_default_label">Plugin Complication</string>
-    <string name="plugin_requirement_default_label">Plugin Requirement</string>
+    <string name="plugin_requirement_default_label">Plugin Anforderung</string>
     <string name="permission_sdk_label">Read Smartspacer targets &amp; complications</string>
     <string name="permission_sdk_description">Allows access to read and interact with Smartspacer targets &amp; complications</string>
     <string name="notification_channel_background_service_title">Hintergrunddienst</string>
@@ -147,7 +147,7 @@
     <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
     <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
-    <string name="notification_channel_shizuku_reminder_title">Shizuku Reminder</string>
+    <string name="notification_channel_shizuku_reminder_title">Shizuku Erinnerung</string>
     <string name="notification_channel_shizuku_reminder_content">Notification shown as a reminder to start Shizuku after rebooting</string>
     <string name="notification_channel_updates_title">Smartspacer Updates</string>
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
@@ -384,6 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
     <string name="settings_hide_sensitive_contents_hide">Hide target</string>
     <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
+    <string name="settings_debug_header">Debug</string>
+    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
+    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
+    <string name="settings_dump_title_short">Dump</string>
+    <string name="settings_dump_button">Write to File</string>
+    <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Einfach</string>
     <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
@@ -864,6 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Erstelle IDs für jedes Ereignis basierend auf deren Titel, Start- und Endzeiten anstelle der systembereitgestellten IDs, wenn Ereignisse abgelehnt werden. Dies ist nützlich, wenn du eine App oder einen Dienst verwendest, der Kalender zwischen Konten synchronisiert und bei Änderungen neue Ereignisse erstellt.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
+    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
     <string name="target_calendar_settings_permission_toast">Grant Smartspacer the Calendar permission</string>
@@ -874,6 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 Minuten</string>
     <string name="target_calendar_pre_event_time_1_hour">1 Stunde</string>
     <string name="target_calendar_pre_event_time_2_hours">2 Stunden</string>
+    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">At a Glance settings</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>

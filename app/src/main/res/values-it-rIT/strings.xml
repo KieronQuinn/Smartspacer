@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di utilizzare i servizi di accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio di accessibilità, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -384,6 +384,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
     <string name="settings_hide_sensitive_contents_hide">Hide target</string>
     <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
+    <string name="settings_debug_header">Debug</string>
+    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
+    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
+    <string name="settings_dump_title_short">Dump</string>
+    <string name="settings_dump_button">Write to File</string>
+    <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Basic</string>
     <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
@@ -428,7 +434,7 @@
     <string name="setup_analytics_deny">Deny</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enhanced mode, if enabled.</string>
     <string name="setup_notifications_request">Grant Permission</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Targets</string>
@@ -864,6 +870,7 @@
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
+    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
     <string name="target_calendar_settings_permission_toast">Grant Smartspacer the Calendar permission</string>
@@ -874,6 +881,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 minutes</string>
     <string name="target_calendar_pre_event_time_1_hour">1 hour</string>
     <string name="target_calendar_pre_event_time_2_hours">2 hours</string>
+    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">At a Glance settings</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
