@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">Запретить</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Уведомления</string>
-    <string name="setup_notifications_content">Smartspacer использует уведомления для отображения информации, предупреждений и ошибок, а также напоминаний, связанных с Усиленным режимом, если он включен.</string>
+    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
     <string name="setup_notifications_request">Предоставить разрешение</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Цели</string>
@@ -679,6 +679,8 @@
     <string name="expanded_custom_widget_options_span_x_content">Ширина виджета, в ячейках</string>
     <string name="expanded_custom_widget_options_span_y_title">Высота</string>
     <string name="expanded_custom_widget_options_span_y_content">Высота виджета, в строках</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Показывать этот виджет в Расширенном Пространстве при заблокированном экране</string>
     <string name="add_widget_empty_label">Виджеты не найдены</string>
@@ -854,10 +856,10 @@
     <string name="target_calendar_configuration_description">Выберите, какие календари и когда отображать</string>
     <string name="target_calendar_title_default">Событие без названия</string>
     <string name="target_calendar_title_with_time">%1s через %1d мин</string>
-    <string name="target_calendar_subtitle_with_yesterday">Вчера, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s - завтра, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Весь день</string>
     <string name="target_calendar_settings_calendars">Выберите календари</string>
     <string name="target_calendar_settings_settings">Настройки</string>

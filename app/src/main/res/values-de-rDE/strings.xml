@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">Deny</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer verwendet Benachrichtigungen, um Informationen, Warnungen und Fehler anzuzeigen, sowie Erinnerungen im Zusammenhang mit dem Enhanced Mode, falls aktiviert.</string>
+    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
     <string name="setup_notifications_request">Grant Permission</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Targets</string>
@@ -679,6 +679,8 @@
     <string name="expanded_custom_widget_options_span_x_content">The width for this widget, in cells</string>
     <string name="expanded_custom_widget_options_span_y_title">Höhe</string>
     <string name="expanded_custom_widget_options_span_y_content">The height for this widget, in rows</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Show when locked</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Show this widget in Expanded Smartspace when the device is locked</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
@@ -854,10 +856,10 @@
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
     <string name="target_calendar_title_default">Unbenanntes Ereignis</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
-    <string name="target_calendar_subtitle_with_yesterday">Gestern, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s - Morgen, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s - %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Ganztägig</string>
     <string name="target_calendar_settings_calendars">Select Calendars</string>
     <string name="target_calendar_settings_settings">Settings</string>

@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">拒绝</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">通知</string>
-    <string name="setup_notifications_content">Smartspacer 使用通知显示信息、警告和错误，开启后还能显示与增强模式相关的提示。</string>
+    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
     <string name="setup_notifications_request">授予权限</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">对象</string>
@@ -679,6 +679,8 @@
     <string name="expanded_custom_widget_options_span_x_content">小组件宽度，单位为网格</string>
     <string name="expanded_custom_widget_options_span_y_title">高度</string>
     <string name="expanded_custom_widget_options_span_y_content">小组件高度，单位为网格</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">锁屏时显示</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">设备锁定时在扩展 Smartspace 面板显示小组件</string>
     <string name="add_widget_empty_label">找不到小组件</string>
@@ -854,10 +856,10 @@
     <string name="target_calendar_configuration_description">配置要显示的日历以及显示这些事件的时机</string>
     <string name="target_calendar_title_default">未命名事件</string>
     <string name="target_calendar_title_with_time">%1s 将在 %1d 分钟后开始</string>
-    <string name="target_calendar_subtitle_with_yesterday">昨天，%1s - %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s - 今天，%1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s，%1s - %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s - %1s，%1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">全天</string>
     <string name="target_calendar_settings_calendars">选择日历</string>
     <string name="target_calendar_settings_settings">设置</string>
