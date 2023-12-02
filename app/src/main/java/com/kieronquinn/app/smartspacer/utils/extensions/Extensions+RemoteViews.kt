@@ -23,20 +23,19 @@ import dev.rikka.tools.refine.Refine
 import java.lang.reflect.Field
 import java.util.concurrent.CompletableFuture
 import kotlin.Pair
-import android.os.Parcelable as RemoteViewsAction
 import android.util.Pair as AndroidPair
 
 @Suppress("UNCHECKED_CAST")
 @SuppressLint("DiscouragedPrivateApi")
-private fun RemoteViews.getActions(): ArrayList<RemoteViewsAction>? {
+private fun RemoteViews.getActions(): ArrayList<Any>? {
     return RemoteViews::class.java.getDeclaredField("mActions").apply {
         isAccessible = true
-    }.get(this) as? ArrayList<RemoteViewsAction>
+    }.get(this) as? ArrayList<Any>
 }
 
 @Suppress("UNCHECKED_CAST")
 @SuppressLint("DiscouragedPrivateApi")
-fun RemoteViews.getActionsIncludingNested(): List<RemoteViewsAction> {
+fun RemoteViews.getActionsIncludingNested(): List<Any> {
     val myActions = getActions()?.toList() ?: emptyList()
     val sizedActions = getSizedRemoteViews().mapNotNull {
         it.getActions()
@@ -74,25 +73,25 @@ private val mApplicationField by lazy {
     RemoteViews::class.java.getField("mApplication")
 }
 
-fun RemoteViewsAction.isRemoteViewsAdapterIntent(): Boolean {
+fun Any.isRemoteViewsAdapterIntent(): Boolean {
     return this::class.java == setRemoteViewsAdapterIntentClass
 }
 
-fun RemoteViewsAction.isRemoteCollectionItemListAdapter(): Boolean {
+fun Any.isRemoteCollectionItemListAdapter(): Boolean {
     return this::class.java == setRemoteCollectionItemListAdapterClass
 }
 
-fun RemoteViewsAction.isOnClickResponse(): Boolean {
+fun Any.isOnClickResponse(): Boolean {
     return this::class.java == setOnClickResponseClass
 }
 
-fun RemoteViewsAction.getId(): Int {
+fun Any.getId(): Int {
     return actionClass.getDeclaredField("viewId", "mViewId").apply {
         isAccessible = true
     }.get(this) as Int
 }
 
-fun RemoteViewsAction.extractAdapterIntent(): Pair<Int, Intent> {
+fun Any.extractAdapterIntent(): Pair<Int, Intent> {
     val intent = setRemoteViewsAdapterIntentClass.getDeclaredField("intent", "mIntent").apply {
         isAccessible = true
     }.get(this) as Intent
@@ -100,7 +99,7 @@ fun RemoteViewsAction.extractAdapterIntent(): Pair<Int, Intent> {
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-fun RemoteViewsAction.extractRemoteCollectionItems(): Pair<Int, RemoteCollectionItems>? {
+fun Any.extractRemoteCollectionItems(): Pair<Int, RemoteCollectionItems>? {
     val items = setRemoteCollectionItemListAdapterClass.declaredFields.firstNotNullOfOrNull {
         when(it.name) {
             "mItems" -> getRemoteCollectItemsLegacy(it)
@@ -112,7 +111,7 @@ fun RemoteViewsAction.extractRemoteCollectionItems(): Pair<Int, RemoteCollection
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-private fun RemoteViewsAction.getRemoteCollectItemsLegacy(field: Field): RemoteCollectionItems {
+private fun Any.getRemoteCollectItemsLegacy(field: Field): RemoteCollectionItems {
     return field.let {
         it.isAccessible = true
         it.get(this) as RemoteCollectionItems
@@ -120,7 +119,7 @@ private fun RemoteViewsAction.getRemoteCollectItemsLegacy(field: Field): RemoteC
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-private fun RemoteViewsAction.getRemoteCollectItemsFuture(field: Field): RemoteCollectionItems {
+private fun Any.getRemoteCollectItemsFuture(field: Field): RemoteCollectionItems {
     return field.let {
         it.isAccessible = true
         val future = it.get(this) as CompletableFuture<RemoteCollectionItems>
@@ -128,14 +127,14 @@ private fun RemoteViewsAction.getRemoteCollectItemsFuture(field: Field): RemoteC
     }
 }
 
-fun RemoteViewsAction.extractOnClickResponse(): Pair<Int, RemoteResponse> {
+fun Any.extractOnClickResponse(): Pair<Int, RemoteResponse> {
     val intent = setOnClickResponseClass.getDeclaredField("mResponse").apply {
         isAccessible = true
     }.get(this) as RemoteResponse
     return Pair(getId(), intent)
 }
 
-var RemoteViewsAction.reflectionActionValue: Any?
+var Any.reflectionActionValue: Any?
     get() = reflectionActionValueField.get(this)
     set(value) = reflectionActionValueField.set(this, value)
 

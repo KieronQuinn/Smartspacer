@@ -50,6 +50,7 @@ class CalendarRepositoryTests: BaseTest<CalendarRepository>() {
         ) = TargetData(
             randomString(),
             preEventTime,
+            TargetData.PostEventTime.AT_END,
             showAllDay,
             true,
             showUnconfirmed,

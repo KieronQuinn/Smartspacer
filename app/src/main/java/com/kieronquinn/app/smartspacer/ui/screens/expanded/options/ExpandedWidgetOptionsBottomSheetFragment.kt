@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded.options
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -26,6 +27,10 @@ class ExpandedWidgetOptionsBottomSheetFragment: BaseBottomSheetFragment<Fragment
     private val viewModel by viewModel<ExpandedWidgetOptionsBottomSheetViewModel>()
     private val args by navArgs<ExpandedWidgetOptionsBottomSheetFragmentArgs>()
 
+    private val configureLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
+        //No-op
+    }
+
     private val adapter by lazy {
         Adapter()
     }
@@ -37,7 +42,7 @@ class ExpandedWidgetOptionsBottomSheetFragment: BaseBottomSheetFragment<Fragment
         setupInsets()
         setupClose()
         setupState()
-        viewModel.setupWithWidgetId(args.appWidgetId)
+        viewModel.setup(args.appWidgetId, args.canReconfigure)
     }
 
     private fun setupLoading() = with(binding.widgetOptionsLoading.loadingProgress){
@@ -97,7 +102,7 @@ class ExpandedWidgetOptionsBottomSheetFragment: BaseBottomSheetFragment<Fragment
     }
 
     private fun State.Loaded.loadItems(): List<BaseSettingsItem> {
-        return listOf(
+        return listOfNotNull(
             GenericSettingsItem.Slider(
                 spanX.toFloat(),
                 1f,
@@ -124,6 +129,16 @@ class ExpandedWidgetOptionsBottomSheetFragment: BaseBottomSheetFragment<Fragment
                 ::formatLabel,
                 viewModel::setSpanY
             ),
+            GenericSettingsItem.Setting(
+                getString(R.string.expanded_custom_widget_options_reconfigure_title),
+                getString(R.string.expanded_custom_widget_options_reconfigure_content),
+                ContextCompat.getDrawable(
+                    requireContext(), R.drawable.ic_configure
+                )
+            ) {
+                viewModel.onReconfigureClicked(configureLauncher)
+                dismiss()
+            }.takeIf { canReconfigure },
             GenericSettingsItem.SwitchSetting(
                 showWhenLocked,
                 getString(R.string.expanded_custom_widget_options_show_when_locked_title),

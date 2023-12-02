@@ -14,6 +14,7 @@ import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
 import io.mockk.coVerify
 import io.mockk.every
+import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -62,7 +63,7 @@ class ExpandedWidgetOptionsBottomSheetViewModelTests: BaseTest<ExpandedWidgetOpt
     fun testState() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)
-            sut.setupWithWidgetId(mockWidgets.first().appWidgetId!!)
+            sut.setup(mockWidgets.first().appWidgetId!!, true)
             val item = awaitItem()
             assertTrue(item is State.Loaded)
         }
@@ -72,7 +73,7 @@ class ExpandedWidgetOptionsBottomSheetViewModelTests: BaseTest<ExpandedWidgetOpt
     fun testSetSpanX() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)
-            sut.setupWithWidgetId(mockWidgets.first().appWidgetId!!)
+            sut.setup(mockWidgets.first().appWidgetId!!, true)
             val item = awaitItem()
             assertTrue(item is State.Loaded)
             val widget = sut.widget.value!!
@@ -89,7 +90,7 @@ class ExpandedWidgetOptionsBottomSheetViewModelTests: BaseTest<ExpandedWidgetOpt
     fun testSetSpanY() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)
-            sut.setupWithWidgetId(mockWidgets.first().appWidgetId!!)
+            sut.setup(mockWidgets.first().appWidgetId!!, true)
             val item = awaitItem()
             assertTrue(item is State.Loaded)
             val widget = sut.widget.value!!
@@ -106,16 +107,39 @@ class ExpandedWidgetOptionsBottomSheetViewModelTests: BaseTest<ExpandedWidgetOpt
     fun testSetShowWhenLocked() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)
-            sut.setupWithWidgetId(mockWidgets.first().appWidgetId!!)
+            sut.setup(mockWidgets.first().appWidgetId!!, true)
             val item = awaitItem()
             assertTrue(item is State.Loaded)
             val widget = sut.widget.value!!
-            val mock = randomFloat()
             sut.setShowWhenLocked(false)
             coVerify {
                 databaseRepositoryMock
                     .updateExpandedCustomAppWidget(widget.copy(showWhenLocked = false))
             }
+        }
+    }
+
+    @Test
+    fun testCanReconfigure() = runTest {
+        sut.state.test {
+            assertTrue(awaitItem() is State.Loading)
+            sut.setup(mockWidgets.first().appWidgetId!!, true)
+            val item = awaitItem()
+            assertTrue(item is State.Loaded)
+            item as State.Loaded
+            assertTrue(item.canReconfigure)
+        }
+    }
+
+    @Test
+    fun testCannotReconfigure() = runTest {
+        sut.state.test {
+            assertTrue(awaitItem() is State.Loading)
+            sut.setup(mockWidgets.first().appWidgetId!!, false)
+            val item = awaitItem()
+            assertTrue(item is State.Loaded)
+            item as State.Loaded
+            assertFalse(item.canReconfigure)
         }
     }
 

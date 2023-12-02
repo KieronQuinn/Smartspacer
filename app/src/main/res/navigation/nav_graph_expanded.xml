@@ -37,5 +37,8 @@
         <argument
             android:name="app_widget_id"
             app:argType="integer" />
+        <argument
+            android:name="can_reconfigure"
+            app:argType="boolean"/>
     </dialog>
 </navigation>

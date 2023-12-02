@@ -3,8 +3,6 @@
     <string-array name="xposed_scope">
         <!-- Pixel Launcher -->
         <item>com.google.android.apps.nexuslauncher</item>
-        <!-- Nova Launcher -->
-        <item>com.teslacoilsw.launcherclientproxy</item>
         <!-- Lawnchair -->
         <item>app.lawnchair</item>
         <item>app.lawnchair.debug</item>

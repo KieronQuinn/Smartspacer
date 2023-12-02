@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.3'
-def tagCode = 130
+def tagName = '1.3.1'
+def tagCode = 131
 
 android {
     compileSdk 34
@@ -77,13 +77,13 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.fragment:fragment-ktx:1.6.2"
-    implementation "androidx.activity:activity-ktx:1.8.0"
-    implementation "androidx.work:work-runtime-ktx:2.8.1"
+    implementation "androidx.activity:activity-ktx:1.8.1"
+    implementation "androidx.work:work-runtime-ktx:2.9.0"
     implementation "androidx.core:core-remoteviews:1.0.0"
     implementation "androidx.security:security-crypto:1.1.0-alpha06"
     implementation project(path: ':proto')
 
-    def room_version = "2.6.0"
+    def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
@@ -119,17 +119,17 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
 
     //Dependency Injection
-    implementation "io.insert-koin:koin-android:3.4.0"
+    implementation "io.insert-koin:koin-android:3.5.0"
 
     implementation 'com.jakewharton:process-phoenix:2.1.2'
 
     //Image Loading
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
     ksp 'com.github.bumptech.glide:ksp:4.15.1'
 
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
-    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:3.8.0'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
     implementation 'com.airbnb.android:lottie:6.1.0'
