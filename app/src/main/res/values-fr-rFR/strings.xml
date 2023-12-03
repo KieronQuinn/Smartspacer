@@ -386,7 +386,7 @@
     <string name="settings_hide_sensitive_contents_hide_content">Masquer complètement la cible</string>
     <string name="settings_debug_header">Débogage</string>
     <string name="settings_dump_title">Dumper les cibles et les actions</string>
-    <string name="settings_dump_content">Afficher les informations sur le contenu et de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
+    <string name="settings_dump_content">Afficher les informations de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
     <string name="settings_dump_title_short">Dumper</string>
     <string name="settings_dump_button">Écrire dans un fichier</string>
     <string name="settings_dump_complete">Fichier écrit</string>
@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer utilise les notifications pour afficher des informations, des avertissements et des erreurs, ainsi que des rappels à propos du mode amélioré, s\'il est activé.</string>
     <string name="setup_notifications_request">Accorder l\'autorisation</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Cibles</string>
@@ -679,8 +679,8 @@
     <string name="expanded_custom_widget_options_span_x_content">Largeur du widget, en colonnes</string>
     <string name="expanded_custom_widget_options_span_y_title">Hauteur</string>
     <string name="expanded_custom_widget_options_span_y_content">Hauteur du widget, en lignes</string>
-    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
-    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigurer</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Modifier les paramètres de ce widget dans son application</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Afficher lorsque l\'appareil est verrouillé</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Afficher ce widget dans Smartspace étendu lorsque votre appareil est verrouillé</string>
     <string name="add_widget_empty_label">Aucun widget</string>
@@ -769,7 +769,7 @@
     <string name="backup_restore_title">Sauvegarder et restaurer</string>
     <string name="backup_restore_content">Sauvegarder et restaurer les cibles, les complications, les conditions et les paramètres</string>
     <string name="backup_title">Sauvegarde</string>
-    <string name="backup_content">Créez une sauvegarde Smartspacer des cibles, des complications, des conditions et des paramètres, dans un fichier local ou dans le cloud.</string>
+    <string name="backup_content">Créer une sauvegarde Smartspacer des cibles, des complications, des conditions et des paramètres, et la stocker dans un fichier local ou dans le cloud.</string>
     <string name="backup_creating_backup">Création d\'une sauvegarde…</string>
     <string name="backup_creating_targets_backup">Sauvegarde des cibles…</string>
     <string name="backup_creating_complications_backup">Sauvegarde des complications…</string>
@@ -850,14 +850,14 @@
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
-    <string name="target_calendar_description">Afficher les événements provenant des agendas sélectionnés</string>
-    <string name="target_calendar_description_filled">Afficher les événements de l\'agenda (%1s)</string>
+    <string name="target_calendar_description">Affiche les événements provenant des agendas sélectionnés</string>
+    <string name="target_calendar_description_filled">Affiche les événements de %1s</string>
     <string name="target_calendar_configuration_title">Paramètres</string>
     <string name="target_calendar_configuration_description">Configurer les agendas à prendre en compte et les options d\'affichage des événements</string>
     <string name="target_calendar_title_default">Événement sans titre</string>
     <string name="target_calendar_title_with_time">%1s dans %1d min</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Hier, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Demain, %1s</string>
     <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
     <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Toute la journée</string>
