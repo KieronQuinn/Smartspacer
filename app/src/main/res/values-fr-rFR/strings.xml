@@ -3,7 +3,7 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Optionnel</b>  : activez ce module dans votre lanceur d\'applications ou sur le pont Google Feed de votre launcher pour remplacer Google Discover par Smartspace étendu</string>
-    <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
+    <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
     <string name="loading">Chargement…</string>
@@ -312,7 +312,7 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Définir la réactivité de cette condition Position. Choisir une durée plus longue vous permettra d\'économiser de la batterie, mais la condition sera mise à jour moins souvent.</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d secondes</string>
     <string name="requirement_geofence_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
-    <string name="requirement_geofence_configuration_background_location_content">L\'accès à la position en arrière-plan est nécessaire pour les conditions Position. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
+    <string name="requirement_geofence_configuration_background_location_content">Pour pouvoir fonctionner, les conditions Position ont besoin d\'un accès à la position en arrière-plan. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Accorder l\'autorisation</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limite atteinte</string>
     <string name="requirement_geofence_configuration_limit_reached_content">Vous avez atteint le nombre limite de lieux Geofence, veuillez supprimer une condition Position avant d\'en ajouter une nouvelle.</string>
@@ -326,7 +326,7 @@
     <string name="requirement_wifi_configuration_in_range_content">Lorsque cette option est activée, cette condition sera remplie lorsque le réseau spécifié est à proximité, sans y être connecté.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important :</b> Smartspacer ne recherche <b>pas</b> les réseaux tout seul. Pour que l\'option « Autoriser les réseaux non connectés » fonctionne correctement, vous devez activer le paramètre système « Notifier en cas de réseaux publics » pour rechercher les réseaux Wi-Fi en arrière-plan, ou bien rechercher manuellement les réseaux Wi-Fi.</string>
     <string name="requirement_wifi_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android demande aux applications souhaitant suivre les recherches Wi-Fi d\'avoir un accès à la position en arrière-plan. Veuillez accorder cette autorisation dans les paramètres pour continuer, en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez à l\'application.</string>
+    <string name="requirement_wifi_configuration_background_location_content">Android demande aux applications souhaitant suivre les recherches Wi-Fi d\'avoir accès à la position en arrière-plan. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Accorder l\'autorisation</string>
     <string name="requirement_wifi_configuration_pick_title">Sélectionner un réseau</string>
     <string name="requirement_wifi_configuration_pick_content">Remplir les paramètres à partir d\'un réseau existant</string>
