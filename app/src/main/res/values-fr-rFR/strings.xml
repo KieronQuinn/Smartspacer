@@ -158,7 +158,7 @@
     <string name="notification_plugin_updates_content_other">%1d mises à jour de plugins disponibles, appuyez pour plus d\'infos</string>
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
-    <string name="notification_accessibility_widget_title">Activer le service d\'accessibilité du widget</string>
+    <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
     <string name="notification_accessibility_widget_content">Le service d\'accessibilité du widget Smartspacer doit être activé pour que les widgets fonctionnent, appuyez pour activer</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
@@ -259,7 +259,7 @@
     <string name="feedback_loop_content">Smartspacer a détecté une boucle de rétroaction entre Smartspace natif et le système qui empêche les cibles Aperçu de fonctionner.\n\nCela peut arriver lorsque Smartspacer est arrêté de force trop rapidement après l\'activation de Smartspace natif.\n\nPour corriger cela, patientez 30 secondes, redémarrez Smartspacer et réactivez Smartspace natif.</string>
     <string name="feedback_loop_relaunch_wait">Patientez %1s secondes</string>
     <string name="feedback_loop_relaunch">Redémarrer Smartspacer</string>
-    <string name="configuration_notification_enable_title">Activer l\'accès aux notifications</string>
+    <string name="configuration_notification_enable_title">Activez l\'accès aux notifications</string>
     <string name="configuration_notification_enable_content">Autorisez Smartspacer à accéder aux notifications de l\'appareil et des applications dans les paramètres système.</string>
     <string name="configuration_notification_enable_button">Autoriser l\'accès aux notifications</string>
     <string name="configuration_accessibility_enable_title">Activer le service d\'accessibilité</string>
@@ -267,9 +267,9 @@
     <string name="configuration_accessibility_enable_button">Activer le service d\'accessibilité</string>
     <string name="target_notification_configuration_title">Paramètres des notifications</string>
     <string name="target_notification_configuration_content">Sélectionnez les applications et les catégories des notifications à afficher</string>
-    <string name="configuration_notification_association_title">Accorder les autorisations</string>
+    <string name="configuration_notification_association_title">Accordez les autorisations</string>
     <string name="configuration_notification_association_content">Afin d\'autoriser Smartspacer à accéder à la liste des catégories de notifications des autres applications, vous devez associer un périphérique ou un réseau à cette application. Cette (étrange) contrainte est imposée par le système Android, et il s\'agit de la seule manière d\'obtenir la liste des catégories sans root. Vous n\'avez à faire l\'association qu\'une seule fois.</string>
-    <string name="configuration_notification_association_subcontent">Appuyez sur le bouton « Associer » ci-dessous, et sélectionnez n\'importe quel appareil ou réseau dans la liste.\n\n<b>Vous pouvez sélectionner un appareil ou un réseau qui ne vous appartient pas, ou qui ne sera pas toujours à proximité. Smartspacer ne se connecte pas au périphérique sélectionné</b>. Il se peut que vous deviez activer le GPS pour que les appareils et les réseaux apparaissent dans la liste.</string>
+    <string name="configuration_notification_association_subcontent">Appuyez sur le bouton « Associer » ci-dessous, et sélectionnez n\'importe quel appareil ou réseau dans la liste.\n\n<b>Vous pouvez sélectionner un appareil ou un réseau qui ne vous appartient pas, ou qui ne sera pas toujours à proximité. Smartspacer ne se connectera pas au périphérique sélectionné.</b> Il se peut que vous deviez activer le GPS pour que les appareils et les réseaux apparaissent dans la liste.</string>
     <string name="configuration_notification_association_button">Associer</string>
     <string name="configuration_notification_association_read_more">En savoir plus sur cette condition</string>
     <string name="configuration_notification_association_toast">Une erreur s\'est produite, veuillez réessayer</string>
@@ -539,12 +539,12 @@
     <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_restart_button">Reconnecter</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Réactiver Smartspace natif</string>
+    <string name="notification_native_mode_enable_title">Réactivez Smartspace natif</string>
     <string name="notification_native_mode_enable_content">Vous devez réactiver le mode Smartspace natif de Smartspacer à chaque redémarrage, appuyez pour activer</string>
     <string name="notification_native_mode_enable_dismiss">Ne plus afficher</string>
     <string name="notification_native_mode_enable_now">Activer</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Reconnecter Smartspace natif</string>
+    <string name="notification_native_mode_restart_title">Reconnectez Smartspace natif</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspace a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
@@ -558,7 +558,7 @@
     <string name="notification_sui_title">Sui ou Shizuku en root requis</string>
     <string name="notification_sui_content_oem_smartspace">Smartspace OEM nécessite le démarrage de Shizuku en root, ou Sui. Smartspacer n\'a pas pu se connecter, le service a donc été désactivé.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Désactiver l\'optimisation de la batterie</string>
+    <string name="notification_battery_optimisation_title">Désactivez l\'optimisation de la batterie</string>
     <string name="notification_battery_optimisation_content">L\'utilisation de la batterie par Smartspacer ne doit pas être restreinte afin de mettre à jour en arrière-plan les cibles et les complications, appuyez pour lever les restrictions</string>
     <string name="notification_battery_optimisation_failed_toast">Échec de l\'ouverture des paramètres, veuillez accorder l\'autorisation manuellement</string>
     <!-- Music Target -->
@@ -692,7 +692,7 @@
     <string name="battery_optimisation_schedule_exact_alarm_content">Nécessaire pour que Smartspacer puisse mettre à jour en arrière-plan les cibles et les complications de façon fiable.</string>
     <string name="battery_optimisation_oem_title">Optimisation de la batterie OEM</string>
     <string name="battery_optimisation_oem_content">Il semblerait que le fabricant de votre appareil ait ajouté des optimisations de batterie supplémentaires. Ces optimisations ne peuvent pas être désactivées automatiquement, appuyez pour ouvrir les paramètres de la batterie.</string>
-    <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter qu\'il soit tué par le système, les optimisations de la batterie doivent être désactivées.</string>
+    <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter que l\'application soit tuée par le système, les optimisations de la batterie doivent être désactivées.</string>
     <string name="battery_optimisation_footer_link">En savoir plus</string>
     <string name="plugin_repository_tab_installed">Installé</string>
     <string name="plugin_repository_tab_available">Disponible</string>
