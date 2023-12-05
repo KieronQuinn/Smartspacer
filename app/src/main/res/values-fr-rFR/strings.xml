@@ -26,7 +26,7 @@
     <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
-    <string name="target_sensitive_title">Contenu masqué</string>
+    <string name="target_sensitive_title">Contenus masqués</string>
     <!-- Shared by widget & expanded -->
     <string name="tint_colour_automatic">Automatique (à partir du fond d\'écran)</string>
     <string name="tint_colour_automatic_content">La couleur du texte et des icônes sera ajustée automatiquement en fonction du fond d\'écran pour améliorer la lisibilité</string>
