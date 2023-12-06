@@ -856,10 +856,10 @@
     <string name="target_calendar_configuration_description">Configurer les agendas à prendre en compte et les options d\'affichage des événements</string>
     <string name="target_calendar_title_default">Événement sans titre</string>
     <string name="target_calendar_title_with_time">%1s dans %1d min</string>
-    <string name="target_calendar_subtitle_with_yesterday">Hier, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s – Demain, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Hier %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Demain %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s %1s</string>
     <string name="target_calendar_subtitle_all_day">Toute la journée</string>
     <string name="target_calendar_settings_calendars">Sélectionner des agendas</string>
     <string name="target_calendar_settings_settings">Paramètres</string>
