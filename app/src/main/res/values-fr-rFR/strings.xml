@@ -632,8 +632,8 @@
     <string name="expanded_settings_open_mode_lock_screen_title">Ouvrir à partir de l\'écran de verrouillage</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Écran de verrouillage</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran de verrouillage : %1s</string>
-    <string name="expanded_settings_close_when_locked_title">Fermer lorsque l\'appareil est verrouillé</string>
-    <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque votre appareil est verrouillé</string>
+    <string name="expanded_settings_close_when_locked_title">Fermer lors du verrouillage de l\'appareil</string>
+    <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque vous verrouillez votre appareil</string>
     <string name="expanded_settings_header_style">Style</string>
     <string name="expanded_settings_blur_background_title">Flouter l\'arrière-plan</string>
     <string name="expanded_settings_blur_background_content">Appliquer un flou d\'arrière-plan à Smartspace étendu. <b>Cela pourrait ne pas fonctionner correctement avec tous les lanceurs d\'applications si vous utilisez Discover Killer.</b> Lorsque cette option est désactivée, à la place, le fond d\'écran est assombri.</string>
@@ -922,7 +922,7 @@
     <string name="target_blank_settings_title">Paramètres</string>
     <string name="target_blank_settings_description">Configurer s\'il faut afficher les complications sur cette cible vide</string>
     <!-- Gmail Complication -->
-    <string name="complication_gmail_label">Non lus Gmail</string>
+    <string name="complication_gmail_label">E-mails sur Gmail non lus</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>
     <string name="complication_gmail_description_filled_one">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellé</string>
     <string name="complication_gmail_description_filled_other">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellés</string>
