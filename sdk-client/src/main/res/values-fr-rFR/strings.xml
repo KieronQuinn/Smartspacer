@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="smartspace_accessibility_smartspace_page">Page %1$d sur %2$d</string>
-    <string name="smartspace_long_press_popup_dismiss">Ignorer</string>
+    <string name="smartspace_long_press_popup_dismiss">Fermer</string>
     <string name="smartspace_long_press_popup_feedback">Commentaires</string>
     <string name="smartspace_long_press_popup_about">À propos de ce contenu</string>
     <string name="smartspace_long_press_popup_settings">Paramètres</string>
     <string name="smartspace_long_press_popup_failed_to_launch">Échec du lancement de l\'action</string>
-    <string name="smartspace_toast_could_not_dismiss">Cette cible ne peut pas être rejetée</string>
+    <string name="smartspace_toast_could_not_dismiss">Vous ne pouvez pas fermer cette cible</string>
 </resources>
