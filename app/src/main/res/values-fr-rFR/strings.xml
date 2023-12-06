@@ -545,7 +545,7 @@
     <string name="notification_native_mode_enable_now">Activer</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconnectez Smartspace natif</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspace a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
     <!-- Shizuku Start Notifications -->
