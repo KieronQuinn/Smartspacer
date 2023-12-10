@@ -568,8 +568,6 @@
     <string name="target_music_setting_show_album_art_content">Affiche la jaquette de la piste en cours de lecture, si elle est disponible. La jaquette pourrait être rognée.</string>
     <string name="target_music_setting_use_doorbell_title">Afficher la jaquette au format carré</string>
     <string name="target_music_setting_use_doorbell_content">Essayer d\'afficher la jaquette au format carré plutôt qu\'au format rectangulaire, ce qui évite de la rogner. <b>Important :</b> si vous utilisez Smartspace natif, cela ne fonctionnera pas sur l\'écran d\'accueil et n\'apparaîtra pas du tout sur certains appareils.</string>
-    <string name="target_music_setting_use_notification_icon_title">Utiliser l\'icône de la notification si nécessaire</string>
-    <string name="target_music_setting_use_notification_icon_content">Si la session média ne déclare pas d\'icône, essayer d\'en charger une à partir de la notification de l\'application. Désactivez cette option si l\'icône est en couleur unie.</string>
     <string name="target_music_setting_clear_dismissed_title">Effacer la liste des applications ignorées</string>
     <string name="target_music_setting_clear_dismissed_content">Effacer la liste des applications qui ont été ignorées et permettre aux pistes de ces applications d\'apparaître à nouveau dans Smartspace</string>
     <string name="target_music_setting_setting_title">Paramètres</string>
