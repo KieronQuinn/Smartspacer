@@ -82,7 +82,6 @@ dependencies {
     implementation "androidx.core:core-remoteviews:1.0.0"
     implementation "androidx.security:security-crypto:1.1.0-alpha06"
     implementation project(path: ':proto')
-    implementation 'androidx.slice:slice-core:1.0.0'
 
     def room_version = "2.6.1"
     implementation "androidx.room:room-runtime:$room_version"
