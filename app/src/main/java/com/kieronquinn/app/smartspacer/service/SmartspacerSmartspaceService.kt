@@ -6,7 +6,6 @@ import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Intent
 import android.provider.Settings
-import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
@@ -20,6 +19,7 @@ import com.kieronquinn.app.smartspacer.repositories.*
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
+import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.startForeground
 import com.kieronquinn.app.smartspacer.utils.extensions.toSmartspaceConfig
 import com.kieronquinn.app.smartspacer.utils.extensions.toSystemSmartspaceTargetEvent
@@ -147,7 +147,10 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         if(config.packageName == BuildConfig.APPLICATION_ID){
             //Feedback loop! Service has been force stopped & restarted too fast, reject
             onDestroySmartspaceSession(sessionId)
-            systemSmartspace.onFeedbackLoopDetected()
+            //Only trigger the feedback loop notification if there's an actual service to connect to
+            if(getDefaultSmartspaceComponent() != null) {
+                systemSmartspace.onFeedbackLoopDetected()
+            }
             return
         }
         systemSmartspace.notifyServiceRunning()
