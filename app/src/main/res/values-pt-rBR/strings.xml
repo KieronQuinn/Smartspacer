@@ -399,9 +399,9 @@
     <string name="compatibility_feature_combination_at_store_content">Permite exibir um botão e uma lista de compras além do título e do subtítulo.</string>
     <string name="compatibility_feature_doorbell_title">Campainha</string>
     <string name="compatibility_feature_doorbell_content">Permite exibir uma visualização complexa além do título e do subtítulo, com suporte para uma prévia ao vivo da campainha em algumas telas.</string>
-    <string name="compatibility_feature_flight_title">Flight</string>
-    <string name="compatibility_feature_flight_content">Allows showing basic flight information such as flight number and airline in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_image_title">Image</string>
+    <string name="compatibility_feature_flight_title">Voo</string>
+    <string name="compatibility_feature_flight_content">Permite mostrar informações básicas do voo, como número do voo e companhia aérea, além do título e subtítulo.</string>
+    <string name="compatibility_feature_image_title">Imagem</string>
     <string name="compatibility_feature_image_content">Allows showing an image in addition to the title &amp; subtitle.</string>
     <string name="compatibility_feature_loyalty_title">Loyalty</string>
     <string name="compatibility_feature_loyalty_content">Allows showing a button in addition to the title &amp; subtitle.</string>

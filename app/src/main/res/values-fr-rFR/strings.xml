@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optionnel</b>  : activez ce module dans votre lanceur d\'applications ou sur le pont Google Feed de votre launcher pour remplacer Google Discover par Smartspace étendu</string>
-    <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
+    <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
     <string name="loading">Chargement…</string>
@@ -20,13 +20,13 @@
     <string name="bottom_nav_settings">Paramètres</string>
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
-    <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Informations sur l\'application et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
-    <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Informations sur l\'application et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
-    <string name="restricted_mode_button">Ouvrir les informations sur l\'application</string>
+    <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
-    <string name="target_sensitive_title">Contenu masqué</string>
+    <string name="target_sensitive_title">Contenus masqués</string>
     <!-- Shared by widget & expanded -->
     <string name="tint_colour_automatic">Automatique (à partir du fond d\'écran)</string>
     <string name="tint_colour_automatic_content">La couleur du texte et des icônes sera ajustée automatiquement en fonction du fond d\'écran pour améliorer la lisibilité</string>
@@ -88,22 +88,22 @@
     <string name="target_greeting_label">Bonjour</string>
     <string name="target_greeting_description">Affiche une courte salutation, en gardant de la place pour deux complications</string>
     <string name="target_greeting_morning">Bonjour</string>
-    <string name="target_greeting_morning_name">Bonjour, %1s</string>
+    <string name="target_greeting_morning_name">Bonjour %1s</string>
     <string name="target_greeting_afternoon">Bon après-midi</string>
     <string name="target_greeting_afternoon_name">Bon après-midi, %1s</string>
     <string name="target_greeting_evening">Bonsoir</string>
-    <string name="target_greeting_evening_name">Bonsoir, %1s</string>
+    <string name="target_greeting_evening_name">Bonsoir %1s</string>
     <string name="target_greeting_night">Bonne nuit</string>
     <string name="target_greeting_night_name">Bonne nuit, %1s</string>
     <string name="target_greeting_configuration_hide_if_no_complications_title">Masquer dynamiquement</string>
     <string name="target_greeting_configuration_hide_if_no_complications_content">Masquer la cible s\'il n\'y a aucune complication à afficher en-dessous</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_title">Masquer le titre sur l\'AoD</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_content">Masquer le titre de la cible sur l\'affichage permanent (AoD) (Smartspace natif uniquement)</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_title">Masquer le titre sur l\'affichage permanent (AoD)</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_content">Masque le titre de la cible sur l\'affichage permanent (Smartspace natif uniquement)</string>
     <string name="target_greeting_configuration_name_title">Votre nom</string>
     <string name="target_greeting_configuration_name_content">Nom à afficher dans la salutation : %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Nom à afficher dans la salutation</string>
     <string name="target_greeting_configuration_title">Paramètres</string>
-    <string name="target_greeting_configuration_description">Définir votre nom, masquer dynamiquement la cible et masquer le titre sur l\'AoD</string>
+    <string name="target_greeting_configuration_description">Définir un nom, masquer dynamiquement la cible et masquer le titre sur l\'affichage permanent (AoD)</string>
     <string name="target_greeting_configuration_open_expanded_title">Ouvrir Smartspace étendu</string>
     <string name="target_greeting_configuration_open_expanded_content">Ouvrir Smartspace étendu en appuyant dessus, plutôt que de ne rien faire</string>
     <string name="target_at_a_glance_label">Aperçu (widget)</string>
@@ -158,7 +158,7 @@
     <string name="notification_plugin_updates_content_other">%1d mises à jour de plugins disponibles, appuyez pour plus d\'infos</string>
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
-    <string name="notification_accessibility_widget_title">Activer le service d\'accessibilité du widget</string>
+    <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
     <string name="notification_accessibility_widget_content">Le service d\'accessibilité du widget Smartspacer doit être activé pour que les widgets fonctionnent, appuyez pour activer</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
@@ -259,7 +259,7 @@
     <string name="feedback_loop_content">Smartspacer a détecté une boucle de rétroaction entre Smartspace natif et le système qui empêche les cibles Aperçu de fonctionner.\n\nCela peut arriver lorsque Smartspacer est arrêté de force trop rapidement après l\'activation de Smartspace natif.\n\nPour corriger cela, patientez 30 secondes, redémarrez Smartspacer et réactivez Smartspace natif.</string>
     <string name="feedback_loop_relaunch_wait">Patientez %1s secondes</string>
     <string name="feedback_loop_relaunch">Redémarrer Smartspacer</string>
-    <string name="configuration_notification_enable_title">Activer l\'accès aux notifications</string>
+    <string name="configuration_notification_enable_title">Activez l\'accès aux notifications</string>
     <string name="configuration_notification_enable_content">Autorisez Smartspacer à accéder aux notifications de l\'appareil et des applications dans les paramètres système.</string>
     <string name="configuration_notification_enable_button">Autoriser l\'accès aux notifications</string>
     <string name="configuration_accessibility_enable_title">Activer le service d\'accessibilité</string>
@@ -267,9 +267,9 @@
     <string name="configuration_accessibility_enable_button">Activer le service d\'accessibilité</string>
     <string name="target_notification_configuration_title">Paramètres des notifications</string>
     <string name="target_notification_configuration_content">Sélectionnez les applications et les catégories des notifications à afficher</string>
-    <string name="configuration_notification_association_title">Accorder les autorisations</string>
+    <string name="configuration_notification_association_title">Accordez les autorisations</string>
     <string name="configuration_notification_association_content">Afin d\'autoriser Smartspacer à accéder à la liste des catégories de notifications des autres applications, vous devez associer un périphérique ou un réseau à cette application. Cette (étrange) contrainte est imposée par le système Android, et il s\'agit de la seule manière d\'obtenir la liste des catégories sans root. Vous n\'avez à faire l\'association qu\'une seule fois.</string>
-    <string name="configuration_notification_association_subcontent">Appuyez sur le bouton « Associer » ci-dessous, et sélectionnez n\'importe quel appareil ou réseau dans la liste.\n\n<b>Vous pouvez sélectionner un appareil ou un réseau qui ne vous appartient pas, ou qui ne sera pas toujours à proximité. Smartspacer ne se connecte pas au périphérique sélectionné</b>. Il se peut que vous deviez activer le GPS pour que les appareils et les réseaux apparaissent dans la liste.</string>
+    <string name="configuration_notification_association_subcontent">Appuyez sur le bouton « Associer » ci-dessous, et sélectionnez n\'importe quel appareil ou réseau dans la liste.\n\n<b>Vous pouvez sélectionner un appareil ou un réseau qui ne vous appartient pas, ou qui ne sera pas toujours à proximité. Smartspacer ne se connectera pas au périphérique sélectionné.</b> Il se peut que vous deviez activer le GPS pour que les appareils et les réseaux apparaissent dans la liste.</string>
     <string name="configuration_notification_association_button">Associer</string>
     <string name="configuration_notification_association_read_more">En savoir plus sur cette condition</string>
     <string name="configuration_notification_association_toast">Une erreur s\'est produite, veuillez réessayer</string>
@@ -299,20 +299,20 @@
     <string name="requirement_geofence_title">Position</string>
     <string name="requirement_geofence_bottom_sheet_title">Options</string>
     <string name="requirement_geofence_configuration_setting_name_title">Nom</string>
-    <string name="requirement_geofence_configuration_setting_name_content">Saisissez un nom pour ce lieu</string>
+    <string name="requirement_geofence_configuration_setting_name_content">Donner un nom à ce lieu</string>
     <string name="requirement_geofence_configuration_setting_radius_title">Rayon</string>
-    <string name="requirement_geofence_configuration_setting_radius_content">Définissez le rayon du cercle à l\'intérieur duquel l\'élement sera affiché</string>
+    <string name="requirement_geofence_configuration_setting_radius_content">Définir le rayon du cercle à l\'intérieur duquel l\'élement sera affiché</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d mètres</string>
     <string name="requirement_geofence_configuration_loitering_delay_title">Durée minimale</string>
-    <string name="requirement_geofence_configuration_loitering_delay_content">Définissez la durée pendant laquelle vous devez être à l\'intérieur du cercle avant que cette condition ne soit remplie</string>
+    <string name="requirement_geofence_configuration_loitering_delay_content">Définir la durée pendant laquelle vous devez être à l\'intérieur du cercle avant que cette condition ne soit remplie</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_none">Aucun délai</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minute</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Réactivité</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_content">Définissez la réactivité de cette condition Position. Vous économiserez de la batterie en choisissant une durée plus longue, mais la condition sera mise à jour moins souvent.</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_content">Définir la réactivité de cette condition Position. Choisir une durée plus longue vous permettra d\'économiser de la batterie, mais la condition sera mise à jour moins souvent.</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d secondes</string>
     <string name="requirement_geofence_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
-    <string name="requirement_geofence_configuration_background_location_content">L\'accès à la position en arrière-plan est nécessaire pour les conditions Position. Veuillez accorder cette autorisation dans les paramètres pour continuer, en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez à l\'application.</string>
+    <string name="requirement_geofence_configuration_background_location_content">Pour pouvoir fonctionner, les conditions Position ont besoin d\'un accès à la position en arrière-plan. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Accorder l\'autorisation</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limite atteinte</string>
     <string name="requirement_geofence_configuration_limit_reached_content">Vous avez atteint le nombre limite de lieux Geofence, veuillez supprimer une condition Position avant d\'en ajouter une nouvelle.</string>
@@ -326,7 +326,7 @@
     <string name="requirement_wifi_configuration_in_range_content">Lorsque cette option est activée, cette condition sera remplie lorsque le réseau spécifié est à proximité, sans y être connecté.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important :</b> Smartspacer ne recherche <b>pas</b> les réseaux tout seul. Pour que l\'option « Autoriser les réseaux non connectés » fonctionne correctement, vous devez activer le paramètre système « Notifier en cas de réseaux publics » pour rechercher les réseaux Wi-Fi en arrière-plan, ou bien rechercher manuellement les réseaux Wi-Fi.</string>
     <string name="requirement_wifi_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android demande aux applications souhaitant suivre les recherches Wi-Fi d\'avoir un accès à la position en arrière-plan. Veuillez accorder cette autorisation dans les paramètres pour continuer, en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez à l\'application.</string>
+    <string name="requirement_wifi_configuration_background_location_content">Android demande aux applications souhaitant suivre les recherches Wi-Fi d\'avoir accès à la position en arrière-plan. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Accorder l\'autorisation</string>
     <string name="requirement_wifi_configuration_pick_title">Sélectionner un réseau</string>
     <string name="requirement_wifi_configuration_pick_content">Remplir les paramètres à partir d\'un réseau existant</string>
@@ -386,7 +386,7 @@
     <string name="settings_hide_sensitive_contents_hide_content">Masquer complètement la cible</string>
     <string name="settings_debug_header">Débogage</string>
     <string name="settings_dump_title">Dumper les cibles et les actions</string>
-    <string name="settings_dump_content">Afficher les informations sur le contenu et de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
+    <string name="settings_dump_content">Afficher les informations de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
     <string name="settings_dump_title_short">Dumper</string>
     <string name="settings_dump_button">Écrire dans un fichier</string>
     <string name="settings_dump_complete">Fichier écrit</string>
@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer utilise les notifications pour afficher des informations, des avertissements et des erreurs, ainsi que des rappels à propos du mode amélioré, s\'il est activé.</string>
     <string name="setup_notifications_request">Accorder l\'autorisation</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Cibles</string>
@@ -539,13 +539,13 @@
     <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_restart_button">Reconnecter</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Réactiver Smartspace natif</string>
+    <string name="notification_native_mode_enable_title">Réactivez Smartspace natif</string>
     <string name="notification_native_mode_enable_content">Vous devez réactiver le mode Smartspace natif de Smartspacer à chaque redémarrage, appuyez pour activer</string>
     <string name="notification_native_mode_enable_dismiss">Ne plus afficher</string>
     <string name="notification_native_mode_enable_now">Activer</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Reconnecter Smartspace natif</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspace a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
+    <string name="notification_native_mode_restart_title">Reconnectez Smartspace natif</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
     <!-- Shizuku Start Notifications -->
@@ -558,7 +558,7 @@
     <string name="notification_sui_title">Sui ou Shizuku en root requis</string>
     <string name="notification_sui_content_oem_smartspace">Smartspace OEM nécessite le démarrage de Shizuku en root, ou Sui. Smartspacer n\'a pas pu se connecter, le service a donc été désactivé.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Désactiver l\'optimisation de la batterie</string>
+    <string name="notification_battery_optimisation_title">Désactivez l\'optimisation de la batterie</string>
     <string name="notification_battery_optimisation_content">L\'utilisation de la batterie par Smartspacer ne doit pas être restreinte afin de mettre à jour en arrière-plan les cibles et les complications, appuyez pour lever les restrictions</string>
     <string name="notification_battery_optimisation_failed_toast">Échec de l\'ouverture des paramètres, veuillez accorder l\'autorisation manuellement</string>
     <!-- Music Target -->
@@ -630,8 +630,8 @@
     <string name="expanded_settings_open_mode_lock_screen_title">Ouvrir à partir de l\'écran de verrouillage</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Écran de verrouillage</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Ouvrir Smartspace étendu lorsque vous appuyez sur une cible Smartspace sur l\'écran de verrouillage : %1s</string>
-    <string name="expanded_settings_close_when_locked_title">Fermer lorsque l\'appareil est verrouillé</string>
-    <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque votre appareil est verrouillé</string>
+    <string name="expanded_settings_close_when_locked_title">Fermer lors du verrouillage de l\'appareil</string>
+    <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque vous verrouillez votre appareil</string>
     <string name="expanded_settings_header_style">Style</string>
     <string name="expanded_settings_blur_background_title">Flouter l\'arrière-plan</string>
     <string name="expanded_settings_blur_background_content">Appliquer un flou d\'arrière-plan à Smartspace étendu. <b>Cela pourrait ne pas fonctionner correctement avec tous les lanceurs d\'applications si vous utilisez Discover Killer.</b> Lorsque cette option est désactivée, à la place, le fond d\'écran est assombri.</string>
@@ -677,8 +677,8 @@
     <string name="expanded_custom_widget_options_span_x_content">Largeur du widget, en colonnes</string>
     <string name="expanded_custom_widget_options_span_y_title">Hauteur</string>
     <string name="expanded_custom_widget_options_span_y_content">Hauteur du widget, en lignes</string>
-    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
-    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigurer</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Modifier les paramètres de ce widget dans son application</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Afficher lorsque l\'appareil est verrouillé</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Afficher ce widget dans Smartspace étendu lorsque votre appareil est verrouillé</string>
     <string name="add_widget_empty_label">Aucun widget</string>
@@ -690,7 +690,7 @@
     <string name="battery_optimisation_schedule_exact_alarm_content">Nécessaire pour que Smartspacer puisse mettre à jour en arrière-plan les cibles et les complications de façon fiable.</string>
     <string name="battery_optimisation_oem_title">Optimisation de la batterie OEM</string>
     <string name="battery_optimisation_oem_content">Il semblerait que le fabricant de votre appareil ait ajouté des optimisations de batterie supplémentaires. Ces optimisations ne peuvent pas être désactivées automatiquement, appuyez pour ouvrir les paramètres de la batterie.</string>
-    <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter qu\'il soit tué par le système, les optimisations de la batterie doivent être désactivées.</string>
+    <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter que l\'application soit tuée par le système, les optimisations de la batterie doivent être désactivées.</string>
     <string name="battery_optimisation_footer_link">En savoir plus</string>
     <string name="plugin_repository_tab_installed">Installé</string>
     <string name="plugin_repository_tab_available">Disponible</string>
@@ -767,7 +767,7 @@
     <string name="backup_restore_title">Sauvegarder et restaurer</string>
     <string name="backup_restore_content">Sauvegarder et restaurer les cibles, les complications, les conditions et les paramètres</string>
     <string name="backup_title">Sauvegarde</string>
-    <string name="backup_content">Créez une sauvegarde Smartspacer des cibles, des complications, des conditions et des paramètres, dans un fichier local ou dans le cloud.</string>
+    <string name="backup_content">Créer une sauvegarde Smartspacer des cibles, des complications, des conditions et des paramètres, et la stocker dans un fichier local ou dans le cloud.</string>
     <string name="backup_creating_backup">Création d\'une sauvegarde…</string>
     <string name="backup_creating_targets_backup">Sauvegarde des cibles…</string>
     <string name="backup_creating_complications_backup">Sauvegarde des complications…</string>
@@ -848,16 +848,16 @@
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
-    <string name="target_calendar_description">Afficher les événements provenant des agendas sélectionnés</string>
-    <string name="target_calendar_description_filled">Afficher les événements de l\'agenda (%1s)</string>
+    <string name="target_calendar_description">Affiche les événements provenant des agendas sélectionnés</string>
+    <string name="target_calendar_description_filled">Affiche les événements de %1s</string>
     <string name="target_calendar_configuration_title">Paramètres</string>
     <string name="target_calendar_configuration_description">Configurer les agendas à prendre en compte et les options d\'affichage des événements</string>
     <string name="target_calendar_title_default">Événement sans titre</string>
     <string name="target_calendar_title_with_time">%1s dans %1d min</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Hier %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Demain %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s %1s</string>
     <string name="target_calendar_subtitle_all_day">Toute la journée</string>
     <string name="target_calendar_settings_calendars">Sélectionner des agendas</string>
     <string name="target_calendar_settings_settings">Paramètres</string>
@@ -920,7 +920,7 @@
     <string name="target_blank_settings_title">Paramètres</string>
     <string name="target_blank_settings_description">Configurer s\'il faut afficher les complications sur cette cible vide</string>
     <!-- Gmail Complication -->
-    <string name="complication_gmail_label">Non lus Gmail</string>
+    <string name="complication_gmail_label">E-mails sur Gmail non lus</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>
     <string name="complication_gmail_description_filled_one">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellé</string>
     <string name="complication_gmail_description_filled_other">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellés</string>
