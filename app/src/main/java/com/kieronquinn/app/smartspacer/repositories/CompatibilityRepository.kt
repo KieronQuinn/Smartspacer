@@ -29,6 +29,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.getAppPredictionComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.getClassLoaderForPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -74,6 +75,14 @@ interface CompatibilityRepository {
      *  native, pixel launcher, lock screen and app prediction
      */
     suspend fun getCompatibilityState(skipOem: Boolean = false): CompatibilityState
+
+    /**
+     *  Returns whether the build of SystemUI contains `WeatherSmartspaceView` and that the Split
+     *  Smartspace prop isn't disabled, indicating Split Smartspace is supported. This is required
+     *  as some Android 14 ROMs currently use 13's code, which is missing Split support, and
+     *  therefore we can't simply do an SDK check
+     */
+    fun doesSystemUISupportSplitSmartspace(): Boolean
 
     data class CompatibilityState(
         val systemSupported: Boolean,
@@ -265,6 +274,9 @@ class CompatibilityRepositoryImpl(
             AppPredictionRequirement::class.java,
             RecentTaskRequirement::class.java
         )
+
+        private const val CLASS_NAME_SPLIT_WEATHER =
+            "com.google.android.systemui.smartspace.WeatherSmartspaceView"
     }
 
     private val enhancedMode = settings.enhancedMode.asFlow()
@@ -303,8 +315,7 @@ class CompatibilityRepositoryImpl(
         if(context.getDefaultSmartspaceComponent() != null) return true
         if(context.getAppPredictionComponent() != null) return true
         if(getCompatibilityReports().isNotEmpty()) return true
-        if(oemSmartspacerRepository.getCompatibleApps().first().isNotEmpty()) return true
-        return false
+        return oemSmartspacerRepository.getCompatibleApps().first().isNotEmpty()
     }
 
     override suspend fun getCompatibilityState(skipOem: Boolean): CompatibilityState {
@@ -364,6 +375,12 @@ class CompatibilityRepositoryImpl(
         Template.values().map {
             Compatibility(it, classLoader.exists(it.getClassName()))
         }
+    }
+
+    override fun doesSystemUISupportSplitSmartspace(): Boolean {
+        if(!isAtLeastU()) return false
+        val classLoader = context.getClassLoaderForPackage(PACKAGE_KEYGUARD) ?: return false
+        return classLoader.exists(CLASS_NAME_SPLIT_WEATHER)
     }
 
     private fun ClassLoader.exists(className: String): Boolean {

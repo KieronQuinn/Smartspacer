@@ -568,8 +568,6 @@
     <string name="target_music_setting_show_album_art_content">Показывает обложку для играющего сейчас трека, если доступно. Обложка может быть обрезана.</string>
     <string name="target_music_setting_use_doorbell_title">Показывать квадратную обложку</string>
     <string name="target_music_setting_use_doorbell_content">Пытается показывать Обложку как квадрат вместо обрезанного прямоугольника. <b>Важно:</b> не работает на Главном экране в Нативном режиме и не показывается вообще на некоторых устройствах.</string>
-    <string name="target_music_setting_use_notification_icon_title">Иконка уведомления как резерв</string>
-    <string name="target_music_setting_use_notification_icon_content">Если сессия проигрывателя не имеет иконки, пытаться загрузить её из уведомления приложения. Это может приводить к иконкам из сплошного цвета с некоторыми плеерами, выключите эту настройку, если это происходит.</string>
     <string name="target_music_setting_clear_dismissed_title">Очистить отклонённые приложения</string>
     <string name="target_music_setting_clear_dismissed_content">Очистить список приложений, которые были отклонены, позволяя их трекам снова появляться в Smartspace</string>
     <string name="target_music_setting_setting_title">Настройки</string>

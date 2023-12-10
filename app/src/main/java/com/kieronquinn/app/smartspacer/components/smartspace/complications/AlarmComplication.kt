@@ -70,6 +70,8 @@ class AlarmComplication: SmartspacerComplicationProvider() {
     private fun getNextAlarm(): AlarmClockInfo? {
         val now = ZonedDateTime.now()
         return alarmManager.nextAlarmClock?.takeIf {
+            it.showIntent != null
+        }?.takeIf {
             val time = Instant.ofEpochMilli(it.triggerTime).atZone(ZoneId.systemDefault())
             Duration.between(now, time).abs() <= TWELVE_HOURS
         }

@@ -335,7 +335,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<EnhancedModeViewModel> { EnhancedModeViewModelImpl(get(), get(), get(), get(), get()) }
         viewModel<EnhancedModeRequestViewModel> { EnhancedModeRequestViewModelImpl(get(), get(), get(), get(), get()) }
         viewModel<NativeModeViewModel> { NativeModeViewModelImpl(get(), get(), get(), get(), get(), get()) }
-        viewModel<NativeModeSettingsViewModel> { NativeModeSettingsViewModelImpl(get(), get()) }
+        viewModel<NativeModeSettingsViewModel> { NativeModeSettingsViewModelImpl(get(), get(), get()) }
         viewModel { NativeModePageLimitViewModel(get()) }
         viewModel<DonateViewModel> { DonateViewModelImpl(get(), get()) }
         viewModel<ExpandedViewModel> { ExpandedViewModelImpl(

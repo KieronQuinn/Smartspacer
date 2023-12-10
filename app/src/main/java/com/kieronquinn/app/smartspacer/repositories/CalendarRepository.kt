@@ -203,19 +203,21 @@ class CalendarRepositoryImpl(
         val showAllDay = data.showAllDay
         val showUnconfirmed = data.showUnconfirmed
         val now = ZonedDateTime.now().atStartOfMinute().toInstant()
-        return events.filter {
+        return events.asSequence().filter {
             if(postEventTime != null && it.startTime.isBefore(now)) {
                 Duration.between(it.startTime, now) < postEventTime
             }else{
                 it.endTime == now || it.endTime.isAfter(now)
             }
+        }.filterNot {
+            it.status == CalendarContract.Events.STATUS_CANCELED
         }.filter {
             it.status == CalendarContract.Events.STATUS_CONFIRMED || showUnconfirmed
         }.filter {
             !it.isAllDay || showAllDay
         }.filter {
             it.startTime.isBefore(now) || Duration.between(now, it.startTime) <= preEventTime
-        }
+        }.toList()
     }
 
     override fun getCalendars(): Flow<List<Calendar>> {
@@ -300,7 +302,7 @@ class CalendarRepositoryImpl(
                 CalendarContract.Instances.DURATION,
                 CalendarContract.Instances.EVENT_LOCATION,
                 CalendarContract.Instances.ALL_DAY,
-                CalendarContract.Instances.STATUS,
+                CalendarContract.Instances.SELF_ATTENDEE_STATUS,
                 CalendarContract.Instances.LAST_DATE
             ),
             selection = "${CalendarContract.Events.CALENDAR_ID}=?",
@@ -352,8 +354,7 @@ class CalendarRepositoryImpl(
         val midnightTomorrow = LocalDate.now().plusDays(1).atStartOfDay()
             .atZone(ZoneOffset.systemDefault())
         //If end not at or after midnight tomorrow, not all day
-        if(localEndTime != midnightTomorrow && !localEndTime.isAfter(midnightTomorrow)) return false
-        return true
+        return !(localEndTime != midnightTomorrow && !localEndTime.isAfter(midnightTomorrow))
     }
 
     private fun ZonedDateTime.toEpochMilli(): Long {
