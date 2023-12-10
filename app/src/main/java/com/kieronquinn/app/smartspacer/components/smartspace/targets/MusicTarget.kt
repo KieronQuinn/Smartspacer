@@ -119,7 +119,6 @@ class MusicTarget: SmartspacerTargetProvider() {
             TargetData(
                 settings.showAlbumArt,
                 settings.useDoorbell,
-                settings.useNotificationIcon,
                 settings.hiddenPackages
             )
         }
@@ -147,37 +146,34 @@ class MusicTarget: SmartspacerTargetProvider() {
         }else null
         return when {
             art != null && settings.useDoorbell -> {
-                loadTargetWithDoorbellArt(art, settings)
+                loadTargetWithDoorbellArt(art)
             }
             art != null -> {
-                loadTargetWithArt(art, settings)
+                loadTargetWithArt(art)
             }
             else -> {
-                loadTargetWithoutArt(settings)
+                loadTargetWithoutArt()
             }
         }.also {
             it?.expandedState = getExpandedState(smartspacerId)
         }
     }
 
-    private fun MediaContainer.loadTargetWithoutArt(data: TargetData): SmartspaceTarget? {
+    private fun MediaContainer.loadTargetWithoutArt(): SmartspaceTarget? {
         val metadata = metadata ?: return null
         val title = metadata.getTitle() ?: return null
         val subtitle = metadata.getSubtitle(packageName)
         return TargetTemplate.Basic(
             id = "$TARGET_ID_PREFIX$packageName",
             componentName = ComponentName(provideContext(), MusicTarget::class.java),
-            icon = Icon(getIcon(data.useNotificationIcon)),
+            icon = Icon(getIcon()),
             title = Text(title),
             subtitle = Text(subtitle),
             onClick = getClickAction()
         ).create()
     }
 
-    private fun MediaContainer.loadTargetWithArt(
-        albumArt: Bitmap,
-        data: TargetData
-    ): SmartspaceTarget? {
+    private fun MediaContainer.loadTargetWithArt(albumArt: Bitmap): SmartspaceTarget? {
         val metadata = metadata ?: return null
         val title = metadata.getTitle() ?: return null
         val subtitle = metadata.getSubtitle(packageName)
@@ -185,7 +181,7 @@ class MusicTarget: SmartspacerTargetProvider() {
             provideContext(),
             id = "music_$packageName",
             componentName = ComponentName(provideContext(), MusicTarget::class.java),
-            icon = Icon(getIcon(data.useNotificationIcon)),
+            icon = Icon(getIcon()),
             image = Icon(AndroidIcon.createWithBitmap(albumArt), shouldTint = false),
             title = Text(title),
             subtitle = Text(subtitle),
@@ -193,10 +189,7 @@ class MusicTarget: SmartspacerTargetProvider() {
         ).create()
     }
 
-    private fun MediaContainer.loadTargetWithDoorbellArt(
-        albumArt: Bitmap,
-        data: TargetData
-    ): SmartspaceTarget? {
+    private fun MediaContainer.loadTargetWithDoorbellArt(albumArt: Bitmap): SmartspaceTarget? {
         val metadata = metadata ?: return null
         val title = metadata.getTitle() ?: return null
         val subtitle = metadata.getSubtitle(packageName)
@@ -204,7 +197,7 @@ class MusicTarget: SmartspacerTargetProvider() {
         return TargetTemplate.Doorbell(
             id = "music_$packageName",
             componentName = ComponentName(provideContext(), MusicTarget::class.java),
-            icon = Icon(getIcon(data.useNotificationIcon)),
+            icon = Icon(getIcon()),
             doorbellState = state,
             title = Text(title),
             subtitle = Text(subtitle),
@@ -259,22 +252,16 @@ class MusicTarget: SmartspacerTargetProvider() {
 
     /**
      *  Try to find an icon for this Target, in the order of:
-     *  Icon specified in controller > Notification with player > Notification without player >
-     *  Fallback icon. This resolves the issue in Android 12+ where the stock music player doesn't
-     *  always show an icon.
+     *  Notification with player > Notification without player > Fallback icon.
+     *  This resolves the issue in Android 12+ where the stock music player doesn't always show an
+     *  icon.
      */
-    private fun MediaContainer.getIcon(useNotificationIcon: Boolean): AndroidIcon {
-        val metadata = metadata
-        if(metadata != null && metadata.containsKey(METADATA_KEY_DISPLAY_ICON)) {
-            return AndroidIcon.createWithBitmap(metadata.getBitmap(METADATA_KEY_DISPLAY_ICON))
-        }
-        val notificationIcon = if(useNotificationIcon) {
-            notificationRepository.activeNotifications.value.firstOrNull {
-                it.packageName == packageName && it.notification.extras.containsKey(EXTRA_MEDIA_SESSION)
-            }?.notification?.smallIcon ?: notificationRepository.activeNotifications.value.firstOrNull {
-                it.packageName == packageName
-            }?.notification?.smallIcon
-        } else null
+    private fun MediaContainer.getIcon(): AndroidIcon {
+        val notificationIcon = notificationRepository.activeNotifications.value.firstOrNull {
+            it.packageName == packageName && it.notification.extras.containsKey(EXTRA_MEDIA_SESSION)
+        }?.notification?.smallIcon ?: notificationRepository.activeNotifications.value.firstOrNull {
+            it.packageName == packageName
+        }?.notification?.smallIcon
         return notificationIcon ?: AndroidIcon.createWithResource(
             provideContext(), R.drawable.ic_target_music
         )
@@ -328,8 +315,6 @@ class MusicTarget: SmartspacerTargetProvider() {
         val showAlbumArt: Boolean = true,
         @SerializedName("use_doorbell")
         val useDoorbell: Boolean = false,
-        @SerializedName("use_notification_icon")
-        val useNotificationIcon: Boolean = true,
         @SerializedName("hidden_packages")
         val hiddenPackages: Set<String> = emptySet()
     )

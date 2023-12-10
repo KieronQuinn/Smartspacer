@@ -12,7 +12,7 @@ import android.util.SparseArray
 import com.google.android.gsa.overlay.binders.OverlayControllerBinder
 import com.google.android.libraries.launcherclient.ILauncherOverlay
 import java.io.PrintWriter
-import java.util.*
+import java.util.Arrays
 
 abstract class OverlaysController(private val service: Service) {
 
@@ -61,20 +61,14 @@ abstract class OverlaysController(private val service: Service) {
                     iBinder = null
                 } else {
                     try {
-                        val i2 = service.packageManager.getApplicationInfo(host!!, 0).flags
-                        if (i2 and 1 == 0 && i2 and 2 == 0) {
-                            Log.e("OverlaySController", "Only system apps are allowed to connect")
+                        iBinder = clients.get(port)
+                        if (!(iBinder == null || iBinder!!.mServerVersion == parseInt)) {
+                            iBinder!!.destroy()
                             iBinder = null
-                        } else {
-                            iBinder = clients.get(port)
-                            if (!(iBinder == null || iBinder!!.mServerVersion == parseInt)) {
-                                iBinder!!.destroy()
-                                iBinder = null
-                            }
-                            if (iBinder == null) {
-                                iBinder = OverlayControllerBinder(this, port, host, parseInt, i, originalBinder)
-                                clients.put(port, iBinder)
-                            }
+                        }
+                        if (iBinder == null) {
+                            iBinder = OverlayControllerBinder(this, port, host, parseInt, i, originalBinder)
+                            clients.put(port, iBinder)
                         }
                     } catch (e3: PackageManager.NameNotFoundException) {
                         Log.e("OverlaySController", "Invalid caller package")

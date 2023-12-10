@@ -10,6 +10,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.smartspace.ActionHolder
 import com.kieronquinn.app.smartspacer.model.smartspace.Target
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
 import com.kieronquinn.app.smartspacer.repositories.MediaRepository
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
@@ -47,6 +48,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -66,6 +68,7 @@ abstract class BaseSmartspacerSession<T, I>(
     private val shizukuRepository by inject<ShizukuServiceRepository>()
     private val mediaRepository by inject<MediaRepository>()
     private val smartspaceRepository by inject<SmartspaceRepository>()
+    private val compatibilityRepository by inject<CompatibilityRepository>()
 
     private val lastUpdateTime = HashMap<String, Long>()
     private val isVisible = MutableStateFlow(false)
@@ -116,11 +119,16 @@ abstract class BaseSmartspacerSession<T, I>(
         }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
     }
 
+    private val supportsSplitSmartspace = flow {
+        emit(compatibilityRepository.doesSystemUISupportSplitSmartspace())
+    }
+
     private val sessionSettings = combine(
         settings.hideSensitive.asFlow(),
-        settings.nativeUseSplitSmartspace.asFlow()
-    ) { sensitive, split ->
-        SessionSettings(sensitive, split)
+        settings.nativeUseSplitSmartspace.asFlow(),
+        supportsSplitSmartspace
+    ) { sensitive, split, splitSupported ->
+        SessionSettings(sensitive, splitSupported && split)
     }
 
     private val smartspaceHolders by lazy {

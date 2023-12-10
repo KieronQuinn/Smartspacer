@@ -22,7 +22,7 @@ import java.util.UUID
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class SmartspacerClient constructor(context: Context) {
+class SmartspacerClient(context: Context) {
 
     companion object {
         private const val ACTION_MANAGER = "com.kieronquinn.app.smartspacer.MANAGER"

@@ -429,7 +429,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
