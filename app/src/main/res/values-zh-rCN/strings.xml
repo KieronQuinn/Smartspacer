@@ -568,8 +568,6 @@
     <string name="target_music_setting_show_album_art_content">可用时显示当前正在播放曲目的专辑封面。可能会被裁剪。</string>
     <string name="target_music_setting_use_doorbell_title">显示正方形专辑封面</string>
     <string name="target_music_setting_use_doorbell_content">尝试以正方形而不是裁剪后的长方形显示专辑封面。<b>重要：</b>使用本机 Smartspace 时该设置在主屏上没有效果，并且在某些设备上完全不会显示。</string>
-    <string name="target_music_setting_use_notification_icon_title">通知图标回落</string>
-    <string name="target_music_setting_use_notification_icon_content">如果媒体通知没有提供一个可用的图标，则尝试从应用通知中加载一个。如果获取到的某些播放器图标是固定色彩的，请禁用该设置。</string>
     <string name="target_music_setting_clear_dismissed_title">清除已闲置应用</string>
     <string name="target_music_setting_clear_dismissed_content">清除已被闲置的应用清单，让曲目得以在 Smartspace 中重新出现</string>
     <string name="target_music_setting_setting_title">设置</string>

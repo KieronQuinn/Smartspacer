@@ -78,15 +78,6 @@ class MusicConfigurationFragment: BaseSettingsFragment(), BackAvailable {
             enabled = showAlbumArt,
             onChanged = viewModel::onUseDoorbellChanged
         ),
-        SwitchSetting(
-            useNotificationIcon,
-            getString(R.string.target_music_setting_use_notification_icon_title),
-            getString(R.string.target_music_setting_use_notification_icon_content),
-            ContextCompat.getDrawable(
-                requireContext(), R.drawable.ic_target_music
-            ),
-            onChanged = viewModel::onUseNotificationIconChanged
-        ),
         Setting(
             getString(R.string.target_music_setting_clear_dismissed_title),
             getString(R.string.target_music_setting_clear_dismissed_content),

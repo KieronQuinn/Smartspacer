@@ -117,24 +117,6 @@ class MusicConfigurationViewModelTests: BaseTest<MusicConfigurationViewModel>() 
     }
 
     @Test
-    fun testOnUseNotificationIconChanged() = runTest {
-        sut.state.test {
-            assertTrue(awaitItem() is State.Loading)
-            sut.setupWithId(mockId)
-            val item = awaitItem()
-            assertTrue(item is State.Loaded)
-            item as State.Loaded
-            sut.onUseNotificationIconChanged(false)
-            val updatedItem = awaitItem()
-            assertTrue(updatedItem is State.Loaded)
-            updatedItem as State.Loaded
-            assertFalse(updatedItem.useNotificationIcon)
-            sut.onUseNotificationIconChanged(true)
-            cancelAndIgnoreRemainingEvents()
-        }
-    }
-
-    @Test
     fun testOnClearPackagesClicked() = runTest {
         sut.state.test {
             assertTrue(awaitItem() is State.Loading)

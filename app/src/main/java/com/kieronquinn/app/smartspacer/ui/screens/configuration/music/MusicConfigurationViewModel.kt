@@ -26,15 +26,13 @@ abstract class MusicConfigurationViewModel(scope: CoroutineScope?): BaseViewMode
     abstract fun setupWithId(id: String)
     abstract fun onShowAlbumArtChanged(enabled: Boolean)
     abstract fun onUseDoorbellChanged(enabled: Boolean)
-    abstract fun onUseNotificationIconChanged(enabled: Boolean)
     abstract fun onClearPackagesClicked()
 
     sealed class State {
         object Loading: State()
         data class Loaded(
             val showAlbumArt: Boolean,
-            val useDoorbell: Boolean,
-            val useNotificationIcon: Boolean
+            val useDoorbell: Boolean
         ): State()
     }
 
@@ -54,7 +52,7 @@ class MusicConfigurationViewModelImpl(
     }
 
     override val state = data.mapLatest {
-        State.Loaded(it.showAlbumArt, it.useDoorbell, it.useNotificationIcon)
+        State.Loaded(it.showAlbumArt, it.useDoorbell)
     }.stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
 
     override fun setupWithId(id: String) {
@@ -86,19 +84,6 @@ class MusicConfigurationViewModelImpl(
         ){
             val data = it ?: TargetData()
             data.copy(useDoorbell = enabled)
-        }
-    }
-
-    override fun onUseNotificationIconChanged(enabled: Boolean) {
-        val id = id.value ?: return
-        dataRepository.updateTargetData(
-            id,
-            TargetData::class.java,
-            TargetDataType.MUSIC,
-            ::notifyChange
-        ){
-            val data = it ?: TargetData()
-            data.copy(useNotificationIcon = enabled)
         }
     }
 

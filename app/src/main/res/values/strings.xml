@@ -636,8 +636,6 @@
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
     <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
     <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
-    <string name="target_music_setting_use_notification_icon_title">Notification Icon Fallback</string>
-    <string name="target_music_setting_use_notification_icon_content">If the Media Session doesn\'t declare an icon, attempt to load one from the app\'s notification. This can lead to solid colour icons with some players, disable this option if this happens.</string>
     <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
     <string name="target_music_setting_setting_title">Settings</string>
