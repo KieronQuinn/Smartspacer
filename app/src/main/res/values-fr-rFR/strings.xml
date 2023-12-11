@@ -429,7 +429,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -920,7 +920,7 @@
     <string name="target_blank_settings_title">Paramètres</string>
     <string name="target_blank_settings_description">Configurer s\'il faut afficher les complications sur cette cible vide</string>
     <!-- Gmail Complication -->
-    <string name="complication_gmail_label">E-mails sur Gmail non lus</string>
+    <string name="complication_gmail_label">Non lus (Gmail)</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>
     <string name="complication_gmail_description_filled_one">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellé</string>
     <string name="complication_gmail_description_filled_other">Affiche le nombre d\'e-mails non lus sur le Gmail %1s ayant %1d libellés</string>
