@@ -114,7 +114,7 @@
     <string name="target_google_weather_forecast_incompatible">Este objetivo requiere Android 12+ y la app de Google</string>
     <string name="target_notification_warning_title">Receptor de notificaciones desactivado</string>
     <string name="target_notification_warning_description">Toca para activar</string>
-    <string name="complication_default_label">Compilaciones de De un vistazo</string>
+    <string name="complication_default_label">Complicaciones de De un vistazo</string>
     <string name="complication_default_description">Complicaciones De un vistazo de Google, incluyendo el clima</string>
     <string name="complication_default_description_recommended">Complicaciones \"De un vistazo\" de Google, incluyendo el clima <b>(recomendado)</b></string>
     <string name="complication_default_description_unsupported">Tu dispositivo no soporta De un vistazo usando Smartspace</string>
@@ -365,7 +365,7 @@
     <string name="settings_enhanced_content">Permite a Smartspacer interactuar e integrarse con funciones del sistema</string>
     <string name="settings_enhanced_content_unsupported">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_title">Smartspace nativo</string>
-    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within the Pixel Launcher and on the Lock Screen</string>
+    <string name="settings_native_smartspace_settings_content">Opciones para Smartspacer mostradas en el Smartspace dentro de Pixel Launcher y en la pantalla de bloqueo</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opción requiere Modo mejorado</string>
     <string name="settings_targets_complications">Objetivos y complicaciones</string>
@@ -425,7 +425,7 @@
     <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
-    <string name="landing_button_get_started">Empezar</string>
+    <string name="landing_button_get_started">Comenzar</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Estadísticas</string>
     <string name="setup_analytics_title">Estadísticas e informe de fallos</string>
@@ -753,7 +753,7 @@
     <string name="donate_disable">Ocultar mensaje de donación</string>
     <string name="donate_paypal">PayPal</string>
     <!-- Permissions settings -->
-    <string name="permissions_empty_label">No Smartspacer permissions have been granted to other apps</string>
+    <string name="permissions_empty_label">No se han concedido permisos de Smartspacer a otras aplicaciones</string>
     <string name="permissions_allow">Permitir</string>
     <string name="permissions_deny">Denegar</string>
     <string name="permissions_ask_every_time">Preguntar siempre</string>
