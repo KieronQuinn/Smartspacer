@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -365,7 +365,6 @@
     <string name="settings_enhanced_content">Permet à Smartspacer d\'interagir et de s\'intégrer aux fonctionnalités système</string>
     <string name="settings_enhanced_content_unsupported">Cette option est incompatible avec votre appareil</string>
     <string name="settings_native_smartspace_settings_title">Smartspace natif</string>
-    <string name="settings_native_smartspace_settings_content">Options pour Smartspacer dans le Pixel Launcher et sur l\'écran de verrouillage</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Cette option est incompatible avec votre appareil</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Cette option nécessite l\'activation du mode amélioré</string>
     <string name="settings_targets_complications">Cibles et complications</string>
@@ -422,7 +421,6 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Écran de verrouillage</string>
-    <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Commencer</string>
@@ -513,7 +511,6 @@
     <string name="enhanced_mode_enable_subtitle">Requiert Shizuku ou Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Le mode amélioré permet à Smartspacer de :</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• S\'intégrer à Smartspace sur l\'écran de verrouillage</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• S\'intégrer à Smartspace dans le Pixel Launcher</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• S\'intégrer au Smartspace OEM (si disponible)</string>
     <string name="enhanced_mode_enable_content_system">• Afficher les cibles et les complications du Smartspace système dans Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Utiliser les suggestions d\'application du système en tant que condition</string>
@@ -577,7 +574,6 @@
     <string name="native_mode_settings_title">Smartspace natif</string>
     <string name="native_mode_settings_target_limit_title">Limite de pages</string>
     <string name="native_mode_settings_target_limit_content">Nombre maximum de pages de cibles et de complications à afficher : %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Attention :</b> sur certains appareils et avec certaines cibles activées, vous pourriez rencontrer des plantages périodiques de l\'interface système et du Pixel Launcher si vous sélectionnez une option autre qu\'Une seule page.</string>
     <string name="native_mode_settings_target_limit_one">Une seule page</string>
     <string name="native_mode_settings_target_limit_one_content">Afficher uniquement la première page</string>
     <string name="native_mode_settings_target_limit_automatic">Laisser l\'écran de verrouillage ou le lanceur d\'applications décider</string>

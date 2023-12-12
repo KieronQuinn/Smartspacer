@@ -18,9 +18,9 @@ import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
 import com.kieronquinn.app.smartspacer.utils.extensions.getAccessibilityIntent
-import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.shouldShowRequireSideload
 import com.kieronquinn.app.smartspacer.utils.extensions.showAppInfo
 import com.kieronquinn.app.smartspacer.utils.extensions.wasInstalledWithSession
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
@@ -77,7 +77,7 @@ class ConfigurationAccessibilityEnableFragment: BoundFragment<FragmentConfigurat
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun setupWarningCard() {
-        val shouldShow = isAtLeastU() && !requireContext().wasInstalledWithSession()
+        val shouldShow = requireContext().shouldShowRequireSideload()
         binding.configurationAccessibilityWarning.applyBackgroundTint(monet)
         binding.configurationAccessibilityWarning.isVisible = shouldShow
         binding.configurationAccessibilityWarningButton.isVisible = settings.enhancedMode.getSync()

@@ -14,6 +14,7 @@ import androidx.annotation.VisibleForTesting
 import com.kieronquinn.app.smartspacer.ISmartspaceOnTargetsAvailableListener
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.Smartspacer
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.receivers.NativeDismissReceiver
@@ -241,8 +242,9 @@ class SystemSmartspaceRepositoryImpl(
     override suspend fun setService() {
         withContext(Dispatchers.IO) {
             shizuku.runWithService {
+                val killPackages = getLaunchersToKill()
                 it.setSmartspaceService(
-                    SmartspacerSmartspaceService.COMPONENT, user, true
+                    SmartspacerSmartspaceService.COMPONENT, user, true, killPackages
                 )
             }
         }
@@ -251,11 +253,14 @@ class SystemSmartspaceRepositoryImpl(
     override suspend fun resetService(onlyIfAvailable: Boolean, killSystemUi: Boolean) {
         withContext(Dispatchers.IO){
             val default = context.getDefaultSmartspaceComponent()
+            val killPackages = if(killSystemUi) {
+                getLaunchersToKill()
+            }else emptyList()
             val block = { service: ISmartspacerShizukuService ->
                 if(default != null){
-                    service.setSmartspaceService(default, user, killSystemUi)
+                    service.setSmartspaceService(default, user, killSystemUi, killPackages)
                 }else{
-                    service.clearSmartspaceService(user, killSystemUi)
+                    service.clearSmartspaceService(user, killSystemUi, killPackages)
                 }
             }
             if(onlyIfAvailable){
@@ -265,6 +270,14 @@ class SystemSmartspaceRepositoryImpl(
             }
             serviceRunning.emit(false)
             setupService()
+        }
+    }
+
+    private suspend fun getLaunchersToKill(): List<String> {
+        return compatibility.getCompatibilityReports().map { compatibility ->
+            compatibility.packageName
+        }.filter { packageName ->
+            packageName != Smartspacer.PACKAGE_KEYGUARD
         }
     }
 

@@ -2,14 +2,12 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
 import android.os.Build
-import androidx.annotation.StringRes
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.AppPredictionRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.RecentTaskRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
-import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Companion.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityState
@@ -26,9 +24,11 @@ import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerComplicationProvi
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerRequirementProvider
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
+import com.kieronquinn.app.smartspacer.utils.extensions.getAllLaunchers
 import com.kieronquinn.app.smartspacer.utils.extensions.getAppPredictionComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.getClassLoaderForPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
+import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,15 +46,11 @@ import org.koin.core.component.inject
 
 interface CompatibilityRepository {
 
-    companion object {
-        const val PACKAGE_PIXEL_LAUNCHER = "com.google.android.apps.nexuslauncher"
-    }
-
     /**
      *  Emits a list of compatibility reports for packages which support native Smartspace on this
      *  device.
      *
-     *  Known packages are currently SystemUI and the Pixel Launcher, will always return an empty
+     *  Known packages are currently SystemUI and some launchers, will always return an empty
      *  list on < 12.
      */
     val compatibilityReports: Flow<List<CompatibilityReport>>
@@ -72,7 +68,7 @@ interface CompatibilityRepository {
 
     /**
      *  Get the [CompatibilityState] for this device, which contains the compatibility data for
-     *  native, pixel launcher, lock screen and app prediction
+     *  native, launcher(s), lock screen and app prediction
      */
     suspend fun getCompatibilityState(skipOem: Boolean = false): CompatibilityState
 
@@ -86,7 +82,7 @@ interface CompatibilityRepository {
 
     data class CompatibilityState(
         val systemSupported: Boolean,
-        val pixelLauncherSupported: Boolean,
+        val anyLauncherSupported: Boolean,
         val lockscreenSupported: Boolean,
         val appPredictionSupported: Boolean,
         val oemSmartspaceSupported: Boolean
@@ -94,8 +90,7 @@ interface CompatibilityRepository {
 
     data class CompatibilityReport(
         val packageName: String,
-        @StringRes
-        val labelRes: Int,
+        val label: CharSequence,
         val compatibility: List<Compatibility>
     ) {
 
@@ -280,10 +275,11 @@ class CompatibilityRepositoryImpl(
     }
 
     private val enhancedMode = settings.enhancedMode.asFlow()
+    private val allLaunchers = context.getAllLaunchers()
     private val oemSmartspacerRepository by inject<OemSmartspacerRepository>()
 
     private val packageChanged = packageRepository
-        .onPackageChanged(scope, PACKAGE_PIXEL_LAUNCHER, PACKAGE_KEYGUARD)
+        .onPackageChanged(scope, *allLaunchers.toTypedArray(), PACKAGE_KEYGUARD)
         .stateIn(scope, SharingStarted.Eagerly, System.currentTimeMillis())
 
     private val _compatibilityReports = packageChanged.mapLatest {
@@ -292,16 +288,24 @@ class CompatibilityRepositoryImpl(
         //Lock Screen
         val systemUi = getCompatibleItemsForPackage(PACKAGE_KEYGUARD).let {
             if(it.isEmpty()) return@let null
-            CompatibilityReport(PACKAGE_KEYGUARD, R.string.compatibility_label_systemui, it)
-        }
-        //Only known supported launcher
-        val pixelLauncher = getCompatibleItemsForPackage(PACKAGE_PIXEL_LAUNCHER).let {
-            if(it.isEmpty()) return@let null
             CompatibilityReport(
-                PACKAGE_PIXEL_LAUNCHER, R.string.compatibility_label_pixel_launcher, it
+                PACKAGE_KEYGUARD,
+                context.getString(R.string.compatibility_label_systemui),
+                it
             )
         }
-        listOfNotNull(systemUi, pixelLauncher)
+        val launchers = allLaunchers.mapNotNull { packageName ->
+            val label = context.packageManager.getPackageLabel(packageName)
+                ?: return@mapNotNull null
+            getCompatibleItemsForPackage(packageName).let {
+                if(it.isEmpty()) return@let null
+                CompatibilityReport(packageName, label, it)
+            }
+        }.filterNot {
+            //Filter out launchers with nothing compatible
+            it.compatibility.none { compatibility -> compatibility.compatible }
+        }.toTypedArray()
+        listOfNotNull(systemUi, *launchers)
     }.stateIn(scope, SharingStarted.Eagerly, null)
 
     override val compatibilityReports = _compatibilityReports.filterNotNull()
@@ -322,14 +326,14 @@ class CompatibilityRepositoryImpl(
         val systemSupported = context.getDefaultSmartspaceComponent() != null
         val appPredictionSupported = context.getAppPredictionComponent() != null
         val reports = getCompatibilityReports()
-        val pixelLauncherSupported = reports.any { it.packageName == PACKAGE_PIXEL_LAUNCHER }
+        val anyLauncherSupported = reports.any { it.packageName != PACKAGE_KEYGUARD }
         val lockscreenSupported = reports.any { it.packageName == PACKAGE_KEYGUARD }
         val oemSmartspaceSupported = if(skipOem) false else {
             oemSmartspacerRepository.getCompatibleApps().first().isNotEmpty()
         }
         return CompatibilityState(
             systemSupported,
-            pixelLauncherSupported,
+            anyLauncherSupported,
             lockscreenSupported,
             appPredictionSupported,
             oemSmartspaceSupported
@@ -339,14 +343,13 @@ class CompatibilityRepositoryImpl(
     private suspend fun getCompatibleItemsForPackage(packageName: String): List<Compatibility> {
         //Only Android 12+ supports system Smartspace at all
         if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.S) return emptyList()
-        //Only Android 13+ supports templates, they should not be considered on 12 or below
-        val supportsTemplates = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-        val supportedTemplates = if(supportsTemplates) {
+        //Only Android 13+ actually supports templates, they should not be considered on 12 or below
+        val supportedTemplates = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getSupportedTemplates(packageName)
         }else emptyList()
         val supportedFeatures = getSupportedFeatures(packageName)
         //Prefer templates if any are supported
-        return if(supportedTemplates.isNotEmpty()){
+        return if(supportedTemplates.isNotEmpty() && supportedTemplates.any { it.compatible }){
             //Filter out the features duplicated by templates
             supportedTemplates + supportedFeatures.filterNot {
                 FEATURES_WITH_TEMPLATES.contains(it.item)

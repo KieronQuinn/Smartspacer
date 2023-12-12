@@ -25,7 +25,7 @@ class EnhancedModeViewModelTests: BaseTest<EnhancedModeViewModel>() {
     private val compatibilityRepositoryMock = mock<CompatibilityRepository> {
         coEvery { getCompatibilityState(true) } returns CompatibilityState(
             systemSupported = true,
-            pixelLauncherSupported = true,
+            anyLauncherSupported = true,
             lockscreenSupported = true,
             appPredictionSupported = true,
             oemSmartspaceSupported = true

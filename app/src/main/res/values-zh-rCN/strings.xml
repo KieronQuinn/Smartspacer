@@ -365,7 +365,6 @@
     <string name="settings_enhanced_content">允许 Smartspacer 与系统功能交互和集成</string>
     <string name="settings_enhanced_content_unsupported">此选项与你的设备不兼容</string>
     <string name="settings_native_smartspace_settings_title">本机 Smartspace</string>
-    <string name="settings_native_smartspace_settings_content">让 Smartspacer 在 Pixel 启动器和锁屏的 Smartspace 中显示的选项</string>
     <string name="settings_native_smartspace_settings_content_incompatible">该选项与你的设备不兼容</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">该选项依赖增强模式</string>
     <string name="settings_targets_complications">对象 &amp; 附件</string>
@@ -422,7 +421,6 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">锁屏</string>
-    <string name="compatibility_label_pixel_launcher">Pixel 启动器</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">快速上手</string>
@@ -513,7 +511,6 @@
     <string name="enhanced_mode_enable_subtitle">需要 Shizuku 或 Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>在增强模式下 Smartspacer 可以：</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• 与锁屏的 Smartspace 集成</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• 与 Pixel 启动器中的 Smartspace 集成</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• 与 OEM 的 Smartspace 集成（如果可用）</string>
     <string name="enhanced_mode_enable_content_system">• 在 Smartspacer 中显示系统的 Smartspace 对象与附件</string>
     <string name="enhanced_mode_enable_content_app_prediction">• 使用系统应用预测作为触发条件</string>
@@ -577,7 +574,6 @@
     <string name="native_mode_settings_title">本机 Smartspace</string>
     <string name="native_mode_settings_target_limit_title">页面限制</string>
     <string name="native_mode_settings_target_limit_content">用于展示对象和附件的最大页面数量：%1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>警告：</b>页面选项设置超过单页时，特定组合的对象在某些设备上可能会造成短暂的系统界面和 Pixel 启动器崩溃。</string>
     <string name="native_mode_settings_target_limit_one">单页</string>
     <string name="native_mode_settings_target_limit_one_content">限制 Smartspace 为只显示第一页</string>
     <string name="native_mode_settings_target_limit_automatic">由锁屏/启动器决定</string>
