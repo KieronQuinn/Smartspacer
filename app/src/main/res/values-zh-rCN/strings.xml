@@ -434,7 +434,7 @@
     <string name="setup_analytics_deny">拒绝</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">通知</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer 使用通知来显示提示、警告、错误信息，以及启用增强模式后的相关提醒。</string>
     <string name="setup_notifications_request">授予权限</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">对象</string>
@@ -677,7 +677,7 @@
     <string name="expanded_custom_widget_options_span_x_content">小组件宽度，单位为网格</string>
     <string name="expanded_custom_widget_options_span_y_title">高度</string>
     <string name="expanded_custom_widget_options_span_y_content">小组件高度，单位为网格</string>
-    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">重新配置</string>
     <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">锁屏时显示</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">设备锁定时在扩展 Smartspace 面板显示小组件</string>
