@@ -238,13 +238,13 @@ class NativeModeFragment: BoundFragment<FragmentNativeBinding>(FragmentNativeBin
 
     private fun List<CompatibilityReport>.getContent(): String {
         val format = if(size == 1){
-            getString(first().labelRes)
+            first().label
         }else{
             val joiner = getString(R.string.native_switch_content_joiner)
             val items = subList(0, size - 1).joinToString("$joiner ") {
-                getString(it.labelRes)
+                it.label
             }
-            val last = getString(last().labelRes)
+            val last = last().label
             getString(R.string.native_switch_content_many, items, last)
         }
         return getString(R.string.native_switch_content, format)

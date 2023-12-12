@@ -365,7 +365,6 @@
     <string name="settings_enhanced_content">允許 Smartspacer 與系統功能互動及整合</string>
     <string name="settings_enhanced_content_unsupported">您的裝置不支援此選項</string>
     <string name="settings_native_smartspace_settings_title">原生 Smartspace</string>
-    <string name="settings_native_smartspace_settings_content">在 Pixel 啟動器及鎖定畫面中顯示 Smartspacer 的選項</string>
     <string name="settings_native_smartspace_settings_content_incompatible">您的裝置不支援此選項</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">此選項需要啟用增強模式</string>
     <string name="settings_targets_complications">目標 &amp; 複雜性</string>
@@ -422,7 +421,6 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">鎖定螢幕</string>
-    <string name="compatibility_label_pixel_launcher">Pixel 啟動器</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">開始使用</string>
@@ -513,7 +511,6 @@
     <string name="enhanced_mode_enable_subtitle">需要 Shizuku 或 Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>加強模式允許 Smartspacer 做到：</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• 整合至鎖定螢幕上的 Smartspace</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• 整合至 Pixel 啟動器中的 Smartspace</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• 整合至 OEM Smartspace（如果可用的話）</string>
     <string name="enhanced_mode_enable_content_system">• 在 Smartspacer 中顯示系統 Smartspace 目標和複雜功能</string>
     <string name="enhanced_mode_enable_content_app_prediction">• 使用系統應用預測作為需求</string>
@@ -577,7 +574,6 @@
     <string name="native_mode_settings_title">本機 Smartspace</string>
     <string name="native_mode_settings_target_limit_title">頁面限制</string>
     <string name="native_mode_settings_target_limit_content">顯示的目標和複雜功能的最大頁數：%1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>警告：</b>在某些裝置上，如果啟用了超過單頁的選項，結合某些目標時，可能會經歷 SystemUI 和 Pixel Launcher 的週期性崩潰。</string>
     <string name="native_mode_settings_target_limit_one">單一頁面</string>
     <string name="native_mode_settings_target_limit_one_content">限制 Smartspace 只顯示第一頁</string>
     <string name="native_mode_settings_target_limit_automatic">讓鎖定螢幕／啟動器決定</string>

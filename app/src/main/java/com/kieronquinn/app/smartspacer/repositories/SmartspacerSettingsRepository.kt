@@ -60,9 +60,7 @@ interface SmartspacerSettingsRepository {
     val hasUsedNativeMode: SmartspacerSetting<Boolean>
 
     /**
-     *  The count to limit the number of native targets sent to system Smartspace Sessions. This
-     *  is required due to oneway spam between the Pixel Launcher and SystemUI causing crashes,
-     *  limiting to one target fixes this to the detriment of convenience.
+     *  The count to limit the number of native targets sent to system Smartspace Sessions.
      */
     @IgnoreInBackup
     val nativeTargetCountLimit: SmartspacerSetting<TargetCountLimit>

@@ -146,8 +146,8 @@ class EnhancedModeFragment: BoundFragment<FragmentEnhancedModeBinding>(FragmentE
         if(systemSupported){
             appendLine(getString(R.string.enhanced_mode_enable_content_system))
         }
-        if(pixelLauncherSupported){
-            appendLine(getString(R.string.enhanced_mode_enable_content_native_pixel_launcher))
+        if(anyLauncherSupported){
+            appendLine(getString(R.string.enhanced_mode_enable_content_native_launcher))
         }
         if(lockscreenSupported){
             appendLine(getString(R.string.enhanced_mode_enable_content_native_systemui))

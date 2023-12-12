@@ -365,7 +365,6 @@
     <string name="settings_enhanced_content">Permite a Smartspacer interactuar e integrarse con funciones del sistema</string>
     <string name="settings_enhanced_content_unsupported">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_title">Smartspace nativo</string>
-    <string name="settings_native_smartspace_settings_content">Opciones para Smartspacer mostradas en el Smartspace dentro de Pixel Launcher y en la pantalla de bloqueo</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opción requiere Modo mejorado</string>
     <string name="settings_targets_complications">Objetivos y complicaciones</string>
@@ -422,7 +421,6 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Pantalla de bloqueo</string>
-    <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Comenzar</string>
@@ -513,7 +511,6 @@
     <string name="enhanced_mode_enable_subtitle">Requiere Shizuku o Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>El modo mejorado le permite a Smartspacer:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrar en el Smartspace de la pantalla de bloqueo</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Integrar en el Smartspace en Pixel Launcher</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
     <string name="enhanced_mode_enable_content_system">• Mostrar objetivos y complicaciones del Smartspace del sistema en Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
@@ -577,7 +574,6 @@
     <string name="native_mode_settings_title">Native Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Límite de páginas</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Pixel Launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Single page</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
     <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>

@@ -336,6 +336,18 @@ fun Context.getDefaultLauncher(): String? {
     )?.activityInfo?.packageName
 }
 
+fun Context.getAllLaunchers(): List<String> {
+    val homeIntent = Intent(Intent.ACTION_MAIN).apply {
+        addCategory(Intent.CATEGORY_HOME)
+    }
+    return packageManager.queryIntentActivitiesCompat(homeIntent).map {
+        it.activityInfo.packageName
+    }.filterNot {
+        //Smartspacer is registered as a launcher but we never want to interact with ourselves
+        it == BuildConfig.APPLICATION_ID
+    }
+}
+
 fun Context.dip(value: Int): Int = resources.dip(value)
 
 fun Context.getSystemHideSensitive(): HideSensitive {

@@ -22,9 +22,19 @@ import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.hardware.camera2.CameraManager
 import android.net.wifi.IWifiManager
-import android.os.*
+import android.os.Binder
+import android.os.Build
+import android.os.IUserManager
+import android.os.Process
+import android.os.RemoteException
+import android.os.UserHandle
 import android.system.Os
-import com.kieronquinn.app.smartspacer.*
+import com.kieronquinn.app.smartspacer.BuildConfig
+import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener
+import com.kieronquinn.app.smartspacer.ISmartspaceSession
+import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
+import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
+import com.kieronquinn.app.smartspacer.ITaskObserver
 import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcutIcon
 import com.kieronquinn.app.smartspacer.model.appshortcuts.ShortcutQueryWrapper
@@ -39,10 +49,11 @@ import com.kieronquinn.app.smartspacer.utils.extensions.processDied
 import com.kieronquinn.app.smartspacer.utils.extensions.toggleTorch
 import com.kieronquinn.app.smartspacer.utils.smartspace.ProxySmartspaceSession
 import com.topjohnwu.superuser.internal.Utils
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import rikka.shizuku.SystemServiceHelper
-import java.util.*
 import java.util.concurrent.Executors
 import kotlin.system.exitProcess
 
@@ -51,9 +62,9 @@ import kotlin.system.exitProcess
 class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     companion object {
-        //5 crashes in 5 seconds will trigger safe mode if required
+        //5 crashes in 10 seconds will trigger safe mode if required
         private const val CRASH_COUNT = 5
-        private const val CRASH_BUFFER = 5000L
+        private const val CRASH_BUFFER = 10_000L
         const val PACKAGE_SHELL = "com.android.shell"
 
         const val ROOT_UID = Process.ROOT_UID
@@ -143,16 +154,25 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     override fun setSmartspaceService(
         component: ComponentName,
         userId: Int,
-        killSystemUi: Boolean
+        killSystemUi: Boolean,
+        killPackages: List<String>
     ) {
         val componentName = component.flattenToString()
         runCommand("cmd smartspace set temporary-service $userId $componentName 30000")
-        if(killSystemUi) killSystemUi()
+        if(killSystemUi || killPackages.isNotEmpty()) {
+            killPackages(killSystemUi, killPackages)
+        }
     }
 
-    override fun clearSmartspaceService(userId: Int, killSystemUi: Boolean) {
+    override fun clearSmartspaceService(
+        userId: Int,
+        killSystemUi: Boolean,
+        killPackages: List<String>
+    ) {
         runCommand("cmd smartspace set temporary-service $userId")
-        if(killSystemUi) killSystemUi()
+        if(killSystemUi || killPackages.isNotEmpty()) {
+            killPackages(killSystemUi, killPackages)
+        }
     }
 
     override fun createSmartspaceSession(config: SmartspaceConfig): ISmartspaceSession {
@@ -290,14 +310,21 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         exitProcess(0)
     }
 
-    private fun killSystemUi() {
+    private fun killPackages(
+        systemUI: Boolean,
+        packages: List<String>
+    ) {
         suppressCrash = true
-        if(canUseRoot){
-            runCommand("pkill systemui")
-        }else{
-            runCommand("am crash $PACKAGE_KEYGUARD")
+        if(systemUI) {
+            if (canUseRoot) {
+                runCommand("pkill systemui")
+            } else {
+                runCommand("am crash $PACKAGE_KEYGUARD")
+            }
         }
-        runCommand("am force-stop com.google.android.apps.nexuslauncher")
+        packages.forEach {
+            runCommand("am force-stop $it")
+        }
         scope.launch {
             delay(500L)
             suppressCrash = false

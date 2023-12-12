@@ -8,13 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.components.smartspace.DumpSmartspacerSession
+import com.kieronquinn.app.smartspacer.repositories.SystemSmartspaceRepository
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -33,13 +37,57 @@ abstract class DumpSmartspacerViewModel: ViewModel() {
 
 }
 
-class DumpSmartspacerViewModelImpl(context: Context): DumpSmartspacerViewModel() {
+class DumpSmartspacerViewModelImpl(
+    context: Context,
+    systemSmartspaceRepository: SystemSmartspaceRepository
+): DumpSmartspacerViewModel() {
 
     companion object {
         const val DUMP_FILE_TEMPLATE = "smartspacer_target_dump_%s.txt"
     }
 
-    override val content = MutableStateFlow("")
+    private val targets = MutableStateFlow("Loading...")
+
+    private val defaultTargets = combine(
+        systemSmartspaceRepository.homeTargets,
+        systemSmartspaceRepository.lockTargets,
+        systemSmartspaceRepository.mediaTargets
+    ) { home, lock, media ->
+        StringBuilder().apply {
+            if(home.isNotEmpty()) {
+                appendLine()
+                appendLine("=====================")
+                appendLine("System Home Targets:")
+                appendLine("=====================")
+                appendLine(home.joinToString("\n\n"))
+            }
+            if(lock.isNotEmpty()) {
+                appendLine()
+                appendLine("=====================")
+                appendLine("System Lock Targets:")
+                appendLine("=====================")
+                appendLine(lock.joinToString("\n\n"))
+            }
+            if(media.isNotEmpty()) {
+                appendLine()
+                appendLine("=====================")
+                appendLine("System Media Targets:")
+                appendLine("=====================")
+                appendLine(media.joinToString("\n\n"))
+            }
+        }.toString()
+    }
+
+    override val content = combine(targets, defaultTargets) { t, d ->
+        StringBuilder().apply {
+            appendLine("=====================")
+            appendLine("   Merged Targets:")
+            appendLine("=====================")
+            appendLine(t)
+            appendLine(d)
+        }.toString()
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, "Loading...")
+
     override val successToastBus = MutableStateFlow<Unit?>(null)
 
     private val session by lazy {
@@ -52,7 +100,7 @@ class DumpSmartspacerViewModelImpl(context: Context): DumpSmartspacerViewModel()
     }
 
     private suspend fun onTargetsChanged(targets: List<SmartspaceTarget>) {
-        content.emit(targets.joinToString("\n\n"))
+        this.targets.emit(targets.joinToString("\n\n"))
     }
 
     override fun onResume() {

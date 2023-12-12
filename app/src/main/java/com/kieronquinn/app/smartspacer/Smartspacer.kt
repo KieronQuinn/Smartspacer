@@ -402,7 +402,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<DisplayOverOtherAppsPermissionBottomSheetViewModel> { DisplayOverOtherAppsPermissionBottomSheetViewModelImpl(get()) }
         viewModel<WidgetOptionsMenuViewModel> { WidgetOptionsMenuViewModelImpl(get(), get()) }
         viewModel<NativeReconnectViewModel> { NativeReconnectViewModelImpl(get(), get()) }
-        viewModel<DumpSmartspacerViewModel> { DumpSmartspacerViewModelImpl(get()) }
+        viewModel<DumpSmartspacerViewModel> { DumpSmartspacerViewModelImpl(get(), get()) }
     }
 
     override fun attachBaseContext(base: Context) {

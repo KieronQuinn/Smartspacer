@@ -16,7 +16,6 @@ import com.kieronquinn.app.smartspacer.test.BaseTest
 import com.kieronquinn.app.smartspacer.ui.screens.native.NativeModeViewModel.State
 import com.kieronquinn.app.smartspacer.utils.assertOutputs
 import com.kieronquinn.app.smartspacer.utils.mockSmartspacerSetting
-import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -41,7 +40,7 @@ class NativeModeViewModelTests: BaseTest<NativeModeViewModel>() {
 
     private val compatibilityRepositoryMock = mock<CompatibilityRepository> {
         coEvery { getCompatibilityReports() } returns listOf(
-            CompatibilityReport(randomString(), randomInt(), emptyList())
+            CompatibilityReport(randomString(), randomString(), emptyList())
         )
     }
 
