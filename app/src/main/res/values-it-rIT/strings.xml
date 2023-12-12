@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di utilizzare i servizi di accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio di accessibilità, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -365,6 +365,7 @@
     <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
     <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_title">Native Smartspace</string>
+    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
     <string name="settings_targets_complications">Targets &amp; Complications</string>
@@ -511,6 +512,7 @@
     <string name="enhanced_mode_enable_subtitle">Requires Shizuku or Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
     <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
@@ -574,6 +576,7 @@
     <string name="native_mode_settings_title">Native Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Page Limit</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Single page</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
     <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
@@ -640,6 +643,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Always</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
     <string name="expanded_settings_tint_colour">Tint Colour</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
