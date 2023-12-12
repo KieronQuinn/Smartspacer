@@ -14,8 +14,8 @@ interface ISmartspacerShizukuService {
 
     boolean ping() = 1;
     boolean isRoot() = 2;
-    void setSmartspaceService(in ComponentName component, int userId, boolean killSystemUi) = 3;
-    void clearSmartspaceService(int userId, boolean killSystemUi) = 4;
+    void setSmartspaceService(in ComponentName component, int userId, boolean killSystemUi, in List<String> killPackages) = 3;
+    void clearSmartspaceService(int userId, boolean killSystemUi, in List<String> killPackages) = 4;
     ISmartspaceSession createSmartspaceSession(in SmartspaceConfig config) = 5;
     void destroySmartspaceSession(in SmartspaceSessionId sessionId) = 6;
 

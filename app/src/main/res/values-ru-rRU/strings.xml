@@ -365,7 +365,6 @@
     <string name="settings_enhanced_content">Позволяет Smartspacer взаимодействовать с системными возможностями</string>
     <string name="settings_enhanced_content_unsupported">Эта настройка несовместима с вашим устройством</string>
     <string name="settings_native_smartspace_settings_title">Нативный режим</string>
-    <string name="settings_native_smartspace_settings_content">Настройки для показа Smartspacer в Pixel Launcher и на экране блокировки</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Эта настройка несовместима с вашим устройством</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Эта настройка требует Усиленный режим</string>
     <string name="settings_targets_complications">Цели и Дополнения</string>
@@ -422,7 +421,6 @@
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Экран блокировки</string>
-    <string name="compatibility_label_pixel_launcher">Pixel Launcher</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Начать</string>
@@ -513,7 +511,6 @@
     <string name="enhanced_mode_enable_subtitle">Требуется Shizuku или Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Усиленный режим позволяет Smartspacer:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Интегрироваться в Smartspace на экране блокировки</string>
-    <string name="enhanced_mode_enable_content_native_pixel_launcher">• Интегрироваться в Smartspace в Pixel Launcher</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Интегрироваться в OEM Smartspace (если доступно)</string>
     <string name="enhanced_mode_enable_content_system">• Показывать системные Цели и Дополнения в Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Использовать системные Подсказки Приложений как Требование</string>
@@ -577,7 +574,6 @@
     <string name="native_mode_settings_title">Нативный режим</string>
     <string name="native_mode_settings_target_limit_title">Лимит страниц</string>
     <string name="native_mode_settings_target_limit_content">Максимальное количество страниц Целей и Дополнений: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Внимание</b>: на некоторых устройствах, с некоторыми комбинациями Целей, вы можете испытывать сбои Интерфейса Системы и Pixel Launcher при настройках, больших, чем одна страница.</string>
     <string name="native_mode_settings_target_limit_one">Одна страница</string>
     <string name="native_mode_settings_target_limit_one_content">Ограничить Smartspace только первой страницей</string>
     <string name="native_mode_settings_target_limit_automatic">Позволить решать экрану блокировки/лаунчеру</string>

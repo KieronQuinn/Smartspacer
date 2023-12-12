@@ -32,7 +32,7 @@ class NativeModeAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding) {
         val item = items[position]
-        nativeCompatibilityAppName.setText(item.labelRes)
+        nativeCompatibilityAppName.text = item.label
         glide.load(PackageIcon(item.packageName))
             .placeholder(nativeCompatibilityIcon.drawable)
             .into(nativeCompatibilityIcon)

@@ -1,7 +1,11 @@
 package com.kieronquinn.app.smartspacer.repositories
 
+import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.ApplicationInfoFlags
+import android.content.pm.PackageManager.ResolveInfoFlags
+import android.content.pm.ResolveInfo
+import android.util.Log
 import app.cash.turbine.test
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Base
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
@@ -10,8 +14,8 @@ import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Comp
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Feature
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Template
 import com.kieronquinn.app.smartspacer.test.BaseTest
+import com.kieronquinn.app.smartspacer.utils.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.utils.randomBoolean
-import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
 import dalvik.system.PathClassLoader
 import io.mockk.Matcher
@@ -26,16 +30,8 @@ import kotlin.time.Duration
 class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
 
     companion object {
-        private fun getMockCompatibilityReports(): List<CompatibilityReport> {
-            return listOf(
-                CompatibilityReport(randomString(), randomInt(), getMockCompatibility()),
-                CompatibilityReport(randomString(), randomInt(), getMockCompatibility()),
-                CompatibilityReport(randomString(), randomInt(), getMockCompatibility())
-            )
-        }
-
         private fun getMockCompatibilityReport(packageName: String): CompatibilityReport {
-            return CompatibilityReport(packageName, randomInt(), getMockCompatibility())
+            return CompatibilityReport(packageName, randomString(), getMockCompatibility())
         }
 
         private fun getMockCompatibility(): List<Compatibility> {
@@ -83,6 +79,15 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
                 sourceDir = firstArg()
             }
         }
+        every { packageManagerMock.queryIntentActivities(any(), any<ResolveInfoFlags>()) } answers {
+            listOf(
+                ResolveInfo().apply {
+                    activityInfo = ActivityInfo().apply {
+                        packageName = PACKAGE_PIXEL_LAUNCHER
+                    }
+                }
+            )
+        }
         val systemUiMatcher = object: Matcher<String> {
             override fun match(arg: String?): Boolean {
                 return arg == "com.android.systemui"
@@ -90,7 +95,7 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
         }
         val pixelLauncherMatcher = object: Matcher<String> {
             override fun match(arg: String?): Boolean {
-                return arg == "com.google.android.apps.nexuslauncher"
+                return arg == PACKAGE_PIXEL_LAUNCHER
             }
         }
         mockkConstructor(PathClassLoader::class)
@@ -136,8 +141,9 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
     fun testCompatibilityReports() = runTest {
         sut.compatibilityReports.test(timeout = Duration.INFINITE) {
             val reports = awaitItem()
+            Log.d("CR", "Reports: $reports")
             val actualPixelLauncherReport = reports.first {
-                it.packageName == "com.google.android.apps.nexuslauncher"
+                it.packageName == PACKAGE_PIXEL_LAUNCHER
             }
             val actualSystemUIReport = reports.first {
                 it.packageName == "com.android.systemui"
@@ -157,7 +163,7 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
     fun testGetCompatibilityReports() = runTest {
         sut.getCompatibilityReports().let { reports ->
             val actualPixelLauncherReport = reports.first {
-                it.packageName == "com.google.android.apps.nexuslauncher"
+                it.packageName == PACKAGE_PIXEL_LAUNCHER
             }
             val actualSystemUIReport = reports.first {
                 it.packageName == "com.android.systemui"
@@ -179,7 +185,7 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
         val actual = sut.getCompatibilityState(true)
         val expected = CompatibilityState(
             systemSupported = false,
-            pixelLauncherSupported = true,
+            anyLauncherSupported = true,
             lockscreenSupported = true,
             appPredictionSupported = false,
             oemSmartspaceSupported = false

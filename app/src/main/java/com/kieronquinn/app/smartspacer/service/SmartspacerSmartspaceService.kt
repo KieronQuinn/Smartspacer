@@ -9,7 +9,6 @@ import android.provider.Settings
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.MediaDataSmartspacerSession
@@ -27,7 +26,12 @@ import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.smartspace.LifecycleSmartspaceService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -48,11 +52,6 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             BuildConfig.APPLICATION_ID,
             SmartspacerSmartspaceService::class.java.name
         )
-
-        private val SAFE_MODE_PACKAGES = arrayOf(
-            PACKAGE_KEYGUARD,
-            "com.google.android.apps.nexuslauncher"
-        )
     }
 
     private val sessions = HashMap<SystemSmartspaceSessionId, SystemSmartspacerSession>()
@@ -61,6 +60,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
     private val notifications by inject<NotificationRepository>()
     private val systemSmartspace by inject<SystemSmartspaceRepository>()
     private val settings by inject<SmartspacerSettingsRepository>()
+    private val compatibilityRepository by inject<CompatibilityRepository>()
     private val pruneLock = Mutex()
 
     private var lastTargets = HashMap<String, List<SystemSmartspaceTarget>>()
@@ -272,14 +272,19 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     /**
      *  Listens for crashes in the logcat via Shizuku, triggering safe mode if any of the packages
-     *  in [SAFE_MODE_PACKAGES] crash.
+     *  in [CompatibilityRepository.compatibilityReports] crash.
      */
     private fun setupCrashListener() = whenCreated {
-        packageCrashes.collect {
-            if(SAFE_MODE_PACKAGES.contains(it)){
-                triggerSafeMode(it)
+        val packagesToListenFor = compatibilityRepository.compatibilityReports.mapLatest {
+            it.map { compatibility ->
+                compatibility.packageName
             }
-        }
+        }.stateIn(this, SharingStarted.Eagerly, emptyList())
+        combine(packagesToListenFor, packageCrashes) { listenFor, crashed ->
+            if(listenFor.contains(crashed)){
+                triggerSafeMode(crashed)
+            }
+        }.collect()
     }
 
     /**

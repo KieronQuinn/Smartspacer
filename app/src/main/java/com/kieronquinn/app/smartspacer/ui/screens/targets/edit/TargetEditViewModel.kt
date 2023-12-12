@@ -10,7 +10,6 @@ import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.model.database.Target
 import com.kieronquinn.app.smartspacer.model.database.Widget
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
-import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Companion.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.OemSmartspacerRepository
@@ -117,9 +116,9 @@ class TargetEditViewModelImpl(
         val expandedMode = settingsRepository.expandedModeEnabled.get()
         val nativePreviouslyUsed = enhancedMode && settingsRepository.hasUsedNativeMode.get()
         val reports = compatibilityRepository.getCompatibilityReports()
-        val isUsingPixelLauncher = context.getDefaultLauncher() == PACKAGE_PIXEL_LAUNCHER
-        val nativeHomeAvailable = nativePreviouslyUsed && isUsingPixelLauncher &&
-                reports.any { packageName -> packageName.packageName == PACKAGE_PIXEL_LAUNCHER }
+        val defaultLauncher = context.getDefaultLauncher()
+        val nativeHomeAvailable = nativePreviouslyUsed &&
+                reports.any { packageName -> packageName.packageName == defaultLauncher }
         val nativeLockAvailable = nativePreviouslyUsed && reports.any { packageName ->
             packageName.packageName == PACKAGE_KEYGUARD
         }

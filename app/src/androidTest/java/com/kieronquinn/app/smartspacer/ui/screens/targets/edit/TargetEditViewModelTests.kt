@@ -21,7 +21,6 @@ import com.kieronquinn.app.smartspacer.model.database.Target
 import com.kieronquinn.app.smartspacer.model.database.Widget.Type
 import com.kieronquinn.app.smartspacer.model.smartspace.Widget
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
-import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Companion.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
@@ -32,6 +31,7 @@ import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.test.BaseTest
 import com.kieronquinn.app.smartspacer.ui.screens.targets.edit.TargetEditViewModel.State
+import com.kieronquinn.app.smartspacer.utils.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.utils.mockSmartspacerSetting
 import com.kieronquinn.app.smartspacer.utils.randomBoolean
 import com.kieronquinn.app.smartspacer.utils.randomInt
@@ -78,8 +78,8 @@ class TargetEditViewModelTests: BaseTest<TargetEditViewModel>() {
         }
 
         private val mockCompatibilityReports = listOf(
-            CompatibilityReport(PACKAGE_PIXEL_LAUNCHER, 0, emptyList()),
-            CompatibilityReport(PACKAGE_KEYGUARD, 0, emptyList())
+            CompatibilityReport(PACKAGE_PIXEL_LAUNCHER, randomString(), emptyList()),
+            CompatibilityReport(PACKAGE_KEYGUARD, randomString(), emptyList())
         )
 
         private val mockCompatibleApps = listOf(

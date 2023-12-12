@@ -15,7 +15,6 @@ import com.kieronquinn.app.smartspacer.service.SmartspacerSmartspaceService
 import com.kieronquinn.app.smartspacer.test.BaseTest
 import com.kieronquinn.app.smartspacer.utils.extensions.Icon_createEmptyIcon
 import com.kieronquinn.app.smartspacer.utils.mockSmartspacerSetting
-import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
 import io.mockk.coEvery
 import io.mockk.every
@@ -73,7 +72,7 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
         sut.setService()
         verify(exactly = 1) {
             shizukuService.setSmartspaceService(
-                SmartspacerSmartspaceService.COMPONENT, any(), true
+                SmartspacerSmartspaceService.COMPONENT, any(), true, any()
             )
         }
     }
@@ -94,7 +93,7 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
         sut.notifyServiceRunning()
         assertTrue(sut.serviceRunning.value)
         verify(exactly = 1) {
-            shizukuService.setSmartspaceService(component, any(), false)
+            shizukuService.setSmartspaceService(component, any(), false, any())
         }
         every {
             resourcesMock.getIdentifier(
@@ -103,7 +102,7 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
         } returns 0
         sut.resetService(false, killSystemUi = true)
         verify(exactly = 1) {
-            shizukuService.clearSmartspaceService(any(), true)
+            shizukuService.clearSmartspaceService(any(), true, any())
         }
         assertFalse(sut.serviceRunning.value)
     }
@@ -249,7 +248,7 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
         } returns listOf(
             CompatibilityReport(
                 randomString(),
-                randomInt(),
+                randomString(),
                 listOf(CompatibilityRepository.Compatibility(Feature.BASIC, true))
             )
         )
