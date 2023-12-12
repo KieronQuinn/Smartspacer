@@ -365,6 +365,7 @@
     <string name="settings_enhanced_content">允许 Smartspacer 与系统功能交互和集成</string>
     <string name="settings_enhanced_content_unsupported">此选项与你的设备不兼容</string>
     <string name="settings_native_smartspace_settings_title">本机 Smartspace</string>
+    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">该选项与你的设备不兼容</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">该选项依赖增强模式</string>
     <string name="settings_targets_complications">对象 &amp; 附件</string>
@@ -511,6 +512,7 @@
     <string name="enhanced_mode_enable_subtitle">需要 Shizuku 或 Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>在增强模式下 Smartspacer 可以：</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• 与锁屏的 Smartspace 集成</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• 与 OEM 的 Smartspace 集成（如果可用）</string>
     <string name="enhanced_mode_enable_content_system">• 在 Smartspacer 中显示系统的 Smartspace 对象与附件</string>
     <string name="enhanced_mode_enable_content_app_prediction">• 使用系统应用预测作为触发条件</string>
@@ -574,6 +576,7 @@
     <string name="native_mode_settings_title">本机 Smartspace</string>
     <string name="native_mode_settings_target_limit_title">页面限制</string>
     <string name="native_mode_settings_target_limit_content">用于展示对象和附件的最大页面数量：%1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">单页</string>
     <string name="native_mode_settings_target_limit_one_content">限制 Smartspace 为只显示第一页</string>
     <string name="native_mode_settings_target_limit_automatic">由锁屏/启动器决定</string>
@@ -640,6 +643,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">如果对象能在扩展 Smartspace 面板中提供额外选项则打开面板。在面板中再次点击对象可以继续执行原始操作。</string>
     <string name="expanded_settings_open_mode_always_title">总是</string>
     <string name="expanded_settings_open_mode_always_content">总是打开扩展 Smartspace 面板。在扩展 Smartspacer 面板中再次点击对象来执行对象的原始操作。</string>
+    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
     <string name="expanded_settings_tint_colour">着色</string>
     <string name="expanded_settings_tint_colour_content">扩展 Smartspace 面板文本和图标所使用的颜色：%1s</string>
     <!-- OEM Smartspace settings -->
