@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
+    <string name="xposed_desc"><b>Opcional</b>: Activa este módulo en tu launcher o un launcher que utilice el Feed de Google para reemplazar Google Discover por Espacio extendido</string>
     <string name="dummy_home_content">Esta pantalla existe para trabajar con Widgets mal implementados por Smartspacer Plugins.\n\nSmartspacer no puede actuar como launcher, por favor seleccione un launcher diferente.</string>
     <string name="dummy_home_open_settings">Abrir configuración</string>
     <string name="notification_service">Servicio de notificaciones de Smartspacer</string>
@@ -522,9 +522,9 @@
     <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
     <!-- Native Mode -->
     <string name="native_title">Smartspace nativo</string>
-    <string name="native_switch">Habilitar Smartspace nativo</string>
+    <string name="native_switch">Usar Smartspace nativo</string>
     <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
+    <string name="native_switch_content">Smartspace nativo integra Smartspacer en tu %1s, mostrando los objetivos y complicaciones de Smartspacer en ellos.\nTendrás que reactivar Smartspace nativo cada vez que reinicies tu dispositivo. Esto es debido a limitaciones del sistema.</string>
     <string name="native_switch_content_many">%1s y %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Compatibilidad</string>
@@ -539,7 +539,7 @@
     <string name="native_restart_button">Reconectar</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reactivar Smartspace nativo</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
+    <string name="notification_native_mode_enable_content">Debes volver a activar el modo de espacio nativo de Smartspacer después de reiniciar, presiona para activarlo</string>
     <string name="notification_native_mode_enable_dismiss">No mostrar de nuevo</string>
     <string name="notification_native_mode_enable_now">Activar ahora</string>
     <!-- Native Mode restart notification -->
@@ -765,9 +765,9 @@
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
     <string name="backup_restore_title">Copia de seguridad y restaurar</string>
-    <string name="backup_restore_content">Hacer una copia de seguridad y restaurar objetivos, complicaciones, requerimientos y configuraciones de Smartspacer</string>
+    <string name="backup_restore_content">Hacer una copia de seguridad y restaurar objetivos, complicaciones, reglas y configuraciones de Smartspacer</string>
     <string name="backup_title">Copia de seguridad</string>
-    <string name="backup_content">Crea una copia de seguridad de Smartspacer, como objetivos, complicaciones, requisitos y configuraciones, ya sea en un archivo local o en la nube.</string>
+    <string name="backup_content">Crea una copia de seguridad de Smartspacer, como objetivos, complicaciones, reglas y configuraciones, ya sea en un archivo local o en la nube.</string>
     <string name="backup_creating_backup">Creando copia de seguridad…</string>
     <string name="backup_creating_targets_backup">Creando copia de seguridad de los objetivos…</string>
     <string name="backup_creating_complications_backup">Creando copia de seguridad de las complicaciones…</string>
