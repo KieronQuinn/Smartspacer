@@ -365,6 +365,7 @@
     <string name="settings_enhanced_content">Permite que o Smartspacer interaja e se integre com recursos do sistema</string>
     <string name="settings_enhanced_content_unsupported">Esta opção não é compatível com o seu dispositivo</string>
     <string name="settings_native_smartspace_settings_title">Smartspace Nativo</string>
+    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Esta opção não é compatível com o seu dispositivo</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opção requer o Modo Avançado</string>
     <string name="settings_targets_complications">Destaques &amp; complementos</string>
@@ -511,6 +512,7 @@
     <string name="enhanced_mode_enable_subtitle">Requer Shizuku ou Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>O Modo Avançado permite que o Smartspacer:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrar o Smartspace na tela de bloqueio</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrar com Smartspace OEM (se disponível)</string>
     <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
@@ -574,6 +576,7 @@
     <string name="native_mode_settings_title">Native Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Page Limit</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Single page</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
     <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
@@ -640,6 +643,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Always</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
     <string name="expanded_settings_tint_colour">Tint Colour</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
