@@ -20,7 +20,7 @@
     <string name="bottom_nav_settings">Configuración</string>
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Permite configuraciones restringidas en el menú adicional</string>
-    <string name="restricted_mode_content_accessibility">Desde el Android 13, Google añadió un control de seguridad a las configuraciones, previniendo aplicaciones cargadas lateralmente de estar podido de usar los servicios de accesibilidad normalmente.\n\n<b> Si ves un mensaje de una configuración restringida cuando intentado a activar el servicio de accesibilidad, necesitas abrir la información de la app, y permite configuraciones restringidas.</b></string>
+    <string name="restricted_mode_content_accessibility">Desde Android 13, Google agregó un control de seguridad a la configuración, previniendo que las aplicaciones de terceros puedan usar los servicios de accesibilidad por defecto.\n\n<b>Si ves un mensaje de configuración restringida cuando intentes activar el servicio de accesibilidad, necesitas abrir la información de la app, y permitir la configuración restringida.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Desde Android 14, Google ha evitado hacer sideload utilizando el Instalador de paquetes desde el uso de los Servicios de Acesibilidad. <br><br><b>Si ves un mensaje sobre ajustes restringidos, deberás desinstalar Smartspacer y reinstalarlo utilizando una aplicación basada en un instalador por sesiones, como por ejemplo <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Instalando por encima (sin actualizar) NO es suficiente.<br><br></b>Alternativamente, con el modo mejorado habilitado, Smartspacer evitará este requisito (no se puede hacer sin Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Desde el Android 13, Google añadió un control de seguridad a las configuraciones, previniendo aplicaciones cargadas lateralmente de estar podido de usar el permiso de notificaciones normalmente.\n\n<b> Si ves un mensaje de una configuración restringida cuando intentado a activar el permiso de notificaciones, necesitas abrir la información de la app, y permite configuraciones restringidas.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Desde Android 14, Google ha impedido que las aplicaciones instaladas manualmente mediante el Instalador de Paquetes puedan acceder a las notificaciones. <br> <br> <b>Si ves un mensaje sobre configuraciones restringidas, debes desinstalar Smartspacer y volver a instalarlo utilizando una aplicación basada en instalación de sesión, como <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o la <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">aplicación APKMirror</a>. Instalar encima (sin desinstalar) NO es suficiente. <br> <br> </b>Alternativamente, con el Modo Mejorado habilitado, Smartspacer eludirá este requisito (esto no se puede hacer sin Shizuku o root).]]></string>
@@ -39,9 +39,9 @@
     <string name="widget_loading_smartspacer">Cargando…</string>
     <string name="widget_loading_smartspacer_subtitle">Comprueba que el servicio de accesibilidad de Smartspacer está habilitado si este mensaje sigue</string>
     <string name="widget_configuration_title">Widget de Smartspacer</string>
-    <string name="widget_configuration_accessibility_title">Activar Servicio de Accesibilidad</string>
-    <string name="widget_configuration_accessibility_content">El Widget Smartspacer requiere un Servicio de Accesibilidad para saber qué aplicación está actualmente abierta en el dispositivo y para iniciar/detener objetivos y complicaciones. Esto permite mantenerse actualizado, sin necesidad de ejecutarse todo el tiempo, ahorrando batería.</string>
-    <string name="widget_configuration_accessibility_enable">Activar Servicio de Accesibilidad</string>
+    <string name="widget_configuration_accessibility_title">Activar servicio de accesibilidad</string>
+    <string name="widget_configuration_accessibility_content">El widget de Smartspacer requiere un servicio de accesibilidad para saber qué aplicación está actualmente abierta en el dispositivo y para iniciar/detener objetivos y complicaciones. Esto permite mantenerse actualizado, sin necesidad de ejecutarse todo el tiempo, ahorrando batería.</string>
+    <string name="widget_configuration_accessibility_enable">Activar servicio de Accesibilidad</string>
     <string name="widget_configuration_type_title">Elegir tipo de widget</string>
     <string name="widget_configuration_type_home_title">Pantalla principal</string>
     <string name="widget_configuration_type_home_content">Este widget está en la pantalla principal y debería mostrar los objetivos y complicaciones seleccionadas para mostrarlos en la pantalla principal</string>
@@ -61,7 +61,7 @@
     <string name="widget_configuration_colour">Color</string>
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar widget</string>
-    <string name="accessibility_service_label">Servicio de Widget de Smartspacer</string>
+    <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
     <string name="accessibility_service_description">Activa el widget de Smartspacer para mantener al día los Objetivos y las Complicaciones sin consumir batería, haciéndolos funcionar siempre.</string>
     <string name="target_notification_label">Notificaciones</string>
     <string name="target_notification_description">Mostrar notificaciones desde una app</string>
@@ -158,8 +158,8 @@
     <string name="notification_plugin_updates_content_other">%1d actualizaciones de extensiones están disponibles, presiona para ver más</string>
     <string name="notification_location_permission_required_title">Ubicación en segundo plano</string>
     <string name="notification_location_permission_required_content">Smartspacer requiere acceso de la ubicación en segundo plano, presiona para permitir</string>
-    <string name="notification_accessibility_widget_title">Habilitar el servicio de accesibilidad del Widget</string>
-    <string name="notification_accessibility_widget_content">El servicio de accesibilidad Widget de Smartspacer debe estar habilitado para que los widgets funcionen, toca para activar</string>
+    <string name="notification_accessibility_widget_title">Habilitar el servicio de accesibilidad del widget</string>
+    <string name="notification_accessibility_widget_content">El servicio de accesibilidad del widget de Smartspacer debe estar activado para que los widgets funcionen, presiona para activarlo</string>
     <string name="fab_targets_add">Agregar objetivo</string>
     <string name="targets_empty_label">No hay ningunos Objetivos</string>
     <string name="target_not_available">Este objetivo no está disponible no más, pulsa a removerlo</string>
