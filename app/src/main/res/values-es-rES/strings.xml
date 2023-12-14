@@ -283,7 +283,7 @@
     <string name="requirement_not_available">Esta condición no está disponible, presiona para removerla</string>
     <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
     <string name="requirement_time_date_title"> Fecha y hora</string>
-    <string name="requirement_time_date_content_generic">Only show between specified times on specified days</string>
+    <string name="requirement_time_date_content_generic">Mostrar sólo entre horas específicas en días específicos</string>
     <string name="requirement_time_date_content">Only show between %1s and %1s on %1s</string>
     <string name="requirement_time_date_content_all_days">Only show between %1s and %1s, every day</string>
     <string name="requirement_time_date_configuration_title">Fecha y hora</string>
@@ -534,7 +534,7 @@
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Native Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo. Para asegurarse que todos los objetivos y complicaciones funcionan correctamente, Smartspace nativo debe ser detenido e iniciado nuevamente para volver a reconectarlo.</string>
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_restart_button">Reconectar</string>
     <!-- Native Mode boot notification -->
@@ -545,7 +545,7 @@
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconectar Smartspace nativo</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo, presiona para reconectarlo.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconectar</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku requerido</string>
@@ -573,7 +573,7 @@
     <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Configuración de Smartspace nativo</string>
-    <string name="native_mode_settings_title">Native Smartspace</string>
+    <string name="native_mode_settings_title">Smartspace nativo</string>
     <string name="native_mode_settings_target_limit_title">Límite de páginas</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
@@ -704,7 +704,7 @@
     <string name="plugin_repository_empty_button_browse">Explorar extensiones</string>
     <string name="plugin_repository_update_available">¡Actualización disponible!</string>
     <string name="plugin_repository_recommended">Recomendada para:</string>
-    <string name="plugin_repository_changelog"><b>What\'s New</b></string>
+    <string name="plugin_repository_changelog"><b>Novedades</b></string>
     <string name="plugin_details_install">Instalar</string>
     <string name="plugin_details_start_install">Iniciar instalación</string>
     <string name="plugin_details_open">Abrir</string>
@@ -785,29 +785,29 @@
     <string name="restore_error_failed_to_read">Error al leer la copia de seguridad</string>
     <string name="restore_error_failed_to_load">Error al cargar la copia de seguridad desde el archivo</string>
     <string name="restore_restore_targets_title">Objetivos</string>
-    <string name="restore_restore_targets_content">Restore your targets &amp; their configuration</string>
+    <string name="restore_restore_targets_content">Restaurar tus objetivos y su configuración</string>
     <string name="restore_restore_targets_content_empty">No Targets found to restore</string>
     <string name="restore_restore_complications_title">Complicaciones</string>
-    <string name="restore_restore_complications_content">Restore your complications &amp; their configuration</string>
-    <string name="restore_restore_complications_content_empty">No Complications found to restore</string>
+    <string name="restore_restore_complications_content">Restaurar tus complicaciones y su configuración</string>
+    <string name="restore_restore_complications_content_empty">No se encontraron complicaciones para restaurar</string>
     <string name="restore_restore_requirements_title">Reglas</string>
     <string name="restore_restore_requirements_content">Restaurar reglas para objetivos y complicaciones agregados</string>
     <string name="restore_restore_requirements_content_empty">No se han encontrado reglas para restaurar</string>
     <string name="restore_restore_requirements_description_inverted">(Inverted)</string>
     <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
-    <string name="restore_restore_widgets_content_empty">No widgets found to restore</string>
+    <string name="restore_restore_widgets_content_empty">No se encontraron widgets para restaurar</string>
     <string name="restore_restore_settings_title">Configuración</string>
     <string name="restore_restore_settings_content">Restore your Smartspacer settings.\n<b>This will overwrite your current settings.</b></string>
-    <string name="restore_restore_settings_content_empty">No settings found to restore</string>
+    <string name="restore_restore_settings_content_empty">No se encontraron configuraciones para restaurar</string>
     <string name="restore_target_title">Objetivos</string>
     <string name="restore_target_reason_not_installed">The Plugin providing this Target is no longer installed (%1s)</string>
-    <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
+    <string name="restore_target_duplicate">Este objetivo ya ha sido agregado y no se puede agregar más de una vez. Elimina el objetivo existente antes de restaurarlo.</string>
     <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
     <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
     <string name="restore_complications_title">Complicaciones</string>
     <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
-    <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
+    <string name="restore_complication_duplicate">Esta complicación ya ha sido agregada y no se puede agregar más de una vez. Elimina la complicación existente antes de restaurarla.</string>
     <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
     <string name="restore_complication_footer">Selecciona una complicación para restaurarla.\n<b>Las complicaciones son agregadas en el orden de la restauración</b></string>
     <string name="restore_requirements_title">Reglas</string>
@@ -830,9 +830,9 @@
     <string name="about_contributors">Contribuidores</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Íconos</string>
-    <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
+    <string name="about_contributors_icons_content"><![CDATA[Iconos por <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success por Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parts of the Smartspacer SDK contain code based on Lawnchair, under the <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
+    <string name="about_contributors_sdk_content"><![CDATA[Algunas partes del SDK de Smartspacer contienen código basado en Lawnchair, bajo la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
     <string name="about_translators">Traductores</string>
     <!-- Wallpaper Colour Picker -->
     <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
@@ -912,7 +912,7 @@
     <string name="target_notification_channels_empty">Esta aplicación no usa canales de notificaciones, asi que las notificaciones no se mostrarán</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Objetivo vacío</string>
-    <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
+    <string name="target_blank_content">Ultra mínimo, se puede utilizar para no mostrar nada en absoluto o sólo complicaciones</string>
     <string name="target_blank_settings_show_complications_title">Mostrar complicaciones</string>
     <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Ocultar si no hay complicaciones</string>
@@ -947,7 +947,7 @@
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Recent App</string>
     <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
-    <string name="requirement_recent_apps_description_filled">Only show when %1s is in the recent apps, and hide when it is cleared from the list</string>
+    <string name="requirement_recent_apps_description_filled">Mostrar solo cuando %1s está en apps recientes, y ocultar cuando sea descartado de la lista</string>
     <string name="requirement_recent_apps_description_filled_with_limit">Only show when %1s is in the first %1d recent apps</string>
     <string name="requirement_recent_apps_description_unsupported">Este requerimiento requiere de Modo mejorado, actívalo desde configuración</string>
     <string name="requirement_recent_apps_configuration_app_title">Selected App</string>
