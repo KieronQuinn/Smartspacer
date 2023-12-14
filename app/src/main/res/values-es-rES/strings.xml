@@ -62,7 +62,7 @@
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
-    <string name="accessibility_service_description">Activa el widget de Smartspacer para mantener al día los Objetivos y las Complicaciones sin consumir batería, haciéndolos funcionar siempre.</string>
+    <string name="accessibility_service_description">Mantiene el widget de Smartspacer para mantener los objetivos y las complicaciones actualizados sin consumir batería, haciéndolos funcionar siempre.</string>
     <string name="target_notification_label">Notificaciones</string>
     <string name="target_notification_description">Mostrar notificaciones desde una app</string>
     <string name="target_notification_description_selected">Mostrar notificaciones de %1s</string>
@@ -161,11 +161,11 @@
     <string name="notification_accessibility_widget_title">Habilitar el servicio de accesibilidad del widget</string>
     <string name="notification_accessibility_widget_content">El servicio de accesibilidad del widget de Smartspacer debe estar activado para que los widgets funcionen, presiona para activarlo</string>
     <string name="fab_targets_add">Agregar objetivo</string>
-    <string name="targets_empty_label">No hay ningunos Objetivos</string>
+    <string name="targets_empty_label">No hay objetivos agregados</string>
     <string name="target_not_available">Este objetivo no está disponible no más, pulsa a removerlo</string>
     <string name="target_not_available_alt">Este Objetivo no se pudo cargar, si el problema persiste, por favor ponte en contacto con el desarrollador</string>
     <string name="fab_complications_add">Agregar complicación</string>
-    <string name="complications_empty_label">No hay compilaciones añadidas</string>
+    <string name="complications_empty_label">No hay complicaciones agregadas</string>
     <string name="complication_not_available">Esta compilación no está disponible, presiona para removerla</string>
     <string name="complication_not_available_alt">No se pudo cargar esta Complicación, si el problema persiste, por favor ponte en contacto con el desarrollador</string>
     <string name="targets_add_empty_label">No hay objetivos por añadir</string>
@@ -176,7 +176,7 @@
     <string name="complications_add_incompatible_generic">Esta complicación no es compatible con tu dispositivo</string>
     <string name="complications_add_incompatible_widget">El widget requerido para esta complicación no está disponible</string>
     <string name="complications_add_failed_to_launch_setup">Error al iniciar la configuración para esta complicación</string>
-    <string name="requirements_add_empty_label">No hay reglas para agregar</string>
+    <string name="requirements_add_empty_label">No hay reglas por agregar</string>
     <string name="requirements_add_incompatible_generic">Esta regla no es compatible con tu dispositivo</string>
     <string name="requirements_add_failed_to_launch_setup">Error al iniciar la configuración para esta regla</string>
     <string name="target_edit_title">Editar objetivo</string>
@@ -471,11 +471,11 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Agregar widget</string>
     <string name="setup_add_widget_content">Agregar Smartspacer a la pantalla principal</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Nota: Si deseas agregar Smartspacer a tu pantalla de bloqueo, debes utilizar una app como <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> para agregar el widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Reglas</string>
     <string name="setup_requirements_info_p1">Las <b>reglas</b> te permiten personalizar cuándo se muestra un objetivo o una complicación en Smartspace. Con ellas, puedes crear escenarios en los que se muestra información útil en Smartspace.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
+    <string name="setup_requirements_info_p2"><b>Puedes acceder a la configuración de reglas presionando un objetivo o complicación en la IU de Smartspacer, y seleccionando \"Reglas\" hasta el fondo de las configuraciones.</b></string>
     <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
     <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
     <!-- Setup > Expanded -->
@@ -488,7 +488,7 @@
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Extensiones</string>
-    <string name="setup_plugins_info_p1">Puedes descargar <b>extensiones</b>adicionales, que proporcionan objetivos, complicaciones y requerimientos en la pestaña Extensiones en la barra navegación inferior.</string>
+    <string name="setup_plugins_info_p1">Puedes descargar <b>extensiones</b> adicionales que proporcionan objetivos, complicaciones y reglas en la pestaña Extensiones en la barra de navegación inferior.</string>
     <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
     <string name="setup_plugins_info_finish">Finalizar</string>
     <!-- Setup > Complete -->
@@ -523,7 +523,7 @@
     <!-- Native Mode -->
     <string name="native_title">Smartspace nativo</string>
     <string name="native_switch">Usar Smartspace nativo</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_switch_info"><b>Importante:</b> Cuando activas Smartspace nativo, Smartspacer reiniciará IU del sistema. <b>Es posible que veas un mensaje diciendo que IU del sistema se ha detenido, y se bloqueará tu pantalla.</b> Esto es normal, descarta el mensaje y desbloquea tu dispositivo para continuar.</string>
     <string name="native_switch_content">Smartspace nativo integra Smartspacer en tu %1s, mostrando los objetivos y complicaciones de Smartspacer en ellos.\nTendrás que reactivar Smartspace nativo cada vez que reinicies tu dispositivo. Esto es debido a limitaciones del sistema.</string>
     <string name="native_switch_content_many">%1s y %1s</string>
     <string name="native_switch_content_joiner">,</string>
