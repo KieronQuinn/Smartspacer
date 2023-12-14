@@ -534,8 +534,8 @@
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Native Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo. Para asegurarse que todos los objetivos y complicaciones funcionan correctamente, Smartspace nativo debe ser detenido e iniciado nuevamente para volver a reconectarlo.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo. Para asegurarse de que todos los objetivos y complicaciones funcionan correctamente, Smartspace nativo debe ser detenido e iniciado nuevamente para volver a reconectarlo.</string>
+    <string name="native_restart_info"><b>Importante:</b> Cuando se esté reconectando Smartspace nativo, Smartspace reiniciará IU del sistema.<b>Posiblemente veas un mensaje diciendo que UI del sistema se ha detenido y tú pantalla se bloqueará.</b> Esto es normal, descarta el mensaje y desbloquea tu dispositivo para continuar.</string>
     <string name="native_restart_button">Reconectar</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reactivar Smartspace nativo</string>
