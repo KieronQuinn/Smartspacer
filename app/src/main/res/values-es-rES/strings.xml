@@ -602,7 +602,7 @@
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
     <string name="expanded_widget_deleted_rearrange">Widget desinstalado</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
+    <string name="expanded_permission_title">Permitir mostrar sobre otras apps</string>
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
