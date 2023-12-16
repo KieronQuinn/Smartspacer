@@ -268,7 +268,7 @@
     <string name="target_notification_configuration_title">Ajustes de notificaciones</string>
     <string name="target_notification_configuration_content">Elegir que aplicación y canales mostrar notificaciones</string>
     <string name="configuration_notification_association_title">Otorgar permisos</string>
-    <string name="configuration_notification_association_content">In order to allow Smartspacer to access a list of other apps\' notification channels so you can pick which to show, you must set a companion device or network for this app. This is a (rather odd) Android system requirement, and is the only way to get a list of channels without root. This only needs to be done once.</string>
+    <string name="configuration_notification_association_content">Para permitir que Smartspacer acceda a una lista de los canales de notificaciones de otras aplicaciones y que puedas elegir cuál mostrar, debes enlazar un dispositivo o red para esta aplicación. Esto es un requerimiento (bastante extraño) del sistema Android, y es la única manera de obtener una lista de canales sin root. Esto sólo tiene que hacerse una vez.</string>
     <string name="configuration_notification_association_subcontent">Tap the \"Set Companion\" button below, and select any device or connection from the list that appears.\n\n<b>It does not matter if the device/connection is yours, or whether you will be in range of it while using Smartspacer. Smartspacer does not pair or connect to the device you pick</b>. You may also need to have GPS enabled for devices and connections to appear in the dialog.</string>
     <string name="configuration_notification_association_button">Set Companion</string>
     <string name="configuration_notification_association_read_more">Leer más sobre este requerimiento</string>
@@ -604,7 +604,7 @@
     <string name="expanded_widget_deleted_rearrange">Widget desinstalado</string>
     <string name="expanded_permission_title">Permitir mostrar sobre otras apps</string>
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
-    <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
+    <string name="expanded_permission_content">Para que Smartspace extendido reemplace al feed de Google Discover, se requiere este permiso para poder lanzar aplicaciones desde la superposición. Abre Smartspacer para permitir el permiso o permitelo manualmente desde la pantalla de información de la aplicación.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
     <string name="expanded_permission_later">Más tarde</string>
     <string name="expanded_permission_grant">Permitir</string>
