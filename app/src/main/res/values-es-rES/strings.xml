@@ -389,7 +389,7 @@
     <string name="settings_dump_content">Muestra el contenido y la información de depuración de las acciones y objetivos actuales, y se escriben en un archivo para ayudar a encontrar problemas</string>
     <string name="settings_dump_title_short">Volcado</string>
     <string name="settings_dump_button">Guardar como</string>
-    <string name="settings_dump_complete">Guardar como</string>
+    <string name="settings_dump_complete">Se ha guardado el archivo</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Básico</string>
     <string name="compatibility_feature_basic_content">Permite mostrar un título y un subtítulo con icono. Cualquier objetivo no soportado volverá a este estilo.</string>
@@ -580,9 +580,9 @@
     <string name="native_mode_settings_target_limit_one">Una sola página</string>
     <string name="native_mode_settings_target_limit_one_content">Limita a Smartspace para solo mostrar la primer página</string>
     <string name="native_mode_settings_target_limit_automatic">Dejar que la pantalla de bloqueo o launcher decidan</string>
-    <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
-    <string name="native_mode_settings_target_limit_unlimited">Force unlimited pages</string>
-    <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
+    <string name="native_mode_settings_target_limit_automatic_content">Seguir el límite solicitado por el launcher o la pantalla de bloqueo</string>
+    <string name="native_mode_settings_target_limit_unlimited">Forzar páginas ilimitadas</string>
+    <string name="native_mode_settings_target_limit_unlimited_content">Ignorar el límite solicitado y mostrar tantas páginas como estén disponibles</string>
     <string name="native_mode_settings_hide_incompatible_targets_title">Ocultar objetivos no compatibles</string>
     <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar objetivos que no son compatibles con tu dispositivo, en lugar de mostrar solo su título y subtítulo</string>
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
