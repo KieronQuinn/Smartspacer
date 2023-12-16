@@ -389,7 +389,7 @@
     <string name="settings_dump_content">Muestra el contenido y la información de depuración de las acciones y objetivos actuales, y se escriben en un archivo para ayudar a encontrar problemas</string>
     <string name="settings_dump_title_short">Volcado</string>
     <string name="settings_dump_button">Guardar como</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_dump_complete">Guardar como</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Básico</string>
     <string name="compatibility_feature_basic_content">Permite mostrar un título y un subtítulo con icono. Cualquier objetivo no soportado volverá a este estilo.</string>
@@ -575,16 +575,16 @@
     <string name="native_mode_settings_menu_title">Configuración de Smartspace nativo</string>
     <string name="native_mode_settings_title">Smartspace nativo</string>
     <string name="native_mode_settings_target_limit_title">Límite de páginas</string>
-    <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
-    <string name="native_mode_settings_target_limit_one">Single page</string>
-    <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
-    <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
+    <string name="native_mode_settings_target_limit_content">El número máximo de páginas de objetivos y complicaciones para mostrar: %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Advertencia:</b> En algunos dispositivos con algunas combinaciones de objetivos, puedes experimentar algunos bloqueos en el IU de sistema y en Smartspace nativo con un launcher compatible con opciones superiores de \"Una sola página\" activadas.</string>
+    <string name="native_mode_settings_target_limit_one">Una sola página</string>
+    <string name="native_mode_settings_target_limit_one_content">Limita a Smartspace para solo mostrar la primer página</string>
+    <string name="native_mode_settings_target_limit_automatic">Dejar que la pantalla de bloqueo o launcher decidan</string>
     <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
     <string name="native_mode_settings_target_limit_unlimited">Force unlimited pages</string>
     <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
-    <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Ocultar objetivos no compatibles</string>
+    <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar objetivos que no son compatibles con tu dispositivo, en lugar de mostrar solo su título y subtítulo</string>
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
@@ -660,7 +660,7 @@
     <string name="oem_smartspace_settings">Configuración</string>
     <string name="oem_smartspace_label_systemui">Pantalla de bloqueo</string>
     <string name="oem_smartspace_hide_incompatible_title">Ocultar objetivos incompatibles</string>
-    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
+    <string name="oem_smartspace_hide_incompatible_content">Ocultar objetivos incompatibles con Smartspace de OEM, en lugar de mostrar solo su título y subtítulo</string>
     <string name="expanded_search_box_search">Buscar…</string>
     <string name="expanded_footer">Agregar widget</string>
     <string name="expanded_custom_widget_delete">Quitar</string>
