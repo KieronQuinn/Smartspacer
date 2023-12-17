@@ -450,8 +450,8 @@
     <string name="setup_targets_caption_google_maps">Ejemplo de un objetivo con una imagen</string>
     <string name="setup_targets_caption_list">Ejemplo de un Objetivo con una lista</string>
     <!-- Setup > Add Targets -->
-    <string name="setup_targets_title">Añadir objetivos</string>
-    <string name="setup_targets_controls_label">Puede añadir, editar, eliminar y reordenar los objetivos más tarde en los ajustes</string>
+    <string name="setup_targets_title">Agregar objetivos</string>
+    <string name="setup_targets_controls_label">Puede agregar, editar, eliminar y reordenar los objetivos más tarde en la configuración</string>
     <string name="setup_targets_controls_next">Siguiente</string>
     <string name="setup_targets_controls_skip">Omitir</string>
     <!-- Setup > Complication Info -->
@@ -541,7 +541,7 @@
     <string name="notification_native_mode_enable_title">Reactivar Smartspace nativo</string>
     <string name="notification_native_mode_enable_content">Debes volver a activar el modo de espacio nativo de Smartspacer después de reiniciar, presiona para activarlo</string>
     <string name="notification_native_mode_enable_dismiss">No mostrar de nuevo</string>
-    <string name="notification_native_mode_enable_now">Activar ahora</string>
+    <string name="notification_native_mode_enable_now">Reactivar</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconectar Smartspace nativo</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
