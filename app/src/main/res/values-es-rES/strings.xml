@@ -253,7 +253,7 @@
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
     <string name="requirement_edit_invert">Invertir este requerimiento</string>
     <string name="safe_mode_title">Modo seguro</string>
-    <string name="safe_mode_content">Smartspacer entered safe mode due to an app crashing, to prevent a crash-loop. These crashes are usually caused by a misbehaving target or complication, so if they persist check for updates to your plugins.</string>
+    <string name="safe_mode_content">Smartspacer entró en modo seguro debido a un cierre inesperado de la aplicación, para prevenir un bucle de bloqueo. Estos bloqueos suelen ser causados por un mal comportamiento de un objetivo o complicación, así que si persisten, comprueba si hay actualizaciones de las extensiones.</string>
     <string name="safe_mode_relaunch">Relanzar Smartspacer</string>
     <string name="feedback_loop_title">Feedback persistente</string>
     <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again.</string>
