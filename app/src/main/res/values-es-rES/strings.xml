@@ -113,7 +113,7 @@
     <string name="target_google_weather_forecast_content">Muestra el clima actual y la previsión para las próximas cuatro horas del Clima de Google</string>
     <string name="target_google_weather_forecast_incompatible">Este objetivo requiere Android 12+ y la app de Google</string>
     <string name="target_notification_warning_title">Receptor de notificaciones desactivado</string>
-    <string name="target_notification_warning_description">Toca para activar</string>
+    <string name="target_notification_warning_description">Presiona para activarlo</string>
     <string name="complication_default_label">Complicaciones de De un vistazo</string>
     <string name="complication_default_description">Complicaciones De un vistazo de Google, incluyendo el clima</string>
     <string name="complication_default_description_recommended">Complicaciones \"De un vistazo\" de Google, incluyendo el clima <b>(recomendado)</b></string>
@@ -211,11 +211,11 @@
     <string name="target_edit_settings_header">Configuración</string>
     <string name="target_edit_requirements_title">Reglas</string>
     <string name="target_edit_requirements_content">Establecer reglas para que este objetivo aparezca</string>
-    <string name="target_edit_requirements_content_any_one">%1d condición configurada</string>
-    <string name="target_edit_requirements_content_any_other">%1d condiciones configuradas</string>
-    <string name="target_edit_requirements_content_all_one">%1d todas las condiciones configuradas</string>
-    <string name="target_edit_requirements_content_all_other">%1d Todos requisitos configurados</string>
-    <string name="target_edit_requirements_content_both">%1d cualquier y %1d todas las condiciones configuradas</string>
+    <string name="target_edit_requirements_content_any_one">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="target_edit_requirements_content_any_other">Hay %1d reglas de \"Cualquiera\" configuradas</string>
+    <string name="target_edit_requirements_content_all_one">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="target_edit_requirements_content_all_other">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="target_edit_requirements_content_both">Hay %1d reglas de \"Cualquiera\" y %1d reglas de \"Todas\" configuradas</string>
     <string name="target_edit_external_title">Más configuraciones</string>
     <string name="target_edit_external_content">Configurar más ajustes en %1s</string>
     <string name="target_edit_external_error">Error al iniciar la configuración para este objetivo</string>
@@ -241,12 +241,12 @@
     <string name="complication_edit_expanded_show_when_locked_content">Mostrar esta complicación en Smartspace extendido mientras está bloqueado</string>
     <string name="complication_edit_settings_header">Configuración</string>
     <string name="complication_edit_requirements_title">Reglas</string>
-    <string name="complication_edit_requirements_content">Establecer las condiciones para que esta complicación aparezca</string>
-    <string name="complication_edit_requirements_content_any_one">%1d Cualquiera requisito configurado</string>
-    <string name="complication_edit_requirements_content_any_other">%1d Cualquiera requisito configurado</string>
-    <string name="complication_edit_requirements_content_all_one">%1d Todos requisitos configurados</string>
-    <string name="complication_edit_requirements_content_all_other">%1d Todos requisitos configurados</string>
-    <string name="complication_edit_requirements_content_both">%1d Cualquiera y %1d todos requisitos configurados</string>
+    <string name="complication_edit_requirements_content">Establecer reglas para que esta complicación aparezca</string>
+    <string name="complication_edit_requirements_content_any_one">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="complication_edit_requirements_content_any_other">Hay %1d reglas de \"Cualquiera\" configuradas</string>
+    <string name="complication_edit_requirements_content_all_one">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="complication_edit_requirements_content_all_other">Hay %1d reglas de \"Todas\" configuradas</string>
+    <string name="complication_edit_requirements_content_both">Hay %1d reglas de \"Cualquiera\" y %1d reglas de \"Todas\" configuradas</string>
     <string name="complication_edit_external_title">Más configuraciones</string>
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
@@ -275,11 +275,11 @@
     <string name="configuration_notification_association_toast">Se ha producido un error, por favor inténtalo de nuevo</string>
     <string name="configuration_notification_picker_empty">No se encontraron notificaciones</string>
     <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
-    <string name="requirements_title">Requerimientos</string>
-    <string name="requirements_empty_label">No se han añadido condiciones para este tipo</string>
+    <string name="requirements_title">Reglas</string>
+    <string name="requirements_empty_label">No se han agregado reglas para este tipo</string>
     <string name="requirements_tab_any">Cualquiera</string>
     <string name="requirements_tab_all">Todas</string>
-    <string name="fab_requirements_add">Agregar condición</string>
+    <string name="fab_requirements_add">Agregar regla</string>
     <string name="requirement_not_available">Esta condición no está disponible, presiona para removerla</string>
     <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
     <string name="requirement_time_date_title"> Fecha y hora</string>
@@ -312,7 +312,7 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d segundos</string>
     <string name="requirement_geofence_configuration_background_location_title">Habilitar ubicación de fondo</string>
-    <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
+    <string name="requirement_geofence_configuration_background_location_content">Las reglas de ubicación requieren el permiso de ubicación en segundo plano. En configuración, habilita este permiso para continuar, seleccionando en Permisos &gt; Ubicación &gt; Permitir todo el tiempo, y después regresa a esta app.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Conceder permiso</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Límite alcanzado</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
@@ -438,7 +438,7 @@
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Objetivos</string>
     <string name="setup_targets_info_p1">Los <b>objetivos</b> son páginas de información mostradas en Smartspace, normalmente consistentes en al menos un título, subtítulo y icono. Muchos objetivos también tienen información adicional -donde sea compatible - como imágenes o listas.</string>
-    <string name="setup_targets_info_p2">Los objetivos pueden ser dinámicos, mostrando y ocultando lo que sea necesario, también, pueden ser estáticos y mostrarse todo el tiempo. Puedes personalizar cuándo quieres que aparezcas usando <b>reglas</b>, que son configuraciones proporcionadas por muchos objetivos (que son accesibles pulsando cualquier objetivo en la interfaz de usuario de Smartspacer).</string>
+    <string name="setup_targets_info_p2">Los objetivos pueden ser dinámicos, mostrando y ocultando lo que sea necesario, también, pueden ser estáticos y mostrarse todo el tiempo. Puedes personalizar cuándo quieres que aparezcan usando <b>reglas</b>, que son configuraciones proporcionadas por muchos objetivos (que son accesibles pulsando cualquier objetivo en la interfaz de usuario de Smartspacer).</string>
     <string name="setup_targets_info_p3">La integración De un vistazo de Smartspacer es proporcionado por el objetivo \"De un vistazo\", que puede mostrar la información regular de Google, como eventos del calendario y vuelos. Ten en cuenta que esto <b>NO</b> siempre muestra la fecha de hoy si no hay información disponible, debes agregar el objetivo \"Fecha\" por separado si deseas tener siempre la fecha visible.</string>
     <string name="setup_targets_info_example_one_title">Mucho tráfico</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
@@ -458,7 +458,7 @@
     <string name="setup_complications_info_title">Complicaciones</string>
     <string name="setup_complications_info_p1"><b>Complicaciones</b> son información extra que se puede mostrar junto a los Objetivos. Normalmente son textos e iconos cortos, por ejemplo correos no leídos o condiciones meteorológicas actuales.</string>
     <string name="setup_complications_info_p2">Las complicaciones se mostrarán junto a los objetivos siempre que haya espacio disponible o si no quedan objetivos disponibles se mostrarán en páginas adicionales junto a la fecha.</string>
-    <string name="setup_complications_info_p3">Similar a Objetivos, las complicaciones pueden ser dinámicas o estáticas, y pueden ocultarse si no hay información actual para mostrar. Puedes personalizar aún más cuando aparezcan usando <b>Requisitos</b>, y las configuraciones proporcionadas por muchas Complicaciones (accesibles tocando una Complicación en la interfaz de usuario de Smartspacer).</string>
+    <string name="setup_complications_info_p3">Similar a los objetivos, las complicaciones pueden ser dinámicas o estáticas, y pueden ocultarse si no hay información actual para mostrar. Puedes personalizarlas aún más cuando quieres que aparezcan usando <b>reglas</b>, y las configuraciones proporcionadas por muchas complicaciones (accesibles presionando una complicación en la IU de Smartspacer).</string>
     <string name="setup_complications_example_gmail">8</string>
     <string name="setup_complications_caption_gmail">Ejemplo de una Complicación mostrando correos no leídos</string>
     <string name="setup_complications_example_weather">20°</string>
@@ -476,8 +476,8 @@
     <string name="setup_requirements_info_title">Reglas</string>
     <string name="setup_requirements_info_p1">Las <b>reglas</b> te permiten personalizar cuándo se muestra un objetivo o una complicación en Smartspace. Con ellas, puedes crear escenarios en los que se muestra información útil en Smartspace.</string>
     <string name="setup_requirements_info_p2"><b>Puedes acceder a la configuración de reglas presionando un objetivo o complicación en la IU de Smartspacer, y seleccionando \"Reglas\" hasta el fondo de las configuraciones.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_p3">Con las reglas de <b>\"Cualquiera\"</b>, se pueden cumplir cualquiera de las reglas agregadas para mostrar un objetivo o complicación. Por ejemplo, podrías usar la regla de Wi-Fi para mostrar una lista de compras de Google Keep cuando estés dentro de un rango de redes de cualquiera de tus tiendas locales.</string>
+    <string name="setup_requirements_info_p4">Con <b>\"Todas\"</b> las reglas, se pueden cumplir todas las reglas agregadas para que se muestre un objetivo o complicación. Por ejemplo, podrías usar las reglas de fecha y hora con las reglas de ubicación para mostrar tu membresía del gimnasio desde la Billetera de Google los martes por la noche cuando estés cerca del gimnasio.</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Extendido</string>
     <string name="setup_expanded_switch">Usar Smartspace extendido</string>
@@ -511,9 +511,9 @@
     <string name="enhanced_mode_enable_title">Usar modo mejorado</string>
     <string name="enhanced_mode_enable_subtitle">Requiere Shizuku o Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>El modo mejorado le permite a Smartspacer:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrar en el Smartspace de la pantalla de bloqueo</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrarse en el Smartspace de la pantalla de bloqueo</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrarse en el Smartspace de launchers compatibles</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrarse en el Smartspace de OEM (si está disponible)</string>
     <string name="enhanced_mode_enable_content_system">• Mostrar objetivos y complicaciones del Smartspace del sistema en Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
@@ -694,7 +694,7 @@
     <string name="battery_optimisation_footer_link">Más información</string>
     <string name="plugin_repository_tab_installed">Instaladas</string>
     <string name="plugin_repository_tab_available">Disponibles</string>
-    <string name="plugin_repository_empty_title_not_found">Not Found</string>
+    <string name="plugin_repository_empty_title_not_found">No encontrado</string>
     <string name="plugin_repository_empty_subtitle_not_found">No se encontraron extensiones que coincidan con este término de búsqueda</string>
     <string name="plugin_repository_empty_title_empty">No hay extensiones cargadas</string>
     <string name="plugin_repository_empty_subtitle_empty">Comprueba tu conexión de red</string>
@@ -771,7 +771,7 @@
     <string name="backup_creating_backup">Creando copia de seguridad…</string>
     <string name="backup_creating_targets_backup">Creando copia de seguridad de los objetivos…</string>
     <string name="backup_creating_complications_backup">Creando copia de seguridad de las complicaciones…</string>
-    <string name="backup_creating_requirements_backup">Creando copia de seguridad de los requerimientos…</string>
+    <string name="backup_creating_requirements_backup">Creando copia de seguridad de las reglas…</string>
     <string name="backup_creating_widgets_backup">Creando copia de seguridad de los widgets de Smartspace Expandido…</string>
     <string name="backup_creating_settings_backup">Creando copia de seguridad de la configuración…</string>
     <string name="backup_created">Copia de seguridad completada</string>
@@ -793,7 +793,7 @@
     <string name="restore_restore_requirements_title">Reglas</string>
     <string name="restore_restore_requirements_content">Restaurar reglas para objetivos y complicaciones agregados</string>
     <string name="restore_restore_requirements_content_empty">No se han encontrado reglas para restaurar</string>
-    <string name="restore_restore_requirements_description_inverted">(Inverted)</string>
+    <string name="restore_restore_requirements_description_inverted">(Invertida)</string>
     <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
     <string name="restore_restore_widgets_content_empty">No se encontraron widgets para restaurar</string>
@@ -811,11 +811,11 @@
     <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
     <string name="restore_complication_footer">Selecciona una complicación para restaurarla.\n<b>Las complicaciones son agregadas en el orden de la restauración</b></string>
     <string name="restore_requirements_title">Reglas</string>
-    <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
-    <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
-    <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
-    <string name="restore_requirements_collision"><b>Adding this Requirement will overwrite your current config</b></string>
-    <string name="restore_requirements_for">Requirement for: %1s</string>
+    <string name="restore_requirements_reason_not_installed">La extensión que proporciona está regla no está instalada (%1s)</string>
+    <string name="restore_requirements_reason_not_added">El objetivo o la complicación a la que se ha adjuntado esta regla no ha sido agregado. Por favor, agregalo primero antes de restaurar su regla.</string>
+    <string name="restore_requirements_duplicate">Esta regla ya ha sido agregada y no se puede agregar más de una vez. Elimina la regla existente antes de restaurarla.</string>
+    <string name="restore_requirements_collision"><b>Al agregar esta regla se sobrescribirá la configuración actual</b></string>
+    <string name="restore_requirements_for">Reglas para: %1s</string>
     <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
     <string name="restore_settings_title">Restaurando configuración de Smartspacer…</string>
     <string name="restore_complete_title">Restauración completa</string>
@@ -941,7 +941,7 @@
     <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
     <!-- Next Alarm Complication -->
     <string name="complication_alarm_label">Siguiente alarma</string>
-    <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
+    <string name="complication_alarm_description">Muestra la siguiente alarma puesta en las próximas 12 horas</string>
     <string name="complication_blank_title">Complicación vacía</string>
     <string name="complication_blank_content">Útil para configuraciones mínimas o espaciadores</string>
     <!-- Recent Apps Requirement -->
