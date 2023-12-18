@@ -643,7 +643,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Ouvre Smartspace étendu si la cible a des options supplémentaires accessibles depuis Smartspace étendu. Appuyer à nouveau sur la cible dans Smartspace étendu aura pour effet d\'exécuter l\'action originale de la cible.</string>
     <string name="expanded_settings_open_mode_always_title">Toujours</string>
     <string name="expanded_settings_open_mode_always_content">Toujours ouvrir Smartspace étendu. Appuyer à nouveau sur la cible dans Smartspace étendu aura pour effet d\'exécuter l\'action originale de la cible.</string>
-    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
+    <string name="expanded_settings_date_info"><b>Remarque :</b> en raison de limitations systèmes, cette option ne s\'applique pas aux appuis sur la date de la cible Date (ou d\'une cible de remplissage permettant d\'afficher la date au-dessus des complications).</string>
     <string name="expanded_settings_tint_colour">Couleur</string>
     <string name="expanded_settings_tint_colour_content">Couleur à utiliser pour le texte et les icônes de Smartspace étendu : %1s</string>
     <!-- OEM Smartspace settings -->
