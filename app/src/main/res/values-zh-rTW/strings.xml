@@ -27,13 +27,17 @@
     <string name="restricted_mode_button">開啟應用程式資訊</string>
     <string name="restricted_mode_warning_button">透過 Shizuku 授權許可</string>
     <string name="target_sensitive_title">內容已隱藏</string>
-    <!-- Shared by widget & expanded -->
+    <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">自動（基於桌布）</string>
+    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
     <string name="tint_colour_automatic_content">小工具中的文字和圖標將自動調整色調，以便在桌布上清晰可見</string>
+    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">白色</string>
     <string name="tint_colour_white_content">小工具中的文字和圖標將始終顯示為白色</string>
+    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
     <string name="tint_colour_black">黑色</string>
     <string name="tint_colour_black_content">小工具中的文字和圖標將始終顯示為黑色</string>
+    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">顯示 Smartspacer 目標與複雜功能</string>
     <string name="widget_loading_smartspacer">載入中…</string>
@@ -153,6 +157,8 @@
     <string name="notification_channel_updates_content">當 Smartspacer 有更新時會顯示的通知</string>
     <string name="notification_channel_plugin_updates_title">外掛更新</string>
     <string name="notification_channel_plugin_updates_content">當 Smartspacer 外掛有更新時會顯示的通知</string>
+    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
+    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
     <string name="notification_plugin_updates_title">有外掛更新可用</string>
     <string name="notification_plugin_updates_content_one">%1d 個 Smartspacer 外掛有更新，點擊查看</string>
     <string name="notification_plugin_updates_content_other">%1d 個 Smartspacer 外掛有更新，點擊查看</string>
@@ -820,6 +826,15 @@
     <string name="restore_settings_title">正在恢復 Smartspacer 設定⋯⋯</string>
     <string name="restore_complete_title">恢復完成</string>
     <string name="restore_page_controls_next">下一步</string>
+    <!-- Notification Widget Settings -->
+    <string name="notification_widget_title">Lock Screen Notification</string>
+    <string name="notification_widget_title_short">Lock Screen</string>
+    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
+    <string name="notification_widget_toggle">Show Notification</string>
+    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
+    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">XDA 討論串</string>
     <string name="github">GitHub</string>
@@ -846,6 +861,10 @@
     <string name="complication_digital_wellbeing_label">數位健康</string>
     <string name="complication_digital_wellbeing_description">顯示來自數位健康的螢幕開啟時間</string>
     <string name="complication_digital_wellbeing_unsupported">此複雜功能需要數位健康應用程式</string>
+    <!-- Clock Complication -->
+    <string name="complication_clock_label">Clock</string>
+    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
+    <string name="complication_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">日曆</string>
     <string name="target_calendar_description">顯示從選定日曆中的日曆事件</string>
@@ -919,6 +938,15 @@
     <string name="target_blank_settings_hide_if_no_complications_content">如果沒有複雜功能可顯示，則完全隱藏此目標</string>
     <string name="target_blank_settings_title">設定</string>
     <string name="target_blank_settings_description">設定是否在此空目標上顯示複雜功能</string>
+    <!-- Date Target -->
+    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_automatic">Automatic</string>
+    <string name="target_date_settings_date_format_automatic_content">System defined</string>
+    <string name="target_date_settings_title">Settings</string>
+    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_custom">Custom</string>
+    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
+    <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail 未讀</string>
     <string name="complication_gmail_description">顯示選定標籤中未讀 Gmail 電子郵件的數量</string>
