@@ -11,6 +11,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.AsNowPlayingTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.widgets.GlanceWidget
 import com.kieronquinn.app.smartspacer.repositories.OemSmartspacerRepository
@@ -25,6 +26,8 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.resolveActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class TrampolineActivity: AppCompatActivity() {
@@ -144,6 +147,8 @@ class TrampolineActivity: AppCompatActivity() {
 
     private val oemSmartspacerRepository by inject<OemSmartspacerRepository>()
     private val smartspaceRepository by inject<SmartspaceRepository>()
+    private var hasRequestedDismiss: Boolean = false
+    private var shouldLaunch = true
 
     private val keyguardManager by lazy {
         getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
@@ -153,6 +158,7 @@ class TrampolineActivity: AppCompatActivity() {
         setShowWhenLocked(true)
         super.onCreate(savedInstanceState)
         if(!verifySecurity()){
+            shouldLaunch = false
             finish()
             return
         }
@@ -175,23 +181,45 @@ class TrampolineActivity: AppCompatActivity() {
         }
     }
 
-    private fun dismissThenLaunch() {
-        keyguardManager.requestDismissKeyguard(this, object: KeyguardDismissCallback() {
-            override fun onDismissSucceeded() {
-                launch()
-            }
+    override fun onDestroy() {
+        //Handle edge case where dismiss listener doesn't return
+        launchLocked()
+        super.onDestroy()
+    }
 
-            override fun onDismissCancelled() {
-                finish()
-            }
+    private fun dismissThenLaunch() = lifecycleScope.launch {
+        if(hasRequestedDismiss) return@launch
+        hasRequestedDismiss = true
+        //Allow time for the activity to start, seems to be a system issue? whenResumed breaks it
+        delay(250L)
+        keyguardManager.requestDismissKeyguard(
+            this@TrampolineActivity,
+            object: KeyguardDismissCallback() {
+                override fun onDismissSucceeded() {
+                    launchLocked()
+                }
 
-            override fun onDismissError() {
-                finish()
+                override fun onDismissCancelled() {
+                    shouldLaunch = false
+                    finish()
+                }
+
+                override fun onDismissError() {
+                    shouldLaunch = false
+                    finish()
+                }
             }
-        })
+        )
     }
 
     private fun launch() = whenCreated {
+        launchLocked()
+    }
+
+    @Synchronized
+    private fun launchLocked() {
+        if(!shouldLaunch) return
+        shouldLaunch = false
         if(intent.getBooleanExtra(EXTRA_LAUNCH_CALENDAR, false)){
             try {
                 startActivity(getCalendarIntent())
@@ -203,13 +231,13 @@ class TrampolineActivity: AppCompatActivity() {
             val actionId = intent.getStringExtra(EXTRA_ACTION_ID)
             if(launchTarget(it, actionId)){
                 finish()
-                return@whenCreated
+                return
             }
         }
         intent.getStringExtra(EXTRA_ACTION_ID)?.let {
             if(launchAction(it)){
                 finish()
-                return@whenCreated
+                return
             }
         }
         intent.getStringExtra(EXTRA_URI_INTENT)?.let {
@@ -256,7 +284,6 @@ class TrampolineActivity: AppCompatActivity() {
             intent != null -> startActivity(intent)
             pendingIntent != null -> pendingIntent.sendSafely()
         }
-
     }
 
     private fun SmartspaceAction.launch() {

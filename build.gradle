@@ -1,7 +1,7 @@
 import com.vanniktech.maven.publish.SonatypeHost
 
 buildscript {
-    ext.nav_version = "2.7.5"
+    ext.nav_version = "2.7.6"
     ext.protobuf_version = '0.9.0'
     ext.refine_version = '4.4.0'
     dependencies {

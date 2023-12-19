@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_16"
+    tools:background="@drawable/bottom_sheet_rounded_bg_dark"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/date_format_custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margin_16"
+        android:text="@string/target_date_settings_custom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date_format_custom_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/target_date_settings_custom_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintTop_toBottomOf="@id/date_format_custom_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:id="@+id/date_format_custom_input"
+        app:boxCornerRadiusBottomStart="@dimen/margin_16"
+        app:boxCornerRadiusTopEnd="@dimen/margin_16"
+        app:boxCornerRadiusTopStart="@dimen/margin_16"
+        app:boxCornerRadiusBottomEnd="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/date_format_custom_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:imeOptions="actionDone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer.Lighter"
+            android:hint="@string/target_date_settings_date_format_title"
+            android:id="@+id/date_format_custom_edit"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/date_format_custom_positive"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@android:string/ok"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_format_custom_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/date_format_custom_negative"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@android:string/cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/date_format_custom_positive"
+        app:layout_constraintTop_toTopOf="@id/date_format_custom_positive" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

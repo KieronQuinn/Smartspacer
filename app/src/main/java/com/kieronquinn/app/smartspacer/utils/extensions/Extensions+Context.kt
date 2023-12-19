@@ -21,6 +21,7 @@ import android.service.notification.NotificationListenerService
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.HideSensitive
 import com.kieronquinn.app.smartspacer.repositories.UpdateRepository.Companion.CONTENT_TYPE_APK
@@ -29,7 +30,10 @@ import dalvik.system.PathClassLoader
 import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlin.math.max
 import kotlin.math.min
 
@@ -215,6 +219,12 @@ fun Context.lockscreenShowing(): Flow<Boolean> {
             isLockscreenShowing()
         }
     )
+}
+
+fun Context.isLockscreenShowing(): Boolean {
+    val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+    val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+    return powerManager.isInteractive && keyguardManager.isKeyguardLocked
 }
 
 fun Context.displayOff(): Flow<Boolean> {
@@ -436,3 +446,12 @@ fun Context.getClassLoaderForPackage(packageName: String): ClassLoader? {
     }
     return PathClassLoader(sourceDir, ClassLoader.getSystemClassLoader())
 }
+
+//Hidden action, but can still be received
+private const val ACTION_CONFIGURATION_CHANGED = "android.intent.action.CONFIGURATION_CHANGED"
+
+fun Context.getDarkMode(
+    scope: LifecycleCoroutineScope
+) = broadcastReceiverAsFlow(IntentFilter(ACTION_CONFIGURATION_CHANGED)).map {
+    isDarkMode
+}.stateIn(scope, SharingStarted.Eagerly, isDarkMode)

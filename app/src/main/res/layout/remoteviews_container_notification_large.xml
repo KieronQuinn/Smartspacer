@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:transformPivotX="0dp"
+    android:transformPivotY="0dp"
+    android:clipToOutline="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/widget_smartspacer_container_animated"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+
+        <FrameLayout
+            android:id="@+id/widget_smartspacer_container_no_animation"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+
+        <LinearLayout
+            android:id="@+id/widget_smartspacer_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_gravity="start|bottom"
+            android:gravity="bottom"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/widget_smartspacer_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:animateLayoutChanges="true"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/margin_8"
+        android:paddingEnd="@dimen/margin_8">
+
+        <ImageButton
+            android:id="@+id/widget_smartspacer_kebab"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:background="@drawable/rounded_ripple_32"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_widget_kebab" />
+
+        <ImageButton
+            android:id="@+id/widget_smartspacer_previous"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:background="@drawable/rounded_ripple_32"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_widget_previous_page" />
+
+        <ImageButton
+            android:id="@+id/widget_smartspacer_next"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rounded_ripple_32"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_widget_next_page" />
+
+    </LinearLayout>
+
+</FrameLayout>

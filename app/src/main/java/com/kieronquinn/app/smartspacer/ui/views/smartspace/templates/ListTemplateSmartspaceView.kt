@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
 import com.kieronquinn.app.smartspacer.R
@@ -19,21 +20,34 @@ class ListTemplateSmartspaceView(
     override val layoutRes = R.layout.smartspace_view_template_list
     override val viewType = ViewType.TEMPLATE_LIST
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         template.subListIcon?.let {
             remoteViews.setImageViewIcon(R.id.smartspace_view_list_icon, it.tintIfNeeded(textColour))
         }
         remoteViews.setOnClickAction(context, R.id.smartspace_view_list, template.subListAction)
         val item1 = template.subListTexts.getOrNull(0)
-        remoteViews.setListItem(R.id.smartspace_view_list_item_1, item1, textColour)
+        remoteViews.setListItem(R.id.smartspace_view_list_item_1, item1, textColour, featureSize)
         val item2 = template.subListTexts.getOrNull(1)
-        remoteViews.setListItem(R.id.smartspace_view_list_item_2, item2, textColour)
+        remoteViews.setListItem(R.id.smartspace_view_list_item_2, item2, textColour, featureSize)
         val item3 = template.subListTexts.getOrNull(2)
-        remoteViews.setListItem(R.id.smartspace_view_list_item_3, item3, textColour)
+        remoteViews.setListItem(R.id.smartspace_view_list_item_3, item3, textColour, featureSize)
     }
 
-    private fun RemoteViews.setListItem(id: Int, item: Text?, textColour: Int) {
+    private fun RemoteViews.setListItem(
+        id: Int,
+        item: Text?,
+        textColour: Int,
+        textSize: Float
+    ) {
         val visibility = if(item != null){
             View.VISIBLE
         }else{
@@ -42,6 +56,7 @@ class ListTemplateSmartspaceView(
         setViewVisibility(id, visibility)
         setTextViewText(id, item?.text)
         setTextColor(id, textColour)
+        setTextViewTextSize(id, TypedValue.COMPLEX_UNIT_PX, textSize)
     }
 
 }

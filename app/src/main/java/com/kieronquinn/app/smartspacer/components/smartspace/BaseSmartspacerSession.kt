@@ -72,6 +72,7 @@ abstract class BaseSmartspacerSession<T, I>(
 
     private val lastUpdateTime = HashMap<String, Long>()
     private val isVisible = MutableStateFlow(false)
+    private val forceReloadBus = MutableStateFlow(System.currentTimeMillis())
     private val contentHiddenString = context.getString(R.string.target_sensitive_title)
 
     open val uiSurface = flowOf(config.uiSurface)
@@ -126,9 +127,10 @@ abstract class BaseSmartspacerSession<T, I>(
     private val sessionSettings = combine(
         settings.hideSensitive.asFlow(),
         settings.nativeUseSplitSmartspace.asFlow(),
-        supportsSplitSmartspace
-    ) { sensitive, split, splitSupported ->
-        SessionSettings(sensitive, splitSupported && split)
+        supportsSplitSmartspace,
+        forceReloadBus
+    ) { sensitive, split, splitSupported, forceReloadTime ->
+        SessionSettings(sensitive, splitSupported && split, forceReloadTime)
     }
 
     private val smartspaceHolders by lazy {
@@ -521,6 +523,10 @@ abstract class BaseSmartspacerSession<T, I>(
         return take(count)
     }
 
+    fun forceReload() = whenCreated {
+        forceReloadBus.emit(System.currentTimeMillis())
+    }
+
     init {
         setupTargetCollection()
         setupVisibleUpdateCheck()
@@ -529,7 +535,8 @@ abstract class BaseSmartspacerSession<T, I>(
 
     data class SessionSettings(
         val hideSensitive: HideSensitive,
-        val useSplitSmartspace: Boolean
+        val useSplitSmartspace: Boolean,
+        val forceReloadAt: Long
     )
 
 }

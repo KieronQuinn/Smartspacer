@@ -5,21 +5,34 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.Typeface
+import android.os.Build
+import android.os.DeadSystemException
 import android.text.TextPaint
+import android.view.View
+import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
+import androidx.core.widget.RemoteViewsCompat.setImageViewColorFilter
+import androidx.core.widget.RemoteViewsCompat.setImageViewImageAlpha
+import androidx.core.widget.RemoteViewsCompat.setImageViewImageTintList
+import androidx.core.widget.RemoteViewsCompat.setViewEnabled
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
+import com.kieronquinn.app.smartspacer.receivers.WidgetPageChangeReceiver
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTargetEvent
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
+import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuActivity
 import com.kieronquinn.app.smartspacer.ui.activities.permission.accessibility.AccessibilityPermissionActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
 import com.kieronquinn.app.smartspacer.utils.extensions.dip
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.launch
@@ -61,6 +74,7 @@ interface AppWidgetRepository {
     fun migrateAppWidget(oldAppWidgetId: Int, newAppWidgetId: Int)
     fun getAppWidget(appWidgetId: Int): AppWidget?
     suspend fun hasAppWidget(packageName: String): Boolean
+    fun updateWidget(appWidgetId: Int)
 
     /**
      *  Gets the (portrait, landscape) [Rect] for the given app widget [id]. This is estimated, but
@@ -73,7 +87,12 @@ interface AppWidgetRepository {
      *  for use in a widget. The [width] should already take into account margins etc., but the
      *  font size and typeface are handled here to save memory and CPU cycles.
      */
-    fun getBestMaxLength(width: Int, title: CharSequence, subtitle: CharSequence?): Pair<Int, Int?>
+    fun getBestMaxLength(
+        width: Int,
+        size: Float,
+        title: CharSequence,
+        subtitle: CharSequence?
+    ): Pair<Int, Int?>
 
     fun supportsPinAppWidget(): Boolean
     fun requestPinAppWidget(callbackAction: String)
@@ -109,7 +128,6 @@ class AppWidgetRepositoryImpl(
 
     private val maxLengthTextPaint by lazy {
         TextPaint().apply {
-            textSize = context.resources.getDimensionPixelSize(R.dimen.smartspace_view_title_size).toFloat()
             typeface = Typeface.create("google-sans", Typeface.NORMAL)
         }
     }
@@ -122,6 +140,10 @@ class AppWidgetRepositoryImpl(
 
     override suspend fun hasAppWidget(packageName: String): Boolean {
         return appWidgets.firstNotNull().any { it.ownerPackage == packageName }
+    }
+
+    override fun updateWidget(appWidgetId: Int) {
+        context.setupWidget(appWidgetId)
     }
 
     override fun addWidget(
@@ -237,12 +259,7 @@ class AppWidgetRepositoryImpl(
     }
 
     private fun onWidgetChanged(widget: AppWidget) {
-        Intent(context, SmartspacerAppWidgetProvider::class.java).apply {
-            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(widget.appWidgetId))
-        }.also {
-            context.sendBroadcast(it)
-        }
+        context.setupWidget(widget.appWidgetId)
     }
 
     override fun getAppWidgetSize(id: Int): Pair<Rect, Rect> {
@@ -263,11 +280,17 @@ class AppWidgetRepositoryImpl(
     }
 
     @Synchronized
-    override fun getBestMaxLength(width: Int, title: CharSequence, subtitle: CharSequence?): Pair<Int, Int?> {
+    override fun getBestMaxLength(
+        width: Int,
+        size: Float,
+        title: CharSequence,
+        subtitle: CharSequence?
+    ): Pair<Int, Int?> {
         //If there's no subtitle, always include as much of the title as possible
         if(subtitle.isNullOrBlank()){
             return Pair(title.length, null)
         }
+        maxLengthTextPaint.textSize = size
         val titleWidth = maxLengthTextPaint.calculateWidth(title)
         val subtitleWidth = maxLengthTextPaint.calculateWidth(subtitle)
         //If both will fit naturally, we can just show their full content
@@ -361,5 +384,191 @@ class AppWidgetRepositoryImpl(
         }
         return 0
     }
+
+    private fun Context.setupWidget(appWidgetId: Int) {
+        val appWidgetManager = getSystemService(Context.APPWIDGET_SERVICE) as AppWidgetManager
+        val config = getAppWidget(appWidgetId)
+        val state = getSessionState(appWidgetId)
+        val textColour = when(config?.tintColour ?: TintColour.AUTOMATIC) {
+            TintColour.AUTOMATIC -> getWallpaperTextColour()
+            TintColour.WHITE -> Color.WHITE
+            TintColour.BLACK -> Color.BLACK
+        }
+        val shadowEnabled = textColour == Color.WHITE
+        val titleSize = resources.getDimension(R.dimen.smartspace_view_title_size)
+        val subtitleSize = resources.getDimension(R.dimen.smartspace_view_subtitle_size)
+        val featureSize = resources.getDimension(R.dimen.smartspace_view_feature_size)
+        val iconColour = ColorStateList.valueOf(textColour)
+        val remoteViews = state?.page?.view?.let {
+            val sizes = getAppWidgetSize(appWidgetId)
+            val portrait = container(
+                appWidgetId,
+                iconColour,
+                shadowEnabled,
+                state,
+                config?.ownerPackage
+            ) {
+                it.inflate(
+                    this,
+                    textColour,
+                    sizes.first.width(),
+                    titleSize,
+                    subtitleSize,
+                    featureSize
+                )
+            }
+            val landscape = container(
+                appWidgetId,
+                iconColour,
+                shadowEnabled,
+                state,
+                config?.ownerPackage
+            ) {
+                it.inflate(
+                    this,
+                    textColour,
+                    sizes.second.width(),
+                    titleSize,
+                    subtitleSize,
+                    featureSize
+                )
+            }
+            RemoteViews(landscape, portrait)
+        } ?: RemoteViews(packageName, R.layout.widget_smartspacer_loading)
+        try {
+            appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
+        }catch (e: DeadSystemException) {
+            //OS is shutting down
+        }
+    }
+
+    private fun Context.container(
+        appWidgetId: Int,
+        iconColour: ColorStateList,
+        shadowEnabled: Boolean,
+        state: WidgetSmartspacerSessionState,
+        owner: String?,
+        child: () -> RemoteViews
+    ): RemoteViews {
+        val container = RemoteViews(packageName, R.layout.widget_smartspacer)
+        container.removeAllViews(R.id.widget_smartspacer_container_animated)
+        container.removeAllViews(R.id.widget_smartspacer_container_no_animation)
+        container.removeAllViews(R.id.widget_smartspacer_dots)
+        if(state.animate) {
+            container.setViewVisibility(R.id.widget_smartspacer_container_animated, View.VISIBLE)
+            container.setViewVisibility(R.id.widget_smartspacer_container_no_animation, View.GONE)
+            container.addView(R.id.widget_smartspacer_container_animated, child())
+        }else{
+            container.setViewVisibility(R.id.widget_smartspacer_container_no_animation, View.VISIBLE)
+            container.setViewVisibility(R.id.widget_smartspacer_container_animated, View.GONE)
+            container.addView(R.id.widget_smartspacer_container_no_animation, child())
+        }
+        container.setOnClickPendingIntent(
+            R.id.widget_smartspacer_previous,
+            getPendingIntentForDirection(appWidgetId, WidgetPageChangeReceiver.Direction.PREVIOUS)
+        )
+        container.setImageViewImageTintListCompat(R.id.widget_smartspacer_previous, iconColour)
+        container.setViewEnabled(R.id.widget_smartspacer_previous, !state.isFirst)
+        container.setViewEnabled(R.id.widget_smartspacer_next, !state.isLast)
+        container.setImageViewImageAlpha(R.id.widget_smartspacer_previous, if(state.isFirst) 0.5f else 1f)
+        container.setImageViewImageAlpha(R.id.widget_smartspacer_next, if(state.isLast) 0.5f else 1f)
+        container.setViewVisibility(R.id.widget_smartspacer_next, (!state.isOnlyPage).visibility)
+        container.setViewVisibility(R.id.widget_smartspacer_previous, (!state.isOnlyPage).visibility)
+        //No point showing arrows or dots if there's only one page
+        container.setViewVisibility(R.id.widget_smartspacer_dots, (!state.isOnlyPage).visibility)
+        container.setViewVisibility(R.id.widget_smartspacer_controls, state.showControls.visibility)
+        container.setOnClickPendingIntent(
+            R.id.widget_smartspacer_next,
+            getPendingIntentForDirection(appWidgetId, WidgetPageChangeReceiver.Direction.NEXT)
+        )
+        container.setImageViewImageTintListCompat(R.id.widget_smartspacer_next, iconColour)
+        val kebabPendingIntent = WidgetOptionsMenuActivity.getIntent(
+            this, state.page.holder.page, appWidgetId, owner
+        ).let {
+            PendingIntent.getActivity(
+                this,
+                state.page.holder.page.hashCode(),
+                it,
+                PendingIntent_MUTABLE_FLAGS
+            )
+        }
+        container.setImageViewImageTintListCompat(R.id.widget_smartspacer_kebab, iconColour)
+        container.setOnClickPendingIntent(R.id.widget_smartspacer_kebab, kebabPendingIntent)
+        state.dotConfig.getDots(packageName, iconColour).forEach {
+            container.addView(R.id.widget_smartspacer_dots, it)
+        }
+        container.setOnClickPendingIntent(
+            R.id.widget_smartspacer_dots, getPendingIntentForDirection(appWidgetId, WidgetPageChangeReceiver.Direction.NEXT)
+        )
+        val shadowContainer = if(shadowEnabled) {
+            RemoteViews(packageName, R.layout.widget_shadow_enabled)
+        }else{
+            RemoteViews(packageName, R.layout.widget_shadow_disabled)
+        }
+        shadowContainer.removeAllViews(R.id.root)
+        shadowContainer.addView(R.id.root, container)
+        return shadowContainer
+    }
+
+    private fun Context.getPendingIntentForDirection(
+        appWidgetId: Int,
+        direction: WidgetPageChangeReceiver.Direction
+    ): PendingIntent {
+        val id = "${NotificationId.WIDGET_DIRECTION.ordinal}$appWidgetId${direction.ordinal}".toInt()
+        return PendingIntent.getBroadcast(
+            this,
+            id,
+            WidgetPageChangeReceiver.getIntent(this, appWidgetId, direction),
+            PendingIntent_MUTABLE_FLAGS
+        )
+    }
+
+    private fun List<WidgetSmartspacerSessionState.DotConfig>.getDots(
+        packageName: String,
+        dotColour: ColorStateList
+    ): List<RemoteViews> {
+        return map {
+            when(it) {
+                WidgetSmartspacerSessionState.DotConfig.REGULAR -> {
+                    RemoteViews(packageName, R.layout.widget_dot).apply {
+                        setImageViewImageTintListCompat(R.id.dot, dotColour)
+                        setImageViewImageAlpha(R.id.dot, 0.5f)
+                    }
+                }
+                WidgetSmartspacerSessionState.DotConfig.HIGHLIGHTED -> {
+                    RemoteViews(packageName, R.layout.widget_dot).apply {
+                        setImageViewImageTintListCompat(R.id.dot, dotColour)
+                        setImageViewImageAlpha(R.id.dot, 1f)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getWallpaperTextColour(): Int {
+        return if(wallpaperRepository.homescreenWallpaperDarkTextColour.value){
+            Color.BLACK
+        }else{
+            Color.WHITE
+        }
+    }
+
+    private fun RemoteViews.setImageViewImageAlpha(id: Int, alpha: Float) {
+        setImageViewImageAlpha(id, (alpha * 255).toInt())
+    }
+
+    private fun RemoteViews.setImageViewImageTintListCompat(
+        id: Int,
+        colourStateList: ColorStateList
+    ) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            setImageViewImageTintList(id, colourStateList)
+        }else{
+            setImageViewColorFilter(id, colourStateList.defaultColor)
+        }
+    }
+
+    private val Boolean.visibility
+        get() = if(this) View.VISIBLE else View.GONE
 
 }

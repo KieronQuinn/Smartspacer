@@ -40,6 +40,10 @@ public class ActivityThread {
         throw new RuntimeException("Stub!");
     }
 
+    public void handleStartActivity(ActivityClientRecord r, PendingTransactionActions pendingActions) {
+        throw new RuntimeException("Stub!");
+    }
+
     @RequiresApi(Build.VERSION_CODES.S)
     public void handleStartActivity(ActivityClientRecord r, PendingTransactionActions pendingActions, ActivityOptions activityOptions) {
         throw new RuntimeException("Stub!");

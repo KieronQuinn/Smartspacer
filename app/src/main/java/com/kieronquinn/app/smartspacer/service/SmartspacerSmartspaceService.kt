@@ -5,7 +5,9 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.provider.Settings
+import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
@@ -18,6 +20,8 @@ import com.kieronquinn.app.smartspacer.repositories.*
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
+import com.kieronquinn.app.smartspacer.utils.extensions.broadcastReceiverAsFlow
+import com.kieronquinn.app.smartspacer.utils.extensions.getDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.startForeground
 import com.kieronquinn.app.smartspacer.utils.extensions.toSmartspaceConfig
@@ -51,6 +55,11 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         val COMPONENT = ComponentName(
             BuildConfig.APPLICATION_ID,
             SmartspacerSmartspaceService::class.java.name
+        )
+
+        @Suppress("DEPRECATION") //Deprecated in favour of something we cannot use
+        private val RELOAD_BROADCASTS = arrayOf(
+            Intent.ACTION_WALLPAPER_CHANGED
         )
     }
 
@@ -320,6 +329,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         notifications.cancelNotification(NotificationId.NATIVE_MODE)
         systemSmartspace.notifyServiceRunning()
         setHasUsedSetting()
+        setupReload()
     }
 
     private fun createNotification(): Notification {
@@ -350,6 +360,22 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     private fun setHasUsedSetting() = whenCreated {
         settings.hasUsedNativeMode.set(true)
+    }
+
+    private fun setupReload() = whenCreated {
+        val broadcasts = RELOAD_BROADCASTS.map {
+            broadcastReceiverAsFlow(IntentFilter(it))
+        }.let {
+            combine(*it.toTypedArray()) {
+                System.currentTimeMillis()
+            }.stateIn(lifecycleScope, SharingStarted.Eagerly, System.currentTimeMillis())
+        }
+        combine(
+            broadcasts,
+            getDarkMode(lifecycleScope)
+        ) { _ ->
+            sessions.forEach { it.value.forceReload() }
+        }.collect()
     }
 
 }

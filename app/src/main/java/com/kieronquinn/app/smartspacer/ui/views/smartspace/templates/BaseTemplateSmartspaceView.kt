@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.app.PendingIntent
 import android.content.Context
+import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.CallSuper
@@ -14,7 +15,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.*
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
 import com.kieronquinn.app.smartspacer.utils.extensions.takeEllipsised
-import java.util.*
+import java.util.UUID
 import android.graphics.drawable.Icon as AndroidIcon
 
 abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
@@ -36,22 +37,23 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             targetId: String,
             target: SmartspaceTarget,
             template: BaseTemplateData,
-            surface: UiSurface
+            surface: UiSurface,
+            forceBasic: Boolean
         ): BaseTemplateSmartspaceView<*> {
-            return when(template){
-                is HeadToHeadTemplateData -> {
+            return when {
+                !forceBasic && template is HeadToHeadTemplateData -> {
                     HeadToHeadTemplateSmartspaceView(targetId, target, template, surface)
                 }
-                is SubListTemplateData -> {
+                !forceBasic && template is SubListTemplateData -> {
                     ListTemplateSmartspaceView(targetId, target, template, surface)
                 }
-                is SubCardTemplateData -> {
+                !forceBasic && template is SubCardTemplateData -> {
                     CardTemplateSmartspaceView(targetId, target, template, surface)
                 }
-                is SubImageTemplateData -> {
+                !forceBasic && template is SubImageTemplateData -> {
                     ImagesTemplateSmartspaceView(targetId, target, template, surface)
                 }
-                is CarouselTemplateData -> {
+                !forceBasic && template is CarouselTemplateData -> {
                     CarouselTemplateSmartspaceView(targetId, target, template, surface)
                 }
                 else -> {
@@ -69,13 +71,22 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
     open val supportsSubAction = false
 
     @CallSuper
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
         val bestMaxLength = template.subtitleItem?.text?.text?.let { title ->
             val subtitle = if(supportsSubAction){
                 template.subtitleSupplementalItem?.text?.text
             }else null
             getBestMaxLength(
                 context.getAvailableTextSize(width, template.hasSubAction()),
+                subtitleSize,
                 title,
                 subtitle
             )
@@ -87,6 +98,7 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             }
         }
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
+        remoteViews.setTextViewTextSize(R.id.smartspace_view_title, COMPLEX_UNIT_PX, titleSize)
         remoteViews.setOnClickAction(
             context, R.id.smartspace_view_template_root, template.primaryItem?.tapAction
         )
@@ -94,6 +106,9 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             val maxLength = bestMaxLength?.first ?: DEFAULT_MAX_LENGTH
             remoteViews.setTextViewText(
                 R.id.smartspace_view_subtitle_text, it.text.takeEllipsised(maxLength)
+            )
+            remoteViews.setTextViewTextSize(
+                R.id.smartspace_view_subtitle_text, COMPLEX_UNIT_PX, subtitleSize
             )
             remoteViews.setTextColor(R.id.smartspace_view_subtitle_text, textColour)
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_text, View.VISIBLE)
@@ -120,6 +135,9 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 remoteViews.setTextViewText(
                     R.id.smartspace_view_action_text,
                     it.text.takeEllipsised(ems)
+                )
+                remoteViews.setTextViewTextSize(
+                    R.id.smartspace_view_action_text, COMPLEX_UNIT_PX, subtitleSize
                 )
                 remoteViews.setTextColor(R.id.smartspace_view_action_text, textColour)
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_text, View.VISIBLE)

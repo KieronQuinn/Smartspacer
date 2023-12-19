@@ -55,6 +55,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
     <uses-permission
         android:name="android.permission.READ_SMS"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
@@ -223,6 +224,14 @@
             android:exported="true"
             android:icon="@drawable/ic_settings"
             android:label="@string/target_music_setting_setting_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.date.DateTargetConfigurationActivity"
+            android:description="@string/target_date_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_date_settings_title"
             android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
 
         <activity-alias
@@ -555,6 +564,15 @@
             </intent-filter>
         </provider>
 
+        <provider
+            android:name=".components.smartspace.complications.TimeComplication"
+            android:authorities="${applicationId}.complication.time"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
         <!-- Built in widget mapping -->
 
         <provider
@@ -640,6 +658,12 @@
             android:authorities="${applicationId}.notifications.asnowplaying"
             android:exported="false" />
 
+        <!-- Built in broadcasts -->
+        <provider
+            android:authorities="${applicationId}.broadcasts.time"
+            android:name=".components.smartspace.broadcasts.TimeChangedBroadcast"
+            android:exported="false"/>
+
         <receiver android:name=".receivers.GeofenceReceiver" />
         <receiver android:name=".receivers.TimeDateRequirementAlarmReceiver" />
         <receiver android:name=".receivers.CalendarTargetAlarmReceiver" />
@@ -722,6 +746,7 @@
             android:exported="true"
             android:launchMode="singleInstance"
             android:noHistory="true"
+            android:process=":trampoline"
             android:theme="@style/Theme.Smartspacer.Transparent" />
 
         <activity android:name=".ui.activities.ExportedSmartspaceTrampolineProxyActivity"
@@ -756,6 +781,11 @@
                 <action android:name="com.kieronquinn.app.smartspacer.MANAGER" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".service.SmartspacerNotificationWidgetService"
+            android:foregroundServiceType="specialUse"
+            tools:ignore="ExportedService"/>
 
         <service
             android:name=".service.SmartspacerBackgroundService"

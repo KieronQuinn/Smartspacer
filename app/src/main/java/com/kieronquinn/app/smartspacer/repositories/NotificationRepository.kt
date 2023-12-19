@@ -19,6 +19,7 @@ import com.kieronquinn.app.smartspacer.model.smartspace.NotificationListener
 import com.kieronquinn.app.smartspacer.receivers.StartShizukuReceiver
 import com.kieronquinn.app.smartspacer.sdk.callbacks.IResolveIntentCallback
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationListenerService
+import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationWidgetService
 import com.kieronquinn.app.smartspacer.utils.extensions.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -126,6 +127,7 @@ interface NotificationRepository {
 class NotificationRepositoryImpl(
     private val context: Context,
     private val shizukuServiceRepository: ShizukuServiceRepository,
+    private val settingsRepository: SmartspacerSettingsRepository,
     databaseRepository: DatabaseRepository,
     private val scope: CoroutineScope = MainScope()
 ): NotificationRepository {
@@ -255,6 +257,16 @@ class NotificationRepositoryImpl(
         }
     }
 
+    private fun setupNotificationWidgetService() = scope.launch {
+        settingsRepository.notificationWidgetServiceEnabled.asFlow().collect { enabled ->
+            if(enabled) {
+                SmartspacerNotificationWidgetService.startServiceIfNeeded(context)
+            }else{
+                SmartspacerNotificationWidgetService.stopService(context)
+            }
+        }
+    }
+
     /**
      *  Filter out the default "Uncategorized" channel, added when the app does not use channels,
      *  but only after the first notification has been shown. This is very confusing to users,
@@ -269,6 +281,7 @@ class NotificationRepositoryImpl(
 
     init {
         setupNotificationProviders()
+        setupNotificationWidgetService()
     }
 
 }

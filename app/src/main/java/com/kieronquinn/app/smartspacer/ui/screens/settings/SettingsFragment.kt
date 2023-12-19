@@ -99,6 +99,12 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             onClick = viewModel::onOemSmartspaceClicked
         ),
         Setting(
+            getString(R.string.notification_widget_title),
+            getString(R.string.notification_widget_content),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_show_on_lockscreen),
+            onClick = viewModel::onNotificationWidgetClicked
+        ),
+        Setting(
             getString(R.string.expanded_settings_title),
             getString(R.string.expanded_settings_content),
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_mode),

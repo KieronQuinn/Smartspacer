@@ -29,7 +29,7 @@ import kotlinx.coroutines.sync.withLock
 import java.util.*
 import kotlin.math.min
 
-class WidgetSmartspacerSession(
+open class WidgetSmartspacerSession(
     context: Context,
     widget: AppWidget,
     private val config: SmartspaceConfig = widget.getConfig(),
@@ -37,13 +37,15 @@ class WidgetSmartspacerSession(
 ): BaseSmartspacerSession<SmartspaceView, AppWidget>(context, config, widget) {
 
     companion object {
-        private fun AppWidget.getConfig(): SmartspaceConfig {
+        internal fun AppWidget.getConfig(): SmartspaceConfig {
             return SmartspaceConfig(1, surface, ownerPackage)
         }
 
         private const val DEFAULT_FRAME_DELAY = 1000L
         private const val MINIMUM_FRAME_DELAY = 500L
     }
+
+    open val includeBasic: Boolean = false
 
     val appWidgetId = widget.appWidgetId
     val packageName = widget.ownerPackage
@@ -75,15 +77,21 @@ class WidgetSmartspacerSession(
         uiSurface: Flow<UiSurface>
     ): Flow<List<SmartspaceView>> {
         var id: String? = null
+        var previousPageCount = -1
         return combine(pages, index, uiSurface){ it, i, _ ->
+            previousPageCount = pageCount
             pageCount = it.size
-            val index = min(i, it.size)
-            val page = it.getOrNull(index) ?: createDatePage().holder
+            var index = min(i, it.size)
+            val page = it.getOrNull(index) ?: run {
+                index = it.size - 1
+                it.getOrNull(index)
+            } ?: createDatePage().holder
             page.toSmartspaceViewFlow()
         }.flowOn(Dispatchers.IO).flattenMerge().distinctUntilChanged { oldPair, newPair ->
             val old = oldPair.first
             val new = newPair.first
-            old.target != null && new.target != null && old.target.equalsForUi(new.target)
+            previousPageCount == pageCount && old.target != null && new.target != null
+                    && old.target.equalsForUi(new.target)
         }.map {
             val shouldAnimate = animate && it.first.target != null
                     && it.first.target?.smartspaceTargetId != id
@@ -110,7 +118,7 @@ class WidgetSmartspacerSession(
         visibleTargetId = page.smartspaceTargetId
         val state = toSmartspaceViewState()
         return state.map {
-            val page = WidgetSmartspacerPage(this, it.view.viewType, it.view)
+            val page = WidgetSmartspacerPage(this, it.view.viewType, it.view, it.basicView)
             Pair(it, page)
         }
     }
@@ -124,21 +132,24 @@ class WidgetSmartspacerSession(
 
     private fun SmartspacePageHolder.toSmartspaceViewState(): Flow<SmartspacerViewState> {
         val template = page.templateData
+        val basic = if(includeBasic) {
+            SmartspaceView.fromTarget(page, config.uiSurface, true)
+        }else null
         return when {
-            template is SubImageTemplateData -> {
+            !includeBasic && template is SubImageTemplateData -> {
                 page.startLoopImages(page.smartspaceTargetId, template).map {
-                    SmartspacerViewState(it, null)
+                    SmartspacerViewState(it, null, basic)
                 }
             }
-            page.isDoorbellTargetWithUris() -> {
+            !includeBasic && page.isDoorbellTargetWithUris() -> {
                 page.startLoopDoorbellImages().map {
-                    SmartspacerViewState(it, null)
+                    SmartspacerViewState(it, null, basic)
                 }
             }
             else -> {
-                val page = SmartspaceView.fromTarget(page, config.uiSurface)
+                val page = SmartspaceView.fromTarget(page, config.uiSurface, false)
                 flowOf(page).map {
-                    SmartspacerViewState(it, this.page)
+                    SmartspacerViewState(it, this.page, basic)
                 }
             }
         }
@@ -273,10 +284,14 @@ class WidgetSmartspacerSession(
 
     private fun createDatePage(): WidgetSmartspacerPage {
         val target = createEmptyTarget()
+        val basic = if(includeBasic) {
+            WeatherFeatureSmartspaceView(target.smartspaceTargetId, target, surface)
+        }else null
         return WidgetSmartspacerPage(
             SmartspacePageHolder(target, null, emptyList()),
             ViewType.FEATURE_WEATHER,
-            WeatherFeatureSmartspaceView(target.smartspaceTargetId, target, surface)
+            WeatherFeatureSmartspaceView(target.smartspaceTargetId, target, surface),
+            basic
         )
     }
 
@@ -295,7 +310,8 @@ class WidgetSmartspacerSession(
 
     private data class SmartspacerViewState(
         val view: SmartspaceView,
-        val target: SmartspaceTarget?
+        val target: SmartspaceTarget?,
+        val basicView: SmartspaceView?
     )
 
 }
@@ -303,7 +319,8 @@ class WidgetSmartspacerSession(
 data class WidgetSmartspacerPage(
     val holder: SmartspacePageHolder,
     val type: ViewType,
-    val view: SmartspaceView
+    val view: SmartspaceView,
+    val basicView: SmartspaceView?
 )
 
 data class WidgetSmartspacerSessionState(

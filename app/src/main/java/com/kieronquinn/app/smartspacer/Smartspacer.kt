@@ -53,6 +53,12 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.blank.BlankTarge
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.blank.BlankTargetConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.calendar.CalendarTargetConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.calendar.CalendarTargetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.default.DefaultTargetConfigurationViewModel
@@ -118,6 +124,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.native.reconnect.NativeReconne
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.NativeModeSettingsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.NativeModeSettingsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.native.settings.pagelimit.NativeModePageLimitViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.notificationwidget.NotificationWidgetSettingsViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.notificationwidget.NotificationWidgetSettingsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmartspaceViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmartspaceViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.permission.DisplayOverOtherAppsPermissionBottomSheetViewModel
@@ -247,7 +255,7 @@ class Smartspacer: Application(), Configuration.Provider {
             get()
         ) }
         single<AlarmRepository>(createdAtStart = true) { AlarmRepositoryImpl(get(), get(), get(), get()) }
-        single<NotificationRepository>(createdAtStart = true) { NotificationRepositoryImpl(get(), get(), get()) }
+        single<NotificationRepository>(createdAtStart = true) { NotificationRepositoryImpl(get(), get(), get(), get()) }
         single<WallpaperRepository> { WallpaperRepositoryImpl(get()) }
         single<PackageRepository> { PackageRepositoryImpl(get()) }
         single<ContainerNavigation> { ContainerNavigationImpl() }
@@ -403,6 +411,10 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<WidgetOptionsMenuViewModel> { WidgetOptionsMenuViewModelImpl(get(), get()) }
         viewModel<NativeReconnectViewModel> { NativeReconnectViewModelImpl(get(), get()) }
         viewModel<DumpSmartspacerViewModel> { DumpSmartspacerViewModelImpl(get(), get()) }
+        viewModel<NotificationWidgetSettingsViewModel> { NotificationWidgetSettingsViewModelImpl(get(), get(), get()) }
+        viewModel<DateTargetConfigurationViewModel> { DateTargetConfigurationViewModelImpl(get(), get()) }
+        viewModel<DateTargetFormatPickerViewModel> { DateTargetFormatPickerViewModelImpl(get()) }
+        viewModel<DateTargetFormatCustomViewModel> { DateTargetFormatCustomViewModelImpl() }
     }
 
     override fun attachBaseContext(base: Context) {

@@ -36,6 +36,7 @@
     <!-- Smartspacer widget views -->
     <dimen name="smartspace_view_title_size">20sp</dimen>
     <dimen name="smartspace_view_subtitle_size">16sp</dimen>
+    <dimen name="smartspace_view_feature_size">14sp</dimen>
     <dimen name="smartspace_view_max_height">112dp</dimen>
     <dimen name="smartspace_view_icon_size">20sp</dimen>
     <dimen name="smartspace_view_icon_margin">4dp</dimen>
@@ -53,6 +54,13 @@
     <dimen name="smartspace_view_feature_doorbell_image_width">112dp</dimen>
     <dimen name="smartspace_view_feature_doorbell_image_height">80dp</dimen>
     <dimen name="smartspace_view_feature_doorbell_image_default_padding">16dp</dimen>
+
+    <!-- Notification variant -->
+    <dimen name="smartspace_view_notification_title_size">16sp</dimen>
+    <dimen name="smartspace_view_notification_subtitle_size">14sp</dimen>
+    <dimen name="smartspace_view_notification_feature_size">12sp</dimen>
+    <dimen name="smartspace_view_notification_screen_edges_distance_s">144dp</dimen>
+    <dimen name="smartspace_view_notification_edges_distance_before_s">72dp</dimen>
 
     <dimen name="setup_image_size">160dp</dimen>
 

@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.CallSuper
@@ -32,17 +33,18 @@ abstract class BaseFeatureSmartspaceView(
         fun create(
             targetId: String,
             target: SmartspaceTarget,
-            surface: UiSurface
+            surface: UiSurface,
+            forceBasic: Boolean
         ): BaseFeatureSmartspaceView {
             val feature = target.featureType
             return when {
                 target.featureType == FEATURE_WEATHER -> {
                     WeatherFeatureSmartspaceView(targetId, target, surface)
                 }
-                FEATURE_ALLOWLIST_IMAGE.contains(feature) -> {
+                !forceBasic && FEATURE_ALLOWLIST_IMAGE.contains(feature) -> {
                     CommuteTimeFeatureSmartspaceView(targetId, target, surface)
                 }
-                FEATURE_ALLOWLIST_DOORBELL.contains(feature) -> {
+                !forceBasic && FEATURE_ALLOWLIST_DOORBELL.contains(feature) -> {
                     DoorbellFeatureSmartspaceView(targetId, target, surface)
                 }
                 else -> {
@@ -55,18 +57,30 @@ abstract class BaseFeatureSmartspaceView(
     open val supportsSubAction: Boolean = false
 
     @CallSuper
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
         val bestMaxLength = target.headerAction?.subtitle?.let { title ->
             val subtitle = if(supportsSubAction){
                 target.baseAction?.subtitle
             }else null
             getBestMaxLength(
                 context.getAvailableTextSize(width, target.hasSubAction()),
+                subtitleSize,
                 title,
                 subtitle
             )
         }
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
+        remoteViews.setTextViewTextSize(
+            R.id.smartspace_view_title, TypedValue.COMPLEX_UNIT_PX, titleSize
+        )
         target.headerAction?.let {
             val maxLength = bestMaxLength?.first ?: DEFAULT_MAX_LENGTH
             //Don't update the text on a weather target as it clears the date
@@ -75,6 +89,9 @@ abstract class BaseFeatureSmartspaceView(
             }
             remoteViews.setTextViewText(
                 R.id.smartspace_view_subtitle_text, it.subtitle?.takeEllipsised(maxLength)
+            )
+            remoteViews.setTextViewTextSize(
+                R.id.smartspace_view_subtitle_text, TypedValue.COMPLEX_UNIT_PX, subtitleSize
             )
             remoteViews.setTextColor(R.id.smartspace_view_subtitle_text, textColour)
             remoteViews.setImageViewIcon(R.id.smartspace_view_subtitle_icon, it.icon
@@ -118,6 +135,9 @@ abstract class BaseFeatureSmartspaceView(
                     context,
                     R.id.smartspace_view_action_text,
                     target.baseAction
+                )
+                remoteViews.setTextViewTextSize(
+                    R.id.smartspace_view_action_text, TypedValue.COMPLEX_UNIT_PX, subtitleSize
                 )
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_text, View.VISIBLE)
             }else{

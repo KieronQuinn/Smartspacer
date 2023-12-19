@@ -10,7 +10,8 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.ui.activities.TrampolineActivity
-import java.util.*
+import java.util.Locale
+import java.util.UUID
 
 class WeatherFeatureSmartspaceView(
     targetId: String,
@@ -26,8 +27,16 @@ class WeatherFeatureSmartspaceView(
 
     override val supportsSubAction = true
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         remoteViews.setCharSequence(R.id.smartspace_view_title, "setFormat12Hour", dateFormat)
         remoteViews.setCharSequence(R.id.smartspace_view_title, "setFormat24Hour", dateFormat)
         val calendarTrampolineIntent = Intent(context, TrampolineActivity::class.java).apply {

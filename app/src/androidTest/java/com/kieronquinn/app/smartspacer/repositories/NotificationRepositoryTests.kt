@@ -16,6 +16,7 @@ import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.model.database.NotificationListener
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationListenerService
 import com.kieronquinn.app.smartspacer.test.BaseTest
+import com.kieronquinn.app.smartspacer.utils.mockSmartspacerSetting
 import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
 import io.mockk.every
@@ -35,8 +36,6 @@ import com.kieronquinn.app.smartspacer.components.notifications.NotificationChan
 class NotificationRepositoryTests: BaseTest<NotificationRepository>() {
 
     companion object {
-        private const val INTENT_EXTRA_PENDING_INTENT = "pending_intent"
-
         private fun getMockNotificationChannels(): List<NotificationChannel> {
             return listOf(
                 NotificationChannel(
@@ -83,12 +82,17 @@ class NotificationRepositoryTests: BaseTest<NotificationRepository>() {
     private val contentProviderClient = mock<ContentProviderClient>()
     private val shizukuServiceRepository = mockShizukuRepository {}
 
+    private val settingsRepositoryMock = mock<SmartspacerSettingsRepository> {
+        every { notificationWidgetServiceEnabled } returns mockSmartspacerSetting(false)
+    }
+
     private var notificationServiceRunning = false
 
     override val sut by lazy {
         NotificationRepositoryImpl(
             contextMock,
             shizukuServiceRepository,
+            settingsRepositoryMock,
             databaseRepositoryMock,
             scope
         )

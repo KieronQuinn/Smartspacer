@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.RemoteViews
@@ -23,8 +24,16 @@ class CarouselTemplateSmartspaceView(
     override val viewType = ViewType.TEMPLATE_CAROUSEL
     override val supportsSubAction = true
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         val item1 = template.carouselItems.getOrNull(0)
         val item2 = template.carouselItems.getOrNull(1)
         val item3 = template.carouselItems.getOrNull(2)
@@ -33,6 +42,7 @@ class CarouselTemplateSmartspaceView(
             context,
             item1,
             textColour,
+            featureSize,
             R.id.smartspace_view_carousel_column_1,
             R.id.smartspace_view_carousel_column_1_header,
             R.id.smartspace_view_carousel_column_1_icon,
@@ -42,6 +52,7 @@ class CarouselTemplateSmartspaceView(
             context,
             item2,
             textColour,
+            featureSize,
             R.id.smartspace_view_carousel_column_2,
             R.id.smartspace_view_carousel_column_2_header,
             R.id.smartspace_view_carousel_column_2_icon,
@@ -51,6 +62,7 @@ class CarouselTemplateSmartspaceView(
             context,
             item3,
             textColour,
+            featureSize,
             R.id.smartspace_view_carousel_column_3,
             R.id.smartspace_view_carousel_column_3_header,
             R.id.smartspace_view_carousel_column_3_icon,
@@ -60,6 +72,7 @@ class CarouselTemplateSmartspaceView(
             context,
             item4,
             textColour,
+            featureSize,
             R.id.smartspace_view_carousel_column_4,
             R.id.smartspace_view_carousel_column_4_header,
             R.id.smartspace_view_carousel_column_4_icon,
@@ -93,6 +106,7 @@ class CarouselTemplateSmartspaceView(
         context: Context,
         item: CarouselItem?,
         textColour: Int,
+        textSize: Float,
         columnId: Int,
         headerId: Int,
         iconId: Int,
@@ -105,6 +119,7 @@ class CarouselTemplateSmartspaceView(
         item.upperText?.let {
             setTextViewText(headerId, it.text)
             setTextColor(headerId, textColour)
+            setTextViewTextSize(headerId, COMPLEX_UNIT_PX, textSize)
         }
         item.image?.let {
             setImageViewIcon(iconId, it.tintIfNeeded(textColour))
@@ -112,6 +127,7 @@ class CarouselTemplateSmartspaceView(
         item.lowerText?.let {
             setTextViewText(footerId, it.text)
             setTextColor(footerId, textColour)
+            setTextViewTextSize(footerId, COMPLEX_UNIT_PX, textSize)
         }
         setOnClickAction(context, headerId, item.tapAction)
         setOnClickAction(context, iconId, item.tapAction)

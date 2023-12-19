@@ -218,6 +218,16 @@ interface SmartspacerSettingsRepository {
     @IgnoreInBackup
     val requiresDisplayOverOtherAppsPermission: SmartspacerSetting<Boolean>
 
+    /**
+     *  Whether the Lock Screen Notification "Widget" is enabled
+     */
+    val notificationWidgetServiceEnabled: SmartspacerSetting<Boolean>
+
+    /**
+     *  The mode of tinting for the Lock Screen Notification "Widget"
+     */
+    val notificationWidgetTintColour: SmartspacerSetting<TintColour>
+
     enum class TargetCountLimit(val count: Int, @StringRes val label: Int, @StringRes val content: Int) {
         ONE(
             1,
@@ -266,10 +276,10 @@ interface SmartspacerSettingsRepository {
         )
     }
 
-    enum class TintColour(@StringRes val label: Int) {
-        AUTOMATIC(R.string.tint_colour_automatic),
-        WHITE(R.string.tint_colour_white),
-        BLACK(R.string.tint_colour_black)
+    enum class TintColour(@StringRes val label: Int, @StringRes val labelAlt: Int) {
+        AUTOMATIC(R.string.tint_colour_automatic, R.string.tint_colour_automatic_alt),
+        WHITE(R.string.tint_colour_white, R.string.tint_colour_white),
+        BLACK(R.string.tint_colour_black, R.string.tint_colour_black)
     }
 
     suspend fun setRestrictedModeKnownDisabledIfNeeded()
@@ -385,6 +395,12 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS = "requires_display_over_other_apps"
         private const val DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS = false
+
+        private const val KEY_NOTIFICATION_WIDGET_SERVICE_ENABLED = "notification_widget_service_enabled"
+        private const val DEFAULT_NOTIFICATION_WIDGET_SERVICE_ENABLED = false
+
+        private const val KEY_NOTIFICATION_WIDGET_TINT = "notification_widget_tint"
+        private val DEFAULT_NOTIFICATION_WIDGET_TINT = TintColour.AUTOMATIC
     }
 
     override val sharedPreferences: SharedPreferences = context.getSharedPreferences(
@@ -425,6 +441,8 @@ class SmartspacerSettingsRepositoryImpl(
     override val donatePromptDismissedAt = long(KEY_DONATE_PROMPT_DISMISSED_AT, DEFAULT_DONATE_PROMPT_DISMISSED_AT)
     override val analyticsEnabled = boolean(KEY_ANALYTICS_ENABLED, DEFAULT_ANALYTICS_ENABLED)
     override val requiresDisplayOverOtherAppsPermission = boolean(KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS, DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS)
+    override val notificationWidgetServiceEnabled = boolean(KEY_NOTIFICATION_WIDGET_SERVICE_ENABLED, DEFAULT_NOTIFICATION_WIDGET_SERVICE_ENABLED)
+    override val notificationWidgetTintColour = enum(KEY_NOTIFICATION_WIDGET_TINT, DEFAULT_NOTIFICATION_WIDGET_TINT)
 
     override suspend fun setRestrictedModeKnownDisabledIfNeeded() {
         //Not sure if upgrading requires allowing unrestricted, so only setting on T+ for now

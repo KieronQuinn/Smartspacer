@@ -26,8 +26,16 @@ class ImagesTemplateSmartspaceView(
     override val viewType = ViewType.TEMPLATE_IMAGES
 
     @SuppressLint("InlinedApi")
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         val image = template.subImages.firstOrNull()
         remoteViews.setOnClickAction(context, R.id.smartspace_view_images, template.subImageAction)
         template.subImageAction?.let {

@@ -19,5 +19,5 @@ class TargetData(
 ) : Parcelable, BaseData
 
 enum class TargetDataType {
-    MUSIC, NOTIFICATION, CALENDAR, DEFAULT, GREETING, BLANK
+    MUSIC, NOTIFICATION, CALENDAR, DEFAULT, GREETING, BLANK, DATE
 }

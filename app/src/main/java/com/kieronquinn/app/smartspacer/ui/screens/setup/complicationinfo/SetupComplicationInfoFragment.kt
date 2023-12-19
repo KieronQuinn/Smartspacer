@@ -7,6 +7,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentSetupComplicationInfoBinding
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
@@ -27,6 +28,9 @@ class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfo
 
     private fun setupExampleComplicationOne() = with(binding.setupComplicationInfoExample1) {
         smartspacePageSubtitleIcon.setImageResource(R.drawable.ic_complication_gmail)
+        smartspacePageSubtitleIcon.imageTintList = ColorStateList.valueOf(
+            requireContext().getAttrColor(android.R.attr.textColorPrimary)
+        )
         smartspacePageSubtitleText.setText(R.string.setup_complications_example_gmail)
     }
 

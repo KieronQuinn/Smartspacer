@@ -413,6 +413,8 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     init {
         setupTaskListener()
         setupCrashListener()
+        //Allow restricted settings automatically to help users who are using enhanced mode
+        grantRestrictedSettings()
     }
 
     override fun grantRestrictedSettings() {

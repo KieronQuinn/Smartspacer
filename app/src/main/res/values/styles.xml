@@ -144,13 +144,21 @@
         <item name="android:paddingEnd">@dimen/smartspace_view_margin</item>
     </style>
 
+    <style name="WidgetShadowEnabled" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="widgetShadowColour">@android:color/black</item>
+    </style>
+
+    <style name="WidgetShadowDisabled" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="widgetShadowColour">@android:color/transparent</item>
+    </style>
+
     <style name="WidgetTitle" parent="@android:style/Widget.TextView">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
-        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowColor">?widgetShadowColour</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
@@ -163,7 +171,7 @@
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:letterSpacing">0.01</item>
-        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowColor">?widgetShadowColour</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
