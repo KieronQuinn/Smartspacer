@@ -17,8 +17,16 @@ class CardTemplateSmartspaceView(
     override val layoutRes = R.layout.smartspace_view_template_card
     override val viewType = ViewType.TEMPLATE_CARD
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         template.subCardIcon.let {
             remoteViews.setImageViewIcon(R.id.smartspace_view_card_icon, it.tintIfNeeded(textColour))
         }

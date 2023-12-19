@@ -95,7 +95,6 @@ fun SubItemInfo.toSystemSubItemInfo(tintColour: Int): SystemSubItemInfo {
 
 fun SubItemInfo.cloneWithTint(colour: Int): SubItemInfo {
     return copy(
-        text = text?.cloneWithTextColour(colour),
         icon = icon?.cloneWithTint(colour)
     )
 }

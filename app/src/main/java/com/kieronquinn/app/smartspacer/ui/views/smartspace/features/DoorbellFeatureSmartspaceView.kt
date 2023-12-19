@@ -21,8 +21,16 @@ class DoorbellFeatureSmartspaceView(
 
     val state = DoorbellState.fromTarget(target)
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         val state = state ?: return
         remoteViews.clearState()
         when(state){

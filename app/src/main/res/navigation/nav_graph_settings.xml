@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_dumpSmartspacerFragment"
             app:destination="@id/dumpSmartspacerFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_notificationWidgetSettingsFragment"
+            app:destination="@id/notificationWidgetSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/nativeModeFragment2"
@@ -214,5 +217,10 @@
         android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerFragment"
         android:label="@string/settings_dump_title_short"
         tools:layout="@layout/fragment_dump" />
+    <fragment
+        android:id="@+id/notificationWidgetSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.notificationwidget.NotificationWidgetSettingsFragment"
+        android:label="@string/notification_widget_title_short"
+        tools:layout="@layout/fragment_settings_base" />
 
 </navigation>

@@ -19,8 +19,16 @@ class CommuteTimeFeatureSmartspaceView(
     override val layoutRes = R.layout.smartspace_view_feature_commute_time
     override val viewType = ViewType.FEATURE_COMMUTE_TIME
 
-    override fun apply(context: Context, textColour: Int, remoteViews: RemoteViews, width: Int) {
-        super.apply(context, textColour, remoteViews, width)
+    override fun apply(
+        context: Context,
+        textColour: Int,
+        remoteViews: RemoteViews,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ) {
+        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
         val image = target.baseAction?.extras?.getParcelableCompat(EXTRA_IMAGE, Bitmap::class.java)
             ?: return
         val icon = Icon.createWithBitmap(image)

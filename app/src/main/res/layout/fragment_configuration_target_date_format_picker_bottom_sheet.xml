@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_16"
+    tools:background="@drawable/bottom_sheet_rounded_bg_dark"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/date_format_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/margin_16"
+        android:text="@string/target_date_settings_date_format_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+        android:id="@+id/date_format_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@id/date_format_title"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_settings_text_item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/date_format_neutral"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@string/target_date_settings_custom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_format_recycler_view" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/date_format_negative"
+        style="@style/Widget.Material3.Button.TextButton.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:text="@android:string/cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_format_recycler_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

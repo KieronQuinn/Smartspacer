@@ -88,6 +88,12 @@ enum class NotificationChannel(
         NotificationManager.IMPORTANCE_HIGH,
         R.string.notification_channel_plugin_updates_title,
         R.string.notification_channel_plugin_updates_content
+    ),
+    WIDGET_NOTIFICATION(
+        "widget_notification",
+        NotificationManager.IMPORTANCE_MAX,
+        R.string.notification_channel_widget_title,
+        R.string.notification_channel_widget_content
     );
 
     fun isEnabled(context: Context): Boolean {
@@ -125,5 +131,8 @@ enum class NotificationId {
     WIDGET_DIRECTION,
     NATIVE_MODE_JUST_ENABLE,
     RECONNECT_PROMPT,
-    RECONNECT_JUST_RECONNECT
+    RECONNECT_JUST_RECONNECT,
+    NOTIFICATION_SERVICE,
+    SMARTSPACER_WIDGET_NOTIFICATION,
+    CLOCK_COMPLICATION
 }

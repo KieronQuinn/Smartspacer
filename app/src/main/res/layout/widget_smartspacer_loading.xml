@@ -6,7 +6,7 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="@dimen/margin_16"
-    android:theme="@style/Theme.Material3.DynamicColors.DayNight">
+    android:theme="@style/WidgetShadowDisabled">
 
     <TextView
         style="@style/WidgetTitle"

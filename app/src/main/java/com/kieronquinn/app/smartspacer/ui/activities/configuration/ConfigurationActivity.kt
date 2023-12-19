@@ -68,13 +68,13 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.configuration.target.notification.NotificationTargetConfigurationActivity",
             R.navigation.nav_graph_configure_target_notification,
         ),
-        TARGET_NOTIFICATIONS(
-            ".ui.activities.configuration.target.notification.NotificationTargetConfigurationActivity",
-            R.navigation.nav_graph_configure_target_notification
-        ),
         TARGET_BLANK(
             ".ui.activities.configuration.target.blank.BlankTargetConfigurationActivity",
             R.navigation.nav_graph_configure_target_blank
+        ),
+        TARGET_DATE(
+            ".ui.activities.configuration.target.date.DateTargetConfigurationActivity",
+            R.navigation.nav_graph_configure_target_date
         ),
         COMPLICATION_GMAIL(
             ".ui.activities.configuration.complication.GmailComplicationConfigurationActivity",

@@ -88,8 +88,8 @@ interface AlarmRepository {
     fun enqueueNextAlarmChangedReceiver()
 
     /**
-     *  Enqueues the next daily update receiver, at midnight. This only reloads calendar events
-     *  currently.
+     *  Enqueues the next daily update receiver, at midnight. This reloads calendar events and
+     *  refreshes the date target
      */
     fun enqueueDailyUpdateReceiver()
 

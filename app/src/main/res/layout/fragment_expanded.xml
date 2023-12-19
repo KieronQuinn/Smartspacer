@@ -82,13 +82,14 @@
         app:constraint_referenced_ids="expanded_disabled_icon,expanded_disabled_title,expanded_disabled_button" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/expanded_permission"
         style="@style/Widget.Material3.CardView.Filled.Smartspacer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/margin_16"
+        app:cardBackgroundColor="?android:colorControlHighlight"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/expanded_permission">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

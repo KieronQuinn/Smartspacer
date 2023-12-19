@@ -59,7 +59,7 @@ class ConfigurationNotificationEnableFragment: BoundFragment<FragmentConfigurati
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun setupRestrictedCard() = with(binding.configurationNotificationContent) {
-        val shouldShow = requireContext().wasInstalledWithSession()
+        val shouldShow = !requireContext().wasInstalledWithSession()
         configurationNotificationInfo.isVisible = shouldShow
         configurationNotificationInfo.applyBackgroundTint(monet)
         configurationNotificationInfoButton.applyMonet()

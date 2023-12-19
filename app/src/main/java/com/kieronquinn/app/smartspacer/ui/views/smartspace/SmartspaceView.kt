@@ -15,12 +15,18 @@ abstract class SmartspaceView: KoinComponent {
 
     companion object {
 
-        fun fromTarget(target: SmartspaceTarget, surface: UiSurface): SmartspaceView {
+        fun fromTarget(
+            target: SmartspaceTarget,
+            surface: UiSurface,
+            forceBasic: Boolean
+        ): SmartspaceView {
             return target.templateData?.let { template ->
                 BaseTemplateSmartspaceView.create(
-                    target.smartspaceTargetId, target, template, surface
+                    target.smartspaceTargetId, target, template, surface, forceBasic
                 )
-            } ?: BaseFeatureSmartspaceView.create(target.smartspaceTargetId, target, surface)
+            } ?: BaseFeatureSmartspaceView.create(
+                target.smartspaceTargetId, target, surface, forceBasic
+            )
         }
     }
 
@@ -29,9 +35,16 @@ abstract class SmartspaceView: KoinComponent {
 
     private val appWidgetRepository by inject<AppWidgetRepository>()
 
-    fun inflate(context: Context, textColour: Int, width: Int): RemoteViews {
+    fun inflate(
+        context: Context,
+        textColour: Int,
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
+    ): RemoteViews {
         return RemoteViews(context.packageName, layoutRes).apply {
-            apply(context, textColour, this, width)
+            apply(context, textColour, this, width, titleSize, subtitleSize, featureSize)
         }
     }
 
@@ -39,14 +52,18 @@ abstract class SmartspaceView: KoinComponent {
         context: Context,
         textColour: Int,
         remoteViews: RemoteViews,
-        width: Int
+        width: Int,
+        titleSize: Float,
+        subtitleSize: Float,
+        featureSize: Float
     )
 
     protected fun getBestMaxLength(
         width: Int,
+        size: Float,
         title: CharSequence,
         subtitle: CharSequence?
-    ): Pair<Int, Int?> = appWidgetRepository.getBestMaxLength(width, title, subtitle)
+    ): Pair<Int, Int?> = appWidgetRepository.getBestMaxLength(width, size, title, subtitle)
 
     /**
      *  Subtracts the margins, icon sizes and padding from a full size widget width to give just the

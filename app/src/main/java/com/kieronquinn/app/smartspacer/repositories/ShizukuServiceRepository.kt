@@ -320,7 +320,11 @@ class ShizukuServiceRepositoryImpl(
                         this@ShizukuServiceRepositoryImpl.shizukuService.emit(service)
                         if(!hasResumed){
                             hasResumed = true
-                            it.resume(service)
+                            try {
+                                it.resume(service)
+                            }catch (e: IllegalStateException) {
+                                //Already resumed
+                            }
                         }
                     }
                 }

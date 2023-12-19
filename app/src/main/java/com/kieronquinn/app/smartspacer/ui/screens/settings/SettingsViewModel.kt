@@ -29,6 +29,7 @@ abstract class SettingsViewModel: ViewModel() {
     abstract fun onExpandedModeClicked()
     abstract fun onHideSensitiveContentClicked()
     abstract fun onOemSmartspaceClicked()
+    abstract fun onNotificationWidgetClicked()
     abstract fun onBackupRestoreClicked()
     abstract fun onPermissionsClicked()
     abstract fun onBatteryOptimisationClicked()
@@ -163,6 +164,12 @@ class SettingsViewModelImpl(
     override fun onOemSmartspaceClicked() {
         viewModelScope.launch {
             navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToSettingsOemSmartspaceFragment())
+        }
+    }
+
+    override fun onNotificationWidgetClicked() {
+        viewModelScope.launch {
+            navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToNotificationWidgetSettingsFragment())
         }
     }
 

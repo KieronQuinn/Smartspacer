@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/smartspace_view_space"
-    android:paddingBottom="@dimen/smartspace_view_space"
     android:orientation="horizontal">
 
     <ImageView

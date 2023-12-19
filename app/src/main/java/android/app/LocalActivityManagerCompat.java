@@ -781,7 +781,11 @@ public class LocalActivityManagerCompat {
             if(isAtLeastS()) {
                 mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, null);
             }else{
-                mActivityThread.handleStartActivity(binder, pendingActions);
+                try {
+                    mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions);
+                }catch (NoSuchMethodError e) {
+                    mActivityThread.handleStartActivity(binder, pendingActions);
+                }
             }
         }
 

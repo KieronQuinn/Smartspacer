@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_target_date"
+    app:startDestination="@id/dateTargetConfigurationFragment">
+
+    <fragment
+        android:id="@+id/dateTargetConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationFragment"
+        android:label="@string/target_date_label"
+        tools:layout="@layout/fragment_settings_base" >
+        <action
+            android:id="@+id/action_dateTargetConfigurationFragment_to_dateTargetFormatPickerFragment"
+            app:destination="@id/dateTargetFormatPickerFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/dateTargetFormatPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_target_date_format_picker_bottom_sheet" >
+        <action
+            android:id="@+id/action_dateTargetFormatPickerFragment_to_dateTargetFormatCustomFragment"
+            app:destination="@id/dateTargetFormatCustomFragment"
+            app:popUpTo="@id/dateTargetConfigurationFragment" />
+        <argument
+            android:name="format"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/dateTargetFormatCustomFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_target_date_format_custom" >
+        <argument
+            android:name="format"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
+
+</navigation>
