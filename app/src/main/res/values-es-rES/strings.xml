@@ -27,13 +27,17 @@
     <string name="restricted_mode_button">Abrir información de app</string>
     <string name="restricted_mode_warning_button">Permitir permiso con Shizuku</string>
     <string name="target_sensitive_title">Contenidos ocultos</string>
-    <!-- Shared by widget & expanded -->
+    <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automático (Del fondo de pantalla)</string>
+    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
     <string name="tint_colour_automatic_content">El texto e iconos en el widget automáticamente se ajustarán para que sean visibles en el fondo de pantalla</string>
+    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">Blanco</string>
     <string name="tint_colour_white_content">El texto e iconos en el widget siempre serán blancos</string>
+    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
     <string name="tint_colour_black">Negro</string>
     <string name="tint_colour_black_content">El texto e iconos en el widget siempre serán negros</string>
+    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Muestra los objetivos y complicaciones de Smartspacer</string>
     <string name="widget_loading_smartspacer">Cargando…</string>
@@ -153,6 +157,8 @@
     <string name="notification_channel_updates_content">Las notificaciones se muestran cuando haya una actualización disponible para Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Actualización de extensiones</string>
     <string name="notification_channel_plugin_updates_content">Las notificaciones se mostrarán cuando haya una actualización de extensiones de Smartspacer</string>
+    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
+    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
     <string name="notification_plugin_updates_title">Actualización de extensiones disponible</string>
     <string name="notification_plugin_updates_content_one">%1d actualización de una extensión está disponible, presiona para ver más</string>
     <string name="notification_plugin_updates_content_other">%1d actualizaciones de extensiones están disponibles, presiona para ver más</string>
@@ -820,6 +826,15 @@
     <string name="restore_settings_title">Restaurando configuración de Smartspacer…</string>
     <string name="restore_complete_title">Restauración completa</string>
     <string name="restore_page_controls_next">Siguiente</string>
+    <!-- Notification Widget Settings -->
+    <string name="notification_widget_title">Notificación en pantalla de bloqueo</string>
+    <string name="notification_widget_title_short">Pantalla de bloqueo</string>
+    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
+    <string name="notification_widget_toggle">Show Notification</string>
+    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
+    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">Hilo en XDA</string>
     <string name="github">GitHub</string>
@@ -846,6 +861,10 @@
     <string name="complication_digital_wellbeing_label">Bienestar digital</string>
     <string name="complication_digital_wellbeing_description">Muestra el tiempo de uso en pantalla de Bienestar digital</string>
     <string name="complication_digital_wellbeing_unsupported">Esta complicación requiere de la app Bienestar digital</string>
+    <!-- Clock Complication -->
+    <string name="complication_clock_label">Clock</string>
+    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
+    <string name="complication_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendario</string>
     <string name="target_calendar_description">Muestra eventos de Calendario de calendarios seleccionados</string>
@@ -919,6 +938,15 @@
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
     <string name="target_blank_settings_title">Configuración</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
+    <!-- Date Target -->
+    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_automatic">Automatic</string>
+    <string name="target_date_settings_date_format_automatic_content">System defined</string>
+    <string name="target_date_settings_title">Settings</string>
+    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_custom">Custom</string>
+    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
+    <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
