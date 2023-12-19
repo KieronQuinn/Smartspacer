@@ -27,13 +27,17 @@
     <string name="restricted_mode_button">Otwórz informacje o aplikacji</string>
     <string name="restricted_mode_warning_button">Udziel uprawnień używając Shizuku</string>
     <string name="target_sensitive_title">Ukryta zawartość</string>
-    <!-- Shared by widget & expanded -->
+    <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatycznie (na podstawie tapety)</string>
+    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
     <string name="tint_colour_automatic_content">Tekst i ikony w widżecie automatycznie będą przyciemnione, aby były widoczne na tapecie</string>
+    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">Biały</string>
     <string name="tint_colour_white_content">Tekst i ikony w widżecie zawsze będą białe</string>
+    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
     <string name="tint_colour_black">Czarny</string>
     <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
+    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
     <string name="widget_loading_smartspacer">Wczytywanie…</string>
@@ -153,6 +157,8 @@
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Plugin Updates</string>
     <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
+    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
+    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
     <string name="notification_plugin_updates_title">Plugin Updates Available</string>
     <string name="notification_plugin_updates_content_one">%1d Smartspacer plugin update is available, tap to view</string>
     <string name="notification_plugin_updates_content_other">%1d Smartspacer plugin updates are available, tap to view</string>
@@ -820,6 +826,15 @@
     <string name="restore_settings_title">Restoring Smartspacer settings…</string>
     <string name="restore_complete_title">Restore complete</string>
     <string name="restore_page_controls_next">Next</string>
+    <!-- Notification Widget Settings -->
+    <string name="notification_widget_title">Lock Screen Notification</string>
+    <string name="notification_widget_title_short">Lock Screen</string>
+    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
+    <string name="notification_widget_toggle">Show Notification</string>
+    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
+    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">XDA Thread</string>
     <string name="github">GitHub</string>
@@ -846,6 +861,10 @@
     <string name="complication_digital_wellbeing_label">Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_description">Shows the screen on time from Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
+    <!-- Clock Complication -->
+    <string name="complication_clock_label">Clock</string>
+    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
+    <string name="complication_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendar</string>
     <string name="target_calendar_description">Shows Calendar events from selected calendars</string>
@@ -919,6 +938,15 @@
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
     <string name="target_blank_settings_title">Settings</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
+    <!-- Date Target -->
+    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_automatic">Automatic</string>
+    <string name="target_date_settings_date_format_automatic_content">System defined</string>
+    <string name="target_date_settings_title">Settings</string>
+    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_custom">Custom</string>
+    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
+    <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail Unread</string>
     <string name="complication_gmail_description">Show the number of unread Gmail emails from selected labels</string>
