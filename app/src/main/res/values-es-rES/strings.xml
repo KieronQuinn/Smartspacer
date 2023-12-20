@@ -950,8 +950,8 @@
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
-    <string name="complication_gmail_description_filled_one">Show the number of unread Gmail emails at %1s in %1d label</string>
-    <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
+    <string name="complication_gmail_description_filled_one">Muestra el número de correos no leídos de Gmail de %1s en %1d etiqueta</string>
+    <string name="complication_gmail_description_filled_other">Muestra el número de correos no leídos de Gmail de %1s en %1d etiquetas</string>
     <string name="complication_gmail_unknown">\???</string>
     <string name="complication_gmail_settings_account_title">Cuenta</string>
     <string name="complication_gmail_settings_account_unselected">No seleccionada</string>
