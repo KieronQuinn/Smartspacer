@@ -1,6 +1,5 @@
 package com.kieronquinn.app.smartspacer.service
 
-import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
@@ -192,7 +191,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         val remoteViews = basicView.inflate(
             this@SmartspacerNotificationWidgetService,
             tint,
-            getUsableWidth(), //TODO
+            getUsableWidth(),
             titleSize,
             subtitleSize,
             featureSize
@@ -213,7 +212,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         val expandedRemoteViews = view.inflate(
             this@SmartspacerNotificationWidgetService,
             tint,
-            getUsableWidth(), //TODO
+            getUsableWidth(),
             titleSize,
             subtitleSize,
             featureSize
