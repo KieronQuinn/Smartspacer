@@ -4,7 +4,6 @@ import android.app.Notification
 import android.content.ComponentName
 import android.content.Context
 import android.service.notification.StatusBarNotification
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -44,8 +43,8 @@ class NotificationTarget: SmartspacerTargetProvider() {
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
         val settings = getSettings(smartspacerId) ?: return emptyList()
-        return getNotifications(smartspacerId).also {
-        }.map { it.toTarget() }.applyAppShortcuts(settings.packageName)
+        return getNotifications(smartspacerId).map { it.toTarget() }
+            .applyAppShortcuts(settings.packageName)
     }
 
     override fun getConfig(smartspacerId: String?): Config {
@@ -102,7 +101,8 @@ class NotificationTarget: SmartspacerTargetProvider() {
             sourceNotificationKey = key
             isSensitive = notification.visibility == Notification.VISIBILITY_SECRET
             val actions = notification.actions?.filter {
-                it.actionIntent != null
+                it.actionIntent != null && !it.remoteInputs.isNullOrEmpty()
+                        && !it.dataOnlyRemoteInputs.isNullOrEmpty()
             }?.map {
                 Shortcuts.Shortcut(
                     it.title,

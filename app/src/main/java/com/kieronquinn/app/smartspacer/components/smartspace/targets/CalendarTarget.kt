@@ -278,7 +278,7 @@ class CalendarTarget: SmartspacerTargetProvider() {
         @SerializedName("show_location")
         val showLocation: Boolean = true,
         @SerializedName("show_unconfirmed")
-        val showUnconfirmed: Boolean = false,
+        val showUnconfirmed: Boolean = true,
         @SerializedName("use_alternative_event_ids")
         val useAlternativeEventIds: Boolean = false,
         @SerializedName("calendars")

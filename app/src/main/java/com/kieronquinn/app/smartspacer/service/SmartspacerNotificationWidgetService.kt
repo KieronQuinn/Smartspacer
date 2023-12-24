@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.service
 
+import android.app.ForegroundServiceStartNotAllowedException
 import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
@@ -55,7 +56,11 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         fun startServiceIfNeeded(context: Context) {
             if(isServiceRunning(context)) return
             val intent = Intent(context, SmartspacerNotificationWidgetService::class.java)
-            context.startForegroundService(intent)
+            try {
+                context.startForegroundService(intent)
+            }catch (e: Exception) {
+                //Not allowed to start
+            }
         }
 
         fun stopService(context: Context) {

@@ -116,7 +116,7 @@ class CalendarTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable
             GenericSettingsItem.SwitchSetting(
                 targetData.showUnconfirmed,
                 getString(R.string.target_calendar_settings_show_unconfirmed_title),
-                getString(R.string.target_calendar_settings_show_unconfirmed_content),
+                getText(R.string.target_calendar_settings_show_unconfirmed_content),
                 ContextCompat.getDrawable(
                     requireContext(), R.drawable.ic_target_calendar_settings_show_unconfirmed
                 ),

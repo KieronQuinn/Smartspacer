@@ -885,7 +885,6 @@
     <string name="target_calendar_settings_show_location_title">Mostrar ubicación</string>
     <string name="target_calendar_settings_show_location_content">Mostrar ubicación de eventos, cuando esté disponible</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Mostrar no confirmado</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Mostrar eventos que no has marcado como asistencia confirmada</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
