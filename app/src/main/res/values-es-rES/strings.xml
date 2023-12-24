@@ -101,7 +101,7 @@
     <string name="target_greeting_night_name">Buenas noches, %1s</string>
     <string name="target_greeting_configuration_hide_if_no_complications_title">Ocultar dinámicamente</string>
     <string name="target_greeting_configuration_hide_if_no_complications_content">Oculta el objetivo si no hay complicaciones disponibles para mostrar debajo de él</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_title">Ocultar el título en AoD</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_title">Ocultar el título en pantalla siempre activa</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Oculta el título del objetivo en Always on Display (Solamente en Smartspace nativo)</string>
     <string name="target_greeting_configuration_name_title">Nombre del saludo</string>
     <string name="target_greeting_configuration_name_content">Tu nombre para mostrar en el saludo: %1s</string>
@@ -293,7 +293,7 @@
     <string name="requirement_time_date_content">Only show between %1s and %1s on %1s</string>
     <string name="requirement_time_date_content_all_days">Only show between %1s and %1s, every day</string>
     <string name="requirement_time_date_configuration_title">Fecha y hora</string>
-    <string name="requirement_time_date_configuration_content">Set the days and times when this item should be shown</string>
+    <string name="requirement_time_date_configuration_content">Establece los días y las horas en que este elemento debe ser mostrado</string>
     <string name="requirement_time_date_configuration_start_time">Hora de inicio</string>
     <string name="requirement_time_date_configuration_end_time">Hora de finalización</string>
     <string name="requirement_time_date_configuration_toast_end_time_invalid">La hora de finalización debe ser posterior a la hora de inicio</string>
@@ -639,7 +639,7 @@
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
     <string name="expanded_settings_header_style">Estilo</string>
     <string name="expanded_settings_blur_background_title">Desenfoque de fondo</string>
-    <string name="expanded_settings_blur_background_content">Apply a background blur to Expanded Smartspace, obscuring the wallpaper. <b>May not work properly with all launchers if you are using Discover Killer.</b> When disabled, the wallpaper will be dimmed instead.</string>
+    <string name="expanded_settings_blur_background_content">Aplicar un desenfoque de fondo al Smartspace expandido, desenfocando el fondo de pantalla. <b>Es posible que no funcione en todos los launchers si estás utilizando Discovery Killer.</b> Cuando esta opción está desactivada, el fondo de pantalla será atenuado.</string>
     <string name="expanded_settings_blur_background_incompatible">No es compatible con tu dispositivo</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Usar Google Sans en Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forzar a los widgets a usar Google Sans Text siempre que sea posible, esto puede causar problemas de diseño con algunos widgets</string>
@@ -654,7 +654,7 @@
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">Smartspace OEM</string>
-    <string name="oem_smartspace_content">Options for Smartspacer showing in legacy Launchers and on the Lock Screen on some devices</string>
+    <string name="oem_smartspace_content">Opciones para que Smartspacer se muestre en launchers heredados y en la pantalla de bloqueo de algunos dispositivos</string>
     <string name="oem_smartspace_content_enhanced">Esta opción requiere de modo mejorado</string>
     <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root.</string>
     <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
@@ -829,7 +829,7 @@
     <!-- Notification Widget Settings -->
     <string name="notification_widget_title">Notificación en pantalla de bloqueo</string>
     <string name="notification_widget_title_short">Pantalla de bloqueo</string>
-    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
+    <string name="notification_widget_content">Opciones para que Smartspacer se muestre como una notificación en la pantalla de bloqueo</string>
     <string name="notification_widget_toggle">Show Notification</string>
     <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
     <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
@@ -862,9 +862,9 @@
     <string name="complication_digital_wellbeing_description">Muestra el tiempo de uso en pantalla de Bienestar digital</string>
     <string name="complication_digital_wellbeing_unsupported">Esta complicación requiere de la app Bienestar digital</string>
     <!-- Clock Complication -->
-    <string name="complication_clock_label">Clock</string>
-    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
-    <string name="complication_clock_description_short">Shows the current time</string>
+    <string name="complication_clock_label">Reloj</string>
+    <string name="complication_clock_description">Muestra la hora actual.\n<b>Advertencia:</b> Esta complicación puede causar alto consumo de batería.</string>
+    <string name="complication_clock_description_short">Muestra la hora actual</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendario</string>
     <string name="target_calendar_description">Muestra eventos de Calendario de calendarios seleccionados</string>
@@ -933,7 +933,7 @@
     <string name="target_blank_title">Objetivo vacío</string>
     <string name="target_blank_content">Ultra mínimo, se puede utilizar para no mostrar nada en absoluto o sólo complicaciones</string>
     <string name="target_blank_settings_show_complications_title">Mostrar complicaciones</string>
-    <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
+    <string name="target_blank_settings_show_complications_content">Permitir que hasta dos complicaciones se muestren debajo del título del objetivo vacío. Esto es útil si no quieres tener la fecha pero quieres que se sigan mostrando las complicaciones.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Ocultar si no hay complicaciones</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
     <string name="target_blank_settings_title">Configuración</string>
@@ -950,8 +950,8 @@
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
-    <string name="complication_gmail_description_filled_one">Show the number of unread Gmail emails at %1s in %1d label</string>
-    <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
+    <string name="complication_gmail_description_filled_one">Muestra el número de correos no leídos de Gmail de %1s en %1d etiqueta</string>
+    <string name="complication_gmail_description_filled_other">Muestra el número de correos no leídos de Gmail de %1s en %1d etiquetas</string>
     <string name="complication_gmail_unknown">\???</string>
     <string name="complication_gmail_settings_account_title">Cuenta</string>
     <string name="complication_gmail_settings_account_unselected">No seleccionada</string>
@@ -973,7 +973,7 @@
     <string name="complication_blank_title">Complicación vacía</string>
     <string name="complication_blank_content">Útil para configuraciones mínimas o espaciadores</string>
     <!-- Recent Apps Requirement -->
-    <string name="requirement_recent_apps_label">Recent App</string>
+    <string name="requirement_recent_apps_label">App reciente</string>
     <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
     <string name="requirement_recent_apps_description_filled">Mostrar solo cuando %1s está en apps recientes, y ocultar cuando sea descartado de la lista</string>
     <string name="requirement_recent_apps_description_filled_with_limit">Only show when %1s is in the first %1d recent apps</string>
