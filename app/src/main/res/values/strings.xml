@@ -977,7 +977,7 @@
     <string name="target_calendar_settings_show_location_title">Show Location</string>
     <string name="target_calendar_settings_show_location_content">Show event locations, where available</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Show Unconfirmed</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>

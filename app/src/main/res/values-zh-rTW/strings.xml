@@ -885,7 +885,6 @@
     <string name="target_calendar_settings_show_location_title">顯示地點</string>
     <string name="target_calendar_settings_show_location_content">顯示可用的事件地點</string>
     <string name="target_calendar_settings_show_unconfirmed_title">顯示未確認</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">顯示您尚未標記為已確認出席的事件</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">使用替代事件 ID</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">在駁回事件時，根據事件的標題、開始和結束時間而不是系統提供的 ID，為每個事件創建 ID。這在您使用應用程式或服務同步行事曆帳戶間，並在事情改變時重新創建新事件時非常有用。</string>
     <string name="target_calendar_settings_pre_event_time_title">在開始前顯示事件時間</string>

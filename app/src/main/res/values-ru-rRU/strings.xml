@@ -885,7 +885,6 @@
     <string name="target_calendar_settings_show_location_title">Показать место</string>
     <string name="target_calendar_settings_show_location_content">Показать места проведения событий, где это возможно</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Показать непосещённые</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Показать события, которые вы не отметили как посещённые</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Использовать альтернативные ID события</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Создавать идентификаторы для каждого события на основе их названия, времени начала и окончания, вместо использования системных, при отклонении событий. Это полезно, если вы используете приложение или службу, которые синхронизируют календари между аккаунтами, и пересоздают новые события при изменениях.</string>
     <string name="target_calendar_settings_pre_event_time_title">Показать событие за время до начала</string>

@@ -885,7 +885,6 @@
     <string name="target_calendar_settings_show_location_title">显示地点</string>
     <string name="target_calendar_settings_show_location_content">如果可用则显示事件地点</string>
     <string name="target_calendar_settings_show_unconfirmed_title">显示未确认事件</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">显示你还没有标记为确认参加的事件</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">使用替代事件 ID</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">消除事件时不使用系统提供的 ID，而是基于标题、开始和结束时间为每个事件创建 ID。当你借助应用或服务在多个账户间同步日历时很有用，这种方式会在细节变动时自动帮你创建新的事件。</string>
     <string name="target_calendar_settings_pre_event_time_title">在开始前显示事件时间</string>
