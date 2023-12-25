@@ -29,7 +29,7 @@
     <string name="target_sensitive_title">Contenidos ocultos</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automático (Del fondo de pantalla)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic_alt">Automático (del fondo de pantalla)</string>
     <string name="tint_colour_automatic_content">El texto e iconos en el widget automáticamente se ajustarán para que sean visibles en el fondo de pantalla</string>
     <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">Blanco</string>
@@ -624,8 +624,8 @@
     <string name="expanded_settings_show_search_box_title">Mostrar cuadro de búsqueda</string>
     <string name="expanded_settings_show_search_box_content">Mostrar cuadro de búsqueda en la parte superior del Smartspace extendido</string>
     <string name="expanded_settings_search_provider_title">Proveedor de búsqueda</string>
-    <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
-    <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
+    <string name="expanded_settings_search_provider_content">Selecciona la aplicación a iniciar cuando se abra el cuadro de búsqueda: %1s</string>
+    <string name="expanded_settings_search_provider_content_unset">Selecciona la aplicación a iniciar cuando se abra el cuadro de búsqueda</string>
     <string name="expanded_settings_show_doodle_title">Mostrar Doodle de Google</string>
     <string name="expanded_settings_show_doodle_content">Mostrar el Doodle de hoy en la parte superior del Smartspace extendido</string>
     <string name="expanded_settings_header_behaviour">Comportamiento</string>
@@ -763,11 +763,11 @@
     <string name="permissions_allow">Permitir</string>
     <string name="permissions_deny">Denegar</string>
     <string name="permissions_ask_every_time">Preguntar siempre</string>
-    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
+    <string name="permissions_header">Los permisos de acceso solo son aplicados cuando agregas un objetivo o complicación. Para revocar completamente el acceso a notificaciones o widgets a las extensiones, debes remover los objetivos y complicaciones.</string>
     <string name="permissions_title">Permisos</string>
     <string name="permissions_content">Administrar permisos otorgados a las extensiones y aplicaciones integrando Smartspacer</string>
-    <string name="permissions_widgets">Access widgets via Smartspacer</string>
-    <string name="permissions_notifications">Access notifications via Smartspacer</string>
+    <string name="permissions_widgets">Acceso de widgets mediante Smartspacer</string>
+    <string name="permissions_notifications">Acceso de notificaciones mediante Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
     <string name="backup_restore_title">Copia de seguridad y restaurar</string>
@@ -830,10 +830,10 @@
     <string name="notification_widget_title">Notificación en pantalla de bloqueo</string>
     <string name="notification_widget_title_short">Pantalla de bloqueo</string>
     <string name="notification_widget_content">Opciones para que Smartspacer se muestre como una notificación en la pantalla de bloqueo</string>
-    <string name="notification_widget_toggle">Show Notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_toggle">Mostrar notificación</string>
+    <string name="notification_widget_info">Esta opción muestra contenido <b>limitado</b> de Smartspacer en la pantalla de bloqueo, en forma de notificación. Solo una página puede ser mostrada, y necesitas expandir la notificación para ver más que el contenido básico.</string>
     <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
-    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_title">Tono</string>
     <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">Hilo en XDA</string>
