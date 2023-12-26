@@ -211,6 +211,17 @@ class MusicTarget: SmartspacerTargetProvider() {
      */
     private fun MediaMetadata.getAlbumArt(): Bitmap? {
         return when {
+            containsKey(METADATA_KEY_ART) -> {
+                getBitmap(METADATA_KEY_ART)
+            }
+            containsKey(METADATA_KEY_ART_URI) -> {
+                val uri = Uri.parse(getString(METADATA_KEY_ART_URI))
+                val inputStream = provideContext().contentResolver.openInputStream(uri)
+                    ?: return null
+                BitmapFactory.decodeStream(inputStream).also {
+                    inputStream.close()
+                }
+            }
             containsKey(METADATA_KEY_ALBUM_ART) -> {
                 getBitmap(METADATA_KEY_ALBUM_ART)
             }

@@ -101,8 +101,7 @@ class NotificationTarget: SmartspacerTargetProvider() {
             sourceNotificationKey = key
             isSensitive = notification.visibility == Notification.VISIBILITY_SECRET
             val actions = notification.actions?.filter {
-                it.actionIntent != null && !it.remoteInputs.isNullOrEmpty()
-                        && !it.dataOnlyRemoteInputs.isNullOrEmpty()
+                it.isUsable()
             }?.map {
                 Shortcuts.Shortcut(
                     it.title,
@@ -116,6 +115,12 @@ class NotificationTarget: SmartspacerTargetProvider() {
                 shortcuts = actions
             )
         }
+    }
+
+    private fun Notification.Action.isUsable(): Boolean {
+        if(actionIntent == null) return false
+        if(!remoteInputs.isNullOrEmpty()) return false
+        return dataOnlyRemoteInputs.isNullOrEmpty()
     }
 
     private fun Notification.getContentTextOrAppName(packageName: String): CharSequence? {
