@@ -402,13 +402,13 @@
     <string name="compatibility_feature_combination_title">Botón</string>
     <string name="compatibility_feature_combination_content">Permite mostrar un botón, además un título y un subtítulo</string>
     <string name="compatibility_feature_combination_at_store_title">Combinación en tienda</string>
-    <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_combination_at_store_content">Permite mostrar un botón y una lista de compras, además un título y un subtítulo</string>
     <string name="compatibility_feature_doorbell_title">Timbre</string>
-    <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
+    <string name="compatibility_feature_doorbell_content">Permite mostrar una vista compleja, además de un título y un subtítulo, con soporte para una vista previa en tiempo real de un timbre inteligente en algunas pantallas</string>
     <string name="compatibility_feature_flight_title">Viajes</string>
     <string name="compatibility_feature_flight_content">Permite mostrar la información básica de vuelo como el número de vuelo y la aerolínea además del título &amp; subtítulo.</string>
     <string name="compatibility_feature_image_title">Imagen</string>
-    <string name="compatibility_feature_image_content">Allows showing an image in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_image_content">Permite mostrar una imagen, además de un título y un subtítulo</string>
     <string name="compatibility_feature_loyalty_title">Tarjeta de lealtad</string>
     <string name="compatibility_feature_loyalty_content">Allows showing a button in addition to the title &amp; subtitle.</string>
     <string name="compatibility_feature_shopping_list_title">Lista</string>
