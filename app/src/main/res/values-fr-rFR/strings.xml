@@ -21,23 +21,23 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatique (à partir du fond d\'écran)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic_alt">Automatique (à partir du thème)</string>
     <string name="tint_colour_automatic_content">La couleur du texte et des icônes sera ajustée automatiquement en fonction du fond d\'écran pour améliorer la lisibilité</string>
-    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
+    <string name="tint_colour_automatic_content_alt">La couleur du texte et des icônes sera ajustée automatiquement en fonction de votre thème pour améliorer la lisibilité</string>
     <string name="tint_colour_white">Blanc</string>
     <string name="tint_colour_white_content">Le texte et les icônes seront toujours blancs</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
+    <string name="tint_colour_white_content_alt">Le texte et les icônes seront toujours blancs</string>
     <string name="tint_colour_black">Noir</string>
     <string name="tint_colour_black_content">Le texte et les icônes seront toujours noirs</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
+    <string name="tint_colour_black_content_alt">Le texte et les icônes seront toujours noirs</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Afficher les cibles et les complications Smartspacer</string>
     <string name="widget_loading_smartspacer">Chargement…</string>
@@ -157,8 +157,8 @@
     <string name="notification_channel_updates_content">Notifications affichées lorsqu\'une mise à jour de Smartspacer est disponible</string>
     <string name="notification_channel_plugin_updates_title">Mises à jour des plugins</string>
     <string name="notification_channel_plugin_updates_content">Notifications affichées lorsqu\'une mise à jour de plugin Smartspacer est disponible</string>
-    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
-    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
+    <string name="notification_channel_widget_title">Smartspacer dans les notifications</string>
+    <string name="notification_channel_widget_content">Affiche Smartspacer dans les notifications sur l\'écran de verrouillage</string>
     <string name="notification_plugin_updates_title">Mises à jour de plugins dispnibles</string>
     <string name="notification_plugin_updates_content_one">%1d mise à jour de plugin disponible, appuyez pour plus d\'infos</string>
     <string name="notification_plugin_updates_content_other">%1d mises à jour de plugins disponibles, appuyez pour plus d\'infos</string>
@@ -434,7 +434,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -827,14 +827,14 @@
     <string name="restore_complete_title">Restauration terminée</string>
     <string name="restore_page_controls_next">Suivant</string>
     <!-- Notification Widget Settings -->
-    <string name="notification_widget_title">Lock Screen Notification</string>
-    <string name="notification_widget_title_short">Lock Screen</string>
-    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
-    <string name="notification_widget_toggle">Show Notification</string>
+    <string name="notification_widget_title">Notification sur l\'écran de verrouillage</string>
+    <string name="notification_widget_title_short">Écran de verrouillage</string>
+    <string name="notification_widget_content">Options pour Smartspacer dans les notifications sur l\'écran de verrouillage</string>
+    <string name="notification_widget_toggle">Afficher la notification</string>
     <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
-    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
-    <string name="notification_widget_tint_title">Tint</string>
-    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
+    <string name="notification_widget_notifications_disabled">Les notifications sont désactivées donc cette option ne fonctionnera pas. Appuyez pour activer.</string>
+    <string name="notification_widget_tint_title">Couleur</string>
+    <string name="notification_widget_tint_content">Couleur à utiliser pour le texte et les icônes dans la notification : %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">Discussion sur XDA</string>
     <string name="github">GitHub</string>
@@ -862,9 +862,9 @@
     <string name="complication_digital_wellbeing_description">Affiche le temps d\'utilisation du Bien-être numérique</string>
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Clock Complication -->
-    <string name="complication_clock_label">Clock</string>
+    <string name="complication_clock_label">Horloge</string>
     <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
-    <string name="complication_clock_description_short">Shows the current time</string>
+    <string name="complication_clock_description_short">Affiche l\'heure actuelle</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
     <string name="target_calendar_description">Affiche les événements provenant des agendas sélectionnés</string>
@@ -939,14 +939,14 @@
     <string name="target_blank_settings_title">Paramètres</string>
     <string name="target_blank_settings_description">Configurer s\'il faut afficher les complications sur cette cible vide</string>
     <!-- Date Target -->
-    <string name="target_date_settings_date_format_title">Date Format</string>
-    <string name="target_date_settings_date_format_automatic">Automatic</string>
-    <string name="target_date_settings_date_format_automatic_content">System defined</string>
-    <string name="target_date_settings_title">Settings</string>
-    <string name="target_date_settings_description">Configure the date format</string>
-    <string name="target_date_settings_custom">Custom</string>
-    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
-    <string name="target_date_settings_custom_invalid">Invalid date format</string>
+    <string name="target_date_settings_date_format_title">Format de la date</string>
+    <string name="target_date_settings_date_format_automatic">Automatique</string>
+    <string name="target_date_settings_date_format_automatic_content">Défini par le système</string>
+    <string name="target_date_settings_title">Paramètres</string>
+    <string name="target_date_settings_description">Configurer le format de la date</string>
+    <string name="target_date_settings_custom">Personnalisé</string>
+    <string name="target_date_settings_custom_content">Saisissez une chaîne de formatage pour la date au format Java</string>
+    <string name="target_date_settings_custom_invalid">Format de date invalide</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus (Gmail)</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>

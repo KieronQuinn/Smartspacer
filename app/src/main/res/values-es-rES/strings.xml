@@ -29,7 +29,7 @@
     <string name="target_sensitive_title">Contenidos ocultos</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automático (Del fondo de pantalla)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic_alt">Automático (del fondo de pantalla)</string>
     <string name="tint_colour_automatic_content">El texto e iconos en el widget automáticamente se ajustarán para que sean visibles en el fondo de pantalla</string>
     <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">Blanco</string>
@@ -149,7 +149,7 @@
     <string name="notification_channel_accessibility_content">Mensajes acerca del servicio de accesibilidad se Smartspacer</string>
     <string name="notification_channel_native_title">Smartspace nativo</string>
     <string name="notification_channel_native_content">Mensajes sobre el servicio Shizuku de Smartspacer</string>
-    <string name="notification_channel_oem_title">Smartspace OEM</string>
+    <string name="notification_channel_oem_title">Smartspace de OEM</string>
     <string name="notification_channel_oem_content">Mensajes relacionados con el Servicio OEM Smartspace de Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Recordatorio de Shizuku</string>
     <string name="notification_channel_shizuku_reminder_content">Notificación mostrada como un recordatorio a iniciar Shizuku después de reiniciar</string>
@@ -157,8 +157,8 @@
     <string name="notification_channel_updates_content">Las notificaciones se muestran cuando haya una actualización disponible para Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Actualización de extensiones</string>
     <string name="notification_channel_plugin_updates_content">Las notificaciones se mostrarán cuando haya una actualización de extensiones de Smartspacer</string>
-    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
-    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
+    <string name="notification_channel_widget_title">Smartspacer como una notificación</string>
+    <string name="notification_channel_widget_content">Muestra Smartspacer como una notificación en la pantalla de bloqueo</string>
     <string name="notification_plugin_updates_title">Actualización de extensiones disponible</string>
     <string name="notification_plugin_updates_content_one">%1d actualización de una extensión está disponible, presiona para ver más</string>
     <string name="notification_plugin_updates_content_other">%1d actualizaciones de extensiones están disponibles, presiona para ver más</string>
@@ -400,31 +400,31 @@
     <string name="compatibility_feature_basic_title">Básico</string>
     <string name="compatibility_feature_basic_content">Permite mostrar un título y un subtítulo con icono. Cualquier objetivo no soportado volverá a este estilo.</string>
     <string name="compatibility_feature_combination_title">Botón</string>
-    <string name="compatibility_feature_combination_content">Allows showing a button in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
-    <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_combination_content">Permite mostrar un botón, además un título y un subtítulo</string>
+    <string name="compatibility_feature_combination_at_store_title">Combinación en tienda</string>
+    <string name="compatibility_feature_combination_at_store_content">Permite mostrar un botón y una lista de compras, además un título y un subtítulo</string>
     <string name="compatibility_feature_doorbell_title">Timbre</string>
-    <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
+    <string name="compatibility_feature_doorbell_content">Permite mostrar una vista compleja, además de un título y un subtítulo, con soporte para una vista previa en tiempo real de un timbre inteligente en algunas pantallas</string>
     <string name="compatibility_feature_flight_title">Viajes</string>
     <string name="compatibility_feature_flight_content">Permite mostrar la información básica de vuelo como el número de vuelo y la aerolínea además del título &amp; subtítulo.</string>
     <string name="compatibility_feature_image_title">Imagen</string>
-    <string name="compatibility_feature_image_content">Allows showing an image in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_image_content">Permite mostrar una imagen, además de un título y un subtítulo</string>
     <string name="compatibility_feature_loyalty_title">Tarjeta de lealtad</string>
-    <string name="compatibility_feature_loyalty_content">Allows showing a button in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_loyalty_content">Permite mostrar un botón, además un título y un subtítulo</string>
     <string name="compatibility_feature_shopping_list_title">Lista</string>
     <string name="compatibility_feature_shopping_list_content">Permite mostrar una lista corta además del título &amp; subtítulo</string>
     <string name="compatibility_feature_sports_title">Deportes</string>
-    <string name="compatibility_feature_sports_content">Allows displaying a score for two teams in addition to the title &amp; subtitle</string>
+    <string name="compatibility_feature_sports_content">Permite mostrar la puntuación de dos equipos, además un título y un subtítulo</string>
     <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
     <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">Carrusel</string>
-    <string name="compatibility_template_carousel_content">Allows showing up to four icons with a header and footer, in addition to the title &amp; subtitle</string>
+    <string name="compatibility_template_carousel_content">Permite mostrar hasta cuatro iconos con un encabezado y pie de página, además del título y un subtítulo</string>
     <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
     <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
     <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
     <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">Imágenes</string>
-    <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
+    <string name="compatibility_template_sub_images_content">Permite mostrar una secuencia de imágenes, además un título y un subtítulo</string>
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Pantalla de bloqueo</string>
@@ -439,7 +439,7 @@
     <string name="setup_analytics_deny">Denegar</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notificaciones</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer usa las notificaciones para mostrar información, advertencias y errores, como también recordatorios relacionados con el modo mejorado, si es que este se encuentra activado</string>
     <string name="setup_notifications_request">Otorgar permiso</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Objetivos</string>
@@ -506,7 +506,7 @@
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
     <string name="enhanced_mode_request_shizuku_button">Obtener Shizuku</string>
-    <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
+    <string name="enhanced_mode_request_sui_content">Sui es un módulo de Magisk que permite que aplicaciones como Smartspacer ejecuten código como root. Utiliza el mismo marco que Shizuku y, por lo tanto, funciona con las aplicaciones de Shizuku, pero no requiere inicio manual después de reiniciar, esto se hace automáticamente.\n<b>Si no estás seguro de qué es root o Magisk, usa Shizuku en su lugar.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
     <string name="enhanced_mode_request_sui_button">Obtener Sui</string>
     <string name="enhanced_mode_request_shizuku_error_title">Shizuku no iniciado</string>
@@ -525,7 +525,7 @@
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
     <string name="enhanced_mode_skip_button">Omitir</string>
     <string name="enhanced_mode_skip_info">Puedes seguir usando los widgets, objetivos, complicaciones y extensiones de Smartspacer con el modo mejorado desactivado</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_disable_toast">Es posible que tengas que reiniciar tu dispositivo para que los cambios surtan efecto</string>
     <!-- Native Mode -->
     <string name="native_title">Smartspace nativo</string>
     <string name="native_switch">Usar Smartspace nativo</string>
@@ -561,10 +561,10 @@
     <string name="notification_shizuku_content_at_a_glance_complication">La complicación \"De un vistazo\" requiere que Shizuku haya iniciado, presiona para abrir</string>
     <!-- Sui service notifications -->
     <string name="notification_sui_title">Sui o Shizuku como root</string>
-    <string name="notification_sui_content_oem_smartspace">Smartspace OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
+    <string name="notification_sui_content_oem_smartspace">Smartspace de OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Desactivar las optimizaciones de batería</string>
-    <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
+    <string name="notification_battery_optimisation_content">Smartspacer requiere que la optimización de batería esté desactivada para poder actualizar los objetivos y complicaciones en segundo plano, presiona para desactivarla</string>
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Música</string>
@@ -595,7 +595,7 @@
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
-    <string name="target_permission_request_content">Tap to grant</string>
+    <string name="target_permission_request_content">Presiona para permitir</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Permitir</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
@@ -605,11 +605,11 @@
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Smartspace extendido está desactivado</string>
     <string name="expanded_disabled_settings">Configuración</string>
-    <string name="expanded_widget_configure">Tap to configure widget</string>
-    <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
+    <string name="expanded_widget_configure">Presiona para configurar el widget</string>
+    <string name="expanded_widget_deleted">El widget ha sido desinstalado, presiona para quitarlo</string>
     <string name="expanded_widget_deleted_rearrange">Widget desinstalado</string>
     <string name="expanded_permission_title">Permitir mostrar sobre otras apps</string>
-    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_permission_title_short">Mostrar sobre otras apps</string>
     <string name="expanded_permission_content">Para que Smartspace extendido reemplace al feed de Google Discover, se requiere este permiso para poder lanzar aplicaciones desde la superposición. Abre Smartspacer para permitir el permiso o permitelo manualmente desde la pantalla de información de la aplicación.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
     <string name="expanded_permission_later">Más tarde</string>
@@ -624,8 +624,8 @@
     <string name="expanded_settings_show_search_box_title">Mostrar cuadro de búsqueda</string>
     <string name="expanded_settings_show_search_box_content">Mostrar cuadro de búsqueda en la parte superior del Smartspace extendido</string>
     <string name="expanded_settings_search_provider_title">Proveedor de búsqueda</string>
-    <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
-    <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
+    <string name="expanded_settings_search_provider_content">Selecciona la aplicación a iniciar cuando se abra el cuadro de búsqueda: %1s</string>
+    <string name="expanded_settings_search_provider_content_unset">Selecciona la aplicación a iniciar cuando se abra el cuadro de búsqueda</string>
     <string name="expanded_settings_show_doodle_title">Mostrar Doodle de Google</string>
     <string name="expanded_settings_show_doodle_content">Mostrar el Doodle de hoy en la parte superior del Smartspace extendido</string>
     <string name="expanded_settings_header_behaviour">Comportamiento</string>
@@ -653,14 +653,14 @@
     <string name="expanded_settings_tint_colour">Tono</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
-    <string name="oem_smartspace_title">Smartspace OEM</string>
+    <string name="oem_smartspace_title">Smartspace de OEM</string>
     <string name="oem_smartspace_content">Opciones para que Smartspacer se muestre en launchers heredados y en la pantalla de bloqueo de algunos dispositivos</string>
     <string name="oem_smartspace_content_enhanced">Esta opción requiere de modo mejorado</string>
     <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root.</string>
     <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
     <string name="oem_smartspace_more_info">Más información</string>
     <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
-    <string name="oem_smartspace_switch">Usar Smartspace OEM</string>
+    <string name="oem_smartspace_switch">Usar Smartspace de OEM</string>
     <string name="oem_smartspace_apps">Aplicaciones compatibles</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Configuración</string>
@@ -694,8 +694,8 @@
     <string name="battery_optimisation_system_content">Esto es necesario para permitir que Smartspacer siga funcionando en segundo plano.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Permitir alarmas y recordatorios</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
-    <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
-    <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
+    <string name="battery_optimisation_oem_title">Optimización de batería de OEM</string>
+    <string name="battery_optimisation_oem_content">Tu dispositivo parece tener algunas optimizaciones de batería específicas del OEM. Estas no se pueden desactivar automáticamente; presiona para abrir la configuración de la batería OEM.</string>
     <string name="battery_optimisation_footer">Smartspacer se ejecuta en segundo plano, así que para evitar que el sistema lo detenga, las optimizaciones de batería deben desactivarse.</string>
     <string name="battery_optimisation_footer_link">Más información</string>
     <string name="plugin_repository_tab_installed">Instaladas</string>
@@ -763,11 +763,11 @@
     <string name="permissions_allow">Permitir</string>
     <string name="permissions_deny">Denegar</string>
     <string name="permissions_ask_every_time">Preguntar siempre</string>
-    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
+    <string name="permissions_header">Los permisos de acceso solo son aplicados cuando agregas un objetivo o complicación. Para revocar completamente el acceso a notificaciones o widgets a las extensiones, debes remover los objetivos y complicaciones.</string>
     <string name="permissions_title">Permisos</string>
     <string name="permissions_content">Administrar permisos otorgados a las extensiones y aplicaciones integrando Smartspacer</string>
-    <string name="permissions_widgets">Access widgets via Smartspacer</string>
-    <string name="permissions_notifications">Access notifications via Smartspacer</string>
+    <string name="permissions_widgets">Acceso de widgets mediante Smartspacer</string>
+    <string name="permissions_notifications">Acceso de notificaciones mediante Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
     <string name="backup_restore_title">Copia de seguridad y restaurar</string>
@@ -830,10 +830,10 @@
     <string name="notification_widget_title">Notificación en pantalla de bloqueo</string>
     <string name="notification_widget_title_short">Pantalla de bloqueo</string>
     <string name="notification_widget_content">Opciones para que Smartspacer se muestre como una notificación en la pantalla de bloqueo</string>
-    <string name="notification_widget_toggle">Show Notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_toggle">Mostrar notificación</string>
+    <string name="notification_widget_info">Esta opción muestra contenido <b>limitado</b> de Smartspacer en la pantalla de bloqueo, en forma de notificación. Solo una página puede ser mostrada, y necesitas expandir la notificación para ver más que el contenido básico.</string>
     <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
-    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_title">Tono</string>
     <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">Hilo en XDA</string>
