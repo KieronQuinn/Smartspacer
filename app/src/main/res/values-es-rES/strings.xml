@@ -424,7 +424,7 @@
     <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
     <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">Imágenes</string>
-    <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
+    <string name="compatibility_template_sub_images_content">Permite mostrar una secuencia de imágenes, además un título y un subtítulo</string>
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Pantalla de bloqueo</string>
