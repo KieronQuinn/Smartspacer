@@ -73,8 +73,8 @@
     <string name="target_notification_description_selected_with_channels">Mostrar notificaciones de %1s (%1d %1s)</string>
     <string name="target_notification_description_channels_one">canal</string>
     <string name="target_notification_description_channels_other">canales</string>
-    <string name="target_now_playing_label">Está Sonando de Pixel</string>
-    <string name="target_now_playing_description">Muestra la canción que se está reproduciendo actualmente desde Está Sonando de Pixel</string>
+    <string name="target_now_playing_label">Está Sonando (Google Pixel)</string>
+    <string name="target_now_playing_description">Muestra la canción que se está reproduciendo actualmente desde Está Sonando (Google Pixel)</string>
     <string name="target_now_playing_description_unavailable">Este objetivo requiere Está Sonando en el Pixel</string>
     <string name="target_now_playing_shortcut_history">Historial</string>
     <string name="target_ambient_music_mod_label">Está Sonando (Ambient Music Mod)</string>
@@ -656,7 +656,7 @@
     <string name="oem_smartspace_title">Smartspace de OEM</string>
     <string name="oem_smartspace_content">Opciones para que Smartspacer se muestre en launchers heredados y en la pantalla de bloqueo de algunos dispositivos</string>
     <string name="oem_smartspace_content_enhanced">Esta opción requiere de modo mejorado</string>
-    <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root.</string>
+    <string name="oem_smartspace_incompatible">Lamentablemente esta opción requiere root en tu dispositivo debido a limitaciones del sistema. Si tu dispositivo está rooteado, instala el módulo Sui de Magisk o inicia Shizuku como root.</string>
     <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
     <string name="oem_smartspace_more_info">Más información</string>
     <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
@@ -665,7 +665,7 @@
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Configuración</string>
     <string name="oem_smartspace_label_systemui">Pantalla de bloqueo</string>
-    <string name="oem_smartspace_hide_incompatible_title">Ocultar objetivos incompatibles</string>
+    <string name="oem_smartspace_hide_incompatible_title">Ocultar objetivos no compatibles</string>
     <string name="oem_smartspace_hide_incompatible_content">Ocultar objetivos incompatibles con Smartspace de OEM, en lugar de mostrar solo su título y subtítulo</string>
     <string name="expanded_search_box_search">Buscar…</string>
     <string name="expanded_footer">Agregar widget</string>
@@ -940,10 +940,10 @@
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
     <string name="target_date_settings_date_format_title">Date Format</string>
-    <string name="target_date_settings_date_format_automatic">Automatic</string>
+    <string name="target_date_settings_date_format_automatic">Automático</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
-    <string name="target_date_settings_title">Settings</string>
-    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_title">Configuración</string>
+    <string name="target_date_settings_description">Configurar el formato de fecha</string>
     <string name="target_date_settings_custom">Custom</string>
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
