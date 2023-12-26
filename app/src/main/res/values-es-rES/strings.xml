@@ -400,8 +400,8 @@
     <string name="compatibility_feature_basic_title">Básico</string>
     <string name="compatibility_feature_basic_content">Permite mostrar un título y un subtítulo con icono. Cualquier objetivo no soportado volverá a este estilo.</string>
     <string name="compatibility_feature_combination_title">Botón</string>
-    <string name="compatibility_feature_combination_content">Allows showing a button in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
+    <string name="compatibility_feature_combination_content">Permite mostrar un botón, además un título y un subtítulo</string>
+    <string name="compatibility_feature_combination_at_store_title">Combinación en tienda</string>
     <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
     <string name="compatibility_feature_doorbell_title">Timbre</string>
     <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
