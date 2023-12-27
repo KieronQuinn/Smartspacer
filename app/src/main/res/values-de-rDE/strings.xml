@@ -13,7 +13,7 @@
     <string name="save">Speichern</string>
     <string name="close">Schließen</string>
     <string name="reset">Zurücksetzen</string>
-    <string name="menu_rerun_setup">Setup neu starten</string>
+    <string name="menu_rerun_setup">Einrichtung neu starten</string>
     <string name="bottom_nav_targets">Ziele</string>
     <string name="bottom_nav_complications">Komplikationen</string>
     <string name="bottom_nav_plugins">Plugins</string>
@@ -88,7 +88,7 @@
     <string name="target_default_configuration_title">Einstellungen</string>
     <string name="target_default_configuration_description">Hide default Targets, and access more settings in the Google app</string>
     <string name="target_date_label">Datum</string>
-    <string name="target_date_description">Shows the current date, with space for two Complications</string>
+    <string name="target_date_description">Zeigt das aktuelle Datum mit Platz für zwei Komplikationen</string>
     <string name="target_greeting_label">Begrüßung</string>
     <string name="target_greeting_description">Zeigt eine kurze Begrüßung mit Platz für zwei Komplikationen</string>
     <string name="target_greeting_morning">Guten Morgen</string>
@@ -191,7 +191,7 @@
     <string name="target_edit_show_on_home_content">Dieses Ziel auf deinem Startbildschirm anzeigen</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
     <string name="target_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
-    <string name="target_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
+    <string name="target_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
@@ -368,28 +368,28 @@
     <string name="permission_dialog_notification_deny">Verweigern</string>
     <string name="settings_integrations">Integrationen</string>
     <string name="settings_enhanced_title">Erweiterter Modus</string>
-    <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
+    <string name="settings_enhanced_content">Ermöglicht Smartspacer die Interaktion und Integration mit Systemfunktionen</string>
     <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_title">Nativer Smartspace</string>
-    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
+    <string name="settings_native_smartspace_settings_content">Einstellungen um Smartspacer im Smartspace innerhalb kompatibler Launcher und auf dem Sperrbildschirm anzuzeigen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
-    <string name="settings_targets_complications">Targets &amp; Complications</string>
+    <string name="settings_targets_complications">Ziele &amp; Komplikationen</string>
     <string name="settings_plugins">Plugins</string>
     <string name="settings_options">Optionen</string>
     <string name="settings_enable_update_check_title">Automatically Check for Updates</string>
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
-    <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
-    <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
-    <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
+    <string name="settings_hide_sensitive_contents_title">Sensible Ziele ausblenden</string>
+    <string name="settings_hide_sensitive_contents_title_short">Sensibles ausblenden</string>
+    <string name="settings_hide_sensitive_contents_content">Verstecke Ziele auf dem Sperrbildschirm, wenn sie als sensibel markiert sind: %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">Nicht ausblenden</string>
-    <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
+    <string name="settings_hide_sensitive_contents_disabled_content">Ziele und deren Inhalt immer anzeigen</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Inhalt ausblenden</string>
-    <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
-    <string name="settings_hide_sensitive_contents_hide">Hide target</string>
-    <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
+    <string name="settings_hide_sensitive_contents_hide_contents_content">Ziel anzeigen, aber Inhalt ausblenden</string>
+    <string name="settings_hide_sensitive_contents_hide">Ziel ausblenden</string>
+    <string name="settings_hide_sensitive_contents_hide_content">Ziel komplett ausblenden</string>
     <string name="settings_debug_header">Debug</string>
     <string name="settings_dump_title">Dump Targets &amp; Actions</string>
     <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
@@ -633,7 +633,7 @@
     <string name="expanded_settings_open_mode_home_screen_title_short">Home Screen</string>
     <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
     <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
-    <string name="expanded_settings_open_mode_lock_screen_title_short">Lock Screen</string>
+    <string name="expanded_settings_open_mode_lock_screen_title_short">Sperrbildschirm</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the lock screen: %1s</string>
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
@@ -654,7 +654,7 @@
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">OEM Smartspace</string>
-    <string name="oem_smartspace_content">Options for Smartspacer showing in legacy Launchers and on the Lock Screen on some devices</string>
+    <string name="oem_smartspace_content">Einstellungen um Smartspacer in alten Launchers und auf dem Sperrbildschirm auf einigen Geräten anzuzeigen</string>
     <string name="oem_smartspace_content_enhanced">This option requires Enhanced Mode</string>
     <string name="oem_smartspace_incompatible">Sorry, diese Option erfordert Root auf deinem Gerät aufgrund von Systembeschränkungen. Wenn dein Gerät gerootet ist, installiere das Sui Magisk-Modul oder starte Shizuku als Root.</string>
     <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
@@ -664,7 +664,7 @@
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Einstellungen</string>
-    <string name="oem_smartspace_label_systemui">Lock Screen</string>
+    <string name="oem_smartspace_label_systemui">Sperrbildschirm</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
     <string name="expanded_search_box_search">Suchen…</string>
@@ -725,14 +725,14 @@
     <string name="plugin_details_incompatible_outdated">This plugin requires a newer version of Smartspacer, please update Smartspacer to install it</string>
     <string name="plugin_details_downloading_title">Lade Plugin herunter…</string>
     <string name="plugin_details_download_failed">Download fehlgeschlagen</string>
-    <string name="plugin_settings_title">Plugin Repository</string>
-    <string name="plugin_settings_content">Change settings related to the Smartspacer Plugin Repository, including disabling it entirely if you wish</string>
-    <string name="plugin_settings_enabled">Enable Plugin Repository</string>
+    <string name="plugin_settings_title">Plugin-Repository</string>
+    <string name="plugin_settings_content">Ändere Einstellungen in Bezug auf das Smartspacer Plugin-Repository, einschließlich der vollständigen Deaktivierung, wenn erwünscht</string>
+    <string name="plugin_settings_enabled">Plugin-Repository aktivieren</string>
     <string name="plugin_settings_update_check_enabled_title">Automatisch auf Updates prüfen</string>
     <string name="plugin_settings_update_check_enabled_content">Check for updates to Smartspacer plugins once a day and notify you when any are available</string>
-    <string name="plugin_settings_url_title">Plugin Repository URL</string>
-    <string name="plugin_settings_url_content"><b>Advanced:</b> Change the URL to load plugin repository data from</string>
-    <string name="plugin_settings_footer">The Smartspacer Plugin Repository allows you to install and manage Smartspacer plugins as well as find plugins compatible with apps installed on your device</string>
+    <string name="plugin_settings_url_title">Plugin-Repository-URL</string>
+    <string name="plugin_settings_url_content"><b>Erweitert:</b> Ändere die URL, von der die Plugin-Repository-Daten geladen werden</string>
+    <string name="plugin_settings_footer">Das Smartspacer Plugin-Repository ermöglicht, Smartspacer-Plugins zu installieren und verwalten sowie Plugins zu finden, die mit Apps auf deinem Gerät kompatibel sind</string>
     <!-- Update downloader -->
     <string name="snackbar_update">Update Verfügbar</string>
     <string name="snackbar_update_button">Update</string>
@@ -827,12 +827,12 @@
     <string name="restore_complete_title">Restore complete</string>
     <string name="restore_page_controls_next">Weiter</string>
     <!-- Notification Widget Settings -->
-    <string name="notification_widget_title">Lock Screen Notification</string>
-    <string name="notification_widget_title_short">Lock Screen</string>
-    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
-    <string name="notification_widget_toggle">Show Notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
-    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
+    <string name="notification_widget_title">Sperrbildschirm-Benachrichtigung</string>
+    <string name="notification_widget_title_short">Sperrbildschirm</string>
+    <string name="notification_widget_content">Einstellungen um Smartspacer als Benachrichtigung anzuzeigen, wenn der Sperrbildschirm angezeigt wird</string>
+    <string name="notification_widget_toggle">Benachrichtigung anzeigen</string>
+    <string name="notification_widget_info">Diese Einstellung zeigt als Benachrichtigung <b>limitierte</b> Smartspacer-Inhalte auf dem Sperrbildschirm an. Nur eine Seite kann angezeigt werden und du musst die Benachrichtigung erweitern, um mehr als grundlegende Inhalte zu sehen.</string>
+    <string name="notification_widget_notifications_disabled">Benachrichtigungen sind deaktiviert, sodass diese Einstellung nicht funktioniert. Tippe zum Aktivieren.</string>
     <string name="notification_widget_tint_title">Tint</string>
     <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
@@ -862,9 +862,9 @@
     <string name="complication_digital_wellbeing_description">Shows the screen on time from Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
     <!-- Clock Complication -->
-    <string name="complication_clock_label">Clock</string>
-    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
-    <string name="complication_clock_description_short">Shows the current time</string>
+    <string name="complication_clock_label">Uhr</string>
+    <string name="complication_clock_description">Zeigt die aktuelle Zeit.\n<b>Warnung:</b> Diese Komplikation kann erhöhten Akkuverbrauch verursachen.</string>
+    <string name="complication_clock_description_short">Zeigt die aktuelle Zeit</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Kalender</string>
     <string name="target_calendar_description">Zeigt Termine von ausgewählten Kalendern</string>
