@@ -23,18 +23,18 @@
     <string name="restricted_mode_content_accessibility">Seit Android 13 hat Google eine Sicherheitsüberprüfung zu den Einstellungen hinzugefügt, die standardmäßig verhindert, dass sideloaded Apps die Verwendung von Barrierefreiheitsdiensten erlauben.\n\n<b>Wenn du eine Meldung über eine eingeschränkte Einstellung siehst, wenn du versuchst, den Barrierefreiheitsdienst zu aktivieren, musst du die App-Info öffnen und eingeschränkte Einstellungen erlauben.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Seit Android 14 hat Google verhindert, dass Apps, die über den Paket-Installer sideloaded wurden, Barrierefreiheitsdienste verwenden können.<br><br><b>Wenn du eine Meldung über eingeschränkte Einstellungen siehst, musst du Smartspacer deinstallieren und erneut installieren, indem du eine Session Installer-basierte App wie <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> oder die <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror App</a> verwendest. Das einfache Installieren oben drauf (ohne erneute Installation) ist NICHT ausreichend.<br><br></b>Alternativ wird Smartspacer mit aktiviertem Enhanced Mode diese Anforderung umgehen (dies ist ohne Shizuku oder Root-Zugriff nicht möglich).]]></string>
     <string name="restricted_mode_content_notification">Seit Android 13 hat Google eine Sicherheitsüberprüfung zu den Einstellungen hinzugefügt, die standardmäßig verhindert, dass sideloaded Apps standardmäßig auf Benachrichtigungs-Zugriff zugreifen können.\n\n<b>Wenn du eine Meldung über eine eingeschränkte Einstellung siehst, wenn du versuchst, den Benachrichtigungs-Zugriff zu aktivieren, musst du die App-Info öffnen und eingeschränkte Einstellungen erlauben.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Seit Android 14 hat Google verhindert, dass Apps, die über den Paket-Installer sideloaded wurden, Barrierefreiheitsdienste verwenden können.<br><br><b>Wenn du eine Meldung über eingeschränkte Einstellungen siehst, musst du Smartspacer deinstallieren und erneut installieren, indem du eine Session Installer-basierte App wie <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> oder die <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror App</a> verwendest. Das einfache Installieren oben drauf (ohne erneute Installation) ist NICHT ausreichend.<br><br></b>Alternativ wird Smartspacer mit aktiviertem Enhanced Mode diese Anforderung umgehen (dies ist ohne Shizuku oder Root-Zugriff nicht möglich).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Seit Android 14 verhindert Google, dass Apps, die über den Paket-Installer sideloaded wurden, Benachrichtigungszugriff verwenden können.<br><br><b>Wenn du eine Meldung über eingeschränkte Einstellungen siehst, musst du Smartspacer deinstallieren und erneut installieren, indem du eine Session Installer-basierte App wie <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> oder die <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror App</a> verwendest. Das einfache Installieren darüber (ohne erneute Installation) ist NICHT ausreichend.<br><br></b>Alternativ wird Smartspacer mit aktiviertem Enhanced Mode diese Anforderung umgehen (dies ist ohne Shizuku oder Root-Zugriff nicht möglich).]]></string>
     <string name="restricted_mode_button">App-Info öffnen</string>
     <string name="restricted_mode_warning_button">Berechtigungen mit Shizuku gewähren</string>
     <string name="target_sensitive_title">Inhalt versteckt</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatisch (Wallpaper basierend)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic_alt">Automatisch (Theme basierend)</string>
     <string name="tint_colour_automatic_content">Text und Symbole im Widget werden automatisch eingefärbt, um auf dem Hintergrundbild sichtbar zu sein</string>
-    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
+    <string name="tint_colour_automatic_content_alt">Text und Icons in der Benachrichtigung werden automatisch eingefärbt, damit sie je nach Theme sichtbar sind</string>
     <string name="tint_colour_white">Weiß</string>
-    <string name="tint_colour_white_content">Text und Symbole im Widget werden immer weiß sein</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
+    <string name="tint_colour_white_content">Text und Icons im Widget werden immer weiß sein</string>
+    <string name="tint_colour_white_content_alt">Text und Icons in der Benachrichtigung werden immer weiß sein</string>
     <string name="tint_colour_black">Schwarz</string>
     <string name="tint_colour_black_content">Text und Symbole im Widget werden immer schwarz sein</string>
     <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
@@ -81,9 +81,9 @@
     <string name="target_ambient_music_mod_description">Zeigt den aktuell abgespielten Song von Ambient Music Mod</string>
     <string name="target_ambient_music_mod_description_unavailable">Dieses Ziel erfordert Ambient Music Mod</string>
     <string name="target_default_label">Auf einen Blick (Smartspace)</string>
-    <string name="target_default_description">Ziele von Google auf einen Blick, geladen mit Smartspace</string>
-    <string name="target_default_description_recommended">Targets from Google At a Glance, loaded using Smartspace <b>(recommended)</b></string>
-    <string name="target_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
+    <string name="target_default_description">Ziele von Google Auf einen Blick, geladen mit Smartspace</string>
+    <string name="target_default_description_recommended">Ziele von Google Auf einen Blick, geladen mit Smartspace <b>(empfohlen)</b></string>
+    <string name="target_default_description_unsupported">Ihr Gerät unterstützt Auf einen Blick mit Smartspace nicht</string>
     <string name="target_default_description_enhanced">Erfordert erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="target_default_configuration_title">Einstellungen</string>
     <string name="target_default_configuration_description">Hide default Targets, and access more settings in the Google app</string>
@@ -101,27 +101,27 @@
     <string name="target_greeting_night_name">Gute Nacht, %1s</string>
     <string name="target_greeting_configuration_hide_if_no_complications_title">Dynamisch ausblenden</string>
     <string name="target_greeting_configuration_hide_if_no_complications_content">Hides the Target if no Complications are available to show below it</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_title">Hide Title on AoD</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_content">Hides the Target\'s title on the Always on Display (Native Smartspace only)</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_title">Titel auf AoD ausblenden</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_content">Versteckt den Titel des Ziels auf dem Always on Display (nur für nativen Smartspace)</string>
     <string name="target_greeting_configuration_name_title">Grußname</string>
     <string name="target_greeting_configuration_name_content">Dein Name zur Anzeige in der Begrüßung: %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Dein Name zur Anzeige in der Begrüßung</string>
     <string name="target_greeting_configuration_title">Einstellungen</string>
-    <string name="target_greeting_configuration_description">Setze deinen Namen ein, verstecke das Ziel dynamisch und verstecke den Titel auf der AoD</string>
+    <string name="target_greeting_configuration_description">Gib deinen Namen an, verstecke das Ziel dynamisch und verstecke den Titel auf dem AoD</string>
     <string name="target_greeting_configuration_open_expanded_title">Erweiterten Smartspace öffnen</string>
     <string name="target_greeting_configuration_open_expanded_content">Erweiterten Smartspace bei Klick öffnen, anstatt nichts zu tun</string>
     <string name="target_at_a_glance_label">Auf einen Blick (Widget)</string>
-    <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
-    <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
+    <string name="target_at_a_glance_description">Eingeschränkte Ziele von Google Auf einen Blick, geladen über das Google-Widget</string>
+    <string name="target_at_a_glance_description_unsupported">Dieses Ziel erfordert die Google-App</string>
     <string name="target_google_weather_forecast_title">Google Wettervorhersage</string>
     <string name="target_google_weather_forecast_content">Zeigt das aktuelle Wetter und die Vorhersage für die nächsten vier Stunden von Google Wetter an</string>
     <string name="target_google_weather_forecast_incompatible">This Target requires Android 12+ and the Google App</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Zum Aktivieren tippen</string>
     <string name="complication_default_label">Auf einen Blick Komplikationen</string>
-    <string name="complication_default_description">Complications from Google At a Glance, including weather</string>
-    <string name="complication_default_description_recommended">Complications from Google At a Glance, including weather <b>(recommended)</b></string>
-    <string name="complication_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
+    <string name="complication_default_description">Komplikationen von Google Auf einen Blick, einschließlich Wetter</string>
+    <string name="complication_default_description_recommended">Komplikationen von Google Auf einen Blick, einschließlich Wetter <b>(empfohlen)</b></string>
+    <string name="complication_default_description_unsupported">Ihr Gerät unterstützt Auf einen Blick mit Smartspace nicht</string>
     <string name="complication_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
     <string name="complication_default_configuration_title">Auf einen Blick Einstellungen</string>
     <string name="complication_default_configuration_description">Configure more settings in the Google App</string>
@@ -145,7 +145,7 @@
     <string name="notification_safe_mode_content">Smartspacer has entered Safe Mode due to %1s crashing. Tap for more info.</string>
     <string name="notification_channel_error_title">Fehler</string>
     <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
-    <string name="notification_channel_accessibility_title">Accessibility Service</string>
+    <string name="notification_channel_accessibility_title">Bedienungshilfen</string>
     <string name="notification_channel_accessibility_content">Messages about Smartspacer\'s Accessibility Service</string>
     <string name="notification_channel_native_title">Nativer Smartspace</string>
     <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
@@ -171,10 +171,10 @@
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
     <string name="target_not_available_alt">This Target failed to load, if the issue persists please contact the Target\'s developer</string>
     <string name="fab_complications_add">Komplikation hinzufügen</string>
-    <string name="complications_empty_label">No Complications added</string>
+    <string name="complications_empty_label">Keine Komplikationen hinzugefügt</string>
     <string name="complication_not_available">This Complication is no longer available, tap to remove</string>
     <string name="complication_not_available_alt">Diese Komplikation konnte nicht geladen werden. Wenn das Problem weiterhin besteht, kontaktiere bitte den Entwickler der Komplikation</string>
-    <string name="targets_add_empty_label">No Targets left to add</string>
+    <string name="targets_add_empty_label">Keine Ziele zum Hinzufügen übrig</string>
     <string name="targets_add_incompatible_generic">This Target is not compatible with your device</string>
     <string name="targets_add_incompatible_widget">The widget required for this Target is not available</string>
     <string name="targets_add_failed_to_launch_setup">Failed to launch the setup for this Target</string>
@@ -185,12 +185,12 @@
     <string name="requirements_add_empty_label">Keine Bedingungen übrig zum Hinzufügen</string>
     <string name="requirements_add_incompatible_generic">This Requirement is not compatible with your device</string>
     <string name="requirements_add_failed_to_launch_setup">Failed to launch the setup for this Requirement</string>
-    <string name="target_edit_title">Edit Target</string>
+    <string name="target_edit_title">Ziel bearbeiten</string>
     <string name="target_edit_target_header">Ziel</string>
-    <string name="target_edit_show_on_home_title">Show on Home Screen</string>
-    <string name="target_edit_show_on_home_content">Show this target on your home screen</string>
+    <string name="target_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
+    <string name="target_edit_show_on_home_content">Dieses Ziel auf deinem Startbildschirm anzeigen</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
-    <string name="target_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
+    <string name="target_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
     <string name="target_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
@@ -205,7 +205,7 @@
     <string name="target_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="target_edit_expanded_show_when_locked_content">Dieses Ziel im erweiterten Smartspace anzeigen, wenn gesperrt</string>
-    <string name="target_edit_expanded_show_widget_title">Show Widget</string>
+    <string name="target_edit_expanded_show_widget_title">Zeige Widget</string>
     <string name="target_edit_expanded_show_widget_content">Show the widget associated with this Target, if available</string>
     <string name="target_edit_expanded_show_remoteviews_title">Show Additional Content</string>
     <string name="target_edit_expanded_show_remoteviews_content">Show additional content provided by this Target, if available</string>
@@ -245,7 +245,7 @@
     <string name="complication_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
-    <string name="complication_edit_settings_header">Settings</string>
+    <string name="complication_edit_settings_header">Einstellungen</string>
     <string name="complication_edit_requirements_title">Bedingungen</string>
     <string name="complication_edit_requirements_content">Set the requirements for this complication to appear</string>
     <string name="complication_edit_requirements_content_any_one">%1d Any Requirement configured</string>
@@ -257,17 +257,17 @@
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
-    <string name="requirement_edit_invert">Invert this requirement</string>
+    <string name="requirement_edit_invert">Diese Bedingung umkehren</string>
     <string name="safe_mode_title">Sicherer Modus</string>
     <string name="safe_mode_content">Smartspacer hat den sicheren Modus aktiviert, weil eine App abgestürzt ist, um einen Absturz-Loop zu verhindern. Diese Abstürze werden normalerweise durch ein fehlerhaftes Ziel oder eine fehlerhafte Komplikation verursacht, daher solltest du nach Updates für deine Plugins suchen, wenn sie weiterhin auftreten.</string>
     <string name="safe_mode_relaunch">Smartspacer neu starten</string>
     <string name="feedback_loop_title">Feedback Loop</string>
     <string name="feedback_loop_content">Smartspacer hat eine Rückkopplungsschleife zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"Auf einen Blick\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
     <string name="feedback_loop_relaunch_wait">Warte %1s Sekunden</string>
-    <string name="feedback_loop_relaunch">Restart Smartspacer</string>
-    <string name="configuration_notification_enable_title">Enable Notification Access</string>
+    <string name="feedback_loop_relaunch">Smartspacer neu starten</string>
+    <string name="configuration_notification_enable_title">Benachrichtigungszugriff aktivieren</string>
     <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
-    <string name="configuration_notification_enable_button">Allow notification access</string>
+    <string name="configuration_notification_enable_button">Benachrichtigungszugriff zulassen</string>
     <string name="configuration_accessibility_enable_title">Enable Accessibility Service</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
@@ -296,8 +296,8 @@
     <string name="requirement_time_date_configuration_content">Set the days and times when this item should be shown</string>
     <string name="requirement_time_date_configuration_start_time">Startzeit</string>
     <string name="requirement_time_date_configuration_end_time">Endzeit</string>
-    <string name="requirement_time_date_configuration_toast_end_time_invalid">End Time must be after Start Time</string>
-    <string name="requirement_time_date_configuration_toast_start_time_invalid">Start Time must be before End Time</string>
+    <string name="requirement_time_date_configuration_toast_end_time_invalid">Endzeit muss nach der Startzeit liegen</string>
+    <string name="requirement_time_date_configuration_toast_start_time_invalid">Startzeit muss vor der Endzeit liegen</string>
     <string name="requirement_time_date_configuration_pick_a_day">Please select at least one day</string>
     <string name="requirement_geofence">Standort</string>
     <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
@@ -461,8 +461,8 @@
     <string name="setup_targets_controls_next">Weiter</string>
     <string name="setup_targets_controls_skip">Überspringen</string>
     <!-- Setup > Complication Info -->
-    <string name="setup_complications_info_title">Complications</string>
-    <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
+    <string name="setup_complications_info_title">Komplikationen</string>
+    <string name="setup_complications_info_p1"><b>Komplikationen</b> sind zusätzliche Informationen, die neben Zielen angezeigt werden können. Dies sind in der Regel kurze Texte und Icons, zum Beispiel ungelesene E-Mails oder aktuelle Wetterbedingungen.</string>
     <string name="setup_complications_info_p2">Complications will be shown alongside Targets wherever space is available, or if no remaining Targets are available will be shown in additional pages alongside the date.</string>
     <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
     <string name="setup_complications_example_gmail">8</string>
@@ -540,7 +540,7 @@
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Native Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt. Um sicherzustellen, dass alle Ziele &amp; Komplikationen ordnungsgemäß funktionieren, muss nativer Smartspace gestoppt und erneut gestartet werden, um sich wieder zu verbinden.</string>
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
@@ -551,14 +551,14 @@
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt, tippen um wieder zu verbinden.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku Required</string>
     <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_target">The At a Glance Target requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_complication">The At a Glance Complication requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
+    <string name="notification_shizuku_content_at_a_glance_complication">Das \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
     <!-- Sui service notifications -->
     <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
     <string name="notification_sui_content_oem_smartspace">OEM Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
@@ -575,7 +575,7 @@
     <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
     <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
-    <string name="target_music_setting_setting_title">Settings</string>
+    <string name="target_music_setting_setting_title">Einstellungen</string>
     <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Native Smartspace Settings</string>
@@ -604,7 +604,7 @@
     <string name="permission_dialog_smartspace_deny">Verweigern</string>
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Erweiterter Smartspace ist deaktiviert</string>
-    <string name="expanded_disabled_settings">Settings</string>
+    <string name="expanded_disabled_settings">Einstellungen</string>
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
     <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
@@ -663,7 +663,7 @@
     <string name="oem_smartspace_switch">Enable OEM Smartspace</string>
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
-    <string name="oem_smartspace_settings">Settings</string>
+    <string name="oem_smartspace_settings">Einstellungen</string>
     <string name="oem_smartspace_label_systemui">Lock Screen</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
@@ -739,15 +739,15 @@
     <string name="update_heading">Smartspacer Version %1s</string>
     <string name="update_subheading">Aktuelle Version %1s</string>
     <string name="update_changes">Changes</string>
-    <string name="update_open_installer">Start Install</string>
-    <string name="update_done">Download Complete</string>
-    <string name="update_loading">Loading…</string>
+    <string name="update_open_installer">Installation starten</string>
+    <string name="update_done">Download abgeschlossen</string>
+    <string name="update_loading">Lädt…</string>
     <string name="update_fab">Download</string>
-    <string name="download_manager_description">Downloading update…</string>
-    <string name="update_downloader_downloading_title">Downloading update…</string>
-    <string name="update_downloader_downloading_failed">Download failed</string>
-    <string name="update_downloader_github">Download via browser</string>
-    <string name="update_notification_title">Smartspacer update available</string>
+    <string name="download_manager_description">Update herunterladen…</string>
+    <string name="update_downloader_downloading_title">Update herunterladen…</string>
+    <string name="update_downloader_downloading_failed">Download fehlgeschlagen</string>
+    <string name="update_downloader_github">Mit dem Browser herunterladen</string>
+    <string name="update_notification_title">Smartspacer-Update verfügbar</string>
     <string name="update_notification_content">An update is available for Smartspacer (%1s to %1s)</string>
     <!-- Donate info -->
     <string name="donate_prompt_title">Enjoying Smartspacer?</string>
@@ -803,7 +803,7 @@
     <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
     <string name="restore_restore_widgets_content_empty">No widgets found to restore</string>
-    <string name="restore_restore_settings_title">Settings</string>
+    <string name="restore_restore_settings_title">Einstellungen</string>
     <string name="restore_restore_settings_content">Restore your Smartspacer settings.\n<b>This will overwrite your current settings.</b></string>
     <string name="restore_restore_settings_content_empty">No settings found to restore</string>
     <string name="restore_target_title">Targets</string>
@@ -869,7 +869,7 @@
     <string name="target_calendar_label">Kalender</string>
     <string name="target_calendar_description">Zeigt Termine von ausgewählten Kalendern</string>
     <string name="target_calendar_description_filled">Zeige Kalendertermine von %1s</string>
-    <string name="target_calendar_configuration_title">Settings</string>
+    <string name="target_calendar_configuration_title">Einstellungen</string>
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
     <string name="target_calendar_title_default">Unbenanntes Ereignis</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
@@ -879,7 +879,7 @@
     <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Ganztägig</string>
     <string name="target_calendar_settings_calendars">Select Calendars</string>
-    <string name="target_calendar_settings_settings">Settings</string>
+    <string name="target_calendar_settings_settings">Einstellungen</string>
     <string name="target_calendar_settings_show_all_day_title">Show All Day Events</string>
     <string name="target_calendar_settings_show_all_day_content">Show events which last all day</string>
     <string name="target_calendar_settings_show_location_title">Show Location</string>
@@ -902,7 +902,7 @@
     <string name="target_calendar_pre_event_time_2_hours">2 Stunden</string>
     <string name="target_calendar_post_event_time_at_end">Until end of event</string>
     <!-- Default Target settings -->
-    <string name="target_default_settings_more_title">At a Glance settings</string>
+    <string name="target_default_settings_more_title">Auf einen Blick Einstellungen</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
     <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
     <string name="target_default_settings_hide_title">Hide Targets</string>
@@ -926,7 +926,7 @@
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Select App</string>
     <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
-    <string name="target_notification_configuration_settings">Settings</string>
+    <string name="target_notification_configuration_settings">Einstellungen</string>
     <string name="target_notification_channels">Notification Channels</string>
     <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
     <!-- Blank Target -->
@@ -936,13 +936,13 @@
     <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
-    <string name="target_blank_settings_title">Settings</string>
+    <string name="target_blank_settings_title">Einstellungen</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
-    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_title">Datumsformat</string>
     <string name="target_date_settings_date_format_automatic">Automatic</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
-    <string name="target_date_settings_title">Settings</string>
+    <string name="target_date_settings_title">Einstellungen</string>
     <string name="target_date_settings_description">Configure the date format</string>
     <string name="target_date_settings_custom">Custom</string>
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
@@ -956,7 +956,7 @@
     <string name="complication_gmail_settings_account_title">Konto</string>
     <string name="complication_gmail_settings_account_unselected">Not selected</string>
     <string name="complication_gmail_settings_title_labels">Select Labels</string>
-    <string name="complication_gmail_settings_title">Settings</string>
+    <string name="complication_gmail_settings_title">Einstellungen</string>
     <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
     <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
     <!-- SMS Complication -->
