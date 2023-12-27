@@ -170,7 +170,7 @@
     <string name="targets_empty_label">No Targets added</string>
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
     <string name="target_not_available_alt">This Target failed to load, if the issue persists please contact the Target\'s developer</string>
-    <string name="fab_complications_add">Add Complication</string>
+    <string name="fab_complications_add">Komplikation hinzufügen</string>
     <string name="complications_empty_label">No Complications added</string>
     <string name="complication_not_available">This Complication is no longer available, tap to remove</string>
     <string name="complication_not_available_alt">Diese Komplikation konnte nicht geladen werden. Wenn das Problem weiterhin besteht, kontaktiere bitte den Entwickler der Komplikation</string>
@@ -178,7 +178,7 @@
     <string name="targets_add_incompatible_generic">This Target is not compatible with your device</string>
     <string name="targets_add_incompatible_widget">The widget required for this Target is not available</string>
     <string name="targets_add_failed_to_launch_setup">Failed to launch the setup for this Target</string>
-    <string name="complications_add_empty_label">No Complications left to add</string>
+    <string name="complications_add_empty_label">Keine Komplikationen zum Hinzufügen übrig</string>
     <string name="complications_add_incompatible_generic">This Complication is not compatible with your device</string>
     <string name="complications_add_incompatible_widget">The widget required for this Complication is not available</string>
     <string name="complications_add_failed_to_launch_setup">Failed to launch the setup for this Complication</string>
@@ -246,7 +246,7 @@
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
     <string name="complication_edit_settings_header">Settings</string>
-    <string name="complication_edit_requirements_title">Requirements</string>
+    <string name="complication_edit_requirements_title">Bedingungen</string>
     <string name="complication_edit_requirements_content">Set the requirements for this complication to appear</string>
     <string name="complication_edit_requirements_content_any_one">%1d Any Requirement configured</string>
     <string name="complication_edit_requirements_content_any_other">%1d Any Requirements configured</string>
@@ -282,10 +282,10 @@
     <string name="configuration_notification_picker_empty">No notifications found</string>
     <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
     <string name="requirements_title">Requirements</string>
-    <string name="requirements_empty_label">No Requirements added for this type</string>
+    <string name="requirements_empty_label">Keine Bedingungen für diesen Typ hinzugefügt</string>
     <string name="requirements_tab_any">Eines von</string>
     <string name="requirements_tab_all">Alle von</string>
-    <string name="fab_requirements_add">Add Requirement</string>
+    <string name="fab_requirements_add">Bedingung hinzufügen</string>
     <string name="requirement_not_available">This Requirement is no longer available, tap to remove</string>
     <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
     <string name="requirement_time_date_title"> Zeit &amp; Datum</string>
