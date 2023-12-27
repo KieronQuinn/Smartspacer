@@ -37,7 +37,7 @@
     <string name="tint_colour_white_content_alt">Text und Icons in der Benachrichtigung werden immer weiß sein</string>
     <string name="tint_colour_black">Schwarz</string>
     <string name="tint_colour_black_content">Text und Symbole im Widget werden immer schwarz sein</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
+    <string name="tint_colour_black_content_alt">Text und Icons in der Benachrichtigung werden immer schwarz sein</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Smartspacer Ziele &amp; Komplikationen anzeigen</string>
     <string name="widget_loading_smartspacer">Lädt…</string>
