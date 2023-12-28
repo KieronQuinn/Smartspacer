@@ -538,7 +538,7 @@
     <string name="native_switch_compatibility_available"><b>Disponible</b></string>
     <string name="native_switch_compatibility_not_available"><b>No disponible</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_title">Smartspace nativo</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo. Para asegurarse de que todos los objetivos y complicaciones funcionan correctamente, Smartspace nativo debe ser detenido e iniciado nuevamente para volver a reconectarlo.</string>
     <string name="native_restart_info"><b>Importante:</b> Cuando se esté reconectando Smartspace nativo, Smartspace reiniciará IU del sistema.<b>Posiblemente veas un mensaje diciendo que UI del sistema se ha detenido y tú pantalla se bloqueará.</b> Esto es normal, descarta el mensaje y desbloquea tu dispositivo para continuar.</string>
@@ -939,14 +939,14 @@
     <string name="target_blank_settings_title">Configuración</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
-    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_title">Formato de fecha</string>
     <string name="target_date_settings_date_format_automatic">Automático</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
     <string name="target_date_settings_title">Configuración</string>
     <string name="target_date_settings_description">Configurar el formato de fecha</string>
-    <string name="target_date_settings_custom">Custom</string>
-    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
-    <string name="target_date_settings_custom_invalid">Invalid date format</string>
+    <string name="target_date_settings_custom">Personalizado</string>
+    <string name="target_date_settings_custom_content">Escribe un formato de fecha compatible con Java</string>
+    <string name="target_date_settings_custom_invalid">Formato de fecha inválido</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
