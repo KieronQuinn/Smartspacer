@@ -945,7 +945,7 @@
     <string name="target_date_settings_title">Paramètres</string>
     <string name="target_date_settings_description">Configurer le format de la date</string>
     <string name="target_date_settings_custom">Personnalisé</string>
-    <string name="target_date_settings_custom_content">Saisissez une chaîne de formatage pour la date au format Java</string>
+    <string name="target_date_settings_custom_content">Saisissez un format de date compatible avec Java</string>
     <string name="target_date_settings_custom_invalid">Format de date invalide</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus (Gmail)</string>
