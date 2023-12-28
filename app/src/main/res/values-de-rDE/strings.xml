@@ -194,13 +194,13 @@
     <string name="target_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
-    <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
+    <string name="target_edit_show_on_lock_screen_content_oem">Dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) anzeigen, wenn Musik nicht abgespielt wird</string>
     <string name="target_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content">Dieses Ziel auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
     <string name="target_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
-    <string name="target_edit_show_on_music_content">Show this target on your always on display while music is playing</string>
-    <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
+    <string name="target_edit_show_on_music_content">Dieses Ziel auf deinem Always On Display anzeigen, während Musik abgespielt wird</string>
+    <string name="target_edit_show_on_music_content_oem">Dieses Ziel auf deinem Always On Display (falls verfügbar) anzeigen, während Musik abgespielt wird</string>
     <string name="target_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
     <string name="target_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
@@ -227,10 +227,10 @@
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
     <string name="complication_edit_title">Komplikation bearbeiten</string>
     <string name="complication_edit_target_header">Komplikation</string>
-    <string name="complication_edit_show_on_home_title">Show on Home Screen</string>
+    <string name="complication_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
     <string name="complication_edit_show_on_home_content">Show this complication on your home screen</string>
     <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
-    <string name="complication_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
+    <string name="complication_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
     <string name="complication_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
     <string name="complication_edit_show_on_lock_screen_content">Show this complication on your lock screen and always on display, when music is not playing</string>
     <string name="complication_edit_show_on_lock_screen_content_oem">Show this complication on your lock screen and always on display (if available), when music is not playing</string>
@@ -283,7 +283,7 @@
     <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
     <string name="requirements_title">Bedingungen</string>
     <string name="requirements_empty_label">Keine Bedingungen für diesen Typ hinzugefügt</string>
-    <string name="requirements_tab_any">Eines von</string>
+    <string name="requirements_tab_any">Eine von</string>
     <string name="requirements_tab_all">Alle von</string>
     <string name="fab_requirements_add">Bedingung hinzufügen</string>
     <string name="requirement_not_available">This Requirement is no longer available, tap to remove</string>
@@ -338,7 +338,7 @@
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
     <string name="requirement_wifi_configuration_ssid_title">Netzwerkname</string>
     <string name="requirement_wifi_configuration_ssid_content_unset">Netzwerkname (SSID) des Netzwerks festlegen</string>
-    <string name="requirement_wifi_configuration_mac_title">MAC Adresse</string>
+    <string name="requirement_wifi_configuration_mac_title">MAC-Adresse</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
     <string name="requirement_wifi_configuration_picker_available">Verfügbare Netzwerke</string>
@@ -377,10 +377,10 @@
     <string name="settings_targets_complications">Ziele &amp; Komplikationen</string>
     <string name="settings_plugins">Plugins</string>
     <string name="settings_options">Optionen</string>
-    <string name="settings_enable_update_check_title">Automatically Check for Updates</string>
-    <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
-    <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
-    <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
+    <string name="settings_enable_update_check_title">Automatisch auf Updates prüfen</string>
+    <string name="settings_enable_update_check_content">Automatisch auf Smartspacer-Updates prüfen und eine Benachrichtigung anzeigen, wenn eines verfügbar ist</string>
+    <string name="settings_enable_analytics_title">Analysen &amp; Absturzberichte aktivieren</string>
+    <string name="settings_enable_analytics_content">Erlaube das Senden anonymer Absturzberichte und grundlegender Analysen an Firebase, um Fehler zu beheben</string>
     <string name="settings_hide_sensitive_contents_title">Sensible Ziele ausblenden</string>
     <string name="settings_hide_sensitive_contents_title_short">Sensibles ausblenden</string>
     <string name="settings_hide_sensitive_contents_content">Verstecke Ziele auf dem Sperrbildschirm, wenn sie als sensibel markiert sind: %1s</string>
@@ -390,12 +390,12 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Ziel anzeigen, aber Inhalt ausblenden</string>
     <string name="settings_hide_sensitive_contents_hide">Ziel ausblenden</string>
     <string name="settings_hide_sensitive_contents_hide_content">Ziel komplett ausblenden</string>
-    <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
-    <string name="settings_dump_button">Write to File</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_debug_header">Debugging</string>
+    <string name="settings_dump_title">Speichere Ziele &amp; Aktionen</string>
+    <string name="settings_dump_content">Zeige den Inhalt und Debug-Informationen für aktuelle Ziele &amp; Aktionen anzeigen und schreibe diese in eine Datei, um bei der Fehlerbehebung zu helfen</string>
+    <string name="settings_dump_title_short">Datensammlung</string>
+    <string name="settings_dump_button">In Datei schreiben</string>
+    <string name="settings_dump_complete">In Datei geschrieben</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Einfach</string>
     <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
@@ -479,7 +479,7 @@
     <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
     <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
     <!-- Setup > Requirements -->
-    <string name="setup_requirements_info_title">Voraussetzungen</string>
+    <string name="setup_requirements_info_title">Bedingungen</string>
     <string name="setup_requirements_info_p1"><b>Bedingungen</b> erlauben es dir, anzupassen, ob ein Ziel oder eine Komplikation in Smartspace angezeigt wird. Damit kannst du Szenarien erstellen, mit denen nützliche Informationen in Smartspace angezeigt werden.</string>
     <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
     <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
@@ -689,7 +689,7 @@
     <string name="expanded_custom_widget_options_show_when_locked_content">Show this widget in Expanded Smartspace when the device is locked</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
     <string name="battery_optimisation_title">Akku-Optimierung</string>
-    <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
+    <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Batterieoptimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
     <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
@@ -701,7 +701,7 @@
     <string name="plugin_repository_tab_installed">Installiert</string>
     <string name="plugin_repository_tab_available">Verfügbar</string>
     <string name="plugin_repository_empty_title_not_found">Nicht gefunden</string>
-    <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
+    <string name="plugin_repository_empty_subtitle_not_found">Es wurden keine Plugins gefunden, die diesem Suchbegriff entsprechen</string>
     <string name="plugin_repository_empty_title_empty">Keine Plugins geladen</string>
     <string name="plugin_repository_empty_subtitle_empty">Überprüfe deine Netzwerkverbindung</string>
     <string name="plugin_repository_empty_button_empty">Aktualisieren</string>
@@ -770,8 +770,8 @@
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
-    <string name="backup_restore_title">Backup &amp; Restore</string>
-    <string name="backup_restore_content">Backup &amp; restore Smartspacer Targets, Complications, Requirements and settings</string>
+    <string name="backup_restore_title">Sichern &amp; Wiederherstellen</string>
+    <string name="backup_restore_content">Sichere &amp; stelle Smartspacer Ziele, Komplikationen, Bedingungen und Einstellungen wieder her</string>
     <string name="backup_title">Sichern</string>
     <string name="backup_content">Create a Smartspacer backup of Targets, Complications, Requirements and settings, either to a local file or to the cloud.</string>
     <string name="backup_creating_backup">Creating backup…</string>
@@ -796,7 +796,7 @@
     <string name="restore_restore_complications_title">Komplikationen</string>
     <string name="restore_restore_complications_content">Restore your complications &amp; their configuration</string>
     <string name="restore_restore_complications_content_empty">No Complications found to restore</string>
-    <string name="restore_restore_requirements_title">Anforderungen</string>
+    <string name="restore_restore_requirements_title">Bedingungen</string>
     <string name="restore_restore_requirements_content">Restore your requirements for added targets and complications</string>
     <string name="restore_restore_requirements_content_empty">No Requirements found to restore</string>
     <string name="restore_restore_requirements_description_inverted">(Inverted)</string>
@@ -816,7 +816,7 @@
     <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
     <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
     <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
-    <string name="restore_requirements_title">Anforderungen</string>
+    <string name="restore_requirements_title">Bedingungen</string>
     <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
     <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
     <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
@@ -940,13 +940,13 @@
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
     <string name="target_date_settings_date_format_title">Datumsformat</string>
-    <string name="target_date_settings_date_format_automatic">Automatic</string>
-    <string name="target_date_settings_date_format_automatic_content">System defined</string>
+    <string name="target_date_settings_date_format_automatic">Automatisch</string>
+    <string name="target_date_settings_date_format_automatic_content">Systemdefiniert</string>
     <string name="target_date_settings_title">Einstellungen</string>
-    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_description">Datumsformat konfigurieren</string>
     <string name="target_date_settings_custom">Custom</string>
-    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
-    <string name="target_date_settings_custom_invalid">Invalid date format</string>
+    <string name="target_date_settings_custom_content">Gib ein Java-kompatibles Datumsformat an</string>
+    <string name="target_date_settings_custom_invalid">Ungültiges Datumsformat</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail ungelesen</string>
     <string name="complication_gmail_description">Show the number of unread Gmail emails from selected labels</string>
