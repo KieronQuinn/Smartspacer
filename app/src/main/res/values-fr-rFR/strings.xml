@@ -831,7 +831,7 @@
     <string name="notification_widget_title_short">Écran de verrouillage</string>
     <string name="notification_widget_content">Options pour Smartspacer dans les notifications sur l\'écran de verrouillage</string>
     <string name="notification_widget_toggle">Afficher la notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_info">Cette option sert à afficher sur l\'écran de verrouillage du contenu Smartspacer <b>limité</b>, prenant la forme d\'une notification. Seule une page peut être affichée, et il vous faudra agrandir la notification pour voir plus d\'informations.</string>
     <string name="notification_widget_notifications_disabled">Les notifications sont désactivées donc cette option ne fonctionnera pas. Appuyez pour activer.</string>
     <string name="notification_widget_tint_title">Couleur</string>
     <string name="notification_widget_tint_content">Couleur à utiliser pour le texte et les icônes dans la notification : %1s</string>
@@ -863,7 +863,7 @@
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Clock Complication -->
     <string name="complication_clock_label">Horloge</string>
-    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
+    <string name="complication_clock_description">Affiche l\'heure actuelle.\n<b>Attention :</b> cette complication pourrait diminuer l\'autonomie de votre appareil.</string>
     <string name="complication_clock_description_short">Affiche l\'heure actuelle</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
@@ -885,7 +885,7 @@
     <string name="target_calendar_settings_show_location_title">Afficher le lieu</string>
     <string name="target_calendar_settings_show_location_content">Afficher le lieu des événements, s\'il est disponible</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Afficher les événements non confirmés</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Afficher les événements pour lesquels vous n\'avez confirmé votre présence.\n<b>Important :</b> certains calendriers ne prennent pas en charge cette fonction. Désactiver cette option aura alors pour effet de masquer tous les événements.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Utiliser les identifiants d\'événement alternatifs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Créer des identifiants pour chacun des événements à partir de leur titre et de leur date de début et de fin, plutôt qu\'utiliser les identifiants fournis par le système, au moment d\'ignorer des événements. Cela peut être utile si vous utilisez une application ou un service qui « synchronise » les agendas entre les comptes, et recrée des événements à chaque modification.</string>
     <string name="target_calendar_settings_pre_event_time_title">Durée d\'affichage d\'un événement avant son début</string>
