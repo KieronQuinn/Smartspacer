@@ -594,7 +594,7 @@
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
-    <string name="target_permission_request_title">Smartspacer Permission Required</string>
+    <string name="target_permission_request_title">Permiso de Smartspacer requerido</string>
     <string name="target_permission_request_content">Presiona para permitir</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Permitir</string>
