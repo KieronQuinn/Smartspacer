@@ -71,7 +71,7 @@
     <string name="target_notification_description">Zeigt Benachrichtigungen einer App an</string>
     <string name="target_notification_description_selected">Zeigt Benachrichtigungen von %1s</string>
     <string name="target_notification_description_selected_with_channels">Zeigt Benachrichtigungen von %1s (%1d %1s)</string>
-    <string name="target_notification_description_channels_one">kanal</string>
+    <string name="target_notification_description_channels_one">Kanal</string>
     <string name="target_notification_description_channels_other">Kanäle</string>
     <string name="target_now_playing_label">Musikerkennung läuft</string>
     <string name="target_now_playing_description">Zeigt den aktuell abgespielten Titel von Musikerkennungdienst</string>
