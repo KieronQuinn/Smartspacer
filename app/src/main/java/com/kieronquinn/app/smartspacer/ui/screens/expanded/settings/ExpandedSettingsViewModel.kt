@@ -1,7 +1,10 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.settings
 
+import android.content.Context
 import android.os.Build
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
+import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedSettingsProvider
+import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedStateProvider
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
@@ -9,9 +12,13 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositor
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -19,6 +26,7 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
 
     abstract val state: StateFlow<State>
 
+    abstract fun onResume()
     abstract fun onEnabledChanged(enabled: Boolean)
     abstract fun onShowSearchBoxChanged(enabled: Boolean)
     abstract fun onSearchProviderClicked()
@@ -29,6 +37,7 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
     abstract fun onCloseWhenLockedChanged(enabled: Boolean)
     abstract fun onBackgroundBlurChanged(enabled: Boolean)
     abstract fun onUseGoogleSansChanged(enabled: Boolean)
+    abstract fun onXposedEnabledChanged(context: Context, enabled: Boolean)
 
     abstract fun isBackgroundBlurCompatible(): Boolean
 
@@ -44,7 +53,9 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
             val openModeLock: ExpandedOpenMode,
             val closeWhenLocked: Boolean,
             val backgroundBlurEnabled: Boolean,
-            val widgetsUseGoogleSans: Boolean
+            val widgetsUseGoogleSans: Boolean,
+            val xposedAvailable: Boolean,
+            val xposedEnabled: Boolean
         ): State()
     }
 
@@ -54,6 +65,7 @@ class ExpandedSettingsViewModelImpl(
     private val navigation: ContainerNavigation,
     settings: SmartspacerSettingsRepository,
     searchRepository: SearchRepository,
+    context: Context,
     scope: CoroutineScope? = null
 ): ExpandedSettingsViewModel(scope) {
 
@@ -67,12 +79,20 @@ class ExpandedSettingsViewModelImpl(
     private val closeWhenLocked = settings.expandedCloseWhenLocked
     private val backgroundBlur = settings.expandedBlurBackground
     private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans
+    private val xposedEnabled = settings.expandedXposedEnabled
+
+    private val resumeBus = MutableStateFlow(System.currentTimeMillis())
+
+    private val xposedAvailable = resumeBus.mapLatest {
+        SmartspacerXposedStateProvider.getXposedEnabled(context)
+    }.flowOn(Dispatchers.IO)
 
     private val openMode = combine(
         openModeHome.asFlow(),
-        openModeLock.asFlow()
-    ) { home, lock ->
-        Pair(home, lock)
+        openModeLock.asFlow(),
+        xposedEnabled.asFlow()
+    ) { home, lock, xposed ->
+        Triple(home, lock, xposed)
     }
 
     private val searchOptions = combine(
@@ -97,7 +117,8 @@ class ExpandedSettingsViewModelImpl(
         openMode,
         searchOptions,
         options,
-    ) { isExpanded, open, search, options ->
+        xposedAvailable
+    ) { isExpanded, open, search, options, xposed ->
         State.Loaded(
             isExpanded,
             search.first,
@@ -108,9 +129,17 @@ class ExpandedSettingsViewModelImpl(
             open.second,
             options.closeWhenLocked,
             options.backgroundBlur,
-            options.widgetsUseGoogleSans
+            options.widgetsUseGoogleSans,
+            xposed,
+            open.third
         )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
+
+    override fun onResume() {
+        vmScope.launch {
+            resumeBus.emit(System.currentTimeMillis())
+        }
+    }
 
     override fun onEnabledChanged(enabled: Boolean) {
         vmScope.launch {
@@ -169,6 +198,13 @@ class ExpandedSettingsViewModelImpl(
     override fun onUseGoogleSansChanged(enabled: Boolean) {
         vmScope.launch {
             widgetsUseGoogleSans.set(enabled)
+        }
+    }
+
+    override fun onXposedEnabledChanged(context: Context, enabled: Boolean) {
+        vmScope.launch {
+            xposedEnabled.set(enabled)
+            SmartspacerXposedSettingsProvider.notifyChange(context)
         }
     }
 

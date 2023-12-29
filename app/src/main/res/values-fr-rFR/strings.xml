@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -21,9 +20,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
-    <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
     <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
     <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
-    <string name="notification_accessibility_widget_content">Le service d\'accessibilité du widget Smartspacer doit être activé pour que les widgets fonctionnent, appuyez pour activer</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
     <string name="target_not_available">Cette cible n\'est plus disponible, appuyez pour la supprimer</string>
@@ -434,7 +431,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->

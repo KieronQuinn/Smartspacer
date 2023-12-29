@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>選擇性</b>：在您的啟動器或啟動器的 Google Feed 橋接上啟用此模塊，以用擴展的 Smartspace 替換 Google Discover</string>
     <string name="dummy_home_content">這個畫面的存在是為了解決 Smartspacer 外掛使用的功能組件執行不佳的問題。\n\nSmartspacer 無法充當啟動器，請選擇其他啟動器。</string>
     <string name="dummy_home_open_settings">開啟設定</string>
     <string name="notification_service">Smartspacer 通知服務</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">套用</string>
     <string name="widget_options_configure">設定小工具</string>
     <string name="accessibility_service_label">Smartspacer 小工具服務</string>
-    <string name="accessibility_service_description">啟用 Smartspacer 的小工具，持續更新 Targets 和 Complications，同時不會因為讓它們持續運作而耗損電池壽命。</string>
     <string name="target_notification_label">通知</string>
     <string name="target_notification_description">顯示來自應用程式的通知</string>
     <string name="target_notification_description_selected">顯示來自 %1s 的通知</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">背景位置</string>
     <string name="notification_location_permission_required_content">Smartspacer 需要存取背景位置資訊，點擊以授權</string>
     <string name="notification_accessibility_widget_title">啟用小工具輔助功能服務</string>
-    <string name="notification_accessibility_widget_content">為了讓小工具正常運作，需要啟用 Smartspacer 的小工具輔助功能服務，點擊以啟用</string>
     <string name="fab_targets_add">新增目標</string>
     <string name="targets_empty_label">尚未新增目標</string>
     <string name="target_not_available">該目標已不再可用，點擊以移除</string>

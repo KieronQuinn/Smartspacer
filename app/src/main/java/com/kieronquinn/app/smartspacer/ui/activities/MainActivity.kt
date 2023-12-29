@@ -6,12 +6,18 @@ import androidx.core.view.WindowCompat
 import com.google.android.material.color.DynamicColors
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.receivers.SafeModeReceiver
+import com.kieronquinn.app.smartspacer.repositories.BluetoothRepository
+import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
 import com.kieronquinn.app.smartspacer.service.SmartspacerBackgroundService
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.workers.SmartspacerUpdateWorker
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import org.koin.android.ext.android.inject
 
 class MainActivity : MonetCompatActivity() {
+
+    private val wiFiRepository by inject<WiFiRepository>()
+    private val bluetoothRepository by inject<BluetoothRepository>()
 
     override val applyBackgroundColorToMenu = true
 
@@ -33,6 +39,13 @@ class MainActivity : MonetCompatActivity() {
             monet.awaitMonetReady()
             setContentView(R.layout.activity_main)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //Check for changes to permission restricted repositories if the user has changed a perm
+        wiFiRepository.refresh()
+        bluetoothRepository.onPermissionChanged()
     }
 
 }

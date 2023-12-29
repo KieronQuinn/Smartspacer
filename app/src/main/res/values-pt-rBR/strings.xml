@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Espaçador inteligente</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Opcional</b>: Ative esse módulo no seu inicializador do Google Feed para substituir o Google Discover pelo Smartspace Expandido</string>
     <string name="dummy_home_content">Esta tela foi criada para contornar widgets mal implementados usados pelos plugins do Smartspacer.\n\nO Smartspacer não pode funcionar como um iniciador, por favor, escolha um iniciador diferente.</string>
     <string name="dummy_home_open_settings">Abrir Configurações</string>
     <string name="notification_service">Serviço de Notificações do Smartspacer</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar Widget</string>
     <string name="accessibility_service_label">Serviço de Widget do Smartspacer</string>
-    <string name="accessibility_service_description">Permite que o widget do Smartspacer mantenha os destaques e as complementos atualizados, sem aumentar o consumo da bateria por mantê-los sempre em execução.</string>
     <string name="target_notification_label">Notificações</string>
     <string name="target_notification_description">Exibe notificações de um aplicativo</string>
     <string name="target_notification_description_selected">Exibe notificações do %1s</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">Localização em segundo plano</string>
     <string name="notification_location_permission_required_content">Smartspacer precisa de acesso à localização em segundo plano, toque para conceder</string>
     <string name="notification_accessibility_widget_title">Ativar Serviço de Acessibilidade do Widget</string>
-    <string name="notification_accessibility_widget_content">O Serviço de Acessibilidade de Widget do Smartspacer precisa ser ativado para que os widgets funcionem. Toque para ativar</string>
     <string name="fab_targets_add">Adicionar destaque</string>
     <string name="targets_empty_label">Nenhum destaque adicionado</string>
     <string name="target_not_available">Este destaque não está mais disponível, toque para remover</string>

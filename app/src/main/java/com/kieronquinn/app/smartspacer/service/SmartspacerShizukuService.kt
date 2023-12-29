@@ -5,6 +5,7 @@ package com.kieronquinn.app.smartspacer.service
 import android.annotation.SuppressLint
 import android.app.IActivityManager
 import android.app.IActivityTaskManager
+import android.app.IProcessObserver
 import android.app.PendingIntent
 import android.app.prediction.AppPredictionContext
 import android.app.prediction.AppPredictionManager
@@ -24,6 +25,7 @@ import android.hardware.camera2.CameraManager
 import android.net.wifi.IWifiManager
 import android.os.Binder
 import android.os.Build
+import android.os.IBinder
 import android.os.IUserManager
 import android.os.Process
 import android.os.RemoteException
@@ -31,6 +33,7 @@ import android.os.UserHandle
 import android.system.Os
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener
+import com.kieronquinn.app.smartspacer.IRunningAppObserver
 import com.kieronquinn.app.smartspacer.ISmartspaceSession
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
@@ -86,6 +89,27 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     private val context = Utils.getContext()
     private val shellContext = ShellContext(context, false)
     private val scope = MainScope()
+    private var runningAppObserver: IRunningAppObserver? = null
+
+    private val processObserver = object: IProcessObserver.Stub() {
+        override fun onForegroundActivitiesChanged(
+            pid: Int,
+            uid: Int,
+            foregroundActivities: Boolean
+        ) {
+            if(!foregroundActivities) return
+            val packageName = activityManager.getPackageNameForPid(pid) ?: return
+            runningAppObserver?.onRunningAppChanged(packageName)
+        }
+
+        override fun onProcessDied(pid: Int, uid: Int) {
+            //No-op
+        }
+
+        override fun onForegroundServicesChanged(pid: Int, uid: Int, serviceTypes: Int) {
+            //No-op
+        }
+    }
 
     private val packageManager by lazy {
         context.packageManager
@@ -421,8 +445,34 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} ACCESS_RESTRICTED_SETTINGS allow")
     }
 
+    override fun enableBluetooth() {
+        runCommand("cmd bluetooth_manager enable")
+    }
+
     override fun getSavedWiFiNetworks(): ParceledListSlice<*> {
         return wifiManager.getPrivilegedConfiguredNetworks(shellContext)
+    }
+
+    @Synchronized
+    override fun setProcessObserver(observer: IBinder?) {
+        runningAppObserver = observer?.let {
+            IRunningAppObserver.Stub.asInterface(it)
+        }
+    }
+
+    init {
+        activityManager.registerProcessObserver(processObserver)
+    }
+
+    /**
+     *  Finds a given PID in the running apps and returns its process name, which seems to be the
+     *  package name.
+     */
+    private fun IActivityManager.getPackageNameForPid(pid: Int): String? {
+        val rawName = runningAppProcesses.find { it.pid == pid }?.processName
+        return if(rawName?.contains(":") == true){
+            rawName.substring(0, rawName.indexOf(":"))
+        }else rawName
     }
 
 }

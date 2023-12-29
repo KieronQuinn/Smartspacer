@@ -71,6 +71,7 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
             navigationMock,
             settingsMock,
             searchRepositoryMock,
+            contextMock,
             scope
         )
     }
@@ -106,11 +107,14 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
     @Test
     fun testOnShowDoodleChanged() = runTest {
         sut.state.test {
+            println("A")
             sut.state.assertOutputs<State, State.Loaded>()
             val item = expectMostRecentItem() as State.Loaded
+            println("B")
             assertFalse(item.showDoodle)
             sut.onShowDoodleChanged(true)
             val updatedItem = awaitItem()
+            println("C")
             assertTrue(updatedItem is State.Loaded)
             updatedItem as State.Loaded
             assertTrue(updatedItem.showDoodle)

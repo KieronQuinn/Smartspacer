@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Пространство</string>
-    <string name="xposed_desc"><b>Опционально</b>: включите этот модуль, выбрав ваш лаунчер или мост Google Feed (Lawnfeed), чтобы заменить ленту новостей Google на Расширенное пространство</string>
     <string name="dummy_home_content">Этот экран существует для того, чтобы обойти ограничения, вызванные неправильно написанными Виджетами.\n\nSmartspacer - не лаунчер. Пожалуйста, установите другой лаунчер по умолчанию.</string>
     <string name="dummy_home_open_settings">Открыть настройки</string>
     <string name="notification_service">Служба уведомлений Smartspacer</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">Применить</string>
     <string name="widget_options_configure">Настроить виджет</string>
     <string name="accessibility_service_label">Служба виджетов Smartspacer</string>
-    <string name="accessibility_service_description">Позволяет виджетам Smartspacer поддерживать Цели и Дополнения актуальными, не расходуя заряд батареи на их постоянную работу.</string>
     <string name="target_notification_label">Уведомления</string>
     <string name="target_notification_description">Показывает уведомления от одного приложения</string>
     <string name="target_notification_description_selected">Показывает уведомления от %1s</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">Доступ к местоположению в фоне</string>
     <string name="notification_location_permission_required_content">Smartspacer требует доступ к местоположению в фоне, нажмите, чтобы предоставить</string>
     <string name="notification_accessibility_widget_title">Включите службы специальных возможностей для виджетов</string>
-    <string name="notification_accessibility_widget_content">Служба специальных возможностей Smartspacer должна быть включена для работы виджетов, нажмите для включения</string>
     <string name="fab_targets_add">Добавить Цель</string>
     <string name="targets_empty_label">Нет добавленных Целей</string>
     <string name="target_not_available">Эта Цель недоступна, нажмите для удаления</string>

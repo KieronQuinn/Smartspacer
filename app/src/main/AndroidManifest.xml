@@ -43,6 +43,8 @@
     <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_BROADCASTS" />
     <uses-permission android:name="com.kieronquinn.app.smartspacer.permission.SEND_UPDATE_BROADCAST" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -174,6 +176,11 @@
 
         <activity-alias
             android:name=".ui.activities.configuration.requirement.wifi.WiFiRequirementConfigurationActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.requirement.bluetooth.BluetoothRequirementConfigurationActivity"
             android:exported="true"
             android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
 
@@ -380,6 +387,20 @@
             android:exported="true"
             android:multiprocess="false"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+        <!-- Allows Xposed module to read whether the pref is enabled. Unprotected. -->
+        <provider
+            android:authorities="${applicationId}.xposed"
+            android:name=".providers.SmartspacerXposedSettingsProvider"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
+
+        <!-- Allows instant checking of whether Xposed module is enabled, by running in a new process -->
+        <provider
+            android:authorities="${applicationId}.xposedstate"
+            android:name=".providers.SmartspacerXposedStateProvider"
+            android:process=":xposed"
+            android:exported="false" />
 
         <!-- Built in targets -->
         <provider
@@ -635,6 +656,15 @@
         <provider
             android:name=".components.smartspace.requirements.WiFiRequirement"
             android:authorities="${applicationId}.requirement.wifi"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name=".components.smartspace.requirements.BluetoothRequirement"
+            android:authorities="${applicationId}.requirement.bluetooth"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
