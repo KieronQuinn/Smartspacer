@@ -150,7 +150,7 @@
     <string name="notification_channel_native_title">Nativer Smartspace</string>
     <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
-    <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
+    <string name="notification_channel_oem_content">Nachrichten im Zusammenhang mit dem OEM Smartspace Service von Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku Erinnerung</string>
     <string name="notification_channel_shizuku_reminder_content">Notification shown as a reminder to start Shizuku after rebooting</string>
     <string name="notification_channel_updates_title">Smartspacer Updates</string>
@@ -405,7 +405,7 @@
     <string name="settings_hide_sensitive_contents_hide_content">Ziel komplett ausblenden</string>
     <string name="settings_debug_header">Debugging</string>
     <string name="settings_dump_title">Speichere Ziele &amp; Aktionen</string>
-    <string name="settings_dump_content">Zeige den Inhalt und Debug-Informationen für aktuelle Ziele &amp; Aktionen anzeigen und schreibe diese in eine Datei, um bei der Fehlerbehebung zu helfen</string>
+    <string name="settings_dump_content">Zeige den Inhalt und Debug-Informationen für aktuelle Ziele &amp; Aktionen und schreibe diese in eine Datei, um bei der Fehlerbehebung zu helfen</string>
     <string name="settings_dump_title_short">Datensammlung</string>
     <string name="settings_dump_button">In Datei schreiben</string>
     <string name="settings_dump_complete">In Datei geschrieben</string>
@@ -498,12 +498,12 @@
     <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
     <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
     <!-- Setup > Expanded -->
-    <string name="setup_expanded_title">Expanded</string>
+    <string name="setup_expanded_title">Erweitert</string>
     <string name="setup_expanded_switch">Erweiterten Smartspace aktivieren</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
+    <string name="setup_expanded_info_p1"><b>Erweitertes Smartspace</b> ist eine Vollbildversion von Smartspace mit allen verfügbaren Zielen und Komplikationen, sowie zusätzliche dynamische Informationen wie Widgets und Verknüpfungen, die in den Zielen angegeben werden. Du kannst diesem Bildschirm auch eigene Widgets hinzufügen.</string>
     <string name="setup_expanded_info_p2">Entwickelt, um einen schnellen Überblick über alle aktuellen Informationen zu bieten, kannst du einstellen, dass der erweiterte Smartspace geöffnet wird, wenn auf ein Ziel geklickt wird und zusätzliche dynamische Informationen verfügbar sind. Dies ist nützlich, wenn du einfachen Zugriff auf kontextbezogene Informationen auf Knopfdruck möchtest.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
+    <string name="setup_expanded_open_title">Dynamisch erweiterten Smartspace öffnen</string>
+    <string name="setup_expanded_open_content">Wenn aktiviert, öffnet sich der erweiterte Smartspace wenn ein Ziel angetippt wird, das zusätzliche Informationen hat, wie z. B. ein Widget oder Verknüpfungen</string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
@@ -530,20 +530,20 @@
     <string name="enhanced_mode_enable_title">Erweiterten Modus aktivieren</string>
     <string name="enhanced_mode_enable_subtitle">Erfordert Shizuku oder Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Erweiterter Modus erlaubt Smartspacer:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integration in den Smartspace auf dem Sperrbildschirm</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integration in den Smartspace bei kompatiblen Launchern</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integration in den OEM Smartspace (falls verfügbar)</string>
-    <string name="enhanced_mode_enable_content_system">• Zeige systemeigene Smartspace-Ziele und -Komplikationen in Smartspacer</string>
-    <string name="enhanced_mode_enable_content_app_prediction">• Verwende System-App-Vorhersagen als Anforderung</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Die Integration in den Smartspace auf dem Sperrbildschirm</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Die Integration in den Smartspace bei kompatiblen Launchern</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Die Integration in den OEM Smartspace (falls verfügbar)</string>
+    <string name="enhanced_mode_enable_content_system">• Systemeigene Smartspace-Ziele und -Komplikationen in Smartspacer anzuzeigen</string>
+    <string name="enhanced_mode_enable_content_app_prediction">• Die Verwendung von System-App-Vorhersagen als Bedingung</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Aktuelle Apps als Bedingung zu verwenden</string>
     <string name="enhanced_mode_skip_button">Überspringen</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_skip_info">Du kannst mit deaktiviertem Erweiterten Modus weiterhin Smartspacers Widget, Ziele, Komplikationen und Plugins verwenden</string>
+    <string name="enhanced_mode_disable_toast">Möglicherweise musst du dein Gerät neu starten, damit die Änderungen wirksam werden</string>
     <!-- Native Mode -->
-    <string name="native_title">Native Smartspace</string>
-    <string name="native_switch">Enable Native Smartspace</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
+    <string name="native_title">Nativer Smartspace</string>
+    <string name="native_switch">Nativen Smartspace aktivieren</string>
+    <string name="native_switch_info"><b>Wichtig:</b> Beim Aktivieren des nativen Smartspaces startet Smartspacer die SystemUI neu. <b>Es kann sein, dass du eine Nachricht siehst, dass die SystemUI gestoppt wurde, und dann deinen Sperrbildschirm.</b> Das ist normal, ignoriere die Nachricht und entsperre dein Gerät, um fortzufahren.</string>
+    <string name="native_switch_content">Der native Smartspace integriert Smartspacer in dein %1s, es zeigt Smartspacer-Ziele und - Komplikationen an.\nDu musst den nativen Smartspace nach jedem Neustart wieder aktivieren. Das liegt an Systembeschränkungen.</string>
     <string name="native_switch_content_many">%1s und %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Kompatibilität</string>
@@ -551,7 +551,7 @@
     <string name="native_switch_compatibility_available"><b>Available</b></string>
     <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_title">Nativer Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt. Um sicherzustellen, dass alle Ziele &amp; Komplikationen ordnungsgemäß funktionieren, muss nativer Smartspace gestoppt und erneut gestartet werden, um sich wieder zu verbinden.</string>
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
@@ -592,7 +592,7 @@
     <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Native Smartspace Settings</string>
-    <string name="native_mode_settings_title">Native Smartspace</string>
+    <string name="native_mode_settings_title">Nativer Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Page Limit</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
@@ -671,18 +671,18 @@
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">OEM Smartspace</string>
     <string name="oem_smartspace_content">Einstellungen um Smartspacer in alten Launchers und auf dem Sperrbildschirm auf einigen Geräten anzuzeigen</string>
-    <string name="oem_smartspace_content_enhanced">This option requires Enhanced Mode</string>
+    <string name="oem_smartspace_content_enhanced">Diese Einstellung erfordert den erweiterten Modus</string>
     <string name="oem_smartspace_incompatible">Sorry, diese Option erfordert Root auf deinem Gerät aufgrund von Systembeschränkungen. Wenn dein Gerät gerootet ist, installiere das Sui Magisk-Modul oder starte Shizuku als Root.</string>
     <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
-    <string name="oem_smartspace_more_info">More info</string>
-    <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
-    <string name="oem_smartspace_switch">Enable OEM Smartspace</string>
-    <string name="oem_smartspace_apps">Compatible Apps</string>
-    <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
+    <string name="oem_smartspace_more_info">Weitere Informationen</string>
+    <string name="oem_smartspace_no_apps">Es sind keine Apps installiert, die OEM Smartspace verwenden.</string>
+    <string name="oem_smartspace_switch">OEM Smartspace aktivieren</string>
+    <string name="oem_smartspace_apps">Kompatible Apps</string>
+    <string name="oem_smartspace_warning">Diese App benötigt möglicherweise zusätzliche Einrichtungen, überprüfe die unten verlinkte Wiki-Seite für weitere Informationen</string>
     <string name="oem_smartspace_settings">Einstellungen</string>
     <string name="oem_smartspace_label_systemui">Sperrbildschirm</string>
-    <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
-    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
+    <string name="oem_smartspace_hide_incompatible_title">Inkompatible Ziele ausblenden</string>
+    <string name="oem_smartspace_hide_incompatible_content">Ziele ausblenden, die nicht mit OEM Smartspace kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
     <string name="expanded_search_box_search">Suchen…</string>
     <string name="expanded_footer">Add Widget</string>
     <string name="expanded_custom_widget_delete">Entfernen</string>
@@ -781,7 +781,7 @@
     <string name="permissions_ask_every_time">Jedes Mal fragen</string>
     <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
     <string name="permissions_title">Berechtigungen</string>
-    <string name="permissions_content">Manage permissions granted to Plugins &amp; apps integrating Smartspacer</string>
+    <string name="permissions_content">Verwalte Berechtigungen von Plugins &amp; Apps, die Smartspacer integrieren</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
