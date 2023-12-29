@@ -25,6 +25,8 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.HideSensitive
 import com.kieronquinn.app.smartspacer.repositories.UpdateRepository.Companion.CONTENT_TYPE_APK
+import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
+import com.kieronquinn.app.smartspacer.service.SmartspacerBackgroundService
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import dalvik.system.PathClassLoader
 import dev.rikka.tools.refine.Refine
@@ -274,6 +276,11 @@ fun Context.getNotificationListenerIntent(notificationListener: Class<out Notifi
 //Safe to use getRunningServices for our own service
 @Suppress("deprecation")
 fun Context.isServiceRunning(serviceClass: Class<out Service>): Boolean {
+    if(serviceClass == SmartspacerAccessibiltyService::class.java &&
+        SmartspacerBackgroundService.isUsingEnhancedModeAppListener) {
+        //Bypass need to enable accessibility
+        return true
+    }
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
     return activityManager.getRunningServices(Integer.MAX_VALUE).any {
         it?.service?.className == serviceClass.name
