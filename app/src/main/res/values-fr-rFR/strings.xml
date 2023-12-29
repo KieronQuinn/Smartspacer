@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son pont Google Feed pour remplacer Google Discover par Smartspace étendu</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -66,7 +66,7 @@
     <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
-    <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
     <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
@@ -165,7 +165,7 @@
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
     <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
-    <string name="notification_accessibility_widget_content">Le service d\'accessibilité du widget Smartspacer doit être activé pour que les widgets fonctionnent, appuyez pour activer</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
     <string name="target_not_available">Cette cible n\'est plus disponible, appuyez pour la supprimer</string>
@@ -345,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">Aucun réseau trouvé, assurez-vous que le Wi-Fi est activé et qu\'il y a des réseaux à proximité</string>
     <string name="requirement_wifi_configuration_picker_saved">Réseaux enregistrés</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Réseau inconnu</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Suggestion d\'application</string>
     <string name="requirement_app_prediction_content_generic">Afficher uniquement lorsqu\'une application spécifique est dans les 5 premières suggestions (affichées généralement dans votre tiroir d\'applications)</string>
     <string name="requirement_app_prediction_content">Afficher uniquement lorsque %1s est dans les 5 premières suggestions</string>
@@ -643,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Incompatible avec votre appareil</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
