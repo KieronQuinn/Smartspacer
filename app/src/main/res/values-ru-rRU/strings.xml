@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Пространство</string>
-    <string name="xposed_desc"><b>Опционально</b>: включите этот модуль, выбрав ваш лаунчер или мост Google Feed (Lawnfeed), чтобы заменить ленту новостей Google на Расширенное пространство</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">Этот экран существует для того, чтобы обойти ограничения, вызванные неправильно написанными Виджетами.\n\nSmartspacer - не лаунчер. Пожалуйста, установите другой лаунчер по умолчанию.</string>
     <string name="dummy_home_open_settings">Открыть настройки</string>
     <string name="notification_service">Служба уведомлений Smartspacer</string>
@@ -66,7 +66,7 @@
     <string name="widget_configuration_apply">Применить</string>
     <string name="widget_options_configure">Настроить виджет</string>
     <string name="accessibility_service_label">Служба виджетов Smartspacer</string>
-    <string name="accessibility_service_description">Позволяет виджетам Smartspacer поддерживать Цели и Дополнения актуальными, не расходуя заряд батареи на их постоянную работу.</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Уведомления</string>
     <string name="target_notification_description">Показывает уведомления от одного приложения</string>
     <string name="target_notification_description_selected">Показывает уведомления от %1s</string>
@@ -165,7 +165,7 @@
     <string name="notification_location_permission_required_title">Доступ к местоположению в фоне</string>
     <string name="notification_location_permission_required_content">Smartspacer требует доступ к местоположению в фоне, нажмите, чтобы предоставить</string>
     <string name="notification_accessibility_widget_title">Включите службы специальных возможностей для виджетов</string>
-    <string name="notification_accessibility_widget_content">Служба специальных возможностей Smartspacer должна быть включена для работы виджетов, нажмите для включения</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Добавить Цель</string>
     <string name="targets_empty_label">Нет добавленных Целей</string>
     <string name="target_not_available">Эта Цель недоступна, нажмите для удаления</string>
@@ -345,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">Сети не найдены, убедитесь, что Wi-Fi включен и рядом есть доступные сети</string>
     <string name="requirement_wifi_configuration_picker_saved">Сохранённые сети</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Неизвестная сеть</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Подсказка приложений</string>
     <string name="requirement_app_prediction_content_generic">Показывать только если определённое приложение находится в топ-5 Подсказках Приложений (обычно отображаются в меню приложений)</string>
     <string name="requirement_app_prediction_content">Показывать только если %1s находится в топ-5 Подсказках приложений</string>
@@ -643,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Несовместимо с вашим устройством</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Использовать Google Sans в виджетах</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Принудительно использовать шрифт Google Sans во всех виджетах. Это может вызывать проблемы с некоторыми виджетами</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Никогда</string>
     <string name="expanded_settings_open_mode_never_content">Запускает действия по нажатию на Цель вместо открытия Расширенного Пространства</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Если у Цели есть, что показать</string>
