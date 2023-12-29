@@ -15,7 +15,8 @@ class SmartspacerAccessibiltyService: LifecycleAccessibilityService() {
 
     companion object {
         fun isRunning(context: Context): Boolean {
-            return context.isServiceRunning(SmartspacerAccessibiltyService::class.java)
+            return SmartspacerBackgroundService.isUsingEnhancedModeAppListener ||
+                    context.isServiceRunning(SmartspacerAccessibiltyService::class.java)
         }
     }
 

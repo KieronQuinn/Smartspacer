@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_requirement_bluetooth"
+    app:startDestination="@id/bluetoothRequirementConfigurationFragment">
+
+    <fragment
+        android:id="@+id/bluetoothRequirementConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.bluetooth.BluetoothRequirementConfigurationFragment"
+        android:label="@string/requirement_bluetooth_configuration_pick_title"
+        tools:layout="@layout/fragment_settings_base" />
+
+</navigation>

@@ -1,7 +1,6 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.settings
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -30,6 +29,11 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
     }
 
     private fun setupState() {
@@ -138,6 +142,22 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 ),
                 onChanged = viewModel::onCloseWhenLockedChanged
             ),
+            GenericSettingsItem.SwitchSetting(
+                xposedEnabled && xposedAvailable,
+                getString(R.string.expanded_settings_xposed_enabled_title),
+                if(xposedAvailable) {
+                    getText(R.string.expanded_settings_xposed_enabled_content)
+                }else{
+                    getString(R.string.expanded_settings_xposed_enabled_content_disabled)
+                },
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_xposed
+                ),
+                enabled = xposedAvailable
+            ) {
+                viewModel.onXposedEnabledChanged(requireContext(), it)
+            },
             GenericSettingsItem.Header(getString(R.string.expanded_settings_header_style)),
             GenericSettingsItem.Dropdown(
                 getString(R.string.expanded_settings_tint_colour),

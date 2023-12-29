@@ -19,5 +19,5 @@ class RequirementData(
 ) : Parcelable, BaseData
 
 enum class RequirementDataType {
-    TIME_DATE, GEOFENCE, APP_PREDICTION, RECENT_TASK, WIFI
+    TIME_DATE, GEOFENCE, APP_PREDICTION, RECENT_TASK, WIFI, BLUETOOTH
 }

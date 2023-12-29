@@ -100,6 +100,10 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.configuration.requirement.wifi.WiFiRequirementConfigurationActivity",
             R.navigation.nav_graph_configure_requirement_wifi
         ),
+        REQUIREMENT_BLUETOOTH(
+            ".ui.activities.configuration.requirement.bluetooth.BluetoothRequirementConfigurationActivity",
+            R.navigation.nav_graph_configure_requirement_bluetooth
+        ),
         WIDGET_SMARTSPACER(
             ".ui.activities.configuration.appwidget.SmartspacerAppWidgetConfigureActivity",
             R.navigation.nav_graph_configure_widget

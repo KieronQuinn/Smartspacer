@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>可选</b>: 启用这个模块并将作用域设置为您的启动器或启动器的 Google Feed 提供组件可以将 Google Feed 页面替换为 Expanded Smartspace。</string>
     <string name="dummy_home_content">该页面用于在 Smartspacer 扩展中应用效果不佳的小组件。\n\nSmartspacer 不能作为启动器使用，请选择其他启动器。</string>
     <string name="dummy_home_open_settings">打开设置</string>
     <string name="notification_service">Smartspacer 通知服务</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">应用</string>
     <string name="widget_options_configure">配置小组件</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
-    <string name="accessibility_service_description">启用 Smartspacer 小组件来保持对象和附件更新，避免长时间后台运行带来的电量消耗。</string>
     <string name="target_notification_label">通知</string>
     <string name="target_notification_description">显示来自某应用的通知</string>
     <string name="target_notification_description_selected">显示来自 %1s 的通知</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">后台位置</string>
     <string name="notification_location_permission_required_content">Smartspacer 需要后台位置权限，点击授予</string>
     <string name="notification_accessibility_widget_title">启用小组件无障碍服务</string>
-    <string name="notification_accessibility_widget_content">需要 Smartspacer 的小组件无障碍服务来保证小组件正常工作，点击开启</string>
     <string name="fab_targets_add">添加对象</string>
     <string name="targets_empty_label">没有添加对象</string>
     <string name="target_not_available">该对象不再可用，点击移除</string>

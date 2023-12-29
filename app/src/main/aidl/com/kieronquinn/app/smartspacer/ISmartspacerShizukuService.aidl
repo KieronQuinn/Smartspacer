@@ -40,6 +40,10 @@ interface ISmartspacerShizukuService {
 
     ParceledListSlice getSavedWiFiNetworks() = 18;
 
+    void enableBluetooth() = 19;
+
+    void setProcessObserver(in IBinder observer) = 20;
+
     void destroy() = 16777114;
 
 }

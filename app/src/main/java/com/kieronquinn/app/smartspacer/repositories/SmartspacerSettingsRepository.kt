@@ -150,6 +150,11 @@ interface SmartspacerSettingsRepository {
     val expandedWidgetUseGoogleSans: SmartspacerSetting<Boolean>
 
     /**
+     *  Whether the Xposed module should replace Discover with Expanded Smartspace
+     */
+    val expandedXposedEnabled: SmartspacerSetting<Boolean>
+
+    /**
      *  Whether the OEM Smartspace Service should be enabled
      */
     @IgnoreInBackup //Ignored as we can't guarantee permission will be kept
@@ -295,6 +300,9 @@ class SmartspacerSettingsRepositoryImpl(
 
     companion object {
         private const val SHARED_PREFS_NAME = "${BuildConfig.APPLICATION_ID}_shared_prefs"
+        private const val SHARED_PREFS_VERSION = 2
+
+        private const val KEY_SHARED_PREFS_VERSION = "shared_prefs_version"
 
         private const val KEY_HAS_SEEN_SETUP = "has_seen_setup"
         private const val DEFAULT_HAS_SEEN_SETUP = false
@@ -359,6 +367,9 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS = "expanded_widgets_use_google_sans"
         private const val DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS = false
+
+        private const val KEY_EXPANDED_XPOSED_ENABLED = "expanded_xposed_enabled"
+        private const val DEFAULT_EXPANDED_XPOSED_ENABLED = false
 
         private const val KEY_OEM_SMARTSPACE_ENABLED = "oem_smartspace_enabled"
         private const val DEFAULT_OEM_SMARTSPACE_ENABLED = false
@@ -429,6 +440,7 @@ class SmartspacerSettingsRepositoryImpl(
     override val expandedTintColour = enum(KEY_EXPANDED_TINT_COLOUR, DEFAULT_EXPANDED_TINT_COLOUR)
     override val expandedHasClickedAdd = boolean(KEY_EXPANDED_HAS_CLICKED_ADD, DEFAULT_EXPANDED_HAS_CLICKED_ADD)
     override val expandedWidgetUseGoogleSans = boolean(KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS, DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS)
+    override val expandedXposedEnabled = boolean(KEY_EXPANDED_XPOSED_ENABLED, DEFAULT_EXPANDED_XPOSED_ENABLED)
     override val oemSmartspaceEnabled = boolean(KEY_OEM_SMARTSPACE_ENABLED, DEFAULT_OEM_SMARTSPACE_ENABLED)
     override val oemHideIncompatible = boolean(KEY_OEM_HIDE_INCOMPATIBLE, DEFAULT_OEM_HIDE_INCOMPATIBLE)
     override val updateCheckEnabled = boolean(KEY_UPDATE_CHECK_ENABLED, DEFAULT_UPDATE_CHECK_ENABLED)
@@ -443,6 +455,22 @@ class SmartspacerSettingsRepositoryImpl(
     override val requiresDisplayOverOtherAppsPermission = boolean(KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS, DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS)
     override val notificationWidgetServiceEnabled = boolean(KEY_NOTIFICATION_WIDGET_SERVICE_ENABLED, DEFAULT_NOTIFICATION_WIDGET_SERVICE_ENABLED)
     override val notificationWidgetTintColour = enum(KEY_NOTIFICATION_WIDGET_TINT, DEFAULT_NOTIFICATION_WIDGET_TINT)
+
+    private fun getDefaultSharedPrefsVersion(): Int {
+        /*
+            Since this key was not previously set, we need to apply some logic to the default.
+
+            If the value is already set (as is done on init in the upgrade check), it will use that.
+            If the value is not set, but they have completed setup, they get a value of 1.
+            If the value is not set and they have not completed setup, they are treated as new and
+            it's set to the default.
+         */
+        return if(!hasSeenSetup.getSync()) {
+            SHARED_PREFS_VERSION
+        }else 1
+    }
+
+    private val sharedPrefsVersion = int(KEY_SHARED_PREFS_VERSION, getDefaultSharedPrefsVersion())
 
     override suspend fun setRestrictedModeKnownDisabledIfNeeded() {
         //Not sure if upgrading requires allowing unrestricted, so only setting on T+ for now
@@ -495,6 +523,23 @@ class SmartspacerSettingsRepositoryImpl(
     private fun doesHaveSplitSmartspace(): Boolean {
         return isAtLeastU() &&
                 SystemProperties.getBoolean("persist.sysui.ss.dw_decoupled", true)
+    }
+
+    /**
+     *  Performs any necessary upgrades and then sets the current version
+     */
+    private fun upgradePrefsIfRequired() {
+        val current = sharedPrefsVersion.getSync()
+        if(current >= SHARED_PREFS_VERSION) return //Already up to date
+        if(current < 2) {
+            //1 -> 2: Expanded Smartspace for Xposed is enabled by default as was previously implied
+            expandedXposedEnabled.setSync(true)
+        }
+        sharedPrefsVersion.setSync(SHARED_PREFS_VERSION)
+    }
+
+    init {
+        upgradePrefsIfRequired()
     }
 
 }

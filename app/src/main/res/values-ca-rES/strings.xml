@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspacer</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed bridge to replace Google Discover with Expanded Smartspace</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
     <string name="dummy_home_open_settings">Obre la configuració</string>
     <string name="notification_service">Smartspacer Notification Service</string>
@@ -66,7 +65,6 @@
     <string name="widget_configuration_apply">Apply</string>
     <string name="widget_options_configure">Configurar Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.</string>
     <string name="target_notification_label">Notificacions</string>
     <string name="target_notification_description">Shows notifications from an app</string>
     <string name="target_notification_description_selected">Shows notifications from %1s</string>
@@ -165,7 +163,6 @@
     <string name="notification_location_permission_required_title">Background Location</string>
     <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
-    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable</string>
     <string name="fab_targets_add">Add Target</string>
     <string name="targets_empty_label">No Targets added</string>
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
