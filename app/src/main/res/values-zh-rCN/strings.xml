@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">该页面用于在 Smartspacer 扩展中应用效果不佳的小组件。\n\nSmartspacer 不能作为启动器使用，请选择其他启动器。</string>
     <string name="dummy_home_open_settings">打开设置</string>
     <string name="notification_service">Smartspacer 通知服务</string>
@@ -65,6 +66,7 @@
     <string name="widget_configuration_apply">应用</string>
     <string name="widget_options_configure">配置小组件</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">通知</string>
     <string name="target_notification_description">显示来自某应用的通知</string>
     <string name="target_notification_description_selected">显示来自 %1s 的通知</string>
@@ -163,6 +165,7 @@
     <string name="notification_location_permission_required_title">后台位置</string>
     <string name="notification_location_permission_required_content">Smartspacer 需要后台位置权限，点击授予</string>
     <string name="notification_accessibility_widget_title">启用小组件无障碍服务</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">添加对象</string>
     <string name="targets_empty_label">没有添加对象</string>
     <string name="target_not_available">该对象不再可用，点击移除</string>
@@ -342,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">没有找到网络，请确保 Wi-Fi 已开启且附近有网络可用</string>
     <string name="requirement_wifi_configuration_picker_saved">已保存网络</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">位置网络</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">应用建议</string>
     <string name="requirement_app_prediction_content_generic">仅在特定应用位于应用建议前 5 位置时显示（通常会显示在应用抽屉顶部）</string>
     <string name="requirement_app_prediction_content">仅当 %1s 位于应用建议前 5 位置时显示</string>
@@ -640,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">与你的设备不兼容</string>
     <string name="expanded_settings_widgets_use_google_sans_title">在小组间中使用 Google Sans 字体</string>
     <string name="expanded_settings_widgets_use_google_sans_content">如果可以，强制小组件使用 Google Sans 字体。在某些小组件上可能会导致布局问题</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">从不</string>
     <string name="expanded_settings_open_mode_never_content">执行对象的点击操作而不是打开扩展 Smartspace 面板</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">如果对象提供展开选项</string>

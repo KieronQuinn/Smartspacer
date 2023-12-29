@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">Esta pantalla existe para trabajar con Widgets mal implementados por Smartspacer Plugins.\n\nSmartspacer no puede actuar como launcher, por favor seleccione un launcher diferente.</string>
     <string name="dummy_home_open_settings">Abrir configuración</string>
     <string name="notification_service">Servicio de notificaciones de Smartspacer</string>
@@ -65,6 +66,7 @@
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Notificaciones</string>
     <string name="target_notification_description">Mostrar notificaciones desde una app</string>
     <string name="target_notification_description_selected">Mostrar notificaciones de %1s</string>
@@ -163,6 +165,7 @@
     <string name="notification_location_permission_required_title">Ubicación en segundo plano</string>
     <string name="notification_location_permission_required_content">Smartspacer requiere acceso de la ubicación en segundo plano, presiona para permitir</string>
     <string name="notification_accessibility_widget_title">Habilitar el servicio de accesibilidad del widget</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Agregar objetivo</string>
     <string name="targets_empty_label">No hay objetivos agregados</string>
     <string name="target_not_available">Este objetivo no está disponible no más, pulsa a removerlo</string>
@@ -342,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
     <string name="requirement_wifi_configuration_picker_saved">Redes guardadas</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Red desconocida</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Sugerencias de apps</string>
     <string name="requirement_app_prediction_content_generic">Only show when a specific app is in the top 5 suggestions (usually shown in your app drawer)</string>
     <string name="requirement_app_prediction_content">Only show when %1s is in the top 5 suggestions</string>
@@ -535,7 +551,7 @@
     <string name="native_switch_compatibility_available"><b>Disponible</b></string>
     <string name="native_switch_compatibility_not_available"><b>No disponible</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_title">Smartspace nativo</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo. Para asegurarse de que todos los objetivos y complicaciones funcionan correctamente, Smartspace nativo debe ser detenido e iniciado nuevamente para volver a reconectarlo.</string>
     <string name="native_restart_info"><b>Importante:</b> Cuando se esté reconectando Smartspace nativo, Smartspace reiniciará IU del sistema.<b>Posiblemente veas un mensaje diciendo que UI del sistema se ha detenido y tú pantalla se bloqueará.</b> Esto es normal, descarta el mensaje y desbloquea tu dispositivo para continuar.</string>
@@ -591,7 +607,7 @@
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
-    <string name="target_permission_request_title">Smartspacer Permission Required</string>
+    <string name="target_permission_request_title">Permiso de Smartspacer requerido</string>
     <string name="target_permission_request_content">Presiona para permitir</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Permitir</string>
@@ -640,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">No es compatible con tu dispositivo</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Usar Google Sans en Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forzar a los widgets a usar Google Sans Text siempre que sea posible, esto puede causar problemas de diseño con algunos widgets</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Nunca</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
@@ -936,14 +955,14 @@
     <string name="target_blank_settings_title">Configuración</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
-    <string name="target_date_settings_date_format_title">Date Format</string>
+    <string name="target_date_settings_date_format_title">Formato de fecha</string>
     <string name="target_date_settings_date_format_automatic">Automático</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
     <string name="target_date_settings_title">Configuración</string>
     <string name="target_date_settings_description">Configurar el formato de fecha</string>
-    <string name="target_date_settings_custom">Custom</string>
-    <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
-    <string name="target_date_settings_custom_invalid">Invalid date format</string>
+    <string name="target_date_settings_custom">Personalizado</string>
+    <string name="target_date_settings_custom_content">Escribe un formato de fecha compatible con Java</string>
+    <string name="target_date_settings_custom_invalid">Formato de fecha inválido</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>

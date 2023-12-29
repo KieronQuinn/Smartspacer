@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
     <string name="dummy_home_open_settings">Open Settings</string>
     <string name="notification_service">Smartspacer Notification Service</string>
@@ -65,6 +66,7 @@
     <string name="widget_configuration_apply">Apply</string>
     <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Shows notifications from an app</string>
     <string name="target_notification_description_selected">Shows notifications from %1s</string>
@@ -163,6 +165,7 @@
     <string name="notification_location_permission_required_title">Background Location</string>
     <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Add Target</string>
     <string name="targets_empty_label">No Targets added</string>
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
@@ -342,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
     <string name="requirement_wifi_configuration_picker_saved">Saved Networks</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Unknown Network</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">App Suggestion</string>
     <string name="requirement_app_prediction_content_generic">Only show when a specific app is in the top 5 suggestions (usually shown in your app drawer)</string>
     <string name="requirement_app_prediction_content">Only show when %1s is in the top 5 suggestions</string>
@@ -640,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Not compatible with your device</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Never</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -65,6 +66,7 @@
     <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
     <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
@@ -163,6 +165,7 @@
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
     <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
+    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
     <string name="target_not_available">Cette cible n\'est plus disponible, appuyez pour la supprimer</string>
@@ -342,6 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">Aucun réseau trouvé, assurez-vous que le Wi-Fi est activé et qu\'il y a des réseaux à proximité</string>
     <string name="requirement_wifi_configuration_picker_saved">Réseaux enregistrés</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Réseau inconnu</string>
+    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Suggestion d\'application</string>
     <string name="requirement_app_prediction_content_generic">Afficher uniquement lorsqu\'une application spécifique est dans les 5 premières suggestions (affichées généralement dans votre tiroir d\'applications)</string>
     <string name="requirement_app_prediction_content">Afficher uniquement lorsque %1s est dans les 5 premières suggestions</string>
@@ -640,6 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Incompatible avec votre appareil</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
+    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
@@ -828,7 +847,7 @@
     <string name="notification_widget_title_short">Écran de verrouillage</string>
     <string name="notification_widget_content">Options pour Smartspacer dans les notifications sur l\'écran de verrouillage</string>
     <string name="notification_widget_toggle">Afficher la notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
+    <string name="notification_widget_info">Cette option sert à afficher sur l\'écran de verrouillage du contenu Smartspacer <b>limité</b>, prenant la forme d\'une notification. Seule une page peut être affichée, et il vous faudra agrandir la notification pour voir plus d\'informations.</string>
     <string name="notification_widget_notifications_disabled">Les notifications sont désactivées donc cette option ne fonctionnera pas. Appuyez pour activer.</string>
     <string name="notification_widget_tint_title">Couleur</string>
     <string name="notification_widget_tint_content">Couleur à utiliser pour le texte et les icônes dans la notification : %1s</string>
@@ -860,7 +879,7 @@
     <string name="complication_digital_wellbeing_unsupported">Cette complication requiert l\'application Bien-être numérique</string>
     <!-- Clock Complication -->
     <string name="complication_clock_label">Horloge</string>
-    <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
+    <string name="complication_clock_description">Affiche l\'heure actuelle.\n<b>Attention :</b> cette complication pourrait diminuer l\'autonomie de votre appareil.</string>
     <string name="complication_clock_description_short">Affiche l\'heure actuelle</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
@@ -882,7 +901,7 @@
     <string name="target_calendar_settings_show_location_title">Afficher le lieu</string>
     <string name="target_calendar_settings_show_location_content">Afficher le lieu des événements, s\'il est disponible</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Afficher les événements non confirmés</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Afficher les événements pour lesquels vous n\'avez confirmé votre présence.\n<b>Important :</b> certains calendriers ne prennent pas en charge cette fonction. Désactiver cette option aura alors pour effet de masquer tous les événements.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Utiliser les identifiants d\'événement alternatifs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Créer des identifiants pour chacun des événements à partir de leur titre et de leur date de début et de fin, plutôt qu\'utiliser les identifiants fournis par le système, au moment d\'ignorer des événements. Cela peut être utile si vous utilisez une application ou un service qui « synchronise » les agendas entre les comptes, et recrée des événements à chaque modification.</string>
     <string name="target_calendar_settings_pre_event_time_title">Durée d\'affichage d\'un événement avant son début</string>
@@ -942,7 +961,7 @@
     <string name="target_date_settings_title">Paramètres</string>
     <string name="target_date_settings_description">Configurer le format de la date</string>
     <string name="target_date_settings_custom">Personnalisé</string>
-    <string name="target_date_settings_custom_content">Saisissez une chaîne de formatage pour la date au format Java</string>
+    <string name="target_date_settings_custom_content">Saisissez un format de date compatible avec Java</string>
     <string name="target_date_settings_custom_invalid">Format de date invalide</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus (Gmail)</string>
