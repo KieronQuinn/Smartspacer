@@ -350,7 +350,7 @@
     <string name="requirement_bluetooth_description_set">Afficher uniquement lorsque votre appareil est connecté à un appareil Bluetooth nommé « %1s »</string>
     <string name="requirement_bluetooth_incompatible">Cette condition requiert le Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Sélectionner un appareil</string>
-    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Autorisations Bluetooth et Position requises, appuyez pour autoriser.\n<b>Remarque :</b> l\'accès à la position est requis par Android pour pouvoir connaître les appareils Bluetooth connectés.</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer doit suivre en arrière-plan les connexions Bluetooth ; pour ce faire, Smartspacer a besoin que l\'autorisation Position soit définie sur « Toujours autoriser », appuyez pour définir</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth désactivé, appuyez pour l\'activer</string>
     <string name="requirement_bluetooth_configuration_pick_info">Seuls les appareils actuellement ou précédemment associés peuvent être sélectionnés</string>
