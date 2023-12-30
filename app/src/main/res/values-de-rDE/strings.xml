@@ -130,7 +130,7 @@
     <string name="complication_google_weather_description_unsupported">Dieses Ziel erfordert die Google-App</string>
     <string name="plugin_target_default_label">Plugin Ziel</string>
     <string name="plugin_action_default_label">Plugin-Komplikation</string>
-    <string name="plugin_requirement_default_label">Plugin Anforderung</string>
+    <string name="plugin_requirement_default_label">Plugin-Anforderung</string>
     <string name="permission_sdk_label">Smartspacer Ziele &amp; -Komplikationen lesen</string>
     <string name="permission_sdk_description">Ermöglicht das Lesen und die Interaktion mit Smartspacer-Zielen &amp; -Komplikationen</string>
     <string name="notification_channel_background_service_title">Hintergrunddienst</string>
@@ -183,8 +183,8 @@
     <string name="complications_add_incompatible_widget">The widget required for this Complication is not available</string>
     <string name="complications_add_failed_to_launch_setup">Failed to launch the setup for this Complication</string>
     <string name="requirements_add_empty_label">Keine Bedingungen übrig zum Hinzufügen</string>
-    <string name="requirements_add_incompatible_generic">This Requirement is not compatible with your device</string>
-    <string name="requirements_add_failed_to_launch_setup">Failed to launch the setup for this Requirement</string>
+    <string name="requirements_add_incompatible_generic">Diese Bedingung ist nicht kompatibel mit deinem Gerät</string>
+    <string name="requirements_add_failed_to_launch_setup">Fehler beim Starten der Einrichtung für diese Bedingung</string>
     <string name="target_edit_title">Ziel bearbeiten</string>
     <string name="target_edit_target_header">Ziel</string>
     <string name="target_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
@@ -215,7 +215,7 @@
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
     <string name="target_edit_settings_header">Einstellungen</string>
-    <string name="target_edit_requirements_title">Voraussetzungen</string>
+    <string name="target_edit_requirements_title">Bedingungen</string>
     <string name="target_edit_requirements_content">Setze die Bedingungen für das anzuzeigende Ziel</string>
     <string name="target_edit_requirements_content_any_one">%1d Any Requirement configured</string>
     <string name="target_edit_requirements_content_any_other">%1d Any Requirements configured</string>
