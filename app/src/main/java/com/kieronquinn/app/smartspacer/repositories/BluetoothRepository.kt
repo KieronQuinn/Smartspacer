@@ -74,8 +74,9 @@ class BluetoothRepositoryImpl(private val context: Context): BluetoothRepository
     private val hasBluetooth =
         context.packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)
 
-    private val bluetoothManager =
+    private val bluetoothManager by lazy {
         context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+    }
 
     private val permissionChangedBus = MutableStateFlow(System.currentTimeMillis())
 
@@ -111,11 +112,13 @@ class BluetoothRepositoryImpl(private val context: Context): BluetoothRepository
         SmartspacerRequirementProvider.notifyChange(context, BluetoothRequirement::class.java)
     }.stateIn(scope, SharingStarted.Eagerly, emptyList())
 
-    override val isEnabled = context.broadcastReceiverAsFlow(
-        IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
-    ).map {
-        isEnabled()
-    }.stateIn(scope, SharingStarted.Eagerly, isEnabled())
+    override val isEnabled by lazy {
+        context.broadcastReceiverAsFlow(
+            IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
+        ).map {
+            isEnabled()
+        }.stateIn(scope, SharingStarted.Eagerly, isEnabled())
+    }
 
     override fun onPermissionChanged() {
         scope.launch {
