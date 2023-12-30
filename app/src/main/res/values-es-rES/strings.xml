@@ -345,7 +345,7 @@
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
     <string name="requirement_wifi_configuration_picker_saved">Redes guardadas</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Red desconocida</string>
-    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_bluetooth_title">Dispositivo Bluetooth conectado</string>
     <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
     <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
