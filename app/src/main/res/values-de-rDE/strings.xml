@@ -557,8 +557,8 @@
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
+    <string name="notification_native_mode_enable_title">Reaktiviere nativen Smartspace</string>
+    <string name="notification_native_mode_enable_content">Du musst den nativen Smartspace-Modus von Smartspacer nach einem Neustart wieder aktivieren, tippe um ihn zu aktivieren</string>
     <string name="notification_native_mode_enable_dismiss">Nicht mehr anzeigen</string>
     <string name="notification_native_mode_enable_now">Jetzt aktivieren</string>
     <!-- Native Mode restart notification -->
@@ -576,8 +576,8 @@
     <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
     <string name="notification_sui_content_oem_smartspace">OEM Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
-    <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
+    <string name="notification_battery_optimisation_title">Deaktiviere Akku-Optimierung</string>
+    <string name="notification_battery_optimisation_content">Für Smartspacer muss die Batterieoptimierung deaktiviert sein, um Ziele &amp; Komplikationen im Hintergrund zu aktualisieren, tippe zum Deaktivieren</string>
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
@@ -706,13 +706,13 @@
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
     <string name="battery_optimisation_title">Akku-Optimierung</string>
     <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Batterieoptimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
-    <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
+    <string name="battery_optimisation_system_title">Deaktiviere Akku-Optimierung</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Dein Gerät scheint einige batterieoptimierte Einstellungen des Herstellers zu haben. Diese können nicht automatisch deaktiviert werden. Tippe hier, um die batteriebezogenen Einstellungen des Herstellers zu öffnen.</string>
-    <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
+    <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Batterieoptimierung deaktiviert werden.</string>
     <string name="battery_optimisation_footer_link">Learn More</string>
     <string name="plugin_repository_tab_installed">Installiert</string>
     <string name="plugin_repository_tab_available">Verfügbar</string>
