@@ -192,9 +192,9 @@
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
     <string name="target_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
     <string name="target_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
-    <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
+    <string name="target_edit_show_on_lock_screen_content">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
-    <string name="target_edit_show_on_lock_screen_content_oem">Dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) anzeigen, wenn Musik nicht abgespielt wird</string>
+    <string name="target_edit_show_on_lock_screen_content_oem">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) an, wenn Musik nicht abgespielt wird</string>
     <string name="target_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content">Dieses Ziel auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
@@ -232,8 +232,8 @@
     <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
     <string name="complication_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
     <string name="complication_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
-    <string name="complication_edit_show_on_lock_screen_content">Show this complication on your lock screen and always on display, when music is not playing</string>
-    <string name="complication_edit_show_on_lock_screen_content_oem">Show this complication on your lock screen and always on display (if available), when music is not playing</string>
+    <string name="complication_edit_show_on_lock_screen_content">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
+    <string name="complication_edit_show_on_lock_screen_content_oem">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display (falls verfügbar) an, wenn Musik nicht abgespielt wird</string>
     <string name="complication_edit_show_on_lock_screen_content_widget">Show this complication on widgets added to your lock screen</string>
     <string name="complication_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
     <string name="complication_edit_show_on_expanded_content">Diese Komplikation auf erweitertem Smartspace anzeigen</string>
@@ -916,12 +916,12 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 Minuten</string>
     <string name="target_calendar_pre_event_time_1_hour">1 Stunde</string>
     <string name="target_calendar_pre_event_time_2_hours">2 Stunden</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">Bis zum Ende des Termins</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Auf einen Blick Einstellungen</string>
-    <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
-    <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
-    <string name="target_default_settings_hide_title">Hide Targets</string>
+    <string name="target_default_settings_more_content">Weitere Einstellungen in der Google-App konfigurieren</string>
+    <string name="target_default_settings_hide_infobox"><b>Bitte beachte:</b> Möglicherweise sind nicht alle Ziele auf deinem Gerät verfügbar. Sie hier zu deaktivieren, synchronisiert sie nicht mit deinem Google-Konto, sie bleiben also auf anderen Geräten weiterhin sichtbar.</string>
+    <string name="target_default_settings_hide_title">Ziel ausblenden</string>
     <string name="target_default_settings_hide_doorbell">Türklingel</string>
     <string name="target_default_settings_hide_package">Paketlieferung</string>
     <string name="target_default_settings_hide_timer">Timer &amp; Stopwatch</string>
