@@ -904,11 +904,11 @@
     <string name="target_calendar_settings_show_unconfirmed_content">Zeige Termine, bei denen du die Teilnahme nicht bestätigt hast.\n<b>Wichtig:</b> Einige Kalender unterstützen diese Funktion nicht, sodass die Deaktivierung alle Ereignisse ausblenden wird.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Nutze alternative Event-IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Erstelle IDs für jeden Termin basierend auf deren Titel, Start- und Endzeiten anstelle der systemeigenen IDs, wenn Termine abgelehnt werden. Dies ist nützlich, wenn du eine App oder einen Dienst verwendest, der Kalender zwischen Konten synchronisiert und bei Änderungen neue Termine erstellt.</string>
-    <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
-    <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
+    <string name="target_calendar_settings_pre_event_time_title">Zeige Termine für diese Zeit vor Start</string>
+    <string name="target_calendar_settings_post_event_time_title">Zeige Termine für diese Zeit nach Start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
-    <string name="target_calendar_settings_permission_toast">Grant Smartspacer the Calendar permission</string>
+    <string name="target_calendar_settings_permission_toast">Smartspacer die Kalender-Berechtigung erteilen</string>
     <string name="target_calendar_pre_event_time_1_minute">1 Minute</string>
     <string name="target_calendar_pre_event_time_5_minutes">5 Minuten</string>
     <string name="target_calendar_pre_event_time_10_minutes">10 Minuten</string>
