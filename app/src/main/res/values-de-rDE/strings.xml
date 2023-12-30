@@ -44,7 +44,7 @@
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
     <string name="widget_configuration_accessibility_title">Bedienungshilfen aktivieren</string>
-    <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedingungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Batterie sparen.</string>
+    <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Batterie sparen.</string>
     <string name="widget_configuration_accessibility_enable">Barrierefreiheit-Dienst aktivieren</string>
     <string name="widget_configuration_type_title">Widget-Typ auswählen</string>
     <string name="widget_configuration_type_home_title">Startbildschirm</string>
