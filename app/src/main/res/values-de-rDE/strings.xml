@@ -585,7 +585,7 @@
     <string name="target_music_setting_show_album_art_title">Albumcover anzeigen</string>
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
     <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
-    <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
+    <string name="target_music_setting_use_doorbell_content">Versucht, das Albumcover als Quadrat und nicht als abgeschnittenes Rechteck anzuzeigen. <b>Wichtig:</b> Wenn der native Smartspace verwendet wird, funktioniert dies nicht auf dem Startbildschirm und wird auf einigen Geräten überhaupt nicht angezeigt.</string>
     <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
     <string name="target_music_setting_setting_title">Einstellungen</string>
