@@ -167,7 +167,7 @@
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
     <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
     <string name="fab_targets_add">Ziel hinzufügen</string>
-    <string name="targets_empty_label">No Targets added</string>
+    <string name="targets_empty_label">Keine Ziele hinzugefügt</string>
     <string name="target_not_available">This Target is no longer available, tap to remove</string>
     <string name="target_not_available_alt">This Target failed to load, if the issue persists please contact the Target\'s developer</string>
     <string name="fab_complications_add">Komplikation hinzufügen</string>
@@ -273,7 +273,7 @@
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
     <string name="target_notification_configuration_title">Notification Settings</string>
     <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
-    <string name="configuration_notification_association_title">Grant Permissions</string>
+    <string name="configuration_notification_association_title">Berechtigungen erteilen</string>
     <string name="configuration_notification_association_content">Um Smartspacer den Zugriff auf eine Liste der Benachrichtigungskanäle anderer Apps zu ermöglichen, damit du auswählen kannst, welche angezeigt werden sollen, musst du ein Begleitgerät oder Netzwerk für diese App einstellen. Dies ist eine (ziemlich eigenartige) Anforderung des Android-Systems und die einzige Möglichkeit, eine Liste der Kanäle ohne Root-Zugriff zu erhalten. Dies muss nur einmal erledigt werden.</string>
     <string name="configuration_notification_association_subcontent">Tap the \"Set Companion\" button below, and select any device or connection from the list that appears.\n\n<b>It does not matter if the device/connection is yours, or whether you will be in range of it while using Smartspacer. Smartspacer does not pair or connect to the device you pick</b>. You may also need to have GPS enabled for devices and connections to appear in the dialog.</string>
     <string name="configuration_notification_association_button">Set Companion</string>
@@ -319,7 +319,7 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d Sekunden</string>
     <string name="requirement_geofence_configuration_background_location_title">Enable Background Location</string>
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
-    <string name="requirement_geofence_configuration_background_location_grant">Grant Permission</string>
+    <string name="requirement_geofence_configuration_background_location_grant">Berechtigung erteilen</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limit erreicht</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
     <string name="requirement_wifi_title">WLAN-Netzwerk</string>
@@ -349,7 +349,7 @@
     <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
     <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
-    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Gerät auswählen</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
@@ -451,11 +451,11 @@
     <string name="setup_analytics_allow">Zulassen</string>
     <string name="setup_analytics_deny">Deny</string>
     <!-- Setup > Notifications -->
-    <string name="setup_notifications_title">Notifications</string>
+    <string name="setup_notifications_title">Benachrichtigungen</string>
     <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
-    <string name="setup_notifications_request">Grant Permission</string>
+    <string name="setup_notifications_request">Berechtigung erteilen</string>
     <!-- Setup > Target Info -->
-    <string name="setup_targets_info_title">Targets</string>
+    <string name="setup_targets_info_title">Ziele</string>
     <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
     <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
     <string name="setup_targets_info_p3">Die \"Auf einen Blick\"-Integration von Smartspacer wird durch das \"Auf einen Blick\"-Ziel bereitgestellt, das reguläre Informationen von Google wie Kalendertermine und Flüge anzeigen kann. Beachte jedoch, dass dies <b>nicht</b> immer das heutige Datum anzeigt, wenn keine Informationen verfügbar sind. Wenn du das Datum immer sichtbar haben möchtest, füge das \"Datum\"-Ziel separat hinzu.</string>
@@ -518,11 +518,11 @@
     <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
-    <string name="enhanced_mode_request_shizuku_button">Get Shizuku</string>
+    <string name="enhanced_mode_request_shizuku_button">Shizuku holen</string>
     <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
-    <string name="enhanced_mode_request_sui_button">Get Sui</string>
-    <string name="enhanced_mode_request_shizuku_error_title">Shizuku not started</string>
+    <string name="enhanced_mode_request_sui_button">Sui holen</string>
+    <string name="enhanced_mode_request_shizuku_error_title">Shizuku nicht gestartet</string>
     <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku muss gestartet werden, bevor es von Smartspacer verwendet werden kann, öffne Shizuku und folge den Anweisungen</string>
     <string name="enhanced_mode_request_shizuku_error_open">Shizuku öffnen</string>
     <!-- Enhanced Mode -->
@@ -565,20 +565,20 @@
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt, tippen um wieder zu verbinden.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_just_reconnect">Jetzt neu verbinden</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
-    <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_title">Shizuku erforderlich</string>
+    <string name="notification_shizuku_content_app_prediction">Die App-Vorhersage erfordert den Start von Shizuku, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
     <string name="notification_shizuku_content_at_a_glance_complication">Das \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
     <!-- Sui service notifications -->
-    <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
+    <string name="notification_sui_title">Sui oder Shizuku als Root erforderlich</string>
     <string name="notification_sui_content_oem_smartspace">OEM Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Deaktiviere Akku-Optimierung</string>
     <string name="notification_battery_optimisation_content">Für Smartspacer muss die Batterieoptimierung deaktiviert sein, um Ziele &amp; Komplikationen im Hintergrund zu aktualisieren, tippe zum Deaktivieren</string>
-    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
+    <string name="notification_battery_optimisation_failed_toast">Fehler beim Öffnen der Einstellungen, bitte erteile die Berechtigung manuell</string>
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
@@ -612,7 +612,7 @@
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Allow</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
-    <string name="permission_dialog_smartspace_title_unknown">Unknown</string>
+    <string name="permission_dialog_smartspace_title_unknown">Unbekannt</string>
     <string name="permission_dialog_smartspace_allow">Zulassen</string>
     <string name="permission_dialog_smartspace_deny">Verweigern</string>
     <!-- Expanded Smartspace -->
@@ -620,23 +620,23 @@
     <string name="expanded_disabled_settings">Einstellungen</string>
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
-    <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
+    <string name="expanded_widget_deleted_rearrange">Widget deinstallieren</string>
     <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
-    <string name="expanded_permission_later">Later</string>
-    <string name="expanded_permission_grant">Grant</string>
+    <string name="expanded_permission_later">Später</string>
+    <string name="expanded_permission_grant">Erteilen</string>
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Erweiterter Smartspace</string>
-    <string name="expanded_settings_title_short">Expanded</string>
+    <string name="expanded_settings_title_short">Erweitert</string>
     <string name="expanded_settings_content">Zeige Smartspace-Ziele und -Komplikationen in einer Vollbildansicht mit zusätzlichen Informationen, einschließlich Widgets, App-Verknüpfungen und mehr</string>
     <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
     <string name="expanded_settings_switch">Enable Expanded Smartspace</string>
     <string name="expanded_settings_header_search">Suchen</string>
-    <string name="expanded_settings_show_search_box_title">Show Search Box</string>
-    <string name="expanded_settings_show_search_box_content">Show a search box at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_search_provider_title">Search Provider</string>
+    <string name="expanded_settings_show_search_box_title">Zeige Suchfeld</string>
+    <string name="expanded_settings_show_search_box_content">Zeige ein Suchfeld oben am erweiterten Smartspace</string>
+    <string name="expanded_settings_search_provider_title">Suchanbieter</string>
     <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
     <string name="expanded_settings_show_doodle_title">Show Google Doodle</string>
@@ -684,7 +684,7 @@
     <string name="oem_smartspace_hide_incompatible_title">Inkompatible Ziele ausblenden</string>
     <string name="oem_smartspace_hide_incompatible_content">Ziele ausblenden, die nicht mit OEM Smartspace kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
     <string name="expanded_search_box_search">Suchen…</string>
-    <string name="expanded_footer">Add Widget</string>
+    <string name="expanded_footer">Widget hinzufügen</string>
     <string name="expanded_custom_widget_delete">Entfernen</string>
     <string name="expanded_custom_widget_options">Optionen</string>
     <string name="expanded_custom_widget_rearrange">Neu anordnen</string>
@@ -713,7 +713,7 @@
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Dein Gerät scheint einige batterieoptimierte Einstellungen des Herstellers zu haben. Diese können nicht automatisch deaktiviert werden. Tippe hier, um die batteriebezogenen Einstellungen des Herstellers zu öffnen.</string>
     <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Batterieoptimierung deaktiviert werden.</string>
-    <string name="battery_optimisation_footer_link">Learn More</string>
+    <string name="battery_optimisation_footer_link">Erfahre mehr</string>
     <string name="plugin_repository_tab_installed">Installiert</string>
     <string name="plugin_repository_tab_available">Verfügbar</string>
     <string name="plugin_repository_empty_title_not_found">Nicht gefunden</string>
@@ -722,8 +722,8 @@
     <string name="plugin_repository_empty_subtitle_empty">Überprüfe deine Netzwerkverbindung</string>
     <string name="plugin_repository_empty_button_empty">Aktualisieren</string>
     <string name="plugin_repository_empty_title_browse">Keine Plugins installiert</string>
-    <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet.</string>
-    <string name="plugin_repository_empty_button_browse">Browse Plugins</string>
+    <string name="plugin_repository_empty_subtitle_browse">Du hast bisher noch keine Plugins installiert.</string>
+    <string name="plugin_repository_empty_button_browse">Plugins durchsuchen</string>
     <string name="plugin_repository_update_available">Update verfügbar!</string>
     <string name="plugin_repository_recommended">Empfohlen für:</string>
     <string name="plugin_repository_changelog"><b>Was ist neu</b></string>
@@ -732,7 +732,7 @@
     <string name="plugin_details_open">Öffnen</string>
     <string name="plugin_details_update">Aktualisieren</string>
     <string name="plugin_details_uninstall">Deinstallieren</string>
-    <string name="plugin_details_install_companion">Get required app</string>
+    <string name="plugin_details_install_companion">Benötigte App holen</string>
     <string name="plugin_details_error_title">Fehler</string>
     <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer.</string>
     <string name="plugin_details_incompatible_incompatible_sdk">This plugin is not compatible with your device as it requires a newer version of Android (API %1d)</string>
@@ -754,7 +754,7 @@
     <string name="snackbar_update_button">Update</string>
     <string name="update_heading">Smartspacer Version %1s</string>
     <string name="update_subheading">Aktuelle Version %1s</string>
-    <string name="update_changes">Changes</string>
+    <string name="update_changes">Änderungen</string>
     <string name="update_open_installer">Installation starten</string>
     <string name="update_done">Download abgeschlossen</string>
     <string name="update_loading">Lädt…</string>
@@ -764,13 +764,13 @@
     <string name="update_downloader_downloading_failed">Download fehlgeschlagen</string>
     <string name="update_downloader_github">Mit dem Browser herunterladen</string>
     <string name="update_notification_title">Smartspacer-Update verfügbar</string>
-    <string name="update_notification_content">An update is available for Smartspacer (%1s to %1s)</string>
+    <string name="update_notification_content">Ein Update ist für Smartspacer verfügbar (%1s zu %1s)</string>
     <!-- Donate info -->
-    <string name="donate_prompt_title">Enjoying Smartspacer?</string>
-    <string name="donate_prompt_content">If you find Smartspacer useful, please consider making a donation. Tap for more info.</string>
-    <string name="donate_prompt_dismiss">Dismiss</string>
+    <string name="donate_prompt_title">Gefällt dir Smartspacer?</string>
+    <string name="donate_prompt_content">Wenn du Smartspacer nützlich findest, zieh bitte eine Spende in Betracht. Tippe für weitere Informationen.</string>
+    <string name="donate_prompt_dismiss">Schließen</string>
     <string name="donate_paragraph_1">Vielen Dank, dass du in Erwägung ziehst, zu spenden. Smartspacer ist eine komplexe App und hat viel Zeit in der Entwicklung beansprucht, obwohl sie kostenlos und Open Source verfügbar ist.</string>
-    <string name="donate_paragraph_2">If you would like to donate, currently the only available option is PayPal (linked below). Other options may be available in the future, if required - open a GitHub issue if you have a suggestion. Additionally, direct payment options such as Wise can be provided on request.</string>
+    <string name="donate_paragraph_2">Wenn du spenden möchtest, die derzeit einzige verfügbare Option ist PayPal (unten verlinkt). Andere Optionen könnten in der Zukunft verfügbar sein, falls erforderlich - öffnen eine GitHub-Issue, wenn du einen Vorschlag hast. Zusätzlich können auf Anfrage auch Direktzahlungen z.B. mit Wise angeboten werden.</string>
     <string name="donate_paragraph_3">If you have already donated or are unable to at this time, you can hide the donation prompt banner permanently below (you will still be able to access this screen from the bottom of the settings).</string>
     <string name="donate_disable">Hide Donation Prompt</string>
     <string name="donate_paypal">PayPal</string>
@@ -822,12 +822,12 @@
     <string name="restore_restore_settings_title">Einstellungen</string>
     <string name="restore_restore_settings_content">Restore your Smartspacer settings.\n<b>This will overwrite your current settings.</b></string>
     <string name="restore_restore_settings_content_empty">No settings found to restore</string>
-    <string name="restore_target_title">Targets</string>
+    <string name="restore_target_title">Ziele</string>
     <string name="restore_target_reason_not_installed">The Plugin providing this Target is no longer installed (%1s)</string>
     <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
     <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
     <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
-    <string name="restore_complications_title">Complications</string>
+    <string name="restore_complications_title">Komplikationen</string>
     <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
     <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
     <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
@@ -837,7 +837,7 @@
     <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
     <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
     <string name="restore_requirements_collision"><b>Adding this Requirement will overwrite your current config</b></string>
-    <string name="restore_requirements_for">Requirement for: %1s</string>
+    <string name="restore_requirements_for">Bedingung für: %1s</string>
     <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
     <string name="restore_settings_title">Restoring Smartspacer settings…</string>
     <string name="restore_complete_title">Restore complete</string>
@@ -924,7 +924,7 @@
     <string name="target_default_settings_hide_title">Ziel ausblenden</string>
     <string name="target_default_settings_hide_doorbell">Türklingel</string>
     <string name="target_default_settings_hide_package">Paketlieferung</string>
-    <string name="target_default_settings_hide_timer">Timer &amp; Stopwatch</string>
+    <string name="target_default_settings_hide_timer">Timer &amp; Stoppuhr</string>
     <string name="target_default_settings_hide_bedtime">Schlafenszeit</string>
     <string name="target_default_settings_hide_fitness">Fitness</string>
     <string name="target_default_settings_hide_connected_devices">Verbundene Geräte</string>
@@ -940,13 +940,13 @@
     <string name="target_default_settings_hide_food">Food &amp; Household Orders</string>
     <string name="target_default_settings_cross_device_timer">Cross-device Timer</string>
     <!-- Notification Target -->
-    <string name="target_notification_configuration_app_title">Select App</string>
-    <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
+    <string name="target_notification_configuration_app_title">App auswählen</string>
+    <string name="target_notification_configuration_app_content">Wähle App in der Benachrichtigungen angezeigt werden sollen</string>
     <string name="target_notification_configuration_settings">Einstellungen</string>
-    <string name="target_notification_channels">Notification Channels</string>
-    <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
+    <string name="target_notification_channels">Benachrichtigungskanäle</string>
+    <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
     <!-- Blank Target -->
-    <string name="target_blank_title">Blank Target</string>
+    <string name="target_blank_title">Leeres Ziel</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
     <string name="target_blank_settings_show_complications_title">Show Complications</string>
     <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
