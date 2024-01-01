@@ -39,7 +39,7 @@
     <string name="tint_colour_black_content">Text und Symbole im Widget werden immer schwarz sein</string>
     <string name="tint_colour_black_content_alt">Text und Icons in der Benachrichtigung werden immer schwarz sein</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
-    <string name="widget_description_smartspacer">Smartspacer Ziele &amp; Komplikationen anzeigen</string>
+    <string name="widget_description_smartspacer">Zeige Smartspacer Ziele &amp; Komplikationen</string>
     <string name="widget_loading_smartspacer">Lädt…</string>
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
@@ -187,15 +187,15 @@
     <string name="requirements_add_failed_to_launch_setup">Fehler beim Starten der Einrichtung für diese Bedingung</string>
     <string name="target_edit_title">Ziel bearbeiten</string>
     <string name="target_edit_target_header">Ziel</string>
-    <string name="target_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
+    <string name="target_edit_show_on_home_title">Zeige auf Startbildschirm</string>
     <string name="target_edit_show_on_home_content">Dieses Ziel auf deinem Startbildschirm anzeigen</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
-    <string name="target_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
-    <string name="target_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
+    <string name="target_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
+    <string name="target_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
     <string name="target_edit_show_on_lock_screen_content">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) an, wenn Musik nicht abgespielt wird</string>
-    <string name="target_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
+    <string name="target_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
     <string name="target_edit_show_on_expanded_content">Dieses Ziel auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
     <string name="target_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
@@ -207,8 +207,8 @@
     <string name="target_edit_expanded_show_when_locked_content">Dieses Ziel im erweiterten Smartspace anzeigen, wenn gesperrt</string>
     <string name="target_edit_expanded_show_widget_title">Zeige Widget</string>
     <string name="target_edit_expanded_show_widget_content">Zeige das diesem Ziel zugeordnete Widget an, falls verfügbar</string>
-    <string name="target_edit_expanded_show_remoteviews_title">Zusätzliche Inhalte anzeigen</string>
-    <string name="target_edit_expanded_show_remoteviews_content">Zusätzliche Inhalte dieses Ziels anzeigen, falls verfügbar</string>
+    <string name="target_edit_expanded_show_remoteviews_title">Zeige zusätzliche Inhalte</string>
+    <string name="target_edit_expanded_show_remoteviews_content">Zeige zusätzliche Inhalte dieses Ziels, falls verfügbar</string>
     <string name="target_edit_expanded_show_shortcuts_title">Show Shortcuts</string>
     <string name="target_edit_expanded_show_shortcuts_content">Show shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_title">Show App Shortcuts</string>
@@ -227,15 +227,15 @@
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
     <string name="complication_edit_title">Komplikation bearbeiten</string>
     <string name="complication_edit_target_header">Komplikation</string>
-    <string name="complication_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
-    <string name="complication_edit_show_on_home_content">Show this complication on your home screen</string>
-    <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
-    <string name="complication_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
-    <string name="complication_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
+    <string name="complication_edit_show_on_home_title">Zeige auf Startbildschirm</string>
+    <string name="complication_edit_show_on_home_content">Zeige diese Komplikation auf deinem Startbildschirm</string>
+    <string name="complication_edit_show_on_home_content_widget">Zeigt diese Komplikation auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
+    <string name="complication_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
     <string name="complication_edit_show_on_lock_screen_content">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
     <string name="complication_edit_show_on_lock_screen_content_oem">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display (falls verfügbar) an, wenn Musik nicht abgespielt wird</string>
-    <string name="complication_edit_show_on_lock_screen_content_widget">Show this complication on widgets added to your lock screen</string>
-    <string name="complication_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
+    <string name="complication_edit_show_on_lock_screen_content_widget">Zeigt diese Komplikation auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
     <string name="complication_edit_show_on_expanded_content">Diese Komplikation auf erweitertem Smartspace anzeigen</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
     <string name="complication_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
@@ -254,21 +254,21 @@
     <string name="complication_edit_requirements_content_all_other">%1d Alle-Bedingungen konfiguriert</string>
     <string name="complication_edit_requirements_content_both">%1d Eine- und %1d Alle-Bedingungen konfiguriert</string>
     <string name="complication_edit_external_title">Weitere Einstellungen</string>
-    <string name="complication_edit_external_content">Configure more settings in %1s</string>
-    <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
-    <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
+    <string name="complication_edit_external_content">Weitere Einstellungen in %1s konfigurieren</string>
+    <string name="complication_edit_external_error">Fehler beim Starten der Einstellungen für diese Komplikation</string>
+    <string name="requirement_edit_external_error">Fehler beim Starten der Einstellungen für diese Bedingung</string>
     <string name="requirement_edit_invert">Diese Bedingung umkehren</string>
     <string name="safe_mode_title">Sicherer Modus</string>
     <string name="safe_mode_content">Smartspacer hat den sicheren Modus aktiviert, weil eine App abgestürzt ist, um einen Absturz-Loop zu verhindern. Diese Abstürze werden normalerweise durch ein fehlerhaftes Ziel oder eine fehlerhafte Komplikation verursacht, daher solltest du nach Updates für deine Plugins suchen, wenn sie weiterhin auftreten.</string>
     <string name="safe_mode_relaunch">Smartspacer neu starten</string>
-    <string name="feedback_loop_title">Feedback Loop</string>
+    <string name="feedback_loop_title">Feedback-Schleife</string>
     <string name="feedback_loop_content">Smartspacer hat eine Rückkopplungsschleife zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"Auf einen Blick\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
     <string name="feedback_loop_relaunch_wait">Warte %1s Sekunden</string>
     <string name="feedback_loop_relaunch">Smartspacer neu starten</string>
     <string name="configuration_notification_enable_title">Benachrichtigungszugriff aktivieren</string>
     <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
     <string name="configuration_notification_enable_button">Benachrichtigungszugriff zulassen</string>
-    <string name="configuration_accessibility_enable_title">Enable Accessibility Service</string>
+    <string name="configuration_accessibility_enable_title">Bedienungshilfen aktivieren</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
     <string name="target_notification_configuration_title">Notification Settings</string>
@@ -279,15 +279,15 @@
     <string name="configuration_notification_association_button">Set Companion</string>
     <string name="configuration_notification_association_read_more">Read more about this requirement</string>
     <string name="configuration_notification_association_toast">An error occurred, please try again</string>
-    <string name="configuration_notification_picker_empty">No notifications found</string>
-    <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
+    <string name="configuration_notification_picker_empty">Keine Benachrichtigungen vorhanden</string>
+    <string name="configuration_notification_picker_error">Beim Abrufen der Benachrichtigungskanäle ist ein Fehler aufgetreten</string>
     <string name="requirements_title">Bedingungen</string>
     <string name="requirements_empty_label">Keine Bedingungen für diesen Typ hinzugefügt</string>
     <string name="requirements_tab_any">Eine von</string>
     <string name="requirements_tab_all">Alle von</string>
     <string name="fab_requirements_add">Bedingung hinzufügen</string>
-    <string name="requirement_not_available">This Requirement is no longer available, tap to remove</string>
-    <string name="requirement_not_available_alt">This Requirement failed to load, if the issue persists please contact this Requirement\'s developer</string>
+    <string name="requirement_not_available">Diese Bedingung ist nicht mehr verfügbar, tippe zum Entfernen</string>
+    <string name="requirement_not_available_alt">Diese Bedingung konnte nicht geladen werden. Wenn das Problem weiterhin besteht, kontaktiere bitte den Entwickler der Bedingung</string>
     <string name="requirement_time_date_title"> Zeit &amp; Datum</string>
     <string name="requirement_time_date_content_generic">Nur zwischen bestimmten Zeiten an bestimmten Tagen anzeigen</string>
     <string name="requirement_time_date_content">Nur zwischen %1s und %1s auf %1s anzeigen</string>
@@ -300,13 +300,13 @@
     <string name="requirement_time_date_configuration_toast_start_time_invalid">Startzeit muss vor der Endzeit liegen</string>
     <string name="requirement_time_date_configuration_pick_a_day">Bitte wähle mindestens einen Tag</string>
     <string name="requirement_geofence">Standort</string>
-    <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
+    <string name="requirement_geofence_content_generic">Nur zeigen, wenn an oder in der Nähe eines ausgewählten Standorts</string>
     <string name="requirement_geofence_content">Nur anzeigen wenn bei oder in der Nähe von %1s</string>
     <string name="requirement_geofence_title">Standort</string>
-    <string name="requirement_geofence_bottom_sheet_title">Options</string>
+    <string name="requirement_geofence_bottom_sheet_title">Einstellungen</string>
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
-    <string name="requirement_geofence_configuration_setting_name_content">Set a name for this location</string>
-    <string name="requirement_geofence_configuration_setting_radius_title">Radius</string>
+    <string name="requirement_geofence_configuration_setting_name_content">Name für diesen Standort festlegen</string>
+    <string name="requirement_geofence_configuration_setting_radius_title">Umkreis</string>
     <string name="requirement_geofence_configuration_setting_radius_content">Set the radius inside which the item will be shown</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d Meter</string>
     <string name="requirement_geofence_configuration_loitering_delay_title">Loitering Delay</string>
@@ -582,9 +582,9 @@
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
-    <string name="target_music_setting_show_album_art_title">Albumcover anzeigen</string>
+    <string name="target_music_setting_show_album_art_title">Zelte Albumcover</string>
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
-    <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
+    <string name="target_music_setting_use_doorbell_title">Zeige quadratische Albumcover</string>
     <string name="target_music_setting_use_doorbell_content">Versucht, das Albumcover als Quadrat und nicht als abgeschnittenes Rechteck anzuzeigen. <b>Wichtig:</b> Wenn der native Smartspace verwendet wird, funktioniert dies nicht auf dem Startbildschirm und wird auf einigen Geräten überhaupt nicht angezeigt.</string>
     <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
@@ -639,7 +639,7 @@
     <string name="expanded_settings_search_provider_title">Suchanbieter</string>
     <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
-    <string name="expanded_settings_show_doodle_title">Show Google Doodle</string>
+    <string name="expanded_settings_show_doodle_title">Zeige Google Doodle</string>
     <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
     <string name="expanded_settings_header_behaviour">Behaviour</string>
     <string name="expanded_settings_open_mode_home_screen_title">Open from Home Screen</string>
@@ -846,7 +846,7 @@
     <string name="notification_widget_title">Sperrbildschirm-Benachrichtigung</string>
     <string name="notification_widget_title_short">Sperrbildschirm</string>
     <string name="notification_widget_content">Einstellungen um Smartspacer als Benachrichtigung anzuzeigen, wenn der Sperrbildschirm angezeigt wird</string>
-    <string name="notification_widget_toggle">Benachrichtigung anzeigen</string>
+    <string name="notification_widget_toggle">Zeige Benachrichtigung</string>
     <string name="notification_widget_info">Diese Einstellung zeigt als Benachrichtigung <b>limitierte</b> Smartspacer-Inhalte auf dem Sperrbildschirm an. Nur eine Seite kann angezeigt werden und du musst die Benachrichtigung erweitern, um mehr als grundlegende Inhalte zu sehen.</string>
     <string name="notification_widget_notifications_disabled">Benachrichtigungen sind deaktiviert, sodass diese Einstellung nicht funktioniert. Tippe zum Aktivieren.</string>
     <string name="notification_widget_tint_title">Tint</string>
@@ -871,11 +871,11 @@
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
     <string name="target_digital_wellbeing_label">Digitales Wohlbefinden</string>
-    <string name="target_digital_wellbeing_description">Shows the screen time and top 3 apps from Digital Wellbeing</string>
+    <string name="target_digital_wellbeing_description">Zeigt die Bildschirmzeit und die Top 3 Apps von Digital Wellbeing</string>
     <string name="target_digital_wellbeing_unsupported">Dieses Ziel erfordert die App digitales Wohlbefinden</string>
     <!-- Digital Wellbeing Complication -->
     <string name="complication_digital_wellbeing_label">Digitales Wohlbefinden</string>
-    <string name="complication_digital_wellbeing_description">Shows the screen on time from Digital Wellbeing</string>
+    <string name="complication_digital_wellbeing_description">Zeigt die Bildschirmzeit von Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
     <!-- Clock Complication -->
     <string name="complication_clock_label">Uhr</string>
@@ -947,8 +947,8 @@
     <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Leeres Ziel</string>
-    <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
-    <string name="target_blank_settings_show_complications_title">Show Complications</string>
+    <string name="target_blank_content">Absolut minimal, kann verwendet werden, um überhaupt nichts oder nur Komplikationen anzuzeigen</string>
+    <string name="target_blank_settings_show_complications_title">Zeige Komplikationen</string>
     <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
@@ -985,7 +985,7 @@
     <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
     <!-- Next Alarm Complication -->
     <string name="complication_alarm_label">Nächster Alarm</string>
-    <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
+    <string name="complication_alarm_description">Zeigt den nächsten gestellten Wecker innerhalb der nächsten 12 Stunden</string>
     <string name="complication_blank_title">Blank Complication</string>
     <string name="complication_blank_content">Useful for minimal setups or spacers</string>
     <!-- Recent Apps Requirement -->
