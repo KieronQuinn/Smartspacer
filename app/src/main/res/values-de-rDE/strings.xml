@@ -266,12 +266,12 @@
     <string name="feedback_loop_relaunch_wait">Warte %1s Sekunden</string>
     <string name="feedback_loop_relaunch">Smartspacer neu starten</string>
     <string name="configuration_notification_enable_title">Benachrichtigungszugriff aktivieren</string>
-    <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
+    <string name="configuration_notification_enable_content">Erlaube Smartspacer Zugriff auf Gerät &amp; App-Benachrichtigungen in den Systemeinstellungen</string>
     <string name="configuration_notification_enable_button">Benachrichtigungszugriff zulassen</string>
     <string name="configuration_accessibility_enable_title">Bedienungshilfen aktivieren</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
     <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
-    <string name="target_notification_configuration_title">Notification Settings</string>
+    <string name="target_notification_configuration_title">Benachrichtigungseinstellungen</string>
     <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
     <string name="configuration_notification_association_title">Berechtigungen erteilen</string>
     <string name="configuration_notification_association_content">Um Smartspacer den Zugriff auf eine Liste der Benachrichtigungskanäle anderer Apps zu ermöglichen, damit du auswählen kannst, welche angezeigt werden sollen, musst du ein Begleitgerät oder Netzwerk für diese App einstellen. Dies ist eine (ziemlich eigenartige) Anforderung des Android-Systems und die einzige Möglichkeit, eine Liste der Kanäle ohne Root-Zugriff zu erhalten. Dies muss nur einmal erledigt werden.</string>
@@ -301,7 +301,7 @@
     <string name="requirement_time_date_configuration_pick_a_day">Bitte wähle mindestens einen Tag</string>
     <string name="requirement_geofence">Standort</string>
     <string name="requirement_geofence_content_generic">Nur zeigen, wenn an oder in der Nähe eines ausgewählten Standorts</string>
-    <string name="requirement_geofence_content">Nur anzeigen wenn bei oder in der Nähe von %1s</string>
+    <string name="requirement_geofence_content">Nur zeigen, wenn bei oder in der Nähe von %1s</string>
     <string name="requirement_geofence_title">Standort</string>
     <string name="requirement_geofence_bottom_sheet_title">Einstellungen</string>
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
@@ -323,8 +323,8 @@
     <string name="requirement_geofence_configuration_limit_reached_title">Limit erreicht</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
     <string name="requirement_wifi_title">WLAN-Netzwerk</string>
-    <string name="requirement_wifi_content">Nur anzeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
-    <string name="requirement_wifi_content_base">Nur anzeigen, wenn %1s mit %1s</string>
+    <string name="requirement_wifi_content">Nur zeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
+    <string name="requirement_wifi_content_base">Nur zeigen, wenn %1s mit %1s</string>
     <string name="requirement_wifi_content_connected_to">verbunden</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in Reichweite oder verbunden</string>
     <string name="requirement_wifi_content_ssid_mac">%1s mit MAC %1s</string>
@@ -346,16 +346,16 @@
     <string name="requirement_wifi_configuration_picker_saved">Gespeicherte Netzwerke</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Unbekanntes Netzwerk</string>
     <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
-    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
-    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_description">Nur zeigen, wenn ein bestimmtes Bluetooth-Gerät verbunden ist</string>
+    <string name="requirement_bluetooth_description_set">Nur zeigen, wenn verbunden mit dem Bluetooth-Gerät namens %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Gerät auswählen</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
     <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
-    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
-    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">Keine gekoppelten Geräte gefunden</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (ausgewählt)</string>
     <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
     <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">App-Vorschlag</string>
@@ -411,33 +411,33 @@
     <string name="settings_dump_complete">In Datei geschrieben</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Einfach</string>
-    <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
+    <string name="compatibility_feature_basic_content">Erlaubt die Anzeige eines Titels &amp; Untertitels mit Icon. Alle nicht unterstützten Ziele greifen auf diesen Stil zurück.</string>
     <string name="compatibility_feature_combination_title">Knopf</string>
-    <string name="compatibility_feature_combination_content">Allows showing a button in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_combination_content">Erlaubt die Anzeige eines Buttons neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
-    <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_combination_at_store_content">Erlaubt die Anzeige eines Buttons und einer Einkaufsliste neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_doorbell_title">Türklingel</string>
-    <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
+    <string name="compatibility_feature_doorbell_content">Erlaubt die Anzeige einer komplexen Ansicht zusätzlich zum Titel &amp; Untertitel mit Unterstützung für eine Live-Türklingel-Vorschau auf einigen Bildschirmen.</string>
     <string name="compatibility_feature_flight_title">Flug</string>
-    <string name="compatibility_feature_flight_content">Allows showing basic flight information such as flight number and airline in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_flight_content">Erlaubt die Anzeige grundlegender Fluginformationen wie Flugnummer und Fluggesellschaft zusätzlich zum Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_image_title">Bild</string>
-    <string name="compatibility_feature_image_content">Allows showing an image in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_image_content">Erlaubt die Anzeige eines Bildes zusätzlich zum Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_loyalty_title">Loyalität</string>
-    <string name="compatibility_feature_loyalty_content">Allows showing a button in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_loyalty_content">Erlaubt die Anzeige eines Buttons neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_shopping_list_title">Liste</string>
-    <string name="compatibility_feature_shopping_list_content">Allows displaying a short list in addition to the title &amp; subtitle</string>
+    <string name="compatibility_feature_shopping_list_content">Erlaubt die Anzeige einer kurzen Liste zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_feature_sports_title">Sport</string>
-    <string name="compatibility_feature_sports_content">Allows displaying a score for two teams in addition to the title &amp; subtitle</string>
+    <string name="compatibility_feature_sports_content">Erlaubt die Anzeige einer Punktzahl für zwei Teams zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
     <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">Carousel</string>
-    <string name="compatibility_template_carousel_content">Allows showing up to four icons with a header and footer, in addition to the title &amp; subtitle</string>
+    <string name="compatibility_template_carousel_content">Erlaubt die Anzeige von bis zu vier Icons mit Kopf- und Fußzeile, zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
     <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
     <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
     <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">Bilder</string>
-    <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
+    <string name="compatibility_template_sub_images_content">Erlaubt die Anzeige einer Sequenz von Bildern zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
     <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Sperrbildschirm</string>
@@ -445,8 +445,8 @@
     <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Los geht\'s</string>
     <!-- Setup > Analytics -->
-    <string name="setup_analytics_title_short">Analytics</string>
-    <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
+    <string name="setup_analytics_title_short">Analysen</string>
+    <string name="setup_analytics_title">Analysen &amp; Absturzberichte</string>
     <string name="setup_analytics_content"><![CDATA[Smartspacer verwendet viele experimentelle und "versteckte" Android-APIs, die aufgrund von Modifikationen durch Hersteller auf einigen Geräten absturzanfällig sein können.<br>Um bei der Fehlerbehebung zu helfen, kann Smartspacer Absturzberichte an Firebase Crashlytics senden, sowie grundlegende Analyseinformationen (App-Starts).<br>Diese Daten sind alle anonym und völlig optional. Weitere Details und die Datenschutzrichtlinie findest du <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">hier</a>]]></string>
     <string name="setup_analytics_allow">Zulassen</string>
     <string name="setup_analytics_deny">Deny</string>
@@ -490,7 +490,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Widget hinzufügen</string>
     <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Hinweis: Wenn du Smartspacer zu deinem Sperrbildschirm hinzufügen möchtest, musst du eine App wie <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> verwenden, um das Widget hinzuzufügen.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Bedingungen</string>
     <string name="setup_requirements_info_p1"><b>Bedingungen</b> erlauben es dir, anzupassen, ob ein Ziel oder eine Komplikation in Smartspace angezeigt wird. Damit kannst du Szenarien erstellen, mit denen nützliche Informationen in Smartspace angezeigt werden.</string>
@@ -548,8 +548,8 @@
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Kompatibilität</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
-    <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_available"><b>Verfügbar</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Nicht verfügbar</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Nativer Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
@@ -610,7 +610,7 @@
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
     <string name="target_permission_request_content">Zum gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
-    <string name="permission_dialog_smartspace_title_prefix">Allow</string>
+    <string name="permission_dialog_smartspace_title_prefix">Erlauben</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
     <string name="permission_dialog_smartspace_title_unknown">Unbekannt</string>
     <string name="permission_dialog_smartspace_allow">Zulassen</string>
@@ -621,7 +621,7 @@
     <string name="expanded_widget_configure">Tap to configure widget</string>
     <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
     <string name="expanded_widget_deleted_rearrange">Widget deinstallieren</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
+    <string name="expanded_permission_title">Erlaube Anzeige über andere Apps</string>
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
@@ -653,7 +653,7 @@
     <string name="expanded_settings_header_style">Stil</string>
     <string name="expanded_settings_blur_background_title">Blur Background</string>
     <string name="expanded_settings_blur_background_content">Apply a background blur to Expanded Smartspace, obscuring the wallpaper. <b>May not work properly with all launchers if you are using Discover Killer.</b> When disabled, the wallpaper will be dimmed instead.</string>
-    <string name="expanded_settings_blur_background_incompatible">Not compatible with your device</string>
+    <string name="expanded_settings_blur_background_incompatible">Nicht kompatibel mit deinem Gerät</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
@@ -708,7 +708,7 @@
     <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Batterieoptimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
     <string name="battery_optimisation_system_title">Deaktiviere Akku-Optimierung</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
-    <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
+    <string name="battery_optimisation_schedule_exact_alarm_title">Erlaube Alarme &amp; Erinnerungen</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Dein Gerät scheint einige batterieoptimierte Einstellungen des Herstellers zu haben. Diese können nicht automatisch deaktiviert werden. Tippe hier, um die batteriebezogenen Einstellungen des Herstellers zu öffnen.</string>
@@ -783,7 +783,7 @@
     <string name="permissions_title">Berechtigungen</string>
     <string name="permissions_content">Verwalte Berechtigungen von Plugins &amp; Apps, die Smartspacer integrieren</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
-    <string name="permissions_notifications">Access notifications via Smartspacer</string>
+    <string name="permissions_notifications">Zugriff auf Benachrichtigungen mit Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
     <string name="backup_restore_title">Sichern &amp; Wiederherstellen</string>
@@ -808,35 +808,35 @@
     <string name="restore_error_failed_to_load">Fehler beim Laden der Sicherung von Datei</string>
     <string name="restore_restore_targets_title">Ziele</string>
     <string name="restore_restore_targets_content">Restore your targets &amp; their configuration</string>
-    <string name="restore_restore_targets_content_empty">No Targets found to restore</string>
+    <string name="restore_restore_targets_content_empty">Keine Ziele zum Wiederherstellen gefunden</string>
     <string name="restore_restore_complications_title">Komplikationen</string>
     <string name="restore_restore_complications_content">Restore your complications &amp; their configuration</string>
-    <string name="restore_restore_complications_content_empty">No Complications found to restore</string>
+    <string name="restore_restore_complications_content_empty">Keine Komplikationen zum Wiederherstellen gefunden</string>
     <string name="restore_restore_requirements_title">Bedingungen</string>
     <string name="restore_restore_requirements_content">Restore your requirements for added targets and complications</string>
-    <string name="restore_restore_requirements_content_empty">No Requirements found to restore</string>
-    <string name="restore_restore_requirements_description_inverted">(Inverted)</string>
+    <string name="restore_restore_requirements_content_empty">Keine Bedingungen zum Wiederherstellen gefunden</string>
+    <string name="restore_restore_requirements_description_inverted">(Invertiert)</string>
     <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
-    <string name="restore_restore_widgets_content_empty">No widgets found to restore</string>
+    <string name="restore_restore_widgets_content_empty">Keine Widgets zum Wiederherstellen gefunden</string>
     <string name="restore_restore_settings_title">Einstellungen</string>
     <string name="restore_restore_settings_content">Restore your Smartspacer settings.\n<b>This will overwrite your current settings.</b></string>
-    <string name="restore_restore_settings_content_empty">No settings found to restore</string>
+    <string name="restore_restore_settings_content_empty">Keine Einstellungen zum Wiederherstellen gefunden</string>
     <string name="restore_target_title">Ziele</string>
     <string name="restore_target_reason_not_installed">The Plugin providing this Target is no longer installed (%1s)</string>
     <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
-    <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
+    <string name="restore_target_collision"><b>Beim Hinzufügen dieses Ziels wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
     <string name="restore_complications_title">Komplikationen</string>
     <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
     <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
-    <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
+    <string name="restore_complication_collision"><b>Beim Hinzufügen dieser Komplikation wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
     <string name="restore_requirements_title">Bedingungen</string>
     <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
     <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
     <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
-    <string name="restore_requirements_collision"><b>Adding this Requirement will overwrite your current config</b></string>
+    <string name="restore_requirements_collision"><b>Beim Hinzufügen dieser Bedingung wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_requirements_for">Bedingung für: %1s</string>
     <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
     <string name="restore_settings_title">Restoring Smartspacer settings…</string>
@@ -861,7 +861,7 @@
     <string name="about_contributors">Mitwirkende</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Icons</string>
-    <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
+    <string name="about_contributors_icons_content"><![CDATA[Icons von <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Google Pay - Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
     <string name="about_contributors_sdk_content"><![CDATA[Parts of the Smartspacer SDK contain code based on Lawnchair, under the <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
     <string name="about_translators">Übersetzer</string>
@@ -970,7 +970,7 @@
     <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
     <string name="complication_gmail_unknown">\???</string>
     <string name="complication_gmail_settings_account_title">Konto</string>
-    <string name="complication_gmail_settings_account_unselected">Not selected</string>
+    <string name="complication_gmail_settings_account_unselected">Nicht ausgewählt</string>
     <string name="complication_gmail_settings_title_labels">Select Labels</string>
     <string name="complication_gmail_settings_title">Einstellungen</string>
     <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
@@ -995,7 +995,7 @@
     <string name="requirement_recent_apps_description_filled_with_limit">Only show when %1s is in the first %1d recent apps</string>
     <string name="requirement_recent_apps_description_unsupported">This Requirement requires Enhanced Mode, enable in the settings</string>
     <string name="requirement_recent_apps_configuration_app_title">Ausgewählte App</string>
-    <string name="requirement_recent_apps_configuration_app_content">Not selected</string>
+    <string name="requirement_recent_apps_configuration_app_content">Nicht ausgewählt</string>
     <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
