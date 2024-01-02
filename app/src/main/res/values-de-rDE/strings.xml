@@ -570,8 +570,8 @@
     <string name="notification_shizuku_title">Shizuku erforderlich</string>
     <string name="notification_shizuku_content_app_prediction">Die App-Vorhersage erfordert den Start von Shizuku, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
-    <string name="notification_shizuku_content_at_a_glance_complication">Das \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet ist, tippen zum Öffnen</string>
+    <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
+    <string name="notification_shizuku_content_at_a_glance_complication">Die \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
     <!-- Sui service notifications -->
     <string name="notification_sui_title">Sui oder Shizuku als Root erforderlich</string>
     <string name="notification_sui_content_oem_smartspace">OEM Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
