@@ -86,7 +86,7 @@
     <string name="target_default_description_unsupported">Dein Gerät unterstützt Auf einen Blick mit Smartspace nicht</string>
     <string name="target_default_description_enhanced">Erfordert erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="target_default_configuration_title">Einstellungen</string>
-    <string name="target_default_configuration_description">Hide default Targets, and access more settings in the Google app</string>
+    <string name="target_default_configuration_description">Standard-Ziele ausblenden und auf mehr Einstellungen in der Google-App zugreifen</string>
     <string name="target_date_label">Datum</string>
     <string name="target_date_description">Zeigt das aktuelle Datum mit Platz für zwei Komplikationen</string>
     <string name="target_greeting_label">Begrüßung</string>
@@ -921,7 +921,7 @@
     <string name="target_default_settings_more_title">Auf einen Blick Einstellungen</string>
     <string name="target_default_settings_more_content">Weitere Einstellungen in der Google-App konfigurieren</string>
     <string name="target_default_settings_hide_infobox"><b>Bitte beachte:</b> Möglicherweise sind nicht alle Ziele auf deinem Gerät verfügbar. Sie hier zu deaktivieren, synchronisiert sie nicht mit deinem Google-Konto, sie bleiben also auf anderen Geräten weiterhin sichtbar.</string>
-    <string name="target_default_settings_hide_title">Ziel ausblenden</string>
+    <string name="target_default_settings_hide_title">Ziele ausblenden</string>
     <string name="target_default_settings_hide_doorbell">Türklingel</string>
     <string name="target_default_settings_hide_package">Paketlieferung</string>
     <string name="target_default_settings_hide_timer">Timer &amp; Stoppuhr</string>
@@ -932,13 +932,13 @@
     <string name="target_default_settings_hide_safety_check">Sicherheitscheck</string>
     <string name="target_default_settings_hide_earthquake_alert">Erdbebenalarm</string>
     <string name="target_default_settings_hide_commute">Pendeln</string>
-    <string name="target_default_settings_hide_time_to_leave">Zeit zu gehen</string>
-    <string name="target_default_settings_hide_weather_alerts">Wetterwarnungen</string>
+    <string name="target_default_settings_hide_time_to_leave">Zeit zum Aufbrechen</string>
+    <string name="target_default_settings_hide_weather_alerts">Schlechtwetterwarnungen</string>
     <string name="target_default_settings_hide_travel">Flüge</string>
     <string name="target_default_settings_hide_calendar">Kalender</string>
     <string name="target_default_settings_hide_work_profile">Arbeitsprofil</string>
-    <string name="target_default_settings_hide_food">Food &amp; Household Orders</string>
-    <string name="target_default_settings_cross_device_timer">Cross-device Timer</string>
+    <string name="target_default_settings_hide_food">Lebensmittel- &amp; Haushaltswarenbestellungen</string>
+    <string name="target_default_settings_cross_device_timer">Geräteübergreifender Timer</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">App auswählen</string>
     <string name="target_notification_configuration_app_content">Wähle App in der Benachrichtigungen angezeigt werden sollen</string>
