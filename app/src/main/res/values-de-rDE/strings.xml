@@ -157,11 +157,11 @@
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Plugin-Updates</string>
     <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
-    <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
-    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
+    <string name="notification_channel_widget_title">Smartspacer als Benachrichtigung</string>
+    <string name="notification_channel_widget_content">Zeigt Smartspacer als Benachrichtigung auf dem Sperrbildschirm an</string>
     <string name="notification_plugin_updates_title">Plugin-Updates verfügbar</string>
-    <string name="notification_plugin_updates_content_one">%1d Smartspacer plugin update is available, tap to view</string>
-    <string name="notification_plugin_updates_content_other">%1d Smartspacer plugin updates are available, tap to view</string>
+    <string name="notification_plugin_updates_content_one">%1d Smartspacer Plugin-Update verfügbar, zur Ansicht tippen</string>
+    <string name="notification_plugin_updates_content_other">%1d Smartspacer Plugin-Updates verfügbar, zur Ansicht tippen</string>
     <string name="notification_location_permission_required_title">Background Location</string>
     <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
@@ -356,7 +356,7 @@
     <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
     <string name="requirement_bluetooth_configuration_pick_empty">Keine gekoppelten Geräte gefunden</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (ausgewählt)</string>
-    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_title">Bluetooth-Berechtigung erforderlich</string>
     <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">App-Vorschlag</string>
     <string name="requirement_app_prediction_content_generic">Nur zeigen, wenn eine bestimmte App in den Top 5 Vorschlägen ist (wird meist im App-Drawer angezeigt)</string>
@@ -368,7 +368,7 @@
     <string name="permission_dialog_widget_title_prefix">Zulassen</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
-    <string name="permission_dialog_widget_title_unknown">Unknown</string>
+    <string name="permission_dialog_widget_title_unknown">Unbekannt</string>
     <string name="permission_dialog_widget_allow_once">Einmal erlauben</string>
     <string name="permission_dialog_widget_allow_always">Immer erlauben</string>
     <string name="permission_dialog_widget_deny">Verweigern</string>
@@ -554,7 +554,7 @@
     <string name="native_restart_title">Nativer Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt. Um sicherzustellen, dass alle Ziele &amp; Komplikationen ordnungsgemäß funktionieren, muss nativer Smartspace gestoppt und erneut gestartet werden, um sich wieder zu verbinden.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_info"><b>Wichtig:</b> Beim erneuten Verbinden von Native Smartspace startet Smartspacer die SystemUI neu. <b>Es kann sein, dass du eine Nachricht siehst, dass die SystemUI gestoppt wurde, und dann deinen Sperrbildschirm.</b> Das ist normal, ignoriere die Nachricht und entsperre dein Gerät, um fortzufahren.</string>
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reaktiviere nativen Smartspace</string>
@@ -586,10 +586,10 @@
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
     <string name="target_music_setting_use_doorbell_title">Zeige quadratische Albumcover</string>
     <string name="target_music_setting_use_doorbell_content">Versucht, das Albumcover als Quadrat und nicht als abgeschnittenes Rechteck anzuzeigen. <b>Wichtig:</b> Wenn der native Smartspace verwendet wird, funktioniert dies nicht auf dem Startbildschirm und wird auf einigen Geräten überhaupt nicht angezeigt.</string>
-    <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
-    <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
+    <string name="target_music_setting_clear_dismissed_title">Lösche abgelehnte Apps</string>
+    <string name="target_music_setting_clear_dismissed_content">Lösche die Liste der Apps, die abgelehnt wurden, damit ihre Titel wieder in Smartspace angezeigt werden können</string>
     <string name="target_music_setting_setting_title">Einstellungen</string>
-    <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
+    <string name="target_music_setting_setting_description">Konfiguriere, ob Albumcover angezeigt werden sollen &amp; lösche abgelehnte Player</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Native Smartspace Settings</string>
     <string name="native_mode_settings_title">Nativer Smartspace</string>
@@ -608,7 +608,7 @@
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
-    <string name="target_permission_request_content">Zum gewähren tippen</string>
+    <string name="target_permission_request_content">Zum Gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Erlauben</string>
     <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
@@ -656,9 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Nicht kompatibel mit deinem Gerät</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
-    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
-    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
-    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
+    <string name="expanded_settings_xposed_enabled_title">Ersetze Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Ersetze den Google Discover Feed durch den erweiterten Smartspace.\n<b>Hinweis:</b> Du musst das Xposed-Modul für deinen Launcher oder Google Feed Plugin aktivieren und dann neu starten, damit dies funktioniert.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">Diese Einstellung erfordert Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
@@ -696,21 +696,21 @@
     <string name="expanded_add_widget_widgets_one">%1d Widget</string>
     <string name="expanded_add_widget_widgets_other">%1d Widgets</string>
     <string name="expanded_custom_widget_options_span_x_title">Breite</string>
-    <string name="expanded_custom_widget_options_span_x_content">The width for this widget, in cells</string>
+    <string name="expanded_custom_widget_options_span_x_content">Die Breite für dieses Widget, in Spalten</string>
     <string name="expanded_custom_widget_options_span_y_title">Höhe</string>
-    <string name="expanded_custom_widget_options_span_y_content">The height for this widget, in rows</string>
-    <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
+    <string name="expanded_custom_widget_options_span_y_content">Die Höhe für dieses Widget, in Zeilen</string>
+    <string name="expanded_custom_widget_options_reconfigure_title">Neu einrichten</string>
     <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
-    <string name="expanded_custom_widget_options_show_when_locked_title">Show when locked</string>
-    <string name="expanded_custom_widget_options_show_when_locked_content">Show this widget in Expanded Smartspace when the device is locked</string>
+    <string name="expanded_custom_widget_options_show_when_locked_title">Zeigen, wenn gesperrt</string>
+    <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
     <string name="battery_optimisation_title">Akku-Optimierung</string>
     <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Batterieoptimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
     <string name="battery_optimisation_system_title">Deaktiviere Akku-Optimierung</string>
-    <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
+    <string name="battery_optimisation_system_content">Dies ist erforderlich, damit Smartspacer im Hintergrund weiterlaufen kann.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Erlaube Alarme &amp; Erinnerungen</string>
-    <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
-    <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
+    <string name="battery_optimisation_schedule_exact_alarm_content">Erforderlich, damit Smartspacer Ziele &amp; Komplikationen im Hintergrund zuverlässig aktualisieren kann.</string>
+    <string name="battery_optimisation_oem_title">OEM-Akku-Optimierung</string>
     <string name="battery_optimisation_oem_content">Dein Gerät scheint einige batterieoptimierte Einstellungen des Herstellers zu haben. Diese können nicht automatisch deaktiviert werden. Tippe hier, um die batteriebezogenen Einstellungen des Herstellers zu öffnen.</string>
     <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Batterieoptimierung deaktiviert werden.</string>
     <string name="battery_optimisation_footer_link">Erfahre mehr</string>
@@ -906,8 +906,8 @@
     <string name="target_calendar_settings_use_alternative_event_id_content">Erstelle IDs für jeden Termin basierend auf deren Titel, Start- und Endzeiten anstelle der systemeigenen IDs, wenn Termine abgelehnt werden. Dies ist nützlich, wenn du eine App oder einen Dienst verwendest, der Kalender zwischen Konten synchronisiert und bei Änderungen neue Termine erstellt.</string>
     <string name="target_calendar_settings_pre_event_time_title">Zeige Termine für diese Zeit vor Start</string>
     <string name="target_calendar_settings_post_event_time_title">Zeige Termine für diese Zeit nach Start</string>
-    <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
-    <string name="target_calendar_settings_clear_dismissed_events_content">Reset the list of dismissed events, allowing hidden events to show again if they are still valid</string>
+    <string name="target_calendar_settings_clear_dismissed_events_title">Lösche abgelehnte Termine</string>
+    <string name="target_calendar_settings_clear_dismissed_events_content">Setze die Liste der abgelehnten Termine zurück, sodass ausgeblendete Termine wieder angezeigt werden können, wenn sie noch gültig sind</string>
     <string name="target_calendar_settings_permission_toast">Smartspacer die Kalender-Berechtigung erteilen</string>
     <string name="target_calendar_pre_event_time_1_minute">1 Minute</string>
     <string name="target_calendar_pre_event_time_5_minutes">5 Minuten</string>
@@ -986,18 +986,18 @@
     <!-- Next Alarm Complication -->
     <string name="complication_alarm_label">Nächster Alarm</string>
     <string name="complication_alarm_description">Zeigt den nächsten gestellten Wecker innerhalb der nächsten 12 Stunden</string>
-    <string name="complication_blank_title">Blank Complication</string>
-    <string name="complication_blank_content">Useful for minimal setups or spacers</string>
+    <string name="complication_blank_title">Leere Komplikation</string>
+    <string name="complication_blank_content">Nützlich für minimale Setups oder Spacers</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Letzte App</string>
     <string name="requirement_recent_apps_description">Nur zeigen, wenn sich eine bestimmte App in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
     <string name="requirement_recent_apps_description_filled">Nur zeigen, wenn sich %1s in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
     <string name="requirement_recent_apps_description_filled_with_limit">Nur zeigen, wenn %1s in den ersten %1d kürzlich geöffneten Apps ist</string>
-    <string name="requirement_recent_apps_description_unsupported">This Requirement requires Enhanced Mode, enable in the settings</string>
+    <string name="requirement_recent_apps_description_unsupported">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="requirement_recent_apps_configuration_app_title">Ausgewählte App</string>
     <string name="requirement_recent_apps_configuration_app_content">Nicht ausgewählt</string>
     <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
-    <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
-    <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
+    <string name="requirement_recent_apps_configuration_limit_content">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll: %1s</string>
+    <string name="requirement_recent_apps_configuration_limit_content_bs">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unbegrenzt</string>
 </resources>
