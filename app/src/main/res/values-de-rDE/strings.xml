@@ -3,7 +3,7 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Optional</b>: Aktiviere dieses Modul in deinem Launcher oder dem Google Feed-Plugin deines Launchers, um Google Discover durch den erweiterten Smartspace zu ersetzen. Du musst die Option auch in den erweiterten Smartspace-Einstellungen in Smartspacer aktivieren.</string>
-    <string name="dummy_home_content">Dieser Bildschirm existiert, um schlecht implementierte Widgets von Smartspacer Plugins zu umgehen.\n\nSmartspacer kann nicht als launcher fungieren, bitte wähle einen anderen launcher aus.</string>
+    <string name="dummy_home_content">Dieser Bildschirm existiert, um schlecht implementierte Widgets von Smartspacer Plugins zu umgehen.\n\nSmartspacer kann nicht als Launcher verwendet werden, bitte wähle einen anderen Launcher aus.</string>
     <string name="dummy_home_open_settings">Einstellungen öffnen</string>
     <string name="notification_service">Smartspacer Benachrichtigungsdienst</string>
     <string name="loading">Wird geladen…</string>
@@ -261,8 +261,8 @@
     <string name="safe_mode_title">Sicherer Modus</string>
     <string name="safe_mode_content">Smartspacer hat den sicheren Modus aktiviert, weil eine App abgestürzt ist, um einen Absturz-Loop zu verhindern. Diese Abstürze werden normalerweise durch ein fehlerhaftes Ziel oder eine fehlerhafte Komplikation verursacht, daher solltest du nach Updates für deine Plugins suchen, wenn sie weiterhin auftreten.</string>
     <string name="safe_mode_relaunch">Smartspacer neu starten</string>
-    <string name="feedback_loop_title">Feedback-Schleife</string>
-    <string name="feedback_loop_content">Smartspacer hat eine Rückkopplungsschleife zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"Auf einen Blick\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
+    <string name="feedback_loop_title">Rückkopplung</string>
+    <string name="feedback_loop_content">Smartspacer hat eine Rückkopplung zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"Auf einen Blick\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
     <string name="feedback_loop_relaunch_wait">Warte %1s Sekunden</string>
     <string name="feedback_loop_relaunch">Smartspacer neu starten</string>
     <string name="configuration_notification_enable_title">Benachrichtigungszugriff aktivieren</string>
@@ -414,7 +414,7 @@
     <string name="compatibility_feature_basic_content">Erlaubt die Anzeige eines Titels &amp; Untertitels mit Icon. Alle nicht unterstützten Ziele greifen auf diesen Stil zurück.</string>
     <string name="compatibility_feature_combination_title">Button</string>
     <string name="compatibility_feature_combination_content">Erlaubt die Anzeige eines Buttons neben dem Titel &amp; Untertitel.</string>
-    <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
+    <string name="compatibility_feature_combination_at_store_title">Kombination für Einkauf</string>
     <string name="compatibility_feature_combination_at_store_content">Erlaubt die Anzeige eines Buttons und einer Einkaufsliste neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_doorbell_title">Türklingel</string>
     <string name="compatibility_feature_doorbell_content">Erlaubt die Anzeige einer komplexen Ansicht zusätzlich zum Titel &amp; Untertitel mit Unterstützung für eine Live-Türklingel-Vorschau auf einigen Bildschirmen.</string>
@@ -456,7 +456,7 @@
     <string name="setup_notifications_request">Berechtigung erteilen</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Ziele</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
+    <string name="setup_targets_info_p1"><b>Ziele</b> sind Seiten mit Informationen, die auf Smartspace angezeigt werden. Normalerweise bestehen sie aus mindestens einem Titel, Untertitel und Icon. Viele Ziele haben auch zusätzliche Informationen - wenn sie unterstützt werden - wie Bilder oder Listen.</string>
     <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
     <string name="setup_targets_info_p3">Die \"Auf einen Blick\"-Integration von Smartspacer wird durch das \"Auf einen Blick\"-Ziel bereitgestellt, das reguläre Informationen von Google wie Kalendertermine und Flüge anzeigen kann. Beachte jedoch, dass dies <b>nicht</b> immer das heutige Datum anzeigt, wenn keine Informationen verfügbar sind. Wenn du das Datum immer sichtbar haben möchtest, füge das \"Datum\"-Ziel separat hinzu.</string>
     <string name="setup_targets_info_example_one_title">Schwerer Verkehr in der Nähe</string>
@@ -476,7 +476,7 @@
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Komplikationen</string>
     <string name="setup_complications_info_p1"><b>Komplikationen</b> sind zusätzliche Informationen, die neben Zielen angezeigt werden können. Dies sind in der Regel kurze Texte und Icons, zum Beispiel ungelesene E-Mails oder aktuelle Wetterbedingungen.</string>
-    <string name="setup_complications_info_p2">Complications will be shown alongside Targets wherever space is available, or if no remaining Targets are available will be shown in additional pages alongside the date.</string>
+    <string name="setup_complications_info_p2">Komplikationen werden neben Zielen angezeigt, wenn Platz verfügbar ist oder wenn keine verbleibenden Ziele verfügbar sind, neben dem Datum in zusätzlichen Seiten angezeigt.</string>
     <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
     <string name="setup_complications_example_gmail">8</string>
     <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
@@ -512,7 +512,7 @@
     <string name="setup_plugins_info_finish">Fertig</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Konfiguration abgeschlossen</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_content">Ziele, Komplikationen und Widgets benötigen möglicherweise zusätzliche Berechtigungen, diese werden bei Bedarf angefordert.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
     <string name="enhanced_mode_request_loading_subtitle">Shizuku/Sui Berechtigung gewähren, wenn gefragt</string>
@@ -543,7 +543,7 @@
     <string name="native_title">Nativer Smartspace</string>
     <string name="native_switch">Nativen Smartspace aktivieren</string>
     <string name="native_switch_info"><b>Wichtig:</b> Beim Aktivieren des nativen Smartspaces startet Smartspacer die SystemUI neu. <b>Es kann sein, dass du eine Nachricht siehst, dass die SystemUI gestoppt wurde, und dann deinen Sperrbildschirm.</b> Das ist normal, ignoriere die Nachricht und entsperre dein Gerät, um fortzufahren.</string>
-    <string name="native_switch_content">Der native Smartspace integriert Smartspacer in dein %1s, es zeigt Smartspacer-Ziele und - Komplikationen an.\nDu musst den nativen Smartspace nach jedem Neustart wieder aktivieren. Das liegt an Systembeschränkungen.</string>
+    <string name="native_switch_content">Der native Smartspace integriert Smartspacer in deinen %1s, er zeigt Smartspacer-Ziele und -Komplikationen an.\nDu musst den nativen Smartspace nach jedem Neustart wieder aktivieren. Dies liegt an Systembeschränkungen.</string>
     <string name="native_switch_content_many">%1s und %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Kompatibilität</string>
@@ -552,18 +552,18 @@
     <string name="native_switch_compatibility_not_available"><b>Nicht verfügbar</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Nativer Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer hat beim Starten des nativen Smartspaces eine Rückkopplung festgestellt. Um sicherzustellen, dass alle Ziele &amp; Komplikationen ordnungsgemäß funktionieren, muss der native Smartspace angehalten und erneut gestartet werden, um die Verbindung wiederherzustellen.</string>
     <string name="native_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt. Um sicherzustellen, dass alle Ziele &amp; Komplikationen ordnungsgemäß funktionieren, muss nativer Smartspace gestoppt und erneut gestartet werden, um sich wieder zu verbinden.</string>
     <string name="native_restart_info"><b>Wichtig:</b> Beim erneuten Verbinden von Native Smartspace startet Smartspacer die SystemUI neu. <b>Es kann sein, dass du eine Nachricht siehst, dass die SystemUI gestoppt wurde, und dann deinen Sperrbildschirm.</b> Das ist normal, ignoriere die Nachricht und entsperre dein Gerät, um fortzufahren.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_button">Jetzt neu verbinden</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reaktiviere nativen Smartspace</string>
     <string name="notification_native_mode_enable_content">Du musst den nativen Smartspace-Modus von Smartspacer nach einem Neustart wieder aktivieren, tippe um ihn zu aktivieren</string>
     <string name="notification_native_mode_enable_dismiss">Nicht mehr anzeigen</string>
     <string name="notification_native_mode_enable_now">Jetzt aktivieren</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_title">Nativen Smartspace erneut verbinden</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer hat beim Starten des nativen Smartspaces eine Rückkopplung festgestellt. Tippe, um die Verbindung wiederherzustellen und es erneut zu versuchen.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer wurde von \"Auf einen Blick\" getrennt, tippen um wieder zu verbinden.</string>
     <string name="notification_native_mode_restart_just_reconnect">Jetzt neu verbinden</string>
     <!-- Shizuku Start Notifications -->
@@ -583,7 +583,7 @@
     <string name="target_music_title">Musik</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
     <string name="target_music_setting_show_album_art_title">Zelte Albumcover</string>
-    <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
+    <string name="target_music_setting_show_album_art_content">Zeigt Albumcover für den aktuell abgespielten Track, falls verfügbar. Dies kann zugeschnitten werden.</string>
     <string name="target_music_setting_use_doorbell_title">Zeige quadratische Albumcover</string>
     <string name="target_music_setting_use_doorbell_content">Versucht, das Albumcover als Quadrat und nicht als abgeschnittenes Rechteck anzuzeigen. <b>Wichtig:</b> Wenn der native Smartspace verwendet wird, funktioniert dies nicht auf dem Startbildschirm und wird auf einigen Geräten überhaupt nicht angezeigt.</string>
     <string name="target_music_setting_clear_dismissed_title">Lösche abgelehnte Apps</string>
@@ -593,19 +593,19 @@
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Nativer Smartspace Einstellungen</string>
     <string name="native_mode_settings_title">Nativer Smartspace</string>
-    <string name="native_mode_settings_target_limit_title">Page Limit</string>
-    <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
-    <string name="native_mode_settings_target_limit_one">Single page</string>
-    <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
-    <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
-    <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
-    <string name="native_mode_settings_target_limit_unlimited">Force unlimited pages</string>
-    <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
-    <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
-    <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
-    <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_settings_target_limit_title">Seitenlimit</string>
+    <string name="native_mode_settings_target_limit_content">Die maximale Anzahl der anzuzeigenden Seiten an Zielen und Komplikationen: %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Warnung:</b> Auf einigen Geräten mit bestimmten Kombinationen von Zielen kann es zu gelegentlichen Abstürzen der SystemUI und der mit dem nativen Smartspace kompatiblen Launchern kommen, wenn Optionen mit mehr als einer Seite aktiviert sind.</string>
+    <string name="native_mode_settings_target_limit_one">Eine Seite</string>
+    <string name="native_mode_settings_target_limit_one_content">Begrenzt Smartspace so, dass nur die erste Seite angezeigt wird</string>
+    <string name="native_mode_settings_target_limit_automatic">Lass Sperrbildschirm/Launcher entscheiden</string>
+    <string name="native_mode_settings_target_limit_automatic_content">Folge dem vom Launcher oder Sperrbildschirm angeforderten Limit</string>
+    <string name="native_mode_settings_target_limit_unlimited">Unbegrenzte Seiten erzwingen</string>
+    <string name="native_mode_settings_target_limit_unlimited_content">Das angeforderte Limit ignorieren und so viele Seiten anzeigen, wie verfügbar</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Inkompatible Ziele ausblenden</string>
+    <string name="native_mode_settings_hide_incompatible_targets_content">Ziele ausblenden, die nicht mit deinem Gerät kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
+    <string name="native_mode_settings_use_split_smartspace">Nutze geteilten Smartspace</string>
+    <string name="native_mode_settings_use_split_smartspace_content">Mit Android 14 wurde ein geteilter Smartspace auf dem Sperrbildschirm eingeführt, der immer das Datum und das Wetter über den regulären Zielen &amp; Komplikationen anzeigt. Smartspacer kann das Wetter durch deine erste Komplikation ersetzen, aber dies funktioniert möglicherweise nicht mit allen Uhrenstilen, und deine erste Komplikation könnte verschwinden. Wenn das passiert, deaktivieren diese Funktion.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
     <string name="target_permission_request_content">Zum Gewähren tippen</string>
@@ -637,17 +637,17 @@
     <string name="expanded_settings_show_search_box_title">Zeige Suchfeld</string>
     <string name="expanded_settings_show_search_box_content">Zeige ein Suchfeld oben am erweiterten Smartspace</string>
     <string name="expanded_settings_search_provider_title">Suchanbieter</string>
-    <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
-    <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
+    <string name="expanded_settings_search_provider_content">Wähle die App, die beim Öffnen des Suchfeldes gestartet werden soll: %1s</string>
+    <string name="expanded_settings_search_provider_content_unset">Wähle die App, die beim Öffnen des Suchfeldes gestartet werden soll</string>
     <string name="expanded_settings_show_doodle_title">Zeige Google Doodle</string>
-    <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
+    <string name="expanded_settings_show_doodle_content">Zeige das heutige Google Doodle im oberen Bereich des erweiterten Smartspaces an</string>
+    <string name="expanded_settings_header_behaviour">Verhalten</string>
     <string name="expanded_settings_open_mode_home_screen_title">Vom Startbildschirm aus öffnen</string>
     <string name="expanded_settings_open_mode_home_screen_title_short">Startbildschirm</string>
     <string name="expanded_settings_open_mode_home_screen_content">Öffne den erweiterten Smartspace wenn ein Smartspace Ziel auf dem Startbildschirm angeklickt wird: %1s</string>
-    <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
+    <string name="expanded_settings_open_mode_lock_screen_title">Vom Sperrbildschirm öffnen</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Sperrbildschirm</string>
-    <string name="expanded_settings_open_mode_lock_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the lock screen: %1s</string>
+    <string name="expanded_settings_open_mode_lock_screen_content">Öffne den erweiterten Smartspace wenn ein Smartspace Ziel auf dem Startbildschirm angeklickt wird: %1s</string>
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
     <string name="expanded_settings_header_style">Stil</string>
@@ -666,14 +666,14 @@
     <string name="expanded_settings_open_mode_always_title">Immer</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
-    <string name="expanded_settings_tint_colour">Tint Colour</string>
-    <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
+    <string name="expanded_settings_tint_colour">Farbton</string>
+    <string name="expanded_settings_tint_colour_content">Die Farbe für Text und Icons auf dem erweiterten Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">OEM Smartspace</string>
     <string name="oem_smartspace_content">Einstellungen um Smartspacer in alten Launchers und auf dem Sperrbildschirm auf einigen Geräten anzuzeigen</string>
     <string name="oem_smartspace_content_enhanced">Diese Einstellung erfordert den erweiterten Modus</string>
     <string name="oem_smartspace_incompatible">Sorry, diese Option erfordert Root auf deinem Gerät aufgrund von Systembeschränkungen. Wenn dein Gerät gerootet ist, installiere das Sui Magisk-Modul oder starte Shizuku als Root.</string>
-    <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
+    <string name="oem_smartspace_info">OEM Smartspace zeigt Smartspacer Ziele &amp; Komplikationen in kompatiblen Launchern und Sperrbildschirmen.\n\n<b>Bitte beachte, dass dies wesentlich eingeschränkter ist, als die anderen Modi von Smartspacer:</b>\n- Es können nur der Titel und der Untertitel eines Ziels angezeigt werden, keine Bilder oder zusätzlichen Optionen.\n- Es kann nur ein Ziel &amp; Komplikation auf einmal angezeigt werden\n- Einige OEMs zeigen keine Komplikationen an, wenn kein Ziel verfügbar ist.\n- Das Layout von Zielen &amp; Komplikationen kann auf einen Gerät aufgrund von OEM-Modifikationen abweichen.\n- Bei Zielen mit mehreren Komplikationen sind möglicherweise nicht alle Optionen anklickbar.\n- Einige OEMs deaktivieren Smartspace, wenn kein Befehl ausgeführt oder keine Einstellung geändert wird. Weitere Informationen finden sich auf der unten verlinkten Wiki-Seite.</string>
     <string name="oem_smartspace_more_info">Weitere Informationen</string>
     <string name="oem_smartspace_no_apps">Es sind keine Apps installiert, die OEM Smartspace verwenden.</string>
     <string name="oem_smartspace_switch">OEM Smartspace aktivieren</string>
@@ -847,10 +847,10 @@
     <string name="notification_widget_title_short">Sperrbildschirm</string>
     <string name="notification_widget_content">Einstellungen um Smartspacer als Benachrichtigung anzuzeigen, wenn der Sperrbildschirm angezeigt wird</string>
     <string name="notification_widget_toggle">Zeige Benachrichtigung</string>
-    <string name="notification_widget_info">Diese Einstellung zeigt als Benachrichtigung <b>limitierte</b> Smartspacer-Inhalte auf dem Sperrbildschirm an. Nur eine Seite kann angezeigt werden und du musst die Benachrichtigung erweitern, um mehr als grundlegende Inhalte zu sehen.</string>
+    <string name="notification_widget_info">Diese Einstellung zeigt als Benachrichtigung <b>begrenzte</b> Smartspacer-Inhalte auf dem Sperrbildschirm an. Nur eine Seite kann angezeigt werden und du musst die Benachrichtigung erweitern, um mehr als grundlegende Inhalte zu sehen.</string>
     <string name="notification_widget_notifications_disabled">Benachrichtigungen sind deaktiviert, sodass diese Einstellung nicht funktioniert. Tippe zum Aktivieren.</string>
-    <string name="notification_widget_tint_title">Tint</string>
-    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
+    <string name="notification_widget_tint_title">Farbton</string>
+    <string name="notification_widget_tint_content">Die Farbe für Text und Icons in der Benachrichtigung: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">XDA Post</string>
     <string name="github">GitHub</string>
