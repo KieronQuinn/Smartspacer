@@ -515,7 +515,7 @@
     <string name="setup_complete_content">Los objetivos, las complicaciones y los widgets pueden necesitar permisos adicionales, estos se solicitarán cuando sea necesario.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Solicitando permiso…</string>
-    <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
+    <string name="enhanced_mode_request_loading_subtitle">Otorga el permiso a Shizuku/Sui si aparece un cuadro de diálogo</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
     <string name="enhanced_mode_request_shizuku_button">Obtener Shizuku</string>
