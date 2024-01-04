@@ -209,9 +209,9 @@
     <string name="target_edit_expanded_show_widget_content">Zeige das diesem Ziel zugeordnete Widget an, falls verfügbar</string>
     <string name="target_edit_expanded_show_remoteviews_title">Zeige zusätzliche Inhalte</string>
     <string name="target_edit_expanded_show_remoteviews_content">Zeige zusätzliche Inhalte dieses Ziels, falls verfügbar</string>
-    <string name="target_edit_expanded_show_shortcuts_title">Show Shortcuts</string>
+    <string name="target_edit_expanded_show_shortcuts_title">Zeige Verknüpfungen</string>
     <string name="target_edit_expanded_show_shortcuts_content">Show shortcuts associated with this Target, if available</string>
-    <string name="target_edit_expanded_show_app_shortcuts_title">Show App Shortcuts</string>
+    <string name="target_edit_expanded_show_app_shortcuts_title">Zeige App-Verknüpfungen</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
     <string name="target_edit_settings_header">Einstellungen</string>
@@ -489,7 +489,7 @@
     <string name="setup_complications_controls_skip">Überspringen</string>
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Widget hinzufügen</string>
-    <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
+    <string name="setup_add_widget_content">Füge Smartspacer zum Startbildschirm hinzu</string>
     <string name="setup_add_widget_lock"><![CDATA[Hinweis: Wenn du Smartspacer zu deinem Sperrbildschirm hinzufügen möchtest, musst du eine App wie <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> verwenden, um das Widget hinzuzufügen.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Bedingungen</string>
@@ -654,14 +654,14 @@
     <string name="expanded_settings_blur_background_title">Hintergrund weichzeichnen</string>
     <string name="expanded_settings_blur_background_content">Verwende eine Hintergrundunschärfe auf dem erweiterten Smartspace, wodurch der Hintergrund verschleiert wird. <b>Funktioniert möglicherweise nicht korrekt mit allen Launchern, wenn du Discover Killer verwendest.</b> Wenn deaktiviert, wird das Hintergrundbild stattdessen gedimmt.</string>
     <string name="expanded_settings_blur_background_incompatible">Nicht kompatibel mit deinem Gerät</string>
-    <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
+    <string name="expanded_settings_widgets_use_google_sans_title">Nutze Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Zwinge Widgets wo möglich Google Sans Text zu verwenden, dies kann bei einigen Widgets zu Layoutproblemen führen</string>
     <string name="expanded_settings_xposed_enabled_title">Ersetze Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Ersetze den Google Discover Feed durch den erweiterten Smartspace.\n<b>Hinweis:</b> Du musst das Xposed-Modul für deinen Launcher oder Google Feed Plugin aktivieren und dann neu starten, damit dies funktioniert.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Diese Einstellung erfordert Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
-    <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
+    <string name="expanded_settings_open_mode_if_has_extras_title">Wenn das Ziel erweiterte Einstellungen hat</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
