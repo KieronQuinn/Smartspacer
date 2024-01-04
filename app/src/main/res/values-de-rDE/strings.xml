@@ -651,8 +651,8 @@
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
     <string name="expanded_settings_header_style">Stil</string>
-    <string name="expanded_settings_blur_background_title">Blur Background</string>
-    <string name="expanded_settings_blur_background_content">Apply a background blur to Expanded Smartspace, obscuring the wallpaper. <b>May not work properly with all launchers if you are using Discover Killer.</b> When disabled, the wallpaper will be dimmed instead.</string>
+    <string name="expanded_settings_blur_background_title">Hintergrund weichzeichnen</string>
+    <string name="expanded_settings_blur_background_content">Verwende eine Hintergrundunschärfe auf dem erweiterten Smartspace, wodurch der Hintergrund verschleiert wird. <b>Funktioniert möglicherweise nicht korrekt mit allen Launchern, wenn du Discover Killer verwendest.</b> Wenn deaktiviert, wird das Hintergrundbild stattdessen gedimmt.</string>
     <string name="expanded_settings_blur_background_incompatible">Nicht kompatibel mit deinem Gerät</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Zwinge Widgets wo möglich Google Sans Text zu verwenden, dies kann bei einigen Widgets zu Layoutproblemen führen</string>
