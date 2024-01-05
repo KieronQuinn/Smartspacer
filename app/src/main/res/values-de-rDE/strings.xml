@@ -277,8 +277,8 @@
     <string name="configuration_notification_association_content">Um Smartspacer den Zugriff auf eine Liste der Benachrichtigungskanäle anderer Apps zu ermöglichen, damit du auswählen kannst, welche angezeigt werden sollen, musst du ein Begleitgerät oder Netzwerk für diese App einstellen. Dies ist eine (ziemlich eigenartige) Anforderung des Android-Systems und die einzige Möglichkeit, eine Liste der Kanäle ohne Root-Zugriff zu erhalten. Dies muss nur einmal erledigt werden.</string>
     <string name="configuration_notification_association_subcontent">Tap the \"Set Companion\" button below, and select any device or connection from the list that appears.\n\n<b>It does not matter if the device/connection is yours, or whether you will be in range of it while using Smartspacer. Smartspacer does not pair or connect to the device you pick</b>. You may also need to have GPS enabled for devices and connections to appear in the dialog.</string>
     <string name="configuration_notification_association_button">Set Companion</string>
-    <string name="configuration_notification_association_read_more">Read more about this requirement</string>
-    <string name="configuration_notification_association_toast">An error occurred, please try again</string>
+    <string name="configuration_notification_association_read_more">Lies mehr über diese Bedingung</string>
+    <string name="configuration_notification_association_toast">Ein Fehler ist aufgetreten, bitte erneut versuchen</string>
     <string name="configuration_notification_picker_empty">Keine Benachrichtigungen vorhanden</string>
     <string name="configuration_notification_picker_error">Beim Abrufen der Benachrichtigungskanäle ist ein Fehler aufgetreten</string>
     <string name="requirements_title">Bedingungen</string>
@@ -307,7 +307,7 @@
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
     <string name="requirement_geofence_configuration_setting_name_content">Name für diesen Standort festlegen</string>
     <string name="requirement_geofence_configuration_setting_radius_title">Umkreis</string>
-    <string name="requirement_geofence_configuration_setting_radius_content">Set the radius inside which the item will be shown</string>
+    <string name="requirement_geofence_configuration_setting_radius_content">Lege den Umkreis fest, in dem das Element angezeigt wird</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d Meter</string>
     <string name="requirement_geofence_configuration_loitering_delay_title">Loitering Delay</string>
     <string name="requirement_geofence_configuration_loitering_delay_content">Set how long you must be within the location radius before this requirement is met</string>
@@ -374,7 +374,7 @@
     <string name="permission_dialog_widget_deny">Verweigern</string>
     <string name="permission_dialog_notification_title_prefix">Zulassen</string>
     <string name="permission_dialog_notification_title_suffix">um mit Smartspacer auf Benachrichtigungen zuzugreifen?</string>
-    <string name="permission_dialog_notification_title_warning">You may be asked for system permission after this step</string>
+    <string name="permission_dialog_notification_title_warning">Du wirst möglicherweise nach diesem Schritt um eine Systemberechtigung gebeten</string>
     <string name="permission_dialog_notification_title_unknown">Unbekannt</string>
     <string name="permission_dialog_notification_allow_once">Einmal erlauben</string>
     <string name="permission_dialog_notification_allow_always">Immer zulassen</string>
@@ -386,7 +386,7 @@
     <string name="settings_native_smartspace_settings_title">Nativer Smartspace</string>
     <string name="settings_native_smartspace_settings_content">Einstellungen um Smartspacer im Smartspace innerhalb kompatibler Launcher und auf dem Sperrbildschirm anzuzeigen</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Diese Einstellung ist nicht kompatibel mit deinem Gerät</string>
-    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
+    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Diese Einstellung erfordert den erweiterten Modus</string>
     <string name="settings_targets_complications">Ziele &amp; Komplikationen</string>
     <string name="settings_plugins">Plugins</string>
     <string name="settings_options">Optionen</string>
@@ -479,12 +479,12 @@
     <string name="setup_complications_info_p2">Komplikationen werden neben Zielen angezeigt, wenn Platz verfügbar ist oder wenn keine verbleibenden Ziele verfügbar sind, neben dem Datum in zusätzlichen Seiten angezeigt.</string>
     <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
     <string name="setup_complications_example_gmail">8</string>
-    <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
+    <string name="setup_complications_caption_gmail">Beispiel für eine Komplikation, die ungelesene E-Mails anzeigt</string>
     <string name="setup_complications_example_weather">20°</string>
-    <string name="setup_complications_caption_weather">Example of a Complication showing weather conditions</string>
+    <string name="setup_complications_caption_weather">Beispiel für eine Komplikation, die die Wetterbedingungen anzeigt</string>
     <!-- Setup > Add Complications -->
     <string name="setup_complications_title">Komplikationen hinzufügen</string>
-    <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
+    <string name="setup_complications_controls_label">Du kannst später in den Einstellungen Komplikationen hinzufügen, bearbeiten, löschen und neu ordnen</string>
     <string name="setup_complications_controls_next">Weiter</string>
     <string name="setup_complications_controls_skip">Überspringen</string>
     <!-- Setup > Add Widget -->
@@ -665,7 +665,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
+    <string name="expanded_settings_date_info"><b>Hinweis:</b> Aufgrund von Systembeschränkungen, gilt diese Option nicht für das Antippen des Datums vom Datumsziel (oder ein Fülldatum, das oberhalb der Komplikationen angezeigt wird)</string>
     <string name="expanded_settings_tint_colour">Farbton</string>
     <string name="expanded_settings_tint_colour_content">Die Farbe für Text und Icons auf dem erweiterten Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
@@ -951,7 +951,7 @@
     <string name="target_blank_settings_show_complications_title">Zeige Komplikationen</string>
     <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
-    <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
+    <string name="target_blank_settings_hide_if_no_complications_content">Blende dieses Ziel vollständig aus, wenn es keine Komplikationen zu zeigen gibt</string>
     <string name="target_blank_settings_title">Einstellungen</string>
     <string name="target_blank_settings_description">Konfigurieren, ob Komplikationen für dieses leere Ziel angezeigt werden</string>
     <!-- Date Target -->
@@ -977,7 +977,7 @@
     <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS ungelesen</string>
-    <string name="complication_sms_description">Show the number of unread SMS/RCS messages</string>
+    <string name="complication_sms_description">Zeige die Anzahl der ungelesenen SMS/RCS-Nachrichten</string>
     <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Verpasste Anrufe</string>
