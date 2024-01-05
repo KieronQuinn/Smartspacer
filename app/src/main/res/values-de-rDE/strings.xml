@@ -163,7 +163,7 @@
     <string name="notification_plugin_updates_content_one">%1d Smartspacer Plugin-Update verfügbar, zur Ansicht tippen</string>
     <string name="notification_plugin_updates_content_other">%1d Smartspacer Plugin-Updates verfügbar, zur Ansicht tippen</string>
     <string name="notification_location_permission_required_title">Background Location</string>
-    <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
+    <string name="notification_location_permission_required_content">Smartspacer benötigt Zugriff auf den Hintergrundstandort, tippe um ihn zu gewähren</string>
     <string name="notification_accessibility_widget_title">Aktiviere Widget-Bedienungshilfe</string>
     <string name="notification_accessibility_widget_content">Die Smartspacer Widget-Dienst Bedienungshilfe muss aktiviert sein, damit Widgets funktionieren können, tippe zum Aktivieren. Alternativ aktiviere den erweiterten Modus und stelle sicher, dass Shizuku gestartet wird.</string>
     <string name="fab_targets_add">Ziel hinzufügen</string>
@@ -213,7 +213,7 @@
     <string name="target_edit_expanded_show_shortcuts_content">Show shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_title">Zeige App-Verknüpfungen</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
-    <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
+    <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Erfordert erweiterten Modus</string>
     <string name="target_edit_settings_header">Einstellungen</string>
     <string name="target_edit_requirements_title">Bedingungen</string>
     <string name="target_edit_requirements_content">Setze die Bedingungen für das anzuzeigende Ziel</string>
@@ -452,7 +452,7 @@
     <string name="setup_analytics_deny">Verweigern</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Benachrichtigungen</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer verwendet Benachrichtigungen, um Informationen, Warnungen und Fehler anzuzeigen, sowie Erinnerungen im Zusammenhang mit dem erweiterten Modus, falls aktiviert.</string>
     <string name="setup_notifications_request">Berechtigung erteilen</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Ziele</string>
@@ -484,7 +484,7 @@
     <string name="setup_complications_caption_weather">Beispiel für eine Komplikation, die die Wetterbedingungen anzeigt</string>
     <!-- Setup > Add Complications -->
     <string name="setup_complications_title">Komplikationen hinzufügen</string>
-    <string name="setup_complications_controls_label">Du kannst später in den Einstellungen Komplikationen hinzufügen, bearbeiten, löschen und neu ordnen</string>
+    <string name="setup_complications_controls_label">Du kannst später in den Einstellungen Komplikationen hinzufügen, bearbeiten, löschen und neu sortieren</string>
     <string name="setup_complications_controls_next">Weiter</string>
     <string name="setup_complications_controls_skip">Überspringen</string>
     <!-- Setup > Add Widget -->
@@ -494,7 +494,7 @@
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Bedingungen</string>
     <string name="setup_requirements_info_p1"><b>Bedingungen</b> erlauben es dir, anzupassen, ob ein Ziel oder eine Komplikation in Smartspace angezeigt wird. Damit kannst du Szenarien erstellen, mit denen nützliche Informationen in Smartspace angezeigt werden.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
+    <string name="setup_requirements_info_p2"><b>Du kannst auf die Einstellungen für die Bedingungen zugreifen, indem du in der Smartspacer-Benutzeroberfläche auf ein hinzugefügtes Ziel oder eine Komplikation tippst und unten in den Einstellungen \"Bedingungen\" auswählst.</b></string>
     <string name="setup_requirements_info_p3">Bei <b>Eine-Bedingungen</b>kann jede der hinzugefügten Bedingungen erfüllt werden, um ein Ziel oder eine Komplikation anzuzeigen. Zum Beispiel könntest du die WLAN-Bedingung nutzen, um deine Einkaufsliste von Google Keep anzuzeigen, wenn du dich in Reichweite der Netzwerke von einem deiner lokalen Geschäfte befindest.</string>
     <string name="setup_requirements_info_p4">Bei <b>Alle-Bedingungen</b>müssen alle hinzugefügten Bedingungen erfüllt werden, um ein Ziel oder eine Komplikation anzuzeigen. Zum Beispiel könntest du die Zeit &amp; Datums- und Standortbedingungen verwenden, um deinen Fitness-Pass von Google Wallet am Dienstagabend in der Nähe des Fitness-Centers anzuzeigen.</string>
     <!-- Setup > Expanded -->
@@ -508,13 +508,13 @@
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
     <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
+    <string name="setup_plugins_info_p2">Sobald sie installiert sind, werden sie wie alle anderen hinzugefügt, indem die Buttons <b>Ziel hinzufügen</b> oder <b>Komplikation hinzufügen</b> genutzt werden oder durch Auswahl von <b>Bedingung hinzufügen</b> in den Bedingungseinstellungen für Ziele &amp; Komplikationen.</string>
     <string name="setup_plugins_info_finish">Fertig</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Konfiguration abgeschlossen</string>
     <string name="setup_complete_content">Ziele, Komplikationen und Widgets benötigen möglicherweise zusätzliche Berechtigungen, diese werden bei Bedarf angefordert.</string>
     <!-- Enhanced Mode > Request -->
-    <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
+    <string name="enhanced_mode_request_loading_title">Bitte um Genehmigung…</string>
     <string name="enhanced_mode_request_loading_subtitle">Shizuku/Sui Berechtigung gewähren, wenn gefragt</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku ist eine Nicht-Root-App, die es Apps wie Smartspacer ermöglicht, Code mit speziellen Berechtigungen auszuführen. Dies geschieht durch die Ausführung eines Befehls auf der ADB (Android Debug Bridge) Shell, einmal pro Neustart. Auf Geräten mit Android 11+ kann dies ohne einen Computer erfolgen, aber auf älteren Versionen musst du dich einmal pro Neustart mit einem Computer verbinden, um Shizuku neu zu starten.</string>
@@ -611,7 +611,7 @@
     <string name="target_permission_request_content">Zum Gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Erlauben</string>
-    <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
+    <string name="permission_dialog_smartspace_title_suffix">um auf Smartspacer Ziele und Komplikationen zuzugreifen?</string>
     <string name="permission_dialog_smartspace_title_unknown">Unbekannt</string>
     <string name="permission_dialog_smartspace_allow">Zulassen</string>
     <string name="permission_dialog_smartspace_deny">Verweigern</string>
@@ -649,7 +649,7 @@
     <string name="expanded_settings_open_mode_lock_screen_title_short">Sperrbildschirm</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Öffne den erweiterten Smartspace wenn ein Smartspace Ziel auf dem Startbildschirm angeklickt wird: %1s</string>
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
-    <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
+    <string name="expanded_settings_close_when_locked_content">Erweiterten Smartspace beenden, wenn das Gerät gesperrt ist</string>
     <string name="expanded_settings_header_style">Stil</string>
     <string name="expanded_settings_blur_background_title">Hintergrund weichzeichnen</string>
     <string name="expanded_settings_blur_background_content">Verwende eine Hintergrundunschärfe auf dem erweiterten Smartspace, wodurch der Hintergrund verschleiert wird. <b>Funktioniert möglicherweise nicht korrekt mit allen Launchern, wenn du Discover Killer verwendest.</b> Wenn deaktiviert, wird das Hintergrundbild stattdessen gedimmt.</string>
@@ -664,7 +664,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_title">Wenn das Ziel erweiterte Einstellungen hat</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
-    <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_always_content">Öffnet immer den erweiterten Smartspace. Wenn das Ziel im erweiterten Smartspace erneut angetippt wird, führt es die ursprüngliche Aktion des Ziels aus.</string>
     <string name="expanded_settings_date_info"><b>Hinweis:</b> Aufgrund von Systembeschränkungen, gilt diese Option nicht für das Antippen des Datums vom Datumsziel (oder ein Fülldatum, das oberhalb der Komplikationen angezeigt wird)</string>
     <string name="expanded_settings_tint_colour">Farbton</string>
     <string name="expanded_settings_tint_colour_content">Die Farbe für Text und Icons auf dem erweiterten Smartspace: %1s</string>
@@ -691,7 +691,7 @@
     <string name="expanded_custom_widget_rearrange_title">Ziehen zum Anordnen</string>
     <string name="expanded_widget_reset_title">Zurücksetzen</string>
     <string name="expanded_add_widget_title">Widget hinzufügen</string>
-    <string name="expanded_add_widget_warning"><b>Please note:</b> Due to an Android system bug, some widgets may not load properly.</string>
+    <string name="expanded_add_widget_warning"><b>Bitte beachten:</b> Aufgrund eines Android-Systemfehlers können einige Widgets nicht richtig geladen werden.</string>
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d Widget</string>
     <string name="expanded_add_widget_widgets_other">%1d Widgets</string>
@@ -700,7 +700,7 @@
     <string name="expanded_custom_widget_options_span_y_title">Höhe</string>
     <string name="expanded_custom_widget_options_span_y_content">Die Höhe für dieses Widget, in Zeilen</string>
     <string name="expanded_custom_widget_options_reconfigure_title">Neu einrichten</string>
-    <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
+    <string name="expanded_custom_widget_options_reconfigure_content">Ändere Einstellungen für dieses Widget in seiner App</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Zeigen, wenn gesperrt</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
@@ -735,10 +735,10 @@
     <string name="plugin_details_install_companion">Benötigte App holen</string>
     <string name="plugin_details_error_title">Fehler</string>
     <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer.</string>
-    <string name="plugin_details_incompatible_incompatible_sdk">This plugin is not compatible with your device as it requires a newer version of Android (API %1d)</string>
-    <string name="plugin_details_incompatible_missing_feature">This plugin is not compatible with your device as it requires a feature that is not available (%1s)</string>
-    <string name="plugin_details_incompatible_missing_app">This plugin requires you to have a companion app installed, tap to download</string>
-    <string name="plugin_details_incompatible_outdated">This plugin requires a newer version of Smartspacer, please update Smartspacer to install it</string>
+    <string name="plugin_details_incompatible_incompatible_sdk">Dieses Plugin ist nicht mit deinem Gerät kompatibel, da es eine neuere Version von Android benötigt (API %1d)</string>
+    <string name="plugin_details_incompatible_missing_feature">Dieses Plugin ist nicht mit deinem Gerät kompatibel, da es eine Funktion benötigt, die nicht verfügbar ist (%1s)</string>
+    <string name="plugin_details_incompatible_missing_app">Dieses Plugin erfordert, dass du eine Begleit-App installiert hast, tippe zum Herunterladen</string>
+    <string name="plugin_details_incompatible_outdated">Dieses Plugin benötigt eine neuere Version von Smartspacer, bitte aktualisiere Smartspacer, um es zu installieren</string>
     <string name="plugin_details_downloading_title">Lade Plugin herunter…</string>
     <string name="plugin_details_download_failed">Download fehlgeschlagen</string>
     <string name="plugin_settings_title">Plugin-Repository</string>
@@ -839,8 +839,8 @@
     <string name="restore_requirements_collision"><b>Beim Hinzufügen dieser Bedingung wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_requirements_for">Bedingung für: %1s</string>
     <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
-    <string name="restore_settings_title">Restoring Smartspacer settings…</string>
-    <string name="restore_complete_title">Restore complete</string>
+    <string name="restore_settings_title">Stelle Smartspacer-Einstellungen wieder her…</string>
+    <string name="restore_complete_title">Wiederherstellung abgeschlossen</string>
     <string name="restore_page_controls_next">Weiter</string>
     <!-- Notification Widget Settings -->
     <string name="notification_widget_title">Sperrbildschirm-Benachrichtigung</string>
@@ -876,7 +876,7 @@
     <!-- Digital Wellbeing Complication -->
     <string name="complication_digital_wellbeing_label">Digitales Wohlbefinden</string>
     <string name="complication_digital_wellbeing_description">Zeigt die Bildschirmzeit von Digital Wellbeing</string>
-    <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
+    <string name="complication_digital_wellbeing_unsupported">Diese Komplikation erfordert die Digital Wellbeing App</string>
     <!-- Clock Complication -->
     <string name="complication_clock_label">Uhr</string>
     <string name="complication_clock_description">Zeigt die aktuelle Zeit.\n<b>Warnung:</b> Diese Komplikation kann erhöhten Akkuverbrauch verursachen.</string>
