@@ -824,12 +824,12 @@
     <string name="restore_restore_settings_content_empty">Keine Einstellungen zum Wiederherstellen gefunden</string>
     <string name="restore_target_title">Ziele</string>
     <string name="restore_target_reason_not_installed">Das Plugin, das dieses Ziel bereitstellt, ist nicht mehr installiert (%1s)</string>
-    <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
+    <string name="restore_target_duplicate">Dieses Ziel wurde bereits hinzugefügt und kann nicht mehr als einmal hinzugefügt werden. Entferne das vorhandene Ziel vor der Wiederherstellung.</string>
     <string name="restore_target_collision"><b>Beim Hinzufügen dieses Ziels wird deine aktuelle Konfiguration überschrieben</b></string>
-    <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
+    <string name="restore_target_footer">Tippe auf ein Ziel, um es wiederherzustellen.\n<b>Ziele werden in der Reihenfolge der Wiederherstellung hinzugefügt</b></string>
     <string name="restore_complications_title">Komplikationen</string>
     <string name="restore_complication_reason_not_installed">Das Plugin, das diese Komplikation bereitstellt, ist nicht mehr installiert (%1s)</string>
-    <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
+    <string name="restore_complication_duplicate">Diese Komplikation wurde bereits hinzugefügt und kann nicht mehr als einmal hinzugefügt werden. Entferne die vorhandene Komplikation vor der Wiederherstellung.</string>
     <string name="restore_complication_collision"><b>Beim Hinzufügen dieser Komplikation wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
     <string name="restore_requirements_title">Bedingungen</string>
