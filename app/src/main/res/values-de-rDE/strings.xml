@@ -136,7 +136,7 @@
     <string name="notification_channel_background_service_title">Hintergrunddienst</string>
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
     <string name="notification_title_background_service">Smartspacer läuft</string>
-    <string name="notification_content_background_service">Smartspacer is running in the background, tap to hide</string>
+    <string name="notification_content_background_service">Smartspacer läuft im Hintergrund, tippe zum Ausblenden</string>
     <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer läuft im Hintergrund</string>
     <string name="notification_channel_safe_mode_title">Sicherer Modus</string>
@@ -148,7 +148,7 @@
     <string name="notification_channel_accessibility_title">Bedienungshilfen</string>
     <string name="notification_channel_accessibility_content">Messages about Smartspacer\'s Accessibility Service</string>
     <string name="notification_channel_native_title">Nativer Smartspace</string>
-    <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
+    <string name="notification_channel_native_content">Nachrichten im Zusammenhang mit dem Shizuku Service von Smartspacer</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
     <string name="notification_channel_oem_content">Nachrichten im Zusammenhang mit dem OEM Smartspace Service von Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku Erinnerung</string>
@@ -162,7 +162,7 @@
     <string name="notification_plugin_updates_title">Plugin-Updates verfügbar</string>
     <string name="notification_plugin_updates_content_one">%1d Smartspacer Plugin-Update verfügbar, zur Ansicht tippen</string>
     <string name="notification_plugin_updates_content_other">%1d Smartspacer Plugin-Updates verfügbar, zur Ansicht tippen</string>
-    <string name="notification_location_permission_required_title">Background Location</string>
+    <string name="notification_location_permission_required_title">Hintergrund-Standort</string>
     <string name="notification_location_permission_required_content">Smartspacer benötigt Zugriff auf den Hintergrundstandort, tippe um ihn zu gewähren</string>
     <string name="notification_accessibility_widget_title">Aktiviere Widget-Bedienungshilfe</string>
     <string name="notification_accessibility_widget_content">Die Smartspacer Widget-Dienst Bedienungshilfe muss aktiviert sein, damit Widgets funktionieren können, tippe zum Aktivieren. Alternativ aktiviere den erweiterten Modus und stelle sicher, dass Shizuku gestartet wird.</string>
@@ -179,8 +179,8 @@
     <string name="targets_add_incompatible_widget">Das für dieses Ziel benötigte Widget ist nicht verfügbar</string>
     <string name="targets_add_failed_to_launch_setup">Fehler beim Starten der Einrichtung für dieses Ziel</string>
     <string name="complications_add_empty_label">Keine Komplikationen zum Hinzufügen übrig</string>
-    <string name="complications_add_incompatible_generic">This Complication is not compatible with your device</string>
-    <string name="complications_add_incompatible_widget">The widget required for this Complication is not available</string>
+    <string name="complications_add_incompatible_generic">Diese Komplikation ist nicht kompatibel mit deinem Gerät</string>
+    <string name="complications_add_incompatible_widget">Das für diese Komplikation benötigte Widget ist nicht verfügbar</string>
     <string name="complications_add_failed_to_launch_setup">Fehler beim Starten der Einrichtung für diese Komplikation</string>
     <string name="requirements_add_empty_label">Keine Bedingungen übrig zum Hinzufügen</string>
     <string name="requirements_add_incompatible_generic">Diese Bedingung ist nicht kompatibel mit deinem Gerät</string>
@@ -470,7 +470,7 @@
     <string name="setup_targets_caption_list">Beispiel für ein Ziel mit einer Liste</string>
     <!-- Setup > Add Targets -->
     <string name="setup_targets_title">Ziele hinzufügen</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
+    <string name="setup_targets_controls_label">Du kannst später in den Einstellungen Ziele hinzufügen, bearbeiten, löschen und neu sortieren</string>
     <string name="setup_targets_controls_next">Weiter</string>
     <string name="setup_targets_controls_skip">Überspringen</string>
     <!-- Setup > Complication Info -->
