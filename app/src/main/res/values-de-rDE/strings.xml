@@ -831,14 +831,14 @@
     <string name="restore_complication_reason_not_installed">Das Plugin, das diese Komplikation bereitstellt, ist nicht mehr installiert (%1s)</string>
     <string name="restore_complication_duplicate">Diese Komplikation wurde bereits hinzugefügt und kann nicht mehr als einmal hinzugefügt werden. Entferne die vorhandene Komplikation vor der Wiederherstellung.</string>
     <string name="restore_complication_collision"><b>Beim Hinzufügen dieser Komplikation wird deine aktuelle Konfiguration überschrieben</b></string>
-    <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
+    <string name="restore_complication_footer">Tippe auf eine Komplikation, um sie wiederherzustellen.\n<b>Komplikationen werden in der Reihenfolge der Wiederherstellung hinzugefügt</b></string>
     <string name="restore_requirements_title">Bedingungen</string>
     <string name="restore_requirements_reason_not_installed">Das Plugin, das diese Bedingung bereitstellt, ist nicht mehr installiert (%1s)</string>
-    <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
-    <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
+    <string name="restore_requirements_reason_not_added">Das Ziel oder die Komplikation, der diese Bedingung zugeordnet war, wurde nicht hinzugefügt. Bitte füge sie erst hinzu, bevor du ihre Bedingung wiederherstellst.</string>
+    <string name="restore_requirements_duplicate">Diese Bedingung wurde bereits hinzugefügt und kann nicht mehr als einmal hinzugefügt werden. Entferne die vorhandene Bedingung vor der Wiederherstellung.</string>
     <string name="restore_requirements_collision"><b>Beim Hinzufügen dieser Bedingung wird deine aktuelle Konfiguration überschrieben</b></string>
     <string name="restore_requirements_for">Bedingung für: %1s</string>
-    <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
+    <string name="restore_widgets_title">Stelle erweiterte Smartspace Widgets wieder her…</string>
     <string name="restore_settings_title">Stelle Smartspacer-Einstellungen wieder her…</string>
     <string name="restore_complete_title">Wiederherstellung abgeschlossen</string>
     <string name="restore_page_controls_next">Weiter</string>
@@ -863,12 +863,12 @@
     <string name="about_contributors_icons">Icons</string>
     <string name="about_contributors_icons_content"><![CDATA[Icons von <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Google Pay - Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parts of the Smartspacer SDK contain code based on Lawnchair, under the <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
+    <string name="about_contributors_sdk_content"><![CDATA[Teile des Smartspacer SDKs enthalten Code basierend auf Lawnchair, unter der <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
     <string name="about_translators">Übersetzer</string>
     <!-- Wallpaper Colour Picker -->
-    <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
-    <string name="wallpaper_colour_picker_title">Wallpaper Colour</string>
-    <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
+    <string name="wallpaper_colour_picker_menu">Hintergrundfarbenauswahl</string>
+    <string name="wallpaper_colour_picker_title">Hintergrundfarbe</string>
+    <string name="color_picker_unavailable">Hintergrundfarbenauswahl nicht verfügbar für das aktuell ausgewählte Hintergrundbild</string>
     <!-- Digital Wellbeing Target -->
     <string name="target_digital_wellbeing_label">Digitales Wohlbefinden</string>
     <string name="target_digital_wellbeing_description">Zeigt die Bildschirmzeit und die Top 3 Apps von Digital Wellbeing</string>
@@ -908,7 +908,7 @@
     <string name="target_calendar_settings_post_event_time_title">Zeige Termine für diese Zeit nach Start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Lösche abgelehnte Termine</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Setze die Liste der abgelehnten Termine zurück, sodass ausgeblendete Termine wieder angezeigt werden können, wenn sie noch gültig sind</string>
-    <string name="target_calendar_settings_permission_toast">Smartspacer die Kalender-Berechtigung erteilen</string>
+    <string name="target_calendar_settings_permission_toast">Erteile Smartspacer die Kalender-Berechtigung</string>
     <string name="target_calendar_pre_event_time_1_minute">1 Minute</string>
     <string name="target_calendar_pre_event_time_5_minutes">5 Minuten</string>
     <string name="target_calendar_pre_event_time_10_minutes">10 Minuten</string>
@@ -950,7 +950,7 @@
     <string name="target_blank_content">Absolut minimal, kann verwendet werden, um überhaupt nichts oder nur Komplikationen anzuzeigen</string>
     <string name="target_blank_settings_show_complications_title">Zeige Komplikationen</string>
     <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
-    <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
+    <string name="target_blank_settings_hide_if_no_complications_title">Ausblenden, wenn keine Komplikationen</string>
     <string name="target_blank_settings_hide_if_no_complications_content">Blende dieses Ziel vollständig aus, wenn es keine Komplikationen zu zeigen gibt</string>
     <string name="target_blank_settings_title">Einstellungen</string>
     <string name="target_blank_settings_description">Konfigurieren, ob Komplikationen für dieses leere Ziel angezeigt werden</string>
@@ -960,29 +960,29 @@
     <string name="target_date_settings_date_format_automatic_content">Systemdefiniert</string>
     <string name="target_date_settings_title">Einstellungen</string>
     <string name="target_date_settings_description">Datumsformat konfigurieren</string>
-    <string name="target_date_settings_custom">Custom</string>
+    <string name="target_date_settings_custom">Benutzerdefiniert</string>
     <string name="target_date_settings_custom_content">Gib ein Java-kompatibles Datumsformat an</string>
     <string name="target_date_settings_custom_invalid">Ungültiges Datumsformat</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail ungelesen</string>
-    <string name="complication_gmail_description">Show the number of unread Gmail emails from selected labels</string>
-    <string name="complication_gmail_description_filled_one">Show the number of unread Gmail emails at %1s in %1d label</string>
-    <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
+    <string name="complication_gmail_description">Zeige die Anzahl der ungelesener Gmail-E-Mails von ausgewählten Labels</string>
+    <string name="complication_gmail_description_filled_one">Zeige die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Label</string>
+    <string name="complication_gmail_description_filled_other">Zeige die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Labels</string>
     <string name="complication_gmail_unknown">\???</string>
     <string name="complication_gmail_settings_account_title">Konto</string>
     <string name="complication_gmail_settings_account_unselected">Nicht ausgewählt</string>
-    <string name="complication_gmail_settings_title_labels">Select Labels</string>
+    <string name="complication_gmail_settings_title_labels">Label auswählen</string>
     <string name="complication_gmail_settings_title">Einstellungen</string>
     <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
-    <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
+    <string name="complication_gmail_settings_toast">Erteile die E-Mail-Berechtigung in App-Berechtigungen &gt; Zusätzliche Berechtigungen</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS ungelesen</string>
     <string name="complication_sms_description">Zeige die Anzahl der ungelesenen SMS/RCS-Nachrichten</string>
-    <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
+    <string name="complication_sms_settings_toast">Erteile die SMS-Berechtigung in den App-Berechtigungen</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Verpasste Anrufe</string>
     <string name="complication_missed_calls_description">Anzahl verpasster Anrufe anzeigen</string>
-    <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
+    <string name="complication_missed_calls_settings_toast">Erteile die Anrufliste-Berechtigung in den App-Berechtigungen</string>
     <!-- Next Alarm Complication -->
     <string name="complication_alarm_label">Nächster Alarm</string>
     <string name="complication_alarm_description">Zeigt den nächsten gestellten Wecker innerhalb der nächsten 12 Stunden</string>
