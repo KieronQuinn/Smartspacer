@@ -152,11 +152,11 @@
     <string name="notification_channel_oem_title">OEM Smartspace</string>
     <string name="notification_channel_oem_content">Benachrichtigungen im Zusammenhang mit dem OEM Smartspace Service von Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku Erinnerungen</string>
-    <string name="notification_channel_shizuku_reminder_content">Notification shown as a reminder to start Shizuku after rebooting</string>
+    <string name="notification_channel_shizuku_reminder_content">Benachrichtigung, die als Erinnerung angezeigt werden, Shizuku nach dem Neustart zu starten</string>
     <string name="notification_channel_updates_title">Smartspacer Updates</string>
-    <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
+    <string name="notification_channel_updates_content">Benachrichtigungen, die bei Updates für Smartspacer angezeigt werden</string>
     <string name="notification_channel_plugin_updates_title">Plugin-Updates</string>
-    <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
+    <string name="notification_channel_plugin_updates_content">Benachrichtigungen, die bei Updates für Smartspacer-Plugins angezeigt werden</string>
     <string name="notification_channel_widget_title">Smartspacer als Benachrichtigung</string>
     <string name="notification_channel_widget_content">Zeigt Smartspacer als Benachrichtigung auf dem Sperrbildschirm an</string>
     <string name="notification_plugin_updates_title">Plugin-Updates verfügbar</string>
@@ -458,7 +458,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Ziele</string>
     <string name="setup_targets_info_p1"><b>Ziele</b> sind Seiten mit Informationen, die auf Smartspace angezeigt werden. Normalerweise bestehen sie aus mindestens einem Titel, Untertitel und Icon. Viele Ziele haben auch zusätzliche Informationen - wenn sie unterstützt werden - wie Bilder oder Listen.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
+    <string name="setup_targets_info_p2">Ziele können entweder dynamisch sein und je nach Bedarf ein- und ausgeblendet werden, oder statisch und dauerhaft angezeigt werden. Du kannst weiter anpassen, wann sie erscheinen, indem du <b>Bedingungen</b> und die Einstellungen vieler Ziele verwendest (erreichbar durch Tippen auf ein Ziel in der Smartspacer-Benutzeroberfläche).</string>
     <string name="setup_targets_info_p3">Die \"Auf einen Blick\"-Integration von Smartspacer wird durch das \"Auf einen Blick\"-Ziel bereitgestellt, das reguläre Informationen von Google wie Kalendertermine und Flüge anzeigen kann. Beachte jedoch, dass dies <b>nicht</b> immer das heutige Datum anzeigt, wenn keine Informationen verfügbar sind. Wenn du das Datum immer sichtbar haben möchtest, füge das \"Datum\"-Ziel separat hinzu.</string>
     <string name="setup_targets_info_example_one_title">Schwerer Verkehr in der Nähe</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
@@ -505,10 +505,10 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_expanded_info_p2">Entwickelt, um einen schnellen Überblick über alle aktuellen Informationen zu bieten, kannst du einstellen, dass der erweiterte Smartspace geöffnet wird, wenn auf ein Ziel geklickt wird und zusätzliche dynamische Informationen verfügbar sind. Dies ist nützlich, wenn du einfachen Zugriff auf kontextbezogene Informationen auf Knopfdruck möchtest.</string>
     <string name="setup_expanded_open_title">Dynamisch erweiterten Smartspace öffnen</string>
     <string name="setup_expanded_open_content">Wenn aktiviert, öffnet sich der erweiterte Smartspace wenn ein Ziel angetippt wird, das zusätzliche Informationen hat, wie z. B. ein Widget oder Verknüpfungen</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_info_footer">Du kannst auf zusätzliche Optionen zugreifen, z. B. dass der erweiterte Smartspace immer geöffnet wird, wenn ein Ziel angetippt wird (auch wenn es keine zusätzlichen Informationen enthält), und zwar unter Einstellungen &gt; Erweiterter Smartspace nach der Einrichtung.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
+    <string name="setup_plugins_info_p1">Du kannst zusätzliche <b>Plugins</b> herunterladen, die zusätzliche Ziele, Komplikationen und Bedingungen im Plugin-Tab in der unteren Navigation bereitstellen.</string>
     <string name="setup_plugins_info_p2">Sobald sie installiert sind, werden sie wie alle anderen hinzugefügt, indem die Buttons <b>Ziel hinzufügen</b> oder <b>Komplikation hinzufügen</b> genutzt werden oder durch Auswahl von <b>Bedingung hinzufügen</b> in den Bedingungseinstellungen für Ziele &amp; Komplikationen.</string>
     <string name="setup_plugins_info_finish">Fertig</string>
     <!-- Setup > Complete -->
@@ -663,7 +663,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
     <string name="expanded_settings_open_mode_never_content">Führt die Klick-Aktionen des Ziels aus, statt den erweiterten Smartspace zu öffnen</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Wenn das Ziel erweiterte Einstellungen hat</string>
-    <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_if_has_extras_content">Öffnet den erweiterten Smartspace, wenn das Ziel zusätzliche Einstellungen hat, die im erweiterten Smartspace verfügbar sind. Durch erneutes Antippen des Ziels im erweiterten Smartspace wird die ursprüngliche Aktion des Ziels ausgeführt.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
     <string name="expanded_settings_open_mode_always_content">Öffnet immer den erweiterten Smartspace. Wenn das Ziel im erweiterten Smartspace erneut angetippt wird, führt es die ursprüngliche Aktion des Ziels aus.</string>
     <string name="expanded_settings_date_info"><b>Hinweis:</b> Aufgrund von Systembeschränkungen, gilt diese Option nicht für das Antippen des Datums vom Datumsziel (oder ein Fülldatum, das oberhalb der Komplikationen angezeigt wird)</string>
