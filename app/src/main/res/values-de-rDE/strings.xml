@@ -7,7 +7,7 @@
     <string name="dummy_home_open_settings">Einstellungen öffnen</string>
     <string name="notification_service">Smartspacer Benachrichtigungsdienst</string>
     <string name="loading">Wird geladen…</string>
-    <string name="saving">Speichert…</string>
+    <string name="saving">Speichere…</string>
     <string name="search">Suchen</string>
     <string name="delete">Löschen</string>
     <string name="save">Speichern</string>
@@ -30,43 +30,43 @@
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatisch (Hintergrundbasierend)</string>
     <string name="tint_colour_automatic_alt">Automatisch (Theme-basierend)</string>
-    <string name="tint_colour_automatic_content">Text und Symbole im Widget werden automatisch eingefärbt, um auf dem Hintergrundbild sichtbar zu sein</string>
+    <string name="tint_colour_automatic_content">Text und Icons im Widget werden automatisch eingefärbt, um auf dem Hintergrundbild sichtbar zu sein</string>
     <string name="tint_colour_automatic_content_alt">Text und Icons in der Benachrichtigung werden automatisch eingefärbt, damit sie je nach Theme sichtbar sind</string>
     <string name="tint_colour_white">Weiß</string>
     <string name="tint_colour_white_content">Text und Icons im Widget werden immer weiß sein</string>
     <string name="tint_colour_white_content_alt">Text und Icons in der Benachrichtigung werden immer weiß sein</string>
     <string name="tint_colour_black">Schwarz</string>
-    <string name="tint_colour_black_content">Text und Symbole im Widget werden immer schwarz sein</string>
+    <string name="tint_colour_black_content">Text und Icons im Widget werden immer schwarz sein</string>
     <string name="tint_colour_black_content_alt">Text und Icons in der Benachrichtigung werden immer schwarz sein</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Zeige Smartspacer Ziele &amp; Komplikationen</string>
     <string name="widget_loading_smartspacer">Lädt…</string>
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
-    <string name="widget_configuration_accessibility_title">Bedienungshilfen aktivieren</string>
+    <string name="widget_configuration_accessibility_title">Aktiviere Bedienungshilfen</string>
     <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Batterie sparen.</string>
-    <string name="widget_configuration_accessibility_enable">Barrierefreiheit-Dienst aktivieren</string>
+    <string name="widget_configuration_accessibility_enable">Aktiviere Bedienungshilfen</string>
     <string name="widget_configuration_type_title">Widget-Typ auswählen</string>
     <string name="widget_configuration_type_home_title">Startbildschirm</string>
-    <string name="widget_configuration_type_home_content">Dieses Widget ist auf dem Startbildschirm und sollte Ziele und Komplikationen anzeigen, die auf dem Startbildschirm angezeigt werden sollen</string>
+    <string name="widget_configuration_type_home_content">Dieses Widget befindet sich auf dem Startbildschirm und sollte Ziele und Komplikationen anzeigen, die auf dem Startbildschirm angezeigt werden sollen</string>
     <string name="widget_configuration_type_lock_title">Sperrbildschirm</string>
-    <string name="widget_configuration_type_lock_content">Dieses Widget ist auf dem Sperrbildschirm und sollte Ziele und Komplikationen anzeigen, die auf dem Sperrbildschirm angezeigt werden sollen</string>
+    <string name="widget_configuration_type_lock_content">Dieses Widget befindet sich auf dem Sperrbildschirm und sollte Ziele und Komplikationen anzeigen, die auf dem Sperrbildschirm angezeigt werden sollen</string>
     <string name="widget_configuration_type_lock_content_disabled">Nicht verfügbar für dieses Widget. Bitte beachte, dass Smartspacer die Anzeige von Widgets auf dem Sperrbildschirm nicht zulässt, lade dazu eine App von Google Play wie \"Lockscreen Widgets\" herunter.</string>
     <string name="widget_configuration_page">Seitensteuerung</string>
     <string name="widget_configuration_page_single_title">Eine Seite</string>
-    <string name="widget_configuration_page_single_content">Sperre das Widget, um nur eine Seite von Ziel und Komplikation anzuzeigen (wenn der Platz es zulässt). Dies bedeutet, dass du nur dein oberstes Ziel/Komplikation im Widget sehen wirst.\n<b>Wichtig:</b> Mit dieser Option kannst du das Optionsmenü für ein Ziel nicht öffnen und kannst es nur von Erweiterter Smartspace entfernen</string>
+    <string name="widget_configuration_page_single_content">Sperre das Widget, um nur eine Seite von Ziel und Komplikation anzuzeigen (wenn der Platz es zulässt). Dies bedeutet, dass du nur dein oberstes Ziel/Komplikation im Widget sehen wirst.\n<b>Wichtig:</b> Mit dieser Option kannst du das Optionsmenü für ein Ziel nicht öffnen und kannst es nur von dem erweiterten Smartspace entfernen</string>
     <string name="widget_configuration_page_controls_title">Seiten</string>
-    <string name="widget_configuration_page_controls_content">Erlaube so viele Seiten von Zielen und Komplikationen wie du konfigurierst, mit Pfeiltasten, um sich zwischen den Seiten zu bewegen (Schaltflächen &amp; wird ausgeblendet, wenn nur eine Seite vorhanden ist)</string>
-    <string name="widget_configuration_page_no_controls_title">Paged ohne Pfeil-Tasten</string>
-    <string name="widget_configuration_page_no_controls_content">Das gleiche wie die Seite, aber ohne die Pfeiltasten. Tippe auf die Punkt-Indikatoren, um zur nächsten Seite zu wechseln, die nach dem Ende wieder zur ersten Seite zurückkehrt.</string>
+    <string name="widget_configuration_page_controls_content">Erlaube so viele Seiten für Ziele und Komplikationen, wie du konfigurierst, mit Pfeiltasten, um zwischen den Seiten zu wechseln (Buttons &amp; Punktanzeige werden ausgeblendet, wenn es nur eine Seite gibt)</string>
+    <string name="widget_configuration_page_no_controls_title">Seiten ohne Pfeiltasten</string>
+    <string name="widget_configuration_page_no_controls_content">Das gleiche wie Seiten, aber ohne die Pfeiltasten. Tippe auf die Punktanzeige, um zur nächsten Seite zu wechseln, und springe zurück zur ersten Seite, wenn das Ende erreicht ist.</string>
     <string name="widget_configuration_animation">Animation</string>
     <string name="widget_configuration_animation_switch_title">Änderungen animieren</string>
-    <string name="widget_configuration_animation_switch_content">Zwischen Änderungen des Widgets ausblenden, wenn möglich</string>
+    <string name="widget_configuration_animation_switch_content">Zwischen Änderungen des Widgets überblenden, wenn möglich</string>
     <string name="widget_configuration_colour">Farbe</string>
     <string name="widget_configuration_apply">Übernehmen</string>
     <string name="widget_options_configure">Widget konfigurieren</string>
     <string name="accessibility_service_label">Smartspacer Widget-Dienst</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Ermöglicht es dem Smartspacer-Widget, Ziele und Komplikationen auf dem neuesten Stand zu halten, ohne den Akku zu belasten, weil es ständig läuft.\n\nHinweis: Dies ist nicht erforderlich, wenn du den erweiterten Modus aktiviert hast.</string>
     <string name="target_notification_label">Benachrichtigungen</string>
     <string name="target_notification_description">Zeigt Benachrichtigungen einer App an</string>
     <string name="target_notification_description_selected">Zeigt Benachrichtigungen von %1s</string>
@@ -128,9 +128,9 @@
     <string name="complication_google_weather_label">Google Wetter</string>
     <string name="complication_google_weather_description">Zeigt das Wetter aus der Google App an</string>
     <string name="complication_google_weather_description_unsupported">Dieses Ziel erfordert die Google-App</string>
-    <string name="plugin_target_default_label">Plugin Ziel</string>
+    <string name="plugin_target_default_label">Plugin-Ziel</string>
     <string name="plugin_action_default_label">Plugin-Komplikation</string>
-    <string name="plugin_requirement_default_label">Plugin-Anforderung</string>
+    <string name="plugin_requirement_default_label">Plugin-Bedingung</string>
     <string name="permission_sdk_label">Smartspacer Ziele &amp; -Komplikationen lesen</string>
     <string name="permission_sdk_description">Ermöglicht das Lesen und die Interaktion mit Smartspacer-Zielen &amp; -Komplikationen</string>
     <string name="notification_channel_background_service_title">Hintergrunddienst</string>
@@ -269,7 +269,7 @@
     <string name="configuration_notification_enable_content">Erlaube Smartspacer Zugriff auf Gerät &amp; App-Benachrichtigungen in den Systemeinstellungen</string>
     <string name="configuration_notification_enable_button">Benachrichtigungszugriff zulassen</string>
     <string name="configuration_accessibility_enable_title">Bedienungshilfen aktivieren</string>
-    <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
+    <string name="configuration_accessibility_enable_content">Aktiviere die Bedienungshilfen von Smartspacer in den Systemeinstellungen.\n\n<b>Hinweis:</b> Trotz der Systemwarnung liest Smartspacer keine Daten von deinem Gerät und interagiert auch nicht mit ihm, der Dienst wird nur verwendet, um zu wissen, welche App gerade läuft.</string>
     <string name="configuration_accessibility_enable_button">Bedienungshilfen aktivieren</string>
     <string name="target_notification_configuration_title">Benachrichtigungseinstellungen</string>
     <string name="target_notification_configuration_content">Wähle, für welche App und Kanäle Benachrichtigungen angezeigt werden sollen</string>
@@ -319,10 +319,10 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Lege fest, wie reaktionsfreudig diese Standortanforderung sein soll - längere Dauer spart Akku, kann jedoch langsamer auf Standortänderungen reagieren</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d Sekunden</string>
     <string name="requirement_geofence_configuration_background_location_title">Hintergrund-Standort aktivieren</string>
-    <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
+    <string name="requirement_geofence_configuration_background_location_content">Standort-Bedingungen benötigen für Geofencing Zugriff auf den Hintergrund-Standort. Bitte erlaube dies in den Einstellungen, um fortzufahren, durch Auswahl von Berechtigungen &gt; Standort &gt; Immer zulassen und komme dann zu dieser App zurück.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Berechtigung erteilen</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limit erreicht</string>
-    <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
+    <string name="requirement_geofence_configuration_limit_reached_content">Das Maximum an Geofence-Standorten wurde erreicht. Bitte entferne eine Standort-Bedingung, bevor du eine neue hinzufügst.</string>
     <string name="requirement_wifi_title">WLAN-Netzwerk</string>
     <string name="requirement_wifi_content">Nur zeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
     <string name="requirement_wifi_content_base">Nur zeigen, wenn %1s mit %1s</string>
@@ -333,7 +333,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_wifi_configuration_in_range_content">Wenn aktiviert, wird diese Bedingung erfüllt, wenn das angegebene Netzwerk in Reichweite ist, aber nicht verbunden ist.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Wichtig:</b> Smartspacer sucht <b>nicht</b> selbst nach Netzwerken, du musst entweder die Systemeinstellung \"Über öffentliche Netzwerke informieren\" für die Hintergrundsuche aktivieren, oder manuell nach Netzwerken suchen, damit die Einstellung Nicht verbundenes Netzwerk funktioniert</string>
     <string name="requirement_wifi_configuration_background_location_title">Hintergrund-Standort aktivieren</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android verlangt, dass Apps, die WLAN-Scans überwachen, über die Hintergrund-Standort-Berechtigung verfügen. Bitte erlaube dies in den Einstellungen, um fortzufahren, durch Auswahl von Berechtigungen &gt; Standort &gt; Immer zulassen und komme dann zu dieser App zurück.</string>
+    <string name="requirement_wifi_configuration_background_location_content">Android verlangt, dass Apps, die WLAN-Scans überwachen, Zugriff auf den Hintergrund-Standort haben. Bitte erlaube dies in den Einstellungen, um fortzufahren, durch Auswahl von Berechtigungen &gt; Standort &gt; Immer zulassen und komme dann zu dieser App zurück.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Berechtigung erteilen</string>
     <string name="requirement_wifi_configuration_pick_title">Netzwerk auswählen</string>
     <string name="requirement_wifi_configuration_pick_content">Einstellungen aus einem existierenden Netzwerk ausfüllen</string>
@@ -478,7 +478,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_complications_info_title">Komplikationen</string>
     <string name="setup_complications_info_p1"><b>Komplikationen</b> sind zusätzliche Informationen, die neben Zielen angezeigt werden können. Dies sind in der Regel kurze Texte und Icons, zum Beispiel ungelesene E-Mails oder aktuelle Wetterbedingungen.</string>
     <string name="setup_complications_info_p2">Komplikationen werden neben Zielen angezeigt, wenn Platz verfügbar ist oder wenn keine verbleibenden Ziele verfügbar sind, neben dem Datum in zusätzlichen Seiten angezeigt.</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
+    <string name="setup_complications_info_p3">Ähnlich wie Ziele können Komplikationen dynamisch oder statisch sein und ausgeblendet werden, wenn derzeit keine Informationen anzuzeigen sind. Du kannst weiter anpassen, wann sie erscheinen, indem du <b>Bedingungen</b> und die Einstellungen vieler Komplikationen verwendest (erreichbar durch Tippen auf eine Komplikation in der Smartspacer-Benutzeroberfläche).</string>
     <string name="setup_complications_example_gmail">8</string>
     <string name="setup_complications_caption_gmail">Beispiel für eine Komplikation, die ungelesene E-Mails anzeigt</string>
     <string name="setup_complications_example_weather">20°</string>
@@ -536,7 +536,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="enhanced_mode_enable_content_oem_smartspace">• Die Integration in den OEM Smartspace (falls verfügbar)</string>
     <string name="enhanced_mode_enable_content_system">• Systemeigene Smartspace-Ziele und -Komplikationen in Smartspacer anzuzeigen</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Die Verwendung von System-App-Vorhersagen als Bedingung</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Aktuelle Apps als Bedingung zu verwenden</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Kürzlich geöffnete Apps als Bedingung zu verwenden</string>
     <string name="enhanced_mode_skip_button">Überspringen</string>
     <string name="enhanced_mode_skip_info">Du kannst mit deaktiviertem Erweiterten Modus weiterhin Smartspacers Widget, Ziele, Komplikationen und Plugins verwenden</string>
     <string name="enhanced_mode_disable_toast">Möglicherweise musst du dein Gerät neu starten, damit die Änderungen wirksam werden</string>
@@ -570,7 +570,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku erforderlich</string>
     <string name="notification_shizuku_content_app_prediction">Die App-Vorhersage erfordert den Start von Shizuku, tippe zum Öffnen</string>
-    <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_content_recent_task">Die \"Kürzlich geöffnete Apps\"-Bedingung erfordert den Start von Shizuku, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_at_a_glance_complication">Die \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
     <!-- Sui service notifications -->
@@ -780,7 +780,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="permissions_allow">Zulassen</string>
     <string name="permissions_deny">Verweigern</string>
     <string name="permissions_ask_every_time">Jedes Mal fragen</string>
-    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
+    <string name="permissions_header">Zugriffsberechtigungen werden nur beim Hinzufügen eines Ziels oder einer Komplikation angewendet. Um die Fähigkeit eines Plugins, auf Benachrichtigungen oder Widgets zuzugreifen, vollständig zu entziehen, musst du auch seine Ziele und Komplikationen entfernen.</string>
     <string name="permissions_title">Berechtigungen</string>
     <string name="permissions_content">Verwalte Berechtigungen von Plugins &amp; Apps, die Smartspacer integrieren</string>
     <string name="permissions_widgets">Zugriff auf Widgets mit Smartspacer</string>
@@ -990,7 +990,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="complication_blank_title">Leere Komplikation</string>
     <string name="complication_blank_content">Nützlich für minimale Setups oder Spacers</string>
     <!-- Recent Apps Requirement -->
-    <string name="requirement_recent_apps_label">Letzte App</string>
+    <string name="requirement_recent_apps_label">Kürzlich geöffnete Apps</string>
     <string name="requirement_recent_apps_description">Nur zeigen, wenn sich eine bestimmte App in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
     <string name="requirement_recent_apps_description_filled">Nur zeigen, wenn sich %1s in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
     <string name="requirement_recent_apps_description_filled_with_limit">Nur zeigen, wenn %1s in den ersten %1d kürzlich geöffneten Apps ist</string>
