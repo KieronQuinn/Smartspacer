@@ -31,13 +31,13 @@
     <string name="tint_colour_automatic">Automático (Del fondo de pantalla)</string>
     <string name="tint_colour_automatic_alt">Automático (del fondo de pantalla)</string>
     <string name="tint_colour_automatic_content">El texto e iconos en el widget automáticamente se ajustarán para que sean visibles en el fondo de pantalla</string>
-    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
+    <string name="tint_colour_automatic_content_alt">El texto y los iconos de la notificación cambiarán de color automáticamente para que sean visibles según el tema</string>
     <string name="tint_colour_white">Blanco</string>
     <string name="tint_colour_white_content">El texto e iconos en el widget siempre serán blancos</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
+    <string name="tint_colour_white_content_alt">El texto y los íconos de la notificación siempre serán blancos</string>
     <string name="tint_colour_black">Negro</string>
     <string name="tint_colour_black_content">El texto e iconos en el widget siempre serán negros</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
+    <string name="tint_colour_black_content_alt">El texto y los íconos de la notificación siempre serán negros</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Muestra los objetivos y complicaciones de Smartspacer</string>
     <string name="widget_loading_smartspacer">Cargando…</string>
@@ -808,7 +808,7 @@
     <string name="restore_error_failed_to_load">Error al cargar la copia de seguridad desde el archivo</string>
     <string name="restore_restore_targets_title">Objetivos</string>
     <string name="restore_restore_targets_content">Restaurar tus objetivos y su configuración</string>
-    <string name="restore_restore_targets_content_empty">No Targets found to restore</string>
+    <string name="restore_restore_targets_content_empty">No se encontraron objetivos para restaurar</string>
     <string name="restore_restore_complications_title">Complicaciones</string>
     <string name="restore_restore_complications_content">Restaurar tus complicaciones y su configuración</string>
     <string name="restore_restore_complications_content_empty">No se encontraron complicaciones para restaurar</string>
@@ -816,7 +816,7 @@
     <string name="restore_restore_requirements_content">Restaurar reglas para objetivos y complicaciones agregados</string>
     <string name="restore_restore_requirements_content_empty">No se han encontrado reglas para restaurar</string>
     <string name="restore_restore_requirements_description_inverted">(Invertida)</string>
-    <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
+    <string name="restore_restore_widgets_title">Widgets de Smartspace Extendido</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
     <string name="restore_restore_widgets_content_empty">No se encontraron widgets para restaurar</string>
     <string name="restore_restore_settings_title">Configuración</string>
