@@ -39,7 +39,7 @@
     <string name="tint_colour_black_content">Text und Icons im Widget werden immer schwarz sein</string>
     <string name="tint_colour_black_content_alt">Text und Icons in der Benachrichtigung werden immer schwarz sein</string>
     <string name="widget_title_smartspacer">@string/app_name</string>
-    <string name="widget_description_smartspacer">Zeige Smartspacer Ziele &amp; Komplikationen</string>
+    <string name="widget_description_smartspacer">Smartspacer Ziele &amp; Komplikationen anzeigen</string>
     <string name="widget_loading_smartspacer">Lädt…</string>
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
@@ -102,12 +102,12 @@
     <string name="target_greeting_configuration_hide_if_no_complications_title">Dynamisch ausblenden</string>
     <string name="target_greeting_configuration_hide_if_no_complications_content">Blendet das Ziel aus, wenn keine Komplikationen verfügbar sind, die darunter angezeigt werden können</string>
     <string name="target_greeting_configuration_hide_title_on_aod_title">Titel auf AoD ausblenden</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_content">Versteckt den Titel des Ziels auf dem Always on Display (nur für nativen Smartspace)</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_content">Blendet den Titel des Ziels auf dem Always on Display aus (nur für nativen Smartspace)</string>
     <string name="target_greeting_configuration_name_title">Grußname</string>
     <string name="target_greeting_configuration_name_content">Dein Name zur Anzeige in der Begrüßung: %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Dein Name zur Anzeige in der Begrüßung</string>
     <string name="target_greeting_configuration_title">Einstellungen</string>
-    <string name="target_greeting_configuration_description">Gib deinen Namen an, verstecke das Ziel dynamisch und verstecke den Titel auf dem AoD</string>
+    <string name="target_greeting_configuration_description">Gib deinen Namen an, blende das Ziel dynamisch aus und blende den Titel auf dem AoD aus</string>
     <string name="target_greeting_configuration_open_expanded_title">Erweiterten Smartspace öffnen</string>
     <string name="target_greeting_configuration_open_expanded_content">Erweiterten Smartspace bei Klick öffnen, anstatt nichts zu tun</string>
     <string name="target_at_a_glance_label">Auf einen Blick (Widget)</string>
@@ -149,8 +149,8 @@
     <string name="notification_channel_accessibility_content">Benachrichtigungen zu Bedienungshilfen von Smartspacer</string>
     <string name="notification_channel_native_title">Nativer Smartspace</string>
     <string name="notification_channel_native_content">Benachrichtigungen im Zusammenhang mit dem Shizuku Service von Smartspacer</string>
-    <string name="notification_channel_oem_title">OEM Smartspace</string>
-    <string name="notification_channel_oem_content">Benachrichtigungen im Zusammenhang mit dem OEM Smartspace Service von Smartspacer</string>
+    <string name="notification_channel_oem_title">Hersteller-Smartspace</string>
+    <string name="notification_channel_oem_content">Benachrichtigungen im Zusammenhang mit dem Hersteller-Smartspace Service von Smartspacer</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku Erinnerungen</string>
     <string name="notification_channel_shizuku_reminder_content">Benachrichtigung, die als Erinnerung angezeigt werden, Shizuku nach dem Neustart zu starten</string>
     <string name="notification_channel_updates_title">Smartspacer Updates</string>
@@ -187,15 +187,15 @@
     <string name="requirements_add_failed_to_launch_setup">Fehler beim Starten der Einrichtung für diese Bedingung</string>
     <string name="target_edit_title">Ziel bearbeiten</string>
     <string name="target_edit_target_header">Ziel</string>
-    <string name="target_edit_show_on_home_title">Zeige auf Startbildschirm</string>
+    <string name="target_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
     <string name="target_edit_show_on_home_content">Dieses Ziel auf deinem Startbildschirm anzeigen</string>
-    <string name="target_edit_show_on_home_content_widget">Zeige dieses Ziel auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
-    <string name="target_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
-    <string name="target_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
-    <string name="target_edit_show_on_lock_screen_content">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
-    <string name="target_edit_show_on_lock_screen_content_widget">Zeige dieses Ziel auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
-    <string name="target_edit_show_on_lock_screen_content_oem">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) an, wenn Musik nicht abgespielt wird</string>
-    <string name="target_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
+    <string name="target_edit_show_on_home_content_widget">Dieses Ziel auf Widgets anzeigen, die deinem Startbildschirm hinzugefügt wurden</string>
+    <string name="target_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
+    <string name="target_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
+    <string name="target_edit_show_on_lock_screen_content">Dieses Ziel auf deinem Sperrbildschirm und Always in Display anzeigen, wenn Musik nicht abgespielt wird</string>
+    <string name="target_edit_show_on_lock_screen_content_widget">Dieses Ziel auf Widgets anzeigen, die deinem Sperrbildschirm hinzugefügt wurden</string>
+    <string name="target_edit_show_on_lock_screen_content_oem">Dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) anzeigen, wenn Musik nicht abgespielt wird</string>
+    <string name="target_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content">Dieses Ziel auf erweitertem Smartspace anzeigen</string>
     <string name="target_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
     <string name="target_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
@@ -205,13 +205,13 @@
     <string name="target_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="target_edit_expanded_show_when_locked_content">Dieses Ziel im erweiterten Smartspace anzeigen, wenn gesperrt</string>
-    <string name="target_edit_expanded_show_widget_title">Zeige Widget</string>
-    <string name="target_edit_expanded_show_widget_content">Zeige das diesem Ziel zugeordnete Widget an, falls verfügbar</string>
-    <string name="target_edit_expanded_show_remoteviews_title">Zeige zusätzliche Inhalte</string>
-    <string name="target_edit_expanded_show_remoteviews_content">Zeige zusätzliche Inhalte dieses Ziels, falls verfügbar</string>
-    <string name="target_edit_expanded_show_shortcuts_title">Zeige Verknüpfungen</string>
-    <string name="target_edit_expanded_show_shortcuts_content">Zeige die diesem Ziel zugeordneten Verknüpfungen an, falls verfügbar</string>
-    <string name="target_edit_expanded_show_app_shortcuts_title">Zeige App-Verknüpfungen</string>
+    <string name="target_edit_expanded_show_widget_title">Widget anzeigen</string>
+    <string name="target_edit_expanded_show_widget_content">Das mit diesem Ziel verknüpfte Widget anzeigen, falls vorhanden</string>
+    <string name="target_edit_expanded_show_remoteviews_title">Zusätzliche Inhalte anzeigen</string>
+    <string name="target_edit_expanded_show_remoteviews_content">Zusätzliche Inhalte dieses Ziels anzeigen, falls verfügbar</string>
+    <string name="target_edit_expanded_show_shortcuts_title">Verknüpfungen anzeigen</string>
+    <string name="target_edit_expanded_show_shortcuts_content">Mit diesem Ziel verknüpfte Verknüpfungen anzeigen, falls vorhanden</string>
+    <string name="target_edit_expanded_show_app_shortcuts_title">App-Verknüpfungen anzeigen</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Zeige die diesem Ziel zugeordneten App-Verknüpfungen an, falls verfügbar</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Erfordert erweiterten Modus</string>
     <string name="target_edit_settings_header">Einstellungen</string>
@@ -275,10 +275,10 @@
     <string name="target_notification_configuration_content">Wähle, für welche App und Kanäle Benachrichtigungen angezeigt werden sollen</string>
     <string name="configuration_notification_association_title">Berechtigungen erteilen</string>
     <string name="configuration_notification_association_content">Um Smartspacer den Zugriff auf eine Liste der Benachrichtigungskanäle anderer Apps zu ermöglichen, damit du auswählen kannst, welche angezeigt werden sollen, musst du ein gekoppeltes Gerät oder Netzwerk für diese App einstellen. Dies ist eine (ziemlich eigenartige) Anforderung des Android-Systems und die einzige Möglichkeit, eine Liste der Kanäle ohne Root-Zugriff zu erhalten. Dies muss nur einmal erledigt werden.</string>
-    <string name="configuration_notification_association_subcontent">Tippe unten auf die Schaltfläche \"Koppeln mit\" und wähle ein beliebiges Gerät oder eine beliebige Verbindung aus der angezeigten Liste aus.\n\n<b>Es spielt keine Rolle, ob es sich um dein eigenes Gerät bzw. Verbindung handelt oder ob du dich während der Verwendung von Smartspacer in dessen Reichweite befindest. Smartspacer koppelt oder verbindet sich nicht mit dem Gerät, das du ausgewählt hast.</b>
+    <string name="configuration_notification_association_subcontent">Tippe unten auf den Button \"Koppeln mit\" und wähle ein beliebiges Gerät oder eine beliebige Verbindung aus der angezeigten Liste aus.\n\n<b>Es spielt keine Rolle, ob es sich um dein eigenes Gerät bzw. Verbindung handelt oder ob du dich während der Verwendung von Smartspacer in dessen Reichweite befindest. Smartspacer koppelt oder verbindet sich nicht mit dem Gerät, das du ausgewählt hast.</b>
 Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im Dialogfeld angezeigt werden.</string>
     <string name="configuration_notification_association_button">Koppeln mit</string>
-    <string name="configuration_notification_association_read_more">Lies mehr über diese Bedingung</string>
+    <string name="configuration_notification_association_read_more">Lies mehr über diese Anforderung</string>
     <string name="configuration_notification_association_toast">Ein Fehler ist aufgetreten, bitte erneut versuchen</string>
     <string name="configuration_notification_picker_empty">Keine Benachrichtigungen vorhanden</string>
     <string name="configuration_notification_picker_error">Beim Abrufen der Benachrichtigungskanäle ist ein Fehler aufgetreten</string>
@@ -311,17 +311,17 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_geofence_configuration_setting_radius_content">Lege den Umkreis fest, in dem das Element angezeigt wird</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d Meter</string>
     <string name="requirement_geofence_configuration_loitering_delay_title">Standortradius-Aufenthaltzeit</string>
-    <string name="requirement_geofence_configuration_loitering_delay_content">Lege fest, wie lange du innerhalb des Standortumkreises sein musst, bevor diese Anforderung erfüllt wird</string>
+    <string name="requirement_geofence_configuration_loitering_delay_content">Lege fest, wie lange du dich innerhalb des Standortumkreises aufhalten musst, bevor diese Bedingung erfüllt ist</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_none">Keine Verzögerung</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d Minute</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d Minuten</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Empfindlichkeit</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_content">Lege fest, wie reaktionsfreudig diese Standortanforderung sein soll - längere Dauer spart Akku, kann jedoch langsamer auf Standortänderungen reagieren</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_content">Lege fest, wie empfindlich diese Standort-Bedingung sein soll - eine längere Dauer spart Akku, kann jedoch zu einer langsameren Reaktion auf Standortänderungen führen</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d Sekunden</string>
     <string name="requirement_geofence_configuration_background_location_title">Hintergrund-Standort aktivieren</string>
     <string name="requirement_geofence_configuration_background_location_content">Standort-Bedingungen benötigen für Geofencing Zugriff auf den Hintergrund-Standort. Bitte erlaube dies in den Einstellungen, um fortzufahren, durch Auswahl von Berechtigungen &gt; Standort &gt; Immer zulassen und komme dann zu dieser App zurück.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Berechtigung erteilen</string>
-    <string name="requirement_geofence_configuration_limit_reached_title">Limit erreicht</string>
+    <string name="requirement_geofence_configuration_limit_reached_title">Maximum erreicht</string>
     <string name="requirement_geofence_configuration_limit_reached_content">Das Maximum an Geofence-Standorten wurde erreicht. Bitte entferne eine Standort-Bedingung, bevor du eine neue hinzufügst.</string>
     <string name="requirement_wifi_title">WLAN-Netzwerk</string>
     <string name="requirement_wifi_content">Nur zeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
@@ -370,14 +370,14 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="permission_dialog_widget_title_suffix">um mit Smartspacer auf Widgets zuzugreifen?</string>
     <string name="permission_dialog_widget_title_warning">Du wirst möglicherweise nach diesem Schritt um eine Systemberechtigung gebeten</string>
     <string name="permission_dialog_widget_title_unknown">Unbekannt</string>
-    <string name="permission_dialog_widget_allow_once">Einmal erlauben</string>
-    <string name="permission_dialog_widget_allow_always">Immer erlauben</string>
+    <string name="permission_dialog_widget_allow_once">Einmal zulassen</string>
+    <string name="permission_dialog_widget_allow_always">Immer zulassen</string>
     <string name="permission_dialog_widget_deny">Verweigern</string>
     <string name="permission_dialog_notification_title_prefix">Zulassen</string>
     <string name="permission_dialog_notification_title_suffix">um mit Smartspacer auf Benachrichtigungen zuzugreifen?</string>
     <string name="permission_dialog_notification_title_warning">Du wirst möglicherweise nach diesem Schritt um eine Systemberechtigung gebeten</string>
     <string name="permission_dialog_notification_title_unknown">Unbekannt</string>
-    <string name="permission_dialog_notification_allow_once">Einmal erlauben</string>
+    <string name="permission_dialog_notification_allow_once">Einmal zulassen</string>
     <string name="permission_dialog_notification_allow_always">Immer zulassen</string>
     <string name="permission_dialog_notification_deny">Verweigern</string>
     <string name="settings_integrations">Integrationen</string>
@@ -390,14 +390,14 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Diese Einstellung erfordert den erweiterten Modus</string>
     <string name="settings_targets_complications">Ziele &amp; Komplikationen</string>
     <string name="settings_plugins">Plugins</string>
-    <string name="settings_options">Optionen</string>
+    <string name="settings_options">Einstellungen</string>
     <string name="settings_enable_update_check_title">Automatisch auf Updates prüfen</string>
     <string name="settings_enable_update_check_content">Automatisch auf Smartspacer-Updates prüfen und eine Benachrichtigung anzeigen, wenn eines verfügbar ist</string>
     <string name="settings_enable_analytics_title">Analysen &amp; Absturzberichte aktivieren</string>
     <string name="settings_enable_analytics_content">Erlaube das Senden anonymer Absturzberichte und grundlegender Analysen an Firebase, um Fehler zu beheben</string>
     <string name="settings_hide_sensitive_contents_title">Sensible Ziele ausblenden</string>
     <string name="settings_hide_sensitive_contents_title_short">Sensibles ausblenden</string>
-    <string name="settings_hide_sensitive_contents_content">Verstecke Ziele auf dem Sperrbildschirm, wenn sie als sensibel markiert sind: %1s</string>
+    <string name="settings_hide_sensitive_contents_content">Blende Ziele auf dem Sperrbildschirm aus, wenn sie als sensibel markiert sind: %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">Nicht ausblenden</string>
     <string name="settings_hide_sensitive_contents_disabled_content">Ziele und deren Inhalt immer anzeigen</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Inhalt ausblenden</string>
@@ -448,7 +448,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analysen</string>
     <string name="setup_analytics_title">Analysen &amp; Absturzberichte</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer verwendet viele experimentelle und "versteckte" Android-APIs, die aufgrund von Modifikationen durch Hersteller auf einigen Geräten absturzanfällig sein können.<br>Um bei der Fehlerbehebung zu helfen, kann Smartspacer Absturzberichte an Firebase Crashlytics senden, sowie grundlegende Analyseinformationen (App-Starts).<br>Diese Daten sind alle anonym und völlig optional. Weitere Details und die Datenschutzrichtlinie findest du <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">hier</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer verwendet viele experimentelle und "versteckte" Android-APIs, die aufgrund von Modifikationen durch Hersteller auf einigen Geräten absturzanfällig sein können.<br>Um bei der Fehlerbehebung zu helfen, kann Smartspacer Absturzberichte an Firebase Crashlytics senden sowie grundlegende Analyseinformationen (App-Starts).<br>Diese Daten sind alle anonym und völlig optional. Weitere Details und die Datenschutzrichtlinie findest du <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">hier</a>]]></string>
     <string name="setup_analytics_allow">Zulassen</string>
     <string name="setup_analytics_deny">Verweigern</string>
     <!-- Setup > Notifications -->
@@ -459,7 +459,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_targets_info_title">Ziele</string>
     <string name="setup_targets_info_p1"><b>Ziele</b> sind Seiten mit Informationen, die auf Smartspace angezeigt werden. Normalerweise bestehen sie aus mindestens einem Titel, Untertitel und Icon. Viele Ziele haben auch zusätzliche Informationen - wenn sie unterstützt werden - wie Bilder oder Listen.</string>
     <string name="setup_targets_info_p2">Ziele können entweder dynamisch sein und je nach Bedarf ein- und ausgeblendet werden, oder statisch und dauerhaft angezeigt werden. Du kannst weiter anpassen, wann sie erscheinen, indem du <b>Bedingungen</b> und die Einstellungen vieler Ziele verwendest (erreichbar durch Tippen auf ein Ziel in der Smartspacer-Benutzeroberfläche).</string>
-    <string name="setup_targets_info_p3">Die \"Auf einen Blick\"-Integration von Smartspacer wird durch das \"Auf einen Blick\"-Ziel bereitgestellt, das reguläre Informationen von Google wie Kalendertermine und Flüge anzeigen kann. Beachte jedoch, dass dies <b>nicht</b> immer das heutige Datum anzeigt, wenn keine Informationen verfügbar sind. Wenn du das Datum immer sichtbar haben möchtest, füge das \"Datum\"-Ziel separat hinzu.</string>
+    <string name="setup_targets_info_p3">Die Auf einen Blick-Integration von Smartspacer wird durch das \"Auf einen Blick\"-Ziel bereitgestellt, das reguläre Informationen von Google wie Kalendertermine und Flüge anzeigen kann. Beachte jedoch, dass dies <b>nicht</b> immer das heutige Datum anzeigt, wenn keine Informationen verfügbar sind. Wenn du das Datum immer sichtbar haben möchtest, füge das \"Datum\"-Ziel separat hinzu.</string>
     <string name="setup_targets_info_example_one_title">Schwerer Verkehr in der Nähe</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Einkaufsliste</string>
@@ -502,7 +502,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_expanded_title">Erweitert</string>
     <string name="setup_expanded_switch">Erweiterten Smartspace aktivieren</string>
     <string name="setup_expanded_info_p1"><b>Erweitertes Smartspace</b> ist eine Vollbildversion von Smartspace mit allen verfügbaren Zielen und Komplikationen, sowie zusätzliche dynamische Informationen wie Widgets und Verknüpfungen, die in den Zielen angegeben werden. Du kannst diesem Bildschirm auch eigene Widgets hinzufügen.</string>
-    <string name="setup_expanded_info_p2">Entwickelt, um einen schnellen Überblick über alle aktuellen Informationen zu bieten, kannst du einstellen, dass der erweiterte Smartspace geöffnet wird, wenn auf ein Ziel geklickt wird und zusätzliche dynamische Informationen verfügbar sind. Dies ist nützlich, wenn du einfachen Zugriff auf kontextbezogene Informationen auf Knopfdruck möchtest.</string>
+    <string name="setup_expanded_info_p2">Entwickelt, um einen schnellen Überblick über alle aktuellen Informationen zu bieten, kannst du den erweiterten Smartspace so einstellen, dass er sich öffnet, wenn ein Ziel angeklickt wird und zusätzliche dynamische Informationen verfügbar sind. Dies ist nützlich, wenn du auf Knopfdruck einfachen Zugriff auf kontextbezogene Informationen haben möchtest.</string>
     <string name="setup_expanded_open_title">Dynamisch erweiterten Smartspace öffnen</string>
     <string name="setup_expanded_open_content">Wenn aktiviert, öffnet sich der erweiterte Smartspace wenn ein Ziel angetippt wird, das zusätzliche Informationen hat, wie z. B. ein Widget oder Verknüpfungen</string>
     <string name="setup_expanded_info_footer">Du kannst auf zusätzliche Optionen zugreifen, z. B. dass der erweiterte Smartspace immer geöffnet wird, wenn ein Ziel angetippt wird (auch wenn es keine zusätzlichen Informationen enthält), und zwar unter Einstellungen &gt; Erweiterter Smartspace nach der Einrichtung.</string>
@@ -515,7 +515,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_complete_title">Konfiguration abgeschlossen</string>
     <string name="setup_complete_content">Ziele, Komplikationen und Widgets benötigen möglicherweise zusätzliche Berechtigungen, diese werden bei Bedarf angefordert.</string>
     <!-- Enhanced Mode > Request -->
-    <string name="enhanced_mode_request_loading_title">Bitte um Genehmigung…</string>
+    <string name="enhanced_mode_request_loading_title">Bitte um Berechtigung…</string>
     <string name="enhanced_mode_request_loading_subtitle">Shizuku/Sui Berechtigung gewähren, wenn gefragt</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku ist eine Nicht-Root-App, die es Apps wie Smartspacer ermöglicht, Code mit speziellen Berechtigungen auszuführen. Dies geschieht durch die Ausführung eines Befehls auf der ADB (Android Debug Bridge) Shell, einmal pro Neustart. Auf Geräten mit Android 11+ kann dies ohne einen Computer erfolgen, aber auf älteren Versionen musst du dich einmal pro Neustart mit einem Computer verbinden, um Shizuku neu zu starten.</string>
@@ -533,7 +533,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="enhanced_mode_enable_content_header"><b>Erweiterter Modus erlaubt Smartspacer:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Die Integration in den Smartspace auf dem Sperrbildschirm</string>
     <string name="enhanced_mode_enable_content_native_launcher">• Die Integration in den Smartspace bei kompatiblen Launchern</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Die Integration in den OEM Smartspace (falls verfügbar)</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Die Integration in den Hersteller-Smartspace (falls verfügbar)</string>
     <string name="enhanced_mode_enable_content_system">• Systemeigene Smartspace-Ziele und -Komplikationen in Smartspacer anzuzeigen</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Die Verwendung von System-App-Vorhersagen als Bedingung</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Kürzlich geöffnete Apps als Bedingung zu verwenden</string>
@@ -569,13 +569,13 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="notification_native_mode_restart_just_reconnect">Jetzt neu verbinden</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku erforderlich</string>
-    <string name="notification_shizuku_content_app_prediction">Die App-Vorhersage erfordert den Start von Shizuku, tippe zum Öffnen</string>
-    <string name="notification_shizuku_content_recent_task">Die \"Kürzlich geöffnete Apps\"-Bedingung erfordert den Start von Shizuku, tippe zum Öffnen</string>
+    <string name="notification_shizuku_content_app_prediction">Die App-Vorhersage-Bedingung erfordert den Start von Shizuku, tippe zum Öffnen</string>
+    <string name="notification_shizuku_content_recent_task">Die Kürzlich-geöffnete-Apps-Bedingung erfordert den Start von Shizuku, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_at_a_glance_target">Das \"Auf einen Blick\"-Ziel erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
     <string name="notification_shizuku_content_at_a_glance_complication">Die \"Auf einen Blick\"-Komplikation erfordert, dass Shizuku gestartet wird, tippe zum Öffnen</string>
     <!-- Sui service notifications -->
     <string name="notification_sui_title">Sui oder Shizuku als Root erforderlich</string>
-    <string name="notification_sui_content_oem_smartspace">OEM Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
+    <string name="notification_sui_content_oem_smartspace">Hersteller-Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Deaktiviere Akku-Optimierung</string>
     <string name="notification_battery_optimisation_content">Für Smartspacer muss die Batterieoptimierung deaktiviert sein, um Ziele &amp; Komplikationen im Hintergrund zu aktualisieren, tippe zum Deaktivieren</string>
@@ -611,7 +611,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_permission_request_title">Smartspacer-Berechtigung erforderlich</string>
     <string name="target_permission_request_content">Zum Gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
-    <string name="permission_dialog_smartspace_title_prefix">Erlauben</string>
+    <string name="permission_dialog_smartspace_title_prefix">Zulassen</string>
     <string name="permission_dialog_smartspace_title_suffix">um auf Smartspacer Ziele und Komplikationen zuzugreifen?</string>
     <string name="permission_dialog_smartspace_title_unknown">Unbekannt</string>
     <string name="permission_dialog_smartspace_allow">Zulassen</string>
@@ -670,24 +670,24 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_tint_colour">Farbton</string>
     <string name="expanded_settings_tint_colour_content">Die Farbe für Text und Icons auf dem erweiterten Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
-    <string name="oem_smartspace_title">OEM Smartspace</string>
+    <string name="oem_smartspace_title">Hersteller-Smartspace</string>
     <string name="oem_smartspace_content">Einstellungen um Smartspacer in alten Launchers und auf dem Sperrbildschirm auf einigen Geräten anzuzeigen</string>
     <string name="oem_smartspace_content_enhanced">Diese Einstellung erfordert den erweiterten Modus</string>
-    <string name="oem_smartspace_incompatible">Sorry, diese Option erfordert Root auf deinem Gerät aufgrund von Systembeschränkungen. Wenn dein Gerät gerootet ist, installiere das Sui Magisk-Modul oder starte Shizuku als Root.</string>
-    <string name="oem_smartspace_info">OEM Smartspace zeigt Smartspacer Ziele &amp; Komplikationen in kompatiblen Launchern und Sperrbildschirmen.\n\n<b>Bitte beachte, dass dies wesentlich eingeschränkter ist, als die anderen Modi von Smartspacer:</b>\n- Es können nur der Titel und der Untertitel eines Ziels angezeigt werden, keine Bilder oder zusätzlichen Optionen.\n- Es kann nur ein Ziel &amp; Komplikation auf einmal angezeigt werden\n- Einige OEMs zeigen keine Komplikationen an, wenn kein Ziel verfügbar ist.\n- Das Layout von Zielen &amp; Komplikationen kann auf einen Gerät aufgrund von OEM-Modifikationen abweichen.\n- Bei Zielen mit mehreren Komplikationen sind möglicherweise nicht alle Optionen anklickbar.\n- Einige OEMs deaktivieren Smartspace, wenn kein Befehl ausgeführt oder keine Einstellung geändert wird. Weitere Informationen finden sich auf der unten verlinkten Wiki-Seite.</string>
+    <string name="oem_smartspace_incompatible">Diese Option erfordert leider aufgrund von Systembeschränkungen Root auf deinem Gerät. Wenn dein Gerät gerootet ist, installiere das Sui Magisk-Modul oder starte Shizuku als Root.</string>
+    <string name="oem_smartspace_info">Hersteller-Smartspace zeigt Smartspacer Ziele &amp; Komplikationen in kompatiblen Launchern und Sperrbildschirmen.\n\n<b>Bitte beachte, dass dies wesentlich eingeschränkter ist, als die anderen Modi von Smartspacer:</b>\n- Es können nur der Titel und der Untertitel eines Ziels angezeigt werden, keine Bilder oder zusätzlichen Optionen.\n- Es kann nur ein Ziel &amp; Komplikation auf einmal angezeigt werden\n- Einige Hersteller zeigen keine Komplikationen an, wenn kein Ziel verfügbar ist.\n- Das Layout von Zielen &amp; Komplikationen kann auf einen Gerät aufgrund von Hersteller-Modifikationen abweichen.\n- Bei Zielen mit mehreren Komplikationen sind möglicherweise nicht alle Optionen anklickbar.\n- Einige Hersteller deaktivieren Smartspace, wenn kein Befehl ausgeführt oder keine Einstellung geändert wird. Weitere Informationen finden sich auf der unten verlinkten Wiki-Seite.</string>
     <string name="oem_smartspace_more_info">Weitere Informationen</string>
-    <string name="oem_smartspace_no_apps">Es sind keine Apps installiert, die OEM Smartspace verwenden.</string>
-    <string name="oem_smartspace_switch">OEM Smartspace aktivieren</string>
+    <string name="oem_smartspace_no_apps">Es sind keine Apps installiert, die Hersteller-Smartspace verwenden.</string>
+    <string name="oem_smartspace_switch">Hersteller-Smartspace aktivieren</string>
     <string name="oem_smartspace_apps">Kompatible Apps</string>
     <string name="oem_smartspace_warning">Diese App benötigt möglicherweise zusätzliche Einrichtungen, überprüfe die unten verlinkte Wiki-Seite für weitere Informationen</string>
     <string name="oem_smartspace_settings">Einstellungen</string>
     <string name="oem_smartspace_label_systemui">Sperrbildschirm</string>
     <string name="oem_smartspace_hide_incompatible_title">Inkompatible Ziele ausblenden</string>
-    <string name="oem_smartspace_hide_incompatible_content">Ziele ausblenden, die nicht mit OEM Smartspace kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
+    <string name="oem_smartspace_hide_incompatible_content">Ziele ausblenden, die nicht mit Hersteller-Smartspace kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
     <string name="expanded_search_box_search">Suchen…</string>
     <string name="expanded_footer">Widget hinzufügen</string>
     <string name="expanded_custom_widget_delete">Entfernen</string>
-    <string name="expanded_custom_widget_options">Optionen</string>
+    <string name="expanded_custom_widget_options">Einstellungen</string>
     <string name="expanded_custom_widget_rearrange">Neu anordnen</string>
     <string name="expanded_custom_widget_rearrange_title">Ziehen zum Anordnen</string>
     <string name="expanded_widget_reset_title">Zurücksetzen</string>
@@ -711,8 +711,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="battery_optimisation_system_content">Dies ist erforderlich, damit Smartspacer im Hintergrund weiterlaufen kann.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Erlaube Alarme &amp; Erinnerungen</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Erforderlich, damit Smartspacer Ziele &amp; Komplikationen im Hintergrund zuverlässig aktualisieren kann.</string>
-    <string name="battery_optimisation_oem_title">OEM-Akku-Optimierung</string>
-    <string name="battery_optimisation_oem_content">Dein Gerät scheint einige batterieoptimierte Einstellungen des Herstellers zu haben. Diese können nicht automatisch deaktiviert werden. Tippe hier, um die batteriebezogenen Einstellungen des Herstellers zu öffnen.</string>
+    <string name="battery_optimisation_oem_title">Hersteller-Akku-Optimierung</string>
+    <string name="battery_optimisation_oem_content">Dein Gerät scheint über einige herstellerspezifische Akku-Optimierungen zu verfügen. Diese können nicht automatisch deaktiviert werden. Tippe, um die Hersteller-Akkueinstellungen zu öffnen.</string>
     <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Batterieoptimierung deaktiviert werden.</string>
     <string name="battery_optimisation_footer_link">Erfahre mehr</string>
     <string name="plugin_repository_tab_installed">Installiert</string>
@@ -855,7 +855,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- About Footer -->
     <string name="xda_thread">XDA Post</string>
     <string name="github">GitHub</string>
-    <string name="libraries">Bibliotheken von Drittanbietern</string>
+    <string name="libraries">Drittanbieter-Bibliotheken</string>
     <string name="donate">Spenden</string>
     <string name="twitter">Folge mir auf Twitter</string>
     <string name="about_version">Version %1s\nErstellt von Kieron Quinn</string>
@@ -871,11 +871,11 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="wallpaper_colour_picker_title">Hintergrundfarbe</string>
     <string name="color_picker_unavailable">Hintergrundfarbenauswahl nicht verfügbar für das aktuell ausgewählte Hintergrundbild</string>
     <!-- Digital Wellbeing Target -->
-    <string name="target_digital_wellbeing_label">Digitales Wohlbefinden</string>
+    <string name="target_digital_wellbeing_label">Digital Wellbeing</string>
     <string name="target_digital_wellbeing_description">Zeigt die Bildschirmzeit und die Top 3 Apps von Digital Wellbeing</string>
-    <string name="target_digital_wellbeing_unsupported">Dieses Ziel erfordert die App digitales Wohlbefinden</string>
+    <string name="target_digital_wellbeing_unsupported">Dieses Ziel erfordert die Digital Wellbeing App</string>
     <!-- Digital Wellbeing Complication -->
-    <string name="complication_digital_wellbeing_label">Digitales Wohlbefinden</string>
+    <string name="complication_digital_wellbeing_label">Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_description">Zeigt die Bildschirmzeit von Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">Diese Komplikation erfordert die Digital Wellbeing App</string>
     <!-- Clock Complication -->
@@ -950,7 +950,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_blank_title">Leeres Ziel</string>
     <string name="target_blank_content">Absolut minimal, kann verwendet werden, um überhaupt nichts oder nur Komplikationen anzuzeigen</string>
     <string name="target_blank_settings_show_complications_title">Zeige Komplikationen</string>
-    <string name="target_blank_settings_show_complications_content">Erlaube bis zu zwei Komplikationen, die unter dem leeren Ziel-Titel angezeigt werden. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen möchtest.</string>
+    <string name="target_blank_settings_show_complications_content">Erlaube die Anzeige von bis zu zwei Komplikationen unterhalb des leeren Ziel-Titels. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen willst.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Ausblenden, wenn keine Komplikationen</string>
     <string name="target_blank_settings_hide_if_no_complications_content">Blende dieses Ziel vollständig aus, wenn es keine Komplikationen zu zeigen gibt</string>
     <string name="target_blank_settings_title">Einstellungen</string>
@@ -997,7 +997,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_recent_apps_description_unsupported">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="requirement_recent_apps_configuration_app_title">Ausgewählte App</string>
     <string name="requirement_recent_apps_configuration_app_content">Nicht ausgewählt</string>
-    <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
+    <string name="requirement_recent_apps_configuration_limit_title">Maximal-Anzahl</string>
     <string name="requirement_recent_apps_configuration_limit_content">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unbegrenzt</string>
