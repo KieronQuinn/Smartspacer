@@ -100,7 +100,7 @@
     <string name="target_greeting_night">Gute Nacht</string>
     <string name="target_greeting_night_name">Gute Nacht, %1s</string>
     <string name="target_greeting_configuration_hide_if_no_complications_title">Dynamisch ausblenden</string>
-    <string name="target_greeting_configuration_hide_if_no_complications_content">Hides the Target if no Complications are available to show below it</string>
+    <string name="target_greeting_configuration_hide_if_no_complications_content">Blendet das Ziel aus, wenn keine Komplikationen verfügbar sind, die darunter angezeigt werden können</string>
     <string name="target_greeting_configuration_hide_title_on_aod_title">Titel auf AoD ausblenden</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Versteckt den Titel des Ziels auf dem Always on Display (nur für nativen Smartspace)</string>
     <string name="target_greeting_configuration_name_title">Grußname</string>
@@ -134,15 +134,15 @@
     <string name="permission_sdk_label">Smartspacer Ziele &amp; -Komplikationen lesen</string>
     <string name="permission_sdk_description">Ermöglicht das Lesen und die Interaktion mit Smartspacer-Zielen &amp; -Komplikationen</string>
     <string name="notification_channel_background_service_title">Hintergrunddienst</string>
-    <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
+    <string name="notification_channel_background_service_subtitle">Benachrichtigungen, die angezeigt werden, wenn Smartspacer im Hintergrund läuft</string>
     <string name="notification_title_background_service">Smartspacer läuft</string>
     <string name="notification_content_background_service">Smartspacer läuft im Hintergrund, tippe zum Ausblenden</string>
     <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer läuft im Hintergrund</string>
-    <string name="notification_channel_safe_mode_title">Sicherer Modus</string>
-    <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
+    <string name="notification_channel_safe_mode_title">Abgesicherter Modus</string>
+    <string name="notification_channel_safe_mode_subtitle">Benachrichtigungen, die angezeigt werden, wenn Smartspacer in den abgesicherten Modus wechselt</string>
     <string name="notification_safe_mode_title">@string/app_name</string>
-    <string name="notification_safe_mode_content">Smartspacer has entered Safe Mode due to %1s crashing. Tap for more info.</string>
+    <string name="notification_safe_mode_content">Smartspacer ist in den abgesicherten Modus gewechselt, weil %1s abgestürzt ist. Tippe für weitere Informationen.</string>
     <string name="notification_channel_error_title">Fehler</string>
     <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
     <string name="notification_channel_accessibility_title">Bedienungshilfen</string>
@@ -189,11 +189,11 @@
     <string name="target_edit_target_header">Ziel</string>
     <string name="target_edit_show_on_home_title">Zeige auf Startbildschirm</string>
     <string name="target_edit_show_on_home_content">Dieses Ziel auf deinem Startbildschirm anzeigen</string>
-    <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
+    <string name="target_edit_show_on_home_content_widget">Zeige dieses Ziel auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
     <string name="target_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
     <string name="target_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
     <string name="target_edit_show_on_lock_screen_content">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
-    <string name="target_edit_show_on_lock_screen_content_widget">Zeigt dieses Ziel auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
+    <string name="target_edit_show_on_lock_screen_content_widget">Zeige dieses Ziel auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Zeige dieses Ziel auf deinem Sperrbildschirm und Always in Display (falls unterstützt) an, wenn Musik nicht abgespielt wird</string>
     <string name="target_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
     <string name="target_edit_show_on_expanded_content">Dieses Ziel auf erweitertem Smartspace anzeigen</string>
@@ -229,12 +229,12 @@
     <string name="complication_edit_target_header">Komplikation</string>
     <string name="complication_edit_show_on_home_title">Zeige auf Startbildschirm</string>
     <string name="complication_edit_show_on_home_content">Zeige diese Komplikation auf deinem Startbildschirm</string>
-    <string name="complication_edit_show_on_home_content_widget">Zeigt diese Komplikation auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_home_content_widget">Zeige diese Komplikation auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
     <string name="complication_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
     <string name="complication_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
     <string name="complication_edit_show_on_lock_screen_content">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
     <string name="complication_edit_show_on_lock_screen_content_oem">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display (falls verfügbar) an, wenn Musik nicht abgespielt wird</string>
-    <string name="complication_edit_show_on_lock_screen_content_widget">Zeigt diese Komplikation auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_lock_screen_content_widget">Zeige diese Komplikation auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
     <string name="complication_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
     <string name="complication_edit_show_on_expanded_content">Diese Komplikation auf erweitertem Smartspace anzeigen</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
@@ -258,8 +258,8 @@
     <string name="complication_edit_external_error">Fehler beim Starten der Einstellungen für diese Komplikation</string>
     <string name="requirement_edit_external_error">Fehler beim Starten der Einstellungen für diese Bedingung</string>
     <string name="requirement_edit_invert">Diese Bedingung umkehren</string>
-    <string name="safe_mode_title">Sicherer Modus</string>
-    <string name="safe_mode_content">Smartspacer hat den sicheren Modus aktiviert, weil eine App abgestürzt ist, um einen Absturz-Loop zu verhindern. Diese Abstürze werden normalerweise durch ein fehlerhaftes Ziel oder eine fehlerhafte Komplikation verursacht, daher solltest du nach Updates für deine Plugins suchen, wenn sie weiterhin auftreten.</string>
+    <string name="safe_mode_title">Abgesicherter Modus</string>
+    <string name="safe_mode_content">Smartspacer ist in den abgesicherten Modus gewechselt, weil eine App abgestürzt ist, um eine Absturzschleife zu verhindern. Diese Abstürze werden in der Regel durch ein fehlerhaftes Ziel oder eine Komplikation verursacht, daher solltest du, wenn sie weiterhin auftreten, deine Plugins auf Updates prüfen.</string>
     <string name="safe_mode_relaunch">Smartspacer neu starten</string>
     <string name="feedback_loop_title">Rückkopplung</string>
     <string name="feedback_loop_content">Smartspacer hat eine Rückkopplung zwischen dem nativen Smartspace und dem System festgestellt, daher funktionieren \"Auf einen Blick\"-Ziele derzeit nicht.\n\nDies kann passieren, wenn Smartspacer zu schnell nach Aktivierung des nativen Smartspace zwangsweise gestoppt wird.\n\nBitte warte 30 Sekunden, starte Smartspacer neu und aktiviere den nativen Smartspace erneut, damit es wieder ordnungsgemäß funktioniert.</string>
@@ -582,7 +582,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="notification_battery_optimisation_failed_toast">Fehler beim Öffnen der Einstellungen, bitte erteile die Berechtigung manuell</string>
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
-    <string name="target_music_description">Displays the currently playing on-device music track</string>
+    <string name="target_music_description">Zeigt den aktuell auf dem Gerät abgespielten Musiktitel an</string>
     <string name="target_music_setting_show_album_art_title">Zelte Albumcover</string>
     <string name="target_music_setting_show_album_art_content">Zeigt Albumcover für den aktuell abgespielten Track, falls verfügbar. Dies kann zugeschnitten werden.</string>
     <string name="target_music_setting_use_doorbell_title">Zeige quadratische Albumcover</string>
@@ -623,7 +623,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_widget_deleted">Dieses Widget wurde deinstalliert, tippe zum Entfernen</string>
     <string name="expanded_widget_deleted_rearrange">Widget deinstallieren</string>
     <string name="expanded_permission_title">Erlaube Anzeige über andere Apps</string>
-    <string name="expanded_permission_title_short">Über anderen Apps einblenden</string>
+    <string name="expanded_permission_title_short">Über anderen Apps anzeigen</string>
     <string name="expanded_permission_content">Der erweiterte Smartspace, der den Google Discover Feed ersetzt, benötigt diese Berechtigung, um Apps vom Overlay aus starten zu können. Öffne entweder Smartspacer, um die Berechtigung zu erteilen, oder erteile sie manuell über die \"App-Info\"-Seite von Smartspacer.</string>
     <string name="expanded_permission_content_sheet">Der erweiterte Smartspace, der den Google Discover Feed ersetzt, erfordert diese Berechtigung, um Apps aus dem Overlay starten zu können.</string>
     <string name="expanded_permission_later">Später</string>
@@ -661,7 +661,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_xposed_enabled_content">Ersetze den Google Discover Feed durch den erweiterten Smartspace.\n<b>Hinweis:</b> Du musst das Xposed-Modul für deinen Launcher oder Google Feed Plugin aktivieren und dann neu starten, damit dies funktioniert.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Diese Einstellung erfordert Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
-    <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
+    <string name="expanded_settings_open_mode_never_content">Führt die Klick-Aktionen des Ziels aus, statt den erweiterten Smartspace zu öffnen</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Wenn das Ziel erweiterte Einstellungen hat</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
@@ -735,7 +735,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="plugin_details_uninstall">Deinstallieren</string>
     <string name="plugin_details_install_companion">Benötigte App holen</string>
     <string name="plugin_details_error_title">Fehler</string>
-    <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer.</string>
+    <string name="plugin_details_error_content">Fehler beim Laden der Plugin-Details. Überprüfe deine Verbindung und wenn das Problem weiterhin besteht, wende dich an den Plugin-Entwickler.</string>
     <string name="plugin_details_incompatible_incompatible_sdk">Dieses Plugin ist nicht mit deinem Gerät kompatibel, da es eine neuere Version von Android benötigt (API %1d)</string>
     <string name="plugin_details_incompatible_missing_feature">Dieses Plugin ist nicht mit deinem Gerät kompatibel, da es eine Funktion benötigt, die nicht verfügbar ist (%1s)</string>
     <string name="plugin_details_incompatible_missing_app">Dieses Plugin erfordert, dass du eine Begleit-App installiert hast, tippe zum Herunterladen</string>
@@ -746,12 +746,12 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="plugin_settings_content">Ändere Einstellungen in Bezug auf das Smartspacer Plugin-Repository, einschließlich der vollständigen Deaktivierung, wenn erwünscht</string>
     <string name="plugin_settings_enabled">Plugin-Repository aktivieren</string>
     <string name="plugin_settings_update_check_enabled_title">Automatisch auf Updates prüfen</string>
-    <string name="plugin_settings_update_check_enabled_content">Check for updates to Smartspacer plugins once a day and notify you when any are available</string>
+    <string name="plugin_settings_update_check_enabled_content">Einmal täglich nach Updates für Smartspacer-Plugins suchen und benachrichtigen, wenn diese verfügbar sind</string>
     <string name="plugin_settings_url_title">Plugin-Repository-URL</string>
     <string name="plugin_settings_url_content"><b>Erweitert:</b> Ändere die URL, von der die Plugin-Repository-Daten geladen werden</string>
     <string name="plugin_settings_footer">Das Smartspacer Plugin-Repository ermöglicht, Smartspacer-Plugins zu installieren und verwalten sowie Plugins zu finden, die mit Apps auf deinem Gerät kompatibel sind</string>
     <!-- Update downloader -->
-    <string name="snackbar_update">Update Verfügbar</string>
+    <string name="snackbar_update">Update verfügbar</string>
     <string name="snackbar_update_button">Update</string>
     <string name="update_heading">Smartspacer Version %1s</string>
     <string name="update_subheading">Aktuelle Version %1s</string>
@@ -772,11 +772,11 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="donate_prompt_dismiss">Schließen</string>
     <string name="donate_paragraph_1">Vielen Dank, dass du in Erwägung ziehst, zu spenden. Smartspacer ist eine komplexe App und hat viel Zeit in der Entwicklung beansprucht, obwohl sie kostenlos und Open Source verfügbar ist.</string>
     <string name="donate_paragraph_2">Wenn du spenden möchtest, die derzeit einzige verfügbare Option ist PayPal (unten verlinkt). Andere Optionen könnten in der Zukunft verfügbar sein, falls erforderlich - öffnen eine GitHub-Issue, wenn du einen Vorschlag hast. Zusätzlich können auf Anfrage auch Direktzahlungen z.B. mit Wise angeboten werden.</string>
-    <string name="donate_paragraph_3">If you have already donated or are unable to at this time, you can hide the donation prompt banner permanently below (you will still be able to access this screen from the bottom of the settings).</string>
+    <string name="donate_paragraph_3">Wenn du bereits gespendet hast oder dazu derzeit nicht in der Lage bist, kannst du das Banner mit der Spendenaufforderung unten dauerhaft ausblenden (du kannst immer noch unten in den Einstellungen auf diese Seite zugreifen).</string>
     <string name="donate_disable">Spendenaufforderung ausblenden</string>
     <string name="donate_paypal">PayPal</string>
     <!-- Permissions settings -->
-    <string name="permissions_empty_label">No Smartspacer permissions have been granted to other apps</string>
+    <string name="permissions_empty_label">Es wurden keine Smartspacer-Berechtigungen anderen Apps erteilt</string>
     <string name="permissions_allow">Zulassen</string>
     <string name="permissions_deny">Verweigern</string>
     <string name="permissions_ask_every_time">Jedes Mal fragen</string>
@@ -974,7 +974,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="complication_gmail_settings_account_unselected">Nicht ausgewählt</string>
     <string name="complication_gmail_settings_title_labels">Label auswählen</string>
     <string name="complication_gmail_settings_title">Einstellungen</string>
-    <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
+    <string name="complication_gmail_settings_description">Wähle das Konto und die Labels, von denen ungelesene E-Mails angezeigt werden sollen</string>
     <string name="complication_gmail_settings_toast">Erteile die E-Mail-Berechtigung in App-Berechtigungen &gt; Zusätzliche Berechtigungen</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS ungelesen</string>
