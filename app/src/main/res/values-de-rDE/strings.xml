@@ -146,7 +146,7 @@
     <string name="notification_channel_error_title">Fehler</string>
     <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
     <string name="notification_channel_accessibility_title">Bedienungshilfen</string>
-    <string name="notification_channel_accessibility_content">Messages about Smartspacer\'s Accessibility Service</string>
+    <string name="notification_channel_accessibility_content">Nachrichten zu Bedienungshilfen von Smartspacer</string>
     <string name="notification_channel_native_title">Nativer Smartspace</string>
     <string name="notification_channel_native_content">Nachrichten im Zusammenhang mit dem Shizuku Service von Smartspacer</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
@@ -310,8 +310,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_geofence_configuration_setting_radius_title">Umkreis</string>
     <string name="requirement_geofence_configuration_setting_radius_content">Lege den Umkreis fest, in dem das Element angezeigt wird</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d Meter</string>
-    <string name="requirement_geofence_configuration_loitering_delay_title">Loitering Delay</string>
-    <string name="requirement_geofence_configuration_loitering_delay_content">Set how long you must be within the location radius before this requirement is met</string>
+    <string name="requirement_geofence_configuration_loitering_delay_title">Standortradius-Aufenthaltzeit</string>
+    <string name="requirement_geofence_configuration_loitering_delay_content">Lege fest, wie lange du innerhalb des Standortumkreises sein musst, bevor diese Anforderung erfüllt wird</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_none">Keine Verzögerung</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d Minute</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d Minuten</string>
@@ -608,7 +608,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="native_mode_settings_use_split_smartspace">Nutze geteilten Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Mit Android 14 wurde ein geteilter Smartspace auf dem Sperrbildschirm eingeführt, der immer das Datum und das Wetter über den regulären Zielen &amp; Komplikationen anzeigt. Smartspacer kann das Wetter durch deine erste Komplikation ersetzen, aber dies funktioniert möglicherweise nicht mit allen Uhrenstilen, und deine erste Komplikation könnte verschwinden. Wenn das passiert, deaktivieren diese Funktion.</string>
     <!-- Permission Request target -->
-    <string name="target_permission_request_title">Smartspacer Permission Required</string>
+    <string name="target_permission_request_title">Smartspacer-Berechtigung erforderlich</string>
     <string name="target_permission_request_content">Zum Gewähren tippen</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Erlauben</string>
@@ -649,7 +649,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_open_mode_lock_screen_title">Vom Sperrbildschirm öffnen</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Sperrbildschirm</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Öffne den erweiterten Smartspace wenn ein Smartspace Ziel auf dem Startbildschirm angeklickt wird: %1s</string>
-    <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
+    <string name="expanded_settings_close_when_locked_title">Schließen, wenn gesperrt</string>
     <string name="expanded_settings_close_when_locked_content">Erweiterten Smartspace beenden, wenn das Gerät gesperrt ist</string>
     <string name="expanded_settings_header_style">Stil</string>
     <string name="expanded_settings_blur_background_title">Hintergrund weichzeichnen</string>
@@ -889,7 +889,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_calendar_configuration_title">Einstellungen</string>
     <string name="target_calendar_configuration_description">Konfiguriere, welche Kalender angezeigt und Einstellungen, wann Termine angezeigt werden sollen</string>
     <string name="target_calendar_title_default">Unbenannter Termin</string>
-    <string name="target_calendar_title_with_time">%1s in %1dm</string>
+    <string name="target_calendar_title_with_time">%1s in %1d min</string>
     <string name="target_calendar_subtitle_with_yesterday">Gestern, %1s – %1s</string>
     <string name="target_calendar_subtitle_with_tomorrow">%1s – Morgen, %1s</string>
     <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
