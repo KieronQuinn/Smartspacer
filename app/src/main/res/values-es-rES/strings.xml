@@ -916,7 +916,7 @@
     <string name="target_calendar_pre_event_time_30_minutes">30 minutos</string>
     <string name="target_calendar_pre_event_time_1_hour">1 hora</string>
     <string name="target_calendar_pre_event_time_2_hours">2 horas</string>
-    <string name="target_calendar_post_event_time_at_end">Until end of event</string>
+    <string name="target_calendar_post_event_time_at_end">Hasta que finalize el evento</string>
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Configuración de De un vistazo</string>
     <string name="target_default_settings_more_content">Configurar más funciones en la app de Google</string>
