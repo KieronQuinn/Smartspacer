@@ -54,7 +54,7 @@
     <string name="widget_configuration_type_lock_content_disabled">No disponible para este widget. Ten en cuenta que Smartspacer no muestra los widgets en la pantalla de bloqueo, debrás descargar una aplicación de Google Play como \"Lockscreen Widgets\" para hacerlo.</string>
     <string name="widget_configuration_page">Controles de página</string>
     <string name="widget_configuration_page_single_title">Una sola página</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.\n<b>Important:</b> Using this option will mean you cannot open the options menu for a Target, and can only dismiss it from Expanded Smartspace</string>
+    <string name="widget_configuration_page_single_content">Bloquea el widget para que muestre solo una página de objetivo y complicación (si el espacio lo permite). Esto significará que solo verás el objetivo o complicación principal en el widget.\n<b>Importante:</b> El uso de esta opción significará que no podrás abrir el menú de opciones para un objetivo y solo podrás descartarlo desde Smartspace Expandido</string>
     <string name="widget_configuration_page_controls_title">Paginado</string>
     <string name="widget_configuration_page_controls_content">Permitir tantas páginas de Objetivos y Complicaciones como configures, con flechas para moverte entre las páginas (botones &amp; el indicador se ocultará cuando haya una sola página)</string>
     <string name="widget_configuration_page_no_controls_title">Paginado sin botones de flechas</string>
