@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>Opcional</b>: Activa este módulo en tu launcher o en la extensión del feed de Google para poder reemplazar Google Discover pot Smartspace Expandido. También, debes activar la opción de Smartspace Expandido en la configuración de Smartspacer.</string>
     <string name="dummy_home_content">Esta pantalla existe para trabajar con Widgets mal implementados por Smartspacer Plugins.\n\nSmartspacer no puede actuar como launcher, por favor seleccione un launcher diferente.</string>
     <string name="dummy_home_open_settings">Abrir configuración</string>
     <string name="notification_service">Servicio de notificaciones de Smartspacer</string>
@@ -165,7 +165,7 @@
     <string name="notification_location_permission_required_title">Ubicación en segundo plano</string>
     <string name="notification_location_permission_required_content">Smartspacer requiere acceso de la ubicación en segundo plano, presiona para permitir</string>
     <string name="notification_accessibility_widget_title">Habilitar el servicio de accesibilidad del widget</string>
-    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
+    <string name="notification_accessibility_widget_content">El servicio de accesibilidad de widgets de Smartspacer debe estar activado para que los widgets funcionen; presiona para activarlo. Alternativamente, habilita el modo mejorado y asegúrate de que Shizuku haya iniciado.</string>
     <string name="fab_targets_add">Agregar objetivo</string>
     <string name="targets_empty_label">No hay objetivos agregados</string>
     <string name="target_not_available">Este objetivo no está disponible no más, pulsa a removerlo</string>
@@ -262,7 +262,7 @@
     <string name="safe_mode_content">Smartspacer entró en modo seguro debido a un cierre inesperado de la aplicación, para prevenir un bucle de bloqueo. Estos bloqueos suelen ser causados por un mal comportamiento de un objetivo o complicación, así que si persisten, comprueba si hay actualizaciones de las extensiones.</string>
     <string name="safe_mode_relaunch">Relanzar Smartspacer</string>
     <string name="feedback_loop_title">Feedback persistente</string>
-    <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again.</string>
+    <string name="feedback_loop_content">Smartspacer ha encontrado un bucle de retroalimentación entre Smartspace nativo y el sistema, por lo que los objetivos de De un vistazo no funcionarán actualmente.\n\nEsto puede suceder cuando Smartspacer se detiene demasiado rápido después de Smartspace nativo.\n\nEspera 30 segundos y reinicia Smartspacer y vuelve activar Smartspace nativo para que vuelva a funcionar correctamente.</string>
     <string name="feedback_loop_relaunch_wait">Espera %1s segundos</string>
     <string name="feedback_loop_relaunch">Reiniciar Smartspacer</string>
     <string name="configuration_notification_enable_title">Habilitar acceso a notificaciones</string>
