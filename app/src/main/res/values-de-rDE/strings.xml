@@ -25,7 +25,7 @@
     <string name="restricted_mode_content_notification">Seit Android 13 hat Google eine Sicherheitsüberprüfung zu den Einstellungen hinzugefügt, die standardmäßig verhindert, dass sideloaded Apps standardmäßig auf Benachrichtigungszugriff zugreifen können.\n\n<b>Wenn du eine Meldung über eine eingeschränkte Einstellung siehst, wenn du versuchst, den Benachrichtigungs-Zugriff zu aktivieren, musst du die App-Info öffnen und eingeschränkte Einstellungen erlauben.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Seit Android 14 verhindert Google, dass Apps, die über den Paket-Installer sideloaded wurden, Benachrichtigungszugriff verwenden können.<br><br><b>Wenn du eine Meldung über eingeschränkte Einstellungen siehst, musst du Smartspacer deinstallieren und erneut installieren, indem du eine Session Installer-basierte App wie <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> oder die <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror App</a> verwendest. Das einfache Installieren darüber (ohne erneute Installation) ist NICHT ausreichend.<br><br></b>Alternativ wird Smartspacer mit aktiviertem erweiterten Modus diese Anforderung umgehen (dies ist ohne Shizuku oder Root-Zugriff nicht möglich).]]></string>
     <string name="restricted_mode_button">App-Info öffnen</string>
-    <string name="restricted_mode_warning_button">Berechtigungen mit Shizuku gewähren</string>
+    <string name="restricted_mode_warning_button">Berechtigungen mit Shizuku erteilen</string>
     <string name="target_sensitive_title">Inhalt versteckt</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatisch (Hintergrundbasierend)</string>
@@ -163,7 +163,7 @@
     <string name="notification_plugin_updates_content_one">%1d Smartspacer Plugin-Update verfügbar, zur Ansicht tippen</string>
     <string name="notification_plugin_updates_content_other">%1d Smartspacer Plugin-Updates verfügbar, zur Ansicht tippen</string>
     <string name="notification_location_permission_required_title">Hintergrund-Standort</string>
-    <string name="notification_location_permission_required_content">Smartspacer benötigt Zugriff auf den Hintergrundstandort, tippe um ihn zu gewähren</string>
+    <string name="notification_location_permission_required_content">Smartspacer benötigt Zugriff auf den Hintergrundstandort, tippe um ihn zu erteilen</string>
     <string name="notification_accessibility_widget_title">Aktiviere Widget-Bedienungshilfe</string>
     <string name="notification_accessibility_widget_content">Die Smartspacer Widget-Dienst Bedienungshilfe muss aktiviert sein, damit Widgets funktionieren können, tippe zum Aktivieren. Alternativ aktiviere den erweiterten Modus und stelle sicher, dass Shizuku gestartet wird.</string>
     <string name="fab_targets_add">Ziel hinzufügen</string>
@@ -212,7 +212,7 @@
     <string name="target_edit_expanded_show_shortcuts_title">Verknüpfungen anzeigen</string>
     <string name="target_edit_expanded_show_shortcuts_content">Mit diesem Ziel verknüpfte Verknüpfungen anzeigen, falls vorhanden</string>
     <string name="target_edit_expanded_show_app_shortcuts_title">App-Verknüpfungen anzeigen</string>
-    <string name="target_edit_expanded_show_app_shortcuts_content">Zeige die diesem Ziel zugeordneten App-Verknüpfungen an, falls verfügbar</string>
+    <string name="target_edit_expanded_show_app_shortcuts_content">Mit diesem Ziel verknüpfte App-Verknüpfungen anzeigen, falls vorhanden</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Erfordert erweiterten Modus</string>
     <string name="target_edit_settings_header">Einstellungen</string>
     <string name="target_edit_requirements_title">Bedingungen</string>
@@ -227,15 +227,15 @@
     <string name="target_edit_external_error">Fehler beim Starten der Einstellungen für dieses Ziel</string>
     <string name="complication_edit_title">Komplikation bearbeiten</string>
     <string name="complication_edit_target_header">Komplikation</string>
-    <string name="complication_edit_show_on_home_title">Zeige auf Startbildschirm</string>
-    <string name="complication_edit_show_on_home_content">Zeige diese Komplikation auf deinem Startbildschirm</string>
-    <string name="complication_edit_show_on_home_content_widget">Zeige diese Komplikation auf Widgets, die deinem Startbildschirm hinzugefügt wurden</string>
-    <string name="complication_edit_show_on_lock_screen_title">Zeige auf Sperrbildschirm und AoD</string>
-    <string name="complication_edit_show_on_lock_screen_title_widget">Zeige auf Sperrbildschirm</string>
-    <string name="complication_edit_show_on_lock_screen_content">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display an, wenn Musik nicht abgespielt wird</string>
-    <string name="complication_edit_show_on_lock_screen_content_oem">Zeige diese Komplikation auf deinem Sperrbildschirm und Always in Display (falls verfügbar) an, wenn Musik nicht abgespielt wird</string>
-    <string name="complication_edit_show_on_lock_screen_content_widget">Zeige diese Komplikation auf Widgets, die deinem Sperrbildschirm hinzugefügt wurden</string>
-    <string name="complication_edit_show_on_expanded_title">Zeige auf erweitertem Smartspace</string>
+    <string name="complication_edit_show_on_home_title">Auf Startbildschirm anzeigen</string>
+    <string name="complication_edit_show_on_home_content">Diese Komplikation auf deinem Startbildschirm anzeigen</string>
+    <string name="complication_edit_show_on_home_content_widget">Diese Komplikation auf Widgets anzeigen, die dem Startbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_lock_screen_title">Auf Sperrbildschirm und AoD anzeigen</string>
+    <string name="complication_edit_show_on_lock_screen_title_widget">Auf Sperrbildschirm anzeigen</string>
+    <string name="complication_edit_show_on_lock_screen_content">Diese Komplikation auf deinem Sperrbildschirm und Always in Display anzeigen, wenn Musik nicht abgespielt wird</string>
+    <string name="complication_edit_show_on_lock_screen_content_oem">Diese Komplikation auf deinem Sperrbildschirm und Always in Display anzeigen (falls verfügbar), wenn Musik nicht abgespielt wird</string>
+    <string name="complication_edit_show_on_lock_screen_content_widget">Diese Komplikation auf Widgets anzeigen, die deinem Sperrbildschirm hinzugefügt wurden</string>
+    <string name="complication_edit_show_on_expanded_title">Auf erweitertem Smartspace anzeigen</string>
     <string name="complication_edit_show_on_expanded_content">Diese Komplikation auf erweitertem Smartspace anzeigen</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Erweiterter Smartspace ist deaktiviert</string>
     <string name="complication_edit_show_on_music_title">Anzeigen, während Musik abgespielt wird</string>
@@ -301,8 +301,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_time_date_configuration_toast_start_time_invalid">Startzeit muss vor der Endzeit liegen</string>
     <string name="requirement_time_date_configuration_pick_a_day">Bitte wähle mindestens einen Tag</string>
     <string name="requirement_geofence">Standort</string>
-    <string name="requirement_geofence_content_generic">Nur zeigen, wenn an oder in der Nähe eines ausgewählten Standorts</string>
-    <string name="requirement_geofence_content">Nur zeigen, wenn bei oder in der Nähe von %1s</string>
+    <string name="requirement_geofence_content_generic">Nur anzeigen, wenn an oder in der Nähe eines ausgewählten Standorts</string>
+    <string name="requirement_geofence_content">Nur anzeigen wenn bei oder in der Nähe von %1s</string>
     <string name="requirement_geofence_title">Standort</string>
     <string name="requirement_geofence_bottom_sheet_title">Einstellungen</string>
     <string name="requirement_geofence_configuration_setting_name_title">Name</string>
@@ -324,8 +324,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_geofence_configuration_limit_reached_title">Maximum erreicht</string>
     <string name="requirement_geofence_configuration_limit_reached_content">Das Maximum an Geofence-Standorten wurde erreicht. Bitte entferne eine Standort-Bedingung, bevor du eine neue hinzufügst.</string>
     <string name="requirement_wifi_title">WLAN-Netzwerk</string>
-    <string name="requirement_wifi_content">Nur zeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
-    <string name="requirement_wifi_content_base">Nur zeigen, wenn %1s mit %1s</string>
+    <string name="requirement_wifi_content">Nur anzeigen, wenn im Bereich von oder verbunden mit einem WLAN-Netzwerk</string>
+    <string name="requirement_wifi_content_base">Nur anzeigen, wenn %1s mit %1s</string>
     <string name="requirement_wifi_content_connected_to">verbunden</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in Reichweite oder verbunden</string>
     <string name="requirement_wifi_content_ssid_mac">%1s mit MAC %1s</string>
@@ -347,21 +347,21 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_wifi_configuration_picker_saved">Gespeicherte Netzwerke</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Unbekanntes Netzwerk</string>
     <string name="requirement_bluetooth_title">Bluetooth-Gerät verbunden</string>
-    <string name="requirement_bluetooth_description">Nur zeigen, wenn ein bestimmtes Bluetooth-Gerät verbunden ist</string>
-    <string name="requirement_bluetooth_description_set">Nur zeigen, wenn verbunden mit dem Bluetooth-Gerät namens %1s</string>
+    <string name="requirement_bluetooth_description">Nur anzeigen, wenn ein bestimmtes Bluetooth-Gerät verbunden ist</string>
+    <string name="requirement_bluetooth_description_set">Nur anzeigen, wenn verbunden mit dem Bluetooth-Gerät namens %1s</string>
     <string name="requirement_bluetooth_incompatible">Diese Bedingung erfordert Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Gerät auswählen</string>
-    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth- &amp; Standortberechtigungen erforderlich, tippe, um zu gewähren.\n<b>Hinweis:</b> Der Standort wird von Android benötigt, um die derzeit verbundenen Bluetooth-Geräte zu ermitteln</string>
-    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer muss Bluetooth-Verbindungen im Hintergrund überwachen, was erfordert, dass die Standortberechtigung auf \"Immer zulassen\" gesetzt wird, zum Gewähren tippe</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth- &amp; Standortberechtigungen erforderlich, tippe, um diese zu erteilen.\n<b>Hinweis:</b> Der Standort wird von Android benötigt, um die derzeit verbundenen Bluetooth-Geräte zu ermitteln</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer muss Bluetooth-Verbindungen im Hintergrund überwachen, was erfordert, dass die Standortberechtigung auf \"Immer zulassen\" gesetzt wird, tippe zum Erteilen</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth ist deaktiviert, tippe zum Aktivieren</string>
     <string name="requirement_bluetooth_configuration_pick_info">Nur Geräte, die bisher gekoppelt waren oder sind, können ausgewählt werden</string>
     <string name="requirement_bluetooth_configuration_pick_empty">Keine gekoppelten Geräte gefunden</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (ausgewählt)</string>
     <string name="requirement_bluetooth_notification_title">Bluetooth-Berechtigung erforderlich</string>
-    <string name="requirement_bluetooth_notification_content">Smartspacer benötigt die Bluetooth- &amp; Standort-\"Immer zulassen\"-Berechtigungen für die Bluetooth-Bedingung, tippen Sie, um zu gewähren</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer benötigt die Bluetooth- &amp; Standort-\"Immer zulassen\"-Berechtigungen für die Bluetooth-Bedingung, tippe, um diese zu erteilen</string>
     <string name="requirement_app_prediction">App-Vorschlag</string>
-    <string name="requirement_app_prediction_content_generic">Nur zeigen, wenn eine bestimmte App in den Top 5 Vorschlägen ist (wird meist im App-Drawer angezeigt)</string>
-    <string name="requirement_app_prediction_content">Nur zeigen, wenn %1s in den Top 5 Vorschlägen ist</string>
+    <string name="requirement_app_prediction_content_generic">Nur anzeigen, wenn eine bestimmte App in den Top 5 Vorschlägen ist (wird meist im App-Drawer angezeigt)</string>
+    <string name="requirement_app_prediction_content">Nur anzeigen, wenn %1s in den Top 5 Vorschlägen ist</string>
     <string name="requirement_app_prediction_generic_label">Unbekannte App</string>
     <string name="requirement_app_prediction_incompatible">Diese Bedingung ist nicht kompatibel mit deinem Gerät, da es keinen System-App-Vorhersage-Service hat</string>
     <string name="requirement_app_prediction_enhanced">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
@@ -516,7 +516,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_complete_content">Ziele, Komplikationen und Widgets benötigen möglicherweise zusätzliche Berechtigungen, diese werden bei Bedarf angefordert.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Bitte um Berechtigung…</string>
-    <string name="enhanced_mode_request_loading_subtitle">Shizuku/Sui Berechtigung gewähren, wenn gefragt</string>
+    <string name="enhanced_mode_request_loading_subtitle">Erteile Shizuku/Sui Berechtigung, wenn gefragt</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku ist eine Nicht-Root-App, die es Apps wie Smartspacer ermöglicht, Code mit speziellen Berechtigungen auszuführen. Dies geschieht durch die Ausführung eines Befehls auf der ADB (Android Debug Bridge) Shell, einmal pro Neustart. Auf Geräten mit Android 11+ kann dies ohne einen Computer erfolgen, aber auf älteren Versionen musst du dich einmal pro Neustart mit einem Computer verbinden, um Shizuku neu zu starten.</string>
     <string name="enhanced_mode_request_shizuku_button">Shizuku holen</string>
@@ -583,9 +583,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
     <string name="target_music_description">Zeigt den aktuell auf dem Gerät abgespielten Musiktitel an</string>
-    <string name="target_music_setting_show_album_art_title">Zelte Albumcover</string>
+    <string name="target_music_setting_show_album_art_title">Albumcover anzeigen</string>
     <string name="target_music_setting_show_album_art_content">Zeigt Albumcover für den aktuell abgespielten Track, falls verfügbar. Dies kann zugeschnitten werden.</string>
-    <string name="target_music_setting_use_doorbell_title">Zeige quadratische Albumcover</string>
+    <string name="target_music_setting_use_doorbell_title">Quadratische Albumcover anzeigen</string>
     <string name="target_music_setting_use_doorbell_content">Versucht, das Albumcover als Quadrat und nicht als abgeschnittenes Rechteck anzuzeigen. <b>Wichtig:</b> Wenn der native Smartspace verwendet wird, funktioniert dies nicht auf dem Startbildschirm und wird auf einigen Geräten überhaupt nicht angezeigt.</string>
     <string name="target_music_setting_clear_dismissed_title">Lösche abgelehnte Apps</string>
     <string name="target_music_setting_clear_dismissed_content">Lösche die Liste der Apps, die abgelehnt wurden, damit ihre Titel wieder in Smartspace angezeigt werden können</string>
@@ -609,7 +609,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="native_mode_settings_use_split_smartspace_content">Mit Android 14 wurde ein geteilter Smartspace auf dem Sperrbildschirm eingeführt, der immer das Datum und das Wetter über den regulären Zielen &amp; Komplikationen anzeigt. Smartspacer kann das Wetter durch deine erste Komplikation ersetzen, aber dies funktioniert möglicherweise nicht mit allen Uhrenstilen, und deine erste Komplikation könnte verschwinden. Wenn das passiert, deaktivieren diese Funktion.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer-Berechtigung erforderlich</string>
-    <string name="target_permission_request_content">Zum Gewähren tippen</string>
+    <string name="target_permission_request_content">Zum Erteilen tippen</string>
     <!-- Smartspacer Permission Request -->
     <string name="permission_dialog_smartspace_title_prefix">Zulassen</string>
     <string name="permission_dialog_smartspace_title_suffix">um auf Smartspacer Ziele und Komplikationen zuzugreifen?</string>
@@ -635,12 +635,12 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_footer">Der erweiterte Smartspace zeigt alle Smartspace-Ziele und Komplikationen sowie Informationen wie Widgets, App-Verknüpfungen und mehr für unterstützte Ziele an. Er kann über den Startbildschirm, den Sperrbildschirm oder eine App-Verknüpfung vom Smartspacer-Icon aus geöffnet werden. Wenn du Discover Killer verwendest, kann Smartspacer auch deinen Google Discover Feed ersetzen.</string>
     <string name="expanded_settings_switch">Erweiterten Smartspace aktivieren</string>
     <string name="expanded_settings_header_search">Suchen</string>
-    <string name="expanded_settings_show_search_box_title">Zeige Suchfeld</string>
+    <string name="expanded_settings_show_search_box_title">Suchfeld anzeigen</string>
     <string name="expanded_settings_show_search_box_content">Zeige ein Suchfeld oben am erweiterten Smartspace</string>
     <string name="expanded_settings_search_provider_title">Suchanbieter</string>
     <string name="expanded_settings_search_provider_content">Wähle die App, die beim Öffnen des Suchfeldes gestartet werden soll: %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Wähle die App, die beim Öffnen des Suchfeldes gestartet werden soll</string>
-    <string name="expanded_settings_show_doodle_title">Zeige Google Doodle</string>
+    <string name="expanded_settings_show_doodle_title">Google Doodle anzeigen</string>
     <string name="expanded_settings_show_doodle_content">Zeige das heutige Google Doodle im oberen Bereich des erweiterten Smartspaces an</string>
     <string name="expanded_settings_header_behaviour">Verhalten</string>
     <string name="expanded_settings_open_mode_home_screen_title">Vom Startbildschirm aus öffnen</string>
@@ -702,7 +702,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_custom_widget_options_span_y_content">Die Höhe für dieses Widget, in Zeilen</string>
     <string name="expanded_custom_widget_options_reconfigure_title">Neu einrichten</string>
     <string name="expanded_custom_widget_options_reconfigure_content">Ändere Einstellungen für dieses Widget in seiner App</string>
-    <string name="expanded_custom_widget_options_show_when_locked_title">Zeigen, wenn gesperrt</string>
+    <string name="expanded_custom_widget_options_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
     <string name="battery_optimisation_title">Akku-Optimierung</string>
@@ -782,7 +782,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="permissions_ask_every_time">Jedes Mal fragen</string>
     <string name="permissions_header">Zugriffsberechtigungen werden nur beim Hinzufügen eines Ziels oder einer Komplikation angewendet. Um die Fähigkeit eines Plugins, auf Benachrichtigungen oder Widgets zuzugreifen, vollständig zu entziehen, musst du auch seine Ziele und Komplikationen entfernen.</string>
     <string name="permissions_title">Berechtigungen</string>
-    <string name="permissions_content">Verwalte Berechtigungen von Plugins &amp; Apps, die Smartspacer integrieren</string>
+    <string name="permissions_content">Verwalte Berechtigungen an Plugins &amp; Apps, die Smartspacer integrieren</string>
     <string name="permissions_widgets">Zugriff auf Widgets mit Smartspacer</string>
     <string name="permissions_notifications">Zugriff auf Benachrichtigungen mit Smartspacer</string>
     <string name="permissions_smartspace">Lade Smartspacer Ziele &amp; Komplikationen</string>
@@ -847,7 +847,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="notification_widget_title">Sperrbildschirm-Benachrichtigung</string>
     <string name="notification_widget_title_short">Sperrbildschirm</string>
     <string name="notification_widget_content">Einstellungen um Smartspacer als Benachrichtigung anzuzeigen, wenn der Sperrbildschirm angezeigt wird</string>
-    <string name="notification_widget_toggle">Zeige Benachrichtigung</string>
+    <string name="notification_widget_toggle">Benachrichtigung anzeigen</string>
     <string name="notification_widget_info">Diese Einstellung zeigt als Benachrichtigung <b>begrenzte</b> Smartspacer-Inhalte auf dem Sperrbildschirm an. Nur eine Seite kann angezeigt werden und du musst die Benachrichtigung erweitern, um mehr als grundlegende Inhalte zu sehen.</string>
     <string name="notification_widget_notifications_disabled">Benachrichtigungen sind deaktiviert, sodass diese Einstellung nicht funktioniert. Tippe zum Aktivieren.</string>
     <string name="notification_widget_tint_title">Farbton</string>
@@ -885,7 +885,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Calendar Target -->
     <string name="target_calendar_label">Kalender</string>
     <string name="target_calendar_description">Zeigt Termine von ausgewählten Kalendern</string>
-    <string name="target_calendar_description_filled">Zeige Kalendertermine von %1s</string>
+    <string name="target_calendar_description_filled">Kalendertermine von %1s anzeigen</string>
     <string name="target_calendar_configuration_title">Einstellungen</string>
     <string name="target_calendar_configuration_description">Konfiguriere, welche Kalender angezeigt und Einstellungen, wann Termine angezeigt werden sollen</string>
     <string name="target_calendar_title_default">Unbenannter Termin</string>
@@ -897,16 +897,16 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_calendar_subtitle_all_day">Ganztägig</string>
     <string name="target_calendar_settings_calendars">Kalender auswählen</string>
     <string name="target_calendar_settings_settings">Einstellungen</string>
-    <string name="target_calendar_settings_show_all_day_title">Zeige ganztägige Termine</string>
-    <string name="target_calendar_settings_show_all_day_content">Zeige Termine, die den ganzen Tag dauern</string>
-    <string name="target_calendar_settings_show_location_title">Zeige Orte</string>
-    <string name="target_calendar_settings_show_location_content">Zeige Terminorte, wenn verfügbar</string>
-    <string name="target_calendar_settings_show_unconfirmed_title">Zeige Unbestätigtes</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Zeige Termine, bei denen du die Teilnahme nicht bestätigt hast.\n<b>Wichtig:</b> Einige Kalender unterstützen diese Funktion nicht, sodass die Deaktivierung alle Ereignisse ausblenden wird.</string>
+    <string name="target_calendar_settings_show_all_day_title">Ganztägige Termine anzeigen</string>
+    <string name="target_calendar_settings_show_all_day_content">Termine, die den ganzen Tag dauern, anzeigen</string>
+    <string name="target_calendar_settings_show_location_title">Ort anzeigen</string>
+    <string name="target_calendar_settings_show_location_content">Terminorte anzeigen, wenn verfügbar</string>
+    <string name="target_calendar_settings_show_unconfirmed_title">Unbestätigtes anzeigen</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Termine anzeigen, bei denen du die Teilnahme nicht bestätigt hast.\n<b>Wichtig:</b> Einige Kalender unterstützen diese Funktion nicht, sodass die Deaktivierung alle Ereignisse ausblenden wird.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Nutze alternative Event-IDs</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Erstelle IDs für jeden Termin basierend auf deren Titel, Start- und Endzeiten anstelle der systemeigenen IDs, wenn Termine abgelehnt werden. Dies ist nützlich, wenn du eine App oder einen Dienst verwendest, der Kalender zwischen Konten synchronisiert und bei Änderungen neue Termine erstellt.</string>
-    <string name="target_calendar_settings_pre_event_time_title">Zeige Termine für diese Zeit vor Start</string>
-    <string name="target_calendar_settings_post_event_time_title">Zeige Termine für diese Zeit nach Start</string>
+    <string name="target_calendar_settings_pre_event_time_title">Termine für diese Zeit vor Start anzeigen</string>
+    <string name="target_calendar_settings_post_event_time_title">Termine für diese Zeit nach Start anzeigen</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Lösche abgelehnte Termine</string>
     <string name="target_calendar_settings_clear_dismissed_events_content">Setze die Liste der abgelehnten Termine zurück, sodass ausgeblendete Termine wieder angezeigt werden können, wenn sie noch gültig sind</string>
     <string name="target_calendar_settings_permission_toast">Erteile Smartspacer die Kalender-Berechtigung</string>
@@ -949,7 +949,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- Blank Target -->
     <string name="target_blank_title">Leeres Ziel</string>
     <string name="target_blank_content">Absolut minimal, kann verwendet werden, um überhaupt nichts oder nur Komplikationen anzuzeigen</string>
-    <string name="target_blank_settings_show_complications_title">Zeige Komplikationen</string>
+    <string name="target_blank_settings_show_complications_title">Komplikationen anzeigen</string>
     <string name="target_blank_settings_show_complications_content">Erlaube die Anzeige von bis zu zwei Komplikationen unterhalb des leeren Ziel-Titels. Dies ist nützlich, wenn du kein Datum anzeigen möchtest, aber weiterhin Komplikationen anzeigen willst.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Ausblenden, wenn keine Komplikationen</string>
     <string name="target_blank_settings_hide_if_no_complications_content">Blende dieses Ziel vollständig aus, wenn es keine Komplikationen zu zeigen gibt</string>
@@ -966,9 +966,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_date_settings_custom_invalid">Ungültiges Datumsformat</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail ungelesen</string>
-    <string name="complication_gmail_description">Zeige die Anzahl der ungelesener Gmail-E-Mails von ausgewählten Labels</string>
-    <string name="complication_gmail_description_filled_one">Zeige die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Label</string>
-    <string name="complication_gmail_description_filled_other">Zeige die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Labels</string>
+    <string name="complication_gmail_description">Die Anzahl der ungelesener Gmail-E-Mails von ausgewählten Labels anzeigen</string>
+    <string name="complication_gmail_description_filled_one">Die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Label anzeigen</string>
+    <string name="complication_gmail_description_filled_other">Die Anzahl der ungelesener Gmail-E-Mails von %1s in %1d Labels anzeigen</string>
     <string name="complication_gmail_unknown">\???</string>
     <string name="complication_gmail_settings_account_title">Konto</string>
     <string name="complication_gmail_settings_account_unselected">Nicht ausgewählt</string>
@@ -978,7 +978,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="complication_gmail_settings_toast">Erteile die E-Mail-Berechtigung in App-Berechtigungen &gt; Zusätzliche Berechtigungen</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS ungelesen</string>
-    <string name="complication_sms_description">Zeige die Anzahl der ungelesenen SMS/RCS-Nachrichten</string>
+    <string name="complication_sms_description">Die Anzahl der ungelesenen SMS/RCS-Nachrichten anzeigen</string>
     <string name="complication_sms_settings_toast">Erteile die SMS-Berechtigung in den App-Berechtigungen</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Verpasste Anrufe</string>
@@ -991,9 +991,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="complication_blank_content">Nützlich für minimale Setups oder Spacers</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Kürzlich geöffnete Apps</string>
-    <string name="requirement_recent_apps_description">Nur zeigen, wenn sich eine bestimmte App in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
-    <string name="requirement_recent_apps_description_filled">Nur zeigen, wenn sich %1s in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
-    <string name="requirement_recent_apps_description_filled_with_limit">Nur zeigen, wenn %1s in den ersten %1d kürzlich geöffneten Apps ist</string>
+    <string name="requirement_recent_apps_description">Nur anzeigen, wenn sich eine bestimmte App in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
+    <string name="requirement_recent_apps_description_filled">Nur anzeigen, wenn sich %1s in den kürzlich geöffneten Apps befindet und ausblenden, wenn die App aus der Liste gelöscht wird</string>
+    <string name="requirement_recent_apps_description_filled_with_limit">Nur anzeigen, wenn %1s in den ersten %1d kürzlich geöffneten Apps ist</string>
     <string name="requirement_recent_apps_description_unsupported">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="requirement_recent_apps_configuration_app_title">Ausgewählte App</string>
     <string name="requirement_recent_apps_configuration_app_content">Nicht ausgewählt</string>
