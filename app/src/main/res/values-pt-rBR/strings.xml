@@ -537,13 +537,13 @@
     <string name="enhanced_mode_enable_content_app_prediction">• Usar as sugestões de aplicativos do sistema como condição</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use apps recentes como condição</string>
     <string name="enhanced_mode_skip_button">Pular</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_skip_info">Você ainda pode usar o widget, os destaques, os complementos e as extensões do Smartspacer com o Modo Avançado desativado</string>
+    <string name="enhanced_mode_disable_toast">Talvez seja necessário reiniciar o dispositivo para as alterações terem efeito</string>
     <!-- Native Mode -->
-    <string name="native_title">Native Smartspace</string>
-    <string name="native_switch">Enable Native Smartspace</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
+    <string name="native_title">Smartspace Nativo</string>
+    <string name="native_switch">Usar Smartspace nativo</string>
+    <string name="native_switch_info"><b>Importante:</b> Ao habilitar o Smartspace nativo, o Smartspacer reiniciará a interface do sistema. <b>Você pode ver uma mensagem dizendo que a interface do sistema parou e, em seguida, sua tela de bloqueio.</b> Isso é normal, descarte a mensagem e desbloqueie seu dispositivo para continuar.</string>
+    <string name="native_switch_content">O Smartspace nativo integra o Smartspacer ao seu %1s, exibindo alvos e complicações do Smartspacer dentro dele. \nVocê precisará reativar o Smartspace nativo após cada reinicialização. Isso se deve a limitações do sistema.</string>
     <string name="native_switch_content_many">%1s and %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Compatibility</string>
