@@ -300,8 +300,8 @@
     <string name="requirement_time_date_configuration_toast_start_time_invalid">La hora inicial debe ser anterior a la hora de finalización</string>
     <string name="requirement_time_date_configuration_pick_a_day">Por favor, selecciona al menos un día</string>
     <string name="requirement_geofence">Ubicación</string>
-    <string name="requirement_geofence_content_generic">Only show when at or near a selected location</string>
-    <string name="requirement_geofence_content">Only show when at or near %1s</string>
+    <string name="requirement_geofence_content_generic">Mostrar solo cuando esté cerca de una ubicación seleccionada</string>
+    <string name="requirement_geofence_content">Solo mostrar cuando esté cerca de %1s</string>
     <string name="requirement_geofence_title">Ubicación</string>
     <string name="requirement_geofence_bottom_sheet_title">Opciones</string>
     <string name="requirement_geofence_configuration_setting_name_title">Nombre</string>
@@ -323,7 +323,7 @@
     <string name="requirement_geofence_configuration_limit_reached_title">Límite alcanzado</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
     <string name="requirement_wifi_title">Red Wi-Fi</string>
-    <string name="requirement_wifi_content">Only show when in range of or connected to a Wi-Fi network</string>
+    <string name="requirement_wifi_content">Solo mostrar cuando esté dentro de un rango de alcance o conectado a una red Wi-Fi</string>
     <string name="requirement_wifi_content_base">Only show when %1s to %1s</string>
     <string name="requirement_wifi_content_connected_to">conectado</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in range or connected</string>
