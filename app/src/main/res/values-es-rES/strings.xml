@@ -257,7 +257,7 @@
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
     <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
-    <string name="requirement_edit_invert">Invertir este requerimiento</string>
+    <string name="requirement_edit_invert">Invertir esta regla</string>
     <string name="safe_mode_title">Modo seguro</string>
     <string name="safe_mode_content">Smartspacer entró en modo seguro debido a un cierre inesperado de la aplicación, para prevenir un bucle de bloqueo. Estos bloqueos suelen ser causados por un mal comportamiento de un objetivo o complicación, así que si persisten, comprueba si hay actualizaciones de las extensiones.</string>
     <string name="safe_mode_relaunch">Relanzar Smartspacer</string>
@@ -331,7 +331,7 @@
     <string name="requirement_wifi_configuration_in_range_title">Allow Unconnected (In Range) Network</string>
     <string name="requirement_wifi_configuration_in_range_content">When enabled, this Requirement will be met when the specified network is in range, but not connected.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
-    <string name="requirement_wifi_configuration_background_location_title">Enable Background Location</string>
+    <string name="requirement_wifi_configuration_background_location_title">Usar ubicación en segundo plano</string>
     <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Conceder permiso</string>
     <string name="requirement_wifi_configuration_pick_title">Seleccionar red</string>
@@ -346,8 +346,8 @@
     <string name="requirement_wifi_configuration_picker_saved">Redes guardadas</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Red desconocida</string>
     <string name="requirement_bluetooth_title">Dispositivo Bluetooth conectado</string>
-    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
-    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
+    <string name="requirement_bluetooth_description">Mostrar solo cuando un dispositivo Bluetooth específico está conectado</string>
+    <string name="requirement_bluetooth_description_set">Mostrar solo cuando esté un dispositivo Bluetooth llamado %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
@@ -359,8 +359,8 @@
     <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
     <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Sugerencias de apps</string>
-    <string name="requirement_app_prediction_content_generic">Only show when a specific app is in the top 5 suggestions (usually shown in your app drawer)</string>
-    <string name="requirement_app_prediction_content">Only show when %1s is in the top 5 suggestions</string>
+    <string name="requirement_app_prediction_content_generic">Mostrar solo cuando una app específica está entre las primeras 5 sugerencias (usualmente se muestran en el cajón de aplicaciones)</string>
+    <string name="requirement_app_prediction_content">Mostrar solo cuando %1s está entre las primeras 5 sugerencias</string>
     <string name="requirement_app_prediction_generic_label">Aplicación desconocida</string>
     <string name="requirement_app_prediction_incompatible">Esta regla no es compatible con tu dispositivo, ya que no tiene el servicio de predicción de aplicaciones del sistema</string>
     <string name="requirement_app_prediction_enhanced">Esta regla requiere de modo mejorado, actívalo desde configuración</string>
@@ -990,9 +990,9 @@
     <string name="complication_blank_content">Útil para configuraciones mínimas o espaciadores</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">App reciente</string>
-    <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
+    <string name="requirement_recent_apps_description">Mostrar solo cuando una app específica está en el selector de apps recientes, y ocultar cuando la app es borrada de las apps recientes</string>
     <string name="requirement_recent_apps_description_filled">Mostrar solo cuando %1s está en apps recientes, y ocultar cuando sea descartado de la lista</string>
-    <string name="requirement_recent_apps_description_filled_with_limit">Only show when %1s is in the first %1d recent apps</string>
+    <string name="requirement_recent_apps_description_filled_with_limit">Mostrar solo cuando %1s está en el primer lugar %1d en las apps recientes</string>
     <string name="requirement_recent_apps_description_unsupported">Este requerimiento requiere de Modo mejorado, actívalo desde configuración</string>
     <string name="requirement_recent_apps_configuration_app_title">Selected App</string>
     <string name="requirement_recent_apps_configuration_app_content">Not selected</string>
