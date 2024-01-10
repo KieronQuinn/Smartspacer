@@ -605,22 +605,22 @@
     <string name="native_mode_settings_hide_incompatible_targets_title">Ocultar destaques incompatíveis</string>
     <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar destaques incompatíveis com o seu dispositivo, em vez de mostrar apenas o título e o subtítulo</string>
     <string name="native_mode_settings_use_split_smartspace">Use o Smartspace dividido</string>
-    <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_settings_use_split_smartspace_content">O Android 14 dividiu o Smartspace na tela de bloqueio, sempre mostrando a data e o clima acima dos destaques e complementos comuns. O Smartspacer pode substituir o clima pela sua primeira complicação, mas isso pode não funcionar com todos os estilos de relógio e sua primeira complicação pode desaparecer. Se isso acontecer, desative essa opção.</string>
     <!-- Permission Request target -->
-    <string name="target_permission_request_title">Smartspacer Permission Required</string>
-    <string name="target_permission_request_content">Tap to grant</string>
+    <string name="target_permission_request_title">Permissão do Smartspacer é necessária</string>
+    <string name="target_permission_request_content">Toque para conceder</string>
     <!-- Smartspacer Permission Request -->
-    <string name="permission_dialog_smartspace_title_prefix">Allow</string>
-    <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
-    <string name="permission_dialog_smartspace_title_unknown">Unknown</string>
-    <string name="permission_dialog_smartspace_allow">Allow</string>
-    <string name="permission_dialog_smartspace_deny">Deny</string>
+    <string name="permission_dialog_smartspace_title_prefix">Permitir</string>
+    <string name="permission_dialog_smartspace_title_suffix">acessar os destaques e complementos do Smartspacer?</string>
+    <string name="permission_dialog_smartspace_title_unknown">Desconhecido</string>
+    <string name="permission_dialog_smartspace_allow">Permitir</string>
+    <string name="permission_dialog_smartspace_deny">Rejeitar</string>
     <!-- Expanded Smartspace -->
-    <string name="expanded_disabled">Expanded Smartspace is disabled</string>
-    <string name="expanded_disabled_settings">Settings</string>
-    <string name="expanded_widget_configure">Tap to configure widget</string>
-    <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
-    <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
+    <string name="expanded_disabled">Smartspace expandido está desativado</string>
+    <string name="expanded_disabled_settings">Configurações</string>
+    <string name="expanded_widget_configure">Toque para configurar o widget</string>
+    <string name="expanded_widget_deleted">Este widget foi desinstalado, toque para removê-lo</string>
+    <string name="expanded_widget_deleted_rearrange">Widget desinstalado</string>
     <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
     <string name="expanded_permission_title_short">Display Over Other Apps</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
