@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Espaçador inteligente</string>
+    <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Opcional</b>: ative este módulo no seu Launcher ou use uma extensão do Google Feed para poder substituir o Google Discover pelo Smartspace expandido. Você também precisará habilitar a opção nas configurações do Smartspace expandido no Smartspacer.</string>
     <string name="dummy_home_content">Esta tela foi criada para contornar widgets mal implementados usados pelas extensões do Smartspacer.\n\nO Smartspacer não pode funcionar como um Launcher, por favor, escolha um Launcher diferente.</string>
@@ -544,21 +544,21 @@
     <string name="native_switch">Usar Smartspace nativo</string>
     <string name="native_switch_info"><b>Importante:</b> Ao habilitar o Smartspace nativo, o Smartspacer reiniciará a interface do sistema. <b>Você pode ver uma mensagem dizendo que a interface do sistema parou e, em seguida, sua tela de bloqueio.</b> Isso é normal, descarte a mensagem e desbloqueie seu dispositivo para continuar.</string>
     <string name="native_switch_content">O Smartspace nativo integra o Smartspacer ao seu %1s, exibindo alvos e complicações do Smartspacer dentro dele. \nVocê precisará reativar o Smartspace nativo após cada reinicialização. Isso se deve a limitações do sistema.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch_content_many">%1s e %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Compatibilidade</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
-    <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_available"><b>Disponível</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Indisponível</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_title">Smartspace Nativo</string>
+    <string name="native_restart_feedback_loop_content">O Smartspacer encontrou um loop de feedback ao iniciar o Smartspace Nativo. Para garantir que todos os Destaques e Complementos funcionem corretamente, o Smartspace Nativo precisa ser interrompido e reiniciado para se reconectar.</string>
+    <string name="native_restart_disconnect_content">O Smartspacer perdeu a conexão com o Resumo. Para garantir que todos os Destaques e Complementos funcionem corretamente, o Smartspace Nativo precisa ser interrompido e reiniciado para se reconectar.</string>
+    <string name="native_restart_info"><b>Importante:</b> Ao reconectar o Smartspace nativo, o Smartspacer reiniciará a interface do sistema. <b>Você pode ver uma mensagem dizendo que a interface do sistema parou e, em seguida, sua tela de bloqueio.</b> Isso é normal, descarte a mensagem e desbloqueie seu dispositivo para continuar.</string>
+    <string name="native_restart_button">Reconectar</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
+    <string name="notification_native_mode_enable_title">Reativar o Smartspace nativo</string>
+    <string name="notification_native_mode_enable_content">Você precisa reativar o modo Smartspace nativo do Smartspacer em cada reinicialização, toque para ativar</string>
     <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
     <string name="notification_native_mode_enable_now">Enable Now</string>
     <!-- Native Mode restart notification -->
