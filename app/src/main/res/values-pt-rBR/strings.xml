@@ -559,15 +559,15 @@
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Reativar o Smartspace nativo</string>
     <string name="notification_native_mode_enable_content">Você precisa reativar o modo Smartspace nativo do Smartspacer em cada reinicialização, toque para ativar</string>
-    <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
-    <string name="notification_native_mode_enable_now">Enable Now</string>
+    <string name="notification_native_mode_enable_dismiss">Não Mostrar Novamente</string>
+    <string name="notification_native_mode_enable_now">Ativar</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_title">Reconecte o Smartspace nativo</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">O Smartspacer encontrou um loop de feedback ao iniciar o Smartspace nativo. Toque para reconectar e tentar novamente.</string>
+    <string name="notification_native_mode_restart_disconnect_content">O Smartspacer perdeu a conexão com o Resumo. Toque para reconectar.</string>
+    <string name="notification_native_mode_restart_just_reconnect">Reconectar</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
+    <string name="notification_shizuku_title">Requer Shizuku</string>
     <string name="notification_shizuku_content_app_prediction">A condição de sugestão de aplicação requer que o Shizuku seja iniciado, toque para abrir</string>
     <string name="notification_shizuku_content_recent_task">A condição de apps recentes requer que o Shizuku seja iniciado, toque para abrir</string>
     <string name="notification_shizuku_content_at_a_glance_target">O Destaque do Resumo requer que o Shizuku seja iniciado, toque para abrir</string>
@@ -583,28 +583,28 @@
     <string name="target_music_title">Música</string>
     <string name="target_music_description">Exibe a música que está sendo reproduzida no dispositivo</string>
     <string name="target_music_setting_show_album_art_title">Exibe a arte do álbum</string>
-    <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
-    <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
-    <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
-    <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
-    <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
-    <string name="target_music_setting_setting_title">Settings</string>
-    <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
+    <string name="target_music_setting_show_album_art_content">Exibe a arte do álbum da faixa atualmente em reprodução, se disponível. Pode ser cortada.</string>
+    <string name="target_music_setting_use_doorbell_title">Exibe arte do álbum quadrado</string>
+    <string name="target_music_setting_use_doorbell_content">Tenta exibir a arte do álbum como um quadrado, em vez de um retângulo cortado. <b>Importante:</b> Essa funcionalidade não funciona na tela inicial ao usar o Smartspace Nativo e pode não aparecer em alguns dispositivos.</string>
+    <string name="target_music_setting_clear_dismissed_title">Limpar apps dispensados</string>
+    <string name="target_music_setting_clear_dismissed_content">Limpar a lista de apps dispensados, permitindo que suas músicas apareçam novamente no Smartspace</string>
+    <string name="target_music_setting_setting_title">Configurações</string>
+    <string name="target_music_setting_setting_description">Configure se deseja mostrar a capa do álbum e limpar os players rejeitados</string>
     <!-- Native Mode Settings -->
-    <string name="native_mode_settings_menu_title">Native Smartspace Settings</string>
-    <string name="native_mode_settings_title">Native Smartspace</string>
-    <string name="native_mode_settings_target_limit_title">Page Limit</string>
-    <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
-    <string name="native_mode_settings_target_limit_one">Single page</string>
-    <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
-    <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
-    <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
-    <string name="native_mode_settings_target_limit_unlimited">Force unlimited pages</string>
-    <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
-    <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
-    <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
+    <string name="native_mode_settings_menu_title">Configurações do Smartspace Nativo</string>
+    <string name="native_mode_settings_title">Smartspace Nativo</string>
+    <string name="native_mode_settings_target_limit_title">Limite de páginas</string>
+    <string name="native_mode_settings_target_limit_content">O número máximo de páginas de Destaques e Complementos a serem exibidas: %1s</string>
+    <string name="native_mode_settings_target_limit_warning"><b>Cuidado:</b> Se você selecionar uma opção diferente de Página Única em determinados dispositivos e com determinadas combinações de Destaques ativados, poderá ocorrer falhas periódicas na interface do sistema e nos Launchers compatíveis com o Smartspace nativo.</string>
+    <string name="native_mode_settings_target_limit_one">Página única</string>
+    <string name="native_mode_settings_target_limit_one_content">Limita o Smartspace a exibir apenas a primeira página</string>
+    <string name="native_mode_settings_target_limit_automatic">Deixe a Tela de Bloqueio ou o Launcher decidir</string>
+    <string name="native_mode_settings_target_limit_automatic_content">Use o limite definido pelo Launcher ou pela tela de bloqueio</string>
+    <string name="native_mode_settings_target_limit_unlimited">Forçar um número ilimitado de páginas</string>
+    <string name="native_mode_settings_target_limit_unlimited_content">Ignore o limite definido pelo Launcher ou pela tela de bloqueio e exiba o máximo de páginas possível</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Ocultar destaques incompatíveis</string>
+    <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar destaques incompatíveis com o seu dispositivo, em vez de mostrar apenas o título e o subtítulo</string>
+    <string name="native_mode_settings_use_split_smartspace">Use o Smartspace dividido</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
