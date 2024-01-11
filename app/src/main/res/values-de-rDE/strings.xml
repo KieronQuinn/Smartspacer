@@ -217,11 +217,11 @@
     <string name="target_edit_settings_header">Einstellungen</string>
     <string name="target_edit_requirements_title">Bedingungen</string>
     <string name="target_edit_requirements_content">Setze die Bedingungen für das anzuzeigende Ziel</string>
-    <string name="target_edit_requirements_content_any_one">%1d Eine-Bedingung konfiguriert</string>
-    <string name="target_edit_requirements_content_any_other">%1d Eine-Bedingungen konfiguriert</string>
-    <string name="target_edit_requirements_content_all_one">%1d Alle-Bedingung konfiguriert</string>
-    <string name="target_edit_requirements_content_all_other">%1d Alle-Bedingungen konfiguriert</string>
-    <string name="target_edit_requirements_content_both">%1d Eine- und %1d Alle-Bedingungen konfiguriert</string>
+    <string name="target_edit_requirements_content_any_one">%1d Einzel-Bedingung konfiguriert</string>
+    <string name="target_edit_requirements_content_any_other">%1d Einzel-Bedingungen konfiguriert</string>
+    <string name="target_edit_requirements_content_all_one">%1d Mehrfach-Bedingung konfiguriert</string>
+    <string name="target_edit_requirements_content_all_other">%1d Mehrfach-Bedingungen konfiguriert</string>
+    <string name="target_edit_requirements_content_both">%1d Einzel- und %1d Mehrfach-Bedingungen konfiguriert</string>
     <string name="target_edit_external_title">Weitere Einstellungen</string>
     <string name="target_edit_external_content">Weitere Einstellungen in %1s konfigurieren</string>
     <string name="target_edit_external_error">Fehler beim Starten der Einstellungen für dieses Ziel</string>
@@ -248,11 +248,11 @@
     <string name="complication_edit_settings_header">Einstellungen</string>
     <string name="complication_edit_requirements_title">Bedingungen</string>
     <string name="complication_edit_requirements_content">Setze die Bedingungen für die anzuzeigende Komplikation</string>
-    <string name="complication_edit_requirements_content_any_one">%1d Eine-Bedingung konfiguriert</string>
-    <string name="complication_edit_requirements_content_any_other">%1d Eine-Bedingungen konfiguriert</string>
-    <string name="complication_edit_requirements_content_all_one">%1d Alle-Bedingung konfiguriert</string>
-    <string name="complication_edit_requirements_content_all_other">%1d Alle-Bedingungen konfiguriert</string>
-    <string name="complication_edit_requirements_content_both">%1d Eine- und %1d Alle-Bedingungen konfiguriert</string>
+    <string name="complication_edit_requirements_content_any_one">%1d Einzel-Bedingung konfiguriert</string>
+    <string name="complication_edit_requirements_content_any_other">%1d Einzel-Bedingungen konfiguriert</string>
+    <string name="complication_edit_requirements_content_all_one">%1d Mehrfach-Bedingung konfiguriert</string>
+    <string name="complication_edit_requirements_content_all_other">%1d Mehrfach-Bedingungen konfiguriert</string>
+    <string name="complication_edit_requirements_content_both">%1d Einzel- und %1d Mehrfach-Bedingungen konfiguriert</string>
     <string name="complication_edit_external_title">Weitere Einstellungen</string>
     <string name="complication_edit_external_content">Weitere Einstellungen in %1s konfigurieren</string>
     <string name="complication_edit_external_error">Fehler beim Starten der Einstellungen für diese Komplikation</string>
@@ -497,7 +497,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="setup_requirements_info_p1"><b>Bedingungen</b> erlauben es dir, anzupassen, ob ein Ziel oder eine Komplikation in Smartspace angezeigt wird. Damit kannst du Szenarien erstellen, mit denen nützliche Informationen in Smartspace angezeigt werden.</string>
     <string name="setup_requirements_info_p2"><b>Du kannst auf die Einstellungen für die Bedingungen zugreifen, indem du in der Smartspacer-Benutzeroberfläche auf ein hinzugefügtes Ziel oder eine Komplikation tippst und unten in den Einstellungen \"Bedingungen\" auswählst.</b></string>
     <string name="setup_requirements_info_p3">Bei <b>Eine-Bedingungen</b>kann jede der hinzugefügten Bedingungen erfüllt werden, um ein Ziel oder eine Komplikation anzuzeigen. Zum Beispiel könntest du die WLAN-Bedingung nutzen, um deine Einkaufsliste von Google Keep anzuzeigen, wenn du dich in Reichweite der Netzwerke von einem deiner lokalen Geschäfte befindest.</string>
-    <string name="setup_requirements_info_p4">Bei <b>Alle-Bedingungen</b>müssen alle hinzugefügten Bedingungen erfüllt werden, um ein Ziel oder eine Komplikation anzuzeigen. Zum Beispiel könntest du die Zeit &amp; Datums- und Standortbedingungen verwenden, um deinen Fitness-Pass von Google Wallet am Dienstagabend in der Nähe des Fitness-Centers anzuzeigen.</string>
+    <string name="setup_requirements_info_p4">Bei <b>Mehrfach-Bedingungen</b>müssen alle hinzugefügten Bedingungen erfüllt werden, um ein Ziel oder eine Komplikation anzuzeigen. Zum Beispiel könntest du die Zeit &amp; Datums- und Standortbedingungen verwenden, um deinen Fitness-Pass von Google Wallet am Dienstagabend in der Nähe des Fitness-Centers anzuzeigen.</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Erweitert</string>
     <string name="setup_expanded_switch">Erweiterten Smartspace aktivieren</string>
