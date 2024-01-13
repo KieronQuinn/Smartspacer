@@ -4,7 +4,7 @@
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>اختياري</b> مكن هذه الوحدة على المشغل أو المكون الإضافي لخلاصة Google للسماح باستبدال Google Discover بمساحة ذكية موسعة. يجب عليك أيضا تمكين الخيار في إعدادات Smartspace الموسعة في Smartspacer.</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
+    <string name="dummy_home_open_settings">فتح الإعدادات</string>
     <string name="notification_service">Smartspacer Notification Service</string>
     <string name="loading">Loading…</string>
     <string name="saving">Saving…</string>
@@ -24,12 +24,12 @@
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_button">Open App Info</string>
-    <string name="restricted_mode_warning_button">Grant Permission with Shizuku</string>
+    <string name="restricted_mode_button">فتح معلومات التطبيق</string>
+    <string name="restricted_mode_warning_button">منح الأذن بواسطة شيزوكو</string>
     <string name="target_sensitive_title">Contents hidden</string>
     <!-- Shared by widget, notification & expanded -->
-    <string name="tint_colour_automatic">Automatic (Wallpaper Based)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic">تلقائي (بناء على الخلفية)</string>
+    <string name="tint_colour_automatic_alt">تلقائي (بناء على السمة)</string>
     <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
     <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">White</string>
@@ -43,13 +43,13 @@
     <string name="widget_loading_smartspacer">Loading…</string>
     <string name="widget_loading_smartspacer_subtitle">Check the Smartspacer Accessibility Service is enabled if this message persists</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
-    <string name="widget_configuration_accessibility_title">Enable Accessibility Service</string>
+    <string name="widget_configuration_accessibility_title">تمكين خدمة إمكانية الوصول</string>
     <string name="widget_configuration_accessibility_content">The Smartspacer Widget requires an Accessibility Service to know which app is currently open on your device, and start/stop Targets and Complications. This allows them to be kept up to date, without needing to run all the time - saving on battery.</string>
-    <string name="widget_configuration_accessibility_enable">Enable Accessibility Service</string>
-    <string name="widget_configuration_type_title">Select Widget Type</string>
-    <string name="widget_configuration_type_home_title">Home Screen</string>
+    <string name="widget_configuration_accessibility_enable">تمكين خدمة إمكانية الوصول</string>
+    <string name="widget_configuration_type_title">حدد نوع الأداة المصغرة</string>
+    <string name="widget_configuration_type_home_title">الشاشة الرئيسية</string>
     <string name="widget_configuration_type_home_content">This Widget is on the home screen and should show Targets and Complications selected to show on the home screen</string>
-    <string name="widget_configuration_type_lock_title">Lock Screen</string>
+    <string name="widget_configuration_type_lock_title">شاشة القفل</string>
     <string name="widget_configuration_type_lock_content">This Widget is on the lock screen and should show Targets and Complications selected to show on the lock screen</string>
     <string name="widget_configuration_type_lock_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page">Page Controls</string>
