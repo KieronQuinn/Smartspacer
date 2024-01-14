@@ -848,9 +848,9 @@
     <string name="notification_widget_content">Opciones para que Smartspacer se muestre como una notificación en la pantalla de bloqueo</string>
     <string name="notification_widget_toggle">Mostrar notificación</string>
     <string name="notification_widget_info">Esta opción muestra contenido <b>limitado</b> de Smartspacer en la pantalla de bloqueo, en forma de notificación. Solo una página puede ser mostrada, y necesitas expandir la notificación para ver más que el contenido básico.</string>
-    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
+    <string name="notification_widget_notifications_disabled">Las notificaciones están desactivadas, así que esta opción no funcionará. Presiona para activarlas.</string>
     <string name="notification_widget_tint_title">Tono</string>
-    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
+    <string name="notification_widget_tint_content">Color que se usa para el texto y los iconos en la notificación: %1s</string>
     <!-- About Footer -->
     <string name="xda_thread">Hilo en XDA</string>
     <string name="github">GitHub</string>
@@ -867,7 +867,7 @@
     <string name="about_translators">Traductores</string>
     <!-- Wallpaper Colour Picker -->
     <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
-    <string name="wallpaper_colour_picker_title">Wallpaper Colour</string>
+    <string name="wallpaper_colour_picker_title">Color de fondo</string>
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
     <string name="target_digital_wellbeing_label">Bienestar digital</string>
@@ -886,12 +886,12 @@
     <string name="target_calendar_description">Muestra eventos de Calendario de calendarios seleccionados</string>
     <string name="target_calendar_description_filled">Muestra eventos de Calendario de %1s</string>
     <string name="target_calendar_configuration_title">Configuración</string>
-    <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
+    <string name="target_calendar_configuration_description">Configurar qué calendarios mostrar y las opciones para cuándo mostrar eventos</string>
     <string name="target_calendar_title_default">Evento sin título</string>
     <string name="target_calendar_title_with_time">%1s en %1dm</string>
-    <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
-    <string name="target_calendar_subtitle_with_tomorrow">%1s – Tomorrow, %1s</string>
-    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
+    <string name="target_calendar_subtitle_with_yesterday">Ayer, %1s - %1s</string>
+    <string name="target_calendar_subtitle_with_tomorrow">%1s – Ayer, %1s</string>
+    <string name="target_calendar_subtitle_with_date_for_start">%1s, %1s – %1s</string>
     <string name="target_calendar_subtitle_with_date_for_end">%1s – %1s, %1s</string>
     <string name="target_calendar_subtitle_all_day">Todo el día</string>
     <string name="target_calendar_settings_calendars">Seleccionar calendarios</string>
@@ -901,8 +901,8 @@
     <string name="target_calendar_settings_show_location_title">Mostrar ubicación</string>
     <string name="target_calendar_settings_show_location_content">Mostrar ubicación de eventos, cuando esté disponible</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Mostrar no confirmado</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
-    <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Muestra los eventos que no has marcado como asistencia confirmada.\n<b>Importante:</b> Algunos calendarios no admiten esta función y al desactivarla se ocultarán todos los eventos.</string>
+    <string name="target_calendar_settings_use_alternative_event_id_title">Usar ID de eventos alternativos</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
     <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
