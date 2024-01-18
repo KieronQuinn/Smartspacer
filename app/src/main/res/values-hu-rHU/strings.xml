@@ -4,7 +4,7 @@
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
+    <string name="dummy_home_open_settings">Beállítások megnyitása</string>
     <string name="notification_service">Smartspacer Notification Service</string>
     <string name="loading">Loading…</string>
     <string name="saving">Saving…</string>
