@@ -68,8 +68,8 @@ enum class NotificationChannel(
     SHIZUKU(
         "shizuku",
         NotificationManager.IMPORTANCE_HIGH,
-        R.string.notification_channel_native_title,
-        R.string.notification_channel_native_content
+        R.string.notification_channel_shizuku_reminder_title,
+        R.string.notification_channel_shizuku_reminder_content
     ),
     OEM(
         "oem",
