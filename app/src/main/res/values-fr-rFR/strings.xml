@@ -651,9 +651,6 @@
     <string name="expanded_settings_close_when_locked_title">Fermer lors du verrouillage de l\'appareil</string>
     <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque vous verrouillez votre appareil</string>
     <string name="expanded_settings_header_style">Style</string>
-    <string name="expanded_settings_blur_background_title">Flouter l\'arrière-plan</string>
-    <string name="expanded_settings_blur_background_content">Appliquer un flou d\'arrière-plan à Smartspace étendu. <b>Cela pourrait ne pas fonctionner correctement avec tous les lanceurs d\'applications si vous utilisez Discover Killer.</b> Lorsque cette option est désactivée, à la place, le fond d\'écran est assombri.</string>
-    <string name="expanded_settings_blur_background_incompatible">Incompatible avec votre appareil</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Remplacer Google Discover</string>

@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TargetCountLimit
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
@@ -131,7 +132,13 @@ interface SmartspacerSettingsRepository {
     /**
      *  Whether to enable background blur on the Expanded Smartspace window
      */
+    @Deprecated("No longer set in the settings")
     val expandedBlurBackground: SmartspacerSetting<Boolean>
+
+    /**
+     *  The background to use behind Expanded Smartspace
+     */
+    val expandedBackground: SmartspacerSetting<ExpandedBackground>
 
     /**
      *  The mode to use when tinting Expanded Smartspace
@@ -287,6 +294,18 @@ interface SmartspacerSettingsRepository {
         BLACK(R.string.tint_colour_black, R.string.tint_colour_black)
     }
 
+    enum class ExpandedBackground(@StringRes val label: Int) {
+        SCRIM(R.string.expanded_settings_background_mode_scrim),
+        BLUR(R.string.expanded_settings_background_mode_blur),
+        SOLID(R.string.expanded_settings_background_mode_solid);
+
+        companion object {
+            fun getAvailable(isBlurCompatible: Boolean): List<ExpandedBackground> {
+                return entries.filter { it != BLUR || isBlurCompatible }
+            }
+        }
+    }
+
     suspend fun setRestrictedModeKnownDisabledIfNeeded()
     suspend fun setInstallTimeIfNeeded()
     suspend fun getBackup(): Map<String, String>
@@ -359,6 +378,8 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_EXPANDED_BACKGROUND_BLUR = "expanded_background_blur"
         private const val DEFAULT_EXPANDED_BACKGROUND_BLUR = false
 
+        private const val KEY_EXPANDED_BACKGROUND = "expanded_background"
+
         private const val KEY_EXPANDED_TINT_COLOUR = "expanded_tint_colour"
         private val DEFAULT_EXPANDED_TINT_COLOUR = TintColour.AUTOMATIC
 
@@ -412,6 +433,15 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_NOTIFICATION_WIDGET_TINT = "notification_widget_tint"
         private val DEFAULT_NOTIFICATION_WIDGET_TINT = TintColour.AUTOMATIC
+
+        @Suppress("DEPRECATION")
+        private fun SmartspacerSettingsRepositoryImpl.getDefaultExpandedBackground(): ExpandedBackground {
+            return if(expandedBlurBackground.getSync()) {
+                ExpandedBackground.BLUR
+            }else{
+                ExpandedBackground.SCRIM
+            }
+        }
     }
 
     override val sharedPreferences: SharedPreferences = context.getSharedPreferences(
@@ -436,7 +466,9 @@ class SmartspacerSettingsRepositoryImpl(
     override val expandedOpenModeHome = enum(KEY_EXPANDED_OPEN_MODE_HOME, DEFAULT_EXPANDED_OPEN_MODE_HOME)
     override val expandedOpenModeLock = enum(KEY_EXPANDED_OPEN_MODE_LOCK, DEFAULT_EXPANDED_OPEN_MODE_LOCK)
     override val expandedCloseWhenLocked = boolean(KEY_EXPANDED_CLOSE_WHEN_LOCKED, DEFAULT_EXPANDED_CLOSE_WHEN_LOCKED)
+    @Deprecated("No longer set in the settings")
     override val expandedBlurBackground = boolean(KEY_EXPANDED_BACKGROUND_BLUR, DEFAULT_EXPANDED_BACKGROUND_BLUR)
+    override val expandedBackground = enum(KEY_EXPANDED_BACKGROUND, getDefaultExpandedBackground())
     override val expandedTintColour = enum(KEY_EXPANDED_TINT_COLOUR, DEFAULT_EXPANDED_TINT_COLOUR)
     override val expandedHasClickedAdd = boolean(KEY_EXPANDED_HAS_CLICKED_ADD, DEFAULT_EXPANDED_HAS_CLICKED_ADD)
     override val expandedWidgetUseGoogleSans = boolean(KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS, DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS)

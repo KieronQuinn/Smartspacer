@@ -43,6 +43,7 @@ import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
@@ -156,6 +157,10 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
 
     private val isDark = runBlocking {
         wallpaperRepository.homescreenWallpaperDarkTextColour.first()
+    }
+
+    private val backgroundColour by lazy {
+        monet.getBackgroundColor(requireContext())
     }
 
     private val adapter by lazy {
@@ -284,13 +289,21 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
 
     private fun setBlurEnabled(enabled: Boolean) {
         if(isOverlay) return //Handled progressively by overlay
-        if(settingsRepository.expandedBlurBackground.getSync()) {
-            val ratio = if(enabled) 1f else 0f
-            blurProvider.applyBlurToWindow(requireActivity().window, ratio)
-        }else{
-            val alpha = if(enabled) 128 else 0
-            val backgroundColour = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
-            binding.root.setBackgroundColor(backgroundColour)
+        when(settingsRepository.expandedBackground.getSync()) {
+            ExpandedBackground.BLUR -> {
+                val ratio = if(enabled) 1f else 0f
+                blurProvider.applyBlurToWindow(requireActivity().window, ratio)
+            }
+            ExpandedBackground.SCRIM -> {
+                val alpha = if(enabled) 128 else 0
+                val backgroundColour = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
+                binding.root.setBackgroundColor(backgroundColour)
+            }
+            ExpandedBackground.SOLID -> {
+                val alpha = if(enabled) 255 else 0
+                val backgroundColour = ColorUtils.setAlphaComponent(backgroundColour, alpha)
+                binding.root.setBackgroundColor(backgroundColour)
+            }
         }
     }
 

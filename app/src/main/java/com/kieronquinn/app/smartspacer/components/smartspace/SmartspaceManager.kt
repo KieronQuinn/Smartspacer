@@ -44,23 +44,21 @@ class SmartspaceManager(private val context: Context): ISmartspaceManager.Stub()
                 "Config package ${smartspaceConfig.packageName} does not match calling package $calling"
             )
         }
-        scope.launch {
-            val smartspaceSessionId = SmartspaceSessionId(sessionId)
-            if(sessions.containsKey(smartspaceSessionId)){
-                destroySmartspaceSession(sessionId)
-            }
-            synchronized(sessionsLock) {
-                sessions[smartspaceSessionId] = ClientSmartspacerSession(
-                    context,
-                    smartspaceConfig,
-                    smartspaceSessionId,
-                    ::onSmartspaceUpdate
-                )
-            }
-            token.linkToDeath({
-                destroySmartspaceSession(sessionId)
-            }, 0)
+        val smartspaceSessionId = SmartspaceSessionId(sessionId)
+        if(sessions.containsKey(smartspaceSessionId)){
+            destroySmartspaceSession(sessionId)
         }
+        synchronized(sessionsLock) {
+            sessions[smartspaceSessionId] = ClientSmartspacerSession(
+                context,
+                smartspaceConfig,
+                smartspaceSessionId,
+                ::onSmartspaceUpdate
+            )
+        }
+        token.linkToDeath({
+            destroySmartspaceSession(sessionId)
+        }, 0)
     }
 
     override fun notifySmartspaceEvent(sessionId: Bundle, event: Bundle): Boolean {

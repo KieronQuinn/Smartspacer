@@ -651,9 +651,6 @@
     <string name="expanded_settings_close_when_locked_title">Cerrar cuando esté bloqueado</string>
     <string name="expanded_settings_close_when_locked_content">Salir de Smartspace Expandido cuando el dispositivo esté bloqueado</string>
     <string name="expanded_settings_header_style">Estilo</string>
-    <string name="expanded_settings_blur_background_title">Desenfoque de fondo</string>
-    <string name="expanded_settings_blur_background_content">Aplicar un desenfoque de fondo al Smartspace expandido, desenfocando el fondo de pantalla. <b>Es posible que no funcione en todos los launchers si estás utilizando Discovery Killer.</b> Cuando esta opción está desactivada, el fondo de pantalla será atenuado.</string>
-    <string name="expanded_settings_blur_background_incompatible">No es compatible con tu dispositivo</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Usar Google Sans en Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forzar a los widgets a usar Google Sans Text siempre que sea posible, esto puede causar problemas de diseño con algunos widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Reemplazar Google Discover</string>

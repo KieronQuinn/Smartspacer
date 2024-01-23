@@ -166,7 +166,7 @@ class SmartspacerHelper(
      *  Remove a given listener
      */
     fun removeTargetsAvailableListener(listener: OnTargetsAvailableListener) {
-        listeners.removeIf { it.second == listener }
+        val wasRemoved = listeners.removeIf { it.second == listener }
         runWithSession {
             it.removeTargetsAvailableListener(listener)
         }

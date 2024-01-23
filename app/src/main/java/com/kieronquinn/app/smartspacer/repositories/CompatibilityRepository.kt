@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.components.smartspace.complications.Defau
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.AppPredictionRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.RecentTaskRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.FlashlightTarget
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityState
@@ -258,7 +259,8 @@ class CompatibilityRepositoryImpl(
         )
 
         private val ENHANCED_MODE_TARGETS = arrayOf(
-            DefaultTarget::class.java
+            DefaultTarget::class.java,
+            FlashlightTarget::class.java //Allows direct toggle rather than activity launch
         )
 
         private val ENHANCED_MODE_COMPLICATIONS = arrayOf(

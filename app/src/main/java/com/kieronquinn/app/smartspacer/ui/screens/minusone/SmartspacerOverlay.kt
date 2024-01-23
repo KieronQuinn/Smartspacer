@@ -11,12 +11,17 @@ import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
 import com.kieronquinn.app.smartspacer.databinding.OverlaySmartspacerBinding
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
+import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
 import com.kieronquinn.app.smartspacer.ui.screens.base.BaseOverlay
 import com.kieronquinn.app.smartspacer.utils.extensions.removeStatusNavBackgroundOnPreDraw
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.monetcompat.core.MonetCompat
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.runBlocking
 import org.koin.core.component.inject
 import kotlin.math.roundToInt
 
@@ -32,14 +37,27 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
     private val blurProvider by inject<BlurProvider>()
     private val expandedRepository by inject<ExpandedRepository>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
+    private val wallpaperRepository by inject<WallpaperRepository>()
     private var isResumed = false
 
-    private val blurBackground = settingsRepository.expandedBlurBackground.asFlow()
+    private val monet by lazy {
+        MonetCompat.getInstance()
+    }
+
+    private val backgroundMode = settingsRepository.expandedBackground.asFlow()
         .stateIn(
             lifecycleScope,
             SharingStarted.Eagerly,
-            settingsRepository.expandedBlurBackground.getSync()
+            settingsRepository.expandedBackground.getSync()
         )
+
+    private val isDarkText = runBlocking {
+        wallpaperRepository.homescreenWallpaperDarkTextColour.first()
+    }
+
+    private val backgroundColour by lazy {
+        monet.getBackgroundColor(context, !isDarkText)
+    }
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -64,6 +82,11 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
     override fun onDestroy() {
         super.onDestroy()
         activityManager.dispatchDestroy(true)
+    }
+
+    override fun onStop() {
+        blurProvider.applyBlurToWindow(window!!, 0f)
+        super.onStop()
     }
 
     override fun onResume() {
@@ -91,15 +114,25 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
     private fun updateProgressViews(progress: Float, force: Boolean = false){
         if(backgroundBlurProgress == progress && !force) return
         backgroundBlurProgress = progress
-        if(blurBackground.value) {
-            binding.root.background = null
-            blurProvider.applyBlurToWindow(window!!, progress)
-        }else{
-            val backgroundColour = ColorUtils.setAlphaComponent(
-                Color.BLACK, (127.5 * progress).roundToInt()
-            )
-            binding.root.background = ColorDrawable(backgroundColour)
-            blurProvider.applyBlurToWindow(window!!, 0f)
+        when(backgroundMode.value) {
+            ExpandedBackground.BLUR -> {
+                binding.root.background = null
+                blurProvider.applyBlurToWindow(window!!, progress)
+            }
+            ExpandedBackground.SCRIM -> {
+                val backgroundColour = ColorUtils.setAlphaComponent(
+                    Color.BLACK, (127.5 * progress).roundToInt()
+                )
+                binding.root.background = ColorDrawable(backgroundColour)
+                blurProvider.applyBlurToWindow(window!!, 0f)
+            }
+            ExpandedBackground.SOLID -> {
+                val backgroundColour = ColorUtils.setAlphaComponent(
+                    backgroundColour, (255 * progress).roundToInt()
+                )
+                binding.root.background = ColorDrawable(backgroundColour)
+                blurProvider.applyBlurToWindow(window!!, 0f)
+            }
         }
     }
 

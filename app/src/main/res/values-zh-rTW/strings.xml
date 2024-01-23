@@ -651,9 +651,6 @@
     <string name="expanded_settings_close_when_locked_title">鎖定時關閉</string>
     <string name="expanded_settings_close_when_locked_content">當設備鎖定時退出擴展的 Smartspace</string>
     <string name="expanded_settings_header_style">風格</string>
-    <string name="expanded_settings_blur_background_title">模糊背景</string>
-    <string name="expanded_settings_blur_background_content">對擴展的 Smartspace 應用背景模糊，使桌布變得不清楚。 <b>如果您正在使用 Discover Killer，可能無法與所有啟動器正常工作。</b> 當禁用時，桌布將會變暗。</string>
-    <string name="expanded_settings_blur_background_incompatible">與您的裝置不兼容</string>
     <string name="expanded_settings_widgets_use_google_sans_title">在小工具中使用 Google Sans 字體</string>
     <string name="expanded_settings_widgets_use_google_sans_content">強制小工具在可能的情況下使用 Google Sans 文字，這可能會導致某些小工具的佈局問題</string>
     <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>

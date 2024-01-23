@@ -651,9 +651,6 @@
     <string name="expanded_settings_close_when_locked_title">Закрыть при блокировке</string>
     <string name="expanded_settings_close_when_locked_content">Выйти из Расширенного Пространства при блокировке экрана</string>
     <string name="expanded_settings_header_style">Стиль</string>
-    <string name="expanded_settings_blur_background_title">Размыть фон</string>
-    <string name="expanded_settings_blur_background_content">Применяет размытие к фону Расширенного Пространства. <b>Может работать некорректно с некоторыми лаунчерами, если вы используете Discover Killer.</b> Если отключено, фон будет затемнён.</string>
-    <string name="expanded_settings_blur_background_incompatible">Несовместимо с вашим устройством</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Использовать Google Sans в виджетах</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Принудительно использовать шрифт Google Sans во всех виджетах. Это может вызывать проблемы с некоторыми виджетами</string>
     <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
