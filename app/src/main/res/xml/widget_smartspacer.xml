@@ -10,7 +10,7 @@
     android:description="@string/widget_description_smartspacer"
     android:resizeMode="vertical|horizontal"
     android:initialLayout="@layout/widget_smartspacer_loading"
-    android:widgetCategory="home_screen"
+    android:widgetCategory="home_screen|keyguard"
     android:widgetFeatures="reconfigurable"
     android:previewImage="@drawable/widget_smartspacer_preview"
     android:previewLayout="@layout/widget_smartspacer_preview"

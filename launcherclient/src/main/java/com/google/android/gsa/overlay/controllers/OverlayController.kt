@@ -94,6 +94,12 @@ open class OverlayController(context: Context?, theme: Int, dialogTheme: Int) :
             if (i7 != 0 && i5 == 0) {
                 onStop()
             }
+            if(i == 0) {
+                onPause()
+            }
+            if(i == 3) {
+                onResume()
+            }
         }
     }
 

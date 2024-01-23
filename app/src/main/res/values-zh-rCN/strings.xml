@@ -651,9 +651,6 @@
     <string name="expanded_settings_close_when_locked_title">锁定时关闭</string>
     <string name="expanded_settings_close_when_locked_content">设备被锁定时退出扩展 Smartspace 面板</string>
     <string name="expanded_settings_header_style">样式</string>
-    <string name="expanded_settings_blur_background_title">背景模糊</string>
-    <string name="expanded_settings_blur_background_content">为扩展 Smartspace 面板应用基于桌面壁纸的背景模糊效果。<b>如果你在使用 Discover Killer，该选项可能无法在所有启动器中正常工作。</b>禁用后壁纸采用调暗样式。</string>
-    <string name="expanded_settings_blur_background_incompatible">与你的设备不兼容</string>
     <string name="expanded_settings_widgets_use_google_sans_title">在小组间中使用 Google Sans 字体</string>
     <string name="expanded_settings_widgets_use_google_sans_content">如果可以，强制小组件使用 Google Sans 字体。在某些小组件上可能会导致布局问题</string>
     <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>

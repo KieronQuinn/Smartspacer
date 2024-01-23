@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.UserHandle;
+import android.widget.RemoteViews;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
@@ -285,6 +286,15 @@ public final class SmartspaceTarget implements Parcelable {
     }
 
     /**
+     * Returns the RemoteViews, if the target has RemoteViews.
+     */
+    @Nullable
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public RemoteViews getRemoteViews() {
+        throw new RuntimeException("Stub!");
+    }
+
+    /**
      * Returns the template data, if it is set
      */
     @Nullable
@@ -467,6 +477,18 @@ public final class SmartspaceTarget implements Parcelable {
          */
         @NonNull
         public Builder setWidget(@NonNull AppWidgetProviderInfo widget) {
+            throw new RuntimeException("Stub!");
+        }
+
+        /**
+         * Sets the RemoteViews.
+         *
+         * <p><b>NOTE: </b> If {mRemoteViews} is set, all other @Nullable params should be
+         * ignored.
+         */
+        @NonNull
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE) //QPR2+
+        public Builder setRemoteViews(@NonNull RemoteViews widget) {
             throw new RuntimeException("Stub!");
         }
 

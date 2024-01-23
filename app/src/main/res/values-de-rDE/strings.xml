@@ -652,9 +652,6 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_close_when_locked_title">Schließen, wenn gesperrt</string>
     <string name="expanded_settings_close_when_locked_content">Erweiterten Smartspace beenden, wenn das Gerät gesperrt ist</string>
     <string name="expanded_settings_header_style">Stil</string>
-    <string name="expanded_settings_blur_background_title">Hintergrund weichzeichnen</string>
-    <string name="expanded_settings_blur_background_content">Verwende eine Hintergrundunschärfe auf dem erweiterten Smartspace, wodurch der Hintergrund verschleiert wird. <b>Funktioniert möglicherweise nicht korrekt mit allen Launchern, wenn du Discover Killer verwendest.</b> Wenn deaktiviert, wird das Hintergrundbild stattdessen gedimmt.</string>
-    <string name="expanded_settings_blur_background_incompatible">Nicht kompatibel mit deinem Gerät</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Nutze Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Zwinge Widgets wo möglich Google Sans Text zu verwenden, dies kann bei einigen Widgets zu Layoutproblemen führen</string>
     <string name="expanded_settings_xposed_enabled_title">Ersetze Google Discover</string>

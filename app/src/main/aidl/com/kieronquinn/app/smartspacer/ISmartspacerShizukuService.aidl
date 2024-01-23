@@ -44,6 +44,10 @@ interface ISmartspacerShizukuService {
 
     void setProcessObserver(in IBinder observer) = 20;
 
+    String proxyContentProviderGetType(in Uri uri) = 21;
+    String[] proxyContentProviderGetStreamTypes(in Uri uri, String mimeTypeFilter) = 22;
+    ParcelFileDescriptor proxyContentProviderOpenFile(in Uri uri, String mode) = 23;
+
     void destroy() = 16777114;
 
 }

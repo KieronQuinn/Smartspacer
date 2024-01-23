@@ -45,6 +45,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -65,6 +66,9 @@
     <uses-permission android:name="com.google.android.gm.permission.READ_CONTENT_PROVIDER" />
 
     <uses-feature android:name="android.software.companion_device_setup" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:name=".Smartspacer"
@@ -241,6 +245,14 @@
             android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
 
         <activity-alias
+            android:name=".ui.activities.configuration.target.flashlight.FlashlightTargetConfigurationActivity"
+            android:description="@string/target_flashlight_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_flashlight_settings_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
             android:name=".ui.activities.configuration.complication.GmailComplicationConfigurationActivity"
             android:description="@string/complication_gmail_settings_description"
             android:exported="true"
@@ -306,6 +318,14 @@
             android:showOnLockScreen="true"
             android:theme="@style/Theme.Smartspacer.Transparent"/>
 
+        <activity android:name=".ui.activities.FlashlightToggleActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"
+            android:theme="@style/Theme.Smartspacer.Transparent"/>
+
         <service
             android:name=".service.SmartspacerSmartspaceService"
             android:exported="true"
@@ -359,6 +379,10 @@
 
         <receiver
             android:name=".receivers.SmartspacerOemClickReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".receivers.FlashlightReceiver"
             android:exported="false" />
 
         <receiver
@@ -505,6 +529,15 @@
         <provider
             android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.BlankTarget"
             android:authorities="${applicationId}.target.blank"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.FlashlightTarget"
+            android:authorities="${applicationId}.target.flashlight"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
@@ -724,6 +757,11 @@
             android:authorities="${applicationId}.widgetproxyprovider"
             android:exported="false"
             android:grantUriPermissions="true" />
+
+        <provider
+            android:name=".providers.SmartspacerElevatedProxyContentProvider"
+            android:authorities="${applicationId}.elevatedproxyprovider"
+            android:exported="false" />
 
         <!-- Exported without permission as the calling package is checked against a list -->
         <provider

@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.5.1'
-def tagCode = 151
+def tagName = '1.6'
+def tagCode = 160
 
 android {
     compileSdk 34
@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-service:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-service:2.7.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.0.1'
@@ -103,7 +103,7 @@ dependencies {
     //Bypass hidden API restrictions
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
 
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-location:21.1.0'
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
 
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
@@ -127,12 +127,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     ksp 'com.github.bumptech.glide:ksp:4.15.1'
 
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-location:21.1.0'
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
     implementation 'com.google.maps.android:android-maps-utils:3.8.0'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
-    implementation 'com.airbnb.android:lottie:6.2.0'
+    implementation 'com.airbnb.android:lottie:6.3.0'
     implementation 'com.github.skydoves:balloon:1.4.7'
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     implementation "dev.rikka.tools.refine:runtime:$refine_version"

@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedStateProvider
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
@@ -35,14 +36,14 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
     abstract fun onOpenModeHomeClicked(isFromSettings: Boolean)
     abstract fun onOpenModeLockClicked(isFromSettings: Boolean)
     abstract fun onCloseWhenLockedChanged(enabled: Boolean)
-    abstract fun onBackgroundBlurChanged(enabled: Boolean)
+    abstract fun onBackgroundModeChanged(mode: ExpandedBackground)
     abstract fun onUseGoogleSansChanged(enabled: Boolean)
     abstract fun onXposedEnabledChanged(context: Context, enabled: Boolean)
 
     abstract fun isBackgroundBlurCompatible(): Boolean
 
     sealed class State {
-        object Loading: State()
+        data object Loading: State()
         data class Loaded(
             val enabled: Boolean,
             val showSearchBox: Boolean,
@@ -52,7 +53,7 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
             val openModeHome: ExpandedOpenMode,
             val openModeLock: ExpandedOpenMode,
             val closeWhenLocked: Boolean,
-            val backgroundBlurEnabled: Boolean,
+            val backgroundMode: ExpandedBackground,
             val widgetsUseGoogleSans: Boolean,
             val xposedAvailable: Boolean,
             val xposedEnabled: Boolean
@@ -77,7 +78,7 @@ class ExpandedSettingsViewModelImpl(
     private val openModeHome = settings.expandedOpenModeHome
     private val openModeLock = settings.expandedOpenModeLock
     private val closeWhenLocked = settings.expandedCloseWhenLocked
-    private val backgroundBlur = settings.expandedBlurBackground
+    private val backgroundMode = settings.expandedBackground
     private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans
     private val xposedEnabled = settings.expandedXposedEnabled
 
@@ -106,10 +107,10 @@ class ExpandedSettingsViewModelImpl(
     private val options = combine(
         tintColour.asFlow(),
         closeWhenLocked.asFlow(),
-        backgroundBlur.asFlow(),
+        backgroundMode.asFlow(),
         widgetsUseGoogleSans.asFlow()
-    ) { tint, close, blur, googleSans ->
-        Options(tint, close, blur, googleSans)
+    ) { tint, close, mode, googleSans ->
+        Options(tint, close, mode, googleSans)
     }
 
     override val state = combine(
@@ -128,7 +129,7 @@ class ExpandedSettingsViewModelImpl(
             open.first,
             open.second,
             options.closeWhenLocked,
-            options.backgroundBlur,
+            options.backgroundMode,
             options.widgetsUseGoogleSans,
             xposed,
             open.third
@@ -189,9 +190,9 @@ class ExpandedSettingsViewModelImpl(
         }
     }
 
-    override fun onBackgroundBlurChanged(enabled: Boolean) {
+    override fun onBackgroundModeChanged(mode: ExpandedBackground) {
         vmScope.launch {
-            backgroundBlur.set(enabled)
+            backgroundMode.set(mode)
         }
     }
 
@@ -215,7 +216,7 @@ class ExpandedSettingsViewModelImpl(
     data class Options(
         val tintColour: TintColour,
         val closeWhenLocked: Boolean,
-        val backgroundBlur: Boolean,
+        val backgroundMode: ExpandedBackground,
         val widgetsUseGoogleSans: Boolean
     )
 

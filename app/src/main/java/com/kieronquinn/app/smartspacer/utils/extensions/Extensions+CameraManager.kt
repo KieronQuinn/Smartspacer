@@ -13,10 +13,13 @@ suspend fun CameraManager.toggleTorch() {
     setTorchMode(id, !current)
 }
 
-private suspend fun CameraManager.getTorchMode() = suspendCoroutine<Boolean?> {
+private suspend fun CameraManager.getTorchMode() = suspendCoroutine {
+    var hasResumed = false
     val callback = object: CameraManager.TorchCallback() {
         override fun onTorchModeChanged(cameraId: String, enabled: Boolean) {
             super.onTorchModeChanged(cameraId, enabled)
+            if(hasResumed) return
+            hasResumed = true
             it.resume(enabled)
             unregisterTorchCallback(this)
         }

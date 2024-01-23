@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 import android.graphics.drawable.Icon as AndroidIcon
 
@@ -82,7 +83,9 @@ class ClientSmartspacerSession(
     override fun toSmartspacerSessionId(id: SmartspaceSessionId) = id
 
     init {
-        onCreate()
+        lifecycleScope.launch {
+            onCreate()
+        }
     }
 
 }

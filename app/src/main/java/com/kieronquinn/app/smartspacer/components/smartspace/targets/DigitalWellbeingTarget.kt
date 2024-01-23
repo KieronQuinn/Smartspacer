@@ -41,7 +41,7 @@ class DigitalWellbeingTarget: SmartspacerTargetProvider() {
             "${state.app2Time}: ${state.app2Name}"
         }else null
         val app3 = if(state.app3Name.isNotEmpty()){
-            "${state.app2Time}: ${state.app3Name}"
+            "${state.app3Time}: ${state.app3Name}"
         }else null
         val items = listOfNotNull(
             app1?.let { Text(it.takeEllipsised(maxLength)) },

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
@@ -170,21 +171,22 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 viewModel::onTintColourChanged,
                 TintColour.values().toList()
             ) { it.label },
-            GenericSettingsItem.SwitchSetting(
-                backgroundBlurEnabled,
-                getString(R.string.expanded_settings_blur_background_title),
-                if (backgroundBlurCompatible) {
-                    getText(R.string.expanded_settings_blur_background_content)
-                } else {
-                    getString(R.string.expanded_settings_blur_background_incompatible)
-                },
+            GenericSettingsItem.Dropdown(
+                getString(R.string.expanded_settings_background_mode_title),
+                getString(
+                    R.string.expanded_settings_background_mode_content,
+                    getString(backgroundMode.label)
+                ),
                 ContextCompat.getDrawable(
                     requireContext(),
                     R.drawable.ic_settings_expanded_blur_background
                 ),
-                onChanged = viewModel::onBackgroundBlurChanged,
-                enabled = backgroundBlurCompatible
-            ),
+                backgroundMode,
+                onSet = viewModel::onBackgroundModeChanged,
+                SmartspacerSettingsRepository.ExpandedBackground.getAvailable(backgroundBlurCompatible)
+            ) {
+                it.label
+            },
             GenericSettingsItem.SwitchSetting(
                 widgetsUseGoogleSans,
                 getString(R.string.expanded_settings_widgets_use_google_sans_title),

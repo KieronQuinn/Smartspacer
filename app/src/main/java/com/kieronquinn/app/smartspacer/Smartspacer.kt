@@ -5,7 +5,6 @@ import android.app.Application
 import android.content.ComponentName
 import android.content.Context
 import android.content.res.Resources
-import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import androidx.work.Configuration
 import com.google.android.material.color.DynamicColors
@@ -66,6 +65,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDat
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.default.DefaultTargetConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.default.DefaultTargetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.flashlight.FlashlightTargetConfigurationViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.flashlight.FlashlightTargetConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.GeofenceRequirementConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.GeofenceRequirementConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.name.GeofenceRequirementConfigurationNameViewModel
@@ -299,6 +300,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single<RecentTasksRepository>(createdAtStart = true) { RecentTasksRepositoryImpl(get(), get()) }
         single<WiFiRepository>(createdAtStart = true) { WiFiRepositoryImpl(get(), get()) }
         single<BluetoothRepository>(createdAtStart = true) { BluetoothRepositoryImpl(get()) }
+        single<FlashlightRepository>(createdAtStart = true) { FlashlightRepositoryImpl(get(), get()) }
     }
 
     private val viewModels = module {
@@ -420,6 +422,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<DateTargetFormatPickerViewModel> { DateTargetFormatPickerViewModelImpl(get()) }
         viewModel<DateTargetFormatCustomViewModel> { DateTargetFormatCustomViewModelImpl() }
         viewModel<BluetoothRequirementConfigurationViewModel> { BluetoothRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
+        viewModel<FlashlightTargetConfigurationViewModel> { FlashlightTargetConfigurationViewModelImpl(get(), get()) }
     }
 
     override fun attachBaseContext(base: Context) {
@@ -435,7 +438,6 @@ class Smartspacer: Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("SX", "Process init, name: ${getProcessName()}")
         if(isSafeMode()) return
         DynamicColors.applyToActivitiesIfAvailable(this)
         setupMonet()

@@ -6,6 +6,7 @@ import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.test.BaseTest
@@ -46,7 +47,7 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
     private val openModeHomeMock = mockSmartspacerSetting(ExpandedOpenMode.NEVER)
     private val openModeLockMock = mockSmartspacerSetting(ExpandedOpenMode.NEVER)
     private val closeWhenLockedMock = mockSmartspacerSetting(false)
-    private val backgroundBlurMock = mockSmartspacerSetting(false)
+    private val backgroundMock = mockSmartspacerSetting(ExpandedBackground.SCRIM)
     private val widgetsUseGoogleSansMock = mockSmartspacerSetting(false)
     private val navigationMock = mock<ContainerNavigation>()
 
@@ -58,7 +59,7 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
         every { expandedOpenModeHome } returns openModeHomeMock
         every { expandedOpenModeLock } returns openModeLockMock
         every { expandedCloseWhenLocked } returns closeWhenLockedMock
-        every { expandedBlurBackground } returns backgroundBlurMock
+        every { expandedBackground } returns backgroundMock
         every { expandedWidgetUseGoogleSans } returns widgetsUseGoogleSansMock
     }
 
@@ -136,16 +137,16 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
     }
 
     @Test
-    fun testOnBackgroundBlurChanged() = runTest {
+    fun testOnBackgroundChanged() = runTest {
         sut.state.test {
             sut.state.assertOutputs<State, State.Loaded>()
             val item = expectMostRecentItem() as State.Loaded
-            assertFalse(item.backgroundBlurEnabled)
-            sut.onBackgroundBlurChanged(true)
+            assertTrue(item.backgroundMode == ExpandedBackground.SCRIM)
+            sut.onBackgroundModeChanged(ExpandedBackground.BLUR)
             val updatedItem = awaitItem()
             assertTrue(updatedItem is State.Loaded)
             updatedItem as State.Loaded
-            assertTrue(updatedItem.backgroundBlurEnabled)
+            assertTrue(updatedItem.backgroundMode == ExpandedBackground.BLUR)
         }
     }
 

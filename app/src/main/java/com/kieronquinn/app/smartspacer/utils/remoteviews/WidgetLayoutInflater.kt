@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetButton
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetCheckBox
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetChronometer
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetGridView
+import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetImageView
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetListView
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetRadioButton
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetSwitch
@@ -85,6 +86,9 @@ class WidgetLayoutInflater(
                 }
                 "TextView" -> {
                     WidgetTextView(context, attrs)
+                }
+                "ImageView" -> {
+                    WidgetImageView(context, attrs)
                 }
                 else -> originalFactory?.onCreateView(parent, name, context, attrs)
             }

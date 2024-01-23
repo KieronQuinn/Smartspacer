@@ -6,6 +6,7 @@ import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.os.IBinder
 import android.os.RemoteException
+import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.ISmartspacerSuiService
@@ -167,6 +168,8 @@ class ShizukuServiceRepositoryImpl(
         if(it){
             systemSmartspaceRepository.showNativeStartReminderIfNeeded()
             updateUsernameIfNeeded()
+            //Start the service if required
+            getService()
         }
     }.stateIn(scope, SharingStarted.Eagerly, false)
 

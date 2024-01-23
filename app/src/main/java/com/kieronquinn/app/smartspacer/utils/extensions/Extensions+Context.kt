@@ -12,6 +12,10 @@ import android.content.pm.PackageManager.NameNotFoundException
 import android.content.res.Configuration
 import android.database.ContentObserver
 import android.graphics.Rect
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import android.hardware.camera2.CameraManager
+import android.hardware.camera2.CameraManager.TorchCallback
 import android.media.AudioManager
 import android.media.AudioPlaybackConfiguration
 import android.net.Uri
@@ -36,6 +40,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import java.util.concurrent.Executor
 import kotlin.math.max
 import kotlin.math.min
 
@@ -462,3 +467,26 @@ fun Context.getDarkMode(
 ) = broadcastReceiverAsFlow(IntentFilter(ACTION_CONFIGURATION_CHANGED)).map {
     isDarkMode
 }.stateIn(scope, SharingStarted.Eagerly, isDarkMode)
+
+fun Context.flashlightOn(executor: Executor) = callbackFlow {
+    val cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+    val callback = object: TorchCallback() {
+        override fun onTorchModeChanged(cameraId: String, enabled: Boolean) {
+            super.onTorchModeChanged(cameraId, enabled)
+            trySend(enabled)
+        }
+    }
+    cameraManager.registerTorchCallback(executor, callback)
+    awaitClose {
+        cameraManager.unregisterTorchCallback(callback)
+    }
+}
+
+fun Context.hasFlashlight(): Boolean {
+    return packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)
+}
+
+fun Context.hasLightSensor(): Boolean {
+    val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    return sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null
+}

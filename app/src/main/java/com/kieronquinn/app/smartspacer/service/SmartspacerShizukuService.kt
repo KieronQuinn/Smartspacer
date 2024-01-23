@@ -14,23 +14,28 @@ import android.app.smartspace.ISmartspaceManager
 import android.app.smartspace.SmartspaceConfig
 import android.app.smartspace.SmartspaceManager
 import android.app.smartspace.SmartspaceSessionId
+import android.content.AttributionSource
 import android.content.ComponentName
 import android.content.Context
+import android.content.IContentProvider
 import android.content.Intent
 import android.content.pm.ILauncherApps
 import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.hardware.camera2.CameraManager
+import android.net.Uri
 import android.net.wifi.IWifiManager
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.os.IUserManager
+import android.os.ParcelFileDescriptor
 import android.os.Process
 import android.os.RemoteException
 import android.os.UserHandle
 import android.system.Os
+import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener
 import com.kieronquinn.app.smartspacer.IRunningAppObserver
@@ -171,6 +176,16 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         return getUserHandle().getIdentifier()
     }
 
+    private val attributionSource by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AttributionSource.Builder(Process.SHELL_UID)
+                .setPackageName(PACKAGE_SHELL)
+                .build()
+        } else {
+            throw RuntimeException("Requires Android 12")
+        }
+    }
+
     override fun ping() = true
 
     override fun isRoot() = canUseRoot
@@ -243,7 +258,7 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     override fun getShortcuts(query: ShortcutQueryWrapper): ParceledListSlice<ShortcutInfo> {
         val token = clearCallingIdentity()
-        val shortcuts = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+        val shortcuts = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             launcherApps.getShortcuts(
                 PACKAGE_SHELL,
                 query.toSystemShortcutQueryWrapper(),
@@ -457,6 +472,66 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     override fun setProcessObserver(observer: IBinder?) {
         runningAppObserver = observer?.let {
             IRunningAppObserver.Stub.asInterface(it)
+        }
+    }
+
+    override fun proxyContentProviderGetType(uri: Uri): String? {
+        return runWithProxyProvider(uri) { getType(uri) }
+    }
+
+    override fun proxyContentProviderGetStreamTypes(
+        uri: Uri,
+        mimeTypeFilter: String
+    ): Array<String>? {
+        return runWithProxyProvider(uri) { getStreamTypes(uri, mimeTypeFilter) }
+    }
+
+    override fun proxyContentProviderOpenFile(uri: Uri, mode: String): ParcelFileDescriptor? {
+        return runWithProxyProvider(uri) {
+            try {
+                when {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                        openFile(attributionSource, uri, mode, null)
+                    }
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
+                        openFile(
+                            PACKAGE_SHELL,
+                            shellContext.attributionTag,
+                            uri,
+                            mode,
+                            null,
+                            Binder()
+                        )
+                    }
+                    else -> {
+                        openFile(PACKAGE_SHELL, uri, mode, null, Binder())
+                    }
+                }
+            }catch (e: Throwable) {
+                Log.e("Smartspacer", "Failed to proxy openFile", e)
+                null
+            }
+        }
+    }
+
+    private fun <T> runWithProxyProvider(uri: Uri, block: IContentProvider.() -> T?): T? {
+        return runWithClearedIdentity {
+            val token = Binder()
+            try {
+                val provider = activityManager.getContentProviderExternal(
+                    uri.authority,
+                    getUserId(),
+                    token,
+                    "proxy"
+                )?.provider
+                provider?.let { block(it) }
+            } finally {
+                activityManager.removeContentProviderExternalAsUser(
+                    uri.authority,
+                    token,
+                    getUserId()
+                )
+            }
         }
     }
 
