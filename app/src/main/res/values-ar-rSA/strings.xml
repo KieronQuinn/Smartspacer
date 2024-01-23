@@ -2,21 +2,21 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>اختياري</b> مكن هذه الوحدة على المشغل أو المكون الإضافي لخلاصة Google للسماح باستبدال Google Discover بمساحة ذكية موسعة. يجب عليك أيضا تمكين الخيار في إعدادات Smartspace الموسعة في Smartspacer.</string>
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
+    <string name="dummy_home_open_settings">فتح الإعدادات</string>
     <string name="notification_service">Smartspacer Notification Service</string>
     <string name="loading">Loading…</string>
     <string name="saving">Saving…</string>
-    <string name="search">Search</string>
+    <string name="search">البحث</string>
     <string name="delete">Delete</string>
     <string name="save">Save</string>
     <string name="close">Close</string>
     <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
+    <string name="menu_rerun_setup">إعادة الإعداد</string>
+    <string name="bottom_nav_targets">الأغراض</string>
     <string name="bottom_nav_complications">Complications</string>
-    <string name="bottom_nav_plugins">Plugins</string>
+    <string name="bottom_nav_plugins">الإضافات</string>
     <string name="bottom_nav_settings">Settings</string>
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
@@ -24,12 +24,12 @@
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_button">Open App Info</string>
-    <string name="restricted_mode_warning_button">Grant Permission with Shizuku</string>
+    <string name="restricted_mode_button">فتح معلومات التطبيق</string>
+    <string name="restricted_mode_warning_button">منح الأذن بواسطة شيزوكو</string>
     <string name="target_sensitive_title">Contents hidden</string>
     <!-- Shared by widget, notification & expanded -->
-    <string name="tint_colour_automatic">Automatic (Wallpaper Based)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic">تلقائي (بناء على الخلفية)</string>
+    <string name="tint_colour_automatic_alt">تلقائي (بناء على السمة)</string>
     <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
     <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">White</string>
@@ -43,13 +43,13 @@
     <string name="widget_loading_smartspacer">Loading…</string>
     <string name="widget_loading_smartspacer_subtitle">Check the Smartspacer Accessibility Service is enabled if this message persists</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
-    <string name="widget_configuration_accessibility_title">Enable Accessibility Service</string>
+    <string name="widget_configuration_accessibility_title">تمكين خدمة إمكانية الوصول</string>
     <string name="widget_configuration_accessibility_content">The Smartspacer Widget requires an Accessibility Service to know which app is currently open on your device, and start/stop Targets and Complications. This allows them to be kept up to date, without needing to run all the time - saving on battery.</string>
-    <string name="widget_configuration_accessibility_enable">Enable Accessibility Service</string>
-    <string name="widget_configuration_type_title">Select Widget Type</string>
-    <string name="widget_configuration_type_home_title">Home Screen</string>
+    <string name="widget_configuration_accessibility_enable">تمكين خدمة إمكانية الوصول</string>
+    <string name="widget_configuration_type_title">حدد نوع الأداة المصغرة</string>
+    <string name="widget_configuration_type_home_title">الشاشة الرئيسية</string>
     <string name="widget_configuration_type_home_content">This Widget is on the home screen and should show Targets and Complications selected to show on the home screen</string>
-    <string name="widget_configuration_type_lock_title">Lock Screen</string>
+    <string name="widget_configuration_type_lock_title">شاشة القفل</string>
     <string name="widget_configuration_type_lock_content">This Widget is on the lock screen and should show Targets and Complications selected to show on the lock screen</string>
     <string name="widget_configuration_type_lock_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page">Page Controls</string>
@@ -67,7 +67,7 @@
     <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
-    <string name="target_notification_label">Notifications</string>
+    <string name="target_notification_label">الإشعارات</string>
     <string name="target_notification_description">Shows notifications from an app</string>
     <string name="target_notification_description_selected">Shows notifications from %1s</string>
     <string name="target_notification_description_selected_with_channels">Shows notifications from %1s (%1d %1s)</string>
@@ -388,12 +388,12 @@
     <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
     <string name="settings_targets_complications">Targets &amp; Complications</string>
-    <string name="settings_plugins">Plugins</string>
+    <string name="settings_plugins">الإضافات</string>
     <string name="settings_options">Options</string>
     <string name="settings_enable_update_check_title">Automatically Check for Updates</string>
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
-    <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
-    <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
+    <string name="settings_enable_analytics_title">تمكين التحليلات &amp; الإبلاغ عن الأخطاء</string>
+    <string name="settings_enable_analytics_content">السماح بإرسال تقارير الاخطاء المجهولة وتحليلات أساسية إلى Firebase، للمساعدة في إصلاح الأخطاء</string>
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
@@ -443,10 +443,10 @@
     <string name="compatibility_label_systemui">Lock Screen</string>
     <!-- Setup -->
     <string name="landing_title">@string/app_name</string>
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">هيا بنا</string>
     <!-- Setup > Analytics -->
-    <string name="setup_analytics_title_short">Analytics</string>
-    <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
+    <string name="setup_analytics_title_short">التحليلات</string>
+    <string name="setup_analytics_title">التحليلات &amp; الإبلاغ عن الاخطاء</string>
     <string name="setup_analytics_content"><![CDATA[Smartspacer uses a lot of experimental and "hidden" Android APIs, which may be prone to crashing on some devices due to OEM modifications.<br>To help bug fixing, Smartspacer can send crash reports to Firebase Crashlytics, as well as basic analytic information (app launches).<br>This data is all anonymous, and is entirely optional, more details and privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">here</a>]]></string>
     <string name="setup_analytics_allow">Allow</string>
     <string name="setup_analytics_deny">Deny</string>
@@ -506,7 +506,7 @@
     <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
-    <string name="setup_plugins_title">Plugins</string>
+    <string name="setup_plugins_title">الإضافات</string>
     <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
     <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
     <string name="setup_plugins_info_finish">Finish</string>
@@ -580,7 +580,7 @@
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
-    <string name="target_music_title">Music</string>
+    <string name="target_music_title">موسيقى</string>
     <string name="target_music_description">Displays the currently playing on-device music track</string>
     <string name="target_music_setting_show_album_art_title">Show Album Art</string>
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
@@ -633,7 +633,7 @@
     <string name="expanded_settings_content">Show Smartspace Targets and Complications in a full screen view, with extra information including widgets, app shortcuts and more</string>
     <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
     <string name="expanded_settings_switch">Enable Expanded Smartspace</string>
-    <string name="expanded_settings_header_search">Search</string>
+    <string name="expanded_settings_header_search">البحث</string>
     <string name="expanded_settings_show_search_box_title">Show Search Box</string>
     <string name="expanded_settings_show_search_box_content">Show a search box at the top of Expanded Smartspace</string>
     <string name="expanded_settings_search_provider_title">Search Provider</string>
@@ -683,7 +683,7 @@
     <string name="oem_smartspace_label_systemui">Lock Screen</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
-    <string name="expanded_search_box_search">Search…</string>
+    <string name="expanded_search_box_search">البحث…</string>
     <string name="expanded_footer">Add Widget</string>
     <string name="expanded_custom_widget_delete">Remove</string>
     <string name="expanded_custom_widget_options">Options</string>
@@ -714,8 +714,8 @@
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
     <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
     <string name="battery_optimisation_footer_link">Learn More</string>
-    <string name="plugin_repository_tab_installed">Installed</string>
-    <string name="plugin_repository_tab_available">Available</string>
+    <string name="plugin_repository_tab_installed">المثبتة</string>
+    <string name="plugin_repository_tab_available">المتاحة</string>
     <string name="plugin_repository_empty_title_not_found">Not Found</string>
     <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
     <string name="plugin_repository_empty_title_empty">No Plugins loaded</string>
@@ -724,7 +724,7 @@
     <string name="plugin_repository_empty_title_browse">No Plugins Installed</string>
     <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet.</string>
     <string name="plugin_repository_empty_button_browse">Browse Plugins</string>
-    <string name="plugin_repository_update_available">Update Available!</string>
+    <string name="plugin_repository_update_available">التحديث متوفر!</string>
     <string name="plugin_repository_recommended">Recommended for:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">Install</string>
@@ -882,7 +882,7 @@
     <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
     <string name="complication_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
-    <string name="target_calendar_label">Calendar</string>
+    <string name="target_calendar_label">التقويم</string>
     <string name="target_calendar_description">Shows Calendar events from selected calendars</string>
     <string name="target_calendar_description_filled">Shows Calendar events from %1s</string>
     <string name="target_calendar_configuration_title">Settings</string>

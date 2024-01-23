@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour pouvoir remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -66,7 +66,7 @@
     <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
     <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
@@ -165,7 +165,7 @@
     <string name="notification_location_permission_required_title">Position en arrière-plan</string>
     <string name="notification_location_permission_required_content">Smartspacer nécessite l\'accès à la position en arrière-plan, appuyez pour autoriser</string>
     <string name="notification_accessibility_widget_title">Activez le service d\'accessibilité du widget</string>
-    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
+    <string name="notification_accessibility_widget_content">Le service d\'accessibilité du widget Smartspacer doit être activé pour que les widgets fonctionnent, appuyez pour activer. Sinon, vous pouvez choisir d\'activer le mode amélioré ; pensez alors à démarrer Shizuku.</string>
     <string name="fab_targets_add">Ajouter une cible</string>
     <string name="targets_empty_label">Aucune cible ajoutée</string>
     <string name="target_not_available">Cette cible n\'est plus disponible, appuyez pour la supprimer</string>
@@ -345,19 +345,19 @@
     <string name="requirement_wifi_configuration_picker_available_empty">Aucun réseau trouvé, assurez-vous que le Wi-Fi est activé et qu\'il y a des réseaux à proximité</string>
     <string name="requirement_wifi_configuration_picker_saved">Réseaux enregistrés</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Réseau inconnu</string>
-    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
-    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
-    <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
-    <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
-    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
-    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
-    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
-    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
-    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
-    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
-    <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
-    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
-    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
+    <string name="requirement_bluetooth_title">Appareil Bluetooth connecté</string>
+    <string name="requirement_bluetooth_description">Afficher uniquement lorsqu\'un appareil Bluetooth particulier est connecté</string>
+    <string name="requirement_bluetooth_description_set">Afficher uniquement lorsque votre appareil est connecté à un appareil Bluetooth nommé « %1s »</string>
+    <string name="requirement_bluetooth_incompatible">Cette condition requiert le Bluetooth</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Sélectionner un appareil</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Autorisations Bluetooth et Position requises, appuyez pour autoriser.\n<b>Remarque :</b> l\'accès à la position est requis par Android pour pouvoir connaître les appareils Bluetooth connectés.</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer doit suivre en arrière-plan les connexions Bluetooth ; pour ce faire, Smartspacer a besoin que l\'autorisation Position soit définie sur « Toujours autoriser », appuyez pour définir</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth désactivé, appuyez pour l\'activer</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Seuls les appareils actuellement ou précédemment associés peuvent être sélectionnés</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">Aucun appareil associé</string>
+    <string name="requirement_bluetooth_configuration_pick_selected">%1s (sélectionné)</string>
+    <string name="requirement_bluetooth_notification_title">Autorisation Bluetooth requise</string>
+    <string name="requirement_bluetooth_notification_content">Smartspacer a besoin d\'accéder au Bluetooth et à la position en arrière-plan pour la condition Bluetooth, appuyez pour autoriser</string>
     <string name="requirement_app_prediction">Suggestion d\'application</string>
     <string name="requirement_app_prediction_content_generic">Afficher uniquement lorsqu\'une application spécifique est dans les 5 premières suggestions (affichées généralement dans votre tiroir d\'applications)</string>
     <string name="requirement_app_prediction_content">Afficher uniquement lorsque %1s est dans les 5 premières suggestions</string>
@@ -447,7 +447,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -656,9 +656,9 @@
     <string name="expanded_settings_blur_background_incompatible">Incompatible avec votre appareil</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
-    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
-    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
-    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
+    <string name="expanded_settings_xposed_enabled_title">Remplacer Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_content">Remplacer le flux Google Discover par Smartspace étendu.\n<b>Remarque :</b> pour activer cette option, vous devez activer le module Xposed pour votre lanceur d\'applications ou pour votre plugin Google Feed, puis redémarrer votre appareil.</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">Cette option requiert Xposed</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
