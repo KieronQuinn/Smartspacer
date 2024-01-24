@@ -651,11 +651,11 @@
     <string name="expanded_settings_close_when_locked_title">Fermer lors du verrouillage de l\'appareil</string>
     <string name="expanded_settings_close_when_locked_content">Quitter Smartspace étendu lorsque vous verrouillez votre appareil</string>
     <string name="expanded_settings_header_style">Style</string>
-    <string name="expanded_settings_background_mode_title">Background</string>
-    <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
-    <string name="expanded_settings_background_mode_blur">Blurred Wallpaper</string>
-    <string name="expanded_settings_background_mode_scrim">Dimmed Wallpaper</string>
-    <string name="expanded_settings_background_mode_solid">Solid Colour</string>
+    <string name="expanded_settings_background_mode_title">Fond d\'écran</string>
+    <string name="expanded_settings_background_mode_content">Fond d\'écran à afficher derrière Smartspace étendu : %1s</string>
+    <string name="expanded_settings_background_mode_blur">Fond d\'écran flouté</string>
+    <string name="expanded_settings_background_mode_scrim">Fond d\'écran assombri</string>
+    <string name="expanded_settings_background_mode_solid">Couleur unie</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Remplacer Google Discover</string>
@@ -711,7 +711,7 @@
     <string name="battery_optimisation_system_title">Désactiver l\'optimisation de la batterie</string>
     <string name="battery_optimisation_system_content">Nécessaire pour permettre à Smartspacer de continuer à s\'exécuter en arrière-plan.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Autoriser les alarmes et les rappels</string>
-    <string name="battery_optimisation_schedule_exact_alarm_content">Nécessaire pour que Smartspacer puisse mettre à jour en arrière-plan les cibles et les complications de façon fiable.</string>
+    <string name="battery_optimisation_schedule_exact_alarm_content">Nécessaire pour que Smartspacer puisse mettre à jour en arrière-plan les cibles et les complications de manière fiable.</string>
     <string name="battery_optimisation_oem_title">Optimisation de la batterie OEM</string>
     <string name="battery_optimisation_oem_content">Il semblerait que le fabricant de votre appareil ait ajouté des optimisations de batterie supplémentaires. Ces optimisations ne peuvent pas être désactivées automatiquement, appuyez pour ouvrir les paramètres de la batterie.</string>
     <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter que l\'application soit tuée par le système, les optimisations de la batterie doivent être désactivées.</string>
@@ -732,7 +732,7 @@
     <string name="plugin_details_install">Installer</string>
     <string name="plugin_details_start_install">Installer</string>
     <string name="plugin_details_open">Ouvrir</string>
-    <string name="plugin_details_update">Mettre à jour</string>
+    <string name="plugin_details_update">Mise à jour</string>
     <string name="plugin_details_uninstall">Désinstaller</string>
     <string name="plugin_details_install_companion">Obtenir l\'application requise</string>
     <string name="plugin_details_error_title">Erreur</string>
@@ -773,7 +773,7 @@
     <string name="donate_prompt_dismiss">Fermer</string>
     <string name="donate_paragraph_1">Merci d\'avoir pris le temps de faire un don. Bien que Smartspacer soit disponible gratuitement et en open-source, c\'est une application complexe qui a pris très longtemps à développer.</string>
     <string name="donate_paragraph_2">Si vous souhaitez faire un don, la seule option disponible actuellement est PayPal (lien ci-dessous). D\'autres options pourraient être mises à disposition à l\'avenir si nécessaire, ouvrez une GitHub Issue si vous avez une suggestion à faire. Enfin, des options de paiement direct telles que Wise peuvent être mises à votre disposition sur demande.</string>
-    <string name="donate_paragraph_3">Si vous avez déjà fait un don ou que vous n\'êtes pas actuellement en mesure d\'en faire un, vous pouvez masquer la bannière d\'appel aux dons de façon permanente ci-dessous (vous pourrez toujours accéder à cet écran en bas des paramètres).</string>
+    <string name="donate_paragraph_3">Si vous avez déjà fait un don ou que vous n\'êtes pas actuellement en mesure d\'en faire un, vous pouvez masquer définitivement ci-dessous la bannière d\'appel aux dons (vous pourrez toujours accéder à cet écran en bas des paramètres).</string>
     <string name="donate_disable">Masquer la bannière</string>
     <string name="donate_paypal">PayPal</string>
     <!-- Permissions settings -->
@@ -966,19 +966,19 @@
     <string name="target_date_settings_custom_content">Saisissez un format de date compatible avec Java</string>
     <string name="target_date_settings_custom_invalid">Format de date invalide</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Torch</string>
-    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
-    <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
-    <string name="target_flashlight_title_on">Torch on</string>
-    <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Torch off</string>
-    <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
-    <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
-    <string name="target_flashlight_toast">Grant the Camera permission</string>
+    <string name="target_flashlight_title">Lampe de poche</string>
+    <string name="target_flashlight_description">Afficher un rappel lorsque la lampe de poche est allumée</string>
+    <string name="target_flashlight_incompatible">Cette cible requiert un flash</string>
+    <string name="target_flashlight_settings_title">Paramètres</string>
+    <string name="target_flashlight_settings_description">Configurer la proposition d\'activer la lampe de poche en fonction de la luminosité ambiante</string>
+    <string name="target_flashlight_title_on">Lampe de poche activée</string>
+    <string name="target_flashlight_subtitle_on">Appuyez pour l\'éteindre</string>
+    <string name="target_flashlight_title_off">Lampe de poche désactivée</string>
+    <string name="target_flashlight_subtitle_off">Appuyez pour l\'allumer</string>
+    <string name="target_flashlight_settings_show_recommendation">Afficher la proposition d\'activer la lampe de poche</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Proposer d\'activer la lampe de poche lorsque la luminosité ambiante est faible (peut diminuer l\'autonomie de votre appareil)</string>
+    <string name="target_flashlight_settings_show_recommendation_incompatible">Cette option est incompatible avec votre appareil</string>
+    <string name="target_flashlight_toast">Accordez l\'autorisation Caméra</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus (Gmail)</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>
