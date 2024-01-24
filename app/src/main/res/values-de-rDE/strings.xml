@@ -44,7 +44,7 @@
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
     <string name="widget_configuration_accessibility_title">Aktiviere Bedienungshilfen</string>
-    <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Batterie sparen.</string>
+    <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Akku sparen.</string>
     <string name="widget_configuration_accessibility_enable">Aktiviere Bedienungshilfen</string>
     <string name="widget_configuration_type_title">Widget-Typ auswählen</string>
     <string name="widget_configuration_type_home_title">Startbildschirm</string>
@@ -578,7 +578,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="notification_sui_content_oem_smartspace">Hersteller-Smartspace erfordert, dass Shizuku als Root oder Sui gestartet wird. Smartspacer konnte keine Verbindung herstellen, daher wurde der Dienst deaktiviert.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Deaktiviere Akku-Optimierung</string>
-    <string name="notification_battery_optimisation_content">Für Smartspacer muss die Batterieoptimierung deaktiviert sein, um Ziele &amp; Komplikationen im Hintergrund zu aktualisieren, tippe zum Deaktivieren</string>
+    <string name="notification_battery_optimisation_content">Für Smartspacer muss die Akku-Optimierung deaktiviert sein, um Ziele &amp; Komplikationen im Hintergrund zu aktualisieren, tippe zum Deaktivieren</string>
     <string name="notification_battery_optimisation_failed_toast">Fehler beim Öffnen der Einstellungen, bitte erteile die Berechtigung manuell</string>
     <!-- Music Target -->
     <string name="target_music_title">Musik</string>
@@ -652,11 +652,11 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_close_when_locked_title">Schließen, wenn gesperrt</string>
     <string name="expanded_settings_close_when_locked_content">Erweiterten Smartspace beenden, wenn das Gerät gesperrt ist</string>
     <string name="expanded_settings_header_style">Stil</string>
-    <string name="expanded_settings_background_mode_title">Background</string>
-    <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
-    <string name="expanded_settings_background_mode_blur">Blurred Wallpaper</string>
-    <string name="expanded_settings_background_mode_scrim">Dimmed Wallpaper</string>
-    <string name="expanded_settings_background_mode_solid">Solid Colour</string>
+    <string name="expanded_settings_background_mode_title">Hintergrund</string>
+    <string name="expanded_settings_background_mode_content">Der Hintergrund hinter dem erweiterten Smartspace: %1s</string>
+    <string name="expanded_settings_background_mode_blur">Unscharfer Hintergrund</string>
+    <string name="expanded_settings_background_mode_scrim">Gedimmter Hintergrund</string>
+    <string name="expanded_settings_background_mode_solid">Einfarbig</string>
     <string name="expanded_settings_widgets_use_google_sans_title">Nutze Google Sans in Widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Zwinge Widgets wo möglich Google Sans Text zu verwenden, dies kann bei einigen Widgets zu Layoutproblemen führen</string>
     <string name="expanded_settings_xposed_enabled_title">Ersetze Google Discover</string>
@@ -708,14 +708,14 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
     <string name="battery_optimisation_title">Akku-Optimierung</string>
-    <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Batterieoptimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
+    <string name="battery_optimisation_content">Einstellungen zum Deaktivieren der Akku-Optimierung für eine verbesserte Zuverlässigkeit von Smartspacer</string>
     <string name="battery_optimisation_system_title">Deaktiviere Akku-Optimierung</string>
     <string name="battery_optimisation_system_content">Dies ist erforderlich, damit Smartspacer im Hintergrund weiterlaufen kann.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Erlaube Alarme &amp; Erinnerungen</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Erforderlich, damit Smartspacer Ziele &amp; Komplikationen im Hintergrund zuverlässig aktualisieren kann.</string>
     <string name="battery_optimisation_oem_title">Hersteller-Akku-Optimierung</string>
     <string name="battery_optimisation_oem_content">Dein Gerät scheint über einige herstellerspezifische Akku-Optimierungen zu verfügen. Diese können nicht automatisch deaktiviert werden. Tippe, um die Hersteller-Akkueinstellungen zu öffnen.</string>
-    <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Batterieoptimierung deaktiviert werden.</string>
+    <string name="battery_optimisation_footer">Smartspacer läuft im Hintergrund, um zu verhindern, dass er durch das System beendet wird, sollte die Akku-Optimierung deaktiviert werden.</string>
     <string name="battery_optimisation_footer_link">Erfahre mehr</string>
     <string name="plugin_repository_tab_installed">Installiert</string>
     <string name="plugin_repository_tab_available">Verfügbar</string>
@@ -967,19 +967,19 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_date_settings_custom_content">Gib ein Java-kompatibles Datumsformat an</string>
     <string name="target_date_settings_custom_invalid">Ungültiges Datumsformat</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Torch</string>
-    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
-    <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
-    <string name="target_flashlight_title_on">Torch on</string>
-    <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Torch off</string>
-    <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
-    <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
-    <string name="target_flashlight_toast">Grant the Camera permission</string>
+    <string name="target_flashlight_title">Taschenlampe</string>
+    <string name="target_flashlight_description">Erinnerung anzeigen, wenn die Taschenlampe aktiviert ist</string>
+    <string name="target_flashlight_incompatible">Dieses Ziel erfordert eine Taschenlampe</string>
+    <string name="target_flashlight_settings_title">Einstellungen</string>
+    <string name="target_flashlight_settings_description">Konfigurieren, ob eine Aufforderung zum Aktivieren der Taschenlampe anhand der Lichtverhältnisse erfolgen soll</string>
+    <string name="target_flashlight_title_on">Taschenlampe an</string>
+    <string name="target_flashlight_subtitle_on">Zum Deaktivieren tippen</string>
+    <string name="target_flashlight_title_off">Taschenlampe aus</string>
+    <string name="target_flashlight_subtitle_off">Zum Aktivieren tippen</string>
+    <string name="target_flashlight_settings_show_recommendation">Aufforderung zur Taschenlampen-Aktivierung anzeigen</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Aufforderung zum Aktivieren der Taschenlampe, wenn die Lichtverhältnisse schlecht sind (kann mehr Akku verbrauchen)</string>
+    <string name="target_flashlight_settings_show_recommendation_incompatible">Diese Einstellung ist nicht kompatibel mit deinem Gerät</string>
+    <string name="target_flashlight_toast">Erteile die Kamera-Berechtigung</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail ungelesen</string>
     <string name="complication_gmail_description">Die Anzahl der ungelesener Gmail-E-Mails von ausgewählten Labels anzeigen</string>
