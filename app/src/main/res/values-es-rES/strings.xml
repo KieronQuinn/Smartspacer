@@ -966,14 +966,14 @@
     <string name="target_date_settings_custom_content">Escribe un formato de fecha compatible con Java</string>
     <string name="target_date_settings_custom_invalid">Formato de fecha inválido</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Torch</string>
-    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
+    <string name="target_flashlight_title">Linterna</string>
+    <string name="target_flashlight_description">Muestra un recordatorio cuando la linterna esté activada</string>
+    <string name="target_flashlight_incompatible">Este objetivo requiere una linterna</string>
     <string name="target_flashlight_settings_title">Settings</string>
     <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
-    <string name="target_flashlight_title_on">Torch on</string>
+    <string name="target_flashlight_title_on">La linterna está encendida</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Torch off</string>
+    <string name="target_flashlight_title_off">La linterna está desactivada</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
     <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
     <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
