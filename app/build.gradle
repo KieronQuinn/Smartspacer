@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.6'
-def tagCode = 160
+def tagName = '1.6.1'
+def tagCode = 161
 
 android {
     compileSdk 34
@@ -51,6 +51,9 @@ android {
         resources {
             excludes += ['META-INF/LICENSE.md', 'META-INF/LICENSE-notice.md']
         }
+    }
+    androidResources {
+        generateLocaleConfig true
     }
     testOptions {
         packagingOptions {

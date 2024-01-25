@@ -257,6 +257,16 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
             ),
             *expandedSettings,
             GenericSettingsItem.Header(
+                getString(R.string.target_edit_advanced_header)
+            ),
+            GenericSettingsItem.SwitchSetting(
+                target.disableSubComplications,
+                getString(R.string.target_edit_disable_subcomplication_title),
+                getString(R.string.target_edit_disable_subcomplication_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
+                onChanged = viewModel::onDisableSubComplicationsChanged
+            ),
+            GenericSettingsItem.Header(
                 getString(R.string.target_edit_settings_header)
             ),
             GenericSettingsItem.Setting(

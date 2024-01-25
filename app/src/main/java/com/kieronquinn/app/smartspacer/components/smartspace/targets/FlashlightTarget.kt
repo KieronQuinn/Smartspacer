@@ -52,7 +52,7 @@ class FlashlightTarget: SmartspacerTargetProvider() {
         return Config(
             resources.getString(R.string.target_flashlight_title),
             resources.getString(R.string.target_flashlight_description),
-            AndroidIcon.createWithResource(provideContext(), R.drawable.ic_target_flashlight_on),
+            AndroidIcon.createWithResource(provideContext(), R.drawable.ic_target_flashlight),
             configActivity = createIntent(provideContext(), NavGraphMapping.TARGET_FLASHLIGHT),
             compatibilityState = getCompatibilityState()
         )

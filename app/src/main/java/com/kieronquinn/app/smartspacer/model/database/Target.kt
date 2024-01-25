@@ -39,7 +39,9 @@ data class Target(
     @ColumnInfo(name = "show_app_shortcuts")
     var showAppShortcuts: Boolean = true,
     @ColumnInfo(name = "expanded_show_when_locked")
-    var expandedShowWhenLocked: Boolean = true
+    var expandedShowWhenLocked: Boolean = true,
+    @ColumnInfo(name = "disable_sub_complications")
+    var disableSubComplications: Boolean = false
 ): Parcelable {
 
     fun hasRequirement(id: String): Boolean {

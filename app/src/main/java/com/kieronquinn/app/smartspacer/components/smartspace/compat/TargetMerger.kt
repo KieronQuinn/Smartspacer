@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.os.Bundle
 import com.kieronquinn.app.smartspacer.model.smartspace.Action
 import com.kieronquinn.app.smartspacer.model.smartspace.ActionHolder
+import com.kieronquinn.app.smartspacer.model.smartspace.Target
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspaceActionHolder
@@ -84,7 +85,7 @@ abstract class TargetMerger {
                 target.templateData?.subtitleItem = headerAction.action.subItemInfo
                 pageActions.add(headerAction.parent)
             }
-            val baseAction = if(target.canTakeBaseAction(actionQueue.peek())) {
+            val baseAction = if(target.canTakeBaseAction(it.parent, actionQueue.peek())) {
                 actionQueue.pop()
             }else null
             if(baseAction != null) {
@@ -180,8 +181,12 @@ abstract class TargetMerger {
         return false
     }
 
-    private fun SmartspaceTarget.canTakeBaseAction(holder: SmartspaceActionHolder?): Boolean {
+    private fun SmartspaceTarget.canTakeBaseAction(
+        target: Target,
+        holder: SmartspaceActionHolder?
+    ): Boolean {
         val action = holder?.action ?: return false //End of list
+        if(target.config.disableSubComplications) return false //Disabled by user
         //Override specified by target
         if(canTakeTwoComplications && featureType == SmartspaceTarget.FEATURE_UNDEFINED) return true
         val hasSubItemInfo = action.subItemInfo != null

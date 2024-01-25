@@ -2,7 +2,6 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.GoogleWeatherComplication
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.AmmNowPlayingTarget
@@ -283,7 +282,8 @@ class TargetsRepositoryImpl(
                     showWidget = it.showWidget,
                     showShortcuts = it.showShortcuts,
                     showAppShortcuts = it.showAppShortcuts,
-                    expandedShowWhenLocked = it.expandedShowWhenLocked
+                    expandedShowWhenLocked = it.expandedShowWhenLocked,
+                    disableSubComplications = it.disableSubComplications
                 )
                 @Suppress("CloseTarget")
                 val target = Target(context, it.authority, it.id, it.packageName, config)
