@@ -857,7 +857,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <!-- About Footer -->
     <string name="xda_thread">XDA Post</string>
     <string name="github">GitHub</string>
-    <string name="libraries">Drittanbieter-Bibliotheken</string>
+    <string name="libraries">Fremd-Bibliotheken</string>
     <string name="donate">Spenden</string>
     <string name="twitter">Folge mir auf Twitter</string>
     <string name="about_version">Version %1s\nErstellt von Kieron Quinn</string>
