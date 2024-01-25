@@ -47,6 +47,7 @@ abstract class TargetEditViewModel(scope: CoroutineScope?): BaseViewModel(scope)
     abstract fun onShowOnExpandedChanged(enabled: Boolean)
     abstract fun onShowOnMusicChanged(enabled: Boolean)
     abstract fun onExpandedShowWhenLockedChanged(enabled: Boolean)
+    abstract fun onDisableSubComplicationsChanged(enabled: Boolean)
     abstract fun onShowWidgetChanged(enabled: Boolean)
     abstract fun onShowRemoteViewsChanged(enabled: Boolean)
     abstract fun onShowShortcutsChanged(enabled: Boolean)
@@ -200,6 +201,15 @@ class TargetEditViewModelImpl(
             val target = (state.value as? State.Loaded)?.target ?: return@launch
             databaseRepository.updateTargetConfig(target.target.id){
                 it.expandedShowWhenLocked = enabled
+            }
+        }
+    }
+
+    override fun onDisableSubComplicationsChanged(enabled: Boolean) {
+        vmScope.launch {
+            val target = (state.value as? State.Loaded)?.target ?: return@launch
+            databaseRepository.updateTargetConfig(target.target.id){
+                it.disableSubComplications = enabled
             }
         }
     }

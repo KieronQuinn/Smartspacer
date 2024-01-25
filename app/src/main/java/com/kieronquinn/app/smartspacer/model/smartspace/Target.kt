@@ -257,7 +257,9 @@ class Target(
         @SerializedName("show_app_shortcuts")
         val showAppShortcuts: Boolean = true,
         @SerializedName("expanded_show_when_locked")
-        val expandedShowWhenLocked: Boolean = true
+        val expandedShowWhenLocked: Boolean = true,
+        @SerializedName("disable_sub_complications")
+        val disableSubComplications: Boolean = false
     ): Parcelable
 
     @Parcelize
