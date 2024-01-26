@@ -214,9 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Afficher les raccourcis d\'application</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Afficher les raccourcis d\'application associés à cette cible, si disponibles</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Nécessite l\'activation du mode amélioré</string>
-    <string name="target_edit_advanced_header">Advanced</string>
-    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
-    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
+    <string name="target_edit_advanced_header">Avancé</string>
+    <string name="target_edit_disable_subcomplication_title">Désactiver la sous-complication</string>
+    <string name="target_edit_disable_subcomplication_content">Empêche Smartspacer d\'ajouter une complication liée à cette cible, s\'il y a de la place</string>
     <string name="target_edit_settings_header">Paramètres</string>
     <string name="target_edit_requirements_title">Conditions</string>
     <string name="target_edit_requirements_content">Définissez les conditions à remplir pour que cette cible apparaisse</string>
