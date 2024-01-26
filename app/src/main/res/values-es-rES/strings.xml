@@ -975,9 +975,9 @@
     <string name="target_flashlight_settings_title">Configuración</string>
     <string name="target_flashlight_settings_description">Configurar sugerencia de encendido de la linterna según los niveles de luz</string>
     <string name="target_flashlight_title_on">La linterna está encendida</string>
-    <string name="target_flashlight_subtitle_on">Desactivar</string>
+    <string name="target_flashlight_subtitle_on">Presiona para apagarla</string>
     <string name="target_flashlight_title_off">La linterna está desactivada</string>
-    <string name="target_flashlight_subtitle_off">Activar</string>
+    <string name="target_flashlight_subtitle_off">Presiona para encenderla</string>
     <string name="target_flashlight_settings_show_recommendation">Mostrar sugerencia de encendido de la linterna</string>
     <string name="target_flashlight_settings_show_recommendation_content">Sugiere activar la linterna cuando el nivel de luz sea bajo (puede usar más batería)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">Esta opción no es compatible con tu dispositivo</string>
