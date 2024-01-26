@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">顯示應用程式捷徑</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">如果有的話，顯示與此目標相關的應用程式捷徑</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">需要啟用增強模式</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">設定</string>
     <string name="target_edit_requirements_title">需求</string>
     <string name="target_edit_requirements_content">設定此目標出現的需求條件</string>
