@@ -14,7 +14,7 @@ Smartspacer is a customisable widget for Android, but with a difference: It can 
 - Extensive plugin system, to pull in data from loads of apps
 - Plugin Repository in-app, for easy plugin downloads
 - AI-esque requirements system, to make information shown more dynamic - want to show your gym pass at the gym or your loyalty card and shopping list at the store? Smartspacer can do that.
-- Full screen "Expanded Smartspace", showing you all of Smartspacer at once, with dynamic widgets and shortcuts. Available as a Google Discover replacement for compatible launchers and [Discover Killer](https://github.com/KieronQuinn/DiscoverKiller)
+- Full screen "Expanded Smartspace", showing you all of Smartspacer at once, with dynamic widgets and shortcuts. Available as a Google Discover replacement for compatible launchers.
 - "OEM Smartspace" support for devices still using the legacy At a Glance implementation
 
 ## Screenshots
