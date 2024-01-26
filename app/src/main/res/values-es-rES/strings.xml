@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Mostrar accesos directos de la app</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Mostrar accesos directos de la app asociados con este objetivo, si está disponible</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requiere modo mejorado</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Configuración</string>
     <string name="target_edit_requirements_title">Reglas</string>
     <string name="target_edit_requirements_content">Establecer reglas para que este objetivo aparezca</string>
