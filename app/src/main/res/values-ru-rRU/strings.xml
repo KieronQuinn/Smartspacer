@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Показать ярлыки приложений</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Показывать ярлыки приложения, связанного с этой целью, если есть</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Требуется Усиленный режим</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Настройки</string>
     <string name="target_edit_requirements_title">Требования</string>
     <string name="target_edit_requirements_content">Задайте требования для появления этой Цели</string>
