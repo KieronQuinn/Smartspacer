@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Show App Shortcuts</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Settings</string>
     <string name="target_edit_requirements_title">Requirements</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>
@@ -966,17 +969,17 @@
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Flashlight</string>
-    <string name="target_flashlight_description">Show a reminder when the flashlight is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Flashlight</string>
+    <string name="target_flashlight_title">Torch</string>
+    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
+    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
     <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the flashlight based on light levels</string>
-    <string name="target_flashlight_title_on">Flashlight on</string>
+    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
+    <string name="target_flashlight_title_on">Torch on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Flashlight off</string>
+    <string name="target_flashlight_title_off">Torch off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Flashlight Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the flashlight when the light level is low (may use more battery)</string>
+    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
     <string name="target_flashlight_toast">Grant the Camera permission</string>
     <!-- Gmail Complication -->
