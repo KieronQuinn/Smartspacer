@@ -3,9 +3,9 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>اختياري</b> مكن هذه الوحدة على المشغل أو المكون الإضافي لخلاصة Google للسماح باستبدال Google Discover بمساحة ذكية موسعة. يجب عليك أيضا تمكين الخيار في إعدادات Smartspace الموسعة في Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
+    <string name="dummy_home_content">هذه الشاشة موجودة للعمل حول التطبيقات المصغرة التي تم تنفيذها بشكل سيئ المستخدمة بواسطة إضافات Smartspacer. \n\nSmartspacer لا يمكن استخدمه كمشغل شاشة رئيسية، يرجى تحديد مشغل مختلف.</string>
     <string name="dummy_home_open_settings">فتح الإعدادات</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
+    <string name="notification_service">خدمة إشعار Smartspacer</string>
     <string name="loading">Loading…</string>
     <string name="saving">Saving…</string>
     <string name="search">البحث</string>
