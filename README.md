@@ -23,7 +23,13 @@ Smartspacer is a customisable widget for Android, but with a difference: It can 
 
 ## Download
 
-[Download from GitHub releases](https://github.com/KieronQuinn/Smartspacer/releases)
+<a href="https://github.com/KieronQuinn/Smartspacer/releases">
+<img src="https://user-images.githubusercontent.com/69304392/148696068-0cfea65d-b18f-4685-82b5-329a330b1c0d.png"
+alt="Download from GitHub releases" align="center" height="80" /></a>
+
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/KieronQuinn/Smartspacer/">
+<img src="https://github.com/ImranR98/Obtainium/blob/main/assets/graphics/badge_obtainium.png"
+alt="Get it on Obtainium" align="center" height="54" /></a>
 
 ## Find out More
 
