@@ -48,6 +48,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -98,6 +99,7 @@ interface AppWidgetRepository {
     fun requestPinAppWidget(callbackAction: String)
     fun onAppWidgetUpdate(vararg ids: Int)
     fun nextPage(appWidgetId: Int)
+    fun nextPageForAll()
     fun previousPage(appWidgetId: Int)
 
 }
@@ -230,6 +232,17 @@ class AppWidgetRepositoryImpl(
 
     override fun nextPage(appWidgetId: Int) {
         widgetSessions.firstOrNull { it.appWidgetId == appWidgetId }?.nextPage()
+    }
+
+    override fun nextPageForAll() {
+        runBlocking {
+            //Don't block the thread for too long, fail if the database isn't loaded in time
+            withTimeoutOrNull(2500L) {
+                appWidgets.firstNotNull().forEach{
+                    appWidget -> nextPage(appWidget.appWidgetId)
+                }
+            }
+        }
     }
 
     override fun previousPage(appWidgetId: Int) {

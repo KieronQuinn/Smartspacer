@@ -5,6 +5,8 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.os.Process
 import android.provider.Settings
 import androidx.lifecycle.LifecycleService
@@ -22,7 +24,9 @@ import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.OemSmartspacerSession
+import com.kieronquinn.app.smartspacer.receivers.WidgetPageChangeReceiver
 import com.kieronquinn.app.smartspacer.repositories.AccessibilityRepository
+import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import com.kieronquinn.app.smartspacer.repositories.GrantRepository
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
@@ -57,6 +61,7 @@ class SmartspacerBackgroundService: LifecycleService() {
 
     companion object {
         var isUsingEnhancedModeAppListener = false
+        val TAG = "SmartspacerBackgroundService"
 
         fun startServiceIfNeeded(context: Context) {
             if(isServiceRunning(context)) return
@@ -74,7 +79,10 @@ class SmartspacerBackgroundService: LifecycleService() {
     private val accessibilityRepository by inject<AccessibilityRepository>()
     private val settings by inject<SmartspacerSettingsRepository>()
     private val grantRepository by inject<GrantRepository>()
+    private val appWidgetRepository by inject<AppWidgetRepository>()
     private var previousVisiblePackage: String? = null
+    private lateinit var pageSwitchHandler: Handler
+    private lateinit var pageUpdateRunnable: Runnable
     private var sessions = emptyMap<String, OemSmartspacerSession>()
 
     private val runningApp = shizukuServiceRepository.suiService.filterNotNull().flatMapLatest {
@@ -117,6 +125,7 @@ class SmartspacerBackgroundService: LifecycleService() {
         startForeground(NotificationId.BACKGROUND_SERVICE, createNotification())
         setupOemSessions()
         setupOemVisibility()
+        setupPageUpdateTimer()
         setupEnhancedModeAppListenerIfPossible()
     }
 
@@ -289,6 +298,19 @@ class SmartspacerBackgroundService: LifecycleService() {
         shizukuRrunningApp.filterNotNull().collect {
             accessibilityRepository.setForegroundPackage(it)
         }
+    }
+
+    private fun setupPageUpdateTimer() {
+        pageSwitchHandler = Handler(Looper.getMainLooper())
+        pageUpdateRunnable = object : Runnable {
+            override fun run() {
+                appWidgetRepository.nextPageForAll()
+                pageSwitchHandler.postDelayed(this, 10000)
+            }
+        }
+
+        // Schedule the first execution
+        pageSwitchHandler.post(pageUpdateRunnable)
     }
 
 }
