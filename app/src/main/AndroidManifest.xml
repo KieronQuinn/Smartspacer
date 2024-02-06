@@ -150,6 +150,13 @@
             <intent-filter>
                 <action android:name="com.kieronquinn.app.smartspacer.SMARTSPACE" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data android:name="android.voice_interaction"
+                android:value="true" />
         </activity-alias>
 
         <activity
