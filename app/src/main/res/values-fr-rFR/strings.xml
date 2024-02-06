@@ -272,7 +272,7 @@
     <string name="configuration_notification_enable_content">Autorisez Smartspacer à accéder aux notifications de l\'appareil et des applications dans les paramètres système.</string>
     <string name="configuration_notification_enable_button">Autoriser l\'accès aux notifications</string>
     <string name="configuration_accessibility_enable_title">Activer le service d\'accessibilité</string>
-    <string name="configuration_accessibility_enable_content">Activez le service d\'accessibilité de Smartspacer dans les paramètres système.\n\n<b>Notez que</b> malgré l\'avertissement système, Smartspacer ne lit aucune donnée et n\'interagit pas avec votre appareil, le service est utilisé uniquement pour connaître les applications en cours d\'exécution.</string>
+    <string name="configuration_accessibility_enable_content">Activez le service d\'accessibilité de Smartspacer dans les paramètres système.\n\n<b>Remarque :</b> malgré l\'avertissement système, Smartspacer ne lit aucune donnée et n\'interagit pas avec votre appareil, le service est utilisé uniquement pour connaître les applications en cours d\'exécution.</string>
     <string name="configuration_accessibility_enable_button">Activer le service d\'accessibilité</string>
     <string name="target_notification_configuration_title">Paramètres des notifications</string>
     <string name="target_notification_configuration_content">Sélectionnez les applications et les catégories des notifications à afficher</string>
