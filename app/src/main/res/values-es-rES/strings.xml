@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Mostrar accesos directos de la app</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Mostrar accesos directos de la app asociados con este objetivo, si está disponible</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requiere modo mejorado</string>
+    <string name="target_edit_advanced_header">Avanzado</string>
+    <string name="target_edit_disable_subcomplication_title">Desactivar sub-complicación</string>
+    <string name="target_edit_disable_subcomplication_content">Evita que Smartspacer agregue una complicación junto a este objetivo, si el espacio está disponible</string>
     <string name="target_edit_settings_header">Configuración</string>
     <string name="target_edit_requirements_title">Reglas</string>
     <string name="target_edit_requirements_content">Establecer reglas para que este objetivo aparezca</string>
@@ -324,12 +327,12 @@
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
     <string name="requirement_wifi_title">Red Wi-Fi</string>
     <string name="requirement_wifi_content">Solo mostrar cuando esté dentro de un rango de alcance o conectado a una red Wi-Fi</string>
-    <string name="requirement_wifi_content_base">Only show when %1s to %1s</string>
+    <string name="requirement_wifi_content_base">Solo mostrar cuando %1s con %1s</string>
     <string name="requirement_wifi_content_connected_to">conectado</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in range or connected</string>
     <string name="requirement_wifi_content_ssid_mac">%1s with MAC %1s</string>
-    <string name="requirement_wifi_configuration_in_range_title">Allow Unconnected (In Range) Network</string>
-    <string name="requirement_wifi_configuration_in_range_content">When enabled, this Requirement will be met when the specified network is in range, but not connected.</string>
+    <string name="requirement_wifi_configuration_in_range_title">Permitir red desconectada (en rango)</string>
+    <string name="requirement_wifi_configuration_in_range_content">Cuando está activado, esta regla se cumplirá cuando la red especificada esté en el rango, pero aunque no esté conectado a internet.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
     <string name="requirement_wifi_configuration_background_location_title">Usar ubicación en segundo plano</string>
     <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
@@ -339,7 +342,7 @@
     <string name="requirement_wifi_configuration_ssid_title">Nombre de la red</string>
     <string name="requirement_wifi_configuration_ssid_content_unset">Establecer el nombre de red (SSID) de la red</string>
     <string name="requirement_wifi_configuration_mac_title">Dirección MAC</string>
-    <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
+    <string name="requirement_wifi_configuration_mac_content_unset">Establecer la dirección MAC de la red (opcional, puedes dejarlo en blanco para que coincida con cualquier nombre de red)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
     <string name="requirement_wifi_configuration_picker_available">Redes disponibles</string>
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
@@ -972,9 +975,9 @@
     <string name="target_flashlight_settings_title">Configuración</string>
     <string name="target_flashlight_settings_description">Configurar sugerencia de encendido de la linterna según los niveles de luz</string>
     <string name="target_flashlight_title_on">La linterna está encendida</string>
-    <string name="target_flashlight_subtitle_on">Desactivar</string>
+    <string name="target_flashlight_subtitle_on">Presiona para apagarla</string>
     <string name="target_flashlight_title_off">La linterna está desactivada</string>
-    <string name="target_flashlight_subtitle_off">Activar</string>
+    <string name="target_flashlight_subtitle_off">Presiona para encenderla</string>
     <string name="target_flashlight_settings_show_recommendation">Mostrar sugerencia de encendido de la linterna</string>
     <string name="target_flashlight_settings_show_recommendation_content">Sugiere activar la linterna cuando el nivel de luz sea bajo (puede usar más batería)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">Esta opción no es compatible con tu dispositivo</string>

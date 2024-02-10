@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Exibir atalhos de aplicativos</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Exibir atalhos de aplicativos associados a este destaque, se disponíveis</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requer Modo Avançado</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Configurações</string>
     <string name="target_edit_requirements_title">Condições</string>
     <string name="target_edit_requirements_content">Defina as condições para que este destaque apareça</string>

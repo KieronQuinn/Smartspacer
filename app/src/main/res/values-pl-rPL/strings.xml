@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Show App Shortcuts</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Settings</string>
     <string name="target_edit_requirements_title">Requirements</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>

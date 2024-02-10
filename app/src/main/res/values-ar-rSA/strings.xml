@@ -3,24 +3,24 @@
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>اختياري</b> مكن هذه الوحدة على المشغل أو المكون الإضافي لخلاصة Google للسماح باستبدال Google Discover بمساحة ذكية موسعة. يجب عليك أيضا تمكين الخيار في إعدادات Smartspace الموسعة في Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
+    <string name="dummy_home_content">هذه الشاشة موجودة للعمل حول التطبيقات المصغرة التي تم تنفيذها بشكل سيئ المستخدمة بواسطة إضافات Smartspacer. \n\nSmartspacer لا يمكن استخدمه كمشغل شاشة رئيسية، يرجى تحديد مشغل مختلف.</string>
     <string name="dummy_home_open_settings">فتح الإعدادات</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
+    <string name="notification_service">خدمة إشعار Smartspacer</string>
+    <string name="loading">جاري التحميل…</string>
+    <string name="saving">يجرى الحفظ…</string>
     <string name="search">البحث</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
+    <string name="delete">حذف</string>
+    <string name="save">حفظ</string>
+    <string name="close">إغلاق</string>
+    <string name="reset">إعادة ضبط</string>
     <string name="menu_rerun_setup">إعادة الإعداد</string>
     <string name="bottom_nav_targets">الأغراض</string>
-    <string name="bottom_nav_complications">Complications</string>
+    <string name="bottom_nav_complications">الإضافات</string>
     <string name="bottom_nav_plugins">الإضافات</string>
-    <string name="bottom_nav_settings">Settings</string>
+    <string name="bottom_nav_settings">الإعدادات</string>
     <string name="download_size">%1s / %1s</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
-    <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
+    <string name="toast_restricted_mode">السماح بالإعدادات المقيدة في قائمة التجاوز</string>
+    <string name="restricted_mode_content_accessibility">منذ صدور Android 13، Google أضافت تحققاً للأمان في الإعدادات، تمنع التطبيقات المحملة متوازياً من السماح لها باستخدام بخدمات الوصول بشكل افتراضي.\n\n<b> أذا رأيت رسالة عن الإعدادات المقيدة عند محاولة تفعيل خدمات الوصول، سوف تحتاج لفتح معلومات عن التطبيق السماح بالإعدادات المقيدة.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">Show App Shortcuts</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Requires Enhanced Mode</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Settings</string>
     <string name="target_edit_requirements_title">Requirements</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>

@@ -214,6 +214,9 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">显示应用快捷方式</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">可用时显示与该对象关联的应用快捷方式</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">需要增强模式</string>
+    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
+    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">设置</string>
     <string name="target_edit_requirements_title">条件</string>
     <string name="target_edit_requirements_content">设置该对象的触发条件</string>
