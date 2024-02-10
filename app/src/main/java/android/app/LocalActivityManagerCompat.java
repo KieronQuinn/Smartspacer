@@ -17,6 +17,7 @@
 package android.app;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptionsHidden.SceneTransitionInfo;
 import android.app.ActivityThread.ActivityClientRecord;
 import android.app.servertransaction.PendingTransactionActions;
 import android.content.ComponentName;
@@ -779,7 +780,11 @@ public class LocalActivityManagerCompat {
 
         private static void handleStartActivity(IBinder binder, ActivityThread mActivityThread, PendingTransactionActions pendingActions){
             if(isAtLeastS()) {
-                mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, null);
+                try {
+                    mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, (SceneTransitionInfo) null);
+                }catch (NoSuchMethodError e) {
+                    mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, (ActivityOptions) null);
+                }
             }else{
                 try {
                     mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions);
