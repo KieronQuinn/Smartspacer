@@ -5,9 +5,7 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACCESS_WIFI_STATE
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -17,14 +15,13 @@ import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.provider.Settings
-import android.util.Log
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.WiFiRequirement
 import com.kieronquinn.app.smartspacer.repositories.WiFiRepository.WiFiNetwork
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerRequirementProvider
+import com.kieronquinn.app.smartspacer.utils.extensions.broadcastReceiverAsFlow
 import com.kieronquinn.app.smartspacer.utils.extensions.currentWiFiNetwork
 import com.kieronquinn.app.smartspacer.utils.extensions.getSSIDCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.hasPermission
-import com.kieronquinn.app.smartspacer.utils.extensions.registerReceiverCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -90,6 +87,8 @@ class WiFiRepositoryImpl(
     @VisibleForTesting
     val refreshBus = MutableStateFlow(System.currentTimeMillis())
 
+    private val scanRefreshBus = MutableStateFlow(System.currentTimeMillis())
+
     private val wifiManager = context.getSystemService(Context.WIFI_SERVICE) as WifiManager
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -102,7 +101,12 @@ class WiFiRepositoryImpl(
         it?.toWiFiNetwork()
     }.distinctUntilChanged().onEach {
         notifyWiFiChanged()
+        scanRefreshBus.emit(System.currentTimeMillis())
     }.stateIn(scope, SharingStarted.Eagerly, null)
+
+    private val scanResultBus = scanRefreshBus.flatMapLatest {
+        context.broadcastReceiverAsFlow(IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
+    }
 
     /**
      *  Uses Shizuku service to get a list of saved WiFi networks via Shell.
@@ -120,6 +124,7 @@ class WiFiRepositoryImpl(
     override fun refresh() {
         scope.launch {
             refreshBus.emit(System.currentTimeMillis())
+            scanRefreshBus.emit(System.currentTimeMillis())
         }
     }
 
@@ -128,12 +133,10 @@ class WiFiRepositoryImpl(
         wifiManager.startScan()
     }
 
-    private fun registerWiFiScanReceiver() {
-        context.registerReceiverCompat(object: BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                onNetworksChanged()
-            }
-        }, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
+    private fun registerWiFiScanReceiver() = scope.launch {
+        scanResultBus.collect {
+            onNetworksChanged()
+        }
     }
 
     @SuppressLint("MissingPermission")

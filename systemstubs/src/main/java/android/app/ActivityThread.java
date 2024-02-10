@@ -1,5 +1,6 @@
 package android.app;
 
+import android.app.ActivityOptionsHidden.SceneTransitionInfo;
 import android.app.servertransaction.PendingTransactionActions;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -44,8 +45,14 @@ public class ActivityThread {
         throw new RuntimeException("Stub!");
     }
 
+    //maxApi = U (there is an overlap)
     @RequiresApi(Build.VERSION_CODES.S)
     public void handleStartActivity(ActivityClientRecord r, PendingTransactionActions pendingActions, ActivityOptions activityOptions) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    public void handleStartActivity(ActivityClientRecord r, PendingTransactionActions pendingActions, SceneTransitionInfo sceneTransitionInfo) {
         throw new RuntimeException("Stub!");
     }
 
