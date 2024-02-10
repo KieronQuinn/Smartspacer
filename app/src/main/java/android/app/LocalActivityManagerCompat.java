@@ -781,9 +781,9 @@ public class LocalActivityManagerCompat {
         private static void handleStartActivity(IBinder binder, ActivityThread mActivityThread, PendingTransactionActions pendingActions){
             if(isAtLeastS()) {
                 try {
-                    mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, (SceneTransitionInfo) null);
-                }catch (NoSuchMethodError e) {
                     mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, (ActivityOptions) null);
+                }catch (NoSuchMethodError e) {
+                    mActivityThread.handleStartActivity(mActivityThread.getActivityClient(binder), pendingActions, (SceneTransitionInfo) null);
                 }
             }else{
                 try {
