@@ -979,9 +979,9 @@
     <string name="target_flashlight_title_off">Torch off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
     <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
-    <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
-    <string name="target_flashlight_toast">Grant the Camera permission</string>
+    <string name="target_flashlight_settings_show_recommendation_content">當光線不足時提示啟用手電筒（可能會更耗電）</string>
+    <string name="target_flashlight_settings_show_recommendation_incompatible">此選項與您的設備不相容</string>
+    <string name="target_flashlight_toast">授予相機權限</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail 未讀</string>
     <string name="complication_gmail_description">顯示選定標籤中未讀 Gmail 電子郵件的數量</string>
