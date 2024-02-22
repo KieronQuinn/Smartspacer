@@ -153,7 +153,7 @@
     <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku Reminder</string>
     <string name="notification_channel_shizuku_reminder_content">Notification shown as a reminder to start Shizuku after rebooting</string>
-    <string name="notification_channel_updates_title">Smartspacer Updates</string>
+    <string name="notification_channel_updates_title">Aktualizacje Smartspacer</string>
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Aktualizacje wtyczek</string>
     <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
@@ -196,10 +196,10 @@
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
     <string name="target_edit_show_on_expanded_title">Pokaż w Rozszerzonym Smartspace</string>
-    <string name="target_edit_show_on_expanded_content">Show this Target on Expanded Smartspace</string>
-    <string name="target_edit_show_on_expanded_content_disabled">Expanded Smartspace is disabled</string>
+    <string name="target_edit_show_on_expanded_content">Pokaż ten Cel w Rozszerzonym Smartspace</string>
+    <string name="target_edit_show_on_expanded_content_disabled">Rozszerzony Smartspace jest wyłączony</string>
     <string name="target_edit_show_on_music_title">Pokazuj, gdy muzyka jest odtwarzana</string>
-    <string name="target_edit_show_on_music_content">Show this target on your always on display while music is playing</string>
+    <string name="target_edit_show_on_music_content">Pokaż ten cel na ekranie zawsze, kiedy jest odtwarzana muzyka</string>
     <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
     <string name="target_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
     <string name="target_edit_expanded_header">Rozszerzony Smartspace</string>
@@ -215,8 +215,8 @@
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Wymaga Trybu Zaawansowanego</string>
     <string name="target_edit_advanced_header">Zaawansowane</string>
-    <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
-    <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
+    <string name="target_edit_disable_subcomplication_title">Wyłącz subkomplikacje</string>
+    <string name="target_edit_disable_subcomplication_content">Zapobiega dodaniu Komplikacji obok tego Celu, jeśli dostępna jest przestrzeń</string>
     <string name="target_edit_settings_header">Ustawienia</string>
     <string name="target_edit_requirements_title">Requirements</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>
@@ -240,12 +240,12 @@
     <string name="complication_edit_show_on_lock_screen_content_widget">Show this complication on widgets added to your lock screen</string>
     <string name="complication_edit_show_on_expanded_title">Pokaż w Rozszerzonym Smartspace</string>
     <string name="complication_edit_show_on_expanded_content">Show this Complication on Expanded Smartspace</string>
-    <string name="complication_edit_show_on_expanded_content_disabled">Expanded Smartspace is disabled</string>
-    <string name="complication_edit_show_on_music_title">Show While Music is Playing</string>
-    <string name="complication_edit_show_on_music_content">Show this complication on your always on display while music is playing</string>
+    <string name="complication_edit_show_on_expanded_content_disabled">Rozszerzony Smartspace jest wyłączony</string>
+    <string name="complication_edit_show_on_music_title">Pokazuj, gdy muzyka jest odtwarzana</string>
+    <string name="complication_edit_show_on_music_content">Pokaż tą Komplikację na AoD, kiedy jest odtwarzana muzyka</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
-    <string name="complication_edit_expanded_header">Expanded Smartspace</string>
+    <string name="complication_edit_expanded_header">Rozszerzony Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
     <string name="complication_edit_settings_header">Ustawienia</string>
@@ -268,13 +268,13 @@
     <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again.</string>
     <string name="feedback_loop_relaunch_wait">Wait %1s seconds</string>
     <string name="feedback_loop_relaunch">Uruchom ponownie Smartspacer</string>
-    <string name="configuration_notification_enable_title">Enable Notification Access</string>
+    <string name="configuration_notification_enable_title">Zezwól na dostęp do powiadomień</string>
     <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
-    <string name="configuration_notification_enable_button">Allow notification access</string>
+    <string name="configuration_notification_enable_button">Zezwól na dostęp do powiadomień</string>
     <string name="configuration_accessibility_enable_title">Włącz usługę ułatwień dostępu</string>
     <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
-    <string name="configuration_accessibility_enable_button">Enable Accessibility Service</string>
-    <string name="target_notification_configuration_title">Notification Settings</string>
+    <string name="configuration_accessibility_enable_button">Włącz usługę ułatwień dostępu</string>
+    <string name="target_notification_configuration_title">Ustawienia powiadomień</string>
     <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
     <string name="configuration_notification_association_title">Przyznaj uprawnienia</string>
     <string name="configuration_notification_association_content">In order to allow Smartspacer to access a list of other apps\' notification channels so you can pick which to show, you must set a companion device or network for this app. This is a (rather odd) Android system requirement, and is the only way to get a list of channels without root. This only needs to be done once.</string>
@@ -322,7 +322,7 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d seconds</string>
     <string name="requirement_geofence_configuration_background_location_title">Enable Background Location</string>
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
-    <string name="requirement_geofence_configuration_background_location_grant">Grant Permission</string>
+    <string name="requirement_geofence_configuration_background_location_grant">Przyznaj uprawnienie</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limit Reached</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
     <string name="requirement_wifi_title">Wi-Fi Network</string>
@@ -336,7 +336,7 @@
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
     <string name="requirement_wifi_configuration_background_location_title">Włącz lokalizację w tle</string>
     <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
-    <string name="requirement_wifi_configuration_background_location_grant">Grant Permission</string>
+    <string name="requirement_wifi_configuration_background_location_grant">Przyznaj uprawnienie</string>
     <string name="requirement_wifi_configuration_pick_title">Wybierz sieć</string>
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
     <string name="requirement_wifi_configuration_ssid_title">Nazwa sieci</string>
@@ -344,20 +344,20 @@
     <string name="requirement_wifi_configuration_mac_title">MAC Address</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
-    <string name="requirement_wifi_configuration_picker_available">Available Networks</string>
+    <string name="requirement_wifi_configuration_picker_available">Dostępne sieci</string>
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
-    <string name="requirement_wifi_configuration_picker_saved">Saved Networks</string>
-    <string name="requirement_wifi_configuration_picker_unknown_network">Unknown Network</string>
-    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
-    <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
+    <string name="requirement_wifi_configuration_picker_saved">Zapisane sieci</string>
+    <string name="requirement_wifi_configuration_picker_unknown_network">Nieznana sieć</string>
+    <string name="requirement_bluetooth_title">Urządzenie Bluetooth podłączone</string>
+    <string name="requirement_bluetooth_description">Pokaż tylko, gdy podłączone jest określone urządzenie Bluetooth</string>
     <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
-    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_title">Wybierz urządzenie</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
-    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth jest wyłączony, dotknij, aby włączyć</string>
     <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
-    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">Nie znaleziono sparowanych urządzeń</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
     <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
     <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
@@ -367,7 +367,7 @@
     <string name="requirement_app_prediction_generic_label">Unknown App</string>
     <string name="requirement_app_prediction_incompatible">This Requirement is not compatible with your device as it does not have an System App Prediction Service</string>
     <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
-    <string name="requirement_app_prediction_configuration_title">Select App</string>
+    <string name="requirement_app_prediction_configuration_title">Wybierz aplikację</string>
     <string name="permission_dialog_widget_title_prefix">Zezwól</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
@@ -386,10 +386,10 @@
     <string name="settings_enhanced_title">Enhanced Mode</string>
     <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
     <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
-    <string name="settings_native_smartspace_settings_title">Native Smartspace</string>
+    <string name="settings_native_smartspace_settings_title">Natywny Smartspace</string>
     <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
-    <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
-    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
+    <string name="settings_native_smartspace_settings_content_incompatible">Ta opcja nie jest kompatybilna z Twoim urządzeniem</string>
+    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Ta opcja wymaga Trybu Zaawansowanego</string>
     <string name="settings_targets_complications">Targets &amp; Complications</string>
     <string name="settings_plugins">Wtyczki</string>
     <string name="settings_options">Opcje</string>
@@ -450,7 +450,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer uses a lot of experimental and "hidden" Android APIs, which may be prone to crashing on some devices due to OEM modifications.<br>To help bug fixing, Smartspacer can send crash reports to Firebase Crashlytics, as well as basic analytic information (app launches).<br>This data is all anonymous, and is entirely optional, more details and privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">here</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer używa wielu eksperymentalnych i "ukrytych" API Androida, które mogą być podatne na awarię na niektórych urządzeniach z powodu modyfikacji OEM.<br>Aby pomóc w naprawieniu błędów, Smartspacer może wysyłać raporty o awarii do Firebase Crashlytics, jak również podstawowe informacje analityczne (takie jak uruchamiania aplikacji).<br>Te dane są anonimowe i są całkowicie opcjonalne, więcej szczegółów i polityki prywatności możesz znaleźć <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">tutaj</a>]]></string>
     <string name="setup_analytics_allow">Zezwól</string>
     <string name="setup_analytics_deny">Odmów</string>
     <!-- Setup > Notifications -->
@@ -459,9 +459,9 @@
     <string name="setup_notifications_request">Przyznaj uprawnienie</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Cele</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
+    <string name="setup_targets_info_p1"><b>Cele</b> są stronami z informacjami wyświetlanymi w Smartspace, zazwyczaj składające się co najmniej z tytułu, napisów i ikony. Wiele Celów posiada również dodatkowe informacje – o ile jest to możliwe – takie jak obrazy lub listy.</string>
     <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
+    <string name="setup_targets_info_p3">Integracja At a Glance w Smartspacer jest zapewniona przez Cel \"At a Glance\", który może wyświetlać regularne informacje z Google, takie jak wydarzenia w kalendarzu i loty. Pamiętaj, że to <b>nie</b> zawsze pokazuje dzisiejszą datę, jeśli żadna informacja nie jest dostępna, i powinieneś dodać Cel \"Data\" oddzielnie, jeśli chcesz zawsze mieć widoczną datę.</string>
     <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
     <string name="setup_targets_info_example_one_subtitle">Mapy Google</string>
     <string name="setup_targets_info_example_two_title">Lista zakupów</string>
@@ -482,7 +482,7 @@
     <string name="setup_complications_info_p2">Komplikacje będą wyświetlane obok Celów wszędzie tam, gdzie dostępna jest przestrzeń, lub jeśli żadne pozostałe Cele nie są dostępne, będą wyświetlone na dodatkowych stronach obok daty.</string>
     <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
     <string name="setup_complications_example_gmail">8</string>
-    <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
+    <string name="setup_complications_caption_gmail">Przykład Komplikacji pokazującej nieprzeczytane e-maile</string>
     <string name="setup_complications_example_weather">20°</string>
     <string name="setup_complications_caption_weather">Przykład Komplikacji pokazującej warunki pogodowe</string>
     <!-- Setup > Add Complications -->
@@ -502,11 +502,11 @@
     <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Expanded</string>
-    <string name="setup_expanded_switch">Enable Expanded Smartspace</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
+    <string name="setup_expanded_switch">Włącz Rozszerzony Smartspace</string>
+    <string name="setup_expanded_info_p1"><b>Rozszerzony Smartspace</b> jest wersją pełnoekranową Smartspace wyświetlającą wszystkie dostępne Cele i Komplikacje, a także dodatkowe informacje dynamiczne, takie jak widżety i skróty, określone przez Cele. Możesz również dodać własne widżety do tego ekranu.</string>
     <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
+    <string name="setup_expanded_open_title">Dynamicznie otwórz Rozszerzone Smartspace</string>
+    <string name="setup_expanded_open_content">Jeśli włączone, Rozszerzony Smartspace zostanie otwarty po naciśnięciu Celu, jeżeli ma dodatkowe informacje takie jak widżet lub skróty</string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugins</string>
@@ -532,11 +532,11 @@
     <string name="enhanced_mode_title">Enhanced Mode</string>
     <string name="enhanced_mode_enable_title">Enable Enhanced Mode</string>
     <string name="enhanced_mode_enable_subtitle">Requires Shizuku or Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
+    <string name="enhanced_mode_enable_content_header"><b>Tryb Ulepszony pozwala Smartspacer na:</b></string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrację Smartspace na ekranie blokady</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrację Smartspace na kompatybilnych launcherach</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrację Smartspace z OEM (jeśli możliwa)</string>
+    <string name="enhanced_mode_enable_content_system">• Pokazanie systemowych Celów i Komplikacji w Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
     <string name="enhanced_mode_skip_button">Pomiń</string>
@@ -544,23 +544,23 @@
     <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
     <!-- Native Mode -->
     <string name="native_title">Native Smartspace</string>
-    <string name="native_switch">Enable Native Smartspace</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch">Włącz Rozszerzony Smartspace</string>
+    <string name="native_switch_info"><b>Ważne:</b> Po włączeniu Rozszerzonego Smartspace, Smartspacer zrestartuje SystemUI. <b>Możesz zobaczyć wiadomość mówiącą, że SystemUI został zatrzymany, a następnie ekran blokady.</b> To jest normalne, odrzuć wiadomość i odblokuj urządzenie, aby kontynuować.</string>
+    <string name="native_switch_content">Rozszerzony Smartspace integruje Smartspacer z twoim %1s, pokazując w nich Cele i Komplikacje Smartspacer.\nMusisz ponownie włączyć Native Smartspace po każdym ponownym uruchomieniu. Wynika to z ograniczeń systemowych.</string>
+    <string name="native_switch_content_many">%1s i %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Zgodność</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
-    <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_available"><b>Dostępne</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Niedostępne</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
+    <string name="native_restart_title">Rozszerzony Smartspace</string>
     <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
     <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_button">Połącz ponownie</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
+    <string name="notification_native_mode_enable_title">Ponownie włącz Rozszerzony Smartspace</string>
     <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
     <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
     <string name="notification_native_mode_enable_now">Enable Now</string>
@@ -644,9 +644,9 @@
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
     <string name="expanded_settings_show_doodle_title">Show Google Doodle</string>
     <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
-    <string name="expanded_settings_open_mode_home_screen_title">Open from Home Screen</string>
-    <string name="expanded_settings_open_mode_home_screen_title_short">Home Screen</string>
+    <string name="expanded_settings_header_behaviour">Zachowanie</string>
+    <string name="expanded_settings_open_mode_home_screen_title">Otwórz z ekranu głównego</string>
+    <string name="expanded_settings_open_mode_home_screen_title_short">Ekran główny</string>
     <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
     <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
     <string name="expanded_settings_open_mode_lock_screen_title_short">Lock Screen</string>
