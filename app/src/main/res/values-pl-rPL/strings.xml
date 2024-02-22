@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Smartspacer</string>
     <string name="shortcut_name_smartspace">Smartspace</string>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>Opcjonalnie</b>: Włącz ten moduł w launcherze lub we wtyczce Google Feed, aby umożliwić zastąpienie Google Discover rozszerzonym Smartspacer. Musisz również włączyć tę opcję w ustawieniach rozszerzonego Smartspace.</string>
     <string name="dummy_home_content">Ten ekran istnieje, aby działały źle zaimplementowane widżety używane przez wtyczki Smartspacer.\n\nSmartspacer nie może działać jak launcher, wybierz inny launcher.</string>
     <string name="dummy_home_open_settings">Otwórz ustawienia</string>
     <string name="notification_service">Usługa powiadomień Smartspacer</string>
@@ -66,7 +66,7 @@
     <string name="widget_configuration_apply">Zastosuj</string>
     <string name="widget_options_configure">Skonfiguruj widget</string>
     <string name="accessibility_service_label">Usługa widżetu Smartspacer</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Włącza widżet Smartspacer, aby zachować aktualne cele i komplikacje bez zużywania baterii poprzez ich ciągłe działanie.\n\nUwaga: Nie jest to wymagane, jeśli włączony jest tryb zaawansowany.</string>
     <string name="target_notification_label">Powiadomienia</string>
     <string name="target_notification_description">Pokazuje powiadomienia z aplikacji</string>
     <string name="target_notification_description_selected">Pokazuje powiadomienia z %1s</string>
@@ -74,12 +74,12 @@
     <string name="target_notification_description_channels_one">kanał</string>
     <string name="target_notification_description_channels_other">kanały</string>
     <string name="target_now_playing_label">Pixel Now Playing</string>
-    <string name="target_now_playing_description">Shows the currently playing song from Pixel Now Playing</string>
-    <string name="target_now_playing_description_unavailable">This target requires Now Playing on a Pixel</string>
+    <string name="target_now_playing_description">Pokazuje aktualnie odtwarzany utwór z Pixel Now Playing</string>
+    <string name="target_now_playing_description_unavailable">Ten cel wymaga Now Playing na urządzeniu Pixel</string>
     <string name="target_now_playing_shortcut_history">Historia</string>
     <string name="target_ambient_music_mod_label">Now Playing (Ambient Music Mod)</string>
-    <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>
-    <string name="target_ambient_music_mod_description_unavailable">This target requires Ambient Music Mod</string>
+    <string name="target_ambient_music_mod_description">Pokazuje aktualnie odtwarzany utwór, używając aplikacji Ambient Music Mod</string>
+    <string name="target_ambient_music_mod_description_unavailable">Ten cel wymaga aplikacji Ambient Music Mod</string>
     <string name="target_default_label">At a Glance (Smartspace)</string>
     <string name="target_default_description">Targets from Google At a Glance, loaded using Smartspace</string>
     <string name="target_default_description_recommended">Targets from Google At a Glance, loaded using Smartspace <b>(recommended)</b></string>
