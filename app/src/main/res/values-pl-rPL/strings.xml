@@ -138,9 +138,9 @@
     <string name="notification_title_background_service">Smartspacer jest uruchomiony</string>
     <string name="notification_content_background_service">Smartspacer jest uruchomiony w tle, stuknij, aby ukryć</string>
     <string name="notification_background_service_title">@string/app_name</string>
-    <string name="notification_background_service_subtitle">Smartspacer is running in the background</string>
-    <string name="notification_channel_safe_mode_title">Safe Mode</string>
-    <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
+    <string name="notification_background_service_subtitle">Smartspacer jest uruchomiony w tle</string>
+    <string name="notification_channel_safe_mode_title">Tryb awaryjny</string>
+    <string name="notification_channel_safe_mode_subtitle">Powiadomienie jest wyświetlane, gdy Smartspacer wchodzi w tryb awaryjny</string>
     <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">Smartspacer has entered Safe Mode due to %1s crashing. Tap for more info.</string>
     <string name="notification_channel_error_title">Errors</string>
