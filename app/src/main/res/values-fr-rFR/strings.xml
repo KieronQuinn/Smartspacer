@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -81,9 +81,9 @@
     <string name="target_ambient_music_mod_description">Affiche la chanson en cours de lecture à l\'aide d\'Ambient Music Mod</string>
     <string name="target_ambient_music_mod_description_unavailable">Cette cible requiert Ambient Music Mod</string>
     <string name="target_default_label">Aperçu (Smartspace)</string>
-    <string name="target_default_description">Cibles de l\'Aperçu Google, chargées par Smartspace</string>
-    <string name="target_default_description_recommended">Cibles de l\'Aperçu Google, chargées par Smartspace <b>(recommandé)</b></string>
-    <string name="target_default_description_unsupported">Votre appareil ne prend pas en charge l\'Aperçu par Smartspace</string>
+    <string name="target_default_description">Cibles de Google Aperçu, chargées avec Smartspace</string>
+    <string name="target_default_description_recommended">Cibles de Google Aperçu, chargées avec Smartspace <b>(recommandé)</b></string>
+    <string name="target_default_description_unsupported">Votre appareil ne prend pas en charge Aperçu avec Smartspace</string>
     <string name="target_default_description_enhanced">Nécessite l\'activation du mode amélioré, activez-le dans les paramètres</string>
     <string name="target_default_configuration_title">Paramètres</string>
     <string name="target_default_configuration_description">Masquer les cibles par défaut et accéder à d\'autres paramètres dans l\'application Google</string>
@@ -111,7 +111,7 @@
     <string name="target_greeting_configuration_open_expanded_title">Ouvrir Smartspace étendu</string>
     <string name="target_greeting_configuration_open_expanded_content">Ouvrir Smartspace étendu en appuyant dessus, plutôt que de ne rien faire</string>
     <string name="target_at_a_glance_label">Aperçu (widget)</string>
-    <string name="target_at_a_glance_description">Nombre limité de cibles de l\'Aperçu Google, chargées par le widget Google</string>
+    <string name="target_at_a_glance_description">Nombre limité de cibles de Google Aperçu, chargées avec le widget Google</string>
     <string name="target_at_a_glance_description_unsupported">Cette cible requiert l\'application Google</string>
     <string name="target_google_weather_forecast_title">Prévisions météo Google</string>
     <string name="target_google_weather_forecast_content">Affiche la météo actuelle et les prévisions sur 4 heures de Google Météo</string>
@@ -119,9 +119,9 @@
     <string name="target_notification_warning_title">Auditeur de notifications désactivé</string>
     <string name="target_notification_warning_description">Appuyez pour activer</string>
     <string name="complication_default_label">Complications Aperçu</string>
-    <string name="complication_default_description">Complications de l\'Aperçu Google, avec la météo</string>
-    <string name="complication_default_description_recommended">Complications de l\'Aperçu Google, avec la météo <b>(recommandé)</b></string>
-    <string name="complication_default_description_unsupported">Votre appareil ne prend pas en charge l\'Aperçu par Smartspace</string>
+    <string name="complication_default_description">Complications de Google Aperçu, avec la météo</string>
+    <string name="complication_default_description_recommended">Complications de Google Aperçu, avec la météo <b>(recommandé)</b></string>
+    <string name="complication_default_description_unsupported">Votre appareil ne prend pas en charge Aperçu avec Smartspace</string>
     <string name="complication_default_description_enhanced">Nécessite l\'activation du mode amélioré, activez-le dans les paramètres</string>
     <string name="complication_default_configuration_title">Paramètres Aperçu</string>
     <string name="complication_default_configuration_description">Configurer d\'autres paramètres dans l\'application Google</string>
@@ -265,7 +265,7 @@
     <string name="safe_mode_content">Smartspacer est entré en mode sans échec à cause du crash d\'une application, pour éviter de crasher en boucle. Ces crashs sont généralement causés le mauvais fonctionnement d\'une cible ou d\'une complication. Si cela persiste, recherchez les mises à jour de vos plugins.</string>
     <string name="safe_mode_relaunch">Relancer Smartspacer</string>
     <string name="feedback_loop_title">Boucle de rétroaction</string>
-    <string name="feedback_loop_content">Smartspacer a détecté une boucle de rétroaction entre Smartspace natif et le système qui empêche les cibles Aperçu de fonctionner.\n\nCela peut arriver lorsque Smartspacer est arrêté de force trop rapidement après l\'activation de Smartspace natif.\n\nPour corriger cela, patientez 30 secondes, redémarrez Smartspacer et réactivez Smartspace natif.</string>
+    <string name="feedback_loop_content">Smartspacer a détecté une boucle de rétroaction entre Smartspace natif et le système, ce qui empêche les cibles Aperçu de fonctionner.\n\nCela peut arriver lorsque Smartspacer est arrêté de force trop rapidement après l\'activation de Smartspace natif.\n\nPour corriger cela, patientez 30 secondes, redémarrez Smartspacer et réactivez Smartspace natif.</string>
     <string name="feedback_loop_relaunch_wait">Patientez %1s secondes</string>
     <string name="feedback_loop_relaunch">Redémarrer Smartspacer</string>
     <string name="configuration_notification_enable_title">Activez l\'accès aux notifications</string>
@@ -450,7 +450,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -461,7 +461,7 @@
     <string name="setup_targets_info_title">Cibles</string>
     <string name="setup_targets_info_p1"><b>Les cibles</b> sont des pages d\'informations affichées dans Smartspace, généralement composées d\'un titre, d\'un sous-titre et d\'une icône. De nombreuses cibles affichent également des informations supplémentaires telles que des images ou des listes.</string>
     <string name="setup_targets_info_p2">Les cibles peuvent être soit dynamiques et s\'afficher et se masquer suivant certaines conditions, ou statiques et s\'afficher en continu. Vous pouvez utiliser <b>les conditions</b> et modifier les paramètres mis à disposition par de nombreuses cibles pour choisir quand les afficher (paramètres accessibles en appuyant sur une cible dans l\'interface de Smartspacer).</string>
-    <string name="setup_targets_info_p3">L\'intégration de l\'Aperçu de Smartspacer est fournie par la cible « Aperçu », qui permet d\'afficher les informations habituelles de l\'Aperçu Google telles que les événements de l\'agenda et les vols. Veuillez noter que cette cible <b>n\'affiche pas toujours</b> la date du jour s\'il n\'y a aucune information disponible. Ajoutez la cible « Date » séparément si vous souhaitez que la date soit toujours visible.</string>
+    <string name="setup_targets_info_p3">L\'intégration d\'Aperçu par Smartspacer est fournie par la cible « Aperçu », qui permet d\'afficher les informations fournies par Google telles que les événements de l\'agenda et les vols. Veuillez noter que cette cible <b>n\'affiche pas toujours</b> la date du jour s\'il n\'y a aucune information disponible. Ajoutez la cible « Date » séparément si vous souhaitez que la date soit toujours visible.</string>
     <string name="setup_targets_info_example_one_title">Circulation dense à proximité</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Liste de courses</string>
@@ -556,7 +556,7 @@
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Smartspace natif</string>
     <string name="native_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
-    <string name="native_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
+    <string name="native_restart_disconnect_content">Smartspacer a été déconnecté d\'Aperçu. Afin de s\'assurer que les cibles et les complications fonctionnent correctement, Smartspace natif doit être arrêté puis démarré à nouveau afin de le reconnecter.</string>
     <string name="native_restart_info"><b>Important :</b> lorsque vous reconnectez Smartspace natif, Smartspacer redémarre l\'interface système. <b>Il se peut qu\'un message indiquant que l\'interface s\'est arrêtée s\'affiche. Vous arriverez ensuite sur l\'écran de verrouillage.</b> Tout ceci est normal. Pour continuer, fermez le message et déverrouillez votre appareil.</string>
     <string name="native_restart_button">Reconnecter</string>
     <!-- Native Mode boot notification -->
@@ -567,7 +567,7 @@
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconnectez Smartspace natif</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer a détecté une boucle de rétroaction lors du démarrage de Smartspace natif. Appuyez pour reconnecter et réessayer.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté de l\'Aperçu, appuyez pour reconnecter.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer a été déconnecté d\'Aperçu, appuyez pour reconnecter.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnecter</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku requis</string>
