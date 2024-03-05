@@ -214,7 +214,7 @@
     <string name="target_edit_expanded_show_app_shortcuts_title">App-Verknüpfungen anzeigen</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Mit diesem Ziel verknüpfte App-Verknüpfungen anzeigen, falls vorhanden</string>
     <string name="target_edit_expanded_show_app_shortcuts_content_unavailable">Erfordert erweiterten Modus</string>
-    <string name="target_edit_advanced_header">Advanced</string>
+    <string name="target_edit_advanced_header">Erweitert</string>
     <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
     <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
     <string name="target_edit_settings_header">Einstellungen</string>
