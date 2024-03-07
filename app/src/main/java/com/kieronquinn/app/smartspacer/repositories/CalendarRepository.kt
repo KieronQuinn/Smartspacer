@@ -217,7 +217,14 @@ class CalendarRepositoryImpl(
             !it.isAllDay || showAllDay
         }.filter {
             it.startTime.isBefore(now) || Duration.between(now, it.startTime) <= preEventTime
-        }.toList()
+        }.sortedWith(
+            compareBy<CalendarEvent> {
+                val timeUntilStart = Duration.between(it.startTime, now)
+                !timeUntilStart.isNegative
+            }.thenByDescending {
+                Duration.between(it.startTime, now)
+            }
+        ).toList()
     }
 
     override fun getCalendars(): Flow<List<Calendar>> {

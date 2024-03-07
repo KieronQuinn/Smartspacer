@@ -2,7 +2,7 @@ package com.kieronquinn.app.smartspacer.components.smartspace.widgets
 
 import android.appwidget.AppWidgetProviderInfo
 import android.util.SizeF
-import android.widget.FrameLayout
+import android.view.View
 import android.widget.RemoteViews
 import android.widget.TextView
 import com.kieronquinn.app.smartspacer.repositories.DigitalWellbeingRepository
@@ -66,7 +66,7 @@ class DigitalWellbeingWidget: SmartspacerWidgetProvider() {
         val app2TimeTextView = views.findViewByIdentifier<TextView>(ID_APP2_TIME) ?: return
         val app3NameTextView = views.findViewByIdentifier<TextView>(ID_APP3_NAME) ?: return
         val app3TimeTextView = views.findViewByIdentifier<TextView>(ID_APP3_TIME) ?: return
-        val background = views.findViewById<FrameLayout>(android.R.id.background)
+        val background = views.findViewById<View>(android.R.id.background)
         val clickIntent = background.getClickPendingIntent() ?: return
         val state = WellbeingState(
             titleTextView.text,

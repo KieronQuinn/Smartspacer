@@ -37,7 +37,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -533,12 +532,15 @@ class SmartspaceRepositoryImpl(
             availableComplications
         ) { targets, complications ->
             targets.map { it.sourcePackage } + complications.map { it.sourcePackage }
-        }.map {
-            it.toSet()
         }.stateIn(scope, SharingStarted.Eagerly, emptySet())
+        val packagesToSend = suspend {
+            (packages.value +
+                    getAlwaysRefreshTargets().map { it.packageName } +
+                    getAlwaysRefreshTargets().map { it.packageName }).distinct()
+        }
         targetsRepository.smartspaceVisible.collect { visible ->
             val timestamp = System.currentTimeMillis()
-            packages.value.forEach {
+            packagesToSend().forEach {
                 SmartspacerVisibilityChangedReceiver.sendVisibilityChangedBroadcast(
                     context, visible, it, timestamp
                 )
