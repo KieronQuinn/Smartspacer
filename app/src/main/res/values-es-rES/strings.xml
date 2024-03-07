@@ -293,7 +293,7 @@
     <string name="requirement_not_available_alt">La regla no se ha podido cargar, si el problema persiste, contacta al desarrollador de la regla</string>
     <string name="requirement_time_date_title"> Fecha y hora</string>
     <string name="requirement_time_date_content_generic">Mostrar sólo entre horas específicas en días específicos</string>
-    <string name="requirement_time_date_content">Only show between %1s and %1s on %1s</string>
+    <string name="requirement_time_date_content">Solo mostrar entre la(s) %1s y la(s) %1s los %1s</string>
     <string name="requirement_time_date_content_all_days">Solo mostrar entre la (s) %1s y %1s, todos los días</string>
     <string name="requirement_time_date_configuration_title">Fecha y hora</string>
     <string name="requirement_time_date_configuration_content">Establece los días y las horas en que este elemento debe ser mostrado</string>
