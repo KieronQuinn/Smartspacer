@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.DiffUtil
@@ -21,9 +22,11 @@ import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.getHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.loadPreview
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.monetcompat.R as MonetcompatR
 
 class ExpandedAddWidgetBottomSheetAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -58,7 +61,15 @@ class ExpandedAddWidgetBottomSheetAdapter(
         }
     }
 
-    private val layoutInflater = LayoutInflater.from(recyclerView.context)
+    private val theme = if(recyclerView.context.isDarkMode) {
+        MonetcompatR.style.Theme_MaterialComponents
+    } else {
+        MonetcompatR.style.Theme_MaterialComponents_Light
+    }
+
+    private val context = ContextThemeWrapper(recyclerView.context, theme)
+
+    private val layoutInflater = LayoutInflater.from(context)
     private val glide = Glide.with(recyclerView.context)
 
     private val cornerRadius by lazy {

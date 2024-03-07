@@ -7,6 +7,7 @@ import com.google.android.material.color.DynamicColors
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.receivers.SafeModeReceiver
 import com.kieronquinn.app.smartspacer.repositories.BluetoothRepository
+import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
 import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
 import com.kieronquinn.app.smartspacer.service.SmartspacerBackgroundService
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
@@ -18,6 +19,7 @@ class MainActivity : MonetCompatActivity() {
 
     private val wiFiRepository by inject<WiFiRepository>()
     private val bluetoothRepository by inject<BluetoothRepository>()
+    private val calendarRepository by inject<CalendarRepository>()
 
     override val applyBackgroundColorToMenu = true
 
@@ -46,6 +48,8 @@ class MainActivity : MonetCompatActivity() {
         //Check for changes to permission restricted repositories if the user has changed a perm
         wiFiRepository.refresh()
         bluetoothRepository.onPermissionChanged()
+        //Alarm permission may have been granted
+        calendarRepository.reloadEvents()
     }
 
 }

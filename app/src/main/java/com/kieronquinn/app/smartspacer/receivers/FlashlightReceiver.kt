@@ -16,7 +16,9 @@ class FlashlightReceiver: BroadcastReceiver(), KoinComponent {
         shizukuServiceRepository.runWithServiceIfAvailable {
             it.toggleTorch()
         }.unwrap() ?: run {
-            context.startActivity(Intent(context, FlashlightToggleActivity::class.java))
+            context.startActivity(Intent(context, FlashlightToggleActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            })
         }
     }
 

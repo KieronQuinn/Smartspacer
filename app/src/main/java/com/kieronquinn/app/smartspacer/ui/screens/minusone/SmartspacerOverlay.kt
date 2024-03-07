@@ -80,11 +80,13 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
     }
 
     override fun onDestroy() {
+        onPause()
         super.onDestroy()
         activityManager.dispatchDestroy(true)
     }
 
     override fun onStop() {
+        onPause()
         blurProvider.applyBlurToWindow(window!!, 0f)
         super.onStop()
     }

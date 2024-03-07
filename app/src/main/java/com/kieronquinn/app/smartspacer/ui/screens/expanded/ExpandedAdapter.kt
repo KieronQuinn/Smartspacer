@@ -44,6 +44,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.core.component.inject
+import com.kieronquinn.monetcompat.R as MonetcompatR
 
 class ExpandedAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -87,8 +88,22 @@ class ExpandedAdapter(
         R.style.Theme_Smartspacer_Wallpaper_Light
     }
 
+    /**
+     *  Some Target & Complication icons are really picky about icons not working with Material3.
+     *  This fixes that by allowing them to load with a raw MaterialComponents theme
+     */
+    private val themeMaterialComponents = if(isDark) {
+        MonetcompatR.style.Theme_MaterialComponents
+    } else {
+        MonetcompatR.style.Theme_MaterialComponents_Light
+    }
+
     private val context = ContextThemeWrapper(recyclerView.context.applicationContext, theme)
+    private val contextMaterialComponents = ContextThemeWrapper(
+        recyclerView.context.applicationContext, themeMaterialComponents
+    )
     private val layoutInflater = LayoutInflater.from(context)
+    private val layoutInflaterMaterialComponents = LayoutInflater.from(contextMaterialComponents)
     private val widgetContext = WidgetContextWrapper(context)
     private val monet = MonetCompat.getInstance()
     private val glide = Glide.with(context)
@@ -109,16 +124,16 @@ class ExpandedAdapter(
                 ItemExpandedSearchBinding.inflate(layoutInflater, parent, false)
             )
             Type.TARGET -> ViewHolder.Target(
-                ItemExpandedTargetBinding.inflate(layoutInflater, parent, false)
+                ItemExpandedTargetBinding.inflate(layoutInflaterMaterialComponents, parent, false)
             )
             Type.COMPLICATIONS -> ViewHolder.Complications(
-                ItemExpandedComplicationsBinding.inflate(layoutInflater, parent, false)
+                ItemExpandedComplicationsBinding.inflate(layoutInflaterMaterialComponents, parent, false)
             )
             Type.REMOTE_VIEWS -> ViewHolder.RemoteViews(
                 ItemExpandedRemoteviewsBinding.inflate(layoutInflater, parent, false)
             )
             Type.WIDGET -> ViewHolder.Widget(
-                ItemExpandedWidgetBinding.inflate(layoutInflater, parent, false)
+                ItemExpandedWidgetBinding.inflate(layoutInflaterMaterialComponents, parent, false)
             )
             Type.REMOVED_WIDGET -> ViewHolder.RemovedWidget(
                 ItemExpandedRemovedWidgetBinding.inflate(layoutInflater, parent, false)
