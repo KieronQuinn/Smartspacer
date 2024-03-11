@@ -386,8 +386,8 @@
     <string name="settings_enhanced_title">Modo mejorado</string>
     <string name="settings_enhanced_content">Permite a Smartspacer interactuar e integrarse con funciones del sistema</string>
     <string name="settings_enhanced_content_unsupported">Esta opción no es compatible con tu dispositivo</string>
-    <string name="settings_native_smartspace_settings_title">Smartspace nativo</string>
-    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
+    <string name="settings_native_smartspace_settings_title">Espaciado inteligente nativo</string>
+    <string name="settings_native_smartspace_settings_content">Opciones para que Smartspacer se muestre en el espaciado inteligente de launchers y pantallas de bloqueo compatibles</string>
     <string name="settings_native_smartspace_settings_content_incompatible">Esta opción no es compatible con tu dispositivo</string>
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Esta opción requiere Modo mejorado</string>
     <string name="settings_targets_complications">Objetivos y complicaciones</string>
@@ -535,7 +535,7 @@
     <string name="enhanced_mode_enable_content_header"><b>El modo mejorado le permite a Smartspacer:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrarse en el Smartspace de la pantalla de bloqueo</string>
     <string name="enhanced_mode_enable_content_native_launcher">• Integrarse en el Smartspace de launchers compatibles</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrarse en el Smartspace de OEM (si está disponible)</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrarse en el espaciado inteligente de OEM (si está disponible)</string>
     <string name="enhanced_mode_enable_content_system">• Mostrar objetivos y complicaciones del Smartspace del sistema en Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
@@ -577,7 +577,7 @@
     <string name="notification_shizuku_content_at_a_glance_complication">La complicación \"De un vistazo\" requiere que Shizuku haya iniciado, presiona para abrir</string>
     <!-- Sui service notifications -->
     <string name="notification_sui_title">Sui o Shizuku como root</string>
-    <string name="notification_sui_content_oem_smartspace">Smartspace de OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
+    <string name="notification_sui_content_oem_smartspace">Espaciado inteligente de OEM requiere que Shizuku se haya iniciado como root o Sui. Smartspacer no pudo conectarse, por lo que el servicio se ha desactivado.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Desactivar las optimizaciones de batería</string>
     <string name="notification_battery_optimisation_content">Smartspacer requiere que la optimización de batería esté desactivada para poder actualizar los objetivos y complicaciones en segundo plano, presiona para desactivarla</string>
@@ -631,7 +631,7 @@
     <string name="expanded_permission_later">Más tarde</string>
     <string name="expanded_permission_grant">Permitir</string>
     <!-- Expanded Smartspace Settings -->
-    <string name="expanded_settings_title">Smartspace extendido</string>
+    <string name="expanded_settings_title">Espaciado inteligente extendido</string>
     <string name="expanded_settings_title_short">Extendido</string>
     <string name="expanded_settings_content">Muestra los objetivos y complicaciones de Smartspace en una vista de pantalla completa, con información extra incluyendo widgets, accesos directos de aplicaciones y más</string>
     <string name="expanded_settings_footer">Smartspace Expandido muestra todos los objetivos y complicaciones de Smartspace, también información adicional como widgets, accesos directos y más en objetivos compatibles. Se puede abrir mediante la pantalla principal, la pantalla de bloqueo o desde el acceso directo del ícono de Smartspacer. Si usas Discovery Killer, Smartspacer puede reemplazar el feed de Google Discover.</string>
@@ -674,7 +674,7 @@
     <string name="expanded_settings_tint_colour">Tono</string>
     <string name="expanded_settings_tint_colour_content">Color que se usa para el texto y los iconos en Smartspace expandido: %1s</string>
     <!-- OEM Smartspace settings -->
-    <string name="oem_smartspace_title">Smartspace de OEM</string>
+    <string name="oem_smartspace_title">Espaciado inteligente de OEM</string>
     <string name="oem_smartspace_content">Opciones para que Smartspacer se muestre en launchers heredados y en la pantalla de bloqueo de algunos dispositivos</string>
     <string name="oem_smartspace_content_enhanced">Esta opción requiere de modo mejorado</string>
     <string name="oem_smartspace_incompatible">Lamentablemente esta opción requiere root en tu dispositivo debido a limitaciones del sistema. Si tu dispositivo está rooteado, instala el módulo Sui de Magisk o inicia Shizuku como root.</string>
