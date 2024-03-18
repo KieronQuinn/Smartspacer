@@ -66,7 +66,7 @@
     <string name="widget_configuration_apply">Aplicar</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Permite que el widget de Smartspacer mantenga actualizados los objetivos y las complicaciones, sin consumir batería al tenerlos siempre en funcionamiento.\n\nNota: Esto no es necesario si tienes el modo mejorado activado.</string>
     <string name="target_notification_label">Notificaciones</string>
     <string name="target_notification_description">Mostrar notificaciones desde una app</string>
     <string name="target_notification_description_selected">Mostrar notificaciones de %1s</string>
@@ -258,8 +258,8 @@
     <string name="complication_edit_requirements_content_both">Hay %1d reglas de \"Cualquiera\" y %1d reglas de \"Todas\" configuradas</string>
     <string name="complication_edit_external_title">Más configuraciones</string>
     <string name="complication_edit_external_content">Configure more settings in %1s</string>
-    <string name="complication_edit_external_error">Failed to launch settings for this Complication</string>
-    <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
+    <string name="complication_edit_external_error">Error al iniciar la configuración para esta complicación</string>
+    <string name="requirement_edit_external_error">Error al iniciar la configuración para esta regla</string>
     <string name="requirement_edit_invert">Invertir esta regla</string>
     <string name="safe_mode_title">Modo seguro</string>
     <string name="safe_mode_content">Smartspacer entró en modo seguro debido a un cierre inesperado de la aplicación, para prevenir un bucle de bloqueo. Estos bloqueos suelen ser causados por un mal comportamiento de un objetivo o complicación, así que si persisten, comprueba si hay actualizaciones de las extensiones.</string>
@@ -279,7 +279,7 @@
     <string name="configuration_notification_association_title">Otorgar permisos</string>
     <string name="configuration_notification_association_content">Para permitir que Smartspacer acceda a una lista de los canales de notificaciones de otras aplicaciones y que puedas elegir cuál mostrar, debes enlazar un dispositivo o red para esta aplicación. Esto es un requerimiento (bastante extraño) del sistema Android, y es la única manera de obtener una lista de canales sin root. Esto sólo tiene que hacerse una vez.</string>
     <string name="configuration_notification_association_subcontent">Presiona el botón de \"Enlazar\" que está abajo, y selecciona cualquier dispositivo o conexión de la lista que aparece.\n\n<b>No importa si el dispositivo o conexión son tuyos, o si estará en el rango mientras usas Smartspacer. Smartspacer no se emparejará o conectará al dispositivo que elijas</b>. Es posible que necesites tener la ubicación activada para que los dispositivos y conexiones aparezcan en el cuadro de diálogo.</string>
-    <string name="configuration_notification_association_button">Set Companion</string>
+    <string name="configuration_notification_association_button">Enlazar</string>
     <string name="configuration_notification_association_read_more">Leer más sobre este requerimiento</string>
     <string name="configuration_notification_association_toast">Se ha producido un error, por favor inténtalo de nuevo</string>
     <string name="configuration_notification_picker_empty">No se encontraron notificaciones</string>
@@ -330,7 +330,7 @@
     <string name="requirement_wifi_content_base">Solo mostrar cuando %1s con %1s</string>
     <string name="requirement_wifi_content_connected_to">conectado</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in range or connected</string>
-    <string name="requirement_wifi_content_ssid_mac">%1s with MAC %1s</string>
+    <string name="requirement_wifi_content_ssid_mac">%1s con la dirección MAC %1s</string>
     <string name="requirement_wifi_configuration_in_range_title">Permitir red desconectada (en rango)</string>
     <string name="requirement_wifi_configuration_in_range_content">Cuando está activado, esta regla se cumplirá cuando la red especificada esté en el rango, pero aunque no esté conectado a internet.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
@@ -520,7 +520,7 @@
     <string name="enhanced_mode_request_loading_title">Solicitando permiso…</string>
     <string name="enhanced_mode_request_loading_subtitle">Otorga el permiso a Shizuku/Sui si aparece un cuadro de diálogo</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
-    <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
+    <string name="enhanced_mode_request_shizuku_content">Shizuku es una app sin root que permite a las aplicaciones como Smartspacer, ejecutar código con permisos especiales. Esto lo logra ejecutando un comando en la shell de ADB (Android Debug Bridge), una vez por cada reinicio del dispositivo. En dispositivos con Android 11 en adelante, esto se puede hacer sin necesidad de una computadora, pero en versiones antiguas de Android, deberás conectarte a una computadora una vez por cada reinicio para reiniciar Shizuku.</string>
     <string name="enhanced_mode_request_shizuku_button">Obtener Shizuku</string>
     <string name="enhanced_mode_request_sui_content">Sui es un módulo de Magisk que permite que aplicaciones como Smartspacer ejecuten código como root. Utiliza el mismo marco que Shizuku y, por lo tanto, funciona con las aplicaciones de Shizuku, pero no requiere inicio manual después de reiniciar, esto se hace automáticamente.\n<b>Si no estás seguro de qué es root o Magisk, usa Shizuku en su lugar.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
@@ -537,8 +537,8 @@
     <string name="enhanced_mode_enable_content_native_launcher">• Integrarse en el Smartspace de launchers compatibles</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrarse en el espaciado inteligente de OEM (si está disponible)</string>
     <string name="enhanced_mode_enable_content_system">• Mostrar objetivos y complicaciones del Smartspace del sistema en Smartspacer</string>
-    <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
+    <string name="enhanced_mode_enable_content_app_prediction">• Usar las sugerencias de app como regla</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Usar las apps recientes como regla</string>
     <string name="enhanced_mode_skip_button">Omitir</string>
     <string name="enhanced_mode_skip_info">Puedes seguir usando los widgets, objetivos, complicaciones y extensiones de Smartspacer con el modo mejorado desactivado</string>
     <string name="enhanced_mode_disable_toast">Es posible que tengas que reiniciar tu dispositivo para que los cambios surtan efecto</string>
@@ -566,7 +566,7 @@
     <string name="notification_native_mode_enable_now">Reactivar</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Reconectar Smartspace nativo</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encontró un bucle de retroalimentación al iniciar espaciado nativo. Presiona para reconectarlo e intentarlo de nuevo.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer se ha desconectado de De un vistazo, presiona para reconectarlo.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconectar</string>
     <!-- Shizuku Start Notifications -->
@@ -607,7 +607,7 @@
     <string name="native_mode_settings_target_limit_unlimited_content">Ignorar el límite solicitado y mostrar tantas páginas como estén disponibles</string>
     <string name="native_mode_settings_hide_incompatible_targets_title">Ocultar objetivos no compatibles</string>
     <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar objetivos que no son compatibles con tu dispositivo, en lugar de mostrar solo su título y subtítulo</string>
-    <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
+    <string name="native_mode_settings_use_split_smartspace">Usar espaciado dividido</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Permiso de Smartspacer requerido</string>
@@ -843,7 +843,7 @@
     <string name="restore_requirements_duplicate">Esta regla ya ha sido agregada y no se puede agregar más de una vez. Elimina la regla existente antes de restaurarla.</string>
     <string name="restore_requirements_collision"><b>Al agregar esta regla se sobrescribirá la configuración actual</b></string>
     <string name="restore_requirements_for">Reglas para: %1s</string>
-    <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
+    <string name="restore_widgets_title">Restaurando widgets de espaciado expandido…</string>
     <string name="restore_settings_title">Restaurando configuración de Smartspacer…</string>
     <string name="restore_complete_title">Restauración completa</string>
     <string name="restore_page_controls_next">Siguiente</string>
@@ -871,7 +871,7 @@
     <string name="about_contributors_sdk_content"><![CDATA[Algunas partes del SDK de Smartspacer contienen código basado en Lawnchair, bajo la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
     <string name="about_translators">Traductores</string>
     <!-- Wallpaper Colour Picker -->
-    <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
+    <string name="wallpaper_colour_picker_menu">Selector de color de fondo</string>
     <string name="wallpaper_colour_picker_title">Color de fondo</string>
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
