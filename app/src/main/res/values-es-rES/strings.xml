@@ -670,7 +670,7 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Siempre</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
+    <string name="expanded_settings_date_info"><b>Nota:</b> Debido a limitaciones del sistema, esta opción no se aplica al presionar la fecha del objetivo de fecha (o una fecha de objetivo de relleno mostrada encima de las complicaciones)</string>
     <string name="expanded_settings_tint_colour">Tono</string>
     <string name="expanded_settings_tint_colour_content">Color que se usa para el texto y los iconos en Smartspace expandido: %1s</string>
     <!-- OEM Smartspace settings -->
@@ -714,7 +714,7 @@
     <string name="battery_optimisation_system_title">Desactivar las optimizaciones de batería</string>
     <string name="battery_optimisation_system_content">Esto es necesario para permitir que Smartspacer siga funcionando en segundo plano.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Permitir alarmas y recordatorios</string>
-    <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
+    <string name="battery_optimisation_schedule_exact_alarm_content">Es necesario para que Smartspacer actualice de manera segura los objetivos y las complicaciones en segundo plano.</string>
     <string name="battery_optimisation_oem_title">Optimización de batería de OEM</string>
     <string name="battery_optimisation_oem_content">Tu dispositivo parece tener algunas optimizaciones de batería específicas del OEM. Estas no se pueden desactivar automáticamente; presiona para abrir la configuración de la batería OEM.</string>
     <string name="battery_optimisation_footer">Smartspacer se ejecuta en segundo plano, así que para evitar que el sistema lo detenga, las optimizaciones de batería deben desactivarse.</string>
