@@ -116,7 +116,7 @@ abstract class BaseSmartspacerSession<T, I>(
                 surface == UiSurface.HOMESCREEN -> home
                 surface == UiSurface.LOCKSCREEN -> lock
                 surface == UiSurface.MEDIA_DATA_MANAGER -> ExpandedOpenMode.NEVER
-                surface == UiSurface.GLANEABLE_HUB -> ExpandedOpenMode.NEVER
+                surface == UiSurface.GLANCEABLE_HUB -> ExpandedOpenMode.NEVER
                 else -> throw RuntimeException("Invalid expanded open mode")
             }
         }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
@@ -360,7 +360,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
                         false
                     }
                 }
@@ -376,7 +376,7 @@ abstract class BaseSmartspacerSession<T, I>(
                             it.parent.config.showOnLockScreen
                         }
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
                         false
                     }
                 }
@@ -504,7 +504,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
                         false
                     }
                 }
@@ -520,7 +520,7 @@ abstract class BaseSmartspacerSession<T, I>(
                             it.parent.config.showOnLockScreen
                         }
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
                         false
                     }
                 }

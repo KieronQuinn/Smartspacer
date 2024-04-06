@@ -92,7 +92,7 @@ class ExpandedSmartspacerSession(
             UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour
             UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour
             UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour
-            UiSurface.GLANEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
+            UiSurface.GLANCEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
         }
     }
 

@@ -26,7 +26,7 @@ fun SmartspaceTarget.toSystemSmartspaceTarget(uiSurface: UiSurface): SystemSmart
         UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour.value
         UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour.value
         UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour.value
-        UiSurface.GLANEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour.value
+        UiSurface.GLANCEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour.value
     }
     val tintColour =  if(dark) Color.BLACK else Color.WHITE
     return SystemSmartspaceTarget.Builder(smartspaceTargetId, componentName, userHandle).apply {

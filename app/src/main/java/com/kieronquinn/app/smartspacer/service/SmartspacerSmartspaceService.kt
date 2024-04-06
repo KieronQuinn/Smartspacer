@@ -211,7 +211,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                     if(init) it.onResume()
                 }
             }
-            config.uiSurface == UiSurface.GLANEABLE_HUB -> {
+            config.uiSurface == UiSurface.GLANCEABLE_HUB -> {
                 glanceableHubSessions[sessionId] = GlanceableHubSmartspacerSession(
                     this@SmartspacerSmartspaceService,
                     config,

@@ -8,7 +8,7 @@ enum class UiSurface(val surface: String) {
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     MEDIA_DATA_MANAGER("media_data_manager"),
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    GLANEABLE_HUB("glanceable_hub");
+    GLANCEABLE_HUB("glanceable_hub");
 
     companion object {
         fun from(surface: String): UiSurface {

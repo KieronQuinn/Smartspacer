@@ -209,7 +209,7 @@ class SystemSmartspaceRepositoryImpl(
             it.setupSession(UiSurface.MEDIA_DATA_MANAGER) { targets ->
                 _mediaTargets.emit(targets)
             }
-            it.setupSession(UiSurface.GLANEABLE_HUB) { targets ->
+            it.setupSession(UiSurface.GLANCEABLE_HUB) { targets ->
                 _hubTargets.emit(targets)
             }
             true

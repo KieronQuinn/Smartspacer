@@ -66,7 +66,7 @@ class GlanceableHubSmartspacerSession(
         systemSmartspaceRepository.mediaTargets.collect {
             collectInto.invoke(
                 sessionId,
-                it.map { target -> target.toSystemSmartspaceTarget(UiSurface.GLANEABLE_HUB) }
+                it.map { target -> target.toSystemSmartspaceTarget(UiSurface.GLANCEABLE_HUB) }
             )
         }
     }
