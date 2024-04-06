@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smartspacer</string>
-    <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Opcional</b>: Activa este módulo en tu launcher o en la extensión del feed de Google para poder reemplazar Google Discover pot Smartspace Expandido. También, debes activar la opción de Smartspace Expandido en la configuración de Smartspacer.</string>
     <string name="dummy_home_content">Esta pantalla existe para trabajar con Widgets mal implementados por Smartspacer Plugins.\n\nSmartspacer no puede actuar como launcher, por favor seleccione un launcher diferente.</string>
     <string name="dummy_home_open_settings">Abrir configuración</string>
@@ -18,7 +16,6 @@
     <string name="bottom_nav_complications">Complicaciones</string>
     <string name="bottom_nav_plugins">Extensiones</string>
     <string name="bottom_nav_settings">Configuración</string>
-    <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Permite configuraciones restringidas en el menú adicional</string>
     <string name="restricted_mode_content_accessibility">Desde Android 13, Google agregó un control de seguridad a la configuración, previniendo que las aplicaciones de terceros puedan usar los servicios de accesibilidad por defecto.\n\n<b>Si ves un mensaje de configuración restringida cuando intentes activar el servicio de accesibilidad, necesitas abrir la información de la app, y permitir la configuración restringida.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Desde Android 14, Google ha evitado hacer sideload utilizando el Instalador de paquetes desde el uso de los Servicios de Acesibilidad. <br><br><b>Si ves un mensaje sobre ajustes restringidos, deberás desinstalar Smartspacer y reinstalarlo utilizando una aplicación basada en un instalador por sesiones, como por ejemplo <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Instalando por encima (sin actualizar) NO es suficiente.<br><br></b>Alternativamente, con el modo mejorado habilitado, Smartspacer evitará este requisito (no se puede hacer sin Shizuku o root).]]></string>
@@ -38,19 +35,39 @@
     <string name="tint_colour_black">Negro</string>
     <string name="tint_colour_black_content">El texto e iconos en el widget siempre serán negros</string>
     <string name="tint_colour_black_content_alt">El texto y los íconos de la notificación siempre serán negros</string>
-    <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Muestra los objetivos y complicaciones de Smartspacer</string>
     <string name="widget_loading_smartspacer">Cargando…</string>
     <string name="widget_loading_smartspacer_subtitle">Comprueba que el servicio de accesibilidad de Smartspacer está habilitado si este mensaje sigue</string>
     <string name="widget_configuration_title">Widget de Smartspacer</string>
+    <string name="widget_configuration_tab_horizontal">Horizontal</string>
+    <string name="widget_configuration_tab_vertical">Vertical</string>
+    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">Activar servicio de accesibilidad</string>
     <string name="widget_configuration_accessibility_content">El widget de Smartspacer requiere un servicio de accesibilidad para saber qué aplicación está actualmente abierta en el dispositivo y para iniciar/detener objetivos y complicaciones. Esto permite mantenerse actualizado, sin necesidad de ejecutarse todo el tiempo, ahorrando batería.</string>
-    <string name="widget_configuration_accessibility_enable">Activar servicio de Accesibilidad</string>
+    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
+    <string name="widget_configuration_behaviour_title">Behaviour</string>
+    <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
+    <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page_single_title">Una sola página</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_customisation_title">Customisation</string>
+    <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
+    <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
+    <string name="widget_configuration_page_controls_invisible_content">Make the controls invisible. They\'re still there and are clickable, but are invisible.</string>
+    <string name="widget_configuration_padding_title">Extra Padding</string>
+    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
     <string name="widget_configuration_animation">Animación</string>
     <string name="widget_configuration_animation_switch_title">Animar los cambios</string>
     <string name="widget_configuration_animation_switch_content">Desvanecer entre los cambios al widget siempre que sea posible</string>
     <string name="widget_configuration_colour">Color</string>
+    <string name="widget_configuration_shadow_title">Text Shadow</string>
+    <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
+    <string name="widget_configuration_mock_target_title">Smartspacer</string>
+    <string name="widget_configuration_mock_target_subtitle">Target</string>
+    <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
     <string name="accessibility_service_description">Permite que el widget de Smartspacer mantenga actualizados los objetivos y las complicaciones, sin consumir batería al tenerlos siempre en funcionamiento.\n\nNota: Esto no es necesario si tienes el modo mejorado activado.</string>
@@ -115,6 +132,8 @@
     <string name="complication_google_weather_label">Clima de Google</string>
     <string name="complication_google_weather_description">Muestra el clima extraído desde la app de Google</string>
     <string name="complication_google_weather_description_unsupported">Este objetivo requiere la app de Google</string>
+    <string name="complication_date_label">Date</string>
+    <string name="complication_date_description">Shows the current date</string>
     <string name="plugin_target_default_label">Extensión de objetivo</string>
     <string name="plugin_action_default_label">Extensión de complicación</string>
     <string name="plugin_requirement_default_label">Extensión de requerimiento</string>
@@ -124,11 +143,9 @@
     <string name="notification_channel_background_service_subtitle">Las notificaciones se mostrarán cuando Smartspacer se esté ejecutando en segundo plano</string>
     <string name="notification_title_background_service">Smartspacer está activo</string>
     <string name="notification_content_background_service">Smartspacer está activo en segundo plano, presiona para ocultarlo</string>
-    <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer está activo en segundo plano</string>
     <string name="notification_channel_safe_mode_title">Modo seguro</string>
     <string name="notification_channel_safe_mode_subtitle">Las notificaciones se mostrarán cuando Smartspacer esté en modo seguro</string>
-    <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">Smartspacer ha entrado en modo seguro debido al bloqueo de %1s. Pulsa para obtener más información.</string>
     <string name="notification_channel_error_title">Errores</string>
     <string name="notification_channel_error_content">Las notificaciones se mostrarán si Smartspacer encuentra algún error</string>
@@ -418,21 +435,12 @@
     <string name="compatibility_feature_shopping_list_content">Permite mostrar una lista corta además del título &amp; subtítulo</string>
     <string name="compatibility_feature_sports_title">Deportes</string>
     <string name="compatibility_feature_sports_content">Permite mostrar la puntuación de dos equipos, además un título y un subtítulo</string>
-    <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
-    <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">Carrusel</string>
     <string name="compatibility_template_carousel_content">Permite mostrar hasta cuatro iconos con un encabezado y pie de página, además del título y un subtítulo</string>
-    <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
-    <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
-    <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
-    <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">Imágenes</string>
     <string name="compatibility_template_sub_images_content">Permite mostrar una secuencia de imágenes, además un título y un subtítulo</string>
-    <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
-    <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Pantalla de bloqueo</string>
     <!-- Setup -->
-    <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Comenzar</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Estadísticas</string>
@@ -651,6 +659,15 @@
     <string name="expanded_settings_xposed_enabled_title">Reemplazar Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Reemplazar el feed de Google Discover por Smartspace Expandido.\n<b>Nota:</b> Debes activar el módulo Xposed para tu launcher o la extensión para el feed de Google y después reinicia para aplicar los cambios.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Esta opción requiere de Xposed</string>
+    <string name="expanded_settings_hide_add_button_title">Hide Add Button</string>
+    <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
+    <string name="expanded_settings_hide_add_button_never">Never</string>
+    <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
+    <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
+    <string name="expanded_complications_first_title">Complications First</string>
+    <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
     <string name="expanded_settings_open_mode_never_title">Nunca</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
@@ -686,6 +703,10 @@
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
+    <string name="expanded_add_widget_category_battery">Battery</string>
+    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_note_taking">Note-taking</string>
+    <string name="expanded_add_widget_category_weather">Weather</string>
     <string name="expanded_custom_widget_options_span_x_title">Ancho</string>
     <string name="expanded_custom_widget_options_span_x_content">El ancho de este widget, en celdas</string>
     <string name="expanded_custom_widget_options_span_y_title">Altura</string>
@@ -694,6 +715,10 @@
     <string name="expanded_custom_widget_options_reconfigure_content">Cambiar la configuración de este widget en su aplicación</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Mostrar cuando está bloqueado</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Mostrar este widget en el espacio expandido cuando el dispositivo esté bloqueado</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
+    <string name="expanded_custom_widget_full_width_title">Fill Width</string>
+    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">No se encontraron widgets</string>
     <string name="battery_optimisation_title">Optimización de batería</string>
     <string name="battery_optimisation_content">Opciones para desactivar la optimización de batería para mejorar la fiabilidad de Smartspacer</string>
@@ -936,6 +961,9 @@
     <string name="target_notification_configuration_settings">Configuración</string>
     <string name="target_notification_channels">Canales de notificación</string>
     <string name="target_notification_channels_empty">Esta aplicación no usa canales de notificaciones, asi que las notificaciones no se mostrarán</string>
+    <string name="target_notification_configuration_options">Options</string>
+    <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Objetivo vacío</string>
     <string name="target_blank_content">Ultra mínimo, se puede utilizar para no mostrar nada en absoluto o sólo complicaciones</string>
