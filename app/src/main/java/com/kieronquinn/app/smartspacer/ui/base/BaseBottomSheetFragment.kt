@@ -12,6 +12,8 @@ import androidx.core.animation.addListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
 import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
@@ -24,11 +26,21 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
+import com.kieronquinn.app.smartspacer.utils.extensions.or
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.android.ext.android.inject
 
 abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T): BottomSheetDialogFragment() {
+
+    companion object {
+        private val SYSTEM_INSETS = setOf(
+            WindowInsetsCompat.Type.systemBars(),
+            WindowInsetsCompat.Type.ime(),
+            WindowInsetsCompat.Type.statusBars(),
+            WindowInsetsCompat.Type.displayCutout()
+        ).or()
+    }
 
     internal val monet by lazy {
         MonetCompat.getInstance()
@@ -68,9 +80,16 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
                 findViewById<View>(com.google.android.material.R.id.container)?.apply {
                     fitsSystemWindows = false
                     val topMargin = marginTop
+                    val leftMargin = marginLeft
+                    val rightMargin = marginRight
                     ViewCompat.setOnApplyWindowInsetsListener(this){ view, insets ->
+                        val systemInsets = insets.getInsets(SYSTEM_INSETS)
                         view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                            updateMargins(top = topMargin + insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)
+                            updateMargins(
+                                top = topMargin + systemInsets.top,
+                                left = leftMargin + systemInsets.left,
+                                right = rightMargin + systemInsets.right
+                            )
                         }
                         insets
                     }
@@ -99,6 +118,7 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
             }
             behavior = dialog.behavior.apply {
                 isDraggable = cancelable
+                skipCollapsed = true
                 state = BottomSheetBehavior.STATE_EXPANDED
                 if(fullScreen){
                     peekHeight = resources.displayMetrics.heightPixels

@@ -21,9 +21,9 @@
     <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -46,24 +46,11 @@
     <string name="widget_configuration_accessibility_title">Activer le service d\'accessibilité</string>
     <string name="widget_configuration_accessibility_content">Le widget Smartspacer nécessite un service d\'accessibilité pour connaître les applications ouvertes sur votre appareil, et démarrer et arrêter les cibles et les complications. Cela permet de les maintenir à jour sans avoir besoin de les exécuter en permanence, ce qui économise de la batterie.</string>
     <string name="widget_configuration_accessibility_enable">Activer le service d\'accessibilité</string>
-    <string name="widget_configuration_type_title">Sélectionner un type de widget</string>
-    <string name="widget_configuration_type_home_title">Écran d\'accueil</string>
-    <string name="widget_configuration_type_home_content">Ce widget s\'affiche sur l\'écran d\'accueil et devrait afficher les cibles et les complications devant apparaître sur l\'écran d\'accueil</string>
-    <string name="widget_configuration_type_lock_title">Écran de verrouillage</string>
-    <string name="widget_configuration_type_lock_content">Ce widget s\'affiche sur l\'écran de verrouillage et devrait afficher les cibles et les complications devant apparaître sur l\'écran de verrouillage</string>
-    <string name="widget_configuration_type_lock_content_disabled">Indisponible pour ce widget. Veuillez noter que Smartspacer ne permet pas l\'activation des widgets sur l\'écran de verrouillage. Pour cela, téléchargez une application sur Google Play telle que « Lockscreen Widgets ».</string>
-    <string name="widget_configuration_page">Contrôle des pages</string>
     <string name="widget_configuration_page_single_title">Une seule page</string>
-    <string name="widget_configuration_page_single_content">Forcer le widget à n\'afficher qu\'une seule page de cibles et complications (si l\'espace le permet). Cela signifie que vous ne verrez que la première cible et la première complication dans le widget.\n<b>Important :</b> l\'utilisation de cette option implique que vous ne pourrez pas ouvrir le menu des options des cibles, et que vous ne pourrez la fermer uniquement depuis Smartspace étendu.</string>
-    <string name="widget_configuration_page_controls_title">Plusieurs pages</string>
-    <string name="widget_configuration_page_controls_content">Permettre d\'avoir autant de pages de cibles et de complications que configuré, avec des flèches vous permettant de changer de page (masquées lorsqu\'il n\'y a qu\'une page).</string>
-    <string name="widget_configuration_page_no_controls_title">Plusieurs pages sans flèches</string>
-    <string name="widget_configuration_page_no_controls_content">Identique à « Plusieurs pages », mais sans les flèches. Appuyez sur les points pour passer à la page suivante, vous reviendrez à la première page lorsque vous appuierez dessus en étant à la dernière page.</string>
     <string name="widget_configuration_animation">Animation</string>
     <string name="widget_configuration_animation_switch_title">Animer les modifications</string>
     <string name="widget_configuration_animation_switch_content">Dès que possible, appliquer un fondu lorsque le widget est modifié</string>
     <string name="widget_configuration_colour">Couleur</string>
-    <string name="widget_configuration_apply">Appliquer</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
     <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
@@ -450,7 +437,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -696,7 +683,6 @@
     <string name="expanded_custom_widget_rearrange_title">Faites glisser pour réorganiser</string>
     <string name="expanded_widget_reset_title">Réinitialiser</string>
     <string name="expanded_add_widget_title">Ajouter un widget</string>
-    <string name="expanded_add_widget_warning"><b>Remarque :</b> en raison d\'un bug dans le système Android, certains widgets pourraient ne pas se charger correctement.</string>
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>

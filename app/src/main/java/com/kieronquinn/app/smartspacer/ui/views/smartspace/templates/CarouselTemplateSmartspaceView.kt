@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.content.Intent
 import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.LayoutInflater
 import android.view.View
@@ -27,13 +28,27 @@ class CarouselTemplateSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
-        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
+        super.apply(
+            context,
+            textColour,
+            shadowEnabled,
+            remoteViews,
+            width,
+            titleSize,
+            subtitleSize,
+            featureSize,
+            isList,
+            overflowIntent,
+        )
         val item1 = template.carouselItems.getOrNull(0)
         val item2 = template.carouselItems.getOrNull(1)
         val item3 = template.carouselItems.getOrNull(2)
@@ -41,6 +56,7 @@ class CarouselTemplateSmartspaceView(
         remoteViews.setupCarouselItem(
             context,
             item1,
+            isList,
             textColour,
             featureSize,
             R.id.smartspace_view_carousel_column_1,
@@ -51,6 +67,7 @@ class CarouselTemplateSmartspaceView(
         remoteViews.setupCarouselItem(
             context,
             item2,
+            isList,
             textColour,
             featureSize,
             R.id.smartspace_view_carousel_column_2,
@@ -61,6 +78,7 @@ class CarouselTemplateSmartspaceView(
         remoteViews.setupCarouselItem(
             context,
             item3,
+            isList,
             textColour,
             featureSize,
             R.id.smartspace_view_carousel_column_3,
@@ -71,6 +89,7 @@ class CarouselTemplateSmartspaceView(
         remoteViews.setupCarouselItem(
             context,
             item4,
+            isList,
             textColour,
             featureSize,
             R.id.smartspace_view_carousel_column_4,
@@ -79,16 +98,18 @@ class CarouselTemplateSmartspaceView(
             R.id.smartspace_view_carousel_column_4_footer
         )
         remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_carousel, template.carouselAction
+            context, R.id.smartspace_view_carousel, isList, template.carouselAction
         )
     }
 
     override fun getFeatureWidth(context: Context): Int {
+        val iconSize = context.resources
+            .getDimensionPixelSize(R.dimen.smartspace_view_template_carousel_column_size)
         val itemsWidth = template.carouselItems.sumOf {
             max(
                 it.lowerText?.text?.estimateWidth(context) ?: 0,
                 it.upperText?.text?.estimateWidth(context) ?: 0
-            )
+            ).coerceAtLeast(iconSize)
         }
         val featureMargin = context.resources.getDimensionPixelSize(R.dimen.margin_16)
         return itemsWidth + featureMargin
@@ -105,6 +126,7 @@ class CarouselTemplateSmartspaceView(
     private fun RemoteViews.setupCarouselItem(
         context: Context,
         item: CarouselItem?,
+        isList: Boolean,
         textColour: Int,
         textSize: Float,
         columnId: Int,
@@ -129,9 +151,9 @@ class CarouselTemplateSmartspaceView(
             setTextColor(footerId, textColour)
             setTextViewTextSize(footerId, COMPLEX_UNIT_PX, textSize)
         }
-        setOnClickAction(context, headerId, item.tapAction)
-        setOnClickAction(context, iconId, item.tapAction)
-        setOnClickAction(context, footerId, item.tapAction)
+        setOnClickAction(context, headerId, isList, item.tapAction)
+        setOnClickAction(context, iconId, isList, item.tapAction)
+        setOnClickAction(context, footerId, isList, item.tapAction)
     }
 
 }

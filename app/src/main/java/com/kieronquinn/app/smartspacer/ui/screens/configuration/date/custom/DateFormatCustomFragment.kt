@@ -11,7 +11,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationTargetDateFormatCustomBinding
 import com.kieronquinn.app.smartspacer.ui.base.BaseBottomSheetFragment
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationFragment
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModel.State
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateFormatCustomViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
@@ -21,10 +21,10 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.take
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DateTargetFormatCustomFragment: BaseBottomSheetFragment<FragmentConfigurationTargetDateFormatCustomBinding>(FragmentConfigurationTargetDateFormatCustomBinding::inflate) {
+class DateFormatCustomFragment: BaseBottomSheetFragment<FragmentConfigurationTargetDateFormatCustomBinding>(FragmentConfigurationTargetDateFormatCustomBinding::inflate) {
 
-    private val viewModel by viewModel<DateTargetFormatCustomViewModel>()
-    private val args by navArgs<DateTargetFormatCustomFragmentArgs>()
+    private val viewModel by viewModel<DateFormatCustomViewModel>()
+    private val args by navArgs<DateFormatCustomFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

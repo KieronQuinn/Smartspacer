@@ -147,6 +147,24 @@ class ExpandedWidgetOptionsBottomSheetFragment: BaseBottomSheetFragment<Fragment
                     requireContext(), R.drawable.ic_edit_show_on_lockscreen
                 ),
                 onChanged = viewModel::setShowWhenLocked
+            ),
+            GenericSettingsItem.SwitchSetting(
+                roundCorners,
+                getString(R.string.expanded_custom_widget_options_round_corners_title),
+                getString(R.string.expanded_custom_widget_options_round_corners_content),
+                ContextCompat.getDrawable(
+                    requireContext(), R.drawable.ic_expanded_custom_widget_options_round_corners
+                ),
+                onChanged = viewModel::onRoundCornersChanged
+            ),
+            GenericSettingsItem.SwitchSetting(
+                fillWidth,
+                getString(R.string.expanded_custom_widget_full_width_title),
+                getText(R.string.expanded_custom_widget_full_width_content),
+                ContextCompat.getDrawable(
+                    requireContext(), R.drawable.ic_expanded_custom_widget_options_full_width
+                ),
+                onChanged = viewModel::onFullWidthChanged
             )
         )
     }

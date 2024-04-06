@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.Adapter
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.ViewHolder
+import com.kieronquinn.app.smartspacer.utils.extensions.handleLifecycleEventSafely
 
 /**
  *  A simple [RecyclerView] whose [ViewHolder]s have a very basic [Lifecycle].
@@ -49,7 +50,7 @@ open class LifecycleAwareRecyclerView : RecyclerView {
             get() = lifecycleRegistry
 
         internal fun handleLifecycleEvent(event: Lifecycle.Event) {
-            lifecycleRegistry.handleLifecycleEvent(event)
+            lifecycleRegistry.handleLifecycleEventSafely(event)
         }
 
     }
@@ -130,11 +131,13 @@ open class LifecycleAwareRecyclerView : RecyclerView {
             val firstItem = when(layoutManager){
                 is LinearLayoutManager -> layoutManager.findFirstVisibleItemPosition()
                 is StaggeredGridLayoutManager -> layoutManager.findFirstVisibleItemPosition()
+                is FlexboxLayoutManager -> layoutManager.findFirstVisibleItemPosition()
                 else -> throw Exception("Unsupported LayoutManager type")
             }
             val lastItem = when(layoutManager){
                 is LinearLayoutManager -> layoutManager.findLastVisibleItemPosition()
                 is StaggeredGridLayoutManager -> layoutManager.findLastVisibleItemPosition()
+                is FlexboxLayoutManager -> layoutManager.findLastVisibleItemPosition()
                 else -> throw Exception("Unsupported LayoutManager type")
             }
             val viewHolders = ArrayList<ViewHolder>()

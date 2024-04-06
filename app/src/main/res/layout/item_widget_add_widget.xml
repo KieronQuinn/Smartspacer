@@ -7,30 +7,34 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_16"
     android:layout_marginEnd="@dimen/margin_16"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     app:cardBackgroundColor="?android:colorControlHighlight"
     app:cardCornerRadius="0dp">
 
-    <LinearLayout
+    <com.kieronquinn.app.smartspacer.ui.views.TouchBlockingLinearLayout
         android:id="@+id/widget_add_widget_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:orientation="vertical">
 
-        <com.kieronquinn.app.smartspacer.ui.views.RoundedCornersEnforcingLinearLayout
+        <LinearLayout
             android:id="@+id/widget_add_widget_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center" />
+            android:gravity="center"
+            android:orientation="vertical" />
 
         <ImageView
             android:id="@+id/widget_add_widget_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside" />
+            android:adjustViewBounds="true"/>
 
         <TextView
             android:id="@+id/widget_add_widget_name"
@@ -41,8 +45,19 @@
             android:gravity="center_horizontal"
             android:paddingTop="@dimen/margin_8"
             android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            android:textColor="?android:textColorPrimary"
             tools:text="Widget Name" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/widget_add_widget_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            tools:text="Widget Name" />
+
+    </com.kieronquinn.app.smartspacer.ui.views.TouchBlockingLinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

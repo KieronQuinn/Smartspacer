@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionGroup="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:transitionGroup="true">
 
     <!-- Intentional: Load all items to prevent widget reload where possible -->
     <androidx.core.widget.NestedScrollView
@@ -21,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
+            android:clipChildren="false"
             android:paddingBottom="@dimen/expanded_button_unlock_height"
             tools:listitem="@layout/smartspace_view_template_basic" />
 

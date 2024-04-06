@@ -6,7 +6,9 @@ enum class UiSurface(val surface: String) {
     HOMESCREEN("home"),
     LOCKSCREEN("lockscreen"),
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    MEDIA_DATA_MANAGER("media_data_manager");
+    MEDIA_DATA_MANAGER("media_data_manager"),
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    GLANEABLE_HUB("glanceable_hub");
 
     companion object {
         fun from(surface: String): UiSurface {

@@ -1,29 +1,27 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
-import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.CallSuper
 import androidx.annotation.RestrictTo
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.app.smartspacer.receivers.SmartspacerWidgetClickReceiver
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_WEATHER
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.*
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
 import com.kieronquinn.app.smartspacer.utils.extensions.takeEllipsised
-import java.util.UUID
 import android.graphics.drawable.Icon as AndroidIcon
 
 abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
     private val targetId: String,
-    open val target: SmartspaceTarget,
+    override val target: SmartspaceTarget,
     open val template: T,
-    open val surface: UiSurface
-): SmartspaceView() {
+    override val surface: UiSurface
+): SmartspaceView(target, surface) {
 
     companion object {
         @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -74,11 +72,14 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
         val bestMaxLength = template.subtitleItem?.text?.text?.let { title ->
             val subtitle = if(supportsSubAction){
@@ -87,6 +88,7 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             getBestMaxLength(
                 context.getAvailableTextSize(width, template.hasSubAction()),
                 subtitleSize,
+                shadowEnabled,
                 title,
                 subtitle
             )
@@ -97,11 +99,14 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
             }
         }
+        remoteViews.setupOverflow(context, isList, textColour, overflowIntent)
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
         remoteViews.setTextViewTextSize(R.id.smartspace_view_title, COMPLEX_UNIT_PX, titleSize)
         remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_template_root, template.primaryItem?.tapAction
+            context, R.id.smartspace_view_root, isList, template.primaryItem?.tapAction
         )
+        val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
+        remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
         template.subtitleItem?.text?.let {
             val maxLength = bestMaxLength?.first ?: DEFAULT_MAX_LENGTH
             remoteViews.setTextViewText(
@@ -117,17 +122,17 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         }
         template.subtitleItem?.icon?.let {
             remoteViews.setImageViewIcon(
-                R.id.smartspace_view_subtitle_icon, it.tintIfNeeded(textColour)
+                context, R.id.smartspace_view_subtitle_icon, it.tintIfNeeded(textColour)
             )
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_icon, View.VISIBLE)
         } ?: run {
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_icon, View.GONE)
         }
         remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_subtitle_icon, template.subtitleItem?.tapAction
+            context, R.id.smartspace_view_subtitle_icon, isList, template.subtitleItem?.tapAction
         )
         remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_subtitle_text, template.subtitleItem?.tapAction
+            context, R.id.smartspace_view_subtitle_text, isList, template.subtitleItem?.tapAction
         )
         if(supportsSubAction) {
             template.subtitleSupplementalItem?.text?.let {
@@ -146,7 +151,7 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             }
             template.subtitleSupplementalItem?.icon?.let {
                 remoteViews.setImageViewIcon(
-                    R.id.smartspace_view_action_icon, it.tintIfNeeded(textColour)
+                    context, R.id.smartspace_view_action_icon, it.tintIfNeeded(textColour)
                 )
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_icon, View.VISIBLE)
             } ?: run {
@@ -155,11 +160,13 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
             remoteViews.setOnClickAction(
                 context,
                 R.id.smartspace_view_action_icon,
+                isList,
                 template.subtitleSupplementalItem?.tapAction
             )
             remoteViews.setOnClickAction(
                 context,
                 R.id.smartspace_view_action_text,
+                isList,
                 template.subtitleSupplementalItem?.tapAction
             )
         }
@@ -178,7 +185,7 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         }
         template.supplementalLineItem?.icon?.let {
             remoteViews.setImageViewIcon(
-                R.id.smartspace_view_supplemental_icon, it.tintIfNeeded(textColour)
+                context, R.id.smartspace_view_supplemental_icon, it.tintIfNeeded(textColour)
             )
             remoteViews.setViewVisibility(R.id.smartspace_view_supplemental_icon, View.VISIBLE)
         } ?: run {
@@ -187,11 +194,13 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         remoteViews.setOnClickAction(
             context,
             R.id.smartspace_view_supplemental_icon,
+            isList,
             template.supplementalLineItem?.tapAction
         )
         remoteViews.setOnClickAction(
             context,
             R.id.smartspace_view_supplemental_text,
+            isList,
             template.supplementalLineItem?.tapAction
         )
     }
@@ -209,18 +218,13 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         return icon
     }
 
-    protected fun RemoteViews.setOnClickAction(context: Context, id: Int, action: TapAction?) {
-        val pendingIntentCode = UUID.randomUUID().hashCode()
-        val intent = SmartspacerWidgetClickReceiver.createIntent(
-            context, targetId, surface, tapAction = action
-        )
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            pendingIntentCode,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        setOnClickPendingIntent(id, pendingIntent)
+    protected fun RemoteViews.setOnClickAction(
+        context: Context,
+        id: Int,
+        isList: Boolean,
+        action: TapAction?
+    ) {
+        setOnClickAction(context, id, targetId, surface, action)
     }
 
 }

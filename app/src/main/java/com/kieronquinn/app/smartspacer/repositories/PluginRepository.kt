@@ -7,7 +7,6 @@ import android.content.pm.PackageManager.NameNotFoundException
 import android.net.Uri
 import android.os.Parcelable
 import android.provider.Settings
-import android.util.Log
 import com.google.gson.annotations.SerializedName
 import com.google.gson.stream.MalformedJsonException
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -16,9 +15,28 @@ import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Companion.A
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Companion.ACTION_REQUIREMENT
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Companion.ACTION_TARGET
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Plugin
-import com.kieronquinn.app.smartspacer.utils.extensions.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import com.kieronquinn.app.smartspacer.utils.extensions.getPackageInfoCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
+import com.kieronquinn.app.smartspacer.utils.extensions.isPackageInstalled
+import com.kieronquinn.app.smartspacer.utils.extensions.queryContentProviders
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.parcelize.Parcelize
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -117,11 +135,9 @@ class PluginRepositoryImpl(
             pluginApi.withTimeout {
                 it.getPlugins(url).execute().body()
             } ?: run {
-                Log.e("PR", "Null body")
                 emptyList()
             }
         }catch (e: Exception){
-            Log.e("PR", "Error", e)
             emptyList()
         }
         plugins.map { plugin ->

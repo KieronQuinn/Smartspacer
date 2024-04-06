@@ -21,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-class DateTargetFormatPickerFragment: BaseBottomSheetFragment<FragmentConfigurationTargetDateFormatPickerBottomSheetBinding>(FragmentConfigurationTargetDateFormatPickerBottomSheetBinding::inflate) {
+class DateFormatPickerFragment: BaseBottomSheetFragment<FragmentConfigurationTargetDateFormatPickerBottomSheetBinding>(FragmentConfigurationTargetDateFormatPickerBottomSheetBinding::inflate) {
 
     companion object {
         private val DATE_FORMATS = arrayOf(
@@ -37,8 +37,8 @@ class DateTargetFormatPickerFragment: BaseBottomSheetFragment<FragmentConfigurat
         )
     }
 
-    private val viewModel by viewModel<DateTargetFormatPickerViewModel>()
-    private val args by navArgs<DateTargetFormatPickerFragmentArgs>()
+    private val viewModel by viewModel<DateFormatPickerViewModel>()
+    private val args by navArgs<DateFormatPickerFragmentArgs>()
 
     private val adapter by lazy {
         Adapter()
@@ -53,7 +53,7 @@ class DateTargetFormatPickerFragment: BaseBottomSheetFragment<FragmentConfigurat
     }
 
     private fun setupRecyclerView() = with(binding.dateFormatRecyclerView) {
-        adapter = this@DateTargetFormatPickerFragment.adapter
+        adapter = this@DateFormatPickerFragment.adapter
         layoutManager = LinearLayoutManager(context)
         val items = DATE_FORMATS.map {
             Setting(
@@ -64,7 +64,7 @@ class DateTargetFormatPickerFragment: BaseBottomSheetFragment<FragmentConfigurat
                 onItemClicked(it)
             }
         }
-        this@DateTargetFormatPickerFragment.adapter.update(items, this)
+        this@DateFormatPickerFragment.adapter.update(items, this)
     }
 
     private fun onItemClicked(format: String?) {

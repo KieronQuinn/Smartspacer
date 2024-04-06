@@ -23,7 +23,7 @@ import com.kieronquinn.app.smartspacer.Smartspacer
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.NotificationSmartspacerSession
-import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSessionState
+import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
 import com.kieronquinn.app.smartspacer.receivers.WidgetPageChangeReceiver
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
@@ -114,7 +114,6 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         NotificationSmartspacerSession(
             this,
             widget,
-            includeBasic = true,
             collectInto = ::onWidgetChanged
         )
     }
@@ -183,7 +182,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
     }
 
     private fun createNotification(
-        state: WidgetSmartspacerSessionState,
+        state: PagedWidgetSmartspacerSessionState,
         tint: Int,
         view: SmartspaceView,
         basicView: SmartspaceView
@@ -191,10 +190,14 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         val remoteViews = basicView.inflate(
             this@SmartspacerNotificationWidgetService,
             tint,
+            false,
             getUsableWidth(),
             titleSize,
             subtitleSize,
-            featureSize
+            featureSize,
+            false,
+            null,
+            0
         )
         val container = SmartspacerAppWidgetProvider().run {
             container(
@@ -212,10 +215,14 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         val expandedRemoteViews = view.inflate(
             this@SmartspacerNotificationWidgetService,
             tint,
+            false,
             getUsableWidth(),
             titleSize,
             subtitleSize,
-            featureSize
+            featureSize,
+            false,
+            null,
+            0
         )
         val expandedContainer = SmartspacerAppWidgetProvider().run {
             container(
@@ -248,7 +255,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         layoutRes: Int,
         appWidgetId: Int,
         iconColour: ColorStateList,
-        state: WidgetSmartspacerSessionState,
+        state: PagedWidgetSmartspacerSessionState,
         owner: String?,
         showControls: Boolean = state.showControls,
         showDots: Boolean = !state.isOnlyPage,
@@ -327,19 +334,19 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         )
     }
 
-    private fun List<WidgetSmartspacerSessionState.DotConfig>.getDots(
+    private fun List<PagedWidgetSmartspacerSessionState.DotConfig>.getDots(
         packageName: String,
         dotColour: ColorStateList
     ): List<RemoteViews> {
         return map {
             when(it) {
-                WidgetSmartspacerSessionState.DotConfig.REGULAR -> {
+                PagedWidgetSmartspacerSessionState.DotConfig.REGULAR -> {
                     RemoteViews(packageName, R.layout.widget_dot).apply {
                         setImageViewImageTintListCompat(R.id.dot, dotColour)
                         setImageViewImageAlpha(R.id.dot, 0.5f)
                     }
                 }
-                WidgetSmartspacerSessionState.DotConfig.HIGHLIGHTED -> {
+                PagedWidgetSmartspacerSessionState.DotConfig.HIGHLIGHTED -> {
                     RemoteViews(packageName, R.layout.widget_dot).apply {
                         setImageViewImageTintListCompat(R.id.dot, dotColour)
                         setImageViewImageAlpha(R.id.dot, 1f)

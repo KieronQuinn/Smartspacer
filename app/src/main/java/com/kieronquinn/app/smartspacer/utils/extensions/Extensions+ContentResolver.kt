@@ -72,6 +72,8 @@ fun ContentResolver.queryAsFlow(
             client.query(uri, projection, selection, selectionArgs, sortOrder)
         }catch (e: DeadObjectException){
             null
+        }catch (e: SecurityException){
+            null
         }
     }.onCompletion {
         try {

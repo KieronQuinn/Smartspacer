@@ -252,6 +252,14 @@
             android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
 
         <activity-alias
+            android:name=".ui.activities.configuration.complication.date.DateComplicationConfigurationActivity"
+            android:description="@string/target_date_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_date_settings_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
             android:name=".ui.activities.configuration.target.flashlight.FlashlightTargetConfigurationActivity"
             android:description="@string/target_flashlight_settings_description"
             android:exported="true"
@@ -379,6 +387,9 @@
                 android:name="com.samsung.android.appwidget.provider"
                 android:resource="@xml/samsung_widget_smartspacer" />
         </receiver>
+
+        <service android:name=".service.SmartspacerListWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver
             android:name=".receivers.SmartspacerWidgetClickReceiver"
@@ -633,6 +644,15 @@
             </intent-filter>
         </provider>
 
+        <provider
+            android:name=".components.smartspace.complications.DateComplication"
+            android:authorities="${applicationId}.complication.date"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.COMPLICATION" />
+            </intent-filter>
+        </provider>
+
         <!-- Built in widget mapping -->
 
         <provider
@@ -801,6 +821,12 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
 

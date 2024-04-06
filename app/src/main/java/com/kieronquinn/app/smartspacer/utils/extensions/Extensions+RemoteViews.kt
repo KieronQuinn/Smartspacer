@@ -1,3 +1,4 @@
+@file:SuppressLint("BlockedPrivateApi")
 package com.kieronquinn.app.smartspacer.utils.extensions
 
 import android.annotation.SuppressLint
@@ -6,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.util.SizeF
@@ -16,6 +18,8 @@ import android.widget.RemoteViews.RemoteCollectionItems
 import android.widget.RemoteViews.RemoteResponse
 import android.widget.RemoteViewsHidden
 import androidx.annotation.RequiresApi
+import androidx.core.widget.RemoteViewsCompat.setImageViewColorFilter
+import androidx.core.widget.RemoteViewsCompat.setImageViewImageTintList
 import com.kieronquinn.app.smartspacer.providers.SmartspacerWidgetProxyContentProvider.Companion.createSmartspacerWidgetProxyUri
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
@@ -176,6 +180,13 @@ fun RemoteViews.getRemoteViewsToApply(context: Context, widgetSize: SizeF): Remo
         .getRemoteViewsToApply(context, widgetSize)
 }
 
+fun RemoteViews.getBestRemoteViews(context: Context, widgetSize: SizeF): RemoteViews {
+    val sized = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        getRemoteViewsToApply(context, widgetSize)
+    } else null
+    return sized ?: this
+}
+
 @SuppressLint("SoonBlockedPrivateApi", "BlockedPrivateApi")
 fun RemoteViews.getSizedRemoteViews(): List<RemoteViews> {
     val landscape = RemoteViews::class.java.getDeclaredField("mLandscape").apply {
@@ -233,6 +244,17 @@ fun RemoteViews_startPendingIntent(
 fun RemoteResponse.getLaunchOptions(view: View): AndroidPair<Intent, ActivityOptions>{
     return RemoteResponse::class.java.getMethod("getLaunchOptions", View::class.java)
         .invoke(this, view) as AndroidPair<Intent, ActivityOptions>
+}
+
+fun RemoteViews.setImageViewImageTintListCompat(
+    id: Int,
+    colourStateList: ColorStateList
+) {
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        setImageViewImageTintList(id, colourStateList)
+    }else{
+        setImageViewColorFilter(id, colourStateList.defaultColor)
+    }
 }
 
 private fun Class<*>.getDeclaredField(vararg options: String): Field {

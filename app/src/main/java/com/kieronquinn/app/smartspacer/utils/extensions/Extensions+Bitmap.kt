@@ -28,6 +28,23 @@ fun Bitmap.getBackgroundColour(): Int? {
     } else null
 }
 
+fun Bitmap.resize(maxWidth: Int, maxHeight: Int): Bitmap {
+    return if (maxHeight > 0 && maxWidth > 0) {
+        val width = this.width
+        val height = this.height
+        val ratioBitmap = width.toFloat() / height.toFloat()
+        val ratioMax = maxWidth.toFloat() / maxHeight.toFloat()
+        var finalWidth = maxWidth
+        var finalHeight = maxHeight
+        if (ratioMax > ratioBitmap) {
+            finalWidth = (maxHeight.toFloat() * ratioBitmap).toInt()
+        } else {
+            finalHeight = (maxWidth.toFloat() / ratioBitmap).toInt()
+        }
+        Bitmap.createScaledBitmap(this, finalWidth, finalHeight, true)
+    } else this
+}
+
 /**
  * Compresses the bitmap to a byte array for serialization.
  */
@@ -118,4 +135,8 @@ fun Bitmap.trim(@ColorInt color: Int = Color.TRANSPARENT): Bitmap {
         }
     }
     return Bitmap.createBitmap(this, left, bottom, right - left, top - bottom)
+}
+
+fun Bitmap_createEmptyBitmap(): Bitmap {
+    return Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8)
 }

@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_8"
     android:layout_marginBottom="@dimen/margin_16"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:paddingStart="@dimen/margin_8"
     android:paddingEnd="@dimen/margin_8">
 
@@ -13,6 +15,8 @@
         android:id="@+id/item_expanded_widget_container"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"

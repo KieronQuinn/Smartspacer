@@ -4,32 +4,33 @@ import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import androidx.lifecycle.lifecycleScope
-import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSessionState.DotConfig
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
-import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubImageTemplateData
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Companion.FEATURE_ALLOWLIST_DOORBELL
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Doorbell.Companion.KEY_FRAME_DURATION_MS
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.DoorbellState
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Images.Companion.GIF_FRAME_DURATION_MS
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
-import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView.ViewType
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.features.DoorbellFeatureSmartspaceView
-import com.kieronquinn.app.smartspacer.ui.views.smartspace.features.WeatherFeatureSmartspaceView
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.templates.ImagesTemplateSmartspaceView
-import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import java.util.*
-import kotlin.math.min
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.takeWhile
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import java.util.UUID
 
-open class WidgetSmartspacerSession(
+abstract class WidgetSmartspacerSession(
     context: Context,
     widget: AppWidget,
     private val config: SmartspaceConfig = widget.getConfig(),
@@ -50,16 +51,8 @@ open class WidgetSmartspacerSession(
     val appWidgetId = widget.appWidgetId
     val packageName = widget.ownerPackage
     val surface = widget.surface
-    var state: WidgetSmartspacerSessionState? = null
 
     private val isResumed = MutableStateFlow(false)
-    private val index = MutableStateFlow(0)
-    private var visibleTargetId: String? = null
-    private var pageCount: Int = 0
-    private val pageChangeLock = Mutex()
-    private val multiPage = widget.multiPage
-    private val showControls = widget.showControls
-    private val animate = widget.animate
 
     override val targetCount = if(widget.multiPage) {
         flowOf(Integer.MAX_VALUE)
@@ -72,62 +65,23 @@ open class WidgetSmartspacerSession(
         collectInto.invoke(id)
     }
 
-    override fun convert(
-        pages: Flow<List<SmartspacePageHolder>>,
-        uiSurface: Flow<UiSurface>
-    ): Flow<List<SmartspaceView>> {
-        var id: String? = null
-        var previousPageCount = -1
-        return combine(pages, index, uiSurface){ it, i, _ ->
-            previousPageCount = pageCount
-            pageCount = it.size
-            var index = min(i, it.size)
-            val page = it.getOrNull(index) ?: run {
-                index = it.size - 1
-                it.getOrNull(index)
-            } ?: createDatePage().holder
-            page.toSmartspaceViewFlow()
-        }.flowOn(Dispatchers.IO).flattenMerge().distinctUntilChanged { oldPair, newPair ->
-            val old = oldPair.first
-            val new = newPair.first
-            previousPageCount == pageCount && old.target != null && new.target != null
-                    && old.target.equalsForUi(new.target)
-        }.map {
-            val shouldAnimate = animate && it.first.target != null
-                    && it.first.target?.smartspaceTargetId != id
-            id = it.first.target?.smartspaceTargetId
-            val index = index.value
-            val isFirst = index == 0
-            val isLast = index >= pageCount - 1
-            val isOnlyPage = pageCount == 1 || !multiPage
-            state = WidgetSmartspacerSessionState(
-                it.second,
-                config,
-                shouldAnimate,
-                isFirst,
-                isLast,
-                isOnlyPage,
-                showControls,
-                getDotConfig()
-            )
-            listOf(it.first.view)
-        }
-    }
-
-    private fun SmartspacePageHolder.toSmartspaceViewFlow(): Flow<Pair<SmartspacerViewState, WidgetSmartspacerPage>> {
-        visibleTargetId = page.smartspaceTargetId
-        val state = toSmartspaceViewState()
-        return state.map {
-            val page = WidgetSmartspacerPage(this, it.view.viewType, it.view, it.basicView)
-            Pair(it, page)
-        }
-    }
+    abstract fun setVisibleTarget(targetId: String)
+    abstract fun isTargetVisible(targetId: String): Boolean
 
     override fun toSmartspacerSessionId(id: AppWidget): SmartspaceSessionId {
         return SmartspaceSessionId(
             "${id.ownerPackage}:widget:${id.appWidgetId}",
             android.os.Process.myUserHandle()
         )
+    }
+
+    protected fun SmartspacePageHolder.toSmartspaceViewFlow(): Flow<Pair<SmartspacerViewState, WidgetSmartspacerPage>> {
+        setVisibleTarget(page.smartspaceTargetId)
+        val state = toSmartspaceViewState()
+        return state.map {
+            val page = WidgetSmartspacerPage(this, it.view.viewType, it.view, it.basicView)
+            Pair(it, page)
+        }
     }
 
     private fun SmartspacePageHolder.toSmartspaceViewState(): Flow<SmartspacerViewState> {
@@ -159,11 +113,11 @@ open class WidgetSmartspacerSession(
         targetId: String,
         template: SubImageTemplateData
     ) = isResumed.takeWhile {
-        visibleTargetId == smartspaceTargetId
+        isTargetVisible(smartspaceTargetId)
     }.flatMapLatest {
         if(it){
             loopImages(targetId, template)
-                .takeWhile { isResumed.value && visibleTargetId == smartspaceTargetId }
+                .takeWhile { isResumed.value && isTargetVisible(smartspaceTargetId) }
         }else{
             flowOf(ImagesTemplateSmartspaceView(targetId, this, template, config.uiSurface))
         }
@@ -193,10 +147,10 @@ open class WidgetSmartspacerSession(
     }
 
     private fun SmartspaceTarget.startLoopDoorbellImages() = isResumed.takeWhile {
-        visibleTargetId == smartspaceTargetId
+        isTargetVisible(smartspaceTargetId)
     }.flatMapLatest {
         if(it){
-            loopDoorbell().takeWhile { isResumed.value && visibleTargetId == smartspaceTargetId }
+            loopDoorbell().takeWhile { isResumed.value && isTargetVisible(smartspaceTargetId) }
         }else{
             flowOf(DoorbellFeatureSmartspaceView(smartspaceTargetId, this, surface))
         }
@@ -248,54 +202,7 @@ open class WidgetSmartspacerSession(
         }
     }
 
-    fun nextPage() = whenCreated {
-        pageChangeLock.withLock {
-            val currentIndex = normaliseIndex(index.value)
-            var newIndex = currentIndex + 1
-            if(newIndex >= pageCount) newIndex = 0
-            index.emit(newIndex)
-        }
-    }
-
-    fun previousPage() = whenCreated {
-        pageChangeLock.withLock {
-            val currentIndex = normaliseIndex(index.value)
-            val newIndex = (currentIndex - 1).coerceAtLeast( 0)
-            index.emit(newIndex)
-        }
-    }
-
-    private fun normaliseIndex(index: Int): Int {
-        return index.coerceAtLeast(0).coerceAtMost(pageCount - 1)
-    }
-
-    private fun getDotConfig(): List<DotConfig> {
-        val dots = ArrayList<DotConfig>()
-        val index = index.value
-        for(i in 0 until pageCount) {
-            if(i == index) {
-                dots.add(DotConfig.HIGHLIGHTED)
-            }else{
-                dots.add(DotConfig.REGULAR)
-            }
-        }
-        return dots
-    }
-
-    private fun createDatePage(): WidgetSmartspacerPage {
-        val target = createEmptyTarget()
-        val basic = if(includeBasic) {
-            WeatherFeatureSmartspaceView(target.smartspaceTargetId, target, surface)
-        }else null
-        return WidgetSmartspacerPage(
-            SmartspacePageHolder(target, null, emptyList()),
-            ViewType.FEATURE_WEATHER,
-            WeatherFeatureSmartspaceView(target.smartspaceTargetId, target, surface),
-            basic
-        )
-    }
-
-    private fun createEmptyTarget(): SmartspaceTarget {
+    protected fun createEmptyTarget(): SmartspaceTarget {
         return SmartspaceTarget(
             smartspaceTargetId = UUID.randomUUID().toString(),
             featureType = SmartspaceTarget.FEATURE_WEATHER,
@@ -304,11 +211,7 @@ open class WidgetSmartspacerSession(
         )
     }
 
-    init {
-        onCreate()
-    }
-
-    private data class SmartspacerViewState(
+    protected data class SmartspacerViewState(
         val view: SmartspaceView,
         val target: SmartspaceTarget?,
         val basicView: SmartspaceView?
@@ -318,24 +221,7 @@ open class WidgetSmartspacerSession(
 
 data class WidgetSmartspacerPage(
     val holder: SmartspacePageHolder,
-    val type: ViewType,
+    val type: SmartspaceView.ViewType,
     val view: SmartspaceView,
     val basicView: SmartspaceView?
 )
-
-data class WidgetSmartspacerSessionState(
-    val page: WidgetSmartspacerPage,
-    val config: SmartspaceConfig,
-    val animate: Boolean,
-    val isFirst: Boolean,
-    val isLast: Boolean,
-    val isOnlyPage: Boolean,
-    val showControls: Boolean,
-    val dotConfig: List<DotConfig>
-) {
-
-    enum class DotConfig {
-        REGULAR, HIGHLIGHTED
-    }
-
-}

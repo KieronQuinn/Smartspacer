@@ -30,6 +30,8 @@ abstract class ExpandedWidgetOptionsBottomSheetViewModel(scope: CoroutineScope?)
     abstract fun setSpanX(spanX: Float)
     abstract fun setSpanY(spanY: Float)
     abstract fun setShowWhenLocked(showWhenLocked: Boolean)
+    abstract fun onFullWidthChanged(enabled: Boolean)
+    abstract fun onRoundCornersChanged(enabled: Boolean)
     abstract fun onReconfigureClicked(configureLauncher: ActivityResultLauncher<IntentSenderRequest>)
 
     sealed class State {
@@ -38,7 +40,9 @@ abstract class ExpandedWidgetOptionsBottomSheetViewModel(scope: CoroutineScope?)
             val spanX: Int,
             val spanY: Int,
             val showWhenLocked: Boolean,
-            val canReconfigure: Boolean
+            val canReconfigure: Boolean,
+            val roundCorners: Boolean,
+            val fillWidth: Boolean
         ): State()
     }
 
@@ -66,7 +70,14 @@ class ExpandedWidgetOptionsBottomSheetViewModelImpl(
         widget.filterNotNull(),
         canReconfigure.filterNotNull()
     ) { widget, reconfigure ->
-        State.Loaded(widget.spanX, widget.spanY, widget.showWhenLocked, reconfigure)
+        State.Loaded(
+            widget.spanX,
+            widget.spanY,
+            widget.showWhenLocked,
+            reconfigure,
+            widget.roundCorners,
+            widget.fullWidth
+        )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
     override val exitBus = context.lockscreenShowing().drop(1)
@@ -97,6 +108,24 @@ class ExpandedWidgetOptionsBottomSheetViewModelImpl(
         vmScope.launch {
             databaseRepository.updateExpandedCustomAppWidget(
                 widget.copy(showWhenLocked = showWhenLocked)
+            )
+        }
+    }
+
+    override fun onFullWidthChanged(enabled: Boolean) {
+        val widget = widget.value ?: return
+        vmScope.launch {
+            databaseRepository.updateExpandedCustomAppWidget(
+                widget.copy(fullWidth = enabled)
+            )
+        }
+    }
+
+    override fun onRoundCornersChanged(enabled: Boolean) {
+        val widget = widget.value ?: return
+        vmScope.launch {
+            databaseRepository.updateExpandedCustomAppWidget(
+                widget.copy(roundCorners = enabled)
             )
         }
     }

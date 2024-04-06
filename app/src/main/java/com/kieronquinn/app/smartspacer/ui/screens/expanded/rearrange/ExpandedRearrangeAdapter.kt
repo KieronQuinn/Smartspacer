@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetProviderInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedRemovedWidgetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedWidgetBinding
@@ -19,10 +20,14 @@ import java.util.Collections
 class ExpandedRearrangeAdapter(
     var items: List<Item>,
     recyclerView: LifecycleAwareRecyclerView,
-    private val listener: BaseExpandedAdapter.ExpandedAdapterListener
+    private val listener: BaseExpandedAdapter.ExpandedAdapterListener,
+    private val getSpanPercent: (Item) -> Float,
+    private val getAvailableWidth: () -> Int
 ): LifecycleAwareRecyclerView.Adapter<ViewHolder>(recyclerView), BaseExpandedAdapter, SmartspaceTargetInteractionListener {
 
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
+
+    private val context = recyclerView.context.applicationContext
     override val expandedRepository by inject<ExpandedRepository>()
 
     override val isRearrange = true
@@ -33,7 +38,7 @@ class ExpandedRearrangeAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return when(Item.Type.values()[viewType]) {
+        return when(Item.Type.entries[viewType]) {
             Item.Type.WIDGET -> {
                 ViewHolder.Widget(
                     ItemExpandedWidgetBinding.inflate(layoutInflater, parent, false)
@@ -51,12 +56,22 @@ class ExpandedRearrangeAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        val spanSize = getSpanPercent(item)
+        val layoutParams = holder.binding.root.layoutParams as FlexboxLayoutManager.LayoutParams
+        layoutParams.flexBasisPercent = spanSize
         when(holder) {
             is ViewHolder.Widget -> {
-                holder.setup(items[position] as Item.Widget, "rearrange", this)
+                holder.setup(
+                    context,
+                    getAvailableWidth(),
+                    item as Item.Widget,
+                    "rearrange",
+                    this
+                )
             }
             is ViewHolder.RemovedWidget -> {
-                holder.setup(items[position] as Item.RemovedWidget, true)
+                holder.setup(item as Item.RemovedWidget, true)
             }
             else -> {
                 //No-op

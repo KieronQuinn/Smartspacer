@@ -13,6 +13,7 @@
     <dimen name="margin_32">32dp</dimen>
     <dimen name="app_bar_height">179dp</dimen>
     <dimen name="app_bar_height_edit">128dp</dimen>
+    <dimen name="app_bar_height_widget_configuration">179dp</dimen>
     <dimen name="app_bar_scrim_height">174dp</dimen>
     <dimen name="expanded_title_margin">24dp</dimen>
     <dimen name="fab_margin">96dp</dimen>
@@ -38,6 +39,8 @@
     <dimen name="smartspace_view_subtitle_size">16sp</dimen>
     <dimen name="smartspace_view_feature_size">14sp</dimen>
     <dimen name="smartspace_view_max_height">112dp</dimen>
+    <dimen name="smartspace_view_max_height_preview">136dp</dimen>
+    <dimen name="smartspace_view_min_height">56dp</dimen>
     <dimen name="smartspace_view_icon_size">20sp</dimen>
     <dimen name="smartspace_view_icon_margin">4dp</dimen>
     <dimen name="smartspace_view_action_margin">8dp</dimen>
@@ -54,6 +57,7 @@
     <dimen name="smartspace_view_feature_doorbell_image_width">112dp</dimen>
     <dimen name="smartspace_view_feature_doorbell_image_height">80dp</dimen>
     <dimen name="smartspace_view_feature_doorbell_image_default_padding">16dp</dimen>
+    <dimen name="smartspace_view_list_overflow_width">48dp</dimen>
 
     <!-- Notification variant -->
     <dimen name="smartspace_view_notification_title_size">16sp</dimen>
@@ -66,9 +70,8 @@
 
     <!-- Expanded Smartspace -->
     <dimen name="expanded_smartspace_remoteviews_max_height">300dp</dimen>
-    <dimen name="expanded_smartspace_remoteviews_max_height_minus_padding">268dp</dimen>
-    <dimen name="expanded_smartspace_widget_row_height">112dp</dimen>
-    <dimen name="expanded_smartspace_widget_column_width">96dp</dimen>
+    <dimen name="expanded_smartspace_widget_column_max_width">80dp</dimen>
+    <dimen name="expanded_smartspace_widget_row_min_height">100dp</dimen>
     <dimen name="expanded_doodle_height">100dp</dimen>
     <dimen name="enforced_rounded_corner_max_radius">16dp</dimen>
 

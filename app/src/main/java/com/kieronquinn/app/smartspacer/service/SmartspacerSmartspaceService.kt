@@ -13,10 +13,15 @@ import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
+import com.kieronquinn.app.smartspacer.components.smartspace.GlanceableHubSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.MediaDataSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.SystemSmartspacerSession
 import com.kieronquinn.app.smartspacer.receivers.SafeModeReceiver
-import com.kieronquinn.app.smartspacer.repositories.*
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
+import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SystemSmartspaceRepository
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
@@ -65,6 +70,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     private val sessions = HashMap<SystemSmartspaceSessionId, SystemSmartspacerSession>()
     private val mediaDataSessions = HashMap<SystemSmartspaceSessionId, MediaDataSmartspacerSession>()
+    private val glanceableHubSessions = HashMap<SystemSmartspaceSessionId, GlanceableHubSmartspacerSession>()
     private val shizuku by inject<ShizukuServiceRepository>()
     private val notifications by inject<NotificationRepository>()
     private val systemSmartspace by inject<SystemSmartspaceRepository>()
@@ -105,6 +111,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             withContext(Dispatchers.IO) {
                 pruneSessionsLocked()
                 pruneMediaSessionsLocked()
+                pruneGlanceableHubSessionsLocked()
             }
         }
     }
@@ -149,6 +156,26 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         }
     }
 
+    private suspend fun pruneGlanceableHubSessionsLocked() = runCatching {
+        val duplicateSessions = glanceableHubSessions.entries
+            .groupBy({ it.key.getPackageName() }) {
+                it.value
+            }
+            .filter { it.value.size > 1 }
+        duplicateSessions.forEach {
+            //Destroy all but the newest session
+            it.value.sortedByDescending { session ->
+                session.createdAt
+            }.drop(1).forEach { session ->
+                session.onDestroy()
+                shizuku.runWithService { service ->
+                    service.destroySmartspaceSession(session.sessionId)
+                }
+                glanceableHubSessions.remove(session.sessionId)
+            }
+        }
+    }
+
     override fun onCreateSmartspaceSession(
         config: SystemSmartspaceConfig,
         sessionId: SystemSmartspaceSessionId
@@ -173,23 +200,36 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         sessionId: SystemSmartspaceSessionId,
         init: Boolean = false
     ) {
-        if(config.uiSurface != UiSurface.MEDIA_DATA_MANAGER) {
-            sessions[sessionId] = SystemSmartspacerSession(
-                this@SmartspacerSmartspaceService,
-                config,
-                sessionId,
-                ::onUpdate
-            ).also {
-                if(init) it.onResume()
+        when {
+            config.uiSurface == UiSurface.MEDIA_DATA_MANAGER -> {
+                mediaDataSessions[sessionId] = MediaDataSmartspacerSession(
+                    this@SmartspacerSmartspaceService,
+                    config,
+                    sessionId,
+                    ::onMediaUpdate
+                ).also {
+                    if(init) it.onResume()
+                }
             }
-        }else{
-            mediaDataSessions[sessionId] = MediaDataSmartspacerSession(
-                this@SmartspacerSmartspaceService,
-                config,
-                sessionId,
-                ::onMediaUpdate
-            ).also {
-                if(init) it.onResume()
+            config.uiSurface == UiSurface.GLANEABLE_HUB -> {
+                glanceableHubSessions[sessionId] = GlanceableHubSmartspacerSession(
+                    this@SmartspacerSmartspaceService,
+                    config,
+                    sessionId,
+                    ::onHubUpdate
+                ).also {
+                    if(init) it.onResume()
+                }
+            }
+            else -> {
+                sessions[sessionId] = SystemSmartspacerSession(
+                    this@SmartspacerSmartspaceService,
+                    config,
+                    sessionId,
+                    ::onUpdate
+                ).also {
+                    if(init) it.onResume()
+                }
             }
         }
         whenCreated {
@@ -215,6 +255,12 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         updateSmartspaceTargets(sessionId, targets)
     }
 
+    private suspend fun onHubUpdate(sessionId: SystemSmartspaceSessionId, targets: List<SystemSmartspaceTarget>) {
+        if(!glanceableHubSessions.contains(sessionId)) return
+        pruneSessions()
+        updateSmartspaceTargets(sessionId, targets)
+    }
+
     override fun onDestroySmartspaceSession(sessionId: SystemSmartspaceSessionId) {
         //Media sessions for some reason should not be destroyed and will be handled by prune
         val session = sessions.remove(sessionId) ?: return
@@ -233,12 +279,14 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         sessionId: SystemSmartspaceSessionId,
         event: SystemSmartspaceTargetEvent
     ) {
-        val session = sessions[sessionId] ?: mediaDataSessions[sessionId] ?: return
+        val session = sessions[sessionId] ?: mediaDataSessions[sessionId]
+            ?: glanceableHubSessions[sessionId] ?: return
         session.notifySmartspaceEvent(event.toSystemSmartspaceTargetEvent())
     }
 
     override fun onRequestSmartspaceUpdate(sessionId: SystemSmartspaceSessionId) {
-        val session = sessions[sessionId] ?: mediaDataSessions[sessionId] ?: return
+        val session = sessions[sessionId] ?: mediaDataSessions[sessionId]
+            ?: glanceableHubSessions[sessionId] ?: return
         session.requestSmartspaceUpdate()
     }
 
@@ -251,6 +299,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             write("${sessions.size} sessions: ${sessions.keys.joinToString(", ") { it.id ?: "" }}")
             write("\n")
             write("${mediaDataSessions.size} media sessions: ${mediaDataSessions.keys.joinToString(", ") { it.id ?: "" }}")
+            write("${glanceableHubSessions.size} hub sessions: ${glanceableHubSessions.keys.joinToString(", ") { it.id ?: "" }}")
             write("\n")
             lastTargets.forEach {
                 write("Session: ${it.key}")

@@ -164,7 +164,6 @@ abstract class BaseTest<SUT>: KoinComponent {
         }
         val intentCapture = slot<Intent>()
         every { sendBroadcast(capture(intentCapture)) } answers {
-            Log.d("MBM", "Broadcasting ${intentCapture.captured.toUri(0)}")
             broadcastManager.sendBroadcast(intentCapture.captured)
         }
     }

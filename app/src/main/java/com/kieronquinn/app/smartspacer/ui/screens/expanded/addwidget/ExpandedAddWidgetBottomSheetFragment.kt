@@ -50,6 +50,7 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
     private val adapter by lazy {
         ExpandedAddWidgetBottomSheetAdapter(
             binding.addWidgetRecyclerView,
+            ::getAvailableWidth,
             viewModel::onExpandClicked,
             viewModel::onWidgetClicked
         )
@@ -158,6 +159,12 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
         viewModel.addState.drop(1).collect {
             handleAddState(it)
         }
+    }
+
+    private fun getAvailableWidth(): Int {
+        //Width of the recycler view - standard item padding - widget padding
+        return binding.addWidgetRecyclerView.measuredWidth -
+                (resources.getDimensionPixelSize(R.dimen.margin_16) * 4)
     }
 
     private fun handleAddState(state: AddState) {

@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -27,6 +27,7 @@ import com.kieronquinn.app.smartspacer.databinding.ItemExpandedRemoteviewsBindin
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedRemovedWidgetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedSearchBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedShortcutsBinding
+import com.kieronquinn.app.smartspacer.databinding.ItemExpandedSpacerBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedStatusBarSpaceBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedTargetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedWidgetBinding
@@ -44,6 +45,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.core.component.inject
+import kotlin.math.floor
 import com.kieronquinn.monetcompat.R as MonetcompatR
 
 class ExpandedAdapter(
@@ -51,7 +53,9 @@ class ExpandedAdapter(
     isDark: Boolean,
     private val sessionId: String,
     private val expandedAdapterListener: ExpandedAdapterListener,
-    private val targetInteractionListener: SmartspaceTargetInteractionListener
+    private val targetInteractionListener: SmartspaceTargetInteractionListener,
+    private val getSpanPercent: (Item) -> Float,
+    private val getAvailableWidth: () -> Int
 ): LifecycleAwareRecyclerView.ListAdapter<Item, ViewHolder>(createDiffUtil(), recyclerView), BaseExpandedAdapter {
 
     companion object {
@@ -144,11 +148,17 @@ class ExpandedAdapter(
             Type.FOOTER -> ViewHolder.Footer(
                 ItemExpandedFooterBinding.inflate(layoutInflater, parent, false)
             )
+            Type.SPACER -> ViewHolder.Spacer(
+                ItemExpandedSpacerBinding.inflate(layoutInflater, parent, false)
+            )
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = currentList[position]
+        val spanSize = getSpanPercent(item)
+        val layoutParams = holder.binding.root.layoutParams as FlexboxLayoutManager.LayoutParams
+        layoutParams.flexBasisPercent = spanSize
         when(holder){
             is ViewHolder.StatusBarSpace -> holder.setup(item as Item.StatusBarSpace)
             is ViewHolder.Search -> holder.setup(item as Item.Search)
@@ -156,11 +166,20 @@ class ExpandedAdapter(
             is ViewHolder.Complications -> holder.setup(item as Item.Complications)
             is ViewHolder.RemoteViews -> holder.setup(item as Item.RemoteViews)
             is ViewHolder.Widget -> {
-                holder.setup(item as Item.Widget, sessionId, targetInteractionListener)
+                holder.setup(
+                    context,
+                    getAvailableWidth(),
+                    item as Item.Widget,
+                    sessionId,
+                    targetInteractionListener
+                )
             }
             is ViewHolder.RemovedWidget -> holder.setup(item as Item.RemovedWidget)
             is ViewHolder.Shortcuts -> holder.setup(item as Item.Shortcuts)
             is ViewHolder.Footer -> holder.setup(item as Item.Footer)
+            is ViewHolder.Spacer -> {
+                //No-op
+            }
         }
     }
 
@@ -180,16 +199,12 @@ class ExpandedAdapter(
     }
 
     private fun ViewHolder.StatusBarSpace.setup(item: Item.StatusBarSpace) = with(binding) {
-        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
+        root.updateLayoutParams {
             height = item.topInset
-            isFullSpan = true
         }
     }
 
     private fun ViewHolder.Search.setup(item: Item.Search) = with(binding) {
-        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
-            isFullSpan = true
-        }
         expandedDoodle.isVisible = item.doodleImage != null
         expandedSearchBox.root.isVisible = item.searchApp != null
         root.updatePadding(top = item.topInset)
@@ -271,9 +286,6 @@ class ExpandedAdapter(
 
     @Synchronized
     private fun ViewHolder.Complications.setup(complications: Item.Complications) = with(binding) {
-        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
-            isFullSpan = true
-        }
         val tintColour = getTintColour(complications.isDark)
         root.run {
             layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW).apply {
@@ -326,9 +338,6 @@ class ExpandedAdapter(
     }
 
     private fun ViewHolder.Footer.setup(footer: Item.Footer) = with(binding) {
-        root.layoutParams = StaggeredGridLayoutManager.LayoutParams(root.layoutParams).apply {
-            isFullSpan = true
-        }
         val tintColour = getTintColour(footer.isDark)
         expandedFooterButton.isVisible = footer.hasClickedAdd
         expandedFooterButton.setTextColor(tintColour)

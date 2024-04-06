@@ -20,6 +20,7 @@ import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -89,6 +90,7 @@ abstract class ExpandedViewModel: ViewModel() {
         data class Loaded(
             val isLocked: Boolean,
             val lightStatusIcons: Boolean,
+            val multiColumnEnabled: Boolean,
             val items: List<Item>
         ): State()
     }
@@ -193,12 +195,31 @@ class ExpandedViewModelImpl(
         Settings.canDrawOverlays(context)
     }
 
+    private val hideAddButton = combine(
+        isOverlay.filterNotNull(),
+        settingsRepository.expandedHideAddButton.asFlow()
+    ) { overlay, hideAdd ->
+        when(hideAdd) {
+            ExpandedHideAddButton.NEVER -> false
+            ExpandedHideAddButton.ALWAYS -> true
+            ExpandedHideAddButton.OVERLAY_ONLY -> overlay
+        }
+    }
+
+    private val filteredItems = combine(
+        items,
+        hideAddButton
+    ) { items, hideAdd ->
+        items.filterNot { it is Item.Footer && hideAdd }
+    }
+
     override val state = combine(
         settingsRepository.expandedModeEnabled.asFlow(),
         isLocked,
-        items,
-        hasDisplayOverOtherAppsPermission
-    ) { expanded, locked, list, permission ->
+        filteredItems,
+        hasDisplayOverOtherAppsPermission,
+        settingsRepository.expandedMultiColumnEnabled.asFlow()
+    ) { expanded, locked, list, permission, multiColumn ->
         when {
             !permission && expanded -> {
                 State.PermissionRequired
@@ -206,7 +227,7 @@ class ExpandedViewModelImpl(
             expanded -> {
                 val search = list.filterIsInstance<Item.Search>().firstOrNull()
                 val isLightStatusBar = search?.isLightStatusBar ?: false
-                State.Loaded(locked, isLightStatusBar, list)
+                State.Loaded(locked, isLightStatusBar, multiColumn, list)
             }
             else -> {
                 State.Disabled

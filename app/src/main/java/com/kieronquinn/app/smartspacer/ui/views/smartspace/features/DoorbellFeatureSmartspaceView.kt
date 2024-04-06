@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.features
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Icon
 import android.view.View
 import android.widget.RemoteViews
@@ -24,13 +25,27 @@ class DoorbellFeatureSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
-        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
+        super.apply(
+            context,
+            textColour,
+            shadowEnabled,
+            remoteViews,
+            width,
+            titleSize,
+            subtitleSize,
+            featureSize,
+            isList,
+            overflowIntent,
+        )
         val state = state ?: return
         remoteViews.clearState()
         when(state){

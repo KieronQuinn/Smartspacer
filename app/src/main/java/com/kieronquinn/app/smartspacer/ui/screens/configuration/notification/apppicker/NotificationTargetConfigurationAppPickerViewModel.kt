@@ -10,6 +10,7 @@ import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
 import com.kieronquinn.app.smartspacer.repositories.PackageRepository
 import com.kieronquinn.app.smartspacer.repositories.PackageRepository.ListAppsApp
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerNotificationProvider
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -88,7 +89,12 @@ class NotificationTargetConfigurationAppPickerViewModelImpl(
             }
             //Set the data with no channels enabled
             val channels = getAllChannels(packageName)
-            NotificationTarget.TargetData(packageName, channels.isNotEmpty(), emptySet())
+            NotificationTarget.TargetData(
+                packageName = packageName,
+                hasChannels = channels.isNotEmpty(),
+                _trimNewLines = false, //Disabled by default for new selections
+                channels = emptySet()
+            )
         }
     }
 

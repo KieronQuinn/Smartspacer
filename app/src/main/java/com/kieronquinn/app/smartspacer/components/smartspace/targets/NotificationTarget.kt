@@ -43,7 +43,7 @@ class NotificationTarget: SmartspacerTargetProvider() {
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
         val settings = getSettings(smartspacerId) ?: return emptyList()
-        return getNotifications(smartspacerId).map { it.toTarget() }
+        return getNotifications(smartspacerId).map { it.toTarget(settings) }
             .applyAppShortcuts(settings.packageName)
     }
 
@@ -87,7 +87,7 @@ class NotificationTarget: SmartspacerTargetProvider() {
         }
     }
 
-    private fun StatusBarNotification.toTarget(): SmartspaceTarget {
+    private fun StatusBarNotification.toTarget(data: TargetData): SmartspaceTarget {
         val notification = notification
         return TargetTemplate.Basic(
             id = "$TARGET_ID_PREFIX$id",
@@ -95,7 +95,10 @@ class NotificationTarget: SmartspacerTargetProvider() {
             icon = Icon(notification.smallIcon),
             title = Text(notification.getContentTitle()?.toString()
                 ?: notification.tickerText?.toString() ?: ""),
-            subtitle = notification.getContentTextOrAppName(packageName)?.let { Text(it) },
+            subtitle = notification.getContentTextOrAppName(
+                packageName,
+                data.trimNewLines
+            )?.let { Text(it) },
             onClick = TapAction(pendingIntent = notification.contentIntent)
         ).create().apply {
             sourceNotificationKey = key
@@ -123,9 +126,15 @@ class NotificationTarget: SmartspacerTargetProvider() {
         return dataOnlyRemoteInputs.isNullOrEmpty()
     }
 
-    private fun Notification.getContentTextOrAppName(packageName: String): CharSequence? {
-        return getContentText().takeIf { !it.isNullOrBlank() } ?:
+    private fun Notification.getContentTextOrAppName(
+        packageName: String,
+        trimNewLines: Boolean
+    ): CharSequence? {
+        val text = getContentText().takeIf { !it.isNullOrBlank() } ?:
             provideContext().packageManager.getPackageLabel(packageName)
+        return if(trimNewLines) {
+            text?.toString()?.replace("\n", " ")
+        }else text
     }
 
     /**
@@ -199,8 +208,15 @@ class NotificationTarget: SmartspacerTargetProvider() {
         val packageName: String? = null,
         @SerializedName("has_channels")
         val hasChannels: Boolean = false,
+        @SerializedName("trim_new_lines")
+        val _trimNewLines: Boolean? = null,
         @SerializedName("channels")
         val channels: Set<String> = emptySet()
-    )
+    ) {
+
+        val trimNewLines: Boolean
+            get() = _trimNewLines ?: false
+
+    }
 
 }

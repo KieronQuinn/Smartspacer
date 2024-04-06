@@ -10,7 +10,10 @@ import android.os.Process
 import com.kieronquinn.app.smartspacer.IRunningAppObserver
 import com.kieronquinn.app.smartspacer.ISmartspacerSuiService
 import com.kieronquinn.app.smartspacer.service.SmartspacerShizukuService.Companion.PACKAGE_SHELL
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.utils.extensions.broadcastIntentWithFeatureCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.getIdentifier
+import com.kieronquinn.app.smartspacer.utils.extensions.packageHasPermission
+import com.kieronquinn.app.smartspacer.utils.extensions.prepareToLeaveProcess
 import com.topjohnwu.superuser.internal.Utils
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -85,6 +88,23 @@ class SmartspacerSuiService: ISmartspacerSuiService.Stub() {
         runningAppObserver = observer?.let {
             IRunningAppObserver.Stub.asInterface(it)
         }
+    }
+
+    override fun isRoot() = canUseRoot
+
+    override fun startActivityPrivileged(intent: Intent) {
+        activityManager.startActivity(
+            null,
+            "android",
+            intent,
+            intent.resolveType(context),
+            null,
+            null,
+            0,
+            intent.flags,
+            null,
+            null
+        )
     }
 
     override fun destroy() {

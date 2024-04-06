@@ -8,7 +8,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.MediaMetadata
-import android.media.MediaMetadata.*
+import android.media.MediaMetadata.METADATA_KEY_ALBUM_ART
+import android.media.MediaMetadata.METADATA_KEY_ALBUM_ART_URI
+import android.media.MediaMetadata.METADATA_KEY_ART
+import android.media.MediaMetadata.METADATA_KEY_ARTIST
+import android.media.MediaMetadata.METADATA_KEY_ART_URI
+import android.media.MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE
+import android.media.MediaMetadata.METADATA_KEY_DISPLAY_TITLE
+import android.media.MediaMetadata.METADATA_KEY_TITLE
 import android.net.Uri
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -32,7 +39,10 @@ import com.kieronquinn.app.smartspacer.ui.activities.configuration.Configuration
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
 import com.kieronquinn.app.smartspacer.ui.activities.permission.notification.NotificationPermissionActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetRowHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.isFourByOne
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -316,8 +326,11 @@ class MusicTarget: SmartspacerTargetProvider() {
                 it.provider.packageName == packageName && it.provider.className == clazz
             }?.let { return it }
         }
+        val availableWidth = provideContext().getDisplayWidth()
+        val columnWidth = provideContext().getWidgetColumnWidth(availableWidth)
+        val rowHeight = provideContext().getWidgetRowHeight(availableWidth)
         return widgetRepository.getProviders().firstOrNull {
-            it.provider.packageName == packageName && it.isFourByOne()
+            it.provider.packageName == packageName && it.isFourByOne(columnWidth, rowHeight)
         }
     }
 

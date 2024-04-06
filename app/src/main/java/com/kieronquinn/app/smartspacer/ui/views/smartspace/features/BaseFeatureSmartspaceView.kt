@@ -1,7 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.features
 
-import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.util.TypedValue
@@ -19,13 +19,12 @@ import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Companion.FEATUR
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Companion.FEATURE_ALLOWLIST_IMAGE
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
 import com.kieronquinn.app.smartspacer.utils.extensions.takeEllipsised
-import java.util.UUID
 
 abstract class BaseFeatureSmartspaceView(
     private val targetId: String,
-    open val target: SmartspaceTarget,
-    open val surface: UiSurface
-): SmartspaceView() {
+    override val target: SmartspaceTarget,
+    override val surface: UiSurface
+): SmartspaceView(target, surface) {
 
     companion object {
         private const val DEFAULT_MAX_LENGTH = 6
@@ -60,11 +59,14 @@ abstract class BaseFeatureSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
         val bestMaxLength = target.headerAction?.subtitle?.let { title ->
             val subtitle = if(supportsSubAction){
@@ -73,6 +75,7 @@ abstract class BaseFeatureSmartspaceView(
             getBestMaxLength(
                 context.getAvailableTextSize(width, target.hasSubAction()),
                 subtitleSize,
+                shadowEnabled,
                 title,
                 subtitle
             )
@@ -81,6 +84,9 @@ abstract class BaseFeatureSmartspaceView(
         remoteViews.setTextViewTextSize(
             R.id.smartspace_view_title, TypedValue.COMPLEX_UNIT_PX, titleSize
         )
+        remoteViews.setupOverflow(context, isList, textColour, overflowIntent)
+        val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
+        remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
         target.headerAction?.let {
             val maxLength = bestMaxLength?.first ?: DEFAULT_MAX_LENGTH
             //Don't update the text on a weather target as it clears the date
@@ -94,7 +100,7 @@ abstract class BaseFeatureSmartspaceView(
                 R.id.smartspace_view_subtitle_text, TypedValue.COMPLEX_UNIT_PX, subtitleSize
             )
             remoteViews.setTextColor(R.id.smartspace_view_subtitle_text, textColour)
-            remoteViews.setImageViewIcon(R.id.smartspace_view_subtitle_icon, it.icon
+            remoteViews.setImageViewIcon(context, R.id.smartspace_view_subtitle_icon, it.icon
                 ?.tintIfNeeded(textColour, ComplicationTemplate.shouldTint(it)))
             if(it.icon != null) {
                 remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_icon, View.VISIBLE)
@@ -110,17 +116,30 @@ abstract class BaseFeatureSmartspaceView(
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_text, View.GONE)
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_icon, View.GONE)
         }
-        remoteViews.setOnClickAction(context, R.id.smartspace_view_feature_root, target.headerAction)
-        remoteViews.setOnClickAction(context, R.id.smartspace_view_title, target.headerAction)
+        remoteViews.setOnClickAction(
+            context,
+            R.id.smartspace_view_root,
+            target.headerAction
+        )
+        remoteViews.setOnClickAction(
+            context,
+            R.id.smartspace_view_title,
+            target.headerAction
+        )
         val action = target.baseAction
         if(supportsSubAction && (action?.subtitle?.isNotEmpty() == true || action?.icon != null)){
             val maxLength = bestMaxLength?.second ?: DEFAULT_MAX_LENGTH
             if(action.icon != null) {
                 remoteViews.setImageViewIcon(
+                    context,
                     R.id.smartspace_view_action_icon,
                     action.icon?.tintIfNeeded(textColour, ComplicationTemplate.shouldTint(action))
                 )
-                remoteViews.setOnClickAction(context, R.id.smartspace_view_action_icon, action)
+                remoteViews.setOnClickAction(
+                    context,
+                    R.id.smartspace_view_action_icon,
+                    action
+                )
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_icon, View.VISIBLE)
             }else{
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_icon, View.GONE)
@@ -130,7 +149,11 @@ abstract class BaseFeatureSmartspaceView(
                     R.id.smartspace_view_action_text, action.subtitle?.takeEllipsised(maxLength)
                 )
                 remoteViews.setTextColor(R.id.smartspace_view_action_text, textColour)
-                remoteViews.setOnClickAction(context, R.id.smartspace_view_action_text, action)
+                remoteViews.setOnClickAction(
+                    context,
+                    R.id.smartspace_view_action_text,
+                    action
+                )
                 remoteViews.setOnClickAction(
                     context,
                     R.id.smartspace_view_action_text,
@@ -153,18 +176,15 @@ abstract class BaseFeatureSmartspaceView(
         return supportsSubAction && baseAction?.title != null
     }
 
-    private fun RemoteViews.setOnClickAction(context: Context, id: Int, action: SmartspaceAction?) {
-        val pendingIntentCode = UUID.randomUUID().hashCode()
+    private fun RemoteViews.setOnClickAction(
+        context: Context,
+        id: Int,
+        action: SmartspaceAction?
+    ) {
         val intent = SmartspacerWidgetClickReceiver.createIntent(
             context, targetId, surface, smartspaceAction = action?.stripData()
         )
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            pendingIntentCode,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        setOnClickPendingIntent(id, pendingIntent)
+        setOnClickIntent(context, targetId, id, intent)
     }
 
     /**

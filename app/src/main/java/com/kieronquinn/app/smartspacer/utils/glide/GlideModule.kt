@@ -1,6 +1,5 @@
 package com.kieronquinn.app.smartspacer.utils.glide
 
-import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.NameNotFoundException
@@ -9,6 +8,8 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Registry
 import com.bumptech.glide.annotation.GlideModule
@@ -17,6 +18,9 @@ import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.signature.ObjectKey
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
 import com.kieronquinn.app.smartspacer.model.glide.PackageIcon
+import com.kieronquinn.app.smartspacer.model.glide.Widget
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
+import com.kieronquinn.app.smartspacer.utils.extensions.resize
 import com.kieronquinn.app.smartspacer.utils.extensions.trim
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -55,7 +59,7 @@ class GlideModule: AppGlideModule(), KoinComponent {
         )
         registry.prepend(
             context,
-            AppWidgetProviderInfo::class.java,
+            Widget::class.java,
             Drawable::class.java,
             Unit,
             this::loadWidget,
@@ -124,29 +128,32 @@ class GlideModule: AppGlideModule(), KoinComponent {
         }
     }
 
-    private fun getKeyForWidget(widget: AppWidgetProviderInfo): ObjectKey {
+    private fun getKeyForWidget(widget: Widget): ObjectKey {
         return ObjectKey(widget.toString())
     }
 
     private fun loadWidget(
         context: Context,
-        widget: AppWidgetProviderInfo,
+        widget: Widget,
         dummy: Unit,
         callback: DataFetcher.DataCallback<in Drawable>
     ) {
         loadScope.launch(Dispatchers.IO) {
             val dpi = context.resources.configuration.densityDpi
-            val preview = widget.loadPreviewImage(context, dpi)
-            //If a preview is available, use that
+            val previewBitmap = widget.info.loadPreviewImage(context, dpi)?.toBitmap()?.trim()
+                ?.resize(widget.width, widget.height)
+            val preview = if(previewBitmap != null) {
+                RoundedBitmapDrawableFactory.create(context.resources, previewBitmap)
+                    .apply { cornerRadius = 16.dp.toFloat() }
+            }else null
             if(preview != null) {
+                //If a preview is available, use that
                 callback.onDataReady(preview)
-                return@launch
+            }else {
+                //Otherwise, load the app's icon
+                callback.onDataReady(widget.info.loadIcon(context, dpi))
             }
-            //Otherwise, load the app's icon
-            callback.onDataReady(widget.loadIcon(context, dpi))
         }
     }
-
-
 
 }

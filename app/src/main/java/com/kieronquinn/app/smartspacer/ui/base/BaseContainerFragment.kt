@@ -31,7 +31,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.BaseNavigation
 import com.kieronquinn.app.smartspacer.components.navigation.setupWithNavigation
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
+import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
+import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
+import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
+import com.kieronquinn.app.smartspacer.utils.extensions.getTopFragment
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
+import com.kieronquinn.app.smartspacer.utils.extensions.isLandscape
+import com.kieronquinn.app.smartspacer.utils.extensions.isRtl
+import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
+import com.kieronquinn.app.smartspacer.utils.extensions.onDestinationChanged
+import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.or
+import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
+import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
+import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.toArgb
 
 abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): BoundFragment<V>(inflate) {
@@ -52,6 +66,8 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
     abstract val toolbar: Toolbar?
     abstract val fragment: FragmentContainerView
     abstract val navHostFragment: NavHostFragment
+
+    open val handleInsets = true
 
     private val googleSansMedium by lazy {
         ResourcesCompat.getFont(requireContext(), R.font.google_sans_text_medium)
@@ -79,7 +95,15 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
             it.setupBottomNavigation()
             NavigationUI.setupWithNavController(it, navController)
         }
-        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
+        if(shouldHaveBackground()) {
+            view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
+        }
+    }
+
+    private fun shouldHaveBackground(): Boolean {
+        val activity = requireActivity() as? ConfigurationActivity ?: return true
+        val mapping = ConfigurationActivity.getNavGraph(activity) ?: return true
+        return mapping != NavGraphMapping.WIDGET_SMARTSPACER
     }
 
     private fun BottomNavigationView.setupBottomNavigation() {
@@ -241,6 +265,7 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
     }
 
     private fun setupInsets() = with(fragment) {
+        if(!handleInsets) return@with
         val expandedMargin = resources.getDimensionPixelSize(R.dimen.expanded_title_margin)
         onApplyInsets { view, insets ->
             val systemInsets = insets.getInsets(SYSTEM_INSETS)

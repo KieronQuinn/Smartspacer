@@ -3,9 +3,11 @@ package com.kieronquinn.app.smartspacer.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.kieronquinn.app.smartspacer.components.smartspace.complications.DateComplication
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DateTarget
 import com.kieronquinn.app.smartspacer.repositories.AlarmRepository
 import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerComplicationProvider
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
@@ -30,6 +32,7 @@ class DailyUpdateAlarmReceiver: BroadcastReceiver(), KoinComponent {
         calendarRepository.reloadEvents()
         alarmRepository.enqueueDailyUpdateReceiver()
         SmartspacerTargetProvider.notifyChange(context, DateTarget::class.java)
+        SmartspacerComplicationProvider.notifyChange(context, DateComplication::class.java)
     }
 
 }

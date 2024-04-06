@@ -11,8 +11,9 @@ import androidx.test.annotation.UiThreadTest
 import app.cash.turbine.test
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
+import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSession
+import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSession
-import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
@@ -151,8 +152,8 @@ class AppWidgetRepositoryTests: BaseTest<AppWidgetRepository>() {
     fun testLookupSession() = runTest {
         sut.widgetSessions.add(createMockSession(1, "com.example.one"))
         sut.widgetSessions.add(createMockSession(2, "com.example.two"))
-        assertTrue(sut.getSessionState(1)!!.config.packageName == "com.example.one")
-        assertTrue(sut.getSessionState(2)!!.config.packageName == "com.example.two")
+        assertTrue(sut.getPagedSessionState(1)!!.config.packageName == "com.example.one")
+        assertTrue(sut.getPagedSessionState(2)!!.config.packageName == "com.example.two")
     }
 
     @Test
@@ -418,9 +419,9 @@ class AppWidgetRepositoryTests: BaseTest<AppWidgetRepository>() {
         }
     }
 
-    private fun createMockSession(id: Int, packageName: String): WidgetSmartspacerSession {
+    private fun createMockSession(id: Int, packageName: String): PagedWidgetSmartspacerSession {
         val config = SmartspaceConfig(0, UiSurface.HOMESCREEN, packageName)
-        val state = WidgetSmartspacerSessionState(
+        val state = PagedWidgetSmartspacerSessionState(
             mock(),
             config,
             animate = true,
@@ -428,6 +429,7 @@ class AppWidgetRepositoryTests: BaseTest<AppWidgetRepository>() {
             isLast = false,
             isOnlyPage = true,
             showControls = true,
+            invisibleControls = false,
             dotConfig = emptyList()
         )
         return mock {

@@ -178,6 +178,7 @@ class PluginRepositoryTests: BaseTest<PluginRepository>() {
             minimumSmartspacerVersion = null,
             versionCode = 1
         )
+
         assertTrue(sut.getPluginInfo(plugin) == mock)
     }
 

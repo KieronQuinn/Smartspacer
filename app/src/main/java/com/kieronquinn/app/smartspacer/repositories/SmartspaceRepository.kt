@@ -68,7 +68,8 @@ interface SmartspaceRepository {
         openMode: ExpandedOpenMode,
         surface: UiSurface,
         doesHaveSplitSmartspace: Boolean,
-        isNative: Boolean
+        isNative: Boolean,
+        actionsFirst: Boolean
     ): List<SmartspacePageHolder>
 
     /**
@@ -413,14 +414,16 @@ class SmartspaceRepositoryImpl(
         openMode: ExpandedOpenMode,
         surface: UiSurface,
         doesHaveSplitSmartspace: Boolean,
-        isNative: Boolean
+        isNative: Boolean,
+        actionsFirst: Boolean
     ): List<SmartspacePageHolder> {
         return when {
             doesHaveSplitSmartspace && surface == UiSurface.LOCKSCREEN -> {
                 TargetMergerSplit.mergeTargetsAndActions(
                     targets,
                     actions,
-                    openMode
+                    openMode,
+                    actionsFirst
                 )
             }
             //Native on 14+ still requires the UNDEFINED feature type
@@ -428,14 +431,16 @@ class SmartspaceRepositoryImpl(
                 TargetMergerUndefined.mergeTargetsAndActions(
                     targets,
                     actions,
-                    openMode
+                    openMode,
+                    actionsFirst
                 )
             }
             else -> {
                 TargetMergerWeather.mergeTargetsAndActions(
                     targets,
                     actions,
-                    openMode
+                    openMode,
+                    actionsFirst
                 )
             }
         }

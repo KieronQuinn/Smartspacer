@@ -41,7 +41,7 @@ interface DatabaseRepository {
     fun getActionById(id: String): Flow<Action?>
     fun getRequirementById(id: String): Flow<Requirement?>
     suspend fun getGrantForPackage(packageName: String): Grant?
-    suspend fun getAppWidgetById(id: Int): AppWidget?
+    fun getAppWidgetById(id: Int): Flow<AppWidget?>
 
     suspend fun addAction(action: Action)
     suspend fun addAppWidget(appWidget: AppWidget)
@@ -152,8 +152,8 @@ class DatabaseRepositoryImpl(
         return requirements.getById(id)
     }
 
-    override suspend fun getAppWidgetById(id: Int): AppWidget? = withContext(Dispatchers.IO) {
-        appWidgets.getById(id)
+    override fun getAppWidgetById(id: Int): Flow<AppWidget?> {
+        return appWidgets.getById(id)
     }
 
     override suspend fun addAction(action: Action) = withContext(Dispatchers.IO) {

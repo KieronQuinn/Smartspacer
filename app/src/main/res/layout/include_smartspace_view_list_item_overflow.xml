@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_gravity="end">
+
+    <ImageButton
+        android:id="@+id/widget_smartspacer_list_item_overflow"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:background="@drawable/rounded_ripple_32"
+        android:padding="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_widget_kebab" />
+
+</FrameLayout>

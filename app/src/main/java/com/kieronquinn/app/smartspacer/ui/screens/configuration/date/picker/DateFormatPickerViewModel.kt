@@ -5,21 +5,21 @@ import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-abstract class DateTargetFormatPickerViewModel(scope: CoroutineScope?): BaseViewModel(scope) {
+abstract class DateFormatPickerViewModel(scope: CoroutineScope?): BaseViewModel(scope) {
 
     abstract fun onCustomClicked(format: String)
 
 }
 
-class DateTargetFormatPickerViewModelImpl(
+class DateFormatPickerViewModelImpl(
     private val navigation: ConfigurationNavigation,
     scope: CoroutineScope? = null
-): DateTargetFormatPickerViewModel(scope) {
+): DateFormatPickerViewModel(scope) {
 
     override fun onCustomClicked(format: String) {
         vmScope.launch {
             navigation.navigate(
-                DateTargetFormatPickerFragmentDirections
+                DateFormatPickerFragmentDirections
                     .actionDateTargetFormatPickerFragmentToDateTargetFormatCustomFragment(format)
             )
         }

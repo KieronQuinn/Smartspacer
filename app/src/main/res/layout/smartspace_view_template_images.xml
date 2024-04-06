@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/smartspace_view_template_root"
+    android:id="@+id/smartspace_view_root"
     style="@style/WidgetRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
     android:clipChildren="false"
     android:clipToPadding="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     tools:layout_height="@dimen/smartspace_view_max_height">
 
-    <FrameLayout
-        android:id="@+id/smartspace_view_images"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/smartspace_view_template_images_image_height"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:id="@+id/smartspace_view_images_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:background="@drawable/smartspace_page_outline_rounded"
-            android:clipToOutline="true"
-            android:cropToPadding="true"
-            android:scaleType="fitCenter"
-            tools:src="@android:color/holo_red_dark" />
-
-    </FrameLayout>
+    <include layout="@layout/include_smartspace_view_enforced_height" />
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <include layout="@layout/include_smartspace_view_title" />
+        <FrameLayout
+            android:id="@+id/smartspace_view_images"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/smartspace_view_template_images_image_height"
+            android:gravity="center_vertical">
 
-        <include layout="@layout/include_smartspace_view_subtitle" />
+            <ImageView
+                android:id="@+id/smartspace_view_images_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@drawable/smartspace_page_outline_rounded"
+                android:clipToOutline="true"
+                android:cropToPadding="true"
+                android:scaleType="fitCenter"
+                tools:src="@android:color/holo_red_dark" />
 
-        <include layout="@layout/include_smartspace_view_supplemental" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <include layout="@layout/include_smartspace_view_title" />
+
+            <include layout="@layout/include_smartspace_view_subtitle" />
+
+            <include layout="@layout/include_smartspace_view_supplemental" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_smartspace_view_list_item_overflow" />
 
     </LinearLayout>
-</LinearLayout>
+
+</FrameLayout>

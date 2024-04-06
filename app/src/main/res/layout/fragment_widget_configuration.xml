@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/widget_configuration_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        app:layout_behavior=".utils.appbar.DragOptionalAppBarLayoutBehaviour"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/widget_configuration_collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height_widget_configuration"
+            android:background="@android:color/transparent"
+            android:clipToPadding="false"
+            app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitle.Collapsed"
+            app:contentScrim="@android:color/transparent"
+            app:expandedTitleMarginEnd="@dimen/expanded_title_margin"
+            app:expandedTitleMarginStart="@dimen/expanded_title_margin"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:maxLines="1"
+            app:scrimAnimationDuration="250"
+            app:scrimVisibleHeightTrigger="@dimen/app_bar_height_widget_configuration"
+            app:statusBarScrim="@null"
+            app:title=" "
+            app:titleCollapseMode="fade">
+
+            <com.kieronquinn.app.smartspacer.sdk.client.views.SafeViewFlipper
+                android:id="@+id/widget_configuration_preview"
+                android:layout_width="match_parent"
+                android:inAnimation="@android:anim/fade_in"
+                android:outAnimation="@android:anim/fade_out"
+                android:layout_height="@dimen/app_bar_height_widget_configuration">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/smartspace_view_max_height_preview"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/margin_16"
+                    android:id="@+id/widget_configuration_preview_horizontal"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:paddingStart="@dimen/margin_16"
+                    android:paddingEnd="@dimen/margin_16"
+                    android:id="@+id/widget_configuration_preview_vertical"/>
+
+            </com.kieronquinn.app.smartspacer.sdk.client.views.SafeViewFlipper>
+
+            <!-- Block interactions with previews -->
+            <View
+                android:id="@+id/widget_configuration_preview_blocker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:importantForAccessibility="no"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_16"
+                android:layout_gravity="bottom"
+                android:id="@+id/widget_configuration_background" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/widget_configuration_tabs_container"
+                style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:transitionName="card_view"
+                app:cardCornerRadius="0dp">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/widget_configuration_tabs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:background="@drawable/background_tabs"
+                    android:minWidth="@dimen/tab_min_width"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabIndicator="@drawable/indicator_tabs"
+                    app:tabIndicatorFullWidth="true"
+                    app:tabIndicatorHeight="56dp"
+                    app:tabSelectedTextColor="?android:textColorPrimaryInverse"
+                    app:tabTextAppearance="@style/TextAppearance.Tabs"
+                    app:tabTextColor="@android:color/white">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/widget_configuration_tab_horizontal" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/widget_configuration_tab_vertical" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_16"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/widget_configuration_spacer" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/widget_configuration_card_view"
+        style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionName="card_view"
+        app:cardCornerRadius="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include
+            android:id="@+id/widget_configuration_content_loading"
+            layout="@layout/include_loading" />
+
+        <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+            android:id="@+id/widget_configuration_content_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingBottom="@dimen/margin_16"
+            android:visibility="gone"
+            tools:listitem="@layout/item_settings_switch_item"
+            tools:visibility="visible" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

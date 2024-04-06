@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -20,13 +21,27 @@ class CardTemplateSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
-        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
+        super.apply(
+            context,
+            textColour,
+            shadowEnabled,
+            remoteViews,
+            width,
+            titleSize,
+            subtitleSize,
+            featureSize,
+            isList,
+            overflowIntent,
+        )
         template.subCardIcon.let {
             remoteViews.setImageViewIcon(R.id.smartspace_view_card_icon, it.tintIfNeeded(textColour))
         }

@@ -15,7 +15,7 @@ fun CharSequence.takeEllipsised(length: Int): CharSequence {
             this
         }
         else -> {
-            "${this.take(length - 1)}…"
+            "${this.take((length - 1).coerceAtLeast(0)).trim()}…"
         }
     }
 }

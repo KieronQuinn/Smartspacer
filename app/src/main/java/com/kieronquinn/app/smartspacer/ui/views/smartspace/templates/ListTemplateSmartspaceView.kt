@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.content.Intent
 import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
@@ -23,17 +24,36 @@ class ListTemplateSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
-        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
+        super.apply(
+            context,
+            textColour,
+            shadowEnabled,
+            remoteViews,
+            width,
+            titleSize,
+            subtitleSize,
+            featureSize,
+            isList,
+            overflowIntent,
+        )
         template.subListIcon?.let {
             remoteViews.setImageViewIcon(R.id.smartspace_view_list_icon, it.tintIfNeeded(textColour))
         }
-        remoteViews.setOnClickAction(context, R.id.smartspace_view_list, template.subListAction)
+        remoteViews.setOnClickAction(
+            context,
+            R.id.smartspace_view_list,
+            isList,
+            template.subListAction
+        )
         val item1 = template.subListTexts.getOrNull(0)
         remoteViews.setListItem(R.id.smartspace_view_list_item_1, item1, textColour, featureSize)
         val item2 = template.subListTexts.getOrNull(1)

@@ -8,7 +8,6 @@ import android.content.pm.ProviderInfo
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Process
-import android.util.Log
 import app.cash.turbine.test
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.model.smartspace.Action
@@ -274,7 +273,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             ExpandedOpenMode.ALWAYS,
             UiSurface.HOMESCREEN,
             doesHaveSplitSmartspace = false,
-            isNative = false
+            isNative = false,
+            actionsFirst = false
         )
         val mockHomeTargets = listOfNotNull(targetOne.targets, targetTwo.targets).flatten()
         val mockHomeActions = listOfNotNull(actionOne.actions, actionTwo.actions).flatten()
@@ -294,7 +294,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             ExpandedOpenMode.ALWAYS,
             UiSurface.LOCKSCREEN,
             doesHaveSplitSmartspace = false,
-            isNative = false
+            isNative = false,
+            actionsFirst = false
         )
         val mockLockTargets = listOfNotNull(targetOne.targets).flatten()
         val mockLockActions = listOfNotNull(actionOne.actions).flatten()
@@ -314,7 +315,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             ExpandedOpenMode.ALWAYS,
             UiSurface.LOCKSCREEN,
             doesHaveSplitSmartspace = true,
-            isNative = false
+            isNative = false,
+            actionsFirst = false
         )
         val splitFirstPage = split.subList(0, 1)
         val splitRemainder = split.subList(1, split.size)
@@ -453,8 +455,6 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
         } returns MutableStateFlow(targets)
         sut.getDefaultLockTargets().test {
             val item = awaitItem()
-            Log.d("SRT", "Actual: ${item.joinToString(", ")}")
-            Log.d("SRT", "Mock: ${targets.subList(1, targets.size)}")
             //Should only contain fully qualified targets (not weather)
             assertTrue(item == targets.subList(1, targets.size))
         }

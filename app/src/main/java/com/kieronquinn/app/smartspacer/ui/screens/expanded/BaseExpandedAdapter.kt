@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded
 
 import android.appwidget.AppWidgetProviderInfo
+import android.content.Context
 import android.graphics.Color
 import android.view.View
 import androidx.core.view.children
@@ -15,6 +16,7 @@ import com.kieronquinn.app.smartspacer.databinding.ItemExpandedRemoteviewsBindin
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedRemovedWidgetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedSearchBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedShortcutsBinding
+import com.kieronquinn.app.smartspacer.databinding.ItemExpandedSpacerBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedStatusBarSpaceBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedTargetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedWidgetBinding
@@ -38,6 +40,8 @@ interface BaseExpandedAdapter: KoinComponent {
     val expandedRepository: ExpandedRepository
 
     fun ViewHolder.Widget.setup(
+        context: Context,
+        availableWidth: Int,
         widget: Item.Widget,
         sessionId: String,
         handler: SmartspaceTargetInteractionListener
@@ -59,7 +63,16 @@ interface BaseExpandedAdapter: KoinComponent {
             itemExpandedWidgetContainer.isVisible = true
             itemExpandedWidgetContainer.run {
                 removeAllViews()
-                val appWidgetHostView = expandedRepository.createHost(widget, sessionId, handler)
+                val appWidgetHostView = expandedRepository.createHost(
+                    context,
+                    availableWidth,
+                    widget,
+                    sessionId,
+                    handler
+                )
+                appWidgetHostView.clipChildren = false
+                appWidgetHostView.clipToPadding = false
+                appWidgetHostView.enforceRoundedCorners = widget.roundCorners
                 appWidgetHostView.removeFromParentIfNeeded()
                 appWidgetHostView.setOnLightBackground(widget.isDark)
                 addView(appWidgetHostView)
@@ -157,6 +170,7 @@ interface BaseExpandedAdapter: KoinComponent {
         data class RemovedWidget(override val binding: ItemExpandedRemovedWidgetBinding): ViewHolder(binding)
         data class Shortcuts(override val binding: ItemExpandedShortcutsBinding): ViewHolder(binding)
         data class Footer(override val binding: ItemExpandedFooterBinding): ViewHolder(binding)
+        data class Spacer(override val binding: ItemExpandedSpacerBinding): ViewHolder(binding)
     }
 
     fun getTintColour(isDark: Boolean): Int {

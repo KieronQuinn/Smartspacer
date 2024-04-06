@@ -29,7 +29,11 @@ import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.flexbox.AlignItems
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
@@ -59,10 +63,12 @@ import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.State
+import com.kieronquinn.app.smartspacer.utils.extensions.WIDGET_MIN_COLUMNS
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
-import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnCount
 import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
@@ -127,6 +133,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     private var lastSwipe: Long? = null
     private var popup: Balloon? = null
     private var topInset = 0
+    private var multiColumnEnabled = true
 
     private val isOverlay by lazy {
         ExpandedActivity.isOverlay(requireActivity() as ExpandedActivity)
@@ -169,7 +176,9 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             isDark,
             sessionId,
             this,
-            this
+            this,
+            ::getSpanPercent,
+            ::getAvailableWidth
         )
     }
 
@@ -204,9 +213,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         setupClose()
         handleLaunchActionIfNeeded()
         viewModel.setup(isOverlay)
-        whenCreated {
-            setupRecyclerView()
-        }
+        setupRecyclerView()
     }
 
     override fun onDestroyView() {
@@ -241,7 +248,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             )
         }
         root.onApplyInsets { _, insets ->
-            topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             viewModel.setTopInset(topInset)
         }
         val lockedPadding = resources.getDimensionPixelSize(R.dimen.expanded_button_unlock_height)
@@ -259,19 +266,15 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
     }
 
-    private suspend fun View.getColumnSpan(): Int {
-        awaitPost()
-        val maxWidth = context.getDisplayPortraitWidth()
-        return (measuredWidth / maxWidth).coerceAtLeast(1)
-    }
-
-    private suspend fun setupRecyclerView() = with(binding.expandedRecyclerView) {
-        layoutManager = StaggeredGridLayoutManager(
-            binding.expandedNestedScroll.getColumnSpan(),
-            StaggeredGridLayoutManager.VERTICAL
-        )
+    private fun setupRecyclerView() = with(binding.expandedRecyclerView) {
+        layoutManager = FlexboxLayoutManager(context).apply {
+            flexDirection = FlexDirection.ROW
+            alignItems = AlignItems.CENTER
+            justifyContent = JustifyContent.CENTER
+            flexWrap = FlexWrap.WRAP
+        }
         adapter = this@ExpandedFragment.adapter
-        itemAnimator = PulseControlledItemAnimator()
+        binding.expandedRecyclerView.itemAnimator = PulseControlledItemAnimator()
         setOnScrollChangeListener(this@ExpandedFragment)
     }
 
@@ -340,15 +343,22 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 binding.expandedPermission.isVisible = true
             }
             is State.Loaded -> {
+                multiColumnEnabled = state.multiColumnEnabled
                 binding.expandedLoading.isVisible = false
                 binding.expandedRecyclerView.isVisible = true
                 binding.expandedUnlockContainer.isVisible = state.isLocked && !isOverlay
                 binding.expandedDisabled.isVisible = false
                 binding.expandedPermission.isVisible = false
                 setStatusBarLight(state.lightStatusIcons)
-                adapter.submitList(state.items) {
-                    whenResumed {
-                        adapterUpdateBus.emit(System.currentTimeMillis())
+                whenResumed {
+                    adapter.submitList(state.items) {
+                        try {
+                            whenCreated {
+                                adapterUpdateBus.emit(System.currentTimeMillis())
+                            }
+                        }catch (e: IllegalStateException) {
+                            //Overlay has been killed
+                        }
                     }
                 }
             }
@@ -837,6 +847,42 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             return oldHolder.adapterPosition == newHolder.adapterPosition
         }
 
+    }
+
+    private fun getAvailableWidth(): Int {
+        return binding.expandedRecyclerView.measuredWidth - 16.dp
+    }
+
+    private fun getSpanPercent(item: Item): Float {
+        var columnCount = requireContext().getWidgetColumnCount(getAvailableWidth())
+        if(!multiColumnEnabled) {
+            //Prevent widgets being displayed alongside each other when multi column is disabled
+            columnCount = columnCount.coerceAtMost(WIDGET_MIN_COLUMNS)
+        }
+        val targetBasedColumns = if(multiColumnEnabled) {
+            (columnCount / WIDGET_MIN_COLUMNS.toFloat()).coerceAtLeast(1f)
+        }else 1f
+        val targetBasedWidth = (1f / targetBasedColumns)
+        return when(item) {
+            is Item.StatusBarSpace -> 1f
+            is Item.Search -> 1f
+            is Item.Target -> targetBasedWidth
+            is Item.Complications -> 1f
+            is Item.Widget -> {
+                return when {
+                    item.fullWidth -> targetBasedWidth
+                    item.spanX != null -> {
+                        item.spanX / columnCount.toFloat()
+                    }
+                    else -> targetBasedWidth //Unlikely to expect being full width when wide
+                }
+            }
+            is Item.RemovedWidget -> targetBasedWidth
+            is Item.RemoteViews -> targetBasedWidth //Unlikely to expect being full width when wide
+            is Item.Shortcuts -> 1f
+            is Item.Footer -> 1f
+            is Item.Spacer -> 1f //Always full width to force new rows
+        }
     }
 
 }

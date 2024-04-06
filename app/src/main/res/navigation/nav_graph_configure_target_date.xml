@@ -12,32 +12,14 @@
         tools:layout="@layout/fragment_settings_base" >
         <action
             android:id="@+id/action_dateTargetConfigurationFragment_to_dateTargetFormatPickerFragment"
-            app:destination="@id/dateTargetFormatPickerFragment" />
+            app:destination="@id/nav_graph_configure_date_shared">
+            <argument
+                android:name="format"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
     </fragment>
 
-    <dialog
-        android:id="@+id/dateTargetFormatPickerFragment"
-        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerFragment"
-        android:label=" "
-        tools:layout="@layout/fragment_configuration_target_date_format_picker_bottom_sheet" >
-        <action
-            android:id="@+id/action_dateTargetFormatPickerFragment_to_dateTargetFormatCustomFragment"
-            app:destination="@id/dateTargetFormatCustomFragment"
-            app:popUpTo="@id/dateTargetConfigurationFragment" />
-        <argument
-            android:name="format"
-            app:argType="string"
-            app:nullable="true" />
-    </dialog>
-    <dialog
-        android:id="@+id/dateTargetFormatCustomFragment"
-        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomFragment"
-        android:label=" "
-        tools:layout="@layout/fragment_configuration_target_date_format_custom" >
-        <argument
-            android:name="format"
-            app:argType="string"
-            app:nullable="true" />
-    </dialog>
+    <include app:graph="@navigation/nav_graph_configure_date_shared" />
 
 </navigation>

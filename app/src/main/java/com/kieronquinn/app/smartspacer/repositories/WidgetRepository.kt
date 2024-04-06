@@ -16,6 +16,7 @@ import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostV
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.px
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceUriActionsWithProxy
 import com.kieronquinn.app.smartspacer.utils.extensions.updateAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteCollectionItemsWrapper
@@ -69,6 +70,22 @@ class WidgetRepositoryImpl(
     private val scope: CoroutineScope = MainScope()
 ): WidgetRepository, OnProvidersChangedListener {
 
+    companion object {
+        /**
+         *  Naughty list of apps which cause crashes due to uncaught permission-protected provider
+         *  calls. These widgets will never work with Smartspacer unless the OEMs come to their
+         *  senses and stop blocking all apps other than their own from using their widgets.
+         *
+         *  <package name> : <class name> (leave class name empty for wildcard)
+         */
+        private val WIDGET_DENYLIST = mapOf(
+            "com.hihonor.calendar" to "", //Honor Calendar (all blocked)
+            "com.huawei.calendar" to "", //Huawei Calendar (all blocked)
+            "com.hihonor.android.totemweather" to "", //Honor Weather (all blocked)
+            "com.huawei.android.totemweather" to "", //Huawei Weather (all blocked)
+        )
+    }
+
     private val contentResolver = context.contentResolver
     private val appWidgetManager = AppWidgetManager.getInstance(context)
     private val databaseWidgets = databaseRepository.getWidgets()
@@ -89,8 +106,8 @@ class WidgetRepositoryImpl(
     }
 
     override val providers = providersChanged.mapLatest {
-        appWidgetManager.installedProviders
-    }.stateIn(scope, SharingStarted.Eagerly, appWidgetManager.installedProviders)
+        appWidgetManager.installedProviders.filterIncompatible()
+    }.stateIn(scope, SharingStarted.Eagerly, appWidgetManager.installedProviders.filterIncompatible())
 
     override val widgets = combine(
         databaseWidgets,
@@ -165,7 +182,7 @@ class WidgetRepositoryImpl(
             val options = appWidgetManager.getAppWidgetOptions(widget.appWidgetId)
             val width = it.width ?: displayPortraitWidth
             val height = it.height ?: (displayPortraitHeight / 4f).roundToInt()
-            updateAppWidgetSize(width, height, options)
+            updateAppWidgetSize(context, width.px.toFloat(), height.px.toFloat(), options)
             this@setup
         }.collectLatest {
             when(it) {
@@ -314,6 +331,16 @@ class WidgetRepositoryImpl(
         context.startIntentSender(
             pendingIntent.intentSender, fillInIntent, 0, 0, 0
         )
+    }
+
+    private fun List<AppWidgetProviderInfo>.filterIncompatible(): List<AppWidgetProviderInfo> {
+        return filterNot { provider ->
+            val packageName = provider.provider.packageName
+            val className = provider.provider.className
+            WIDGET_DENYLIST.any {
+                it.key == packageName && (it.value.isEmpty() || it.value == className)
+            }
+        }
     }
 
 }

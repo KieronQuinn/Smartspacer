@@ -9,7 +9,6 @@ import android.content.IntentSender
 import android.os.Parcelable
 import android.view.ViewGroup
 import com.google.gson.annotations.SerializedName
-import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.model.database.ExpandedAppWidget
 import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
@@ -17,9 +16,12 @@ import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExp
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.ExpandedCustomWidgetBackup
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
-import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getHeight
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetRowHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.px
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
 import com.kieronquinn.app.smartspacer.widget.ExpandedAppWidgetHost
 import kotlinx.coroutines.CoroutineScope
@@ -34,7 +36,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import kotlinx.parcelize.Parcelize
 import org.jetbrains.annotations.VisibleForTesting
-import java.util.*
+import java.util.UUID
 
 interface ExpandedRepository {
 
@@ -52,16 +54,6 @@ interface ExpandedRepository {
      *  The current list of custom app widgets to show at the bottom of the expanded screen
      */
     val expandedCustomAppWidgets: Flow<List<ExpandedCustomAppWidget>>
-
-    /**
-     *  The width of a widget's column in the expanded screen
-     */
-    val widgetColumnWidth: Int
-
-    /**
-     *  The height of a widget's row in the expanded screen
-     */
-    val widgetRowHeight: Int
 
     /**
      *  Whether to force the use of Google Sans in the widgets on the Expanded Screen
@@ -120,6 +112,8 @@ interface ExpandedRepository {
      *  Creates an [AppWidgetHostView] for a given [widget] and [sessionId]
      */
     fun createHost(
+        context: Context,
+        availableWidth: Int,
         widget: Item.Widget,
         sessionId: String,
         handler: SmartspacerBasePageView.SmartspaceTargetInteractionListener
@@ -141,7 +135,9 @@ interface ExpandedRepository {
         val spanX: Int,
         val spanY: Int,
         val index: Int,
-        val showWhenLocked: Boolean
+        val showWhenLocked: Boolean,
+        val roundCorners: Boolean,
+        val fullWidth: Boolean
     ): Parcelable
 
     @Parcelize
@@ -157,7 +153,11 @@ interface ExpandedRepository {
         @SerializedName("span_y")
         val spanY: Int,
         @SerializedName("show_when_locked")
-        val showWhenLocked: Boolean
+        val showWhenLocked: Boolean,
+        @SerializedName("round_corners")
+        val roundCorners: Boolean? = null,
+        @SerializedName("full_width")
+        val fullWidth: Boolean? = null
     ): Parcelable
 
 }
@@ -174,27 +174,17 @@ class ExpandedRepositoryImpl(
     override val overlayDragProgressChanged = MutableSharedFlow<Unit>()
     override val expandedCustomAppWidgets = databaseRepository.getExpandedCustomAppWidgets()
 
-    private val displayPortraitWidth = context.getDisplayPortraitWidth()
     private val appWidgetManager = AppWidgetManager.getInstance(context)
-    private val maxWidgetWidth = displayPortraitWidth -
-            (context.resources.getDimensionPixelSize(R.dimen.margin_16) * 2)
-    private val maxWidgetHeight = context.resources
-        .getDimensionPixelSize(R.dimen.expanded_smartspace_remoteviews_max_height)
-    private val widgetContext = WidgetContextWrapper(context)
+    private val widgetHostContext = WidgetContextWrapper(context)
     private var appWidgetHostViews = HashMap<CacheTag, ExpandedAppWidgetHostView>()
 
     private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans.asFlow()
         .stateIn(scope, SharingStarted.Eagerly, settings.expandedWidgetUseGoogleSans.getSync())
 
     @VisibleForTesting
-    var appWidgetHost = ExpandedAppWidgetHost.create(widgetContext, 1).also {
+    var appWidgetHost = ExpandedAppWidgetHost.create(widgetHostContext, 1).also {
         it.startListening()
     }
-
-    override val widgetColumnWidth: Int = (maxWidgetWidth / 5f).toInt()
-    override val widgetRowHeight: Int = context.resources.getDimensionPixelSize(
-        R.dimen.expanded_smartspace_widget_row_height
-    )
 
     override val widgetUseGoogleSans: Boolean
         get() = widgetsUseGoogleSans.value
@@ -217,7 +207,9 @@ class ExpandedRepositoryImpl(
                 index = customConfig.index,
                 spanX = customConfig.spanX,
                 spanY = customConfig.spanY,
-                showWhenLocked = customConfig.showWhenLocked
+                showWhenLocked = customConfig.showWhenLocked,
+                roundCorners = customConfig.roundCorners,
+                fullWidth = customConfig.fullWidth
             )
             databaseRepository.addExpandedCustomAppWidget(widget)
         }else {
@@ -269,7 +261,9 @@ class ExpandedRepositoryImpl(
                 it.index,
                 it.spanX,
                 it.spanY,
-                it.showWhenLocked
+                it.showWhenLocked,
+                it.roundCorners ?: true,
+                it.fullWidth ?: false
             )
             databaseRepository.addExpandedCustomAppWidget(widget)
         }
@@ -304,35 +298,45 @@ class ExpandedRepositoryImpl(
     }
 
     override fun createHost(
+        context: Context,
+        availableWidth: Int,
         widget: Item.Widget,
         sessionId: String,
         handler: SmartspacerBasePageView.SmartspaceTargetInteractionListener
     ): ExpandedAppWidgetHostView {
         val appWidgetId = widget.appWidgetId
             ?: throw RuntimeException("Cannot create a widget without an ID!")
-        val width = if(widget.width == 0){
-            widget.provider.getWidth()
-        }else{
-            widget.width
-        }.coerceAtMost(maxWidgetWidth)
-        val height = if(widget.height == 0){
-            widget.provider.getHeight()
-        }else{
-            widget.height
-        }.let {
-            //Only clip height of non-custom widgets
-            if(widget.isCustom) it else it.coerceAtMost(maxWidgetHeight)
+        val widgetContext = WidgetContextWrapper(context)
+        val widgetColumnWidth = context.getWidgetColumnWidth(availableWidth)
+        val widgetRowHeight = context.getWidgetRowHeight(availableWidth)
+        val width = when {
+            widget.width != null && widget.width != 0 -> widget.width.coerceAtMost(availableWidth)
+            widget.spanX != null -> widget.spanX * widgetColumnWidth
+            else -> widget.provider.getWidth(context, availableWidth, widgetColumnWidth)
+        } - 16.dp
+        val height = when {
+            widget.height != null && widget.height != 0 -> widget.height
+            widget.spanY != null -> widget.spanY * widgetRowHeight
+            else -> widget.provider.getHeight(context, availableWidth, widgetRowHeight)
         }
         val cacheTag = CacheTag(appWidgetId, width, height, sessionId)
+        val widgetWidth = with(context.resources) {
+            px(width).toFloat()
+        }
+        val widgetHeight = with(context.resources) {
+            px(height).toFloat()
+        }
         appWidgetHostViews.destroyStaleHosts(cacheTag)
         appWidgetHostViews[cacheTag]?.let {
-            return it
+            return it.also {
+                it.updateSizeIfNeeded(widgetWidth, widgetHeight)
+            }
         }
         return appWidgetHost.createView(
             widgetContext, appWidgetId, sessionId, widget.provider, handler
         ).apply {
             this as ExpandedAppWidgetHostView
-            updateSizeIfNeeded(width, height)
+            updateSizeIfNeeded(widgetWidth, widgetHeight)
             layoutParams = ViewGroup.LayoutParams(width, height)
             appWidgetHostViews[cacheTag] = this
         } as ExpandedAppWidgetHostView

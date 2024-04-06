@@ -112,6 +112,7 @@ class SmartspacerOemIconProvider: BaseProvider() {
             UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour
             UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour
             UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour
+            UiSurface.GLANEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
         }.firstNotNull()
         if(darkText) Color.BLACK else Color.WHITE
     }
