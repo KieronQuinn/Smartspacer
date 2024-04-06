@@ -23,6 +23,8 @@ class ExpandedContainerFragment: BaseContainerFragment<FragmentContainerExpanded
     override val bottomNavigation: BottomNavigationView? = null
     override val collapsingToolbar: CollapsingToolbarLayout? = null
     override val toolbar: Toolbar? = null
+    override val handleInsets = false
+
     private val _navigation by inject<ExpandedNavigation>()
 
     private val isOverlay by lazy {

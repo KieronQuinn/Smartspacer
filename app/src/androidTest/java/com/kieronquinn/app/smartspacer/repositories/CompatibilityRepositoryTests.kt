@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.ApplicationInfoFlags
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.content.pm.ResolveInfo
-import android.util.Log
 import app.cash.turbine.test
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Base
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
@@ -141,7 +140,6 @@ class CompatibilityRepositoryTests: BaseTest<CompatibilityRepository>() {
     fun testCompatibilityReports() = runTest {
         sut.compatibilityReports.test(timeout = Duration.INFINITE) {
             val reports = awaitItem()
-            Log.d("CR", "Reports: $reports")
             val actualPixelLauncherReport = reports.first {
                 it.packageName == PACKAGE_PIXEL_LAUNCHER
             }

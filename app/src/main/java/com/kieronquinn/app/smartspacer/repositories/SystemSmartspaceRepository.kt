@@ -32,7 +32,14 @@ import com.kieronquinn.app.smartspacer.utils.extensions.toSmartspaceTarget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
@@ -79,6 +86,11 @@ interface SystemSmartspaceRepository {
      *  Media targets, only from the system
      */
     val mediaTargets: StateFlow<List<SmartspaceTarget>>
+
+    /**
+     *  Glanceable Hub targets, only from the system
+     */
+    val hubTargets: StateFlow<List<SmartspaceTarget>>
 
     /**
      *  Dismisses the given Target **locally**. We cannot persist dismissals into the default
@@ -131,6 +143,9 @@ class SystemSmartspaceRepositoryImpl(
     @VisibleForTesting
     val _mediaTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
+    @VisibleForTesting
+    val _hubTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
+
     private val user = Process.myUserHandle().getIdentifier()
 
     override val serviceRunning = MutableStateFlow(false)
@@ -156,6 +171,13 @@ class SystemSmartspaceRepositoryImpl(
     ) { targets, native, enabled ->
         if(native && enabled) targets else emptyList()
     }.stateIn(scope, SharingStarted.Eagerly, _mediaTargets.value)
+
+    override val hubTargets = combine(
+        _hubTargets.asStateFlow(),
+        settings.enhancedMode.asFlow()
+    ) { targets, enabled ->
+        if(enabled) targets else emptyList()
+    }.stateIn(scope, SharingStarted.Eagerly, _hubTargets.value)
 
     /**
      *  Whether the system targets should be monitored, which requires Shizuku ready and enhanced
@@ -186,6 +208,9 @@ class SystemSmartspaceRepositoryImpl(
             }
             it.setupSession(UiSurface.MEDIA_DATA_MANAGER) { targets ->
                 _mediaTargets.emit(targets)
+            }
+            it.setupSession(UiSurface.GLANEABLE_HUB) { targets ->
+                _hubTargets.emit(targets)
             }
             true
         }

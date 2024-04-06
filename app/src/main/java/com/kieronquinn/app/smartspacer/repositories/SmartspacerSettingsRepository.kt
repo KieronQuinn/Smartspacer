@@ -10,6 +10,7 @@ import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TargetCountLimit
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
@@ -152,14 +153,29 @@ interface SmartspacerSettingsRepository {
     val expandedHasClickedAdd: SmartspacerSetting<Boolean>
 
     /**
-     *  Whether to force the use of Google Sans in the widgets on the Expanded Screen
+     *  Whether to force the use of Google Sans in the widgets on the Expanded Smartspace
      */
     val expandedWidgetUseGoogleSans: SmartspacerSetting<Boolean>
+
+    /**
+     *  If/when to hide the add widgets button in Expanded Smartspace
+     */
+    val expandedHideAddButton: SmartspacerSetting<ExpandedHideAddButton>
+
+    /**
+     *  Whether to allow multiple columns in Expanded Smartspace
+     */
+    val expandedMultiColumnEnabled: SmartspacerSetting<Boolean>
 
     /**
      *  Whether the Xposed module should replace Discover with Expanded Smartspace
      */
     val expandedXposedEnabled: SmartspacerSetting<Boolean>
+
+    /**
+     *  Whether to put the Complications above Targets in Expanded Smartspace
+     */
+    val expandedComplicationsFirst: SmartspacerSetting<Boolean>
 
     /**
      *  Whether the OEM Smartspace Service should be enabled
@@ -306,6 +322,12 @@ interface SmartspacerSettingsRepository {
         }
     }
 
+    enum class ExpandedHideAddButton(@StringRes val label: Int) {
+        NEVER(R.string.expanded_settings_hide_add_button_never),
+        OVERLAY_ONLY(R.string.expanded_settings_hide_add_button_overlay_only),
+        ALWAYS(R.string.expanded_settings_hide_add_button_always),
+    }
+
     suspend fun setRestrictedModeKnownDisabledIfNeeded()
     suspend fun setInstallTimeIfNeeded()
     suspend fun getBackup(): Map<String, String>
@@ -389,8 +411,17 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS = "expanded_widgets_use_google_sans"
         private const val DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS = false
 
+        private const val KEY_EXPANDED_HIDE_ADD_BUTTON = "expanded_hide_add_button"
+        private val DEFAULT_EXPANDED_HIDE_ADD_BUTTON = ExpandedHideAddButton.NEVER
+
+        private const val KEY_EXPANDED_MULTI_COLUMN_ENABLED = "expanded_multi_column_enabled"
+        private const val DEFAULT_EXPANDED_MULTI_COLUMN_ENABLED = true
+
         private const val KEY_EXPANDED_XPOSED_ENABLED = "expanded_xposed_enabled"
         private const val DEFAULT_EXPANDED_XPOSED_ENABLED = false
+
+        private const val KEY_EXPANDED_COMPLICATIONS_FIRST = "expanded_complications_first"
+        private const val DEFAULT_EXPANDED_COMPLICATIONS_FIRST = false
 
         private const val KEY_OEM_SMARTSPACE_ENABLED = "oem_smartspace_enabled"
         private const val DEFAULT_OEM_SMARTSPACE_ENABLED = false
@@ -472,7 +503,10 @@ class SmartspacerSettingsRepositoryImpl(
     override val expandedTintColour = enum(KEY_EXPANDED_TINT_COLOUR, DEFAULT_EXPANDED_TINT_COLOUR)
     override val expandedHasClickedAdd = boolean(KEY_EXPANDED_HAS_CLICKED_ADD, DEFAULT_EXPANDED_HAS_CLICKED_ADD)
     override val expandedWidgetUseGoogleSans = boolean(KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS, DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS)
+    override val expandedHideAddButton = enum(KEY_EXPANDED_HIDE_ADD_BUTTON, DEFAULT_EXPANDED_HIDE_ADD_BUTTON)
+    override val expandedMultiColumnEnabled = boolean(KEY_EXPANDED_MULTI_COLUMN_ENABLED, DEFAULT_EXPANDED_MULTI_COLUMN_ENABLED)
     override val expandedXposedEnabled = boolean(KEY_EXPANDED_XPOSED_ENABLED, DEFAULT_EXPANDED_XPOSED_ENABLED)
+    override val expandedComplicationsFirst = boolean(KEY_EXPANDED_COMPLICATIONS_FIRST, DEFAULT_EXPANDED_COMPLICATIONS_FIRST)
     override val oemSmartspaceEnabled = boolean(KEY_OEM_SMARTSPACE_ENABLED, DEFAULT_OEM_SMARTSPACE_ENABLED)
     override val oemHideIncompatible = boolean(KEY_OEM_HIDE_INCOMPATIBLE, DEFAULT_OEM_HIDE_INCOMPATIBLE)
     override val updateCheckEnabled = boolean(KEY_UPDATE_CHECK_ENABLED, DEFAULT_UPDATE_CHECK_ENABLED)

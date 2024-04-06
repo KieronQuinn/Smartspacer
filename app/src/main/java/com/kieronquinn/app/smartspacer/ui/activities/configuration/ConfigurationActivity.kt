@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.ui.activities.configuration
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.annotation.NavigationRes
 import androidx.core.view.WindowCompat
@@ -33,13 +34,19 @@ class ConfigurationActivity: MonetCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         val mapping = getNavGraph(this)
+        if(mapping == NavGraphMapping.WIDGET_SMARTSPACER) {
+            setTheme(R.style.Theme_Smartspacer_Wallpaper)
+        }
+        super.onCreate(savedInstanceState)
         //Widget does not have security verified
         if(mapping != NavGraphMapping.WIDGET_SMARTSPACER) {
             intent.verifySecurity()
         }
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            //Insets don't seem to work properly on Q
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         whenCreated {
             monet.awaitMonetReady()
             setContentView(R.layout.activity_configuration)
@@ -84,6 +91,10 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.configuration.complication.GmailComplicationConfigurationActivity",
             R.navigation.nav_graph_configure_complication_gmail
         ),
+        COMPLICATION_DATE(
+            ".ui.activities.configuration.complication.date.DateComplicationConfigurationActivity",
+            R.navigation.nav_graph_configure_complication_date
+        ),
         REQUIREMENT_APP_PREDICTION(
             ".ui.activities.configuration.requirement.appprediction.AppPredictionRequirementConfigurationActivity",
             R.navigation.nav_graph_configure_requirement_app_prediction
@@ -110,7 +121,7 @@ class ConfigurationActivity: MonetCompatActivity() {
         ),
         WIDGET_SMARTSPACER(
             ".ui.activities.configuration.appwidget.SmartspacerAppWidgetConfigureActivity",
-            R.navigation.nav_graph_configure_widget
+            R.navigation.nav_graph_widget_configuration
         ),
         NATIVE_RECONNECT(
             ".ui.activities.NativeReconnectActivity",

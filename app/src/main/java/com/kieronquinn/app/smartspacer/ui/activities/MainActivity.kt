@@ -1,11 +1,13 @@
 package com.kieronquinn.app.smartspacer.ui.activities
 
+import android.os.Build
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.android.material.color.DynamicColors
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.receivers.SafeModeReceiver
+import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import com.kieronquinn.app.smartspacer.repositories.BluetoothRepository
 import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
 import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
@@ -20,6 +22,7 @@ class MainActivity : MonetCompatActivity() {
     private val wiFiRepository by inject<WiFiRepository>()
     private val bluetoothRepository by inject<BluetoothRepository>()
     private val calendarRepository by inject<CalendarRepository>()
+    private val appWidgetRepository by inject<AppWidgetRepository>()
 
     override val applyBackgroundColorToMenu = true
 
@@ -32,7 +35,10 @@ class MainActivity : MonetCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+            //Insets don't seem to work properly on Q
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         SmartspacerBackgroundService.startServiceIfNeeded(this)
         SmartspacerUpdateWorker.queueCheckWorker(this)
         DynamicColors.applyToActivityIfAvailable(this)
@@ -50,6 +56,7 @@ class MainActivity : MonetCompatActivity() {
         bluetoothRepository.onPermissionChanged()
         //Alarm permission may have been granted
         calendarRepository.reloadEvents()
+        appWidgetRepository.trimWidgets()
     }
 
 }

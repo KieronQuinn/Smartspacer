@@ -174,6 +174,27 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
     }
 
     @Test
+    fun testGlanceableHub() = runTest {
+        //Disable service start so we can test independently
+        every { shizukuServiceRepositoryMock.isReady } returns MutableStateFlow(false)
+        val enhancedModeEnabled = mockSmartspacerSetting(false)
+        every {
+            settingsRepositoryMock.enhancedMode
+        } returns enhancedModeEnabled
+        val mockTargets = listOf(
+            createMockSmartspaceTarget(),
+            createMockSmartspaceTarget(),
+            createMockSmartspaceTarget()
+        )
+        sut._hubTargets.emit(mockTargets)
+        sut.hubTargets.test {
+            assertTrue(awaitItem().isEmpty())
+            enhancedModeEnabled.emit(true)
+            assertTrue(awaitItem() == mockTargets)
+        }
+    }
+
+    @Test
     fun testDismissTarget() = runTest {
         //Disable service start so we can test independently
         every { shizukuServiceRepositoryMock.isReady } returns MutableStateFlow(false)

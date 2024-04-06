@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,5 +33,13 @@ fun LifecycleOwner.whenCreated(block: suspend CoroutineScope.() -> Unit): Job {
         lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
             block()
         }
+    }
+}
+
+fun LifecycleRegistry.handleLifecycleEventSafely(event: Lifecycle.Event) {
+    try {
+        handleLifecycleEvent(event)
+    }catch (e: IllegalStateException) {
+        //Already at this event
     }
 }

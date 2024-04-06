@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.viewbinding.ViewBinding
 import com.google.android.gsa.overlay.controllers.OverlayController
+import com.kieronquinn.app.smartspacer.utils.extensions.handleLifecycleEventSafely
 import org.koin.core.component.KoinComponent
 
 abstract class BaseOverlay<T: ViewBinding>(
@@ -50,33 +51,33 @@ abstract class BaseOverlay<T: ViewBinding>(
             it.statusBarColor = Color.TRANSPARENT
             it.navigationBarColor = Color.TRANSPARENT
         }
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_CREATE)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_DESTROY)
         _binding = null
     }
 
     override fun onPause() {
         super.onPause()
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_PAUSE)
     }
 
     override fun onResume() {
         super.onResume()
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_RESUME)
     }
 
     override fun onStart() {
         super.onStart()
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_START)
     }
 
     override fun onStop() {
         super.onStop()
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP)
+        lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_STOP)
     }
 
 }

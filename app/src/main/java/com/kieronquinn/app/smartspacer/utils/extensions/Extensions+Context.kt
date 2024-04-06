@@ -3,9 +3,20 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
-import android.app.*
-import android.content.*
+import android.app.ActivityManager
+import android.app.ActivityOptions
+import android.app.IApplicationThread
+import android.app.IServiceConnection
+import android.app.KeyguardManager
+import android.app.Service
+import android.content.BroadcastReceiver
+import android.content.ComponentName
+import android.content.Context
 import android.content.Context.RECEIVER_EXPORTED
+import android.content.ContextHidden
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.ServiceConnection
 import android.content.pm.LauncherApps
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.NameNotFoundException
@@ -19,7 +30,13 @@ import android.hardware.camera2.CameraManager.TorchCallback
 import android.media.AudioManager
 import android.media.AudioPlaybackConfiguration
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.PowerManager
+import android.os.Process
+import android.os.UserHandle
 import android.provider.Settings
 import android.service.notification.NotificationListenerService
 import android.util.DisplayMetrics
@@ -427,7 +444,7 @@ fun Context.getDisplayPortraitHeight(): Int {
 }
 
 @Suppress("DEPRECATION")
-private fun Context.getDisplayWidth(): Int {
+fun Context.getDisplayWidth(): Int {
     val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
     return if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
         windowManager.currentWindowMetrics.bounds.width()

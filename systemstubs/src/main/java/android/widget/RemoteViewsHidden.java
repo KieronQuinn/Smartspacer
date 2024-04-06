@@ -6,7 +6,6 @@ import android.os.Build;
 import android.util.SizeF;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RemoteViews.RemoteResponse;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +14,11 @@ import androidx.annotation.RequiresApi;
 import dev.rikka.tools.refine.RefineAs;
 
 @RefineAs(RemoteViews.class)
-public class RemoteViewsHidden {
+public class RemoteViewsHidden extends RemoteViews {
+
+    public RemoteViewsHidden(RemoteViews landscape, RemoteViews portrait) {
+        super(landscape, portrait);
+    }
 
     /**
      * Handler for view interactions (such as clicks) within a RemoteViews.
@@ -64,6 +67,10 @@ public class RemoteViewsHidden {
 
     // >= 12
     public View apply(Context context, ViewGroup parent, InteractionHandler handler) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public void addFlags(int flags) {
         throw new RuntimeException("Stub!");
     }
 

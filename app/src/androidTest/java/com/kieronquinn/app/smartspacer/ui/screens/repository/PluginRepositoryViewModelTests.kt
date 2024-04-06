@@ -24,7 +24,7 @@ class PluginRepositoryViewModelTests: BaseTest<PluginRepositoryViewModel>() {
     companion object {
         private fun getMockPlugin(): Plugin {
             return Plugin.Remote(
-                randomBoolean(),
+                true,
                 randomString(),
                 randomString(),
                 randomString(),

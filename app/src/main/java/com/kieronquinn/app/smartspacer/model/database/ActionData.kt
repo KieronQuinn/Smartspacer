@@ -19,5 +19,5 @@ class ActionData(
 ) : Parcelable, BaseData
 
 enum class ActionDataType {
-    GMAIL
+    GMAIL, DATE
 }

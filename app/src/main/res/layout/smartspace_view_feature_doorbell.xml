@@ -1,134 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/smartspace_view_template_root"
+    android:id="@+id/smartspace_view_root"
     style="@style/WidgetRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
     android:clipChildren="false"
     android:clipToPadding="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     tools:layout_height="@dimen/smartspace_view_max_height">
 
-    <FrameLayout
-        android:id="@+id/smartspace_view_doorbell"
-        android:layout_width="@dimen/smartspace_view_feature_doorbell_image_width"
-        android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
-        android:gravity="center_vertical">
-
-        <FrameLayout
-            android:id="@+id/smartspace_view_doorbell_image_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <ImageView
-                android:id="@+id/smartspace_view_doorbell_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:background="@drawable/smartspace_page_outline_rounded"
-                android:clipToOutline="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                tools:src="@android:color/holo_red_dark" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/smartspace_view_doorbell_bitmap_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <ImageView
-                android:id="@+id/smartspace_view_doorbell_bitmap"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:background="@drawable/smartspace_page_outline_rounded"
-                android:clipToOutline="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                tools:src="@android:color/holo_red_dark" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/smartspace_view_doorbell_icon_container"
-            android:layout_width="@dimen/smartspace_view_feature_doorbell_image_height"
-            android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:padding="@dimen/smartspace_view_feature_doorbell_image_default_padding"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/smartspace_page_background_rounded" />
-
-            <ImageView
-                android:id="@+id/smartspace_view_doorbell_icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                tools:src="@drawable/ic_smartspacer_target_doorbell_videocam" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/smartspace_view_doorbell_loading_container"
-            android:layout_width="@dimen/smartspace_view_feature_doorbell_image_height"
-            android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <FrameLayout
-                android:id="@+id/smartspace_view_doorbell_loading_background"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/smartspace_page_background_rounded" />
-
-            <ProgressBar
-                android:id="@+id/smartspace_view_doorbell_loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:indeterminateTint="@android:color/white"
-                android:padding="16dp" />
-
-        </FrameLayout>
-
-    </FrameLayout>
+    <include layout="@layout/include_smartspace_view_enforced_height" />
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <include layout="@layout/include_smartspace_view_title" />
+        <FrameLayout
+            android:id="@+id/smartspace_view_doorbell"
+            android:layout_width="@dimen/smartspace_view_feature_doorbell_image_width"
+            android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
+            android:gravity="center_vertical">
 
-        <include layout="@layout/include_smartspace_view_subtitle" />
+            <FrameLayout
+                android:id="@+id/smartspace_view_doorbell_image_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/smartspace_view_doorbell_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/smartspace_page_outline_rounded"
+                    android:clipToOutline="true"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    tools:src="@android:color/holo_red_dark" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/smartspace_view_doorbell_bitmap_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/smartspace_view_doorbell_bitmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/smartspace_page_outline_rounded"
+                    android:clipToOutline="true"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    tools:src="@android:color/holo_red_dark" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/smartspace_view_doorbell_icon_container"
+                android:layout_width="@dimen/smartspace_view_feature_doorbell_image_height"
+                android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/smartspace_view_feature_doorbell_image_default_padding"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/smartspace_page_background_rounded" />
+
+                <ImageView
+                    android:id="@+id/smartspace_view_doorbell_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    tools:src="@drawable/ic_smartspacer_target_doorbell_videocam" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/smartspace_view_doorbell_loading_container"
+                android:layout_width="@dimen/smartspace_view_feature_doorbell_image_height"
+                android:layout_height="@dimen/smartspace_view_feature_doorbell_image_height"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <FrameLayout
+                    android:id="@+id/smartspace_view_doorbell_loading_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/smartspace_page_background_rounded" />
+
+                <ProgressBar
+                    android:id="@+id/smartspace_view_doorbell_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:indeterminateTint="@android:color/white"
+                    android:padding="16dp" />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <include layout="@layout/include_smartspace_view_title" />
+
+            <include layout="@layout/include_smartspace_view_subtitle" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_smartspace_view_list_item_overflow"/>
 
     </LinearLayout>
-</LinearLayout>
+
+</FrameLayout>

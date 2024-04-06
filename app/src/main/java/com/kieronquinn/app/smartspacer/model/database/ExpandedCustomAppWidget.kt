@@ -3,7 +3,7 @@ package com.kieronquinn.app.smartspacer.model.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import java.util.UUID
 
 @Entity
 data class ExpandedCustomAppWidget(
@@ -21,5 +21,9 @@ data class ExpandedCustomAppWidget(
     @ColumnInfo(name = "span_y")
     val spanY: Int,
     @ColumnInfo(name = "show_when_locked")
-    val showWhenLocked: Boolean
+    val showWhenLocked: Boolean,
+    @ColumnInfo(name = "round_corners")
+    val roundCorners: Boolean,
+    @ColumnInfo(name = "full_width")
+    val fullWidth: Boolean
 )

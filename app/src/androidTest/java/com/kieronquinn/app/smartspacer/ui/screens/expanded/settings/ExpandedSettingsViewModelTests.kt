@@ -7,6 +7,7 @@ import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.test.BaseTest
@@ -49,6 +50,10 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
     private val closeWhenLockedMock = mockSmartspacerSetting(false)
     private val backgroundMock = mockSmartspacerSetting(ExpandedBackground.SCRIM)
     private val widgetsUseGoogleSansMock = mockSmartspacerSetting(false)
+    private val hideAddButtonMock = mockSmartspacerSetting(ExpandedHideAddButton.NEVER)
+    private val xposedEnabledMock = mockSmartspacerSetting(false)
+    private val multiColumnMock = mockSmartspacerSetting(false)
+    private val complicationsFirstMock = mockSmartspacerSetting(false)
     private val navigationMock = mock<ContainerNavigation>()
 
     private val settingsMock = mock<SmartspacerSettingsRepository> {
@@ -61,6 +66,10 @@ class ExpandedSettingsViewModelTests: BaseTest<ExpandedSettingsViewModel>() {
         every { expandedCloseWhenLocked } returns closeWhenLockedMock
         every { expandedBackground } returns backgroundMock
         every { expandedWidgetUseGoogleSans } returns widgetsUseGoogleSansMock
+        every { expandedHideAddButton } returns hideAddButtonMock
+        every { expandedXposedEnabled } returns xposedEnabledMock
+        every { expandedMultiColumnEnabled } returns multiColumnMock
+        every { expandedComplicationsFirst } returns complicationsFirstMock
     }
 
     private val searchRepositoryMock = mock<SearchRepository> {

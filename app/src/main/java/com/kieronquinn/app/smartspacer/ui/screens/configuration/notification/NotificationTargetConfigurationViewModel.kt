@@ -6,11 +6,13 @@ import android.content.Intent
 import android.net.Uri
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
 import com.kieronquinn.app.smartspacer.components.smartspace.notifications.NotificationTargetNotification
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData
 import com.kieronquinn.app.smartspacer.model.database.TargetDataType
 import com.kieronquinn.app.smartspacer.repositories.DataRepository
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerNotificationProvider
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import kotlinx.coroutines.CoroutineScope
@@ -34,6 +36,7 @@ abstract class NotificationTargetConfigurationViewModel(scope: CoroutineScope?):
     abstract fun onReadMoreClicked()
     abstract fun onAppClicked()
     abstract fun onChannelChanged(channelId: String, enabled: Boolean)
+    abstract fun onTrimNewLinesChanged(enabled: Boolean)
 
     sealed class State {
         object Loading: State()
@@ -140,13 +143,35 @@ class NotificationTargetConfigurationViewModelImpl(
             }else{
                 settings.channels - channelId
             }
-            TargetData(settings.packageName, true, newChannels)
+            val data = it ?: TargetData()
+            data.copy(
+                hasChannels = true,
+                channels = newChannels
+            )
+        }
+    }
+
+    override fun onTrimNewLinesChanged(enabled: Boolean) {
+        val id = smartspacerId.value ?: return
+        dataRepository.updateTargetData(
+            id,
+            TargetData::class.java,
+            TargetDataType.NOTIFICATION,
+            ::onSettingsUpdated
+        ) {
+            val data = it ?: TargetData()
+            data.copy(
+                _trimNewLines = enabled
+            )
         }
     }
 
     private fun onSettingsUpdated(context: Context, smartspacerId: String) {
         SmartspacerNotificationProvider.notifyChange(
             context, NotificationTargetNotification::class.java, smartspacerId
+        )
+        SmartspacerTargetProvider.notifyChange(
+            context, NotificationTarget::class.java, smartspacerId
         )
     }
 

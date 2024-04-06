@@ -10,7 +10,7 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.sdk.annotations.LimitedNativeSupport
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
-import com.kieronquinn.app.smartspacer.ui.screens.widget.SmartspacerWidgetConfigurationFragment
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationFragment
 import kotlinx.coroutines.launch
 
 abstract class WidgetOptionsMenuViewModel: ViewModel() {
@@ -59,7 +59,7 @@ class WidgetOptionsMenuViewModelImpl(
                 context, NavGraphMapping.WIDGET_SMARTSPACER
             ).apply {
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-                putExtra(SmartspacerWidgetConfigurationFragment.EXTRA_CALLING_PACKAGE, owner)
+                putExtra(WidgetConfigurationFragment.EXTRA_CALLING_PACKAGE, owner)
             }
             navigation.navigate(intent)
         }

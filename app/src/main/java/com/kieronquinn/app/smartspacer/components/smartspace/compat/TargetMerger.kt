@@ -64,13 +64,18 @@ abstract class TargetMerger {
     fun mergeTargetsAndActions(
         targets: List<TargetHolder>,
         actions: List<ActionHolder>,
-        openMode: ExpandedOpenMode
+        openMode: ExpandedOpenMode,
+        actionsFirst: Boolean
     ): List<SmartspacePageHolder> {
         val uniqueTargets = makeTargetsUnique(targets)
         val uniqueActions = makeActionsUnique(actions)
         //Queue all the available actions, then add them to available base actions...
         val actionQueue = LinkedList(uniqueActions)
-        return getSplitTargets(actionQueue) + uniqueTargets.mapNotNull {
+        val prefixedTargets = mutableListOf<SmartspacePageHolder>()
+        if(actionsFirst) {
+            prefixedTargets.addRemainingActions(actionQueue, openMode)
+        }
+        return prefixedTargets + getSplitTargets(actionQueue) + uniqueTargets.mapNotNull {
             val pageActions = ArrayList<Action>()
             var target = it.target
             val headerAction = if(target.canTakeHeaderAction(actionQueue.peek())){

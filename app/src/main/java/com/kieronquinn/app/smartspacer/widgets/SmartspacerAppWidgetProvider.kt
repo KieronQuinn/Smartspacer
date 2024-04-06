@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.widgets
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.os.Bundle
 import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -35,6 +36,16 @@ class SmartspacerAppWidgetProvider: AppWidgetProvider(), KoinComponent {
         appWidgetIds.forEach { id ->
             appWidgetRepository.deleteAppWidget(id)
         }
+    }
+
+    override fun onAppWidgetOptionsChanged(
+        context: Context?,
+        appWidgetManager: AppWidgetManager?,
+        appWidgetId: Int,
+        newOptions: Bundle?
+    ) {
+        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
+        appWidgetRepository.updateWidget(appWidgetId)
     }
 
 }

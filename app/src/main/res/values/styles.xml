@@ -144,11 +144,11 @@
         <item name="android:paddingEnd">@dimen/smartspace_view_margin</item>
     </style>
 
-    <style name="WidgetShadowEnabled" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="WidgetShadowEnabled" parent="Theme.MaterialComponents.DayNight">
         <item name="widgetShadowColour">@android:color/black</item>
     </style>
 
-    <style name="WidgetShadowDisabled" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="WidgetShadowDisabled" parent="Theme.MaterialComponents.DayNight">
         <item name="widgetShadowColour">@android:color/transparent</item>
     </style>
 

@@ -1,22 +1,15 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
+import android.annotation.SuppressLint
 import android.appwidget.AppWidgetProviderInfo
 import android.appwidget.AppWidgetProviderInfoHidden
 import android.content.Context
 import android.content.pm.ActivityInfo
-import android.content.res.Resources
 import android.os.Build
-import android.view.ContextThemeWrapper
-import android.view.InflateException
-import android.view.View
-import android.view.ViewGroup
 import android.widget.RemoteViews
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import dev.rikka.tools.refine.Refine
-import org.koin.java.KoinJavaComponent.get
-
-private val resources = Resources.getSystem()
+import kotlin.math.floor
 
 var AppWidgetProviderInfo.providerInfo: ActivityInfo
     get() {
@@ -26,85 +19,84 @@ var AppWidgetProviderInfo.providerInfo: ActivityInfo
         Refine.unsafeCast<AppWidgetProviderInfoHidden>(this).providerInfo = value
     }
 
-fun AppWidgetProviderInfo.loadPreview(context: Context, parent: ViewGroup): View? {
+@SuppressLint("NewApi")
+fun AppWidgetProviderInfo.loadPreview(): RemoteViews? {
     if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S || previewLayout == 0) return null
-    val packageContext = context.applicationContext.createPackageContextOrNull(
-        provider.packageName, Context.CONTEXT_RESTRICTED
-    ) ?: return null
-    val widgetContext = ContextThemeWrapper(packageContext, R.style.Theme_Smartspacer)
-    return try {
-        RemoteViews(provider.packageName, previewLayout).apply(widgetContext, parent)
-    }catch (e: InflateException){
-        null
-    }
+    return RemoteViews(provider.packageName, previewLayout)
 }
 
-fun AppWidgetProviderInfo.getWidthSpan(): Int {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && targetCellWidth != 0) {
+/**
+ *  Target sizes become unreliable for smaller widgets due to our custom grid size. Only consider
+ *  them for larger widgets.
+ */
+private fun AppWidgetProviderInfo.canUseTargetSizes(): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        targetCellWidth > 1 && targetCellHeight > 1
+    } else false
+}
+
+@SuppressLint("NewApi")
+fun AppWidgetProviderInfo.getWidthSpan(columnWidth: Int): Int {
+    val target = if (canUseTargetSizes()) {
         targetCellWidth
-    }else{
-        calculateColumnSpan(minWidth).coerceAtLeast(1)
-    }
+    }else null
+    return (target ?: getSpan(minWidth, columnWidth)).coerceAtMost(5)
 }
 
-fun AppWidgetProviderInfo.getHeightSpan(): Int {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && targetCellHeight != 0) {
+@SuppressLint("NewApi")
+fun AppWidgetProviderInfo.getHeightSpan(rowHeight: Int): Int {
+    val target = if (canUseTargetSizes()) {
         targetCellHeight
-    }else{
-        calculateColumnSpan(minHeight).coerceAtLeast(1)
+    }else null
+    return (target ?: getSpan(minHeight, rowHeight)).coerceAtMost(5)
+}
+
+fun AppWidgetProviderInfo.isFourByOne(columnWidth: Int, rowHeight: Int): Boolean {
+    return getWidthSpan(columnWidth) == 4 && getHeightSpan(rowHeight) == 1
+}
+
+fun AppWidgetProviderInfo.getWidth(context: Context, availableWidth: Int, columnWidth: Int): Int {
+    return getWidgetWidth(context, getWidthSpan(columnWidth), availableWidth)
+}
+
+fun AppWidgetProviderInfo.getHeight(context: Context, availableWidth: Int, rowHeight: Int): Int {
+    return getWidgetHeight(context, getHeightSpan(rowHeight), availableWidth)
+}
+
+private fun getWidgetHeight(context: Context, spanY: Int, availableWidth: Int): Int {
+    val rowHeight = context.getWidgetRowHeight(availableWidth)
+    return rowHeight * spanY
+}
+
+private fun getWidgetWidth(context: Context, spanX: Int, availableWidth: Int): Int {
+    val columnWidth = context.getWidgetColumnWidth(availableWidth)
+    return columnWidth * spanX
+}
+
+const val WIDGET_MIN_COLUMNS = 5
+
+fun Context.getWidgetColumnWidth(availableWidth: Int): Int {
+    val maxWidth = resources
+        .getDimension(R.dimen.expanded_smartspace_widget_column_max_width)
+    return (availableWidth / WIDGET_MIN_COLUMNS.toFloat())
+        .coerceAtMost(maxWidth).toInt()
+}
+
+fun Context.getWidgetRowHeight(availableWidth: Int): Int {
+    return (getWidgetColumnWidth(availableWidth) * 1.4f).toInt()
+}
+
+fun Context.getWidgetColumnCount(availableWidth: Int): Int {
+    val width = getWidgetColumnWidth(availableWidth)
+    return floor(availableWidth / width.toFloat()).toInt()
+}
+
+private fun getSpan(minSize: Int, spanSize: Int): Int {
+    for (i in 1..30) {
+        val span = spanSize * i
+        if (span > minSize) {
+            return i
+        }
     }
-}
-
-fun AppWidgetProviderInfo.isFourByOne(): Boolean {
-    return getWidthSpan() == 4 && getHeightSpan() == 1
-}
-
-fun AppWidgetProviderInfo.getWidth(): Int {
-    return roundToColumnSpan(minWidth)
-}
-
-fun AppWidgetProviderInfo.getHeight(): Int {
-    return roundToRowSpan(minHeight)
-}
-
-private fun calculateRowSpan(height: Int): Int {
-    for(i in 1 until 5){
-        val rowSpan = getRowSpan(i)
-        if(rowSpan >= height) return i
-    }
-    return 5
-}
-
-private fun roundToRowSpan(height: Int): Int {
-    return getWidgetHeight(calculateRowSpan(height))
-}
-
-private fun getRowSpan(spanY: Int): Int {
-    return (spanY * resources.dip(74)) - resources.dip(2)
-}
-
-private fun getWidgetHeight(spanY: Int): Int {
-    val repository = get<ExpandedRepository>(ExpandedRepository::class.java)
-    return repository.widgetRowHeight * spanY
-}
-
-private fun getWidgetWidth(spanX: Int): Int {
-    val repository = get<ExpandedRepository>(ExpandedRepository::class.java)
-    return repository.widgetColumnWidth * spanX
-}
-
-private fun calculateColumnSpan(width: Int): Int {
-    for(i in 1 until 5){
-        val rowSpan = getColumnSpan(i)
-        if(rowSpan >= width) return i
-    }
-    return 5
-}
-
-private fun roundToColumnSpan(width: Int): Int {
-    return getWidgetWidth(calculateColumnSpan(width))
-}
-
-private fun getColumnSpan(spanX: Int): Int {
-    return (spanX * resources.dip(74)) - resources.dip(2)
+    return 1
 }

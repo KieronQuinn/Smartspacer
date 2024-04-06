@@ -9,6 +9,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
@@ -144,6 +145,13 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 onChanged = viewModel::onCloseWhenLockedChanged
             ),
             GenericSettingsItem.SwitchSetting(
+                complicationsFirst,
+                getString(R.string.expanded_complications_first_title),
+                getString(R.string.expanded_complications_first_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
+                onChanged = viewModel::onComplicationsFirstChanged
+            ),
+            GenericSettingsItem.SwitchSetting(
                 xposedEnabled && xposedAvailable,
                 getString(R.string.expanded_settings_xposed_enabled_title),
                 if(xposedAvailable) {
@@ -187,6 +195,22 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
             ) {
                 it.label
             },
+            GenericSettingsItem.Dropdown(
+                getString(R.string.expanded_settings_hide_add_button_title),
+                getString(
+                    R.string.expanded_settings_hide_add_button_content,
+                    getString(hideAdd.label)
+                ),
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_fab_add
+                ),
+                hideAdd,
+                onSet = viewModel::onHideAddChanged,
+                ExpandedHideAddButton.entries
+            ) {
+                it.label
+            },
             GenericSettingsItem.SwitchSetting(
                 widgetsUseGoogleSans,
                 getString(R.string.expanded_settings_widgets_use_google_sans_title),
@@ -196,6 +220,16 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                     R.drawable.ic_settings_expanded_use_google_sans
                 ),
                 onChanged = viewModel::onUseGoogleSansChanged
+            ),
+            GenericSettingsItem.SwitchSetting(
+                multiColumn,
+                getString(R.string.expanded_settings_enable_columns_title),
+                getString(R.string.expanded_settings_enable_columns_content),
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_expanded_multi_column
+                ),
+                onChanged = viewModel::onMultiColumnChanged
             ),
             footer
         )

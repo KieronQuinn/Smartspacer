@@ -29,6 +29,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.utils.extensions.audioPlaying
 import com.kieronquinn.app.smartspacer.utils.extensions.deepEquals
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
+import com.kieronquinn.app.smartspacer.utils.extensions.handleLifecycleEventSafely
 import com.kieronquinn.app.smartspacer.utils.extensions.notificationServiceEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceActionsWithExpanded
 import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
@@ -115,6 +116,7 @@ abstract class BaseSmartspacerSession<T, I>(
                 surface == UiSurface.HOMESCREEN -> home
                 surface == UiSurface.LOCKSCREEN -> lock
                 surface == UiSurface.MEDIA_DATA_MANAGER -> ExpandedOpenMode.NEVER
+                surface == UiSurface.GLANEABLE_HUB -> ExpandedOpenMode.NEVER
                 else -> throw RuntimeException("Invalid expanded open mode")
             }
         }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
@@ -124,13 +126,23 @@ abstract class BaseSmartspacerSession<T, I>(
         emit(compatibilityRepository.doesSystemUISupportSplitSmartspace())
     }
 
-    private val sessionSettings = combine(
-        settings.hideSensitive.asFlow(),
-        settings.nativeUseSplitSmartspace.asFlow(),
-        supportsSplitSmartspace,
-        forceReloadBus
-    ) { sensitive, split, splitSupported, forceReloadTime ->
-        SessionSettings(sensitive, splitSupported && split, forceReloadTime)
+    open val actionsFirst = flowOf(false)
+
+    private val sessionSettings by lazy {
+        combine(
+            settings.hideSensitive.asFlow(),
+            settings.nativeUseSplitSmartspace.asFlow(),
+            supportsSplitSmartspace,
+            forceReloadBus,
+            actionsFirst
+        ) { sensitive, split, splitSupported, forceReloadTime, actionsFirst ->
+            SessionSettings(
+                sensitive,
+                splitSupported && split,
+                actionsFirst,
+                forceReloadTime
+            )
+        }
     }
 
     private val smartspaceHolders by lazy {
@@ -154,13 +166,13 @@ abstract class BaseSmartspacerSession<T, I>(
     }
 
     protected fun onCreate() {
-        dispatcher.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        dispatcher.handleLifecycleEventSafely(Lifecycle.Event.ON_CREATE)
     }
 
     @CallSuper
     open fun onResume() {
         if(lifecycle.currentState == Lifecycle.State.RESUMED) return
-        dispatcher.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        dispatcher.handleLifecycleEventSafely(Lifecycle.Event.ON_RESUME)
         smartspaceRepository.setSmartspaceVisible(smartspaceSessionId, true)
         whenResumed {
             isVisible.emit(true)
@@ -170,7 +182,7 @@ abstract class BaseSmartspacerSession<T, I>(
     @CallSuper
     open fun onPause() {
         if(lifecycle.currentState != Lifecycle.State.RESUMED) return
-        dispatcher.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+        dispatcher.handleLifecycleEventSafely(Lifecycle.Event.ON_PAUSE)
         smartspaceRepository.setSmartspaceVisible(smartspaceSessionId, false)
         lifecycleScope.launch {
             isVisible.emit(false)
@@ -180,7 +192,7 @@ abstract class BaseSmartspacerSession<T, I>(
     @CallSuper
     open fun onDestroy() {
         whenCreated {
-            dispatcher.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            dispatcher.handleLifecycleEventSafely(Lifecycle.Event.ON_DESTROY)
         }
         smartspaceRepository.onSessionDestroyed(smartspaceSessionId)
     }
@@ -270,7 +282,8 @@ abstract class BaseSmartspacerSession<T, I>(
                 openMode,
                 surface,
                 doesHaveSplitSmartspace() && settings.useSplitSmartspace,
-                this is SystemSmartspacerSession
+                this is SystemSmartspacerSession,
+                settings.actionsFirst
             )
         }
     }
@@ -347,7 +360,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
                         false
                     }
                 }
@@ -363,7 +376,7 @@ abstract class BaseSmartspacerSession<T, I>(
                             it.parent.config.showOnLockScreen
                         }
                     }
-                    UiSurface.MEDIA_DATA_MANAGER -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
                         false
                     }
                 }
@@ -491,7 +504,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
                         false
                     }
                 }
@@ -500,15 +513,15 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.HOMESCREEN -> {
                         it.parent.config.showOnHomeScreen
                     }
-                    UiSurface.MEDIA_DATA_MANAGER -> {
-                        false
-                    }
                     UiSurface.LOCKSCREEN -> {
                         if (aodAudio) {
                             it.parent.config.showOverMusic
                         } else {
                             it.parent.config.showOnLockScreen
                         }
+                    }
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANEABLE_HUB -> {
+                        false
                     }
                 }
             }
@@ -536,6 +549,7 @@ abstract class BaseSmartspacerSession<T, I>(
     data class SessionSettings(
         val hideSensitive: HideSensitive,
         val useSplitSmartspace: Boolean,
+        val actionsFirst: Boolean,
         val forceReloadAt: Long
     )
 

@@ -142,7 +142,9 @@ class AlarmRepositoryImpl(
         }.collect {
             enqueueNextTimeDateRequirementReceiver()
             enqueueNextCalendarTargetReceiver()
+            enqueueNextCalendarTargetTOTMReceiver()
             enqueueNextGreetingTargetReceiver()
+            enqueueNextAlarmChangedReceiver()
             enqueueDailyUpdateReceiver()
         }
     }

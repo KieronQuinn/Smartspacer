@@ -23,8 +23,9 @@ open class RoundedCornersEnforcingAppWidgetHostView: AppWidgetHostViewHidden {
         context: Context, onClickHandler: OnClickHandler
     ): super(context, onClickHandler)
 
-    private val mEnforcedRectangle: Rect = Rect()
-    private var mEnforcedCornerRadius = RoundedCornerEnforcement.computeEnforcedRadius(getContext())
+    var enforceRoundedCorners: Boolean = true
+    private var mEnforcedRectangle: Rect = Rect()
+    protected var mEnforcedCornerRadius = RoundedCornerEnforcement.computeEnforcedRadius(context)
 
     private val mCornerRadiusEnforcementOutline: ViewOutlineProvider =
         object : ViewOutlineProvider() {
@@ -40,7 +41,11 @@ open class RoundedCornersEnforcingAppWidgetHostView: AppWidgetHostViewHidden {
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
-        enforceRoundedCorners()
+        if(enforceRoundedCorners) {
+            enforceRoundedCorners()
+        }else{
+            resetRoundedCorners()
+        }
         setRecursiveLongClickListener {
             (parent as? View)?.performLongClick() ?: false
         }

@@ -9,6 +9,7 @@ import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.test.BaseTest
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.options.ExpandedWidgetOptionsBottomSheetViewModel.State
+import com.kieronquinn.app.smartspacer.utils.randomBoolean
 import com.kieronquinn.app.smartspacer.utils.randomFloat
 import com.kieronquinn.app.smartspacer.utils.randomInt
 import com.kieronquinn.app.smartspacer.utils.randomString
@@ -31,7 +32,9 @@ class ExpandedWidgetOptionsBottomSheetViewModelTests: BaseTest<ExpandedWidgetOpt
                 randomInt(),
                 randomInt(),
                 randomInt(),
-                true
+                randomBoolean(),
+                randomBoolean(),
+                randomBoolean()
             )
         }
     }

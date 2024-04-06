@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
 import android.content.Context
+import android.content.Intent
 import android.util.TypedValue
 import android.widget.RemoteViews
 import com.kieronquinn.app.smartspacer.R
@@ -21,15 +22,29 @@ class HeadToHeadTemplateSmartspaceView(
     override fun apply(
         context: Context,
         textColour: Int,
+        shadowEnabled: Boolean,
         remoteViews: RemoteViews,
         width: Int,
         titleSize: Float,
         subtitleSize: Float,
-        featureSize: Float
+        featureSize: Float,
+        isList: Boolean,
+        overflowIntent: Intent?
     ) {
-        super.apply(context, textColour, remoteViews, width, titleSize, subtitleSize, featureSize)
+        super.apply(
+            context,
+            textColour,
+            shadowEnabled,
+            remoteViews,
+            width,
+            titleSize,
+            subtitleSize,
+            featureSize,
+            isList,
+            overflowIntent,
+        )
         remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_head_to_head, template.headToHeadAction
+            context, R.id.smartspace_view_head_to_head, isList, template.headToHeadAction
         )
         template.headToHeadTitle?.let {
             remoteViews.setTextViewText(R.id.smartspace_view_head_to_head_title, it.text)

@@ -3,7 +3,9 @@ package com.kieronquinn.app.smartspacer.ui.activities
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.addCallback
 import androidx.core.view.WindowCompat
 import com.kieronquinn.app.smartspacer.R
@@ -42,6 +44,10 @@ class ExpandedActivity: MonetCompatActivity() {
     private val expandedRepository by inject<ExpandedRepository>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+        }
         super.onCreate(savedInstanceState)
         setShowWhenLocked(true)
         WindowCompat.setDecorFitsSystemWindows(window, false)

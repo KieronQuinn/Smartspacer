@@ -8,6 +8,11 @@ fun Resources.dip(value: Int): Int = (value * displayMetrics.density).toInt()
 val Int.dp
     get() = Resources.getSystem().dip(this)
 
+fun Resources.px(value: Int): Int = (value / displayMetrics.density).toInt()
+
+val Int.px
+    get() = Resources.getSystem().px(this)
+
 fun Resources.getResourceIdArray(@ArrayRes resourceId: Int): Array<Int> {
     val array = obtainTypedArray(resourceId)
     val items = mutableListOf<Int>()

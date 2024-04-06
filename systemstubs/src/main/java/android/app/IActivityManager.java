@@ -96,6 +96,19 @@ public interface IActivityManager extends android.os.IInterface {
             String callingPackage,
             int userId);
 
+    int startActivity(
+            IApplicationThread caller,
+            String callingPackage,
+            Intent intent,
+            String resolvedType,
+            IBinder resultTo,
+            String resultWho,
+            int requestCode,
+            int flags,
+            ProfilerInfo profilerInfo,
+            Bundle options
+    );
+
     boolean unbindService(IServiceConnection serviceConnection);
 
     ContentProviderHolder getContentProviderExternal(

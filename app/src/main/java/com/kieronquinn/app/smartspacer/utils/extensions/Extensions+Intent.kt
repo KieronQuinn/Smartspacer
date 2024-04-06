@@ -24,7 +24,7 @@ const val EXTRA_SHOW_FRAGMENT_ARGUMENTS = ":settings:show_fragment_args"
 //Include as flag to shut ActivityManager up when broadcasting from Shell
 const val Intent_FLAG_RECEIVER_FROM_SHELL = 0x00400000
 
-private val SMARTSPACE_EXPORTED_COMPONENT = ComponentName(
+val SMARTSPACE_EXPORTED_COMPONENT = ComponentName(
     "com.google.android.googlequicksearchbox",
     "com.google.android.apps.gsa.staticplugins.opa.smartspace.ExportedSmartspaceTrampolineActivity"
 )

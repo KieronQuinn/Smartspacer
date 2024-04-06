@@ -1,5 +1,9 @@
 package com.kieronquinn.app.smartspacer.sdk.client.utils
 
+import android.R
+import android.content.Context
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.StateListDrawable
 import androidx.annotation.RestrictTo
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
 import android.graphics.drawable.Icon as AndroidIcon
@@ -17,4 +21,19 @@ fun Icon.isLoadable(): Boolean {
         }
         else -> true
     }
+}
+
+/**
+ *  Native Smartspace has an enabled state for its icons, but we can't do that as we need to use
+ *  the double shadow ImageView. Instead, we manually load Drawables and set the enabled state
+ *  if available.
+ */
+@RestrictTo(RestrictTo.Scope.LIBRARY)
+fun AndroidIcon.getEnabledDrawableOrNull(context: Context): Drawable? {
+    if(type != AndroidIcon.TYPE_RESOURCE) return null
+    val drawable = loadDrawable(context) ?: return null
+    if(drawable !is StateListDrawable) return null
+    val index = drawable.findStateDrawableIndex(intArrayOf(-R.attr.state_enabled))
+    if(index < 0) return null
+    return drawable.getStateDrawable(index)
 }

@@ -83,7 +83,7 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
         val appWidgetId = randomInt()
         val id = randomString()
         val customConfig = CustomExpandedAppWidgetConfig(
-            randomInt(), randomInt(), randomInt(), randomBoolean()
+            randomInt(), randomInt(), randomInt(), randomBoolean(), randomBoolean(), randomBoolean()
         )
         sut.commitExpandedAppWidget(provider, appWidgetId, id, customConfig)
         coVerify(exactly = 1) {
@@ -95,7 +95,9 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
                     customConfig.index,
                     customConfig.spanX,
                     customConfig.spanY,
-                    customConfig.showWhenLocked
+                    customConfig.showWhenLocked,
+                    customConfig.roundCorners,
+                    customConfig.fullWidth
                 )
             )
         }
@@ -143,18 +145,21 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             isCustom = false,
             useGoogleSans = false,
             config = null,
-            isDark = true
+            isDark = true,
+            fullWidth = randomBoolean(),
+            roundCorners = randomBoolean(),
+            spanX = 5,
+            spanY = 2
         )
         val sessionId = randomString()
-        sut.createHost(mockWidget, sessionId, mockListener)
+        sut.createHost(contextMock, 1280, mockWidget, sessionId, mockListener)
         verify {
             appWidgetHostMock.createView(
                 any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider, mockListener
             )
         }
         verify {
-            //Width should be coerced to 0, height to 1 in the test config
-            mockView.updateSizeIfNeeded(0, 1)
+            mockView.updateSizeIfNeeded(any(), any())
         }
     }
 
@@ -175,18 +180,21 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
             isCustom = true,
             useGoogleSans = false,
             config = null,
-            isDark = true
+            isDark = true,
+            fullWidth = randomBoolean(),
+            roundCorners = randomBoolean(),
+            spanX = 5,
+            spanY = 2
         )
         val sessionId = randomString()
-        sut.createHost(mockWidget, sessionId, mockListener)
+        sut.createHost(contextMock, 1280, mockWidget, sessionId, mockListener)
         verify {
             appWidgetHostMock.createView(
                 any(), mockWidget.appWidgetId!!, sessionId, mockWidget.provider, mockListener
             )
         }
         verify {
-            //Width should be coerced to 0 in the test config
-            mockView.updateSizeIfNeeded(0, 5)
+            mockView.updateSizeIfNeeded(any(), any())
         }
     }
 

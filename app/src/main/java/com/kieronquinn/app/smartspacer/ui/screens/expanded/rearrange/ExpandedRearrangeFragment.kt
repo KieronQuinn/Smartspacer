@@ -8,8 +8,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.google.android.flexbox.AlignItems
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedRearrangeBinding
@@ -23,6 +27,9 @@ import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcut
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.rearrange.ExpandedRearrangeViewModel.State
+import com.kieronquinn.app.smartspacer.utils.extensions.WIDGET_MIN_COLUMNS
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
+import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnCount
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
@@ -33,12 +40,15 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
     SmartspacerBasePageView.SmartspaceTargetInteractionListener, BaseExpandedAdapter.ExpandedAdapterListener {
 
     private val viewModel by viewModel<ExpandedRearrangeViewModel>()
+    private var multiColumnEnabled = true
 
     private val adapter by lazy {
         ExpandedRearrangeAdapter(
             emptyList(),
             binding.expandedRearrangeRecyclerView,
-            this
+            this,
+            ::getSpanPercent,
+            ::getAvailableWidth
         )
     }
 
@@ -82,7 +92,12 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
     }
 
     private fun setupRecyclerView() = with(binding.expandedRearrangeRecyclerView) {
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = FlexboxLayoutManager(context).apply {
+            flexDirection = FlexDirection.ROW
+            alignItems = AlignItems.CENTER
+            justifyContent = JustifyContent.CENTER
+            flexWrap = FlexWrap.WRAP
+        }
         adapter = this@ExpandedRearrangeFragment.adapter
         val bottomPadding = resources.getDimensionPixelSize(R.dimen.margin_16)
         onApplyInsets { view, insets ->
@@ -110,6 +125,10 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         }
     }
 
+    private fun getAvailableWidth(): Int {
+        return binding.expandedRearrangeRecyclerView.measuredWidth - 16.dp
+    }
+
     private fun handleState(state: State) {
         when(state){
             is State.Loading -> {
@@ -117,11 +136,37 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
                 binding.expandedRearrangeRecyclerView.isVisible = false
             }
             is State.Loaded -> {
+                multiColumnEnabled = state.multiColumnEnabled
                 binding.expandedRearrangeLoading.root.isVisible = false
                 binding.expandedRearrangeRecyclerView.isVisible = true
                 adapter.items = state.items
                 adapter.notifyDataSetChanged()
             }
+        }
+    }
+
+    private fun getSpanPercent(item: Item): Float {
+        var columnCount = requireContext().getWidgetColumnCount(getAvailableWidth())
+        if(!multiColumnEnabled) {
+            //Prevent widgets being displayed alongside each other when multi column is disabled
+            columnCount = columnCount.coerceAtMost(WIDGET_MIN_COLUMNS)
+        }
+        val targetBasedColumns = if(multiColumnEnabled) {
+            (columnCount / WIDGET_MIN_COLUMNS.toFloat()).coerceAtLeast(1f)
+        }else 1f
+        val targetBasedWidth = (1f / targetBasedColumns)
+        return when(item) {
+            is Item.Widget -> {
+                return when {
+                    item.fullWidth -> targetBasedWidth
+                    item.spanX != null -> {
+                        item.spanX / columnCount.toFloat()
+                    }
+                    else -> targetBasedWidth //Unlikely to expect being full width when wide
+                }
+            }
+            is Item.RemovedWidget -> targetBasedWidth
+            else -> 1f //Not implemented on this screen
         }
     }
 

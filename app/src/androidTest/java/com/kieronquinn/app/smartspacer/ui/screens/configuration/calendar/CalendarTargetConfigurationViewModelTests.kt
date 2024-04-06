@@ -205,11 +205,11 @@ class CalendarTargetConfigurationViewModelTests: BaseTest<CalendarTargetConfigur
             val item = awaitItem()
             assertTrue(item is State.Loaded)
             item as State.Loaded
-            sut.onShowUnconfirmedChanged(true)
+            sut.onShowUnconfirmedChanged(false)
             val updateItem = awaitItem()
             assertTrue(updateItem is State.Loaded)
             updateItem as State.Loaded
-            assertTrue(updateItem.targetData.showUnconfirmed)
+            assertFalse(updateItem.targetData.showUnconfirmed)
         }
     }
 

@@ -11,10 +11,102 @@ import com.google.android.material.color.DynamicColors
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
-import com.kieronquinn.app.smartspacer.components.navigation.*
+import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigationImpl
+import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigationImpl
+import com.kieronquinn.app.smartspacer.components.navigation.ExpandedNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.ExpandedNavigationImpl
+import com.kieronquinn.app.smartspacer.components.navigation.RootNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.RootNavigationImpl
+import com.kieronquinn.app.smartspacer.components.navigation.SetupNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.SetupNavigationImpl
+import com.kieronquinn.app.smartspacer.components.navigation.WidgetOptionsNavigation
+import com.kieronquinn.app.smartspacer.components.navigation.WidgetOptionsNavigationImpl
 import com.kieronquinn.app.smartspacer.components.smartspace.SmartspaceManager
 import com.kieronquinn.app.smartspacer.model.database.SmartspacerDatabase
-import com.kieronquinn.app.smartspacer.repositories.*
+import com.kieronquinn.app.smartspacer.repositories.AccessibilityRepository
+import com.kieronquinn.app.smartspacer.repositories.AccessibilityRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.AlarmRepository
+import com.kieronquinn.app.smartspacer.repositories.AlarmRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.AnalyticsRepository
+import com.kieronquinn.app.smartspacer.repositories.AnalyticsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.AppPredictionRepository
+import com.kieronquinn.app.smartspacer.repositories.AppPredictionRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
+import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository
+import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.BackupRepository
+import com.kieronquinn.app.smartspacer.repositories.BackupRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.BatteryOptimisationRepository
+import com.kieronquinn.app.smartspacer.repositories.BatteryOptimisationRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.BluetoothRepository
+import com.kieronquinn.app.smartspacer.repositories.BluetoothRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.BroadcastRepository
+import com.kieronquinn.app.smartspacer.repositories.BroadcastRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
+import com.kieronquinn.app.smartspacer.repositories.CalendarRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.CallsRepository
+import com.kieronquinn.app.smartspacer.repositories.CallsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.DataRepository
+import com.kieronquinn.app.smartspacer.repositories.DataRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
+import com.kieronquinn.app.smartspacer.repositories.DatabaseRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.DigitalWellbeingRepository
+import com.kieronquinn.app.smartspacer.repositories.DigitalWellbeingRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.DownloadRepository
+import com.kieronquinn.app.smartspacer.repositories.DownloadRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
+import com.kieronquinn.app.smartspacer.repositories.ExpandedRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.FlashlightRepository
+import com.kieronquinn.app.smartspacer.repositories.FlashlightRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.GeofenceRepository
+import com.kieronquinn.app.smartspacer.repositories.GeofenceRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.GmailRepository
+import com.kieronquinn.app.smartspacer.repositories.GmailRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository
+import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.GrantRepository
+import com.kieronquinn.app.smartspacer.repositories.GrantRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.MediaRepository
+import com.kieronquinn.app.smartspacer.repositories.MediaRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
+import com.kieronquinn.app.smartspacer.repositories.NotificationRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.OemSmartspacerRepository
+import com.kieronquinn.app.smartspacer.repositories.OemSmartspacerRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.PackageRepository
+import com.kieronquinn.app.smartspacer.repositories.PackageRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.PluginRepository
+import com.kieronquinn.app.smartspacer.repositories.PluginRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.RecentTasksRepository
+import com.kieronquinn.app.smartspacer.repositories.RecentTasksRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.RequirementsRepository
+import com.kieronquinn.app.smartspacer.repositories.RequirementsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.SearchRepository
+import com.kieronquinn.app.smartspacer.repositories.SearchRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.SmsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.SystemSmartspaceRepository
+import com.kieronquinn.app.smartspacer.repositories.SystemSmartspaceRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.TargetsRepository
+import com.kieronquinn.app.smartspacer.repositories.TargetsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.UpdateRepository
+import com.kieronquinn.app.smartspacer.repositories.UpdateRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
+import com.kieronquinn.app.smartspacer.repositories.WallpaperRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
+import com.kieronquinn.app.smartspacer.repositories.WiFiRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
+import com.kieronquinn.app.smartspacer.repositories.WidgetRepositoryImpl
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivityViewModel
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivityViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuViewModel
@@ -55,12 +147,14 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.bluetooth.Blueto
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.bluetooth.BluetoothRequirementConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.calendar.CalendarTargetConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.calendar.CalendarTargetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateComplicationConfigurationViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateComplicationConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.DateTargetConfigurationViewModelImpl
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModel
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModelImpl
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerViewModel
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateTargetFormatPickerViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateFormatCustomViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateFormatCustomViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateFormatPickerViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateFormatPickerViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.datetime.TimeDateConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.default.DefaultTargetConfigurationViewModel
@@ -89,6 +183,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.apppi
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.apppicker.RecentTaskRequirementConfigurationAppPickerViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.limit.RecentTaskRequirementConfigurationLimitBottomSheetViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.limit.RecentTaskRequirementConfigurationLimitBottomSheetViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequirementConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequirementConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.mac.WiFiRequirementConfigurationMACBottomSheetViewModel
@@ -193,12 +289,11 @@ import com.kieronquinn.app.smartspacer.ui.screens.targets.requirements.add.Targe
 import com.kieronquinn.app.smartspacer.ui.screens.targets.requirements.add.TargetsRequirementsAddViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.update.UpdateViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.update.UpdateViewModelImpl
-import com.kieronquinn.app.smartspacer.ui.screens.widget.SmartspacerWidgetConfigurationViewModel
-import com.kieronquinn.app.smartspacer.ui.screens.widget.SmartspacerWidgetConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.utils.extensions.gsonExclusionStrategy
 import com.kieronquinn.app.smartspacer.utils.gson.LocalTimeAdapter
 import com.kieronquinn.monetcompat.core.MonetCompat
-import io.noties.markwon.*
+import io.noties.markwon.AbstractMarkwonPlugin
+import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
 import io.noties.markwon.movement.MovementMethodPlugin
 import me.saket.bettermovementmethod.BetterLinkMovementMethod
@@ -322,7 +417,6 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<GeofenceRequirementConfigurationViewModel> { GeofenceRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<GeofenceRequirementConfigurationNameViewModel> { GeofenceRequirementConfigurationNameViewModelImpl() }
         viewModel<AppPredictionRequirementConfigurationViewModel> { AppPredictionRequirementConfigurationViewModelImpl(get(), get()) }
-        viewModel<SmartspacerWidgetConfigurationViewModel> { SmartspacerWidgetConfigurationViewModelImpl(get(), get()) }
         viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get()) }
         viewModel { SettingsHideSensitiveViewModel(get()) }
         viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get()) }
@@ -367,6 +461,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<MusicConfigurationViewModel> { MusicConfigurationViewModelImpl(get()) }
         viewModel<ExpandedAddWidgetBottomSheetViewModel> { ExpandedAddWidgetBottomSheetViewModelImpl(get(), get(), get(), get()) }
         viewModel<ExpandedRearrangeViewModel> { ExpandedRearrangeViewModelImpl(
+            get(),
             get(),
             get(),
             get(),
@@ -419,10 +514,12 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<DumpSmartspacerViewModel> { DumpSmartspacerViewModelImpl(get(), get()) }
         viewModel<NotificationWidgetSettingsViewModel> { NotificationWidgetSettingsViewModelImpl(get(), get(), get()) }
         viewModel<DateTargetConfigurationViewModel> { DateTargetConfigurationViewModelImpl(get(), get()) }
-        viewModel<DateTargetFormatPickerViewModel> { DateTargetFormatPickerViewModelImpl(get()) }
-        viewModel<DateTargetFormatCustomViewModel> { DateTargetFormatCustomViewModelImpl() }
+        viewModel<DateComplicationConfigurationViewModel> { DateComplicationConfigurationViewModelImpl(get(), get()) }
+        viewModel<DateFormatPickerViewModel> { DateFormatPickerViewModelImpl(get()) }
+        viewModel<DateFormatCustomViewModel> { DateFormatCustomViewModelImpl() }
         viewModel<BluetoothRequirementConfigurationViewModel> { BluetoothRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<FlashlightTargetConfigurationViewModel> { FlashlightTargetConfigurationViewModelImpl(get(), get()) }
+        viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get()) }
     }
 
     override fun attachBaseContext(base: Context) {

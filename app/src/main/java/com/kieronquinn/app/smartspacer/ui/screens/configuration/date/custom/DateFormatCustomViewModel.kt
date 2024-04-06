@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-abstract class DateTargetFormatCustomViewModel(scope: CoroutineScope?): BaseViewModel(scope) {
+abstract class DateFormatCustomViewModel(scope: CoroutineScope?): BaseViewModel(scope) {
 
     abstract val state: StateFlow<State>
 
@@ -29,9 +29,9 @@ abstract class DateTargetFormatCustomViewModel(scope: CoroutineScope?): BaseView
 
 }
 
-class DateTargetFormatCustomViewModelImpl(
+class DateFormatCustomViewModelImpl(
     scope: CoroutineScope? = null
-): DateTargetFormatCustomViewModel(scope) {
+): DateFormatCustomViewModel(scope) {
 
     private val format = MutableStateFlow<String?>(null)
     private val customFormat = MutableStateFlow<String?>(null)
@@ -49,7 +49,7 @@ class DateTargetFormatCustomViewModelImpl(
 
     override fun setup(format: String) {
         vmScope.launch {
-            this@DateTargetFormatCustomViewModelImpl.format.emit(format)
+            this@DateFormatCustomViewModelImpl.format.emit(format)
         }
     }
 

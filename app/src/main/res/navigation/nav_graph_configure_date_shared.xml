@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_configure_date_shared"
+    app:startDestination="@id/dateTargetFormatPickerFragment">
+    <dialog
+        android:id="@+id/dateTargetFormatPickerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.picker.DateFormatPickerFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_target_date_format_picker_bottom_sheet" >
+        <action
+            android:id="@+id/action_dateTargetFormatPickerFragment_to_dateTargetFormatCustomFragment"
+            app:destination="@id/dateTargetFormatCustomFragment"
+            app:popUpTo="@id/nav_graph_configure_date_shared" />
+        <argument
+            android:name="format"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/dateTargetFormatCustomFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateFormatCustomFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_configuration_target_date_format_custom" >
+        <argument
+            android:name="format"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
+</navigation>

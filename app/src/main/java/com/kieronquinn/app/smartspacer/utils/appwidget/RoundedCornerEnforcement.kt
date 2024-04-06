@@ -68,7 +68,8 @@ object RoundedCornerEnforcement {
      * of `appWidget`.
      */
     fun computeRoundedRectangle(
-        appWidget: View, background: View,
+        appWidget: View,
+        background: View,
         outRect: Rect
     ) {
         var background = background

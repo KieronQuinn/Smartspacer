@@ -2,16 +2,16 @@ package com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom
 
 import app.cash.turbine.test
 import com.kieronquinn.app.smartspacer.test.BaseTest
-import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateTargetFormatCustomViewModel.State
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.date.custom.DateFormatCustomViewModel.State
 import com.kieronquinn.app.smartspacer.utils.randomString
 import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
-class DateTargetFormatCustomViewModelTests: BaseTest<DateTargetFormatCustomViewModel>() {
+class DateFormatCustomViewModelTests: BaseTest<DateFormatCustomViewModel>() {
 
     override val sut by lazy {
-        DateTargetFormatCustomViewModelImpl(scope)
+        DateFormatCustomViewModelImpl(scope)
     }
 
     @Test

@@ -179,7 +179,17 @@ class NotificationTargetConfigurationFragment: BoundFragment<FragmentConfigurati
                 )
             )
         }else emptyList()
-        return listOf(app) + channels
+        val settings = listOf(
+            GenericSettingsItem.Header(getString(R.string.target_notification_configuration_options)),
+            GenericSettingsItem.SwitchSetting(
+                options.trimNewLines,
+                getString(R.string.target_notification_configuration_trim_new_lines_title),
+                getString(R.string.target_notification_configuration_trim_new_lines_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_target_notification_new_line),
+                onChanged = viewModel::onTrimNewLinesChanged
+            )
+        ).takeIf { options.packageName != null } ?: emptyList()
+        return listOf(app) + channels + settings
     }
 
     private fun requestPairing() {

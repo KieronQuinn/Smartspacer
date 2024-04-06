@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import androidx.core.view.setPadding
 import com.kieronquinn.app.smartspacer.utils.appwidget.RoundedCornerEnforcement
 
-class RoundedCornersEnforcingLinearLayout: LinearLayout {
+open class RoundedCornersEnforcingLinearLayout: LinearLayout {
 
     constructor(context: Context): super(context)
     constructor(context: Context, attrs: AttributeSet?): super(context, attrs)

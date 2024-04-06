@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartspace_view_subtitle_text"
+    android:theme="@style/WidgetShadowEnabled"
+    style="@style/WidgetSubtitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/smartspace_view_icon_margin"
+    android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
+    tools:text="Subtitle but it's really really really long"
+    tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />

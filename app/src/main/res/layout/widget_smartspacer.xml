@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:clipToOutline="true"
-    android:orientation="vertical">
+    android:clipToOutline="true">
 
     <LinearLayout
         android:layout_width="match_parent"

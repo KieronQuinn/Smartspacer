@@ -81,6 +81,7 @@ class ExpandedSmartspacerSession(
     private val glide = Glide.with(context)
 
     override val targetCount = flowOf(Integer.MAX_VALUE)
+    override val actionsFirst = settingsRepository.expandedComplicationsFirst.asFlow()
 
     override val uiSurface = context.lockscreenShowing().mapLatest {
         if (it) UiSurface.LOCKSCREEN else UiSurface.HOMESCREEN
@@ -91,6 +92,7 @@ class ExpandedSmartspacerSession(
             UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour
             UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour
             UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour
+            UiSurface.GLANEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
         }
     }
 
@@ -148,9 +150,10 @@ class ExpandedSmartspacerSession(
         settingsRepository.enhancedMode.asFlow(),
         searchBox,
         isDark,
-        settings.expandedWidgetUseGoogleSans.asFlow()
-    ) { enhanced, search, dark, googleSans ->
-        ExpandedSettings(enhanced, search, dark, googleSans)
+        settings.expandedWidgetUseGoogleSans.asFlow(),
+        settings.expandedComplicationsFirst.asFlow()
+    ) { enhanced, search, dark, googleSans, complicationsFirst ->
+        ExpandedSettings(enhanced, search, dark, googleSans, complicationsFirst)
     }
 
     private val viewState = combine(
@@ -168,8 +171,6 @@ class ExpandedSmartspacerSession(
         settings.expandedWidgetUseGoogleSans.asFlow()
     ) { widgets, surface, dark, useGoogleSans ->
         val providers = widgetRepository.getProviders()
-        val width = expandedRepository.widgetColumnWidth
-        val height = expandedRepository.widgetRowHeight
         widgets.mapNotNull { widget ->
             if(!widget.showWhenLocked && surface != UiSurface.HOMESCREEN){
                 return@mapNotNull null
@@ -177,20 +178,27 @@ class ExpandedSmartspacerSession(
             val provider = providers.firstOrNull { info ->
                 info.provider == ComponentName.unflattenFromString(widget.provider)
             } ?: return@mapNotNull Item.RemovedWidget(widget.appWidgetId, dark)
-            val widgetWidth = width * widget.spanX
-            val widgetHeight = height * widget.spanY
             val config = CustomExpandedAppWidgetConfig(
-                widget.spanX, widget.spanY, widget.index, widget.showWhenLocked
+                widget.spanX,
+                widget.spanY,
+                widget.index,
+                widget.showWhenLocked,
+                widget.roundCorners,
+                widget.fullWidth
             )
             Item.Widget(
                 provider,
                 widget.appWidgetId,
                 widget.id,
-                widgetWidth,
-                widgetHeight,
+                null,
+                null,
                 true,
                 useGoogleSans,
                 config,
+                widget.spanX,
+                widget.spanY,
+                widget.fullWidth,
+                widget.roundCorners,
                 dark
             )
         }
@@ -259,22 +267,35 @@ class ExpandedSmartspacerSession(
         val splitLists = split {
             it.page.smartspaceTargetId.startsWith(BLANK_TARGET_PREFIX)
         }
-        splitLists.first.forEach {
-            list.add(Item.Target(it.page, it.target?.id, isDark))
-            list.addAll(
-                it.getExtras(
-                    surface,
-                    widgets,
-                    settings.enhancedEnabled,
-                    isDark,
-                    settings.useGoogleSans
-                )
-            )
-        }
         val complications = splitLists.second.map { it.page }
-        if(complications.isNotEmpty()) {
+        val addComplications = {
             list.add(Item.Complications(complications.extractComplications(), isDark))
         }
+        if(complications.isNotEmpty() && settings.complicationsFirst) {
+            addComplications()
+        }
+        splitLists.first.forEach {
+            val extras = it.getExtras(
+                surface,
+                widgets,
+                settings.enhancedEnabled,
+                isDark,
+                settings.useGoogleSans
+            )
+            list.add(Item.Target(it.page, it.target?.id, extras.isNotEmpty(), isDark))
+            //Force a new line if any extras are being shown alongside this Target
+            if(extras.isNotEmpty()) {
+                list.add(Item.Spacer(isDark))
+            }
+            list.addAll(extras)
+            if(extras.isNotEmpty()) {
+                list.add(Item.Spacer(isDark))
+            }
+        }
+        if(complications.isNotEmpty() && !settings.complicationsFirst) {
+            addComplications()
+        }
+        list.add(Item.Spacer(isDark))
         list.addAll(customWidgets)
         list.add(Item.Footer(viewState.hasClickedAdd, isDark))
         return list
@@ -330,6 +351,10 @@ class ExpandedSmartspacerSession(
                 isCustom = false,
                 config = null,
                 useGoogleSans = useGoogleSans,
+                spanX = null,
+                spanY = null,
+                fullWidth = false,
+                roundCorners = true,
                 isDark = isDark
             ))
         }
@@ -438,6 +463,7 @@ class ExpandedSmartspacerSession(
         data class Target(
             val target: SmartspaceTarget,
             val parentId: String?,
+            val hasExtras: Boolean,
             override val isDark: Boolean
         ): Item(Type.TARGET, isDark) {
             override fun getStaticId() = "${parentId ?: "default"}_${target.smartspaceTargetId}"
@@ -452,11 +478,15 @@ class ExpandedSmartspacerSession(
             val provider: AppWidgetProviderInfo,
             val appWidgetId: Int?,
             val id: String?,
-            val width: Int,
-            val height: Int,
+            val width: Int?,
+            val height: Int?,
             val isCustom: Boolean,
             val useGoogleSans: Boolean,
             val config: CustomExpandedAppWidgetConfig?,
+            val spanX: Int?,
+            val spanY: Int?,
+            val fullWidth: Boolean,
+            val roundCorners: Boolean,
             override val isDark: Boolean
         ): Item(Type.WIDGET, isDark) {
             override fun getStaticId() = "widget_$appWidgetId"
@@ -472,6 +502,10 @@ class ExpandedSmartspacerSession(
                 if(other.useGoogleSans != useGoogleSans) return false
                 if(other.config != config) return false
                 if(other.isDark != isDark) return false
+                if(other.fullWidth != fullWidth) return false
+                if(other.roundCorners != roundCorners) return false
+                if(other.spanX != spanX) return false
+                if(other.spanY != spanY) return false
                 return true
             }
 
@@ -479,12 +513,16 @@ class ExpandedSmartspacerSession(
                 var result = provider.hashCode()
                 result = 31 * result + (appWidgetId ?: 0)
                 result = 31 * result + (id?.hashCode() ?: 0)
-                result = 31 * result + width
-                result = 31 * result + height
+                result = 31 * result + (width ?: 0)
+                result = 31 * result + (height ?: 0)
                 result = 31 * result + isCustom.hashCode()
                 result = 31 * result + useGoogleSans.hashCode()
                 result = 31 * result + (config?.hashCode() ?: 0)
                 result = 31 * result + isDark.hashCode()
+                result = 31 * result + fullWidth.hashCode()
+                result = 31 * result + roundCorners.hashCode()
+                result = 31 * result + (spanX?.hashCode() ?: 0)
+                result = 31 * result + (spanY?.hashCode() ?: 0)
                 return result
             }
         }
@@ -517,6 +555,8 @@ class ExpandedSmartspacerSession(
             override val isDark: Boolean
         ): Item(Type.FOOTER, isDark)
 
+        data class Spacer(override val isDark: Boolean): Item(Type.SPACER, isDark)
+
         open fun getStaticId(): String = type.name
 
         enum class Type {
@@ -528,7 +568,8 @@ class ExpandedSmartspacerSession(
             REMOVED_WIDGET,
             REMOTE_VIEWS,
             SHORTCUTS,
-            FOOTER
+            FOOTER,
+            SPACER
         }
     }
 
@@ -536,7 +577,8 @@ class ExpandedSmartspacerSession(
         val enhancedEnabled: Boolean,
         val searchItem: Item.Search?,
         val isDark: Boolean,
-        val useGoogleSans: Boolean
+        val useGoogleSans: Boolean,
+        val complicationsFirst: Boolean
     )
 
     data class ExpandedViewState(
