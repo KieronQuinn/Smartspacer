@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smartspacer</string>
-    <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
     <string name="dummy_home_content">這個畫面的存在是為了解決 Smartspacer 外掛使用的功能組件執行不佳的問題。\n\nSmartspacer 無法充當啟動器，請選擇其他啟動器。</string>
     <string name="dummy_home_open_settings">開啟設定</string>
@@ -18,7 +16,6 @@
     <string name="bottom_nav_complications">複雜功能</string>
     <string name="bottom_nav_plugins">外掛</string>
     <string name="bottom_nav_settings">設定</string>
-    <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">在溢出菜單中允許受限設定</string>
     <string name="restricted_mode_content_accessibility">自 Android 13 起，Google 在設置中增加了安全檢查，預設不允許側載應用程式使用輔助功能服務。\n\n<b>如果您在嘗試啟用輔助功能服務時看到關於受限設置的訊息，您需要打開應用程式資訊以允許受限設置。</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[自 Android 14 起，Google 阻止使用套件安裝程式側載的應用程式使用輔助功能服務。<br><br><b>如果您看到有關受限設置的訊息，您必須解除安裝 Smartspacer 並透過類似 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror 應用程式</a> 這樣的會話安裝程式為基礎的應用程式重新安裝。僅在原應用程式上方安裝（不重新安裝）是不夠的。<br><br></b>另一方面，啟用增強模式後，Smartspacer 將繞過此要求（如果沒有 Shizuku 或 root 權限則無法完成）。]]></string>
@@ -38,19 +35,39 @@
     <string name="tint_colour_black">黑色</string>
     <string name="tint_colour_black_content">小工具中的文字和圖標將始終顯示為黑色</string>
     <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
-    <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">顯示 Smartspacer 目標與複雜功能</string>
     <string name="widget_loading_smartspacer">載入中…</string>
     <string name="widget_loading_smartspacer_subtitle">如果此訊息持續出現，請檢查 Smartspacer 輔助功能服務是否已啟用</string>
     <string name="widget_configuration_title">Smartspacer 小工具</string>
+    <string name="widget_configuration_tab_horizontal">Horizontal</string>
+    <string name="widget_configuration_tab_vertical">Vertical</string>
+    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">啟用輔助功能服務</string>
     <string name="widget_configuration_accessibility_content">Smartspacer 小工具需要一項輔助功能服務來識別目前開啟的應用程式，並啟動/停止目標與複雜功能。這允許它們保持最新狀態，而無需全時執行 — 有助於節省電池。</string>
-    <string name="widget_configuration_accessibility_enable">啟用輔助功能服務</string>
+    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
+    <string name="widget_configuration_behaviour_title">Behaviour</string>
+    <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
+    <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page_single_title">單頁面</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_customisation_title">Customisation</string>
+    <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
+    <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
+    <string name="widget_configuration_page_controls_invisible_content">Make the controls invisible. They\'re still there and are clickable, but are invisible.</string>
+    <string name="widget_configuration_padding_title">Extra Padding</string>
+    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
     <string name="widget_configuration_animation">動畫</string>
     <string name="widget_configuration_animation_switch_title">動畫變更</string>
     <string name="widget_configuration_animation_switch_content">在可能的情況下，小工具變更時進行淡入淡出</string>
     <string name="widget_configuration_colour">顏色</string>
+    <string name="widget_configuration_shadow_title">Text Shadow</string>
+    <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
+    <string name="widget_configuration_mock_target_title">Smartspacer</string>
+    <string name="widget_configuration_mock_target_subtitle">Target</string>
+    <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_options_configure">設定小工具</string>
     <string name="accessibility_service_label">Smartspacer 小工具服務</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
@@ -115,6 +132,8 @@
     <string name="complication_google_weather_label">Google 天氣</string>
     <string name="complication_google_weather_description">顯示從 Google 應用程式中獲取的天氣資訊</string>
     <string name="complication_google_weather_description_unsupported">此目標需要 Google 應用程式</string>
+    <string name="complication_date_label">Date</string>
+    <string name="complication_date_description">Shows the current date</string>
     <string name="plugin_target_default_label">外掛目標</string>
     <string name="plugin_action_default_label">外掛資訊一覽</string>
     <string name="plugin_requirement_default_label">外掛需求</string>
@@ -124,11 +143,9 @@
     <string name="notification_channel_background_service_subtitle">當 Smartspacer 在背景執行時顯示的通知</string>
     <string name="notification_title_background_service">Smartspacer 正在執行</string>
     <string name="notification_content_background_service">Smartspacer 正在背景執行，點擊以隱藏</string>
-    <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer 正在背景執行</string>
     <string name="notification_channel_safe_mode_title">安全模式</string>
     <string name="notification_channel_safe_mode_subtitle">如果 Smartspacer 進入安全模式時顯示的通知</string>
-    <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">由於 %1s 崩潰，Smartspacer 已進入安全模式。點擊以獲取更多資訊。</string>
     <string name="notification_channel_error_title">錯誤</string>
     <string name="notification_channel_error_content">當 Smartspacer 遇到問題時會顯示的通知</string>
@@ -418,21 +435,12 @@
     <string name="compatibility_feature_shopping_list_content">除了標題和子標題外，允許顯示簡短的清單。</string>
     <string name="compatibility_feature_sports_title">體育</string>
     <string name="compatibility_feature_sports_content">除了標題與副標題外，允許顯示兩隊的比分</string>
-    <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
-    <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">輪播</string>
     <string name="compatibility_template_carousel_content">除了標題與副標題外，允許顯示多達四個圖示，並有一個標頭與頁腳</string>
-    <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
-    <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
-    <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
-    <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">圖片</string>
     <string name="compatibility_template_sub_images_content">除了標題與副標題外，允許顯示一系列圖片</string>
-    <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
-    <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">鎖定螢幕</string>
     <!-- Setup -->
-    <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">開始使用</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">分析</string>
@@ -651,6 +659,15 @@
     <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
+    <string name="expanded_settings_hide_add_button_title">Hide Add Button</string>
+    <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
+    <string name="expanded_settings_hide_add_button_never">Never</string>
+    <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
+    <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
+    <string name="expanded_complications_first_title">Complications First</string>
+    <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
     <string name="expanded_settings_open_mode_never_title">從不</string>
     <string name="expanded_settings_open_mode_never_content">執行目標的點擊動作，而不是打開擴展 Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">如果目標有擴展選項</string>
@@ -686,6 +703,10 @@
     <string name="expanded_add_widget_widget_label">%1s（%1d x %1d）</string>
     <string name="expanded_add_widget_widgets_one">%1d 個小工具</string>
     <string name="expanded_add_widget_widgets_other">%1d 個小工具</string>
+    <string name="expanded_add_widget_category_battery">Battery</string>
+    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_note_taking">Note-taking</string>
+    <string name="expanded_add_widget_category_weather">Weather</string>
     <string name="expanded_custom_widget_options_span_x_title">寬度</string>
     <string name="expanded_custom_widget_options_span_x_content">此小工具的寬度，以格子數計</string>
     <string name="expanded_custom_widget_options_span_y_title">高度</string>
@@ -694,6 +715,10 @@
     <string name="expanded_custom_widget_options_reconfigure_content">在其應用程式中更改此小工具的設定</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">鎖定時顯示</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">在裝置鎖定時，在擴充 Smartspace 中顯示此小工具</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
+    <string name="expanded_custom_widget_full_width_title">Fill Width</string>
+    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">未找到小工具</string>
     <string name="battery_optimisation_title">電池最佳化</string>
     <string name="battery_optimisation_content">選項用於停用電池最佳化，以提升 Smartspacer 的可靠性</string>
@@ -936,6 +961,9 @@
     <string name="target_notification_configuration_settings">設定</string>
     <string name="target_notification_channels">通知頻道</string>
     <string name="target_notification_channels_empty">此應用程式未使用通知頻道，因此將顯示來自它的所有通知</string>
+    <string name="target_notification_configuration_options">Options</string>
+    <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空目標</string>
     <string name="target_blank_content">超極簡模式，可用來完全不顯示任何內容，或只顯示複雜功能</string>
