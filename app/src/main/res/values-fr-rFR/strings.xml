@@ -735,7 +735,7 @@
     <string name="plugin_details_install">Installer</string>
     <string name="plugin_details_start_install">Installer</string>
     <string name="plugin_details_open">Ouvrir</string>
-    <string name="plugin_details_update">Mise à jour</string>
+    <string name="plugin_details_update">Mettre à jour</string>
     <string name="plugin_details_uninstall">Désinstaller</string>
     <string name="plugin_details_install_companion">Obtenir l\'application requise</string>
     <string name="plugin_details_error_title">Erreur</string>
