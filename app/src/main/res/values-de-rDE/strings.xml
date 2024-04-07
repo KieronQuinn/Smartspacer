@@ -373,6 +373,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_app_prediction_incompatible">Diese Bedingung ist nicht kompatibel mit deinem Gerät, da es keinen System-App-Vorhersage-Service hat</string>
     <string name="requirement_app_prediction_enhanced">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="requirement_app_prediction_configuration_title">App auswählen</string>
+    <string name="requirement_music_playing_label">Music Playing</string>
+    <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">Zulassen</string>
     <string name="permission_dialog_widget_title_suffix">um mit Smartspacer auf Widgets zuzugreifen?</string>
     <string name="permission_dialog_widget_title_warning">Du wirst möglicherweise nach diesem Schritt um eine Systemberechtigung gebeten</string>
@@ -669,6 +671,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
+    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
     <string name="expanded_settings_open_mode_never_content">Führt die Klick-Aktionen des Ziels aus, statt den erweiterten Smartspace zu öffnen</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Wenn das Ziel erweiterte Einstellungen hat</string>
