@@ -372,6 +372,8 @@
     <string name="requirement_app_prediction_incompatible">Cette condition est incompatible avec votre appareil car il n\'a pas de service système de prédiction d\'applications</string>
     <string name="requirement_app_prediction_enhanced">Cette condition nécessite l\'activation du mode amélioré, activez-le dans les paramètres</string>
     <string name="requirement_app_prediction_configuration_title">Sélectionnez une application</string>
+    <string name="requirement_music_playing_label">Music Playing</string>
+    <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">Autoriser</string>
     <string name="permission_dialog_widget_title_suffix">d\'accéder aux widgets par Smartspacer ?</string>
     <string name="permission_dialog_widget_title_warning">Une autorisation système pourra vous être demandée à la suite de cette étape</string>
@@ -668,6 +670,8 @@
     <string name="expanded_settings_enable_columns_content">Sur les appareils dont la largeur est suffisante, afficher les cibles Smartspacer, le contenu additionnel et les widgets personnalisés dans plusieurs colonnes</string>
     <string name="expanded_complications_first_title">Complications en premier</string>
     <string name="expanded_complications_first_content">Disposer vos complications en grille au-dessus de toutes les cibles, au lieu de remplir l\'espace autour des cibles et d\'afficher les complications restantes en-dessous</string>
+    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
