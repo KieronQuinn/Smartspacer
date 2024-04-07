@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smartspacer</string>
-    <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>可选</b>：在你的启动器或启动器的 Google Feed 插件上启用该模组以允许 Smartspace 扩展面板替换 Google Discover。你必须同时在 Smartspacer 的 Smartspace 扩展面板设置中开启对应选项。</string>
     <string name="dummy_home_content">该页面用于在 Smartspacer 扩展中应用效果不佳的小组件。\n\nSmartspacer 不能作为启动器使用，请选择其他启动器。</string>
     <string name="dummy_home_open_settings">打开设置</string>
@@ -18,7 +16,6 @@
     <string name="bottom_nav_complications">附件</string>
     <string name="bottom_nav_plugins">扩展</string>
     <string name="bottom_nav_settings">设置</string>
-    <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">在弹出的菜单中允许受限制的设置</string>
     <string name="restricted_mode_content_accessibility">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用使用无障碍服务。\n\n<b>如果你在启用无障碍服务时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[从 Android 14 开始 Google 不再允许通过软件包安装程序安装的应用使用无障碍服务。<br><br><b>如果你看到一则受限制设置的信息，则需要先卸载 Smartspacer，再通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 重新安装。直接安装（而不先卸载）是不行的。<br><br></b>另外，如果启用了增强模式，Smartspacer 可以绕过这一限制（该模式需要 Shizuku 或 root）。]]></string>
@@ -38,19 +35,39 @@
     <string name="tint_colour_black">黑色</string>
     <string name="tint_colour_black_content">小组件中的文本和图标将总以黑色显示</string>
     <string name="tint_colour_black_content_alt">通知中的文本和图标将始终以黑色显示</string>
-    <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">显示 Smartspacer 对象 &amp; 附件</string>
     <string name="widget_loading_smartspacer">正在加载…</string>
     <string name="widget_loading_smartspacer_subtitle">如果该消息依然存在，请检查 Smartspacer 的无障碍服务是否开启</string>
     <string name="widget_configuration_title">Smartspacer 小组件</string>
+    <string name="widget_configuration_tab_horizontal">Horizontal</string>
+    <string name="widget_configuration_tab_vertical">Vertical</string>
+    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">启用无障碍服务</string>
     <string name="widget_configuration_accessibility_content">Smartspacer 小组件需要无障碍服务来获知你设备上哪些应用正在运行，以此启动/停止对象和附件。这种方式能够以更省电的方式保证信息即时更新，无需一直运行。</string>
-    <string name="widget_configuration_accessibility_enable">启用无障碍服务</string>
+    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
+    <string name="widget_configuration_behaviour_title">Behaviour</string>
+    <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
+    <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page_single_title">单页</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_customisation_title">Customisation</string>
+    <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
+    <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
+    <string name="widget_configuration_page_controls_invisible_content">Make the controls invisible. They\'re still there and are clickable, but are invisible.</string>
+    <string name="widget_configuration_padding_title">Extra Padding</string>
+    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
     <string name="widget_configuration_animation">动画效果</string>
     <string name="widget_configuration_animation_switch_title">动画更改</string>
     <string name="widget_configuration_animation_switch_content">尽可能在小组件更改时使用淡出效果</string>
     <string name="widget_configuration_colour">颜色</string>
+    <string name="widget_configuration_shadow_title">Text Shadow</string>
+    <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
+    <string name="widget_configuration_mock_target_title">Smartspacer</string>
+    <string name="widget_configuration_mock_target_subtitle">Target</string>
+    <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_options_configure">配置小组件</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
     <string name="accessibility_service_description">无需常驻后台消耗电量，启用 Smartspace 的小组件即可保证对象和附件正常更新。\n\n注意：如果你启用了增强模式则无需该设置。</string>
@@ -115,6 +132,8 @@
     <string name="complication_google_weather_label">Google 天气</string>
     <string name="complication_google_weather_description">显示从 Google 应用中抓取的天气信息</string>
     <string name="complication_google_weather_description_unsupported">该对象需要 Google 应用</string>
+    <string name="complication_date_label">Date</string>
+    <string name="complication_date_description">Shows the current date</string>
     <string name="plugin_target_default_label">扩展对象</string>
     <string name="plugin_action_default_label">扩展附件</string>
     <string name="plugin_requirement_default_label">扩展需求</string>
@@ -124,11 +143,9 @@
     <string name="notification_channel_background_service_subtitle">Smartspacer 在后台运行时显示的通知</string>
     <string name="notification_title_background_service">Smartspacer 正在运行</string>
     <string name="notification_content_background_service">Smartspacer 正在后台运行，点击隐藏</string>
-    <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer 正在后台运行</string>
     <string name="notification_channel_safe_mode_title">安全模式</string>
     <string name="notification_channel_safe_mode_subtitle">Smartspacer 进入安全模式时显示的通知</string>
-    <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">由于 %1s 崩溃，Smartspacer 已进入安全模式。点击获取更多信息。</string>
     <string name="notification_channel_error_title">错误</string>
     <string name="notification_channel_error_content">Smartspacer 遭遇错误时显示的通知</string>
@@ -418,21 +435,12 @@
     <string name="compatibility_feature_shopping_list_content">除了标题 &amp; 子标题允许额外显示一个短清单</string>
     <string name="compatibility_feature_sports_title">体育赛事</string>
     <string name="compatibility_feature_sports_content">除了标题 &amp; 子标题允许额外显示两支球队的比赛得分</string>
-    <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
-    <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">卡片轮播</string>
     <string name="compatibility_template_carousel_content">除标题 &amp; 子标题，允许显示最多四个带有页眉和页脚的图标</string>
-    <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
-    <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
-    <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
-    <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">图像</string>
     <string name="compatibility_template_sub_images_content">除了标题 &amp; 子标题允许额外显示一组图像</string>
-    <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
-    <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">锁屏</string>
     <!-- Setup -->
-    <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">快速上手</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">数据分析</string>
@@ -651,6 +659,15 @@
     <string name="expanded_settings_xposed_enabled_title">替代 Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">使用 Smartspacer 扩展面板替代 Google Discover。\n<b>注意：</b>你必须为启动器启用 Xposed 模组或 Google Feed 插件并重启才能使之生效。</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">该选项需要 Xposed</string>
+    <string name="expanded_settings_hide_add_button_title">Hide Add Button</string>
+    <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
+    <string name="expanded_settings_hide_add_button_never">Never</string>
+    <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
+    <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
+    <string name="expanded_complications_first_title">Complications First</string>
+    <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
     <string name="expanded_settings_open_mode_never_title">从不</string>
     <string name="expanded_settings_open_mode_never_content">执行对象的点击操作而不是打开 Smartspace 扩展面板</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">如果对象提供展开选项</string>
@@ -686,6 +703,10 @@
     <string name="expanded_add_widget_widget_label">%1s（%1d x %1d）</string>
     <string name="expanded_add_widget_widgets_one">%1d 个小组件</string>
     <string name="expanded_add_widget_widgets_other">%1d 个小组件</string>
+    <string name="expanded_add_widget_category_battery">Battery</string>
+    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_note_taking">Note-taking</string>
+    <string name="expanded_add_widget_category_weather">Weather</string>
     <string name="expanded_custom_widget_options_span_x_title">宽度</string>
     <string name="expanded_custom_widget_options_span_x_content">小组件宽度，单位为网格</string>
     <string name="expanded_custom_widget_options_span_y_title">高度</string>
@@ -694,6 +715,10 @@
     <string name="expanded_custom_widget_options_reconfigure_content">在对应应用中更改该组件的设置</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">锁屏时显示</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">设备锁定时在 Smartspace 扩展面板中显示小组件</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
+    <string name="expanded_custom_widget_full_width_title">Fill Width</string>
+    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">找不到小组件</string>
     <string name="battery_optimisation_title">电池优化</string>
     <string name="battery_optimisation_content">增强 Smartspacer 可靠性的禁用电池优化选项</string>
@@ -936,6 +961,9 @@
     <string name="target_notification_configuration_settings">设置</string>
     <string name="target_notification_channels">通知渠道</string>
     <string name="target_notification_channels_empty">该应用未适配通知渠道，因此将显示所有通知</string>
+    <string name="target_notification_configuration_options">Options</string>
+    <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空白对象</string>
     <string name="target_blank_content">极简模式，可以什么都不显示或只显示附件</string>

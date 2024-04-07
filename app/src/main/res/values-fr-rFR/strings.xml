@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smartspacer</string>
-    <string name="shortcut_name_smartspace">Smartspace</string>
     <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour pouvoir remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
@@ -18,12 +16,11 @@
     <string name="bottom_nav_complications">Complications</string>
     <string name="bottom_nav_plugins">Plugins</string>
     <string name="bottom_nav_settings">Paramètres</string>
-    <string name="download_size">%1s / %1s</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -38,19 +35,39 @@
     <string name="tint_colour_black">Noir</string>
     <string name="tint_colour_black_content">Le texte et les icônes seront toujours noirs</string>
     <string name="tint_colour_black_content_alt">Le texte et les icônes seront toujours noirs</string>
-    <string name="widget_title_smartspacer">@string/app_name</string>
     <string name="widget_description_smartspacer">Afficher les cibles et les complications Smartspacer</string>
     <string name="widget_loading_smartspacer">Chargement…</string>
     <string name="widget_loading_smartspacer_subtitle">Si ce message persiste, vérifiez que le service d\'accessibilité Smartspacer est bien activé</string>
     <string name="widget_configuration_title">Widget Smartspacer</string>
+    <string name="widget_configuration_tab_horizontal">Horizontal</string>
+    <string name="widget_configuration_tab_vertical">Vertical</string>
+    <string name="widget_configuration_horizontal_info"><b>Remarque :</b> en raison d\'une limite imposée par Android, il est impossible de défiler les widgets horizontalement. Pour contourner cela, le widget Smartspacer vous permet de changer de page à l\'aide des commandes de contrôle.</string>
+    <string name="widget_configuration_vertical_info"><b>Remarque :</b> en utilisant le widget Liste, il se peut que vous rencontriez des problèmes de performance et que la batterie se vide plus vite. Cela est dû au fait que le widget doit être mis à jour dans son entièreté à chaque changement. Il est impossible d\'y remédier.</string>
     <string name="widget_configuration_accessibility_title">Activer le service d\'accessibilité</string>
     <string name="widget_configuration_accessibility_content">Le widget Smartspacer nécessite un service d\'accessibilité pour connaître les applications ouvertes sur votre appareil, et démarrer et arrêter les cibles et les complications. Cela permet de les maintenir à jour sans avoir besoin de les exécuter en permanence, ce qui économise de la batterie.</string>
-    <string name="widget_configuration_accessibility_enable">Activer le service d\'accessibilité</string>
+    <string name="widget_configuration_accessibility_enable">Appuyez pour activer</string>
+    <string name="widget_configuration_behaviour_title">Comportement</string>
+    <string name="widget_configuration_is_lock_screen_title">Widget sur l\'écran de verrouillage</string>
+    <string name="widget_configuration_is_lock_screen_content">Activez cette option <b>uniquement</b> si le widget est ajouté à l\'écran de verrouillage.\nActiver cette option ne suffit <b>pas</b> à ajouter le widget à l\'écran de verrouillage. Pour ce faire, téléchargez une application depuis Google Play telle que « Lockscreen Widgets ».</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">Option indisponible pour ce widget. Notez que Smartspacer ne peut pas être utilisé pour activer l\'affichage de widgets sur l\'écran de verrouillage. Pour ce faire, téléchargez une application depuis Google Play telle que « Lockscreen Widgets ».</string>
     <string name="widget_configuration_page_single_title">Une seule page</string>
+    <string name="widget_configuration_page_single_content">Verrouiller le widget pour n\'afficher qu\'une seule page de cibles et de complications (si l\'espace le permet). Cela signifie que vous ne verrez dans le widget que la première cible et les premières complications.</string>
+    <string name="widget_configuration_customisation_title">Personnalisation</string>
+    <string name="widget_configuration_page_arrows_title">Afficher les commandes</string>
+    <string name="widget_configuration_page_arrows_content">Activer les flèches permettant de changer facilement de page. Si l\'option est désactivée, appuyez sur les points représentant les pages pour passer à la page suivante. Une fois la dernière page atteinte, un appui supplémentaire vous ramènera à la première page.</string>
+    <string name="widget_configuration_page_controls_invisible_title">Commandes invisibles</string>
+    <string name="widget_configuration_page_controls_invisible_content">Rendre les commandes invisibles. Les commandes sont toujours présentes et vous pouvez toujours appuyer dessus, mais elles sont invisibles.</string>
+    <string name="widget_configuration_padding_title">Décalage supplémentaire</string>
+    <string name="widget_configuration_padding_content">Ajouter de l\'espace supplémentaire à gauche et à droite du widget. Notez que ce décalage <b>s\'additionne</b> à celui défini par votre lanceur d\'applications.</string>
     <string name="widget_configuration_animation">Animation</string>
     <string name="widget_configuration_animation_switch_title">Animer les modifications</string>
     <string name="widget_configuration_animation_switch_content">Dès que possible, appliquer un fondu lorsque le widget est modifié</string>
     <string name="widget_configuration_colour">Couleur</string>
+    <string name="widget_configuration_shadow_title">Ombre derrière le texte</string>
+    <string name="widget_configuration_shadow_content">Afficher une ombre derrière le texte, permettant de le rendre lisible quel que soit votre fond d\'écran</string>
+    <string name="widget_configuration_mock_target_title">Smartspacer</string>
+    <string name="widget_configuration_mock_target_subtitle">Cible</string>
+    <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
     <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
@@ -115,6 +132,8 @@
     <string name="complication_google_weather_label">Google Météo</string>
     <string name="complication_google_weather_description">Affiche la météo récupérée par l\'application Google</string>
     <string name="complication_google_weather_description_unsupported">Cette cible requiert l\'application Google</string>
+    <string name="complication_date_label">Date</string>
+    <string name="complication_date_description">Affiche la date actuelle</string>
     <string name="plugin_target_default_label">Cible de plugin</string>
     <string name="plugin_action_default_label">Complication de plugin</string>
     <string name="plugin_requirement_default_label">Condition de plugin</string>
@@ -124,11 +143,9 @@
     <string name="notification_channel_background_service_subtitle">Notifications affichées lorsque Smartspacer s\'exécute en arrière-plan</string>
     <string name="notification_title_background_service">Smartspacer est en cours d\'exécution</string>
     <string name="notification_content_background_service">Smartspacer s\'exécute en arrière-plan, appuyez pour masquer</string>
-    <string name="notification_background_service_title">@string/app_name</string>
     <string name="notification_background_service_subtitle">Smartspacer s\'exécute en arrière-plan</string>
     <string name="notification_channel_safe_mode_title">Mode sans échec</string>
     <string name="notification_channel_safe_mode_subtitle">Notifications affichées lorsque Smartspacer entre en mode sans échec</string>
-    <string name="notification_safe_mode_title">@string/app_name</string>
     <string name="notification_safe_mode_content">Smartspacer est entré en mode sans échec à cause du crash de %1s. Appuyez pour plus d\'infos.</string>
     <string name="notification_channel_error_title">Erreurs</string>
     <string name="notification_channel_error_content">Notifications affichées lorsque Smartspacer rencontre un problème</string>
@@ -418,26 +435,17 @@
     <string name="compatibility_feature_shopping_list_content">Permet d\'afficher une courte liste en plus du titre et du sous-titre</string>
     <string name="compatibility_feature_sports_title">Sports</string>
     <string name="compatibility_feature_sports_content">Permet d\'afficher le score d\'un match à deux équipes en plus du titre et du sous-titre</string>
-    <string name="compatibility_template_base_title">@string/compatibility_feature_basic_title</string>
-    <string name="compatibility_template_base_content">@string/compatibility_feature_basic_content</string>
     <string name="compatibility_template_carousel_title">Carrousel</string>
     <string name="compatibility_template_carousel_content">Permet d\'afficher jusqu\'à quatre icônes avec un en-tête et un pied de page, en plus du titre et du sous-titre</string>
-    <string name="compatibility_template_head_to_head_title">@string/compatibility_feature_sports_title</string>
-    <string name="compatibility_template_head_to_head_content">@string/compatibility_feature_sports_content</string>
-    <string name="compatibility_template_sub_card_title">@string/compatibility_feature_combination_title</string>
-    <string name="compatibility_template_sub_card_content">@string/compatibility_feature_combination_content</string>
     <string name="compatibility_template_sub_image_title">Images</string>
     <string name="compatibility_template_sub_images_content">Permet d\'afficher une série d\'images en plus du titre et du sous-titre</string>
-    <string name="compatibility_template_sub_list_title">@string/compatibility_feature_shopping_list_title</string>
-    <string name="compatibility_template_sub_list_content">@string/compatibility_feature_shopping_list_content</string>
     <string name="compatibility_label_systemui">Écran de verrouillage</string>
     <!-- Setup -->
-    <string name="landing_title">@string/app_name</string>
     <string name="landing_button_get_started">Commencer</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -651,6 +659,15 @@
     <string name="expanded_settings_xposed_enabled_title">Remplacer Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Remplacer le flux Google Discover par Smartspace étendu.\n<b>Remarque :</b> pour activer cette option, vous devez activer le module Xposed pour votre lanceur d\'applications ou pour votre plugin Google Feed, puis redémarrer votre appareil.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Cette option requiert Xposed</string>
+    <string name="expanded_settings_hide_add_button_title">Masquer le bouton +</string>
+    <string name="expanded_settings_hide_add_button_content">Masquer le bouton pour ajouter des widgets personnalisés : %1s</string>
+    <string name="expanded_settings_hide_add_button_never">Jamais</string>
+    <string name="expanded_settings_hide_add_button_overlay_only">Lorsque Google Discover est remplacé</string>
+    <string name="expanded_settings_hide_add_button_always">Toujours</string>
+    <string name="expanded_settings_enable_columns_title">Activer le mode multicolonne</string>
+    <string name="expanded_settings_enable_columns_content">Sur les appareils dont la largeur est suffisante, afficher les cibles Smartspacer, le contenu additionnel et les widgets personnalisés dans plusieurs colonnes</string>
+    <string name="expanded_complications_first_title">Complications en premier</string>
+    <string name="expanded_complications_first_content">Disposer vos complications en grille au-dessus de toutes les cibles, au lieu de remplir l\'espace autour des cibles et d\'afficher les complications restantes en-dessous</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
@@ -686,6 +703,10 @@
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
+    <string name="expanded_add_widget_category_battery">Batterie</string>
+    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_note_taking">Prise de notes</string>
+    <string name="expanded_add_widget_category_weather">Météo</string>
     <string name="expanded_custom_widget_options_span_x_title">Largeur</string>
     <string name="expanded_custom_widget_options_span_x_content">Largeur du widget, en colonnes</string>
     <string name="expanded_custom_widget_options_span_y_title">Hauteur</string>
@@ -694,6 +715,10 @@
     <string name="expanded_custom_widget_options_reconfigure_content">Modifier les paramètres de ce widget dans son application</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Afficher lorsque l\'appareil est verrouillé</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Afficher ce widget dans Smartspace étendu lorsque votre appareil est verrouillé</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Forcer les coins arrondis</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Appliquer des coins arrondis à ce widget, bien qu\'il n\'ait pas été prévu pour</string>
+    <string name="expanded_custom_widget_full_width_title">Remplir la largeur</string>
+    <string name="expanded_custom_widget_full_width_content">Force ce widget à occuper la largeur totale d\'une ligne dans Smartspace étendu, sans augmenter sa largeur.\n\n<b>Remarque :</b> sur les grands appareils avec plusieurs colonnes, le widget occupera la largeur d\'une seule colonne.</string>
     <string name="add_widget_empty_label">Aucun widget</string>
     <string name="battery_optimisation_title">Optimisation de la batterie</string>
     <string name="battery_optimisation_content">Options permettant de désactiver l\'optimisation de la batterie pour améliorer la fiabilité de Smartspacer</string>
@@ -847,7 +872,7 @@
     <string name="github">GitHub</string>
     <string name="libraries">Bibliothèques tierces</string>
     <string name="donate">Faire un don</string>
-    <string name="twitter">Suivez-moi sur Twitter</string>
+    <string name="twitter">Suivre mon compte Twitter</string>
     <string name="about_version">Version %1s\nCréé par Kieron Quinn</string>
     <string name="about_contributors">Contributeurs</string>
     <!-- Contributors -->
@@ -936,6 +961,9 @@
     <string name="target_notification_configuration_settings">Paramètres</string>
     <string name="target_notification_channels">Catégories de notifications</string>
     <string name="target_notification_channels_empty">Cette application n\'utilise pas les catégories de notifications, toutes ses notifications seront donc affichées</string>
+    <string name="target_notification_configuration_options">Options</string>
+    <string name="target_notification_configuration_trim_new_lines_title">Supprimer les retours à la ligne</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Supprime les retours à la ligne du contenu de la notification afin d\'essayer de faire rentrer autant de texte que possible dans la cible. Cela pourrait affecter le formatage de la notification.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Cible vide</string>
     <string name="target_blank_content">Ultra minimaliste, peut être utilisé pour afficher uniquement les complications, voire ne rien afficher du tout</string>
