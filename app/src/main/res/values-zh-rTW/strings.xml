@@ -372,6 +372,8 @@
     <string name="requirement_app_prediction_incompatible">此要求與您的裝置不相容，因為它沒有系統應用程式建議服務</string>
     <string name="requirement_app_prediction_enhanced">此要求需要增強模式，在設定中啟用</string>
     <string name="requirement_app_prediction_configuration_title">選擇應用程式</string>
+    <string name="requirement_music_playing_label">Music Playing</string>
+    <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">允許</string>
     <string name="permission_dialog_widget_title_suffix">使用 Smartspacer 存取小工具？</string>
     <string name="permission_dialog_widget_title_warning">您可能在此步驟後被要求提供系統權限</string>
@@ -668,6 +670,8 @@
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
+    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">從不</string>
     <string name="expanded_settings_open_mode_never_content">執行目標的點擊動作，而不是打開擴展 Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">如果目標有擴展選項</string>
