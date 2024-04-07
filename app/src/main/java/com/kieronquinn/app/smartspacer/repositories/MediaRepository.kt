@@ -1,8 +1,10 @@
 package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
+import com.kieronquinn.app.smartspacer.components.smartspace.requirements.MusicPlayingRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.MusicTarget
 import com.kieronquinn.app.smartspacer.model.media.MediaContainer
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerRequirementProvider
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
@@ -37,6 +39,7 @@ class MediaRepositoryImpl(private val context: Context): MediaRepository {
     private fun setupMusicTarget() = scope.launch {
         mediaController.debounce(500L).collect {
             SmartspacerTargetProvider.notifyChange(context, MusicTarget::class.java)
+            SmartspacerRequirementProvider.notifyChange(context, MusicPlayingRequirement::class.java)
         }
     }
 

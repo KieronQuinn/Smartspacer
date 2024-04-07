@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
     <com.kieronquinn.app.smartspacer.sdk.client.views.BcSmartspaceView
         android:id="@+id/bc_smartspace_view"
@@ -16,8 +16,8 @@
             android:id="@id/smartspace_card_pager"
             android:layout_width="match_parent"
             android:layout_height="@dimen/smartspace_height"
-            android:layout_marginBottom="@dimen/smartspace_page_margin"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/smartspace_page_margin" />
 
         <com.kieronquinn.app.smartspacer.sdk.client.views.PageIndicator
             android:id="@id/smartspace_page_indicator"
@@ -31,5 +31,13 @@
             android:visibility="visible" />
 
     </com.kieronquinn.app.smartspacer.sdk.client.views.BcSmartspaceView>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_show_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:checked="true"
+        android:text="@string/show_shadow" />
 
 </LinearLayout>

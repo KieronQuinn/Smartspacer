@@ -4,11 +4,11 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.View.MeasureSpec.EXACTLY
 import android.view.View.MeasureSpec.makeMeasureSpec
@@ -172,6 +172,14 @@ open class BcSmartspaceView @JvmOverloads constructor(
         pivotY = smartspaceHeight.toFloat() / 2f
     }
 
+    fun setTintColour(tintColour: Int) {
+        adapter.setTintColour(tintColour)
+    }
+
+    fun setApplyShadowIfRequired(applyShadowIfRequired: Boolean) {
+        adapter.setApplyShadowIfRequired(applyShadowIfRequired)
+    }
+
     override fun setOnLongClickListener(l: OnLongClickListener?) {
         viewPager.setOnLongClickListener(l)
     }
@@ -244,6 +252,7 @@ open class BcSmartspaceView @JvmOverloads constructor(
         provider.onTargetInteraction(target, actionId)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onLongPress(target: SmartspaceTarget): Boolean {
         val current = adapter.getTargetAtPosition(viewPager.currentItem) ?: return false
         if(current != target) return false //Page has changed

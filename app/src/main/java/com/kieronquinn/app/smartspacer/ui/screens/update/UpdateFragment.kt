@@ -54,7 +54,7 @@ class UpdateFragment: BoundFragment<FragmentUpdateBinding>(FragmentUpdateBinding
     }
 
     private fun setupInsets() {
-        binding.updateInfo.applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
+        binding.updateCard.applyBottomNavigationMargin()
         binding.updateFab.applyBottomNavigationMargin()
     }
 

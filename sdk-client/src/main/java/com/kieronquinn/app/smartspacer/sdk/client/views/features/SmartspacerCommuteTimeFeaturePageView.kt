@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.sdk.client.views.features
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Icon
@@ -21,12 +22,14 @@ class SmartspacerCommuteTimeFeaturePageView(context: Context): SmartspacerBaseFe
         SubtitleBinding.SubtitleOnly(binding.smartspacePageFeatureBasicSubtitle)
     }
 
+    @SuppressLint("RestrictedApi")
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShaow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShaow)
         val image = target.baseAction?.extras?.getParcelableCompat(EXTRA_IMAGE, Bitmap::class.java)
             ?: return
         val icon = Icon.createWithBitmap(image)

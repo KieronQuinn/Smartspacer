@@ -32,9 +32,10 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         val templateData = target.templateData as CarouselTemplateData
         val item1 = templateData.carouselItems.getOrNull(0)
         val item2 = templateData.carouselItems.getOrNull(1)
@@ -47,7 +48,8 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
             binding.smartspacePageCarouselColumn1Icon,
             binding.smartspacePageCarouselColumn1Footer,
             interactionListener,
-            tintColour
+            tintColour,
+            applyShadow
         )
         item2.setup(
             target,
@@ -56,7 +58,8 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
             binding.smartspacePageCarouselColumn2Icon,
             binding.smartspacePageCarouselColumn2Footer,
             interactionListener,
-            tintColour
+            tintColour,
+            applyShadow
         )
         item3.setup(
             target,
@@ -65,7 +68,8 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
             binding.smartspacePageCarouselColumn3Icon,
             binding.smartspacePageCarouselColumn3Footer,
             interactionListener,
-            tintColour
+            tintColour,
+            applyShadow
         )
         item4.setup(
             target,
@@ -74,7 +78,8 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
             binding.smartspacePageCarouselColumn4Icon,
             binding.smartspacePageCarouselColumn4Footer,
             interactionListener,
-            tintColour
+            tintColour,
+            applyShadow
         )
         binding.smartspacePageCarousel.setOnClick(
             target,
@@ -90,7 +95,8 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
         icon: ImageView,
         subtitle: TextView,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
         column.isVisible = this != null
         if(this == null) return
@@ -98,6 +104,10 @@ class SmartspacerCarouselTemplatePageView(context: Context): SmartspacerBaseTemp
         image?.let { icon.setIcon(it, tintColour) }
         lowerText?.let { subtitle.setText(it, tintColour) }
         column.setOnClick(target, tapAction, interactionListener)
+
+        title.setShadowEnabled(applyShadow)
+        icon.setShadowEnabled(applyShadow)
+        subtitle.setShadowEnabled(applyShadow)
     }
 
 }

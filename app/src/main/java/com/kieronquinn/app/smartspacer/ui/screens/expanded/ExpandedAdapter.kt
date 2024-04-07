@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded
 
 import android.appwidget.AppWidgetProviderInfo
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
@@ -33,6 +34,7 @@ import com.kieronquinn.app.smartspacer.databinding.ItemExpandedTargetBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedWidgetBinding
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ViewHolder
@@ -45,7 +47,6 @@ import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.core.component.inject
-import kotlin.math.floor
 import com.kieronquinn.monetcompat.R as MonetcompatR
 
 class ExpandedAdapter(
@@ -281,12 +282,18 @@ class ExpandedAdapter(
 
     private fun ViewHolder.Target.setup(target: Item.Target) = with(binding) {
         val tintColour = getTintColour(target.isDark)
-        itemExpandedTargetTarget.setTarget(target.target, targetInteractionListener, tintColour)
+        itemExpandedTargetTarget.setTarget(
+            target.target,
+            targetInteractionListener,
+            tintColour,
+            target.applyShadow
+        )
     }
 
     @Synchronized
     private fun ViewHolder.Complications.setup(complications: Item.Complications) = with(binding) {
         val tintColour = getTintColour(complications.isDark)
+        val applyShadow = complications.showShadow && tintColour == Color.WHITE
         root.run {
             layoutManager = FlexboxLayoutManager(context, FlexDirection.ROW).apply {
                 justifyContent = JustifyContent.CENTER
@@ -296,6 +303,7 @@ class ExpandedAdapter(
                 context,
                 complications.complications.complications,
                 tintColour,
+                applyShadow,
                 targetInteractionListener
             )
         }

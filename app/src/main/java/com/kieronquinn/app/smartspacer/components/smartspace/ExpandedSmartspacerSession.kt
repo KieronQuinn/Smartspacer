@@ -151,9 +151,17 @@ class ExpandedSmartspacerSession(
         searchBox,
         isDark,
         settings.expandedWidgetUseGoogleSans.asFlow(),
-        settings.expandedComplicationsFirst.asFlow()
-    ) { enhanced, search, dark, googleSans, complicationsFirst ->
-        ExpandedSettings(enhanced, search, dark, googleSans, complicationsFirst)
+        settings.expandedComplicationsFirst.asFlow(),
+        settings.expandedShowShadow.asFlow()
+    ) { settings ->
+        ExpandedSettings(
+            settings[0] as Boolean,
+            settings[1] as? Item.Search,
+            settings[2] as Boolean,
+            settings[3] as Boolean,
+            settings[4] as Boolean,
+            settings[5] as Boolean,
+        )
     }
 
     private val viewState = combine(
@@ -258,6 +266,7 @@ class ExpandedSmartspacerSession(
         viewState: ExpandedViewState
     ): List<Item> {
         val isDark = settings.isDark
+        val applyShadow = settings.applyShadow
         val list = ArrayList<Item>()
         if(settings.searchItem != null) {
             list.add(settings.searchItem.copy(topInset = viewState.topInset))
@@ -269,7 +278,7 @@ class ExpandedSmartspacerSession(
         }
         val complications = splitLists.second.map { it.page }
         val addComplications = {
-            list.add(Item.Complications(complications.extractComplications(), isDark))
+            list.add(Item.Complications(complications.extractComplications(), applyShadow, isDark))
         }
         if(complications.isNotEmpty() && settings.complicationsFirst) {
             addComplications()
@@ -282,7 +291,7 @@ class ExpandedSmartspacerSession(
                 isDark,
                 settings.useGoogleSans
             )
-            list.add(Item.Target(it.page, it.target?.id, extras.isNotEmpty(), isDark))
+            list.add(Item.Target(it.page, it.target?.id, extras.isNotEmpty(), applyShadow, isDark))
             //Force a new line if any extras are being shown alongside this Target
             if(extras.isNotEmpty()) {
                 list.add(Item.Spacer(isDark))
@@ -464,6 +473,7 @@ class ExpandedSmartspacerSession(
             val target: SmartspaceTarget,
             val parentId: String?,
             val hasExtras: Boolean,
+            val applyShadow: Boolean,
             override val isDark: Boolean
         ): Item(Type.TARGET, isDark) {
             override fun getStaticId() = "${parentId ?: "default"}_${target.smartspaceTargetId}"
@@ -471,6 +481,7 @@ class ExpandedSmartspacerSession(
 
         data class Complications(
             val complications: ExpandedComplications,
+            val showShadow: Boolean,
             override val isDark: Boolean
         ): Item(Type.COMPLICATIONS, isDark)
 
@@ -578,7 +589,8 @@ class ExpandedSmartspacerSession(
         val searchItem: Item.Search?,
         val isDark: Boolean,
         val useGoogleSans: Boolean,
-        val complicationsFirst: Boolean
+        val complicationsFirst: Boolean,
+        val applyShadow: Boolean
     )
 
     data class ExpandedViewState(

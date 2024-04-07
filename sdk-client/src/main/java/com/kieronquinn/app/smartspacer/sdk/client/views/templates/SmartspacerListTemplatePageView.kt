@@ -31,14 +31,15 @@ class SmartspacerListTemplatePageView(context: Context): SmartspacerBaseTemplate
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         val template = target.templateData as SubListTemplateData
         val items = template.subListTexts
-        binding.smartspaceViewListItem1.setItem(items.getOrNull(0), tintColour)
-        binding.smartspaceViewListItem2.setItem(items.getOrNull(1), tintColour)
-        binding.smartspaceViewListItem3.setItem(items.getOrNull(2), tintColour)
+        binding.smartspaceViewListItem1.setItem(items.getOrNull(0), tintColour, applyShadow)
+        binding.smartspaceViewListItem2.setItem(items.getOrNull(1), tintColour, applyShadow)
+        binding.smartspaceViewListItem3.setItem(items.getOrNull(2), tintColour, applyShadow)
         template.subListIcon?.let { binding.smartspaceViewListIcon.setIcon(it, tintColour) }
         binding.smartspaceViewListIcon.isVisible = template.subListIcon != null
         binding.smartspaceViewTemplateRoot.setOnClick(
@@ -46,8 +47,9 @@ class SmartspacerListTemplatePageView(context: Context): SmartspacerBaseTemplate
         )
     }
 
-    private fun TextView.setItem(item: Text?, tintColour: Int) {
+    private fun TextView.setItem(item: Text?, tintColour: Int, applyShadow: Boolean) {
         isVisible = item != null
+        setShadowEnabled(applyShadow)
         item?.let { setText(it, tintColour) }
     }
 
