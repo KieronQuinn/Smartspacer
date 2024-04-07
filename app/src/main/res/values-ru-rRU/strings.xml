@@ -372,6 +372,8 @@
     <string name="requirement_app_prediction_incompatible">Это требование несовместимо с вашим устройством по причине отсутствия службы Подсказок Приложений</string>
     <string name="requirement_app_prediction_enhanced">Требуется Усиленный режим, включите его в настройках</string>
     <string name="requirement_app_prediction_configuration_title">Выберите приложение</string>
+    <string name="requirement_music_playing_label">Music Playing</string>
+    <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">Разрешить</string>
     <string name="permission_dialog_widget_title_suffix">доступ к виджетам с помощью Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">После этого шага вам может быть предложено выдать системные разрешения</string>
@@ -668,6 +670,8 @@
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
+    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Никогда</string>
     <string name="expanded_settings_open_mode_never_content">Запускает действия по нажатию на Цель вместо открытия Расширенного Пространства</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Если у Цели есть, что показать</string>
