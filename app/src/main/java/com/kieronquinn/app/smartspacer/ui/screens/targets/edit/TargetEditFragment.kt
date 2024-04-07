@@ -31,8 +31,10 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationIns
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
 import com.kieronquinn.app.smartspacer.utils.extensions.expandProgress
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
+import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -77,12 +79,16 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
         }
     }
 
-    private fun setupPreview() = with(binding.editPreview.root) {
+    private fun setupPreview() = with(binding.editPreview) {
         whenResumed {
             binding.editAppBar.expandProgress().collect {
-                alpha = maxOf((it - 0.6666f) * 3f, 0f)
+                root.alpha = maxOf((it - 0.6666f) * 3f, 0f)
             }
         }
+        val showShadow = !requireContext().isDarkMode
+        targetEditPreviewTitle.setShadowEnabled(showShadow)
+        targetEditPreviewSubtitle.setShadowEnabled(showShadow)
+        targetEditPreviewIcon.setShadowEnabled(showShadow)
     }
 
     private fun setupContent() = with(binding.editContentRecyclerview) {

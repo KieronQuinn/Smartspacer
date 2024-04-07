@@ -46,9 +46,10 @@ class SmartspacerCardImagesPageView(context: Context): SmartspacerBaseTemplatePa
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         val template = target.templateData as SubImageTemplateData
         val aspectRatio = template.subImageAction?.extras
             ?.getString(IMAGE_DIMENSION_RATIO) ?: DEFAULT_ASPECT_RATIO

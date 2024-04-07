@@ -46,6 +46,7 @@ open class SmartspacerView: FrameLayout {
     }
 
     private var _tintColour: Int? = null
+    private var applyShadowIfRequired: Boolean = true
 
     private val tintColour
         get() = _tintColour ?: defaultTintColour
@@ -61,21 +62,33 @@ open class SmartspacerView: FrameLayout {
     /**
      *  Sets the Target currently shown on the View, with an optional [listener].
      *
-     *  You can also pass a [tintColour], which will call [setTintColour] before setting the Target,
-     *  but only make one update pass with the new Target.
+     *  You can also pass a [tintColour], and/or [applyShadowIfRequired], which will call
+     *  [setTintColour]/[setApplyShadowIfRequired] before setting the Target, but only make one
+     *  update pass with the new Target.
      */
     fun setTarget(
         target: SmartspaceTarget?,
         listener: SmartspaceTargetInteractionListener?,
-        tintColour: Int? = null
+        tintColour: Int? = null,
+        applyShadowIfRequired: Boolean? = null
     ) {
         if(tintColour != null){
             setTintColour(tintColour, false)
         }
+        if(applyShadowIfRequired != null){
+            setApplyShadowIfRequired(applyShadowIfRequired, false)
+        }
         this.target = target
         this.listener = listener
-        val view = createView(target ?: generateBlankTarget(), listener, this.tintColour)
-            ?: createFallbackFragment(this.tintColour) ?: return
+        val view = createView(
+            target ?: generateBlankTarget(),
+            listener,
+            this.tintColour,
+            this.applyShadowIfRequired
+        ) ?: createFallbackFragment(
+            this.tintColour,
+            this.applyShadowIfRequired
+        ) ?: return
         removeAllViews()
         addView(view)
     }
@@ -86,6 +99,25 @@ open class SmartspacerView: FrameLayout {
      */
     fun setTintColour(tintColour: Int) {
         setTintColour(tintColour, true)
+    }
+
+    /**
+     *  Sets whether to apply a shadow below text & icons in the Smartspace, for visibility on the
+     *  wallpaper. Shadows are only shown on light text, they are never shown on dark. Setting
+     *  this to `false` disables them entirely. This will automatically re-apply the current Target,
+     *  if it is set.
+     */
+    fun setApplyShadowIfRequired(applyShadowIfRequired: Boolean) {
+        setApplyShadowIfRequired(applyShadowIfRequired, true)
+    }
+
+    private fun setApplyShadowIfRequired(applyShadowIfRequired: Boolean, reapply: Boolean = true) {
+        this.applyShadowIfRequired = applyShadowIfRequired
+        if(reapply) {
+            target?.let {
+                setTarget(target, listener)
+            }
+        }
     }
 
     private fun setTintColour(tintColour: Int, reapply: Boolean = true) {
@@ -107,7 +139,8 @@ open class SmartspacerView: FrameLayout {
     private fun createView(
         target: SmartspaceTarget,
         listener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadowIfRequired: Boolean
     ): SmartspacerBasePageView<*>? {
         return try {
             val clazz = if(target.templateData != null){
@@ -139,15 +172,25 @@ open class SmartspacerView: FrameLayout {
                     else -> SmartspacerUndefinedFeaturePageView::class.java
                 }
             }
-            SmartspacerBasePageView.createInstance(context, clazz, target, listener, tintColour)
+            SmartspacerBasePageView.createInstance(
+                context,
+                clazz,
+                target,
+                listener,
+                tintColour,
+                applyShadowIfRequired
+            )
         }catch (e: Exception) {
             Log.d(TAG, "Failed to create fragment for target ${target.smartspaceTargetId}", e)
             null
         }
     }
 
-    private fun createFallbackFragment(tintColour: Int): SmartspacerBasePageView<*>? {
-        return createView(generateBlankTarget(), null, tintColour)
+    private fun createFallbackFragment(
+        tintColour: Int,
+        applyShadowIfRequired: Boolean
+    ): SmartspacerBasePageView<*>? {
+        return createView(generateBlankTarget(), null, tintColour, applyShadowIfRequired)
     }
 
     private fun generateBlankTarget(): SmartspaceTarget = SmartspaceTarget(

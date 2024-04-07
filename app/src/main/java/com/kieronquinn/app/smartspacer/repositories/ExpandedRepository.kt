@@ -319,7 +319,7 @@ class ExpandedRepositoryImpl(
             widget.spanY != null -> widget.spanY * widgetRowHeight
             else -> widget.provider.getHeight(context, availableWidth, widgetRowHeight)
         }
-        val cacheTag = CacheTag(appWidgetId, width, height, sessionId)
+        val cacheTag = CacheTag(appWidgetId, width, height, widget.useGoogleSans, sessionId)
         val widgetWidth = with(context.resources) {
             px(width).toFloat()
         }
@@ -363,6 +363,7 @@ class ExpandedRepositoryImpl(
                     && it.key.sessionId == cacheTag.sessionId
                     && it.key.height != cacheTag.height
                     && it.key.width != cacheTag.width
+                    && it.key.useGoogleSans != cacheTag.useGoogleSans
         }
         toDestroy.forEach {
             appWidgetHost.destroyView(it.value)
@@ -371,7 +372,11 @@ class ExpandedRepositoryImpl(
     }
 
     data class CacheTag(
-        val appWidgetId: Int, val width: Int, val height: Int, val sessionId: String?
+        val appWidgetId: Int,
+        val width: Int,
+        val height: Int,
+        val useGoogleSans: Boolean,
+        val sessionId: String?
     )
 
 }

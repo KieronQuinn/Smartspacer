@@ -178,6 +178,11 @@ interface SmartspacerSettingsRepository {
     val expandedComplicationsFirst: SmartspacerSetting<Boolean>
 
     /**
+     *  Whether to show the shadow on light text in Expanded Smartspace
+     */
+    val expandedShowShadow: SmartspacerSetting<Boolean>
+
+    /**
      *  Whether the OEM Smartspace Service should be enabled
      */
     @IgnoreInBackup //Ignored as we can't guarantee permission will be kept
@@ -423,6 +428,9 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_EXPANDED_COMPLICATIONS_FIRST = "expanded_complications_first"
         private const val DEFAULT_EXPANDED_COMPLICATIONS_FIRST = false
 
+        private const val KEY_EXPANDED_SHOW_SHADOW = "expanded_show_shadow"
+        private const val DEFAULT_EXPANDED_SHOW_SHADOW = true
+
         private const val KEY_OEM_SMARTSPACE_ENABLED = "oem_smartspace_enabled"
         private const val DEFAULT_OEM_SMARTSPACE_ENABLED = false
 
@@ -507,6 +515,7 @@ class SmartspacerSettingsRepositoryImpl(
     override val expandedMultiColumnEnabled = boolean(KEY_EXPANDED_MULTI_COLUMN_ENABLED, DEFAULT_EXPANDED_MULTI_COLUMN_ENABLED)
     override val expandedXposedEnabled = boolean(KEY_EXPANDED_XPOSED_ENABLED, DEFAULT_EXPANDED_XPOSED_ENABLED)
     override val expandedComplicationsFirst = boolean(KEY_EXPANDED_COMPLICATIONS_FIRST, DEFAULT_EXPANDED_COMPLICATIONS_FIRST)
+    override val expandedShowShadow = boolean(KEY_EXPANDED_SHOW_SHADOW, DEFAULT_EXPANDED_SHOW_SHADOW)
     override val oemSmartspaceEnabled = boolean(KEY_OEM_SMARTSPACE_ENABLED, DEFAULT_OEM_SMARTSPACE_ENABLED)
     override val oemHideIncompatible = boolean(KEY_OEM_HIDE_INCOMPATIBLE, DEFAULT_OEM_HIDE_INCOMPATIBLE)
     override val updateCheckEnabled = boolean(KEY_UPDATE_CHECK_ENABLED, DEFAULT_UPDATE_CHECK_ENABLED)

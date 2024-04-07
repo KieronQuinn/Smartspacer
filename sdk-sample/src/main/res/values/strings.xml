@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Smartspacer SDK Sample</string>
     <string name="configuration_label">Smartspacer SDK Sample Settings</string>
+    <string name="show_shadow">Show shadow if needed</string>
 </resources>

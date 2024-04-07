@@ -28,15 +28,19 @@ class SmartspacerCardTemplatePageView(context: Context): SmartspacerBaseTemplate
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         val template = target.templateData as SubCardTemplateData
         binding.smartspacePageCardText.setText(template.subCardText, tintColour)
         binding.smartspacePageCardIcon.setIcon(template.subCardIcon, tintColour)
         binding.smartspacePageCard.setOnClick(
             target, template.subCardAction, interactionListener
         )
+
+        binding.smartspacePageCardText.setShadowEnabled(applyShadow)
+        binding.smartspacePageCardIcon.setShadowEnabled(applyShadow)
     }
 
 }

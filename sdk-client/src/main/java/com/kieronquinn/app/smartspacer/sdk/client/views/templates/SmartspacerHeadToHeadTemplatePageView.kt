@@ -28,9 +28,10 @@ class SmartspacerHeadToHeadTemplatePageView(context: Context): SmartspacerBaseTe
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         val template = target.templateData as HeadToHeadTemplateData
         template.headToHeadTitle?.let {
             binding.smartspacePageHeadToHeadTitle.setText(it, tintColour)
@@ -50,6 +51,12 @@ class SmartspacerHeadToHeadTemplatePageView(context: Context): SmartspacerBaseTe
         binding.smartspacePageHeadToHead.setOnClick(
             target, template.headToHeadAction, interactionListener
         )
+
+        binding.smartspacePageHeadToHeadTitle.setShadowEnabled(applyShadow)
+        binding.smartspacePageHeadToHead1Text.setShadowEnabled(applyShadow)
+        binding.smartspacePageHeadToHead1Icon.setShadowEnabled(applyShadow)
+        binding.smartspacePageHeadToHead2Text.setShadowEnabled(applyShadow)
+        binding.smartspacePageHeadToHead2Icon.setShadowEnabled(applyShadow)
     }
 
 }

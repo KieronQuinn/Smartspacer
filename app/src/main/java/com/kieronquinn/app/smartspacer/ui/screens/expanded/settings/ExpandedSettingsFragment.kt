@@ -177,8 +177,15 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
                 tintColour,
                 viewModel::onTintColourChanged,
-                TintColour.values().toList()
+                TintColour.entries
             ) { it.label },
+            GenericSettingsItem.SwitchSetting(
+                showShadow,
+                getString(R.string.expanded_show_shadow_title),
+                getString(R.string.expanded_show_shadow_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_shadow),
+                onChanged = viewModel::onShowShadowChanged
+            ),
             GenericSettingsItem.Dropdown(
                 getString(R.string.expanded_settings_background_mode_title),
                 getString(

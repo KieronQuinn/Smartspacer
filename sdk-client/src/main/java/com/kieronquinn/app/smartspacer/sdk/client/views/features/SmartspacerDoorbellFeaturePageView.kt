@@ -39,9 +39,10 @@ class SmartspacerDoorbellFeaturePageView(context: Context): SmartspacerBaseFeatu
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) = with(binding) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         loopJob?.cancel()
         val state = DoorbellState.fromTarget(target) ?: return
         val tint = ColorStateList.valueOf(tintColour)

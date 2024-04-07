@@ -1,8 +1,10 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
+import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
+import android.widget.TextView
 import androidx.core.text.getSpans
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.utils.spans.SmartspacerForegroundColorSpan
@@ -42,4 +44,13 @@ fun Text.cloneWithTextColour(colour: Int): Text {
 
 fun getSpanPriorityFlags(priority: Int): Int {
     return priority shl Spanned.SPAN_PRIORITY_SHIFT
+}
+
+fun TextView.setShadowEnabled(enabled: Boolean) {
+    setShadowLayer(
+        shadowRadius,
+        shadowDx,
+        shadowDy,
+        if(enabled) Color.BLACK else Color.TRANSPARENT
+    )
 }

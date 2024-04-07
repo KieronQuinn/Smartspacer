@@ -16,7 +16,6 @@ import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostV
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
-import com.kieronquinn.app.smartspacer.utils.extensions.px
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceUriActionsWithProxy
 import com.kieronquinn.app.smartspacer.utils.extensions.updateAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteCollectionItemsWrapper
@@ -182,7 +181,7 @@ class WidgetRepositoryImpl(
             val options = appWidgetManager.getAppWidgetOptions(widget.appWidgetId)
             val width = it.width ?: displayPortraitWidth
             val height = it.height ?: (displayPortraitHeight / 4f).roundToInt()
-            updateAppWidgetSize(context, width.px.toFloat(), height.px.toFloat(), options)
+            updateAppWidgetSize(context, width.toFloat(), height.toFloat(), options)
             this@setup
         }.collectLatest {
             when(it) {

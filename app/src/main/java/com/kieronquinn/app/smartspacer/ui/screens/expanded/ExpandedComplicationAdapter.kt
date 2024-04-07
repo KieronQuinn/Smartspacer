@@ -14,11 +14,13 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedComplicationAdapter.ViewHolder
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.Complications.Complication
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 
 class ExpandedComplicationAdapter(
     context: Context,
     private var items: List<Complication>,
     private val tintColour: Int,
+    private val showShadow: Boolean,
     private val interactionListener: SmartspaceTargetInteractionListener
 ): RecyclerView.Adapter<ViewHolder>() {
 
@@ -38,6 +40,8 @@ class ExpandedComplicationAdapter(
     }
 
     private fun ViewHolder.setup(complication: Complication.Action) = with(binding) {
+        expandedComplicationText.setShadowEnabled(showShadow)
+        expandedComplicationIcon.setShadowEnabled(showShadow)
         expandedComplicationText.setText(complication.smartspaceAction.title, tintColour)
         val shouldTint = complication.parent.shouldHeaderTintIcon()
         val icon = complication.smartspaceAction.icon?.let { icon ->
@@ -48,6 +52,8 @@ class ExpandedComplicationAdapter(
     }
 
     private fun ViewHolder.setup(complication: Complication.SubItemInfo) = with(binding) {
+        expandedComplicationText.setShadowEnabled(showShadow)
+        expandedComplicationIcon.setShadowEnabled(showShadow)
         expandedComplicationIcon.setIcon(complication.info.icon, tintColour)
         complication.info.text?.let { text -> expandedComplicationText.setText(text, tintColour) }
         root.setOnClick(complication.parent, complication.info.tapAction, interactionListener)

@@ -731,6 +731,15 @@
             </intent-filter>
         </provider>
 
+        <provider
+            android:name=".components.smartspace.requirements.MusicPlayingRequirement"
+            android:authorities="${applicationId}.requirement.music"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.REQUIREMENT" />
+            </intent-filter>
+        </provider>
+
         <!-- Built in notifications -->
         <provider
             android:name=".components.smartspace.notifications.NotificationTargetNotification"

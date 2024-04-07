@@ -15,9 +15,27 @@ class CardPagerAdapter(
     private var smartspaceTargets = targets
     private val holders = SparseArray<ViewHolder>()
 
-    fun setTargets(newTargets: List<SmartspaceTarget>) {
+    private var tintColour: Int? = null
+    private var applyShadowIfRequired: Boolean? = null
+    private var forceReload = false
+
+    fun setTargets(
+        newTargets: List<SmartspaceTarget>
+    ) {
         targets.clear()
         targets.addAll(newTargets)
+        notifyDataSetChanged()
+    }
+
+    fun setTintColour(tintColour: Int) {
+        this.tintColour = tintColour
+        forceReload = true
+        notifyDataSetChanged()
+    }
+
+    fun setApplyShadowIfRequired(applyShadowIfRequired: Boolean) {
+        this.applyShadowIfRequired = applyShadowIfRequired
+        forceReload = true
         notifyDataSetChanged()
     }
 
@@ -44,9 +62,10 @@ class CardPagerAdapter(
     override fun getItemPosition(obj: Any): Int {
         val viewHolder = obj as ViewHolder
         val target = getTargetAtPosition(viewHolder.position)
-        if (viewHolder.target === target) {
+        if (viewHolder.target === target && !forceReload) {
             return POSITION_UNCHANGED
         }
+        forceReload = false
         if (target == null
             || getFeatureType(target) != getFeatureType(viewHolder.target)
             || target.smartspaceTargetId != viewHolder.target.smartspaceTargetId
@@ -68,7 +87,7 @@ class CardPagerAdapter(
     private fun onBindViewHolder(viewHolder: ViewHolder) {
         val target = smartspaceTargets[viewHolder.position]
         val card = viewHolder.card
-        card.setTarget(target, interactionListener)
+        card.setTarget(target, interactionListener, tintColour, applyShadowIfRequired)
     }
 
     override fun getCount() = smartspaceTargets.size
@@ -82,7 +101,7 @@ class CardPagerAdapter(
         target: SmartspaceTarget
     ): SmartspacerView {
         return SmartspacerView(container.context).apply {
-            setTarget(target, interactionListener)
+            setTarget(target, interactionListener, tintColour, applyShadowIfRequired)
         }
     }
 

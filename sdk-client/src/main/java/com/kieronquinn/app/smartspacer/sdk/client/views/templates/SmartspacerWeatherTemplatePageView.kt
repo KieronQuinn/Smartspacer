@@ -31,11 +31,13 @@ class SmartspacerWeatherTemplatePageView(context: Context): SmartspacerBaseTempl
     override suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
-        tintColour: Int
+        tintColour: Int,
+        applyShadow: Boolean
     ) {
-        super.setTarget(target, interactionListener, tintColour)
+        super.setTarget(target, interactionListener, tintColour, applyShadow)
         with(binding.smartspacePageTemplateBasicClock.smartspaceViewTitle){
             setTextColor(tintColour)
+            setShadowEnabled(applyShadow)
             format12Hour = dateFormat
             format24Hour = dateFormat
             setOnClickListener {

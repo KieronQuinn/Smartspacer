@@ -34,6 +34,8 @@ constructor(
     private val mKeyShadowOffsetX = 0.5f.dp
     private val mKeyShadowOffsetY = 0.5f.dp
 
+    var applyShadow: Boolean = true
+
     private val mDoubleShadowNode by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             createShadowRenderNode()
@@ -85,7 +87,7 @@ constructor(
 
     override fun draw(canvas: Canvas) {
         val doubleShadowNode = mDoubleShadowNode
-        if (canvas.isHardwareAccelerated && doubleShadowNode != null) {
+        if (canvas.isHardwareAccelerated && applyShadow && doubleShadowNode != null) {
             if (!doubleShadowNode.hasDisplayList()) {
                 // Record render node if its display list is not recorded or discarded
                 // (which happens when it's no longer drawn by anything).

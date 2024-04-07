@@ -2,7 +2,9 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 
 import android.graphics.Bitmap
 import android.os.Parcel
+import android.widget.ImageView
 import com.kieronquinn.app.smartspacer.providers.SmartspacerProxyContentProvider
+import com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
 import android.app.smartspace.uitemplatedata.Icon as SystemIcon
 import android.graphics.drawable.Icon as AndroidIcon
@@ -73,4 +75,10 @@ fun Icon.isLoadable(): Boolean {
 fun Icon_createEmptyIcon(): AndroidIcon {
     val bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8)
     return AndroidIcon.createWithBitmap(bitmap)
+}
+
+fun ImageView.setShadowEnabled(enabled: Boolean) {
+    //Shadowing is only available on the DoubleShadowImageView
+    if(this !is DoubleShadowImageView) return
+    applyShadow = enabled
 }
