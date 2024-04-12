@@ -208,8 +208,12 @@ public class LocalActivityManagerCompat {
             if (desiredState == RESUMED) {
                 if (localLOGV) Log.v(TAG, r.id + ": resuming");
                 //mActivityThread.performResumeActivity(r, true, "moveToState-INITIALIZING");
-                ActivityThreadCompat.performResumeActivity(r, mActivityThread, true, "moveToState-INITIALIZING");
-                r.curState = RESUMED;
+                try {
+                    ActivityThreadCompat.performResumeActivity(r, mActivityThread, true, "moveToState-INITIALIZING");
+                    r.curState = RESUMED;
+                }catch (NullPointerException exception) {
+                    //System issue? Can't resume if the system has no log
+                }
             }
 
             // Don't do anything more here.  There is an important case:
