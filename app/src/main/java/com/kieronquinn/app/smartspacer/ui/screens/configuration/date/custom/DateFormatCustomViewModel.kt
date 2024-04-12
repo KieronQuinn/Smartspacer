@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.time.DateTimeException
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -65,7 +66,11 @@ class DateFormatCustomViewModelImpl(
         }catch (e: IllegalArgumentException) {
             null
         }
-        return dateFormat?.format(ZonedDateTime.now())
+        return try {
+            dateFormat?.format(ZonedDateTime.now())
+        }catch (e: DateTimeException){
+            null
+        }
     }
 
 }

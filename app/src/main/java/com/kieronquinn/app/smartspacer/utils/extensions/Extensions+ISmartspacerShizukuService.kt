@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
+import android.os.DeadObjectException
 import android.os.RemoteException
 import com.kieronquinn.app.smartspacer.IRunningAppObserver
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
@@ -12,7 +13,11 @@ fun ISmartspacerShizukuService.runningApp() = callbackFlow {
             trySend(packageName)
         }
     }
-    setProcessObserver(observer)
+    try {
+        setProcessObserver(observer)
+    }catch (e: DeadObjectException){
+        //Service died
+    }
     awaitClose {
         try {
             setProcessObserver(null)

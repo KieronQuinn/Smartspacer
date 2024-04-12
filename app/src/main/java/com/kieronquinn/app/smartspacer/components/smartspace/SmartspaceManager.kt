@@ -80,7 +80,9 @@ class SmartspaceManager(private val context: Context): ISmartspaceManager.Stub()
         val smartspaceSessionId = SmartspaceSessionId(sessionId)
         val session = getSession(smartspaceSessionId) ?: return false
         unregisterSmartspaceUpdates(sessionId, callback)
-        callbacks.add(Pair(smartspaceSessionId, callback))
+        synchronized(callbacksLock) {
+            callbacks.add(Pair(smartspaceSessionId, callback))
+        }
         session.lastTargets?.let {
             onSmartspaceUpdate(smartspaceSessionId, it)
         }
