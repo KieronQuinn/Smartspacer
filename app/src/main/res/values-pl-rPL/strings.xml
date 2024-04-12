@@ -372,6 +372,8 @@
     <string name="requirement_app_prediction_incompatible">This Requirement is not compatible with your device as it does not have an System App Prediction Service</string>
     <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
     <string name="requirement_app_prediction_configuration_title">Wybierz aplikację</string>
+    <string name="requirement_music_playing_label">Music Playing</string>
+    <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">Zezwól</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
@@ -668,6 +670,8 @@
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
+    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Never</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour pouvoir remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres de Smartspace étendu dans Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -372,6 +372,8 @@
     <string name="requirement_app_prediction_incompatible">Cette condition est incompatible avec votre appareil car il n\'a pas de service système de prédiction d\'applications</string>
     <string name="requirement_app_prediction_enhanced">Cette condition nécessite l\'activation du mode amélioré, activez-le dans les paramètres</string>
     <string name="requirement_app_prediction_configuration_title">Sélectionnez une application</string>
+    <string name="requirement_music_playing_label">Musique en cours de lecture</string>
+    <string name="requirement_music_playing_content">Afficher uniquement lorsqu\'il y a de la musique en cours de lecture</string>
     <string name="permission_dialog_widget_title_prefix">Autoriser</string>
     <string name="permission_dialog_widget_title_suffix">d\'accéder aux widgets par Smartspacer ?</string>
     <string name="permission_dialog_widget_title_warning">Une autorisation système pourra vous être demandée à la suite de cette étape</string>
@@ -668,6 +670,8 @@
     <string name="expanded_settings_enable_columns_content">Sur les appareils dont la largeur est suffisante, afficher les cibles Smartspacer, le contenu additionnel et les widgets personnalisés dans plusieurs colonnes</string>
     <string name="expanded_complications_first_title">Complications en premier</string>
     <string name="expanded_complications_first_content">Disposer vos complications en grille au-dessus de toutes les cibles, au lieu de remplir l\'espace autour des cibles et d\'afficher les complications restantes en-dessous</string>
+    <string name="expanded_show_shadow_title">Ombres du texte et des icônes</string>
+    <string name="expanded_show_shadow_content">Afficher une ombre derrière le texte et les icônes, permettant de les rendre lisibles quel que soit votre fond d\'écran</string>
     <string name="expanded_settings_open_mode_never_title">Jamais</string>
     <string name="expanded_settings_open_mode_never_content">Exécuter les actions de la cible, plutôt qu\'ouvrir Smartspace étendu</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Si la cible a des options dans Smartspace étendu</string>
