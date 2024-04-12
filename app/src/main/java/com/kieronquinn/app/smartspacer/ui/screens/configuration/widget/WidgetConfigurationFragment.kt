@@ -311,7 +311,7 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 widgetConfigurationTabs.selectTab(if(state.widget.listMode) 1 else 0)
                 widgetConfigurationPreview.displayedChild = if(state.widget.listMode) 1 else 0
                 if(state.hasGrantedAccessibility) {
-                    requireActivity().setResult(Activity.RESULT_OK)
+                    requireActivity().setResult(Activity.RESULT_OK, Intent())
                     widgetConfigurationTabs.isVisible = true
                     widgetConfigurationBackground.isVisible = true
                     widgetConfigurationSpacer.isVisible = false
