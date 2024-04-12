@@ -112,4 +112,12 @@
         <item name="android:popupBackground">@drawable/background_menu</item>
     </style>
 
+    <style name="Theme.MaterialComponents.Light.WhitePrimaryText" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.MaterialComponents.WhitePrimaryText" parent="Theme.MaterialComponents">
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
 </resources>

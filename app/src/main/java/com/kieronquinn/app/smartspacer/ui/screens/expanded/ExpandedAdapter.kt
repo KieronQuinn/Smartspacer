@@ -98,9 +98,9 @@ class ExpandedAdapter(
      *  This fixes that by allowing them to load with a raw MaterialComponents theme
      */
     private val themeMaterialComponents = if(isDark) {
-        MonetcompatR.style.Theme_MaterialComponents
+        R.style.Theme_MaterialComponents_WhitePrimaryText
     } else {
-        MonetcompatR.style.Theme_MaterialComponents_Light
+        R.style.Theme_MaterialComponents_Light_WhitePrimaryText
     }
 
     private val context = ContextThemeWrapper(recyclerView.context.applicationContext, theme)

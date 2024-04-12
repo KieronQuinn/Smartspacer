@@ -63,7 +63,7 @@ class ExpandedWidgetOptionsBottomSheetViewModelImpl(
         appWidgetId.filterNotNull(),
         expandedRepository.expandedCustomAppWidgets
     ) { id, widgets ->
-        widgets.first { it.appWidgetId == id }
+        widgets.firstOrNull { it.appWidgetId == id }
     }.stateIn(vmScope, SharingStarted.Eagerly, null)
 
     override val state = combine(

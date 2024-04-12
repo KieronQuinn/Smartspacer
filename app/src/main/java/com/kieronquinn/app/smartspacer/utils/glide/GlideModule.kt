@@ -140,8 +140,10 @@ class GlideModule: AppGlideModule(), KoinComponent {
     ) {
         loadScope.launch(Dispatchers.IO) {
             val dpi = context.resources.configuration.densityDpi
-            val previewBitmap = widget.info.loadPreviewImage(context, dpi)?.toBitmap()?.trim()
-                ?.resize(widget.width, widget.height)
+            val previewBitmap = if(widget.width > 0 && widget.height > 0) {
+                widget.info.loadPreviewImage(context, dpi)?.toBitmap()?.trim()
+                    ?.resize(widget.width, widget.height)
+            }else null
             val preview = if(previewBitmap != null) {
                 RoundedBitmapDrawableFactory.create(context.resources, previewBitmap)
                     .apply { cornerRadius = 16.dp.toFloat() }

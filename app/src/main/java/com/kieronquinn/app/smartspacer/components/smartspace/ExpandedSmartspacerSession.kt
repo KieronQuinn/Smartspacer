@@ -8,6 +8,8 @@ import android.content.pm.LauncherApps.ShortcutQuery.FLAG_MATCH_MANIFEST
 import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
 import android.graphics.Bitmap
+import android.os.DeadObjectException
+import android.os.RemoteException
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
@@ -445,7 +447,12 @@ class ExpandedSmartspacerSession(
      */
     private suspend fun ShortcutInfo.getAppShortcut(): AppShortcut? {
         val icon = shizukuServiceRepository.runWithService {
-            it.getAppShortcutIcon(`package`, id)
+            try {
+                it.getAppShortcutIcon(`package`, id)
+            }catch (e: DeadObjectException){
+                //Service died
+                null
+            }
         }.unwrap() ?: return null
         return AppShortcut(shortLabel ?: longLabel ?: id, icon, `package`, id)
     }
