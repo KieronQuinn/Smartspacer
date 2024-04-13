@@ -40,8 +40,8 @@
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
     <string name="widget_configuration_tab_horizontal">Horizontal</string>
-    <string name="widget_configuration_tab_vertical">Vertical</string>
-    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_tab_vertical">Vertikal</string>
+    <string name="widget_configuration_horizontal_info"><b>Hinweis:</b> Aufgrund einer Android-Beschränkung können Widgets nicht horizontal gescrollt werden. Stattdessen hat das Smartspacer-Widget Pfeiltasten, mit denen die Seiten geändert werden können.</string>
     <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">Aktiviere Bedienungshilfen</string>
     <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Akku sparen.</string>
