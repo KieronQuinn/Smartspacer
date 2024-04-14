@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="smartspace_accessibility_smartspace_page">Page %1$d of %2$d</string>
-    <string name="smartspace_long_press_popup_dismiss">Dismiss</string>
-    <string name="smartspace_long_press_popup_feedback">Feedback</string>
-    <string name="smartspace_long_press_popup_about">About this content</string>
-    <string name="smartspace_long_press_popup_settings">Settings</string>
-    <string name="smartspace_long_press_popup_failed_to_launch">Failed to launch action</string>
-    <string name="smartspace_toast_could_not_dismiss">This Target cannot be dismissed</string>
+    <string name="smartspace_accessibility_smartspace_page">Página %1$d de %2$d</string>
+    <string name="smartspace_long_press_popup_dismiss">Dispensar</string>
+    <string name="smartspace_long_press_popup_feedback">Opinião</string>
+    <string name="smartspace_long_press_popup_about">Mais detalhes</string>
+    <string name="smartspace_long_press_popup_settings">Configurações</string>
+    <string name="smartspace_long_press_popup_failed_to_launch">Falha ao iniciar a ação</string>
+    <string name="smartspace_toast_could_not_dismiss">Este destaque não pode ser dispensado</string>
 </resources>
