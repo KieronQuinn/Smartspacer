@@ -51,7 +51,7 @@
     <string name="widget_configuration_is_lock_screen_content">Ative <b>apenas</b> se este widget estiver sendo adicionado à tela de bloqueio. \nIsso <b>não</b> adiciona o widget à tela de bloqueio por si só; baixe um aplicativo da Google Play, como \"Lockscreen Widgets\", para fazer isso.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">Opção indisponível para este widget. Observe que o Smartspacer não pode ser usado para ativar a exibição de widgets na tela de bloqueio. Para fazer isso, baixe um aplicativo do Google Play como “Lockscreen Widgets”.</string>
     <string name="widget_configuration_page_single_title">Pagina Única</string>
-    <string name="widget_configuration_page_single_content">Bloqueie o widget para exibir apenas uma página de Destaque e Complemento (se o espaço permitir). Isso significa que você só verá seu Destaque/Complemento principal no widget.</string>
+    <string name="widget_configuration_page_single_content">Bloqueie o widget para exibir apenas uma página de destaque e complemento (se o espaço permitir). Isso significa que você só verá seu destaque/complemento principal no widget.</string>
     <string name="widget_configuration_customisation_title">Costumização</string>
     <string name="widget_configuration_page_arrows_title">Exibir Controles de Página</string>
     <string name="widget_configuration_page_arrows_content">Ative as setas para mudar de página facilmente. Se a opção estiver desativada, toque nos pontos que representam as páginas para passar para a próxima página. Quando chegar à última página, pressionar mais o levará de volta à primeira página.</string>
@@ -70,7 +70,7 @@
     <string name="widget_configuration_mock_complication_title">Complemento</string>
     <string name="widget_options_configure">Configurar Widget</string>
     <string name="accessibility_service_label">Serviço de Widget do Smartspacer</string>
-    <string name="accessibility_service_description">Permite que o widget do Smartspacer mantenha os Destaques e Complementos atualizados, sem consumir a bateria ao mantê-los sempre em execução.\n\nObservação: Não é necessário se você tiver o Modo Avançado habilitado.</string>
+    <string name="accessibility_service_description">Permite que o widget do Smartspacer mantenha os destaques e complementos atualizados, sem consumir a bateria ao mantê-los sempre em execução.\n\nObservação: Não é necessário se você tiver o Modo Avançado habilitado.</string>
     <string name="target_notification_label">Notificações</string>
     <string name="target_notification_description">Exibe notificações de um aplicativo</string>
     <string name="target_notification_description_selected">Exibe notificações do %1s</string>
@@ -534,8 +534,8 @@
     <string name="enhanced_mode_enable_content_native_launcher">• Integre o Smartspace a Launchers compatíveis</string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integre com Smartspace OEM (se disponível)</string>
     <string name="enhanced_mode_enable_content_system">• Exiba Destaques e Complementos do Smartspace do sistema no Smartspacer</string>
-    <string name="enhanced_mode_enable_content_app_prediction">• Usar as sugestões de aplicativos do sistema como condição</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Usar apps recentes como condição</string>
+    <string name="enhanced_mode_enable_content_app_prediction">• Use as sugestões de aplicativos do sistema como condição</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Use aplicativos recentes como condição</string>
     <string name="enhanced_mode_skip_button">Pular</string>
     <string name="enhanced_mode_skip_info">Você ainda pode usar o widget, os destaques, os complementos e as extensões do Smartspacer com o Modo Avançado desativado</string>
     <string name="enhanced_mode_disable_toast">Talvez seja necessário reiniciar o dispositivo para as alterações terem efeito</string>
@@ -543,7 +543,7 @@
     <string name="native_title">Smartspace Nativo</string>
     <string name="native_switch">Usar Smartspace nativo</string>
     <string name="native_switch_info"><b>Importante:</b> Ao habilitar o Smartspace nativo, o Smartspacer reiniciará a interface do sistema. <b>Você pode ver uma mensagem dizendo que a interface do sistema parou e, em seguida, sua tela de bloqueio.</b> Isso é normal, descarte a mensagem e desbloqueie seu dispositivo para continuar.</string>
-    <string name="native_switch_content">O Smartspace nativo integra o Smartspacer ao seu %1s, exibindo alvos e complementos do Smartspacer dentro dele. \nVocê precisará reativar o Smartspace nativo após cada reinicialização. Isso se deve a limitações do sistema.</string>
+    <string name="native_switch_content">O Smartspace nativo integra o Smartspacer ao seu %1s, exibindo alvos e complementos do Smartspacer dentro dele.\nVocê precisará reativar o Smartspace nativo após cada reinicialização. Isso se deve a limitações do sistema.</string>
     <string name="native_switch_content_many">%1s e %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Compatibilidade</string>
@@ -589,7 +589,7 @@
     <string name="target_music_setting_clear_dismissed_title">Limpar apps dispensados</string>
     <string name="target_music_setting_clear_dismissed_content">Limpar a lista de apps dispensados, permitindo que suas músicas apareçam novamente no Smartspace</string>
     <string name="target_music_setting_setting_title">Configurações</string>
-    <string name="target_music_setting_setting_description">Configure se deseja mostrar a capa do álbum e limpar os players rejeitados</string>
+    <string name="target_music_setting_setting_description">Configure se deseja exibir a arte do álbum e Limpar players dispensados</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Configurações do Smartspace Nativo</string>
     <string name="native_mode_settings_title">Smartspace Nativo</string>
@@ -755,19 +755,19 @@
     <string name="plugin_details_install_companion">Obtenha o aplicativo necessário</string>
     <string name="plugin_details_error_title">Erro</string>
     <string name="plugin_details_error_content">Erro ao carregar detalhes da extensão. Verifique sua conexão e se o problema persistir entre em contato com o desenvolvedor da extensão.</string>
-    <string name="plugin_details_incompatible_incompatible_sdk">Este plugin é incompatível com o seu dispositivo porque requer uma versão mais recente do Android (API %1d)</string>
-    <string name="plugin_details_incompatible_missing_feature">Este plugin é incompatível com o seu dispositivo porque requer um recurso indisponível (%1s)</string>
-    <string name="plugin_details_incompatible_missing_app">Este plugin requer a instalação de um aplicativo complementar, toque para fazer o download</string>
+    <string name="plugin_details_incompatible_incompatible_sdk">Esta extensão é incompatível com o seu dispositivo porque requer uma versão mais recente do Android (API %1d)</string>
+    <string name="plugin_details_incompatible_missing_feature">Esta extensão é incompatível com o seu dispositivo porque requer um recurso indisponível (%1s)</string>
+    <string name="plugin_details_incompatible_missing_app">Esta extensão requer a instalação de um aplicativo complementar, toque para fazer o download</string>
     <string name="plugin_details_incompatible_outdated">Este plugin requer uma versão mais recente do Smartspacer, atualize o Smartspacer para poder instalá-lo</string>
     <string name="plugin_details_downloading_title">Baixando o plug-in…</string>
     <string name="plugin_details_download_failed">Falha no download</string>
-    <string name="plugin_settings_title">Repositório de plugins</string>
-    <string name="plugin_settings_content">Altere as configurações relacionadas ao repositório do plugin Smartspacer e desative-o totalmente, se desejar</string>
-    <string name="plugin_settings_enabled">Habilitar repositório de plugins</string>
+    <string name="plugin_settings_title">Repositório de extensão</string>
+    <string name="plugin_settings_content">Altere as configurações relacionadas ao repositório de extensões do Smartspacer e desative-o totalmente, se desejar</string>
+    <string name="plugin_settings_enabled">Usar o repositório de extensões</string>
     <string name="plugin_settings_update_check_enabled_title">Verifique automaticamente se há atualizações</string>
-    <string name="plugin_settings_update_check_enabled_content">Verifique se há atualizações para os plugins do Smartspacer uma vez por dia e seja notificado quando alguma estiver disponível</string>
-    <string name="plugin_settings_url_title">URL do Repositório de Plugins</string>
-    <string name="plugin_settings_url_content"><b>Avançado:</b> Altere a URL para carregar dados do repositório de plugins de</string>
+    <string name="plugin_settings_update_check_enabled_content">Verifique se há atualizações para as extensões do Smartspacer uma vez por dia e seja notificado quando alguma estiver disponível</string>
+    <string name="plugin_settings_url_title">URL do repositório de extensões</string>
+    <string name="plugin_settings_url_content"><b>Avançado:</b> Altere a URL para carregar os dados do repositório de extensões</string>
     <string name="plugin_settings_footer">O Repositório de extensões do Smartspacer permite que você instale e gerencie extensões do Smartspacer, além de encontrar extensões compatíveis com aplicativos instalados em seu dispositivo</string>
     <!-- Update downloader -->
     <string name="snackbar_update">Atualização disponível</string>
@@ -1010,31 +1010,31 @@
     <string name="complication_gmail_settings_account_unselected">Não selecionado</string>
     <string name="complication_gmail_settings_title_labels">Selecionar marcadores</string>
     <string name="complication_gmail_settings_title">Configurações</string>
-    <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
-    <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
+    <string name="complication_gmail_settings_description">Selecione a conta e os marcadores para exibir e-mails não lidos</string>
+    <string name="complication_gmail_settings_toast">Conceda a permissão para e-mails em Permissões &gt; Outras permissões</string>
     <!-- SMS Complication -->
-    <string name="complication_sms_label">SMS Unread</string>
-    <string name="complication_sms_description">Show the number of unread SMS/RCS messages</string>
-    <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
+    <string name="complication_sms_label">SMS Não Lidos</string>
+    <string name="complication_sms_description">Exibir o número de mensagens SMS/RCS não lidas</string>
+    <string name="complication_sms_settings_toast">Conceda a permissão Ler SMS nas Permissões</string>
     <!-- Missed Calls Complication -->
-    <string name="complication_missed_calls_label">Missed Calls</string>
-    <string name="complication_missed_calls_description">Show the number of missed calls</string>
-    <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
+    <string name="complication_missed_calls_label">Chamadas perdidas</string>
+    <string name="complication_missed_calls_description">Exiba o número de chamadas perdidas</string>
+    <string name="complication_missed_calls_settings_toast">Conceda a permissão para o Registro de chamadas em Permissões</string>
     <!-- Next Alarm Complication -->
-    <string name="complication_alarm_label">Next Alarm</string>
-    <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
-    <string name="complication_blank_title">Blank Complication</string>
-    <string name="complication_blank_content">Useful for minimal setups or spacers</string>
+    <string name="complication_alarm_label">Próximo alarme</string>
+    <string name="complication_alarm_description">Exibe o próximo alarme definido, nas próximas 12 horas</string>
+    <string name="complication_blank_title">Complemento vazio</string>
+    <string name="complication_blank_content">Útil para configurações minimalistas ou espaçamentos</string>
     <!-- Recent Apps Requirement -->
-    <string name="requirement_recent_apps_label">Recent App</string>
-    <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
-    <string name="requirement_recent_apps_description_filled">Only show when %1s is in the recent apps, and hide when it is cleared from the list</string>
-    <string name="requirement_recent_apps_description_filled_with_limit">Only show when %1s is in the first %1d recent apps</string>
-    <string name="requirement_recent_apps_description_unsupported">This Requirement requires Enhanced Mode, enable in the settings</string>
-    <string name="requirement_recent_apps_configuration_app_title">Selected App</string>
-    <string name="requirement_recent_apps_configuration_app_content">Not selected</string>
-    <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
-    <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
-    <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
-    <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
+    <string name="requirement_recent_apps_label">Aplicativos recentes</string>
+    <string name="requirement_recent_apps_description">Exibir somente quando um aplicativo específico estiver na lista de aplicativos recentes e será ocultado quando o aplicativo for removido da lista</string>
+    <string name="requirement_recent_apps_description_filled">Exibir somente quando o %1s estiver na lista de aplicativos recentes e será ocultado quando o aplicativo for removido da lista</string>
+    <string name="requirement_recent_apps_description_filled_with_limit">Exibir somente quando %1s estiver entre os %1d aplicativos recentes</string>
+    <string name="requirement_recent_apps_description_unsupported">Esta condição requer o Modo Avançado, ative nas configurações</string>
+    <string name="requirement_recent_apps_configuration_app_title">Apps selecionados</string>
+    <string name="requirement_recent_apps_configuration_app_content">Não selecionado</string>
+    <string name="requirement_recent_apps_configuration_limit_title">Limite</string>
+    <string name="requirement_recent_apps_configuration_limit_content">O número de aplicativos recentes para procurar o aplicativo selecionado: %1s</string>
+    <string name="requirement_recent_apps_configuration_limit_content_bs">O número de aplicativos recentes para procurar o aplicativo selecionado</string>
+    <string name="requirement_recent_apps_configuration_limit_content_unlimited">Ilimitado</string>
 </resources>
