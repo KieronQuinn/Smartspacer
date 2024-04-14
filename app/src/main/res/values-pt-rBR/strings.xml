@@ -846,48 +846,48 @@
     <string name="restore_target_reason_not_installed">A extensão deste destaque não está mais instalada (%1s)</string>
     <string name="restore_target_duplicate">Este destaque já foi adicionado e não pode ser adicionado mais de uma vez. Remova o destaque existente primeiro antes de restaurá-lo.</string>
     <string name="restore_target_collision"><b>Adicionar este destaque substituirá sua configuração atual</b></string>
-    <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
-    <string name="restore_complications_title">Complications</string>
-    <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
-    <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
-    <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
-    <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
-    <string name="restore_requirements_title">Requirements</string>
-    <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
-    <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
-    <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
-    <string name="restore_requirements_collision"><b>Adding this Requirement will overwrite your current config</b></string>
-    <string name="restore_requirements_for">Requirement for: %1s</string>
-    <string name="restore_widgets_title">Restoring Expanded Smartspace widgets…</string>
-    <string name="restore_settings_title">Restoring Smartspacer settings…</string>
-    <string name="restore_complete_title">Restore complete</string>
-    <string name="restore_page_controls_next">Next</string>
+    <string name="restore_target_footer">Toque em um destaque para restaurá-lo.\n<b>Os destaques são adicionados na ordem de restauração</b></string>
+    <string name="restore_complications_title">Complementos</string>
+    <string name="restore_complication_reason_not_installed">A extensão deste complemento não está mais instalada (%1s)</string>
+    <string name="restore_complication_duplicate">Este complemento já foi adicionado e não pode ser adicionado mais de uma vez. Remova o complemento existente primeiro antes de restaurá-lo.</string>
+    <string name="restore_complication_collision"><b>Adicionar este complemento substituirá sua configuração atual</b></string>
+    <string name="restore_complication_footer">Toque em um complemento para restaurá-lo.\n<b>Os complementos são adicionados na ordem de restauração</b></string>
+    <string name="restore_requirements_title">Condições</string>
+    <string name="restore_requirements_reason_not_installed">A extensão que fornece esta condição não está mais instalada (%1s)</string>
+    <string name="restore_requirements_reason_not_added">O destaque ou complemento ao qual esta condição estava vinculada não foi adicionado. Por favor, adicione-o primeiro antes de restaurar sua condição.</string>
+    <string name="restore_requirements_duplicate">Esta condição já foi adicionada e não pode ser adicionada mais de uma vez. Remova a condição existente primeiro antes de restaurá-la.</string>
+    <string name="restore_requirements_collision"><b>Adicionar esta condição substituirá sua configuração atual</b></string>
+    <string name="restore_requirements_for">Condição para: %1s</string>
+    <string name="restore_widgets_title">Criando cópia de segurança dos widgets do Smartspace Expandido…</string>
+    <string name="restore_settings_title">Restaurando as configurações do Smartspacer…</string>
+    <string name="restore_complete_title">Restauração concluída</string>
+    <string name="restore_page_controls_next">Próximo</string>
     <!-- Notification Widget Settings -->
-    <string name="notification_widget_title">Lock Screen Notification</string>
-    <string name="notification_widget_title_short">Lock Screen</string>
-    <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
-    <string name="notification_widget_toggle">Show Notification</string>
-    <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
-    <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
-    <string name="notification_widget_tint_title">Tint</string>
-    <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
+    <string name="notification_widget_title">Notificação na Tela de Bloqueio</string>
+    <string name="notification_widget_title_short">Tela de bloqueio</string>
+    <string name="notification_widget_content">Opções para exibir o Smartspacer como uma notificação na tela de bloqueio</string>
+    <string name="notification_widget_toggle">Exibir notificação</string>
+    <string name="notification_widget_info">Esta opção exibe conteúdo <b>limitado</b> do Smartspacer na Tela de Bloqueio, como uma notificação. Apenas uma página pode ser mostrada, e você precisará expandir a notificação para ver mais do que o conteúdo básico.</string>
+    <string name="notification_widget_notifications_disabled">As notificações estão desativadas, portanto esta opção não funcionará. Toque para ativar.</string>
+    <string name="notification_widget_tint_title">Tonalidade</string>
+    <string name="notification_widget_tint_content">Cor a ser usada para texto e ícones nas notificações: %1s</string>
     <!-- About Footer -->
-    <string name="xda_thread">XDA Thread</string>
+    <string name="xda_thread">Tópico no XDA</string>
     <string name="github">GitHub</string>
-    <string name="libraries">Third party libraries</string>
-    <string name="donate">Donate</string>
-    <string name="twitter">Follow me on Twitter</string>
-    <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
-    <string name="about_contributors">Contributors</string>
+    <string name="libraries">Bibliotecas de terceiros</string>
+    <string name="donate">Faça uma doação</string>
+    <string name="twitter">Siga-me no Twitter</string>
+    <string name="about_version">Versão %1s\nCriada por Kieron Quinn</string>
+    <string name="about_contributors">Colaboradores</string>
     <!-- Contributors -->
-    <string name="about_contributors_icons">Icons</string>
-    <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
+    <string name="about_contributors_icons">Ícones</string>
+    <string name="about_contributors_icons_content"><![CDATA[Ícones por <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Ícones Material Design</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Licença Livre</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Sucesso por Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parts of the Smartspacer SDK contain code based on Lawnchair, under the <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
-    <string name="about_translators">Translators</string>
+    <string name="about_contributors_sdk_content"><![CDATA[Partes do SDK Smartspacer contêm código baseado em Lawnchair, sob a <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Licença Apache 2.0</a>]]></string>
+    <string name="about_translators">Tradutores</string>
     <!-- Wallpaper Colour Picker -->
-    <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
-    <string name="wallpaper_colour_picker_title">Wallpaper Colour</string>
+    <string name="wallpaper_colour_picker_menu">Seletor de Cor do Papel de Parede</string>
+    <string name="wallpaper_colour_picker_title">Cor do Papel de Parede</string>
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
     <string name="target_digital_wellbeing_label">Digital Wellbeing</string>
