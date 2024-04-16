@@ -66,8 +66,8 @@
     <string name="widget_configuration_shadow_title">Text Shadow</string>
     <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
-    <string name="widget_configuration_mock_target_subtitle">Target</string>
-    <string name="widget_configuration_mock_complication_title">Complication</string>
+    <string name="widget_configuration_mock_target_subtitle">Ziel</string>
+    <string name="widget_configuration_mock_complication_title">Komplikation</string>
     <string name="widget_options_configure">Widget konfigurieren</string>
     <string name="accessibility_service_label">Smartspacer Widget-Dienst</string>
     <string name="accessibility_service_description">Ermöglicht es dem Smartspacer-Widget, Ziele und Komplikationen auf dem neuesten Stand zu halten, ohne den Akku zu belasten, weil es ständig läuft.\n\nHinweis: Dies ist nicht erforderlich, wenn du den erweiterten Modus aktiviert hast.</string>
@@ -132,8 +132,8 @@
     <string name="complication_google_weather_label">Google Wetter</string>
     <string name="complication_google_weather_description">Zeigt das Wetter aus der Google App an</string>
     <string name="complication_google_weather_description_unsupported">Dieses Ziel erfordert die Google-App</string>
-    <string name="complication_date_label">Date</string>
-    <string name="complication_date_description">Shows the current date</string>
+    <string name="complication_date_label">Datum</string>
+    <string name="complication_date_description">Zeigt das aktuelle Datum an</string>
     <string name="plugin_target_default_label">Plugin-Ziel</string>
     <string name="plugin_action_default_label">Plugin-Komplikation</string>
     <string name="plugin_requirement_default_label">Plugin-Bedingung</string>
@@ -373,8 +373,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_app_prediction_incompatible">Diese Bedingung ist nicht kompatibel mit deinem Gerät, da es keinen System-App-Vorhersage-Service hat</string>
     <string name="requirement_app_prediction_enhanced">Diese Bedingung erfordert den erweiterten Modus, in den Einstellungen aktivieren</string>
     <string name="requirement_app_prediction_configuration_title">App auswählen</string>
-    <string name="requirement_music_playing_label">Music Playing</string>
-    <string name="requirement_music_playing_content">Only show when music is playing</string>
+    <string name="requirement_music_playing_label">Musikwiedergabe</string>
+    <string name="requirement_music_playing_content">Nur anzeigen, wenn Musik abgespielt wird</string>
     <string name="permission_dialog_widget_title_prefix">Zulassen</string>
     <string name="permission_dialog_widget_title_suffix">um mit Smartspacer auf Widgets zuzugreifen?</string>
     <string name="permission_dialog_widget_title_warning">Du wirst möglicherweise nach diesem Schritt um eine Systemberechtigung gebeten</string>
@@ -662,11 +662,11 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_xposed_enabled_title">Ersetze Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Ersetze den Google Discover Feed durch den erweiterten Smartspace.\n<b>Hinweis:</b> Du musst das Xposed-Modul für deinen Launcher oder Google Feed Plugin aktivieren und dann neu starten, damit dies funktioniert.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Diese Einstellung erfordert Xposed</string>
-    <string name="expanded_settings_hide_add_button_title">Hide Add Button</string>
+    <string name="expanded_settings_hide_add_button_title">Hinzufügen-Button ausblenden</string>
     <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
-    <string name="expanded_settings_hide_add_button_never">Never</string>
-    <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
-    <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_hide_add_button_never">Niemals</string>
+    <string name="expanded_settings_hide_add_button_overlay_only">Beim Ersetzen von Google Discover</string>
+    <string name="expanded_settings_hide_add_button_always">Immer</string>
     <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
@@ -720,7 +720,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_custom_widget_options_reconfigure_content">Ändere Einstellungen für dieses Widget in seiner App</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
-    <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Runde Ecken erzwingen</string>
     <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
     <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
@@ -966,7 +966,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_configuration_settings">Einstellungen</string>
     <string name="target_notification_channels">Benachrichtigungskanäle</string>
     <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
-    <string name="target_notification_configuration_options">Options</string>
+    <string name="target_notification_configuration_options">Einstellungen</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
