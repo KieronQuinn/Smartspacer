@@ -45,8 +45,8 @@
     <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">Aktiviere Bedienungshilfen</string>
     <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Akku sparen.</string>
-    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
-    <string name="widget_configuration_behaviour_title">Behaviour</string>
+    <string name="widget_configuration_accessibility_enable">Zum Aktivieren tippen</string>
+    <string name="widget_configuration_behaviour_title">Verhalten</string>
     <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
     <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
@@ -708,10 +708,10 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d Widget</string>
     <string name="expanded_add_widget_widgets_other">%1d Widgets</string>
-    <string name="expanded_add_widget_category_battery">Battery</string>
+    <string name="expanded_add_widget_category_battery">Akku</string>
     <string name="expanded_add_widget_category_conversations">Conversations</string>
     <string name="expanded_add_widget_category_note_taking">Note-taking</string>
-    <string name="expanded_add_widget_category_weather">Weather</string>
+    <string name="expanded_add_widget_category_weather">Wetter</string>
     <string name="expanded_custom_widget_options_span_x_title">Breite</string>
     <string name="expanded_custom_widget_options_span_x_content">Die Breite für dieses Widget, in Spalten</string>
     <string name="expanded_custom_widget_options_span_y_title">Höhe</string>
