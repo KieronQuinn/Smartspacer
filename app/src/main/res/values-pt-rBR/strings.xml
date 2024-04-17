@@ -806,16 +806,16 @@
     <string name="permissions_notifications">Acesse as notificações através do Smartspacer</string>
     <string name="permissions_smartspace">Carregar destaques e complementos do Smartspacer</string>
     <!-- Backup & Restore -->
-    <string name="backup_restore_title">Backup e Restauração</string>
-    <string name="backup_restore_content">Fazer backup e restaurar Destaques, Complementos, Requisitos e configurações do Smartspacer</string>
-    <string name="backup_title">Backup</string>
-    <string name="backup_content">Criar um backup do Smartspacer dos Destaques, Complementos, Requisitos e configurações, para um arquivo local ou para a nuvem.</string>
-    <string name="backup_creating_backup">Criando backup…</string>
-    <string name="backup_creating_targets_backup">Criando backup dos destaques…</string>
-    <string name="backup_creating_complications_backup">Criando backup dos complementos…</string>
-    <string name="backup_creating_requirements_backup">Criando backup das condições…</string>
-    <string name="backup_creating_widgets_backup">Criando backup dos widgets do Smartspace Expandido…</string>
-    <string name="backup_creating_settings_backup">Criando backup das configurações…</string>
+    <string name="backup_restore_title">Cópia de segurança e restauração</string>
+    <string name="backup_restore_content">Crie e restaure cópias de segurança de destaques, complementos, requisitos e configurações do Smartspacer</string>
+    <string name="backup_title">Cópia de segurança</string>
+    <string name="backup_content">Criar uma cópia de segurança do Smartspacer dos destaques, complementos, requisitos e configurações, para um arquivo local ou para a nuvem.</string>
+    <string name="backup_creating_backup">Criando cópia de segurança…</string>
+    <string name="backup_creating_targets_backup">Criando cópia de segurança dos destaques…</string>
+    <string name="backup_creating_complications_backup">Criando cópia de segurança dos complementos…</string>
+    <string name="backup_creating_requirements_backup">Criando cópia de segurança das condições…</string>
+    <string name="backup_creating_widgets_backup">Criando cópia de segurança dos widgets do Smartspace Expandido…</string>
+    <string name="backup_creating_settings_backup">Criando cópia de segurança das configurações…</string>
     <string name="backup_created">Cópia de segurança criada</string>
     <string name="backup_error">Erro ao criar cópia de segurança</string>
     <string name="backup_error_failed_to_create">Falha ao criar arquivo</string>
