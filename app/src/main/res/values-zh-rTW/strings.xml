@@ -1037,4 +1037,12 @@
     <string name="requirement_recent_apps_configuration_limit_content">尋找所選應用程式的最近使用應用程式數量：%1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">尋找所選應用程式的最近使用應用程式數量</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">無限制</string>
+    <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
+    <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="social_widget_recommendation_category_label">Social</string>
+    <string name="weather_widget_recommendation_category_label">Weather</string>
+    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
+    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
+    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
+    <string name="others_widget_recommendation_category_label">Suggested for you</string>
 </resources>

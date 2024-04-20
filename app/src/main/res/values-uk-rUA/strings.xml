@@ -1037,4 +1037,12 @@
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
+    <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
+    <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="social_widget_recommendation_category_label">Social</string>
+    <string name="weather_widget_recommendation_category_label">Weather</string>
+    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
+    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
+    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
+    <string name="others_widget_recommendation_category_label">Suggested for you</string>
 </resources>
