@@ -38,8 +38,8 @@ android {
 }
 
 dependencies {
-    api('com.kieronquinn.smartspacer:sdk-core:1.0.1')
-    implementation('androidx.core:core-ktx:1.12.0')
+    api('com.kieronquinn.smartspacer:sdk-core:1.0.3')
+    implementation('androidx.core:core-ktx:1.13.0')
     implementation('androidx.fragment:fragment-ktx:1.6.2')
     implementation('androidx.constraintlayout:constraintlayout:2.1.4')
     implementation('androidx.lifecycle:lifecycle-service:2.7.0')
@@ -49,7 +49,7 @@ dependencies {
 }
 
 mavenPublishing {
-    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.0.8")
+    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.0.9")
 
     pom {
         name = "Smartspacer Client SDK"
