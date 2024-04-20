@@ -987,17 +987,17 @@
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Flashlight</string>
-    <string name="target_flashlight_description">Show a reminder when the flashlight is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Flashlight</string>
+    <string name="target_flashlight_title">Torch</string>
+    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
+    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
     <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the flashlight based on light levels</string>
-    <string name="target_flashlight_title_on">Flashlight on</string>
+    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
+    <string name="target_flashlight_title_on">Torch on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Flashlight off</string>
+    <string name="target_flashlight_title_off">Torch off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Flashlight Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the flashlight when the light level is low (may use more battery)</string>
+    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
     <string name="target_flashlight_toast">Grant the Camera permission</string>
     <!-- Gmail Complication -->
@@ -1037,4 +1037,12 @@
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
+    <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
+    <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="social_widget_recommendation_category_label">Social</string>
+    <string name="weather_widget_recommendation_category_label">Weather</string>
+    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
+    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
+    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
+    <string name="others_widget_recommendation_category_label">Suggested for you</string>
 </resources>
