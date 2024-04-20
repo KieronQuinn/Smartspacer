@@ -76,12 +76,17 @@ class WidgetRepositoryImpl(
          *  senses and stop blocking all apps other than their own from using their widgets.
          *
          *  <package name> : <class name> (leave class name empty for wildcard)
+         *
+         *  If you're a third party launcher developer looking for how this was "fixed" in
+         *  Smartspacer, send me a message for access to a list shared between launcher developers
+         *  for widgets to block, which you can also contribute to.
          */
         private val WIDGET_DENYLIST = mapOf(
             "com.hihonor.calendar" to "", //Honor Calendar (all blocked)
             "com.huawei.calendar" to "", //Huawei Calendar (all blocked)
             "com.hihonor.android.totemweather" to "", //Honor Weather (all blocked)
             "com.huawei.android.totemweather" to "", //Huawei Weather (all blocked)
+            "com.vivo.widget.cleanspeed" to "", //Vivo "Clean Speed" (all blocked)
         )
     }
 

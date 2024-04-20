@@ -1,14 +1,24 @@
 package com.kieronquinn.app.smartspacer.repositories
 
+import android.app.prediction.AppTarget
+import android.app.prediction.AppTargetEvent
+import android.app.prediction.AppTargetId
 import android.appwidget.AppWidgetHostView
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
 import android.content.Context
 import android.content.IntentSender
+import android.content.pm.ParceledListSlice
+import android.os.Build
+import android.os.Bundle
 import android.os.Parcelable
+import android.os.Process
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import com.google.gson.annotations.SerializedName
+import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener
+import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.model.database.ExpandedAppWidget
 import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
@@ -27,13 +37,17 @@ import com.kieronquinn.app.smartspacer.widget.ExpandedAppWidgetHost
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.parcelize.Parcelize
 import org.jetbrains.annotations.VisibleForTesting
 import java.util.UUID
@@ -130,6 +144,12 @@ interface ExpandedRepository {
     suspend fun getExpandedCustomWidgetBackups(): List<ExpandedCustomWidgetBackup>
     suspend fun restoreExpandedCustomWidgetBackups(backups: List<ExpandedCustomWidgetBackup>)
 
+    /**
+     *  On devices where it is supported (Enhanced Mode + system support is required), returns
+     *  a list of recommended widgets from the system predictor
+     */
+    suspend fun getPredictedWidgets(): List<AppWidgetProviderInfo>
+
     @Parcelize
     data class CustomExpandedAppWidgetConfig(
         val spanX: Int,
@@ -167,6 +187,7 @@ class ExpandedRepositoryImpl(
     settings: SmartspacerSettingsRepository,
     private val databaseRepository: DatabaseRepository,
     private val widgetRepository: WidgetRepository,
+    private val shizukuServiceRepository: ShizukuServiceRepository,
     scope: CoroutineScope = MainScope()
 ): ExpandedRepository {
 
@@ -347,6 +368,78 @@ class ExpandedRepositoryImpl(
         toDestroy.forEach {
             appWidgetHost.destroyView(it.value)
             remove(it.key)
+        }
+    }
+
+    override suspend fun getPredictedWidgets(): List<AppWidgetProviderInfo> {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return emptyList()
+        val widgetFlow = shizukuServiceRepository.runWithService {
+            it.getPredictedWidgets().map { predictions ->
+                predictions.toWidgets()
+            }
+        }.unwrap() ?: return emptyList()
+        return withTimeoutOrNull(2500L) {
+            widgetFlow.firstOrNull() ?: emptyList()
+        } ?: emptyList()
+    }
+
+    private fun ISmartspacerShizukuService.getPredictedWidgets() = callbackFlow {
+        val listener = object : IAppPredictionOnTargetsAvailableListener.Stub() {
+            override fun onTargetsAvailable(targets: ParceledListSlice<*>) {
+                targets as ParceledListSlice<AppTarget>
+                trySend(targets.list)
+            }
+        }
+        createWidgetPredictorSession(listener, getWidgetsForPredictor())
+        awaitClose {
+            destroyWidgetPredictorSession()
+        }
+    }
+
+    private suspend fun getWidgetsForPredictor(): Bundle {
+        val providers = widgetRepository.getProviders()
+        val widgets = expandedCustomAppWidgets.first().mapNotNull { widget ->
+            providers.firstOrNull { info ->
+                info.provider == ComponentName.unflattenFromString(widget.provider)
+            }?.toAppTarget()?.wrapWithLocationInformation(widget.index, widget.spanX, widget.spanY)
+        }
+        return bundleOf(
+            "added_app_widgets" to ArrayList(widgets)
+        )
+    }
+
+    private fun AppWidgetProviderInfo.toAppTarget(): AppTarget {
+        return AppTarget.Builder(
+            AppTargetId("widget:${provider.packageName}"),
+            provider.packageName,
+            Process.myUserHandle()
+        ).setClassName(provider.className).build()
+    }
+
+    private fun AppTarget.wrapWithLocationInformation(
+        index: Int,
+        spanX: Int,
+        spanY: Int
+    ): AppTargetEvent {
+        return AppTargetEvent.Builder(this, AppTargetEvent.ACTION_PIN)
+            //We don't have pages nor a [x,y] pos, so use the index as the page and lock at [0,0]
+            .setLaunchLocation("workspace/$index/[0,0]/[$spanX,$spanY]").build()
+    }
+
+    private suspend fun List<AppTarget>.toWidgets(): List<AppWidgetProviderInfo> {
+        val providers = widgetRepository.getProviders()
+        val added = expandedCustomAppWidgets.first().mapNotNull {
+            ComponentName.unflattenFromString(it.provider)
+        }
+        return mapNotNull {
+            val componentName = ComponentName(
+                it.packageName,
+                it.className ?: return@mapNotNull null
+            )
+            providers.firstOrNull { widget -> widget.provider == componentName }
+        }.filterNot {
+            //Remove any which are already on Expanded
+            added.any { widget -> widget == it.provider }
         }
     }
 

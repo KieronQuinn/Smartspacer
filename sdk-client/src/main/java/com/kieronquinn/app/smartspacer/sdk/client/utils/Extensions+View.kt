@@ -1,8 +1,13 @@
 package com.kieronquinn.app.smartspacer.sdk.client.utils
 
+import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.window.SplashScreen
 import androidx.annotation.RestrictTo
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener.Companion.launchAction
@@ -11,11 +16,29 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.sdk.utils.sendSafely
 
+private fun View.createActivityOptions(): Bundle {
+    return ActivityOptions.makeScaleUpAnimation(
+        this,
+        0,
+        0,
+        width,
+        height
+    ).setSplashStyle().toBundle()
+}
+
+private fun ActivityOptions.setSplashStyle() = apply {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        setSplashScreenStyle(SplashScreen.SPLASH_SCREEN_STYLE_ICON)
+    }
+}
+
+@SuppressLint("RestrictedApi")
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 fun View.setOnClick(
     target: SmartspaceTarget,
     action: TapAction?,
-    interactionListener: SmartspaceTargetInteractionListener?
+    interactionListener: SmartspaceTargetInteractionListener?,
+    viewForAnimation: View? = null
 ) {
     setOnLongClickListener {
         interactionListener?.onLongPress(target) ?: false
@@ -28,7 +51,7 @@ fun View.setOnClick(
                     try {
                         context.startActivity(action.intent?.apply {
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        })
+                        }, (viewForAnimation ?: this).createActivityOptions())
                     } catch (e: Exception) {
                         Log.e("Smartspacer", "Error firing intent", e)
                         interactionListener?.onInteraction(target, action.id.toString())
@@ -41,7 +64,7 @@ fun View.setOnClick(
                         val pendingIntent = action.pendingIntent
                         if(interactionListener?.shouldTrampolineLaunches() == true
                             && pendingIntent != null) {
-                            interactionListener.trampolineLaunch(pendingIntent)
+                            interactionListener.trampolineLaunch(this, pendingIntent)
                         }else{
                             action.pendingIntent?.sendSafely()
                         }
@@ -59,11 +82,13 @@ fun View.setOnClick(
     }
 }
 
+@SuppressLint("RestrictedApi")
 @RestrictTo(RestrictTo.Scope.LIBRARY)
 fun View.setOnClick(
     target: SmartspaceTarget,
     action: SmartspaceAction?,
-    interactionListener: SmartspaceTargetInteractionListener?
+    interactionListener: SmartspaceTargetInteractionListener?,
+    viewForAnimation: View? = null
 ) {
     setOnLongClickListener {
         interactionListener?.onLongPress(target) ?: false
@@ -76,7 +101,7 @@ fun View.setOnClick(
                     try {
                         context.startActivity(action.intent?.apply {
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        })
+                        }, (viewForAnimation ?: this).createActivityOptions())
                     } catch (e: Exception) {
                         Log.e("Smartspacer", "Error firing intent", e)
                         interactionListener?.onInteraction(target, action.id)
@@ -89,7 +114,7 @@ fun View.setOnClick(
                         val pendingIntent = action.pendingIntent
                         if(interactionListener?.shouldTrampolineLaunches() == true
                             && pendingIntent != null) {
-                            interactionListener.trampolineLaunch(pendingIntent)
+                            interactionListener.trampolineLaunch(this, pendingIntent)
                         }else{
                             action.pendingIntent?.sendSafely()
                         }

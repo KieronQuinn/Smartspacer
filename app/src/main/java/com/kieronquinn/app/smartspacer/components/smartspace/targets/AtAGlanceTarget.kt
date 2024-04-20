@@ -2,12 +2,14 @@ package com.kieronquinn.app.smartspacer.components.smartspace.targets
 
 import android.app.PendingIntent
 import android.content.ComponentName
+import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.widgets.AtAGlanceWidget
 import com.kieronquinn.app.smartspacer.components.smartspace.widgets.GlanceWidget
 import com.kieronquinn.app.smartspacer.receivers.AtAGlanceClickReceiver
 import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository
+import com.kieronquinn.app.smartspacer.sdk.annotations.LimitedNativeSupport
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
@@ -29,34 +31,41 @@ class AtAGlanceTarget: SmartspacerTargetProvider() {
 
     private val atAGlance by inject<AtAGlanceRepository>()
 
+    @OptIn(LimitedNativeSupport::class)
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
-        val state = atAGlance.getState() ?: return emptyList()
-        val click = if(state.clickPendingIntent != null && state.clickIntent != null) {
-            PendingIntent.getBroadcast(
-                provideContext(),
-                smartspacerId.hashCode(),
-                AtAGlanceClickReceiver.createIntent(provideContext(), smartspacerId),
-                PendingIntent_MUTABLE_FLAGS
-            )
-        }else state.clickPendingIntent
-        return listOf(
+        return atAGlance.getStates().mapIndexed { index, state ->
+            val click = if(state.clickPendingIntent != null && state.clickIntent != null) {
+                PendingIntent.getBroadcast(
+                    provideContext(),
+                    "${smartspacerId}_$index".hashCode(),
+                    AtAGlanceClickReceiver.createIntent(provideContext(), smartspacerId, index),
+                    PendingIntent_MUTABLE_FLAGS
+                )
+            }else state.clickPendingIntent
+            //Icons which have a content description should not be tinted as they are weather related
+            val isTinted = state.iconContentDescription.isNullOrEmpty()
+            Log.d("AAG", "isTinted: $isTinted")
             TargetTemplate.Basic(
-                "at_a_glance",
+                "at_a_glance_$index",
                 ComponentName(BuildConfig.APPLICATION_ID, "at_a_glance"),
                 title = Text(state.title),
                 subtitle = Text(state.subtitle),
-                icon = Icon(AndroidIcon.createWithBitmap(state.icon)),
+                icon = Icon(
+                    AndroidIcon.createWithBitmap(state.icon),
+                    state.iconContentDescription,
+                    isTinted
+                ),
                 onClick = TapAction(pendingIntent = click)
             ).create().apply {
                 if(state.optionsIntent != null) {
-                    aboutIntent = AtAGlanceAboutActivity.createIntent(provideContext())
+                    aboutIntent = AtAGlanceAboutActivity.createIntent(provideContext(), index)
                 }
             }
-        )
+        }
     }
 
     override fun onDismiss(smartspacerId: String, targetId: String): Boolean {
-        atAGlance.setState(null)
+        atAGlance.setStates(emptyList())
         notifyChange(smartspacerId)
         return true
     }

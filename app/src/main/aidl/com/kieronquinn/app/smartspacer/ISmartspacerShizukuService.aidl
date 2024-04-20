@@ -48,6 +48,9 @@ interface ISmartspacerShizukuService {
     String[] proxyContentProviderGetStreamTypes(in Uri uri, String mimeTypeFilter) = 22;
     ParcelFileDescriptor proxyContentProviderOpenFile(in Uri uri, String mode) = 23;
 
+    void createWidgetPredictorSession(in IAppPredictionOnTargetsAvailableListener listener, in Bundle extras) = 24;
+    void destroyWidgetPredictorSession() = 25;
+
     void destroy() = 16777114;
 
 }

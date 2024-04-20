@@ -8,6 +8,8 @@ import android.content.IntentSender.SendIntentException
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.window.SplashScreen
 import androidx.appcompat.app.AppCompatActivity
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
@@ -28,6 +30,7 @@ class OverlayTrampolineActivity: AppCompatActivity() {
         private const val EXTRA_INTENT = "intent"
 
         fun trampoline(
+            view: View,
             context: Context,
             pendingIntent: PendingIntent,
             options: ActivityOptions? = null,
@@ -39,8 +42,22 @@ class OverlayTrampolineActivity: AppCompatActivity() {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
                 addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+                sourceBounds = intent?.sourceBounds
             }
-            context.startActivity(trampolineIntent)
+            val activityOptions = ActivityOptions.makeScaleUpAnimation(
+                view,
+                0,
+                0,
+                view.width,
+                view.height
+            ).setSplashStyle().toBundle()
+            context.startActivity(trampolineIntent, activityOptions)
+        }
+
+        private fun ActivityOptions.setSplashStyle() = apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                setSplashScreenStyle(SplashScreen.SPLASH_SCREEN_STYLE_ICON)
+            }
         }
 
         private fun createIntent(

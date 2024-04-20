@@ -40,12 +40,15 @@ class ExpandedRepositoryTests: BaseTest<ExpandedRepository>() {
         every { expandedWidgetUseGoogleSans } returns expandedWidgetUseGoogleSansMock
     }
 
+    private val shizukuServiceMock = mockShizukuRepository {  }
+
     override val sut by lazy {
         ExpandedRepositoryImpl(
             contextMock,
             settingsRepositoryMock,
             databaseRepositoryMock,
             widgetRepositoryMock,
+            shizukuServiceMock,
             scope
         ).also {
             it.appWidgetHost = appWidgetHostMock

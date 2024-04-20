@@ -13,6 +13,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,8 +35,10 @@ class SetupTargetInfoFragment: BoundFragment<FragmentSetupTargetInfoBinding>(Fra
     private fun setupExampleTargetOne() = with(binding.setupTargetInfoExample1) {
         smartspacePageFeatureBasicTitle.smartspaceViewTitle
             .setText(R.string.setup_targets_info_example_one_title)
+        smartspacePageFeatureBasicTitle.smartspaceViewTitle.setShadowEnabled(false)
         smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleText
             .setText(R.string.setup_targets_info_example_one_subtitle)
+        smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleText.setShadowEnabled(false)
         smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleIcon
             .setImageResource(R.drawable.ic_target_example_one)
         smartspacePageCommuteTimeImage.setImageResource(R.drawable.example_target_image)
@@ -44,13 +47,18 @@ class SetupTargetInfoFragment: BoundFragment<FragmentSetupTargetInfoBinding>(Fra
     private fun setupExampleTargetTwo() = with(binding.setupTargetInfoExample2) {
         smartspacePageTemplateBasicTitle.smartspaceViewTitle
             .setText(R.string.setup_targets_info_example_two_title)
+        smartspacePageTemplateBasicTitle.smartspaceViewTitle.setShadowEnabled(false)
         smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleText
             .setText(R.string.setup_targets_info_example_two_subtitle)
+        smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleText.setShadowEnabled(false)
         smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleIcon
             .setImageResource(R.drawable.ic_target_example_two)
         smartspaceViewListItem1.setText(R.string.setup_targets_info_example_two_item_1)
+        smartspaceViewListItem1.setShadowEnabled(false)
         smartspaceViewListItem2.setText(R.string.setup_targets_info_example_two_item_2)
+        smartspaceViewListItem2.setShadowEnabled(false)
         smartspaceViewListItem3.setText(R.string.setup_targets_info_example_two_item_3)
+        smartspaceViewListItem3.setShadowEnabled(false)
         smartspacePageTemplateBasicSupplemental.root.isVisible = false
     }
 

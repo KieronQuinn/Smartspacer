@@ -13,14 +13,15 @@ class AtAGlanceRepositoryTests: BaseTest<AtAGlanceRepository>() {
 
     @Test
     fun testState() {
-        assertTrue(sut.getState() == null)
-        val mockState = AtAGlanceRepository.State(
+        assertTrue(sut.getStates().isEmpty())
+        val mockState = listOf(AtAGlanceRepository.State(
             "Title",
             "Subtitle",
-            Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8)
-        )
-        sut.setState(mockState)
-        assertTrue(sut.getState() == mockState)
+            Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8),
+            "Content Description"
+        ))
+        sut.setStates(mockState)
+        assertTrue(sut.getStates() == mockState)
     }
 
 }

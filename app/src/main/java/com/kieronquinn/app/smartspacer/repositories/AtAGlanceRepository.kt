@@ -7,13 +7,14 @@ import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository.State
 
 interface AtAGlanceRepository {
 
-    fun getState(): State?
-    fun setState(state: State?)
+    fun getStates(): List<State>
+    fun setStates(states: List<State>)
 
     data class State(
         val title: CharSequence,
         val subtitle: CharSequence,
         val icon: Bitmap,
+        val iconContentDescription: CharSequence?,
         val clickIntent: Intent? = null,
         val clickPendingIntent: PendingIntent? = null,
         val optionsIntent: Intent? = null
@@ -23,14 +24,14 @@ interface AtAGlanceRepository {
 
 class AtAGlanceRepositoryImpl : AtAGlanceRepository {
 
-    private var state: State? = null
+    private var states: List<State> = emptyList()
 
-    override fun getState(): State? {
-        return state
+    override fun getStates(): List<State> {
+        return states
     }
 
-    override fun setState(state: State?) {
-        this.state = state
+    override fun setStates(states: List<State>) {
+        this.states = states
     }
 
 }

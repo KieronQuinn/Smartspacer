@@ -12,9 +12,12 @@ import org.koin.core.component.inject
 class AtAGlanceClickReceiver: BroadcastReceiver(), KoinComponent {
 
     companion object {
-        fun createIntent(context: Context, smartspacerId: String): Intent {
+        private const val EXTRA_INDEX = "index"
+
+        fun createIntent(context: Context, smartspacerId: String, index: Int): Intent {
             return Intent(context, AtAGlanceClickReceiver::class.java).apply {
                 putExtra(EXTRA_SMARTSPACER_ID, smartspacerId)
+                putExtra(EXTRA_INDEX, index)
             }
         }
     }
@@ -23,7 +26,8 @@ class AtAGlanceClickReceiver: BroadcastReceiver(), KoinComponent {
 
     override fun onReceive(context: Context, intent: Intent) {
         val smartspacerId = intent.getStringExtra(EXTRA_SMARTSPACER_ID) ?: return
-        val state = atAGlance.getState() ?: return
+        val index = intent.getIntExtra(EXTRA_INDEX, -1)
+        val state = atAGlance.getStates().getOrNull(index) ?: return
         if(state.clickPendingIntent != null && state.clickIntent != null) {
             SmartspacerWidgetProvider.launchFillInIntent(
                 context,
