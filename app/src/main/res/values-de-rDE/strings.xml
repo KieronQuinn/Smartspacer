@@ -1038,4 +1038,12 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_recent_apps_configuration_limit_content">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unbegrenzt</string>
+    <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
+    <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="social_widget_recommendation_category_label">Social</string>
+    <string name="weather_widget_recommendation_category_label">Weather</string>
+    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
+    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
+    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
+    <string name="others_widget_recommendation_category_label">Suggested for you</string>
 </resources>
