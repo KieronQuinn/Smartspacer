@@ -17,6 +17,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAdd
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.Item
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.State
 import com.kieronquinn.app.smartspacer.utils.assertOutputs
+import com.kieronquinn.app.smartspacer.utils.extensions.WidgetCategory
 import com.kieronquinn.app.smartspacer.utils.extensions.getApplicationInfo
 import com.kieronquinn.app.smartspacer.utils.extensions.providerInfo
 import com.kieronquinn.app.smartspacer.utils.randomString
@@ -110,7 +111,7 @@ class ExpandedAddWidgetBottomSheetViewModelTests: BaseTest<ExpandedAddWidgetBott
         sut.addState.test {
             val mockWidget = mockWidgets.first()
             val parent = Item.App("Widget", "Widget", "Widget", null)
-            val widget = Item.Widget(parent, "Widget", "Description", mockWidget)
+            val widget = Item.Widget(parent, WidgetCategory.OTHERS, "Widget", "Description", mockWidget)
             sut.onWidgetClicked(widget, 5, 2)
             verify {
                 expandedRepositoryMock.allocateAppWidgetId()

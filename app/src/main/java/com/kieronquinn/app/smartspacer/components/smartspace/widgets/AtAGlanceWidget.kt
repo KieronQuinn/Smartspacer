@@ -12,9 +12,9 @@ import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.AtAGlanceTarget
 import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository
 import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository.State
+import com.kieronquinn.app.smartspacer.sdk.model.RemoteAdapterItem
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.RemoteAdapter
-import com.kieronquinn.app.smartspacer.sdk.utils.dumpToLog
 import com.kieronquinn.app.smartspacer.sdk.utils.findViewByIdentifier
 import com.kieronquinn.app.smartspacer.sdk.utils.findViewsByType
 import com.kieronquinn.app.smartspacer.sdk.utils.getClickPendingIntent
@@ -52,54 +52,60 @@ class AtAGlanceWidget : GlanceWidget() {
     private val atAGlance by inject<AtAGlanceRepository>()
 
     override fun View.loadLegacy(): Boolean {
-        val state = loadLegacyAssistant() ?: loadLegacyNoAssistant()
-        atAGlance.setState(state)
+        val state = loadLegacyAssistant().ifEmpty { loadLegacyNoAssistant() }
+        atAGlance.setStates(state)
         return true
     }
 
-    private fun View.loadLegacyAssistant(): State? {
+    private fun View.loadLegacyAssistant(): List<State> {
         val content = findViewByIdentifier<View>(IDENTIFIER_CONTENT)
         val title = TITLE_IDS.firstNotNullOfOrNull {
             val text = findViewByIdentifier<TextView>("$PACKAGE_NAME:id/$it")?.text
             if (text.isNullOrEmpty()) null else text
         } ?: run {
-            return null
+            return emptyList()
         }
         val subtitleText = findViewByIdentifier<TextView>(IDENTIFIER_SUBTITLE)?.text
-            ?: return null
-        val subtitleIcon = findViewByIdentifier<ImageView>(IDENTIFIER_ICON) ?: return null
-        val icon = subtitleIcon.drawable?.toBitmap() ?: return null
-        return State(
-            title,
-            subtitleText,
-            icon,
-            clickPendingIntent = content?.getClickPendingIntent()
+            ?: return emptyList()
+        val subtitleIcon = findViewByIdentifier<ImageView>(IDENTIFIER_ICON) ?: return emptyList()
+        val icon = subtitleIcon.drawable?.toBitmap() ?: return emptyList()
+        return listOf(
+            State(
+                title,
+                subtitleText,
+                icon,
+                subtitleIcon.contentDescription,
+                clickPendingIntent = content?.getClickPendingIntent()
+            )
         )
     }
 
-    private fun View.loadLegacyNoAssistant(): State? {
+    private fun View.loadLegacyNoAssistant(): List<State> {
         val content = findViewByIdentifier<View>(IDENTIFIER_CONTENT_ALT)
         val title = TITLE_IDS_ALT.firstNotNullOfOrNull {
             val text = findViewByIdentifier<TextView>("$PACKAGE_NAME:id/$it")?.text
             if (text.isNullOrEmpty()) null else text
         } ?: run {
-            return null
+            return emptyList()
         }
         val subtitleText = findViewByIdentifier<TextView>(IDENTIFIER_SUBTITLE_ALT)?.text
-            ?: return null
-        val subtitleIcon = findViewByIdentifier<ImageView>(IDENTIFIER_ICON_ALT) ?: return null
-        val icon = subtitleIcon.drawable?.toBitmap() ?: return null
-        return State(
-            title,
-            subtitleText,
-            icon,
-            clickPendingIntent = content?.getClickPendingIntent()
+            ?: return emptyList()
+        val subtitleIcon = findViewByIdentifier<ImageView>(IDENTIFIER_ICON_ALT)
+            ?: return emptyList()
+        val icon = subtitleIcon.drawable?.toBitmap() ?: return emptyList()
+        return listOf(
+            State(
+                title,
+                subtitleText,
+                icon,
+                subtitleIcon.contentDescription,
+                clickPendingIntent = content?.getClickPendingIntent()
+            )
         )
     }
 
     override fun View.loadTNG(smartspacerId: String): Boolean {
         this as ViewGroup
-        dumpToLog("Views")
         val listView = findViewsByType(ListView::class.java).firstOrNull()
         return if(listView != null){
             val listViewId = listView.id
@@ -111,7 +117,7 @@ class AtAGlanceWidget : GlanceWidget() {
             false
         }else{
             val state = getStateFromFlatView(false)
-            atAGlance.setState(state)
+            atAGlance.setStates(listOfNotNull(state))
             notifyChange(smartspacerId)
             true
         }
@@ -119,16 +125,22 @@ class AtAGlanceWidget : GlanceWidget() {
 
     override fun onAdapterConnected(smartspacerId: String, adapter: RemoteAdapter) {
         super.onAdapterConnected(smartspacerId, adapter)
-        val adapterItem = adapter.getViewAt(0) ?: return
-        val intent = adapterItem.onClickResponses.firstOrNull()?.response?.fillInIntent
-        val optionsIntent = adapterItem.onClickResponses.lastOrNull()?.response?.fillInIntent
-        val views = adapterItem.remoteViews.load() as ViewGroup
-        val state = views.getStateFromFlatView(true)?.copy(
-            clickIntent = intent,
-            clickPendingIntent = adapter.adapterViewPendingIntent,
-            optionsIntent = optionsIntent
-        )
-        atAGlance.setState(state)
+        val count = adapter.getCount()
+        val adapterItems = ArrayList<RemoteAdapterItem>()
+        for(i in 0 until count) {
+            adapterItems.add(adapter.getViewAt(i) ?: continue)
+        }
+        val states = adapterItems.mapNotNull {
+            val intent = it.onClickResponses.firstOrNull()?.response?.fillInIntent
+            val optionsIntent = it.onClickResponses.lastOrNull()?.response?.fillInIntent
+            val views = it.remoteViews.load() as ViewGroup
+            views.getStateFromFlatView(true)?.copy(
+                clickIntent = intent,
+                clickPendingIntent = adapter.adapterViewPendingIntent,
+                optionsIntent = optionsIntent
+            )
+        }
+        atAGlance.setStates(states)
         notifyChange(smartspacerId)
     }
 
@@ -151,9 +163,18 @@ class AtAGlanceWidget : GlanceWidget() {
                 title,
                 subtitle,
                 imageViews[0].drawable.toBitmap(),
+                imageViews[0].contentDescription,
                 clickPendingIntent = clickable?.getClickPendingIntent()
             )
         }else null
+    }
+
+    /**
+     *  The only icons which have content description in the widget are weather related and should
+     *  not be tinted
+     */
+    private fun ImageView.isTinted(): Boolean {
+        return !contentDescription.isNullOrEmpty()
     }
 
     override fun notifyChange(smartspacerId: String) {

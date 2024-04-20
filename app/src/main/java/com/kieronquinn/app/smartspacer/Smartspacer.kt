@@ -341,7 +341,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single { createMarkwon() }
         single { SmartspaceManager(get()) }
         single<AppWidgetRepository>(createdAtStart = true) { AppWidgetRepositoryImpl(get(), get(), get(), get(), get()) }
-        single<ExpandedRepository> { ExpandedRepositoryImpl(get(), get(), get(), get()) }
+        single<ExpandedRepository> { ExpandedRepositoryImpl(get(), get(), get(), get(), get()) }
         single<SmartspacerSettingsRepository> { SmartspacerSettingsRepositoryImpl(get()) }
         single<ShizukuServiceRepository> { ShizukuServiceRepositoryImpl(get(), get()) }
         single<SystemSmartspaceRepository>(createdAtStart = true) { SystemSmartspaceRepositoryImpl(get(), get(), get(), get(), get()) }

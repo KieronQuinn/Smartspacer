@@ -12,6 +12,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,11 +33,13 @@ class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfo
             requireContext().getAttrColor(android.R.attr.textColorPrimary)
         )
         smartspacePageSubtitleText.setText(R.string.setup_complications_example_gmail)
+        smartspacePageSubtitleText.setShadowEnabled(false)
     }
 
     private fun setupExampleComplicationTwo() = with(binding.setupComplicationInfoExample2) {
         smartspacePageSubtitleIcon.setImageResource(R.drawable.ic_widget_smartspacer_preview_weather)
         smartspacePageSubtitleText.setText(R.string.setup_complications_example_weather)
+        smartspacePageSubtitleText.setShadowEnabled(false)
     }
 
     private fun setupControls() {

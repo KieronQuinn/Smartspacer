@@ -761,8 +761,8 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
 
     override fun shouldTrampolineLaunches(): Boolean = isOverlay
 
-    override fun trampolineLaunch(pendingIntent: PendingIntent) {
-        OverlayTrampolineActivity.trampoline(requireContext(), pendingIntent)
+    override fun trampolineLaunch(view: View, pendingIntent: PendingIntent) {
+        OverlayTrampolineActivity.trampoline(view, requireContext(), pendingIntent)
     }
 
     private fun getAndClearOverlayAction(): OpenFromOverlayAction? {

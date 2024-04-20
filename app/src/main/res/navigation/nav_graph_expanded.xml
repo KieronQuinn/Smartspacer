@@ -33,7 +33,8 @@
     <dialog
         android:id="@+id/expandedWidgetOptionsBottomSheetFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.options.ExpandedWidgetOptionsBottomSheetFragment"
-        android:label="ExpandedWidgetOptionsBottomSheetFragment" >
+        android:label=" "
+        tools:layout="@layout/fragment_expanded_bottom_sheet_widget_options">
         <argument
             android:name="app_widget_id"
             app:argType="integer" />

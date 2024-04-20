@@ -54,7 +54,9 @@ abstract class SmartspacerBaseTemplatePageView<V : ViewBinding>(
             subtitleSupplementalItem?.let {
                 it.text?.let { text -> subtitle.action?.setText(text, tintColour) }
                 it.icon?.let { icon -> subtitle.actionIcon?.setIcon(icon, tintColour) }
-                subtitle.action?.setOnClick(target, it.tapAction, interactionListener)
+                subtitle.action?.setOnClick(
+                    target, it.tapAction, interactionListener, subtitle.actionIcon
+                )
                 subtitle.actionIcon?.setOnClick(target, it.tapAction, interactionListener)
             }
             subtitle.root.isVisible = subtitleItem != null || supplementalLineItem != null

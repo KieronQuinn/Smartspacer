@@ -23,6 +23,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.allowBackground
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.flow.drop
@@ -66,6 +67,7 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
         setupSearchClear()
         setupAddState()
         setupClose()
+        setupCloseWhenLocked()
     }
 
     private fun setupMonet() {
@@ -95,6 +97,14 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
         viewModel.exitBus.collect {
             if(it) {
                 dismiss()
+            }
+        }
+    }
+
+    private fun setupCloseWhenLocked() {
+        whenResumed {
+            requireContext().screenOff().collect {
+                if(it) dismiss()
             }
         }
     }

@@ -58,7 +58,7 @@ abstract class SmartspacerBaseFeaturePageView<V : ViewBinding>(
                 Icon(icon, shouldTint = ComplicationTemplate.shouldTint(it))
             }
             subtitle.actionIcon?.setIcon(icon, tintColour)
-            subtitle.action?.setOnClick(target, it, interactionListener)
+            subtitle.action?.setOnClick(target, it, interactionListener, subtitle.actionIcon)
             subtitle.actionIcon?.setOnClick(target, it, interactionListener)
         }
 

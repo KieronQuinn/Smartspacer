@@ -28,6 +28,7 @@ import android.net.Uri
 import android.net.wifi.IWifiManager
 import android.os.Binder
 import android.os.Build
+import android.os.Bundle
 import android.os.IBinder
 import android.os.IUserManager
 import android.os.ParcelFileDescriptor
@@ -161,7 +162,9 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     private val cameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager
 
     private var appPredictionSession: AppPredictionSessionWrapper? = null
+    private var widgetPredictionSession: AppPredictionSessionWrapper? = null
     private val appPredictionExecutor = Executors.newSingleThreadExecutor()
+    private val widgetPredictionExecutor = Executors.newSingleThreadExecutor()
     private var lastTaskListPackages = emptyList<String>()
     private var taskObserver: ITaskObserver? = null
     private var suppressCrash = false
@@ -220,7 +223,11 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     override fun createAppPredictorSession(listener: IAppPredictionOnTargetsAvailableListener) {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
-        appPredictionSession?.session?.destroy()
+        try {
+            appPredictionSession?.session?.destroy()
+        }catch(e: IllegalStateException) {
+            //Client has already been destroyed
+        }
         val appPredictionContext = AppPredictionContext.Builder(context)
             .setUiSurface("home")
             .setPredictedTargetCount(10)
@@ -233,6 +240,7 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
                 appPredictionContext
             )?.also {
                 it.registerPredictionUpdates(appPredictionExecutor, callback)
+                it.requestPredictionUpdate()
             }?.let {
                 AppPredictionSessionWrapper(it)
             }
@@ -243,6 +251,42 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     override fun destroyAppPredictorSession() {
         appPredictionSession?.session?.destroy()
+    }
+
+    override fun createWidgetPredictorSession(
+        listener: IAppPredictionOnTargetsAvailableListener,
+        extras: Bundle
+    ) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+        try {
+            widgetPredictionSession?.session?.destroy()
+        }catch(e: IllegalStateException) {
+            //Client has already been destroyed
+        }
+        val appPredictionContext = AppPredictionContext.Builder(context)
+            .setUiSurface("widgets")
+            .setExtras(extras)
+            .setPredictedTargetCount(20)
+            .build()
+        val callback = AppPredictor.Callback {
+            listener.onTargetsAvailable(ParceledListSlice(it))
+        }
+        try {
+            widgetPredictionSession = appPredictionManager?.createAppPredictionSession(
+                appPredictionContext
+            )?.also {
+                it.registerPredictionUpdates(widgetPredictionExecutor, callback)
+                it.requestPredictionUpdate()
+            }?.let {
+                AppPredictionSessionWrapper(it)
+            }
+        }catch (e: IllegalStateException){
+            //Client has already been destroyed
+        }
+    }
+
+    override fun destroyWidgetPredictorSession() {
+        widgetPredictionSession?.session?.destroy()
     }
 
     override fun toggleTorch() = runWithClearedIdentity {
@@ -454,10 +498,16 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         setupCrashListener()
         //Allow restricted settings automatically to help users who are using enhanced mode
         grantRestrictedSettings()
+        //Hide the stop button in the Task Manager to prevent users from killing the service by mistake
+        hideStopButtonInTaskManager()
     }
 
     override fun grantRestrictedSettings() {
         runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} ACCESS_RESTRICTED_SETTINGS allow")
+    }
+
+    private fun hideStopButtonInTaskManager() {
+        runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} SYSTEM_EXEMPT_FROM_POWER_RESTRICTIONS allow")
     }
 
     override fun enableBluetooth() {

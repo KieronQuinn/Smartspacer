@@ -5,10 +5,13 @@ import android.appwidget.AppWidgetProviderInfo
 import android.appwidget.AppWidgetProviderInfoHidden
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.widget.RemoteViews
+import androidx.annotation.StringRes
 import com.kieronquinn.app.smartspacer.R
 import dev.rikka.tools.refine.Refine
+import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.floor
 
 var AppWidgetProviderInfo.providerInfo: ActivityInfo
@@ -89,6 +92,46 @@ fun Context.getWidgetRowHeight(availableWidth: Int): Int {
 fun Context.getWidgetColumnCount(availableWidth: Int): Int {
     val width = getWidgetColumnWidth(availableWidth)
     return floor(availableWidth / width.toFloat()).toInt()
+}
+
+private val weatherRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.weather_recommendations)
+}
+
+private val fitnessRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.fitness_recommendations)
+}
+
+fun AppWidgetProviderInfo.getCategory(): WidgetCategory {
+    val component = provider.flattenToString()
+    if(weatherRecommendations.contains(component)) {
+        return WidgetCategory.WEATHER
+    }
+    if(fitnessRecommendations.contains(component)) {
+        return WidgetCategory.FITNESS
+    }
+    val category = providerInfo.applicationInfo.category
+    return when(category) {
+        ApplicationInfo.CATEGORY_AUDIO,
+        ApplicationInfo.CATEGORY_VIDEO,
+        ApplicationInfo.CATEGORY_IMAGE -> WidgetCategory.ENTERTAINMENT
+        ApplicationInfo.CATEGORY_SOCIAL -> WidgetCategory.SOCIAL
+        ApplicationInfo.CATEGORY_NEWS -> WidgetCategory.NEWS
+        ApplicationInfo.CATEGORY_PRODUCTIVITY -> WidgetCategory.PRODUCTIVITY
+        else -> WidgetCategory.OTHERS
+    }
+}
+
+enum class WidgetCategory(@StringRes val labelRes: Int) {
+    PRODUCTIVITY(R.string.productivity_widget_recommendation_category_label),
+    NEWS(R.string.news_widget_recommendation_category_label),
+    FITNESS(R.string.fitness_widget_recommendation_category_label),
+    WEATHER(R.string.weather_widget_recommendation_category_label),
+    OTHERS(R.string.others_widget_recommendation_category_label),
+    SOCIAL(R.string.social_widget_recommendation_category_label),
+    ENTERTAINMENT(R.string.entertainment_widget_recommendation_category_label),
 }
 
 private fun getSpan(minSize: Int, spanSize: Int): Int {

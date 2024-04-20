@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -79,7 +80,7 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
         @RestrictTo(RestrictTo.Scope.LIBRARY)
         fun shouldTrampolineLaunches(): Boolean = false
         @RestrictTo(RestrictTo.Scope.LIBRARY)
-        fun trampolineLaunch(pendingIntent: PendingIntent) {}
+        fun trampolineLaunch(view: View, pendingIntent: PendingIntent) {}
     }
 
 }

@@ -14,9 +14,12 @@ class AtAGlanceAboutActivity: AppCompatActivity() {
     private val atAGlanceRepository by inject<AtAGlanceRepository>()
 
     companion object {
-        fun createIntent(context: Context): Intent {
+        private const val EXTRA_INDEX = "index"
+
+        fun createIntent(context: Context, index: Int): Intent {
             return Intent(context, AtAGlanceAboutActivity::class.java).apply {
                 applySecurity(context)
+                putExtra(EXTRA_INDEX, index)
             }
         }
     }
@@ -24,7 +27,8 @@ class AtAGlanceAboutActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent.verifySecurity()
-        val state = atAGlanceRepository.getState()
+        val index = intent.getIntExtra(EXTRA_INDEX, -1)
+        val state = atAGlanceRepository.getStates().getOrNull(index)
         if(state?.clickPendingIntent != null && state.optionsIntent != null){
             startIntentSender(
                 state.clickPendingIntent.intentSender,

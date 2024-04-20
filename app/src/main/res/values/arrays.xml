@@ -17,4 +17,19 @@
         <!-- Action Launcher -->
         <item>com.actionlauncher.nowbridge</item>
     </string-array>
+    <!-- Widget components for predictions, supposed to be copied from the Pixel Launcher but currently custom as theirs are empty. This is what I expect theirs will look like. -->
+    <array name="weather_recommendations">
+        <!-- Google Weather -->
+        <item>com.google.android.googlequicksearchbox/com.google.android.apps.search.assistant.verticals.snapshot.widgets.weather.WeatherWidget_Receiver</item>
+        <item>com.google.android.googlequicksearchbox/com.google.android.apps.search.assistant.verticals.snapshot.widgets.weather.FreeformWeatherWidget_Receiver</item>
+    </array>
+    <array name="fitness_recommendations">
+        <!-- Google Fit -->
+        <item>com.google.android.apps.fitness/com.google.android.apps.fitness.v2.widget.HaloAppWidgetProvider</item>
+        <item>com.google.android.apps.fitness/com.google.android.apps.fitness.v2.widget.MetricsAppWidgetProvider</item>
+        <item>com.google.android.apps.fitness/com.google.android.apps.fitness.v2.widget.SingleMetricAppWidgetProvider</item>
+        <!-- Fitbit -->
+        <item>com.fitbit.FitbitMobile/com.fitbit.widget.ui.PrimaryGoalWidgetProvider</item>
+        <item>com.fitbit.FitbitMobile/com.fitbit.widget.ui.QuickAccessWidgetProvider</item>
+    </array>
 </resources>

@@ -12,6 +12,8 @@ import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
+import com.kieronquinn.app.smartspacer.utils.extensions.WidgetCategory
+import com.kieronquinn.app.smartspacer.utils.extensions.getCategory
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.widget.WidgetMapping
@@ -24,6 +26,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
@@ -76,6 +79,10 @@ abstract class ExpandedAddWidgetBottomSheetViewModel(scope: CoroutineScope?): Ba
     }
 
     sealed class Item(val type: Type) {
+        data class Predicted(
+            val widgets: List<Widget>
+        ): Item(Type.PREDICTED)
+
         data class App(
             val identifier: String,
             val packageName: String,
@@ -87,13 +94,14 @@ abstract class ExpandedAddWidgetBottomSheetViewModel(scope: CoroutineScope?): Ba
 
         data class Widget(
             val parent: App,
+            val category: WidgetCategory,
             val label: CharSequence,
             val description: CharSequence?,
             val info: AppWidgetProviderInfo
         ): Item(Type.WIDGET)
 
         enum class Type {
-            APP, WIDGET
+            PREDICTED, APP, WIDGET
         }
     }
 
@@ -146,6 +154,7 @@ class ExpandedAddWidgetBottomSheetViewModelImpl(
             } else null
             Item.Widget(
                 app,
+                widget.getCategory(),
                 widget.loadLabel(packageManager),
                 description,
                 widget
@@ -159,11 +168,37 @@ class ExpandedAddWidgetBottomSheetViewModelImpl(
         }.toMap()
     }.flowOn(Dispatchers.IO)
 
+    private val predictedWidgets = flow {
+        emit(expandedRepository.getPredictedWidgets())
+    }.flowOn(Dispatchers.IO)
+
+    private val predicted = combine(
+        predictedWidgets,
+        providers
+    ) { predictedWidgets, providers ->
+        val allWidgets = providers.map { it.value }.flatten()
+        predictedWidgets
+            //Ignore if we got no predictions
+            .takeIf { it.isNotEmpty() }
+            //Find the already loaded widget info for this provider
+            ?.mapNotNull { allWidgets.firstOrNull { widget -> widget.info == it } }
+            //Group all of the predicted widgets into their categories to sort them
+            ?.groupBy { it.category }
+            //Take at most one of each category
+            ?.mapValues { it.value.take(1) }
+            //Remove category splitting and flatten back into one list
+            ?.flatMap { it.value }
+            //Categories are sorted in the same way they are in the Pixel Launcher
+            ?.sortedBy { it.category.ordinal }
+            ?.let { Item.Predicted(it) }
+    }
+
     override val state = combine(
         providers,
+        predicted,
         searchTerm,
         expandedPackages
-    ) { providers, term, expanded ->
+    ) { providers, predicted, term, expanded ->
         val widgets = providers.mapNotNull {
             if(it.key.label.contains(term, true)) {
                 Pair(it.key, it.value)
@@ -185,7 +220,7 @@ class ExpandedAddWidgetBottomSheetViewModelImpl(
             val app = it.first.copy(isExpanded = isExpanded, count = it.second.size)
             listOf(app, *expandedWidgets)
         }.flatten()
-        State.Loaded(widgets)
+        State.Loaded(listOfNotNull(predicted) + widgets)
     }.flowOn(Dispatchers.IO).stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
     override val exitBus = context.lockscreenShowing().drop(1)
