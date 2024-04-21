@@ -63,7 +63,7 @@ mavenPublishing {
             }
         }
         scm {
-            url = "https://github.com/username/mylibrary/"
+            url = "https://github.com/KieronQuinn/Smartspacer"
             connection = "scm:git:git://github.com/KieronQuinn/Smartspacer.git"
             developerConnection = "scm:git:ssh://git@github.com/KieronQuinn/Smartspacer.git"
         }
