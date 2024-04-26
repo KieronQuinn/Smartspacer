@@ -667,7 +667,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_hide_add_button_never">Niemals</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Beim Ersetzen von Google Discover</string>
     <string name="expanded_settings_hide_add_button_always">Immer</string>
-    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_title">Mehrspaltig aktivieren</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
