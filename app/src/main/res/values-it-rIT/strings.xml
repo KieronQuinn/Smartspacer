@@ -39,8 +39,8 @@
     <string name="widget_loading_smartspacer">Caricamento…</string>
     <string name="widget_loading_smartspacer_subtitle">Controlla le opzioni di Accessibilità per Smartspacer se questo messaggio persiste</string>
     <string name="widget_configuration_title">Widget di Smartspacer</string>
-    <string name="widget_configuration_tab_horizontal">Horizontal</string>
-    <string name="widget_configuration_tab_vertical">Vertical</string>
+    <string name="widget_configuration_tab_horizontal">Orizzontale</string>
+    <string name="widget_configuration_tab_vertical">Verticale</string>
     <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
     <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">Abilita Servizi di Accessibilità</string>
