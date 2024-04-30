@@ -501,52 +501,52 @@
     <string name="setup_expanded_title">Utvidet</string>
     <string name="setup_expanded_switch">Slå på «Utvidet Smartspace»</string>
     <string name="setup_expanded_info_p1"><b>«Utvidet Smartspace»</b> er en helskjermsversjon av Smartspace som viser alle tilgjengelige mål og komplikasjoner, samt ytterligere informasjon som moduler og snarveier som er spesifisert av målene. Egendefinerte moduler kan også legges til til «Utvidet Smartspace».</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_info_p2">«Utvidet Smartspace» er utformet for å gi raskt overblikk over all aktuell informasjon. Du kan stille inn slik at «Utvidet Smartspace» åpnes når et mål er trykket på og ytterligere informasjon er tilgjengelig.</string>
+    <string name="setup_expanded_open_title">Åpne «Utvidet Smartspace» dynamiskt</string>
+    <string name="setup_expanded_open_content">Hvis innstillingen er aktivert vil «Utvidet Smartspace» åpnes når et mål er trykket på og målet har ytterligere informasjon for å vise, t.eks. en modul eller snarveier</string>
+    <string name="setup_expanded_info_footer">Du kan stille inn flere innstillinger, for eksempel at «Utvidet Smartspace» vil alltid åpnes når et mål er trykket på (selv om det ikke har ytterligere informasjon) i «Innstillinger» &gt; «Utvidet Smartspace» etter at oppsettet er fullført.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Tillegg</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
+    <string name="setup_plugins_info_p1">Du kan laste ned ytterliger <b>tillegg</b> som leverer ytterligere mål, komplikasjoner, og krav i fanen «Tillegg».</string>
+    <string name="setup_plugins_info_p2">Når tillegg er installert kan målene, komplikasjonene, og kravene sine bli lagt til som vanlig ved å trykke på knappen <b>«Legg til mål»</b> eller knappen <b>«Legg til komplikasjon»</b>, eller ved å trykke på <b>«Legg til krav»</b> i kravinnstillingene til mål og komplikasjoner.</string>
     <string name="setup_plugins_info_finish">Fullfør</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Oppsett er komplett</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_content">Mål, komplikasjoner, og moduler kan trenge ytterlige tillatelser, som du vil bli bedt om når de trenger dem.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Ber om tillatelse…</string>
     <string name="enhanced_mode_request_loading_subtitle">Bevilge Shizuku- eller Suitillatelse hvis du blir spurt</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
-    <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
+    <string name="enhanced_mode_request_shizuku_content">Shizuku er en app som krever ikke root-tilgang, og som gjør det mulig for apper som Smartspacer å kjøre kode med særlige tillatelser. Funksjoner dets er muliggjort gjennom å kjøre en kommando på ADB-skallet (Android-feilsøkningsbro) en gang etter omstart. På enheter som kjører Android 11 og nyere, kan kommandoen kjøres uten en datamaskin, men på tidligere versjoner må du bruke en datamaskin for å kjøre kommandoen.</string>
     <string name="enhanced_mode_request_shizuku_button">Få Shizuku</string>
-    <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
+    <string name="enhanced_mode_request_sui_content">Sui er en Magisk-modul som jobber med apper som Smartspacer til å muliggjøre det å kjøre kode som rootbrukeren. Det bruker samme rammeverk som Shizuku og fungerer dermed med Shizuku-apper, men krever ikke manuelt oppsett etter omstart.\n<b>Hvis du ikke vet hva root eller Magisk er, bør du bruke Shizuku istedenfor Sui.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
     <string name="enhanced_mode_request_sui_button">Få Sui</string>
     <string name="enhanced_mode_request_shizuku_error_title">Shizuku er ikke startet</string>
-    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku must be started before Smartspacer can use it, open Shizuku and follow the instructions</string>
+    <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku må kjøres før at Smartspacer kan bruke det: åpne Shizuku og følge instruksjonene dets</string>
     <string name="enhanced_mode_request_shizuku_error_open">Åpne Shizuku</string>
     <!-- Enhanced Mode -->
     <string name="enhanced_mode_title">Forbedret modus</string>
     <string name="enhanced_mode_enable_title">Slå på «Forbedret modus»</string>
     <string name="enhanced_mode_enable_subtitle">Krever Shizuku eller Sui</string>
-    <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
+    <string name="enhanced_mode_enable_content_header"><b>«Forbedret modus» gjør det mulig for Smartspacer å:</b></string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrere inn i Smartspace-en på låseskjermen</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrere inn i Smartspace på kompatible startskjermer</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrere inn i OEMs Smartspace (hvis det er tilgjengelig)</string>
+    <string name="enhanced_mode_enable_content_system">• Vise systemets Smartspace-mål og -komplikasjoner i Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Bruk systemet sin app-prediksjoner som et krav</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Bruk nylig brukte apper som et krav</string>
     <string name="enhanced_mode_skip_button">Hopp over</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_skip_info">Du kan bruke fortsatt Smartspacer sin modul, sine mål, sine komplikasjoner, og sine tillegg uten «Forbedret modus»</string>
+    <string name="enhanced_mode_disable_toast">Det er mulig at du vil måtte starte enheten på nytt for at endringene skal bli tatt i bruk</string>
     <!-- Native Mode -->
     <string name="native_title">Integrert Smartspace</string>
     <string name="native_switch">Slå på «Integrert Smartspace»</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
+    <string name="native_switch_info">Merk deg at når «Integrert Smartspacer» er slått på, vil systemets brukergrensesnitt bli startet på nytt. <b>Du kanskje skal se en melding som sier «Systemets brukergrensesnitt har stoppet» og deretter låseskjermen din.</b> Det er helt vanlig, bare avvis meldingen og lås opp enheten for å fortsette.</string>
+    <string name="native_switch_content">«Integrert Smartspace» integrerer Smartspacer inn i enhetens %1s, og viser Smartspacer sine mål og komplikasjoner i dem.\nDu trenger å slå «Integrert Smartspace» på på nytt hver gang enheten startes på nytt på grunn av systembegrensninger.</string>
     <string name="native_switch_content_many">%1s og %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Kompatibilitet</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
     <string name="native_switch_compatibility_available"><b>Tilgjengelig</b></string>
     <string name="native_switch_compatibility_not_available"><b>Ikke tilgjengelig</b></string>
@@ -564,39 +564,39 @@
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer har blitt frakoblet fra «Kort fortalt», trykk for å koble til på nytt.</string>
     <string name="notification_native_mode_restart_just_reconnect">Koble til på nytt</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizuku kreves</string>
-    <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_target">The At a Glance Target requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_complication">The At a Glance Complication requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_content_app_prediction">«App-forutsigelse»-kravet krever at Shizuku er startet, trykk for å åpne</string>
+    <string name="notification_shizuku_content_recent_task">«Nylig brukte apper»-kravet krever at Shizuku er startet, trykk for å åpne</string>
+    <string name="notification_shizuku_content_at_a_glance_target">«Kort fortalt»-målet krever at Shizuku er startet, trykk for å åpne</string>
+    <string name="notification_shizuku_content_at_a_glance_complication">«Kort fortalt»-komplikasjonen krever at Shizuku er startet, trykk for å åpne</string>
     <!-- Sui service notifications -->
-    <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
-    <string name="notification_sui_content_oem_smartspace">OEM Smartspace requires Shizuku to be started as root, or Sui. Smartspacer was unable to connect, so the service has been disabled.</string>
+    <string name="notification_sui_title">Sui eller Shizuku kreves</string>
+    <string name="notification_sui_content_oem_smartspace">«OEM Smartspace» krever Sui-modulen eller at Shizuku er startet. Smartspacer klarte ikke koble til systemet, så er «OEM Smartspace»-tjenesten deaktivert.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
-    <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
-    <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
+    <string name="notification_battery_optimisation_title">Aktiver ubegrenset batteribruk i bakgrunnen</string>
+    <string name="notification_battery_optimisation_content">Smartspacer krever at ubegrenset batteribruk i bakgrunnen er tillatt for å oppdatere mål og komplikasjoner i bakgrunnen, trykk for å bevilge</string>
+    <string name="notification_battery_optimisation_failed_toast">Klarte ikke åpne innstillingene, vennligst bevilge tillatelsen manuelt</string>
     <!-- Music Target -->
     <string name="target_music_title">Musikk</string>
-    <string name="target_music_description">Displays the currently playing on-device music track</string>
-    <string name="target_music_setting_show_album_art_title">Show Album Art</string>
+    <string name="target_music_description">Viser grunnleggende informasjon om musikken som spilles på enheten</string>
+    <string name="target_music_setting_show_album_art_title">Vis albumomslag</string>
     <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
-    <string name="target_music_setting_use_doorbell_title">Show Square Album Art</string>
+    <string name="target_music_setting_use_doorbell_title">Vis firkantet albumomslag</string>
     <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
-    <string name="target_music_setting_clear_dismissed_title">Clear Dismissed Apps</string>
-    <string name="target_music_setting_clear_dismissed_content">Clear the list of apps that have been dismissed, allowing their tracks to appear in Smartspace again</string>
+    <string name="target_music_setting_clear_dismissed_title">Fjern listen over avviste apper</string>
+    <string name="target_music_setting_clear_dismissed_content">Fjern listen over apper som har blitt avvist, slik at musikkinformasjonen deres kan vises i Smartspace igjen</string>
     <string name="target_music_setting_setting_title">Innstillinger</string>
     <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Innstillinger for «Integrert Smartspace»</string>
     <string name="native_mode_settings_title">Integrert Smartspace</string>
-    <string name="native_mode_settings_target_limit_title">Page Limit</string>
+    <string name="native_mode_settings_target_limit_title">Sidegrense</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
-    <string name="native_mode_settings_target_limit_one">Single page</string>
+    <string name="native_mode_settings_target_limit_one">Ensidig</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
     <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
     <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
