@@ -493,42 +493,42 @@
     <string name="setup_add_widget_lock"><![CDATA[Merk deg at hvis du ønsker at legge til Smartspacer i låseskjermen din uten å bruke «Integrert Smartspace» må du laste ned og bruke en app som <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> for å legge til Smartspacer-modulen.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Krav</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_p1"><b>Krav</b> lar deg tilpasse når et mål eller en komplikasjon vises i Smartspace. Med krav kan du opprette scenarier som viser nyttig informasjon i Smartspace.</string>
+    <string name="setup_requirements_info_p2"><b>Du kan få tilgang til kravinnstillingene gjennom å trykke på et mål eller en komplikasjon i brukergrensesnittet, og å trykk på «Krav»-knappen nederst på skjermen.</b></string>
+    <string name="setup_requirements_info_p3">Med <b>«Noen av»-krav</b>, når ett av kravene er oppfylt, vil elementet vises. Ta eksampel, man kunne bruke Wifi-kravet for å vise handlelisten din fra Google Keep når man er i nærheten av et av nettverkene til de lokale butikkene deres.</string>
+    <string name="setup_requirements_info_p4">Med <b>«Alle av»-krav</b> må alle kravene være oppfylt for å vise elementet. Ta eksampel, man kunne bruke «Tid og dato»-kravet og lokasjonkravet for å vise treningskortet deres når man er på treningssenteret.</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Utvidet</string>
     <string name="setup_expanded_switch">Slå på «Utvidet Smartspace»</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
+    <string name="setup_expanded_info_p1"><b>«Utvidet Smartspace»</b> er en helskjermsversjon av Smartspace som viser alle tilgjengelige mål og komplikasjoner, samt ytterligere informasjon som moduler og snarveier som er spesifisert av målene. Egendefinerte moduler kan også legges til til «Utvidet Smartspace».</string>
     <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
     <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
     <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
-    <string name="setup_plugins_title">Plugins</string>
+    <string name="setup_plugins_title">Tillegg</string>
     <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
     <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
-    <string name="setup_plugins_info_finish">Finish</string>
+    <string name="setup_plugins_info_finish">Fullfør</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Oppsett er komplett</string>
     <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
     <!-- Enhanced Mode > Request -->
-    <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
-    <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
+    <string name="enhanced_mode_request_loading_title">Ber om tillatelse…</string>
+    <string name="enhanced_mode_request_loading_subtitle">Bevilge Shizuku- eller Suitillatelse hvis du blir spurt</string>
     <string name="enhanced_mode_request_shizuku_title">Shizuku</string>
     <string name="enhanced_mode_request_shizuku_content">Shizuku is a non-root app that allows apps like Smartspacer to run code with special permissions. It does this by running a command on ADB (Android Debug Bridge) Shell, once per reboot. On Android 11+ devices, this can be done without a computer, but on older versions you will need to connect to a computer once per reboot to restart Shizuku.</string>
-    <string name="enhanced_mode_request_shizuku_button">Get Shizuku</string>
+    <string name="enhanced_mode_request_shizuku_button">Få Shizuku</string>
     <string name="enhanced_mode_request_sui_content">Sui is a Magisk module that allows apps like Smartspacer to run code as root. It uses the same framework as Shizuku, and therefore works with Shizuku apps, but does not require manual starting after reboots, this is done automatically.\n<b>If you are not sure what root or Magisk is, use Shizuku instead.</b></string>
     <string name="enhanced_mode_request_sui_title">Sui</string>
-    <string name="enhanced_mode_request_sui_button">Get Sui</string>
-    <string name="enhanced_mode_request_shizuku_error_title">Shizuku not started</string>
+    <string name="enhanced_mode_request_sui_button">Få Sui</string>
+    <string name="enhanced_mode_request_shizuku_error_title">Shizuku er ikke startet</string>
     <string name="enhanced_mode_request_shizuku_error_subtitle">Shizuku must be started before Smartspacer can use it, open Shizuku and follow the instructions</string>
-    <string name="enhanced_mode_request_shizuku_error_open">Open Shizuku</string>
+    <string name="enhanced_mode_request_shizuku_error_open">Åpne Shizuku</string>
     <!-- Enhanced Mode -->
-    <string name="enhanced_mode_title">Enhanced Mode</string>
-    <string name="enhanced_mode_enable_title">Enable Enhanced Mode</string>
-    <string name="enhanced_mode_enable_subtitle">Requires Shizuku or Sui</string>
+    <string name="enhanced_mode_title">Forbedret modus</string>
+    <string name="enhanced_mode_enable_title">Slå på «Forbedret modus»</string>
+    <string name="enhanced_mode_enable_subtitle">Krever Shizuku eller Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
     <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
@@ -544,7 +544,7 @@
     <string name="native_switch">Slå på «Integrert Smartspace»</string>
     <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch_content_many">%1s og %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">Compatibility</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
