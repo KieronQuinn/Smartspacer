@@ -565,9 +565,9 @@
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_just_reconnect">Koble til på nytt</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
+    <string name="notification_shizuku_title">Shizuku kreves</string>
     <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_at_a_glance_target">The At a Glance Target requires Shizuku be started, tap to open</string>
