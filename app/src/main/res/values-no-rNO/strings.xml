@@ -268,8 +268,8 @@
     <string name="safe_mode_title">Sikkermodus</string>
     <string name="safe_mode_content">Smartspacer er nå i sikkermodus fordi en app krasjet, og en krasjløype ville ha oppstått. Slike krasj er vanligvis på grunn av et feilaktig mål eller en feilaktig komplikasjon, så hvis krasjen forsvinner ikke bør du se etter oppdateringer til tilleggene dine.</string>
     <string name="safe_mode_relaunch">Start Smartspacer på nytt</string>
-    <string name="feedback_loop_title">Tilbakemeldingssløyfe</string>
-    <string name="feedback_loop_content">Det har oppstått en tilbakemeldingssløyfe gjennom «Integrert Smartspace» og systemet, så kommer «Kort fortalt»-mål ikke til å fungere.\n\nDette kan skje når Smartspacer blir tvunget avslut for raskt etter at «Integrert Smartspace» er slått på.\n\nFor å få det å fungere igjen må du vent 30 sekunder, start Smartspacer på nytt, og slå på «Integrert Smartspacer» på nytt.</string>
+    <string name="feedback_loop_title">Tilbakemeldingsløyfe</string>
+    <string name="feedback_loop_content">Det har oppstått en tilbakemeldingsløyfe gjennom «Integrert Smartspace» og systemet, så kommer «Kort fortalt»-mål ikke til å fungere.\n\nDette kan skje når Smartspacer blir tvunget avslut for raskt etter at «Integrert Smartspace» er slått på.\n\nFor å få det å fungere igjen må du vent 30 sekunder, start Smartspacer på nytt, og slå på «Integrert Smartspacer» på nytt.</string>
     <string name="feedback_loop_relaunch_wait">Vent %1s sekunder</string>
     <string name="feedback_loop_relaunch">Start Smartspacer på nytt</string>
     <string name="configuration_notification_enable_title">Aktiver varslingtilgang</string>
@@ -552,17 +552,17 @@
     <string name="native_switch_compatibility_not_available"><b>Ikke tilgjengelig</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Integrert Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_feedback_loop_content">Det oppstod en tilbakemeldingsløyfe når «Integrert Smartspace» ble startet. For å sikre for at alle mål og komplikasjoner fungerer som de skal, må «Integrert Smartspace» bli avsluttet og startet på nytt.</string>
+    <string name="native_restart_disconnect_content">Smartspacer har blitt frakoblet fra «Kort fortalt». For å sikre for at alle mål og komplikasjoner fungerer som de skal, må «Integrert Smartspace» bli avsluttet og startet på nytt.</string>
+    <string name="native_restart_info">Merk deg at når «Integrert Smartspacer» er aktivert på nytt, vil systemets brukergrensesnitt bli startet på nytt. <b>Du kanskje skal se en melding som sier «Systemets brukergrensesnitt har stoppet» og deretter låseskjermen din.</b> Det er helt vanlig, bare avvis meldingen og lås opp enheten for å fortsette.</string>
     <string name="native_restart_button">Koble til på nytt</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Slå på «Integrert Smartspace» på nytt</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
+    <string name="notification_native_mode_enable_content">Du må aktivere Smartspacer sin «Integrert Smartspacer» på nytt etter omstart, trykk for å aktivere</string>
     <string name="notification_native_mode_enable_dismiss">Ikke vis igjen</string>
     <string name="notification_native_mode_enable_now">Aktiver nå</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
+    <string name="notification_native_mode_restart_title">Slå på «Integrert Smartspace» på nytt</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer har blitt frakoblet fra «Kort fortalt», trykk for å koble til på nytt.</string>
     <string name="notification_native_mode_restart_just_reconnect">Koble til på nytt</string>
