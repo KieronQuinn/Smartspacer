@@ -563,7 +563,7 @@
     <string name="notification_native_mode_enable_now">Aktiver nå</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Slå på «Integrert Smartspace» på nytt</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Det oppstod en tilbakemeldingsløyfe når «Integrert Smartspace» ble startet. Trykk for å avslutte den og prøve igjen.</string>
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer har blitt frakoblet fra «Kort fortalt», trykk for å koble til på nytt.</string>
     <string name="notification_native_mode_restart_just_reconnect">Koble til på nytt</string>
     <!-- Shizuku Start Notifications -->
@@ -583,18 +583,18 @@
     <string name="target_music_title">Musikk</string>
     <string name="target_music_description">Viser grunnleggende informasjon om musikken som spilles på enheten</string>
     <string name="target_music_setting_show_album_art_title">Vis albumomslag</string>
-    <string name="target_music_setting_show_album_art_content">Shows album art for the currently playing track, if available. This may be cropped.</string>
+    <string name="target_music_setting_show_album_art_content">Viser albumomslag for den spillende musikken, hvis det er tilgjengelig. Omslaget kan bli beskåret.</string>
     <string name="target_music_setting_use_doorbell_title">Vis firkantet albumomslag</string>
-    <string name="target_music_setting_use_doorbell_content">Attempts to show the Album Art as a square rather than cropped rectangle. <b>Important:</b> When using Native Smartspace, this does not work on the home screen and doesn\'t appear at all on some devices.</string>
+    <string name="target_music_setting_use_doorbell_content">Forsøker å vise albumomslaget som en firkant istedenfor den beskårne rektangelen. Merk deg at ved bruk av «Integrert Smartspace» kan det hende at denne funksjonen ikke fungerer på startskjermen og kan iblant ikke engang vises på noen enheter.</string>
     <string name="target_music_setting_clear_dismissed_title">Fjern listen over avviste apper</string>
     <string name="target_music_setting_clear_dismissed_content">Fjern listen over apper som har blitt avvist, slik at musikkinformasjonen deres kan vises i Smartspace igjen</string>
     <string name="target_music_setting_setting_title">Innstillinger</string>
-    <string name="target_music_setting_setting_description">Configure whether to show album art &amp; clear dismissed players</string>
+    <string name="target_music_setting_setting_description">Still inn hvis albumomslag skal vises og slett listen over avviste musikkspillere</string>
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Innstillinger for «Integrert Smartspace»</string>
     <string name="native_mode_settings_title">Integrert Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Sidegrense</string>
-    <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
+    <string name="native_mode_settings_target_limit_content">Maksimalt antall sider av mål og komplikasjoner som skal vises: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Ensidig</string>
     <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
@@ -604,52 +604,52 @@
     <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
     <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
     <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
-    <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
+    <string name="native_mode_settings_use_split_smartspace">Bruk delt Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
     <!-- Permission Request target -->
-    <string name="target_permission_request_title">Smartspacer Permission Required</string>
-    <string name="target_permission_request_content">Tap to grant</string>
+    <string name="target_permission_request_title">Smartspacer-tillatelse kreves</string>
+    <string name="target_permission_request_content">Trykk for å bevilge</string>
     <!-- Smartspacer Permission Request -->
-    <string name="permission_dialog_smartspace_title_prefix">Allow</string>
-    <string name="permission_dialog_smartspace_title_suffix">to access Smartspacer Targets and Complications?</string>
+    <string name="permission_dialog_smartspace_title_prefix">Tillat</string>
+    <string name="permission_dialog_smartspace_title_suffix">å få tilgang til Smartspacer sin mål og komplikasjoner?</string>
     <string name="permission_dialog_smartspace_title_unknown">Ukjent</string>
     <string name="permission_dialog_smartspace_allow">Tillat</string>
     <string name="permission_dialog_smartspace_deny">Nekte</string>
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">«Utvidet Smartspace» er deaktivert</string>
     <string name="expanded_disabled_settings">Innstillinger</string>
-    <string name="expanded_widget_configure">Tap to configure widget</string>
-    <string name="expanded_widget_deleted">This Widget has been uninstalled, tap to remove</string>
-    <string name="expanded_widget_deleted_rearrange">Uninstalled Widget</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
-    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_widget_configure">Trykk for å tilpass modulen</string>
+    <string name="expanded_widget_deleted">Denne modulen har blitt avinstallert, trykk for å fjerne</string>
+    <string name="expanded_widget_deleted_rearrange">Avinstallert modul</string>
+    <string name="expanded_permission_title">Bevilge «Vis over andre apper»-tillatelsen</string>
+    <string name="expanded_permission_title_short">Vis over andre apper</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
     <string name="expanded_permission_later">Senere</string>
     <string name="expanded_permission_grant">Bevilge</string>
     <!-- Expanded Smartspace Settings -->
-    <string name="expanded_settings_title">Expanded Smartspace</string>
-    <string name="expanded_settings_title_short">Expanded</string>
+    <string name="expanded_settings_title">Utvidet Smartspace</string>
+    <string name="expanded_settings_title_short">Utvidet</string>
     <string name="expanded_settings_content">Show Smartspace Targets and Complications in a full screen view, with extra information including widgets, app shortcuts and more</string>
     <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
-    <string name="expanded_settings_switch">Enable Expanded Smartspace</string>
-    <string name="expanded_settings_header_search">Search</string>
+    <string name="expanded_settings_switch">Slå på «Utvidet Smartspace»</string>
+    <string name="expanded_settings_header_search">Søk</string>
     <string name="expanded_settings_show_search_box_title">Vis søkefelt</string>
     <string name="expanded_settings_show_search_box_content">Show a search box at the top of Expanded Smartspace</string>
     <string name="expanded_settings_search_provider_title">Søkemotor</string>
     <string name="expanded_settings_search_provider_content">Choose the app to launch when the search box is opened: %1s</string>
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
-    <string name="expanded_settings_show_doodle_title">Show Google Doodle</string>
-    <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
-    <string name="expanded_settings_open_mode_home_screen_title">Open from Home Screen</string>
-    <string name="expanded_settings_open_mode_home_screen_title_short">Home Screen</string>
+    <string name="expanded_settings_show_doodle_title">Vis Google Doodle</string>
+    <string name="expanded_settings_show_doodle_content">Vis dagens Google Doodle på toppsiden av «Utvidet Smartspace»</string>
+    <string name="expanded_settings_header_behaviour">Adferd</string>
+    <string name="expanded_settings_open_mode_home_screen_title">Åpne fra startskjermen</string>
+    <string name="expanded_settings_open_mode_home_screen_title_short">Startskjerm</string>
     <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
-    <string name="expanded_settings_open_mode_lock_screen_title">Open from Lock Screen</string>
-    <string name="expanded_settings_open_mode_lock_screen_title_short">Lock Screen</string>
+    <string name="expanded_settings_open_mode_lock_screen_title">Åpne fra låseskjermen</string>
+    <string name="expanded_settings_open_mode_lock_screen_title_short">Låseskjerm</string>
     <string name="expanded_settings_open_mode_lock_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the lock screen: %1s</string>
-    <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
-    <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
+    <string name="expanded_settings_close_when_locked_title">Lukk når enheten er låst</string>
+    <string name="expanded_settings_close_when_locked_content">Lukk «Utvidet Smartspace» når enheten er låst</string>
     <string name="expanded_settings_header_style">Style</string>
     <string name="expanded_settings_background_mode_title">Background</string>
     <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
