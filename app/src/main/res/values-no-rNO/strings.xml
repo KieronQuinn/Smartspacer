@@ -595,17 +595,17 @@
     <string name="native_mode_settings_title">Integrert Smartspace</string>
     <string name="native_mode_settings_target_limit_title">Sidegrense</string>
     <string name="native_mode_settings_target_limit_content">Maksimalt antall sider av mål og komplikasjoner som skal vises: %1s</string>
-    <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
+    <string name="native_mode_settings_target_limit_warning">Merk deg at på noen enheter og med noen mål kan du oppleve periodisk krasjer av Android-systembrukergrensesnitt og «Integrert Smartspace»-kompatible startskjermer, når «Sidegrense»-innstillingen ikke er stillt in som «Ensidig».</string>
     <string name="native_mode_settings_target_limit_one">Ensidig</string>
-    <string name="native_mode_settings_target_limit_one_content">Limits Smartspace to only show the first page</string>
-    <string name="native_mode_settings_target_limit_automatic">Let Lock Screen/Launcher decide</string>
-    <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
-    <string name="native_mode_settings_target_limit_unlimited">Force unlimited pages</string>
-    <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
-    <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
+    <string name="native_mode_settings_target_limit_one_content">Viser bare Smartspacer sin første side</string>
+    <string name="native_mode_settings_target_limit_automatic">La låse/startskjerm velge antall sider</string>
+    <string name="native_mode_settings_target_limit_automatic_content">Viser antall sider som er bedt om av låse- eller startskjermen</string>
+    <string name="native_mode_settings_target_limit_unlimited">Tving ubegrenset antall sider</string>
+    <string name="native_mode_settings_target_limit_unlimited_content">Ignorer låse- og startskjerm sin ønskede grensen og vis så mange sider som er mulig</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Skjul uforenlige mål</string>
+    <string name="native_mode_settings_hide_incompatible_targets_content">Skjul mål som er uforenlige med enheten din, istedenfor å vise bare overskriften og underskriften</string>
     <string name="native_mode_settings_use_split_smartspace">Bruk delt Smartspace</string>
-    <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_settings_use_split_smartspace_content">På Android 14 og videre versjoner finnes det en delt Smartspace på låseskjermen, som alltid viser datoen og værvarselet ovanfor vanlige mål og komplikasjoner. Smartspacer kan erstatte værvarslet med den første komplikasjonen din, men det er ikke sikkert at det fungerer med alle klokkestiller. Hvis din første komplikasjon ikke vises så bør du slå denne innstillingen av.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer-tillatelse kreves</string>
     <string name="target_permission_request_content">Trykk for å bevilge</string>
