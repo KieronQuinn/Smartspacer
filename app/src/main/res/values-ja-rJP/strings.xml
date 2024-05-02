@@ -734,8 +734,8 @@
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
     <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
     <string name="battery_optimisation_footer_link">Learn More</string>
-    <string name="plugin_repository_tab_installed">Installed</string>
-    <string name="plugin_repository_tab_available">Available</string>
+    <string name="plugin_repository_tab_installed">インストール済</string>
+    <string name="plugin_repository_tab_available">利用可能</string>
     <string name="plugin_repository_empty_title_not_found">Not Found</string>
     <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
     <string name="plugin_repository_empty_title_empty">No Plugins loaded</string>
@@ -946,9 +946,9 @@
     <string name="target_default_settings_hide_package">Package Delivery</string>
     <string name="target_default_settings_hide_timer">Timer &amp; Stopwatch</string>
     <string name="target_default_settings_hide_bedtime">Bedtime</string>
-    <string name="target_default_settings_hide_fitness">Fitness</string>
-    <string name="target_default_settings_hide_connected_devices">Connected Devices</string>
-    <string name="target_default_settings_hide_flashlight">Flashlight</string>
+    <string name="target_default_settings_hide_fitness">フィットネス</string>
+    <string name="target_default_settings_hide_connected_devices">接続済みのデバイス</string>
+    <string name="target_default_settings_hide_flashlight">ライト</string>
     <string name="target_default_settings_hide_safety_check">Safety Check</string>
     <string name="target_default_settings_hide_earthquake_alert">Earthquake Alert</string>
     <string name="target_default_settings_hide_commute">Commute</string>
