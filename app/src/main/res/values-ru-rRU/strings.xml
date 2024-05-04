@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>Optional</b>: Включите этот модуль в вашем лаунчере или Google Feed, чтобы заменить Google Discover на расширенное Smartspace. Вы также должны включить эту опцию в настройках расширенного Smartspace в настройках приложения.</string>
     <string name="dummy_home_content">Этот экран существует для того, чтобы обойти ограничения, вызванные неправильно написанными Виджетами.\n\nSmartspacer - не лаунчер. Пожалуйста, установите другой лаунчер по умолчанию.</string>
     <string name="dummy_home_open_settings">Открыть настройки</string>
     <string name="notification_service">Служба уведомлений Smartspacer</string>
@@ -39,16 +39,16 @@
     <string name="widget_loading_smartspacer">Загрузка…</string>
     <string name="widget_loading_smartspacer_subtitle">Проверьте, включена ли служба Специальных Возможностей Smartspacer, если это сообщение не исчезает</string>
     <string name="widget_configuration_title">Виджет Smartspacer</string>
-    <string name="widget_configuration_tab_horizontal">Horizontal</string>
-    <string name="widget_configuration_tab_vertical">Vertical</string>
-    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
-    <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
+    <string name="widget_configuration_tab_horizontal">Горизонтальный</string>
+    <string name="widget_configuration_tab_vertical">Вертикальный</string>
+    <string name="widget_configuration_horizontal_info"><b>Note:</b> Из-за ограничений Android виджеты нельзя прокручивать по горизонтали. Вместо этого в виджете Smartspacer есть элементы управления для изменения страниц при нажатии.</string>
+    <string name="widget_configuration_vertical_info"><b>Note:</b> При использовании виджета \"Список\" могут возникнуть проблемы с производительностью и повышенный расход заряда батареи. Это связано с тем, что при каждом изменении требуется обновлять весь виджет, и это невозможно исправить.</string>
     <string name="widget_configuration_accessibility_title">Включите службы специальных возможностей</string>
     <string name="widget_configuration_accessibility_content">Виджет Smartspacer требует сервис Специальных Возможностей, чтобы следить за тем, какое приложение сейчас находится на вашем экране, и приостанавливать Цели и Дополнения. Это позволяет им обновляться только когда это необходимо, экономя заряд батареи.</string>
-    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
-    <string name="widget_configuration_behaviour_title">Behaviour</string>
-    <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
-    <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_accessibility_enable">Нажмите, чтобы включить</string>
+    <string name="widget_configuration_behaviour_title">Поведение</string>
+    <string name="widget_configuration_is_lock_screen_title">Виджеты экрана блокировки</string>
+    <string name="widget_configuration_is_lock_screen_content">Включите <b>только в том случае</b>, если этот виджет добавляется на экран блокировки.\nЕсли это <b>не позволяет</b> добавить виджет на экран блокировки самостоятельно, загрузите приложение из Google Play, например \"Виджеты экрана блокировки\", чтобы сделать это.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page_single_title">Одна страница</string>
     <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
