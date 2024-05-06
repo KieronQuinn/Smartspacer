@@ -456,9 +456,9 @@
     <string name="setup_notifications_request">Bevilge</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Mål</string>
-    <string name="setup_targets_info_p1"><b>Mål</b> er informasjonssider som vises på Smartspace. Vanligvis inneholder de i det minste en overskrift, en underskrift, og en ikon. Mange mål har også ekstra informasjon der det støttes, t. eks. bilder eller lister.</string>
+    <string name="setup_targets_info_p1"><b>Mål</b> er informasjonssider som vises på Smartspace. Vanligvis inneholder de i det minste en overskrift, en underskrift, og en ikon. Mange mål har også ekstra informasjon der det støttes, f.eks. bilder eller lister.</string>
     <string name="setup_targets_info_p2">Mål kan enten være dynamiske, som betyr at de vises og skjules etter behov, eller statiske, som betyr at de vises hele tiden. Du kan imidlertid bruke <b>krav</b> for å tilpass når mål vises, samt innstillingene gitt av mange mål (som kan stilles inn ved å trykke på et mål i Smartspacer sin brukergrensesnitt).</string>
-    <string name="setup_targets_info_p3">Smartspacer sin «Kort fortalt»-integrering leveres av «Kort fortalt»-målet, som kan vis de vanlige dataene fra Google sin «Kort fortalt», t. eks. kalenderhendelser og flyreiser. Merk deg at «Kort fortalt»-målet viser <b>ikke</b> alltid datoen hvis ingen informasjon er tilgjengelig, og for å vise datoen alltid bør du legge til «Dato»-målet.</string>
+    <string name="setup_targets_info_p3">Smartspacer sin «Kort fortalt»-integrering leveres av «Kort fortalt»-målet, som kan vis de vanlige dataene fra Google sin «Kort fortalt», f.eks. kalenderhendelser og flyreiser. Merk deg at «Kort fortalt»-målet viser <b>ikke</b> alltid datoen hvis ingen informasjon er tilgjengelig, og for å vise datoen alltid bør du legge til «Dato»-målet.</string>
     <string name="setup_targets_info_example_one_title">Tung trafikk i nærheten</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Handleliste</string>
@@ -475,7 +475,7 @@
     <string name="setup_targets_controls_skip">Hopp over</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Komplikasjoner</string>
-    <string name="setup_complications_info_p1"><b>Komplikasjoner</b> er ekstra informasjon som kan vises sammen med mål. De er vanligvis kort tekst og en ikon, t.eks. antall uleste e-poster eller værvarselet.</string>
+    <string name="setup_complications_info_p1"><b>Komplikasjoner</b> er ekstra informasjon som kan vises sammen med mål. De er vanligvis kort tekst og en ikon, f.eks. antall uleste e-poster eller værvarselet.</string>
     <string name="setup_complications_info_p2">Komplikasjoner vil vises sammen med mål der det finnes plass, eller sammen med datoen hvis det ikke lenger finnes tilgjengelige mål.</string>
     <string name="setup_complications_info_p3">Likner på mål kan komplikasjoner være dynamiske eller statiske, og de kan skjules hvis det ikke finnes informasjon å vise. Du kan imidlertid bruke <b>krav</b> for å tilpass når komplikasjoner vises, samt innstillingene gitt av mange komplikasjoner (som kan stilles inn ved å trykke på en komplikasjon i Smartspacer sin brukergrensesnitt).</string>
     <string name="setup_complications_example_gmail">8</string>
@@ -503,7 +503,7 @@
     <string name="setup_expanded_info_p1"><b>«Utvidet Smartspace»</b> er en helskjermsversjon av Smartspace som viser alle tilgjengelige mål og komplikasjoner, samt ytterligere informasjon som moduler og snarveier som er spesifisert av målene. Egendefinerte moduler kan også legges til til «Utvidet Smartspace».</string>
     <string name="setup_expanded_info_p2">«Utvidet Smartspace» er utformet for å gi raskt overblikk over all aktuell informasjon. Du kan stille inn slik at «Utvidet Smartspace» åpnes når et mål er trykket på og ytterligere informasjon er tilgjengelig.</string>
     <string name="setup_expanded_open_title">Åpne «Utvidet Smartspace» dynamiskt</string>
-    <string name="setup_expanded_open_content">Hvis innstillingen er aktivert vil «Utvidet Smartspace» åpnes når et mål er trykket på og målet har ytterligere informasjon for å vise, t.eks. en modul eller snarveier</string>
+    <string name="setup_expanded_open_content">Hvis innstillingen er aktivert vil «Utvidet Smartspace» åpnes når et mål er trykket på og målet har ytterligere informasjon for å vise, f.eks. en modul eller snarveier</string>
     <string name="setup_expanded_info_footer">Du kan stille inn flere innstillinger, for eksempel at «Utvidet Smartspace» vil alltid åpnes når et mål er trykket på (selv om det ikke har ytterligere informasjon) i «Innstillinger» &gt; «Utvidet Smartspace» etter at oppsettet er fullført.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Tillegg</string>
@@ -683,25 +683,25 @@
     <string name="expanded_settings_tint_colour_content">Fargen som skal brukes for tekst og ikoner i «Utvidet Smartspace»: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">«OEM Smartspace»</string>
-    <string name="oem_smartspace_content">Options for Smartspacer showing in legacy Launchers and on the Lock Screen on some devices</string>
-    <string name="oem_smartspace_content_enhanced">This option requires Enhanced Mode</string>
-    <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root.</string>
-    <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
+    <string name="oem_smartspace_content">Innstillinger for Smartspacer i gamlere startskjermer og på låseskjermen på enkelte enheter</string>
+    <string name="oem_smartspace_content_enhanced">Denne innstillingen krever «Forbedret modus»</string>
+    <string name="oem_smartspace_incompatible">Beklager, denne innstillingen krever root-tilgång på enheten din på grunn av systembegrensinger. Hvis du har root-tilgang, så bør du installere Magisk-modulen «Sui» eller start Shizuku-appen med root-tilgang.</string>
+    <string name="oem_smartspace_info">«OEM Smartspace» viser Smartspacer sine mål og komplikasjoner i kompatible startskjermer og låseskjermer.\n\n<b>Merk deg at det er mye mer bregrenset enn Smartspacer sine andre moduser:</b>\n- Kun overskriften og underskriften til et mål kan vises, ingen bilder eller ytterligere alternativer\n- Kun et mål og en komplikasjonen kan vises\n- Enkelte OEM-er viser ikke komplikasjoner når et mål er ikke tilgjengelig\n- Oppsettet av mål og komplikasjoner kan skille seg fra vanligen på enheten din på grunn av OEM-modifikasjoner\n- Det kan være umulig å aktivere enkelte alternativer på mål med flere komplikasjoner\n- Enkelte OEM-er slår Smartspace av hvis en kommando kjøres ikke eller en innstilling er stillt in, sjekk Wiki-siden nedenfor til å få vite mer.</string>
     <string name="oem_smartspace_more_info">Mer informasjon (på engelsk)</string>
-    <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
+    <string name="oem_smartspace_no_apps">Ingen apper som kan bruke «OEM Smartspace» er installert på enheten din.</string>
     <string name="oem_smartspace_switch">Slå på «OEM Smartspace»</string>
-    <string name="oem_smartspace_apps">Compatible Apps</string>
-    <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
+    <string name="oem_smartspace_apps">Kompatible apper</string>
+    <string name="oem_smartspace_warning">Denne appen krever kanskje ytterligere oppsett, sjekk Wiki-siden nedenfor for å få vite</string>
     <string name="oem_smartspace_settings">Innstillinger</string>
     <string name="oem_smartspace_label_systemui">Låseskjerm</string>
-    <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
-    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
+    <string name="oem_smartspace_hide_incompatible_title">Skjul uforenlige mål</string>
+    <string name="oem_smartspace_hide_incompatible_content">Skjul mål som er uforenlige med «OEM Smartspace», istedenfor å vise bare overskriften og underskriften</string>
     <string name="expanded_search_box_search">Søk…</string>
     <string name="expanded_footer">Legg til modul</string>
     <string name="expanded_custom_widget_delete">Fjern</string>
     <string name="expanded_custom_widget_options">Innstillinger</string>
-    <string name="expanded_custom_widget_rearrange">Rearrange</string>
-    <string name="expanded_custom_widget_rearrange_title">Drag to rearrange</string>
+    <string name="expanded_custom_widget_rearrange">Endre rekkefølge</string>
+    <string name="expanded_custom_widget_rearrange_title">Dra for å endre rekkefølge</string>
     <string name="expanded_widget_reset_title">Tilbakestill</string>
     <string name="expanded_add_widget_title">Legg til modul</string>
     <string name="expanded_add_widget_widget_label">%1s (%1d × %1d)</string>
@@ -709,10 +709,10 @@
     <string name="expanded_add_widget_widgets_other">%1d moduler</string>
     <string name="expanded_add_widget_category_battery">Batteri</string>
     <string name="expanded_add_widget_category_conversations">Samtaler</string>
-    <string name="expanded_add_widget_category_note_taking">Note-taking</string>
+    <string name="expanded_add_widget_category_note_taking">Notater</string>
     <string name="expanded_add_widget_category_weather">Vær</string>
-    <string name="expanded_custom_widget_options_span_x_title">Width</string>
-    <string name="expanded_custom_widget_options_span_x_content">The width for this widget, in cells</string>
+    <string name="expanded_custom_widget_options_span_x_title">Bredde</string>
+    <string name="expanded_custom_widget_options_span_x_content">Bredden for denne modulen, i celler</string>
     <string name="expanded_custom_widget_options_span_y_title">Height</string>
     <string name="expanded_custom_widget_options_span_y_content">The height for this widget, in rows</string>
     <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
