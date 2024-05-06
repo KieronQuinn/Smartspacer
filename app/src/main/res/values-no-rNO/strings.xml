@@ -713,7 +713,7 @@
     <string name="expanded_add_widget_category_weather">Vær</string>
     <string name="expanded_custom_widget_options_span_x_title">Bredde</string>
     <string name="expanded_custom_widget_options_span_x_content">Bredden for denne modulen, i celler</string>
-    <string name="expanded_custom_widget_options_span_y_title">Height</string>
+    <string name="expanded_custom_widget_options_span_y_title">Høyde</string>
     <string name="expanded_custom_widget_options_span_y_content">The height for this widget, in rows</string>
     <string name="expanded_custom_widget_options_reconfigure_title">Reconfigure</string>
     <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
