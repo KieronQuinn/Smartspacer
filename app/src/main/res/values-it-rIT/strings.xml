@@ -801,7 +801,7 @@
     <string name="permissions_ask_every_time">Ask every time</string>
     <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
     <string name="permissions_title">Permissions</string>
-    <string name="permissions_content">Manage permissions granted to Plugins &amp; apps integrating Smartspacer</string>
+    <string name="permissions_content">Gestisci le autorizzazioni concesse ai plugin e alle app che integrano Smartspacer</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
