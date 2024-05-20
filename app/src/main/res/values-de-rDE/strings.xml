@@ -47,23 +47,23 @@
     <string name="widget_configuration_accessibility_content">Das Smartspacer-Widget benötigt eine Bedienungshilfe, um zu wissen, welche App derzeit auf deinem Gerät geöffnet ist und um Ziele und Komplikationen starten/stoppen zu können. So können sie auf dem Laufenden gehalten werden, ohne die ganze Zeit laufen zu müssen - und Akku sparen.</string>
     <string name="widget_configuration_accessibility_enable">Zum Aktivieren tippen</string>
     <string name="widget_configuration_behaviour_title">Verhalten</string>
-    <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
+    <string name="widget_configuration_is_lock_screen_title">Widget für den Sperrbildschirm</string>
     <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_page_single_title">Eine Seite</string>
     <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
-    <string name="widget_configuration_customisation_title">Customisation</string>
-    <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
+    <string name="widget_configuration_customisation_title">Anpassung</string>
+    <string name="widget_configuration_page_arrows_title">Seitensteuerungen anzeigen</string>
     <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
     <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
-    <string name="widget_configuration_page_controls_invisible_content">Make the controls invisible. They\'re still there and are clickable, but are invisible.</string>
+    <string name="widget_configuration_page_controls_invisible_content">Mache die Steuerelemente unsichtbar. Sie sind immer noch vorhanden und anklickbar, aber unsichtbar.</string>
     <string name="widget_configuration_padding_title">Extra Padding</string>
-    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
+    <string name="widget_configuration_padding_content">Füge zusätzlichen Abstand links &amp; rechts vom Widget hinzu. Bitte beachte, dass dies <b>zusätzlich</b> zu jedem Abstand ist, den dein Launcher möglicherweise hinzufügt.</string>
     <string name="widget_configuration_animation">Animation</string>
     <string name="widget_configuration_animation_switch_title">Änderungen animieren</string>
     <string name="widget_configuration_animation_switch_content">Zwischen Änderungen des Widgets überblenden, wenn möglich</string>
     <string name="widget_configuration_colour">Farbe</string>
-    <string name="widget_configuration_shadow_title">Text Shadow</string>
+    <string name="widget_configuration_shadow_title">Textschatten</string>
     <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Ziel</string>
@@ -663,15 +663,15 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_xposed_enabled_content">Ersetze den Google Discover Feed durch den erweiterten Smartspace.\n<b>Hinweis:</b> Du musst das Xposed-Modul für deinen Launcher oder Google Feed Plugin aktivieren und dann neu starten, damit dies funktioniert.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Diese Einstellung erfordert Xposed</string>
     <string name="expanded_settings_hide_add_button_title">Hinzufügen-Button ausblenden</string>
-    <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
+    <string name="expanded_settings_hide_add_button_content">Den Button ausblenden, um eigene Widgets hinzuzufügen: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Niemals</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Beim Ersetzen von Google Discover</string>
     <string name="expanded_settings_hide_add_button_always">Immer</string>
-    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_title">Mehrspaltig aktivieren</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
-    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_title">Text &amp; Symbol Schatten</string>
     <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Niemals</string>
     <string name="expanded_settings_open_mode_never_content">Führt die Klick-Aktionen des Ziels aus, statt den erweiterten Smartspace zu öffnen</string>
@@ -709,7 +709,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_add_widget_widgets_one">%1d Widget</string>
     <string name="expanded_add_widget_widgets_other">%1d Widgets</string>
     <string name="expanded_add_widget_category_battery">Akku</string>
-    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_conversations">Unterhaltungen</string>
     <string name="expanded_add_widget_category_note_taking">Note-taking</string>
     <string name="expanded_add_widget_category_weather">Wetter</string>
     <string name="expanded_custom_widget_options_span_x_title">Breite</string>
@@ -721,7 +721,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_custom_widget_options_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Dieses Widget im erweiterten Smartspace anzeigen, wenn das Gerät gesperrt ist</string>
     <string name="expanded_custom_widget_options_round_corners_title">Runde Ecken erzwingen</string>
-    <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Wende abgerundete Ecken auf dieses Widget an, auch wenn es nicht dafür konzipiert ist</string>
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
     <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">Keine Widgets gefunden</string>
@@ -967,7 +967,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_channels">Benachrichtigungskanäle</string>
     <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
     <string name="target_notification_configuration_options">Einstellungen</string>
-    <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
+    <string name="target_notification_configuration_trim_new_lines_title">Entferne neue Zeilen</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Leeres Ziel</string>
@@ -1039,11 +1039,11 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_recent_apps_configuration_limit_content_bs">Die Anzahl der kürzlich geöffneten Apps, die nach der ausgewählten App gesucht werden soll</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unbegrenzt</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
-    <string name="productivity_widget_recommendation_category_label">Essentials</string>
-    <string name="social_widget_recommendation_category_label">Social</string>
-    <string name="weather_widget_recommendation_category_label">Weather</string>
-    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
-    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
-    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
-    <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="productivity_widget_recommendation_category_label">Grundlegendes</string>
+    <string name="social_widget_recommendation_category_label">Sozial</string>
+    <string name="weather_widget_recommendation_category_label">Wetter</string>
+    <string name="entertainment_widget_recommendation_category_label">Unterhaltung</string>
+    <string name="fitness_widget_recommendation_category_label">Gesundheit &amp; Fitness</string>
+    <string name="news_widget_recommendation_category_label">Nachrichten &amp; Zeitschriften</string>
+    <string name="others_widget_recommendation_category_label">Empfohlen für dich</string>
 </resources>

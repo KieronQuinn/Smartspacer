@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres de Smartspace étendu dans Smartspacer.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Paramètres</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -42,7 +42,7 @@
     <string name="widget_configuration_tab_horizontal">Horizontal</string>
     <string name="widget_configuration_tab_vertical">Vertical</string>
     <string name="widget_configuration_horizontal_info"><b>Remarque :</b> en raison d\'une limitation d\'Android, il est impossible de faire défiler les widgets horizontalement. Pour contourner cela, le widget Smartspacer vous permet de changer de page par un appui sur les commandes.</string>
-    <string name="widget_configuration_vertical_info"><b>Remarque :</b> en utilisant le format liste, il se peut que vous rencontriez des problèmes de performance et que la batterie se vide plus vite. Cela est dû au fait que le widget doit être mis à jour dans son entièreté à chaque changement. Il est impossible d\'y remédier.</string>
+    <string name="widget_configuration_vertical_info"><b>Remarque :</b> en utilisant le format liste, vous pourriez rencontrer des problèmes de performance et la batterie pourrait être davantage sollicitée. Cela est dû au fait que le widget doit être mis à jour dans son entièreté à chaque changement. Il est impossible d\'y remédier.</string>
     <string name="widget_configuration_accessibility_title">Activer le service d\'accessibilité</string>
     <string name="widget_configuration_accessibility_content">Le widget Smartspacer nécessite un service d\'accessibilité pour connaître les applications ouvertes sur votre appareil, et démarrer et arrêter les cibles et les complications. Cela permet de les maintenir à jour sans avoir besoin de les exécuter en permanence, ce qui économise de la batterie.</string>
     <string name="widget_configuration_accessibility_enable">Appuyez pour activer</string>
@@ -322,7 +322,7 @@
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minute</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Réactivité</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_content">Définir la réactivité de cette condition Position. Choisir une durée plus longue vous permettra d\'économiser de la batterie, mais la condition sera mise à jour moins souvent.</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_content">Définissez la réactivité de cette condition Position. En choisissant une durée plus longue, la batterie sera moins sollicitée mais la condition sera mise à jour moins souvent.</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d secondes</string>
     <string name="requirement_geofence_configuration_background_location_title">Activez l\'accès à la position en arrière-plan</string>
     <string name="requirement_geofence_configuration_background_location_content">Pour pouvoir fonctionner, les conditions Position ont besoin d\'un accès à la position en arrière-plan. Pour continuer, accordez cette autorisation dans les paramètres en sélectionnant Autorisations &gt; Position &gt; Toujours autoriser, puis retournez dans l\'application.</string>
@@ -447,7 +447,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -591,7 +591,7 @@
     <string name="target_music_setting_setting_title">Paramètres</string>
     <string name="target_music_setting_setting_description">Choisir s\'il faut afficher la jaquette et effacer la liste des lecteurs ignorés</string>
     <!-- Native Mode Settings -->
-    <string name="native_mode_settings_menu_title">Paramètres de Smartspace natif</string>
+    <string name="native_mode_settings_menu_title">Paramètres Smartspace natif</string>
     <string name="native_mode_settings_title">Smartspace natif</string>
     <string name="native_mode_settings_target_limit_title">Limite de pages</string>
     <string name="native_mode_settings_target_limit_content">Nombre maximum de pages de cibles et de complications à afficher : %1s</string>
@@ -731,7 +731,7 @@
     <string name="battery_optimisation_schedule_exact_alarm_title">Autoriser les alarmes et les rappels</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Nécessaire pour que Smartspacer puisse mettre à jour en arrière-plan les cibles et les complications de manière fiable.</string>
     <string name="battery_optimisation_oem_title">Optimisation de la batterie OEM</string>
-    <string name="battery_optimisation_oem_content">Il semblerait que le fabricant de votre appareil ait ajouté des optimisations de batterie supplémentaires. Ces optimisations ne peuvent pas être désactivées automatiquement, appuyez pour ouvrir les paramètres de la batterie.</string>
+    <string name="battery_optimisation_oem_content">Votre appareil semble comporter des optimisations de batterie ajoutées par le fabricant. Ces optimisations ne peuvent pas être désactivées automatiquement, appuyez pour ouvrir les paramètres de la batterie.</string>
     <string name="battery_optimisation_footer">Smartspacer s\'exécute en arrière-plan. Pour éviter que l\'application soit tuée par le système, les optimisations de la batterie doivent être désactivées.</string>
     <string name="battery_optimisation_footer_link">En savoir plus</string>
     <string name="plugin_repository_tab_installed">Installé</string>
@@ -1038,11 +1038,11 @@
     <string name="requirement_recent_apps_configuration_limit_content_bs">Nombre d\'applications récentes à prendre en compte dans la recherche de l\'application sélectionnée</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Illimité</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
-    <string name="productivity_widget_recommendation_category_label">Essentials</string>
-    <string name="social_widget_recommendation_category_label">Social</string>
-    <string name="weather_widget_recommendation_category_label">Weather</string>
-    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
-    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
-    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
-    <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="productivity_widget_recommendation_category_label">Les bases</string>
+    <string name="social_widget_recommendation_category_label">Réseaux sociaux</string>
+    <string name="weather_widget_recommendation_category_label">Météo</string>
+    <string name="entertainment_widget_recommendation_category_label">Divertissement</string>
+    <string name="fitness_widget_recommendation_category_label">Santé et bien-être</string>
+    <string name="news_widget_recommendation_category_label">Actualités et magazines</string>
+    <string name="others_widget_recommendation_category_label">Recommandations</string>
 </resources>
