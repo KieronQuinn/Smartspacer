@@ -769,7 +769,9 @@ public class LocalActivityManagerCompat {
         for (int i=0; i<N; i++) {
             LocalActivityRecord r = mActivityArray.get(i);
             if (localLOGV) Log.v(TAG, r.id + ": destroying");
-            Extensions_ActivityKt.setIsChangingConfigurations(r.activity, !finishing);
+            if(r.activity != null) {
+                Extensions_ActivityKt.setIsChangingConfigurations(r.activity, !finishing);
+            }
             ActivityThreadCompat.performDestroyActivity(r, mActivityThread, finishing, 0 /* configChanges */,
                     false /* getNonConfigInstance */, "LocalActivityManager::dispatchDestroy");
         }
@@ -860,11 +862,11 @@ public class LocalActivityManagerCompat {
 
         //Requires reflection
         private static Activity performLaunchActivity(ActivityClientRecord activityClientRecord, ActivityThread mActivityThread, Intent customIntent) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            if(isAtLeastS()) {
+            try {
                 Method performLaunchActivity = ActivityThread.class.getDeclaredMethod("performLaunchActivity", ActivityClientRecord.class, Intent.class);
                 performLaunchActivity.setAccessible(true);
                 return (Activity) performLaunchActivity.invoke(mActivityThread, activityClientRecord, customIntent);
-            }else{
+            }catch (NoSuchMethodException e){
                 Method performLaunchActivity = ActivityThread.class.getDeclaredMethod("performLaunchActivity", IBinder.class, Intent.class);
                 performLaunchActivity.setAccessible(true);
                 return (Activity) performLaunchActivity.invoke(mActivityThread, activityClientRecord.token, customIntent);
@@ -875,7 +877,7 @@ public class LocalActivityManagerCompat {
         @SuppressLint("DiscouragedPrivateApi")
         private static void performStopActivity(IBinder binder, ActivityThread mActivityThread, boolean saveState, String reason) {
             try {
-                Method performStopActivity = ActivityThread.class.getDeclaredMethod("performStopActivity", IBinder.class, Boolean.class, String.class);
+                Method performStopActivity = ActivityThread.class.getDeclaredMethod("performStopActivity", IBinder.class, boolean.class, String.class);
                 performStopActivity.setAccessible(true);
                 performStopActivity.invoke(mActivityThread, binder, saveState, reason);
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
@@ -886,12 +888,12 @@ public class LocalActivityManagerCompat {
 
         //Requires reflection
         private static Bundle performPauseActivity(IBinder token, ActivityThread mActivityThread, boolean finished, String reason, PendingTransactionActions pendingActions) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            if(isAtLeastS()) {
-                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", ActivityClientRecord.class, Boolean.class, String.class, PendingTransactionActions.class);
+            try {
+                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", ActivityClientRecord.class, boolean.class, String.class, PendingTransactionActions.class);
                 performPauseActivity.setAccessible(true);
                 return (Bundle) performPauseActivity.invoke(mActivityThread, mActivityThread.getActivityClient(token), finished, reason, pendingActions);
-            }else{
-                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", IBinder.class, Boolean.class, String.class, PendingTransactionActions.class);
+            }catch (NoSuchMethodException e){
+                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", IBinder.class, boolean.class, String.class, PendingTransactionActions.class);
                 performPauseActivity.setAccessible(true);
                 return (Bundle) performPauseActivity.invoke(mActivityThread, token, finished, reason, pendingActions);
             }
