@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">Mostrar este objetivo en el always on display mientras la música se está reproduciendo</string>
     <string name="target_edit_show_on_music_content_oem">Mostrar este objetivo en el always on display (si está disponible) mientras la música se está reproduciendo</string>
     <string name="target_edit_show_on_music_content_incompatible">Requiere el Smartspace Nativo con soporte para la pantalla de bloqueo</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">Smartspace extendido</string>
     <string name="target_edit_expanded_show_when_locked_title">Mostrar mientras está bloqueado</string>
     <string name="target_edit_expanded_show_when_locked_content">Mostrar este objetivo en Smartspace extendido cuando esté bloqueado</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">Mostrar esta complicación en Always On Display mientras la música está en reproducción</string>
     <string name="complication_edit_show_on_music_content_oem">Mostrar esta complicación en Always On Display (si está disponible) mientras la música está en reproducción</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requiere Smartspace Nativo con soporte para la pantalla de bloqueo</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">Smartspace extendido</string>
     <string name="complication_edit_expanded_show_when_locked_title">Mostrar mientras está bloqueado</string>
     <string name="complication_edit_expanded_show_when_locked_content">Mostrar esta complicación en Smartspace extendido mientras está bloqueado</string>
@@ -1039,6 +1041,10 @@
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Ilimitado</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
     <string name="weather_widget_recommendation_category_label">Weather</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
