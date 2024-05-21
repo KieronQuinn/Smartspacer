@@ -150,12 +150,14 @@ fun <T> Context.broadcastReceiverAsFlow(
         trySend(it)
     }
     awaitClose {
-        unregisterReceiver(receiver)
+        unregisterReceiverCompat(receiver)
     }
 }
 
 @SuppressLint("UnspecifiedRegisterReceiverFlag")
-fun Context.broadcastReceiverAsFlow(intentFilter: IntentFilter) = callbackFlow {
+fun Context.broadcastReceiverAsFlow(
+    intentFilter: IntentFilter
+) = callbackFlow {
     val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             trySend(intent)
@@ -163,17 +165,24 @@ fun Context.broadcastReceiverAsFlow(intentFilter: IntentFilter) = callbackFlow {
     }
     registerReceiverCompat(receiver, intentFilter)
     awaitClose {
-        unregisterReceiver(receiver)
+        unregisterReceiverCompat(receiver)
     }
 }
 
 @SuppressLint("UnspecifiedRegisterReceiverFlag")
-fun Context.registerReceiverCompat(receiver: BroadcastReceiver, intentFilter: IntentFilter) {
+fun Context.registerReceiverCompat(
+    receiver: BroadcastReceiver,
+    intentFilter: IntentFilter
+) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         registerReceiver(receiver, intentFilter, RECEIVER_EXPORTED)
     }else{
         registerReceiver(receiver, intentFilter)
     }
+}
+
+fun Context.unregisterReceiverCompat(receiver: BroadcastReceiver) {
+    unregisterReceiver(receiver)
 }
 
 fun Context.isScreenOff(): Boolean {
@@ -182,9 +191,11 @@ fun Context.isScreenOff(): Boolean {
 }
 
 fun Context.screenOff(): Flow<Boolean> {
-    return broadcastReceiverAsFlow(Intent.ACTION_SCREEN_OFF, Intent.ACTION_SCREEN_ON, map = {
-        isScreenOff()
-    }, startWith = { isScreenOff() })
+    return broadcastReceiverAsFlow(
+        Intent.ACTION_SCREEN_OFF, Intent.ACTION_SCREEN_ON,
+        map = { isScreenOff() },
+        startWith = { isScreenOff() }
+    )
 }
 
 fun Context.isAudioPlaying(): Boolean {
@@ -238,11 +249,10 @@ fun Context.lockscreenShowing(): Flow<Boolean> {
         Intent.ACTION_SCREEN_OFF, Intent.ACTION_SCREEN_ON, Intent.ACTION_USER_PRESENT,
         map = {
             isLockscreenShowing()
-        },
-        startWith = {
-            isLockscreenShowing()
         }
-    )
+    ) {
+        isLockscreenShowing()
+    }
 }
 
 fun Context.isLockscreenShowing(): Boolean {
@@ -260,11 +270,10 @@ fun Context.displayOff(): Flow<Boolean> {
         Intent.ACTION_SCREEN_OFF, Intent.ACTION_SCREEN_ON, Intent.ACTION_USER_PRESENT,
         map = {
             isDisplayOff()
-        },
-        startWith = {
-            isDisplayOff()
         }
-    )
+    ) {
+        isDisplayOff()
+    }
 }
 
 fun Context.isLandscape(): Boolean {

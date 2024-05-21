@@ -66,6 +66,7 @@ class ContainerFragment: BaseContainerFragment<FragmentContainerBinding>(Fragmen
     }
 
     override val navigation by inject<ContainerNavigation>()
+    override val rootDestinationId = R.id.nav_graph_main
 
     private val viewModel by viewModel<ContainerViewModel>()
 

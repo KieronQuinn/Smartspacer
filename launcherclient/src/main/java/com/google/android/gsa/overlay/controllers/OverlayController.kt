@@ -38,7 +38,7 @@ open class OverlayController(context: Context?, theme: Int, dialogTheme: Int) :
         obtain.recycle()
     }
 
-    fun cnC(): com.google.android.libraries.launcherclient.ILauncherOverlayCallback? {
+    fun destroy(isFinishing: Boolean): com.google.android.libraries.launcherclient.ILauncherOverlayCallback? {
         BJ(0)
         try {
             windowView?.let {
@@ -49,7 +49,7 @@ open class OverlayController(context: Context?, theme: Int, dialogTheme: Int) :
         }
         windowView = null
         cnB()
-        onDestroy()
+        onDestroy(isFinishing)
         return uoa
     }
 
@@ -242,7 +242,7 @@ open class OverlayController(context: Context?, theme: Int, dialogTheme: Int) :
         this.window!!.setTitle(charSequence)
     }
 
-    open fun onDestroy() {}
+    open fun onDestroy(isFinishing: Boolean) {}
 
     fun bP(z: Boolean) {}
 

@@ -14,6 +14,7 @@ class MinusOneOverlayCallback(
     override fun createController(configuration: Configuration?): OverlayController? {
         return overlaysController.createController(
             configuration,
+            overlayControllerBinder.mCallerUid,
             overlayControllerBinder.mServerVersion,
             overlayControllerBinder.mClientVersion
         )

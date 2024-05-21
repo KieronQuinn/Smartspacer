@@ -29,6 +29,7 @@ class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfo
 
     private fun setupExampleComplicationOne() = with(binding.setupComplicationInfoExample1) {
         smartspacePageSubtitleIcon.setImageResource(R.drawable.ic_complication_gmail)
+        smartspacePageSubtitleIcon.applyShadow = false
         smartspacePageSubtitleIcon.imageTintList = ColorStateList.valueOf(
             requireContext().getAttrColor(android.R.attr.textColorPrimary)
         )
@@ -38,6 +39,7 @@ class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfo
 
     private fun setupExampleComplicationTwo() = with(binding.setupComplicationInfoExample2) {
         smartspacePageSubtitleIcon.setImageResource(R.drawable.ic_widget_smartspacer_preview_weather)
+        smartspacePageSubtitleIcon.applyShadow = false
         smartspacePageSubtitleText.setText(R.string.setup_complications_example_weather)
         smartspacePageSubtitleText.setShadowEnabled(false)
     }

@@ -25,7 +25,10 @@ import kotlinx.coroutines.runBlocking
 import org.koin.core.component.inject
 import kotlin.math.roundToInt
 
-class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBinding>(context, OverlaySmartspacerBinding::inflate) {
+class SmartspacerOverlay(
+    private val uid: Int,
+    context: Context
+): BaseOverlay<OverlaySmartspacerBinding>(context, OverlaySmartspacerBinding::inflate) {
 
     companion object {
         private const val KEY_ACTIVITY_STATE = "activity_state"
@@ -65,7 +68,7 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
         setupBackPress()
         window?.decorView?.removeStatusNavBackgroundOnPreDraw()
         val window = activityManager.startActivity(
-            "overlay", ExpandedActivity.createOverlayIntent(this)
+            "overlay", ExpandedActivity.createOverlayIntent(this, uid)
         )
         backgroundBlurProgress = bundle
             ?.getFloat(KEY_BACKGROUND_BLUR_PROGRESS, 0f) ?: 0f
@@ -79,10 +82,10 @@ class SmartspacerOverlay(context: Context): BaseOverlay<OverlaySmartspacerBindin
         activityManager.dispatchPause(false)
     }
 
-    override fun onDestroy() {
+    override fun onDestroy(isFinishing: Boolean) {
         onPause()
-        super.onDestroy()
-        activityManager.dispatchDestroy(true)
+        super.onDestroy(isFinishing)
+        activityManager.dispatchDestroy(isFinishing)
     }
 
     override fun onStop() {

@@ -21,6 +21,7 @@ abstract class OverlaysController(private val service: Service) {
     val handler = Handler()
     abstract fun createController(
         configuration: Configuration?,
+        uid: Int,
         i: Int,
         i2: Int
     ): OverlayController?

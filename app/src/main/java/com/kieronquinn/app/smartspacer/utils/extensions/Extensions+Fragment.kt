@@ -23,6 +23,11 @@ fun Fragment.getTopFragment(): Fragment? {
     return childFragmentManager.fragments.firstOrNull()
 }
 
+fun Fragment.getBackFragment(): Fragment? {
+    if(!isAdded) return null
+    return childFragmentManager.fragments.getOrNull(1)
+}
+
 /**
  *  Helper for [LifecycleOwner].[whenResumed]
  */

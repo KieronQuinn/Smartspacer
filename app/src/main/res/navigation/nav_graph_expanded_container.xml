@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_expanded_container"
+    app:startDestination="@id/expandedContainerFragment">
+
+    <fragment
+        android:id="@+id/expandedContainerFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.container.ExpandedContainerFragment"
+        android:label="ExpandedContainerFragment" />
+</navigation>

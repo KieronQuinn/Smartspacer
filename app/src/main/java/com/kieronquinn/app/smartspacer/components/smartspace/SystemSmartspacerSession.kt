@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.components.smartspace
 
 import android.content.Context
+import androidx.core.os.BuildCompat
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
@@ -55,6 +56,10 @@ class SystemSmartspacerSession(
 
     //Handled by system
     override val enablePeriodicUpdates = false
+
+    //AoD audio is not supported on Android 15 anymore
+    @OptIn(BuildCompat.PrereleaseSdkCheck::class)
+    override val supportsAodAudio = !BuildCompat.isAtLeastV()
 
     override val targetCount = settingsTargetCount.map {
         when(it){

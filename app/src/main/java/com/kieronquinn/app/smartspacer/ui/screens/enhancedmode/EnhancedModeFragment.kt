@@ -159,6 +159,10 @@ class EnhancedModeFragment: BoundFragment<FragmentEnhancedModeBinding>(FragmentE
         appendLine(getString(R.string.enhanced_mode_enable_content_recent_apps))
     }.trim()
 
+    override fun interceptBack(): Boolean {
+        return args.isSetup
+    }
+
     override fun onBackPressed(): Boolean = viewModel.onBackPressed(args.isSetup)
 
     inner class Adapter: BaseSettingsAdapter(binding.enhancedRecyclerView, emptyList())

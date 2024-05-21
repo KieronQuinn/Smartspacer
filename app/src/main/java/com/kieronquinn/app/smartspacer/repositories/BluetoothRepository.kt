@@ -91,7 +91,9 @@ class BluetoothRepositoryImpl(private val context: Context): BluetoothRepository
         doesHaveBackgroundLocation()
     }.stateIn(scope, SharingStarted.Eagerly, doesHaveBackgroundLocation())
 
-    private val devicesChanged = context.broadcastReceiverAsFlow(BLUETOOTH_UPDATE_FILTER).map {
+    private val devicesChanged = context.broadcastReceiverAsFlow(
+        BLUETOOTH_UPDATE_FILTER
+    ).map {
         System.currentTimeMillis()
     }.stateIn(scope, SharingStarted.Eagerly, System.currentTimeMillis())
 

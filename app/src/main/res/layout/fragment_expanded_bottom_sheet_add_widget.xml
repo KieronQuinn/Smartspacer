@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:background="@drawable/bottom_sheet_rounded_bg_dark"
     tools:layout_gravity="bottom">
 
@@ -72,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
+            android:clipChildren="false"
             android:paddingTop="32dp"
             android:paddingBottom="@dimen/margin_16"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

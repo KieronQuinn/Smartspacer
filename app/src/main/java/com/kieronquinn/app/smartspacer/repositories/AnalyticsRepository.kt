@@ -26,7 +26,7 @@ class AnalyticsRepositoryImpl(
         settingsRepository.analyticsEnabled.asFlow().collect {
             FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(it)
             FirebaseCrashlytics.getInstance().apply {
-                setCrashlyticsCollectionEnabled(it)
+                setCrashlyticsCollectionEnabled(false)
                 setupCrashlytics()
             }
         }

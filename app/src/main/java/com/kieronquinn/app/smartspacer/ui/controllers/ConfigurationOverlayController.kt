@@ -13,6 +13,7 @@ abstract class ConfigurationOverlayController(service: Service) : OverlaysContro
 
     override fun createController(
         configuration: Configuration?,
+        uid: Int,
         i: Int,
         i2: Int
     ): OverlayController {
@@ -20,9 +21,9 @@ abstract class ConfigurationOverlayController(service: Service) : OverlaysContro
         if (VERSION.SDK_INT >= 17 && configuration != null) {
             context = context.createConfigurationContext(configuration)
         }
-        return getOverlay(context)
+        return getOverlay(uid, context)
     }
 
-    abstract fun getOverlay(context: Context): OverlayController
+    abstract fun getOverlay(uid: Int, context: Context): OverlayController
 
 }

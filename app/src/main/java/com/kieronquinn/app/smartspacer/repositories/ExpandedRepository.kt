@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.os.Process
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.google.gson.annotations.SerializedName
@@ -25,6 +26,8 @@ import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.ExpandedCustomWidgetBackup
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSessionImpl
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getHeight
@@ -150,6 +153,9 @@ interface ExpandedRepository {
      */
     suspend fun getPredictedWidgets(): List<AppWidgetProviderInfo>
 
+    fun getExpandedSession(context: Context, sessionId: String): ExpandedSession
+    fun destroyExpandedSession(sessionId: String)
+
     @Parcelize
     data class CustomExpandedAppWidgetConfig(
         val spanX: Int,
@@ -184,7 +190,7 @@ interface ExpandedRepository {
 
 class ExpandedRepositoryImpl(
     context: Context,
-    settings: SmartspacerSettingsRepository,
+    private val settings: SmartspacerSettingsRepository,
     private val databaseRepository: DatabaseRepository,
     private val widgetRepository: WidgetRepository,
     private val shizukuServiceRepository: ShizukuServiceRepository,
@@ -198,6 +204,7 @@ class ExpandedRepositoryImpl(
     private val appWidgetManager = AppWidgetManager.getInstance(context)
     private val widgetHostContext = WidgetContextWrapper(context)
     private var appWidgetHostViews = HashMap<CacheTag, ExpandedAppWidgetHostView>()
+    private val expandedSessions = HashMap<String, ExpandedSession>()
 
     private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans.asFlow()
         .stateIn(scope, SharingStarted.Eagerly, settings.expandedWidgetUseGoogleSans.getSync())
@@ -381,6 +388,22 @@ class ExpandedRepositoryImpl(
         return withTimeoutOrNull(2500L) {
             widgetFlow.firstOrNull() ?: emptyList()
         } ?: emptyList()
+    }
+
+    override fun getExpandedSession(context: Context, sessionId: String): ExpandedSession {
+        synchronized(expandedSessions) {
+            return expandedSessions[sessionId] ?: ExpandedSessionImpl(context, settings).also {
+                expandedSessions[sessionId] = it
+            }
+        }
+    }
+
+    override fun destroyExpandedSession(sessionId: String) {
+        synchronized(expandedSessions) {
+            expandedSessions.remove(sessionId)?.also {
+                it.onDestroy()
+            }
+        }
     }
 
     private fun ISmartspacerShizukuService.getPredictedWidgets() = callbackFlow {

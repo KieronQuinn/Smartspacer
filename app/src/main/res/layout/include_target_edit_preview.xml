@@ -13,10 +13,6 @@
         android:ellipsize="end"
         android:fontFamily="@font/google_sans_text"
         android:maxLines="1"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0.5"
-        android:shadowDy="0.5"
-        android:shadowRadius="0.5"
         android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@id/target_edit_preview_subtitle"
@@ -24,7 +20,7 @@
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Target Name" />
 
-    <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+    <ImageView
         android:id="@+id/target_edit_preview_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,10 +40,6 @@
         android:ellipsize="end"
         android:fontFamily="@font/google_sans_text"
         android:maxLines="1"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0.5"
-        android:shadowDy="0.5"
-        android:shadowRadius="0.5"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

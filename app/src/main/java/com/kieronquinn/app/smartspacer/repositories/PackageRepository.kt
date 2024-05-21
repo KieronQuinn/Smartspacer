@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.repositories.PackageRepository.ListAppsAp
 import com.kieronquinn.app.smartspacer.utils.extensions.getInstalledApplications
 import com.kieronquinn.app.smartspacer.utils.extensions.queryIntentActivitiesCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.registerReceiverCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.unregisterReceiverCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -19,7 +20,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
@@ -66,7 +66,7 @@ class PackageRepositoryImpl(private val context: Context): PackageRepository {
             addDataScheme("package")
         })
         awaitClose {
-            context.unregisterReceiver(receiver)
+            context.unregisterReceiverCompat(receiver)
         }
     }.map {
         it.removePrefix("package:")

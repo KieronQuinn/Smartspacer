@@ -32,4 +32,16 @@
         <item>com.fitbit.FitbitMobile/com.fitbit.widget.ui.PrimaryGoalWidgetProvider</item>
         <item>com.fitbit.FitbitMobile/com.fitbit.widget.ui.QuickAccessWidgetProvider</item>
     </array>
+    <array name="conversations_recommendations">
+        <item>com.android.systemui/.people.widget.PeopleSpaceWidgetProvider</item>
+    </array>
+    <array name="note_taking_recommendations">
+        <item>com.android.systemui/com.android.systemui.notetask.shortcut.CreateNoteTaskShortcutActivity</item>
+    </array>
+    <array name="battery_recommendations">
+        <item>com.google.android.settings.intelligence/com.google.android.settings.intelligence.modules.batterywidget.impl.BatteryAppWidgetProvider</item>
+    </array>
+    <array name="snapshot_recommendations">
+        <item>com.google.android.apps.pixel.familyspace/com.google.android.apps.pixel.familyspace.widget.FamilySpaceWidgetProvider</item>
+    </array>
 </resources>
