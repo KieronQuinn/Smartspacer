@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">Dieses Ziel auf deinem Always On Display anzeigen, während Musik abgespielt wird</string>
     <string name="target_edit_show_on_music_content_oem">Dieses Ziel auf deinem Always On Display (falls verfügbar) anzeigen, während Musik abgespielt wird</string>
     <string name="target_edit_show_on_music_content_incompatible">Benötigt nativen Smartspace mit Sperrbildschirm-Unterstützung</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="target_edit_expanded_show_when_locked_content">Dieses Ziel im erweiterten Smartspace anzeigen, wenn gesperrt</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">Diese Komplikation auf deinem Always On Display anzeigen, während Musik abgespielt wird</string>
     <string name="complication_edit_show_on_music_content_oem">Diese Komplikation auf deinem Always On Display (falls verfügbar) anzeigen, während Musik abgespielt wird</string>
     <string name="complication_edit_show_on_music_content_incompatible">Benötigt nativen Smartspace mit Sperrbildschirm-Unterstützung</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">Erweiterter Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Anzeigen, wenn gesperrt</string>
     <string name="complication_edit_expanded_show_when_locked_content">Diese Komplikation im erweiterten Smartspace anzeigen, wenn gesperrt</string>
@@ -1040,6 +1042,10 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unbegrenzt</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Grundlegendes</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Sozial</string>
     <string name="weather_widget_recommendation_category_label">Wetter</string>
     <string name="entertainment_widget_recommendation_category_label">Unterhaltung</string>
