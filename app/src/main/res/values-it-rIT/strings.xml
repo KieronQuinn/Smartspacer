@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Impostazioni</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di utilizzare i servizi di accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio di accessibilità, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">Mostra questo target sull\'always on display mentre la musica è in riproduzione</string>
     <string name="target_edit_show_on_music_content_oem">Mostra questo target sull\'always on display (se disponibile) mentre la musica è in riproduzione</string>
     <string name="target_edit_show_on_music_content_incompatible">Richiede Smartspace Nativo con il supporto alla schermata di blocco</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">Smartspace esteso</string>
     <string name="target_edit_expanded_show_when_locked_title">Mostra mentre è bloccato</string>
     <string name="target_edit_expanded_show_when_locked_content">Mostra questo target su Smartspace esteso quando è bloccato</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">Mostra questa complicazione sull\'always on display mentre la musica è in riproduzione</string>
     <string name="complication_edit_show_on_music_content_oem">Mostra questa complicazione sull\'always on display (se disponibile) mentre la musica è in riproduzione</string>
     <string name="complication_edit_show_on_music_content_incompatible">Richiede Smartspace Nativo con il supporto alla schermata di blocco</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">Smartspace esteso</string>
     <string name="complication_edit_expanded_show_when_locked_title">Mostra mentre è bloccato</string>
     <string name="complication_edit_expanded_show_when_locked_content">Mostra questa complicazione su Smartspace esteso quando è bloccato</string>
@@ -1039,6 +1041,10 @@
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
     <string name="weather_widget_recommendation_category_label">Weather</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
