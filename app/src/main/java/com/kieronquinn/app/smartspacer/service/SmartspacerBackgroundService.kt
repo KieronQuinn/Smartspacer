@@ -61,7 +61,7 @@ class SmartspacerBackgroundService: LifecycleService() {
         fun startServiceIfNeeded(context: Context) {
             if(isServiceRunning(context)) return
             val intent = Intent(context, SmartspacerBackgroundService::class.java)
-            context.startForegroundService(intent)
+            context.startService(intent)
         }
 
         private fun isServiceRunning(context: Context): Boolean {

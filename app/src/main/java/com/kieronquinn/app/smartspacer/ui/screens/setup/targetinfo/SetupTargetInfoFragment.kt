@@ -41,6 +41,7 @@ class SetupTargetInfoFragment: BoundFragment<FragmentSetupTargetInfoBinding>(Fra
         smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleText.setShadowEnabled(false)
         smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleIcon
             .setImageResource(R.drawable.ic_target_example_one)
+        smartspacePageFeatureBasicSubtitle.smartspacePageSubtitleIcon.applyShadow = false
         smartspacePageCommuteTimeImage.setImageResource(R.drawable.example_target_image)
     }
 
@@ -53,6 +54,7 @@ class SetupTargetInfoFragment: BoundFragment<FragmentSetupTargetInfoBinding>(Fra
         smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleText.setShadowEnabled(false)
         smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleIcon
             .setImageResource(R.drawable.ic_target_example_two)
+        smartspacePageTemplateBasicSubtitle.smartspacePageSubtitleIcon.applyShadow = false
         smartspaceViewListItem1.setText(R.string.setup_targets_info_example_two_item_1)
         smartspaceViewListItem1.setShadowEnabled(false)
         smartspaceViewListItem2.setText(R.string.setup_targets_info_example_two_item_2)

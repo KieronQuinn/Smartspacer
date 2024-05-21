@@ -413,7 +413,9 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     private fun setupReload() = whenCreated {
         val broadcasts = RELOAD_BROADCASTS.map {
-            broadcastReceiverAsFlow(IntentFilter(it))
+            broadcastReceiverAsFlow(
+                IntentFilter(it)
+            )
         }.let {
             combine(*it.toTypedArray()) {
                 System.currentTimeMillis()

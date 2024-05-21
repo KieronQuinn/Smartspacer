@@ -8,12 +8,13 @@ import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
+import androidx.core.os.BuildCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -41,9 +42,11 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isLandscape
 import com.kieronquinn.app.smartspacer.utils.extensions.isRtl
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onDestinationChanged
+import com.kieronquinn.app.smartspacer.utils.extensions.onNavDestinationSelected
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.or
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
+import com.kieronquinn.app.smartspacer.utils.extensions.setOnBackPressedCallback
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.toArgb
@@ -68,6 +71,7 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
     abstract val navHostFragment: NavHostFragment
 
     open val handleInsets = true
+    open val rootDestinationId: Int? = null
 
     private val googleSansMedium by lazy {
         ResourcesCompat.getFont(requireContext(), R.font.google_sans_text_medium)
@@ -94,6 +98,11 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         bottomNavigation?.let {
             it.setupBottomNavigation()
             NavigationUI.setupWithNavController(it, navController)
+            it.setOnItemSelectedListener {  item ->
+                //Clear the back stack back to the root if set, to prevent going back between tabs
+                rootDestinationId?.let { id -> navController.popBackStack(id, false) }
+                navController.onNavDestinationSelected(item)
+            }
         }
         if(shouldHaveBackground()) {
             view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
@@ -183,28 +192,40 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         }
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setupBack() {
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            shouldBackDispatcherBeEnabled()
-        ) {
-            (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
-                if(it.onBackPressed()) return@addCallback
-            }
-            if(!navController.popBackStack()) {
-                requireActivity().finish()
+        val callback = object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
+                    if(!it.interceptBack()) return@let
+                    if(it.onBackPressed()) return
+                }
+                if(!navController.popBackStack()) {
+                    requireActivity().finish()
+                }
             }
         }
+        navController.setOnBackPressedCallback(callback)
+        navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
+        navController.setOnBackPressedDispatcher(requireActivity().onBackPressedDispatcher)
         whenResumed {
             navController.onDestinationChanged().collect {
-                callback.isEnabled = shouldBackDispatcherBeEnabled()
+                navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
             }
         }
     }
 
+    private fun getBackNavDestination(): NavDestination? {
+        return navController.previousBackStackEntry?.destination
+    }
+
+    private fun getCurrentNavDestination(): NavDestination? {
+        return navController.currentBackStackEntry?.destination
+    }
+
     private fun shouldBackDispatcherBeEnabled(): Boolean {
         val top = navHostFragment.getTopFragment()
-        return top is ProvidesBack || top !is Root
+        return top is ProvidesBack && top.interceptBack()
     }
 
     private fun setupAppBar() = appBar?.run {
@@ -213,6 +234,7 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         }
     }
 
+    @OptIn(BuildCompat.PrereleaseSdkCheck::class)
     open fun onTopFragmentChanged(topFragment: Fragment, currentDestination: NavDestination){
         val backIcon = if(topFragment is BackAvailable || this is BackAvailable){
             val icon = (topFragment as? BackAvailable)?.backIcon
@@ -237,17 +259,21 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         bottomNavigation?.let {
             it.isVisible = !(topFragment is HideBottomNavigation && topFragment.shouldHideBottomNavigation())
         }
-        (topFragment as? ProvidesTitle)?.let {
+        updateTitle(topFragment, currentDestination)
+        toolbar?.navigationIcon = backIcon
+    }
+
+    private fun updateTitle(fragment: Fragment, destination: NavDestination) {
+        (fragment as? ProvidesTitle)?.let {
             val label = it.getTitle() ?: return@let
             collapsingToolbar?.title = label
             toolbar?.title = label
         } ?: run {
-            val label = currentDestination.label
-            if(label == null || label.isBlank()) return@run
+            val label = destination.label
+            if(label.isNullOrBlank()) return@run
             collapsingToolbar?.title = label
             toolbar?.title = label
         }
-        toolbar?.navigationIcon = backIcon
     }
 
     private fun setupNavigation() = whenCreated {

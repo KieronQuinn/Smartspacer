@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.base
 
 import android.animation.ValueAnimator
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -78,6 +79,11 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
                 start()
             }
         }
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        applyBlur(0f)
+        super.onCancel(dialog)
     }
 
     override fun dismiss() {

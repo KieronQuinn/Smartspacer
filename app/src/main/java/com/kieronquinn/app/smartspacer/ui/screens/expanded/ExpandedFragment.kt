@@ -62,7 +62,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
-import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.State
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.WIDGET_MIN_COLUMNS
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
@@ -87,6 +87,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import com.kieronquinn.app.smartspacer.sdk.client.R as SDKR
 
 class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
@@ -126,18 +127,12 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
     }
 
-    private val viewModel by viewModel<ExpandedViewModel>()
-    private val wallpaperRepository by inject<WallpaperRepository>()
-    private val blurProvider by inject<BlurProvider>()
-    private val settingsRepository by inject<SmartspacerSettingsRepository>()
-    private val adapterUpdateBus = MutableStateFlow<Long?>(null)
-    private var lastSwipe: Long? = null
-    private var popup: Balloon? = null
-    private var topInset = 0
-    private var multiColumnEnabled = true
-
     private val isOverlay by lazy {
         ExpandedActivity.isOverlay(requireActivity() as ExpandedActivity)
+    }
+
+    private val uid by lazy {
+        ExpandedActivity.getUid(requireActivity() as ExpandedActivity)
     }
 
     private val sessionId by lazy {
@@ -147,6 +142,19 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             "expanded"
         }
     }
+
+    private val viewModel by viewModel<ExpandedViewModel> {
+        parametersOf("${sessionId}_$uid")
+    }
+
+    private val wallpaperRepository by inject<WallpaperRepository>()
+    private val blurProvider by inject<BlurProvider>()
+    private val settingsRepository by inject<SmartspacerSettingsRepository>()
+    private val adapterUpdateBus = MutableStateFlow<Long?>(null)
+    private var lastSwipe: Long? = null
+    private var popup: Balloon? = null
+    private var topInset = 0
+    private var multiColumnEnabled = true
 
     private val widgetBindResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()

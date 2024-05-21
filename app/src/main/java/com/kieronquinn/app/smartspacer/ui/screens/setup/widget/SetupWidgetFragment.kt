@@ -24,6 +24,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isServiceRunning
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.registerReceiverCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.unregisterReceiverCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import me.saket.bettermovementmethod.BetterLinkMovementMethod
@@ -46,11 +47,14 @@ class SetupWidgetFragment: BoundFragment<FragmentSetupWidgetFragmentBinding>(Fra
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireContext().registerReceiverCompat(pinCallback, IntentFilter(INTENT_PIN_WIDGET))
+        requireContext().registerReceiverCompat(
+            pinCallback,
+            IntentFilter(INTENT_PIN_WIDGET)
+        )
     }
 
     override fun onDestroy() {
-        requireContext().unregisterReceiver(pinCallback)
+        requireContext().unregisterReceiverCompat(pinCallback)
         super.onDestroy()
     }
 

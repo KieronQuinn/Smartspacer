@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.res.Configuration
 import android.graphics.Point
-import android.os.*
 import android.os.Build.VERSION
+import android.os.Bundle
+import android.os.Message
+import android.os.Parcelable
 import android.util.Log
 import android.util.Pair
 import android.view.WindowManager
@@ -48,7 +50,7 @@ abstract class OverlayControllerCallback(
                         overlayControllerVar2.window!!.saveHierarchyState()
                     )
                     overlayController?.onSaveInstanceState(bundle2)
-                    overlayController!!.cnC()
+                    overlayController!!.destroy(false)
                     overlayController = null
                     bundle = bundle2
                 } else {
@@ -156,7 +158,7 @@ abstract class OverlayControllerCallback(
                 if (overlayController == null) {
                     return true
                 }
-                val cnC = overlayController!!.cnC()
+                val cnC = overlayController!!.destroy(true)
                 overlayController = null
                 if (message.arg1 != 0) {
                     return true

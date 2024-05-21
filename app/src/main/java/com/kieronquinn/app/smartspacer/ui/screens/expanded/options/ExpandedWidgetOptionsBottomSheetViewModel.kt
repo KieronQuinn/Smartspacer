@@ -80,7 +80,8 @@ class ExpandedWidgetOptionsBottomSheetViewModelImpl(
         )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
-    override val exitBus = context.lockscreenShowing().drop(1)
+    override val exitBus = context.lockscreenShowing()
+        .drop(1)
 
     override fun setup(appWidgetId: Int, canReconfigure: Boolean) {
         vmScope.launch {

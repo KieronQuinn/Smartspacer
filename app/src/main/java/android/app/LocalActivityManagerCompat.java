@@ -33,7 +33,10 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.Window;
 
+import androidx.core.os.BuildCompat;
+
 import com.android.internal.content.ReferrerIntent;
+import com.kieronquinn.app.smartspacer.utils.extensions.Extensions_ActivityKt;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -766,7 +769,10 @@ public class LocalActivityManagerCompat {
         for (int i=0; i<N; i++) {
             LocalActivityRecord r = mActivityArray.get(i);
             if (localLOGV) Log.v(TAG, r.id + ": destroying");
-            ActivityThreadCompat.performDestroyActivity(r, mActivityThread, false, 0 /* configChanges */,
+            if(r.activity != null) {
+                Extensions_ActivityKt.setIsChangingConfigurations(r.activity, !finishing);
+            }
+            ActivityThreadCompat.performDestroyActivity(r, mActivityThread, finishing, 0 /* configChanges */,
                     false /* getNonConfigInstance */, "LocalActivityManager::dispatchDestroy");
         }
         mActivities.clear();
@@ -814,15 +820,35 @@ public class LocalActivityManagerCompat {
             }
         }
 
+        //Requires reflection
         private static void performDestroyActivity(IBinder binder, ActivityThread mActivityThread, boolean finishing, int configChanges, boolean getNonConfigInstance, String reason){
-            try{
-                Method performDestroyActivity = ActivityThread.class.getDeclaredMethod("performDestroyActivity", ActivityClientRecord.class, boolean.class, int.class, boolean.class, String.class);
-                performDestroyActivity.setAccessible(true);
-                performDestroyActivity.invoke(mActivityThread, mActivityThread.getActivityClient(binder), finishing, configChanges /* configChanges */,
-                        getNonConfigInstance /* getNonConfigInstance */, reason);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                // Suppress
-                Log.e(TAG, "Error", e);
+            if(BuildCompat.isAtLeastV()) {
+                try {
+                    Method performDestroyActivity = ActivityThread.class.getDeclaredMethod("performDestroyActivity", ActivityClientRecord.class, boolean.class, boolean.class, String.class);
+                    performDestroyActivity.setAccessible(true);
+                    performDestroyActivity.invoke(mActivityThread, mActivityThread.getActivityClient(binder), finishing, getNonConfigInstance, reason);
+                } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                    //Suppress
+                    if (localLOGV) Log.e(TAG, "Error", e);
+                }
+            }else if(isAtLeastS()) {
+                try {
+                    Method performDestroyActivity = ActivityThread.class.getDeclaredMethod("performDestroyActivity", ActivityClientRecord.class, boolean.class, int.class, boolean.class, String.class);
+                    performDestroyActivity.setAccessible(true);
+                    performDestroyActivity.invoke(mActivityThread, mActivityThread.getActivityClient(binder), finishing, configChanges, getNonConfigInstance, reason);
+                } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                    //Suppress
+                    if (localLOGV) Log.e(TAG, "Error", e);
+                }
+            }else{
+                try {
+                    Method performDestroyActivity = ActivityThread.class.getDeclaredMethod("performDestroyActivity", IBinder.class, boolean.class, int.class, boolean.class, String.class);
+                    performDestroyActivity.setAccessible(true);
+                    performDestroyActivity.invoke(mActivityThread, binder, finishing, configChanges, getNonConfigInstance, reason);
+                } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                    //Suppress
+                    if (localLOGV) Log.e(TAG, "Error", e);
+                }
             }
         }
 
@@ -834,27 +860,43 @@ public class LocalActivityManagerCompat {
             }
         }
 
+        //Requires reflection
         private static Activity performLaunchActivity(ActivityClientRecord activityClientRecord, ActivityThread mActivityThread, Intent customIntent) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            Method performLaunchActivity = ActivityThread.class.getDeclaredMethod("performLaunchActivity", ActivityClientRecord.class, Intent.class);
-            performLaunchActivity.setAccessible(true);
-            return (Activity) performLaunchActivity.invoke(mActivityThread, activityClientRecord, null);
+            try {
+                Method performLaunchActivity = ActivityThread.class.getDeclaredMethod("performLaunchActivity", ActivityClientRecord.class, Intent.class);
+                performLaunchActivity.setAccessible(true);
+                return (Activity) performLaunchActivity.invoke(mActivityThread, activityClientRecord, customIntent);
+            }catch (NoSuchMethodException e){
+                Method performLaunchActivity = ActivityThread.class.getDeclaredMethod("performLaunchActivity", IBinder.class, Intent.class);
+                performLaunchActivity.setAccessible(true);
+                return (Activity) performLaunchActivity.invoke(mActivityThread, activityClientRecord.token, customIntent);
+            }
         }
 
+        //Requires reflection
         @SuppressLint("DiscouragedPrivateApi")
         private static void performStopActivity(IBinder binder, ActivityThread mActivityThread, boolean saveState, String reason) {
             try {
                 Method performStopActivity = ActivityThread.class.getDeclaredMethod("performStopActivity", IBinder.class, boolean.class, String.class);
                 performStopActivity.setAccessible(true);
                 performStopActivity.invoke(mActivityThread, binder, saveState, reason);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                // Suppress
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                //Suppress
+                if (localLOGV) Log.e(TAG, "Error", e);
             }
         }
 
+        //Requires reflection
         private static Bundle performPauseActivity(IBinder token, ActivityThread mActivityThread, boolean finished, String reason, PendingTransactionActions pendingActions) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", IBinder.class, boolean.class, String.class, PendingTransactionActions.class);
-            performPauseActivity.setAccessible(true);
-            return (Bundle) performPauseActivity.invoke(mActivityThread, token, finished, reason, null /* pendingActions */);
+            try {
+                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", ActivityClientRecord.class, boolean.class, String.class, PendingTransactionActions.class);
+                performPauseActivity.setAccessible(true);
+                return (Bundle) performPauseActivity.invoke(mActivityThread, mActivityThread.getActivityClient(token), finished, reason, pendingActions);
+            }catch (NoSuchMethodException e){
+                Method performPauseActivity = ActivityThread.class.getDeclaredMethod("performPauseActivity", IBinder.class, boolean.class, String.class, PendingTransactionActions.class);
+                performPauseActivity.setAccessible(true);
+                return (Bundle) performPauseActivity.invoke(mActivityThread, token, finished, reason, pendingActions);
+            }
         }
 
     }

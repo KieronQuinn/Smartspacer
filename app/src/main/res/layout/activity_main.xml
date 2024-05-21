@@ -9,9 +9,11 @@
     tools:context=".ui.activities.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_height="match_parent"
+        android:id="@+id/nav_host_fragment_activity"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:id="@+id/fragment_root"
-        android:name="com.kieronquinn.app.smartspacer.ui.screens.root.RootFragment" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_activity" />
 
 </FrameLayout>

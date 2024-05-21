@@ -167,6 +167,7 @@ class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditB
                 )
             )
         }else emptyArray()
+        val musicAvailable = (nativeLockAvailable && nativeMusicAvailable) || oemLockAvailable
         return mutableListOf(
             GenericSettingsItem.Header(
                 getString(R.string.complication_edit_target_header)
@@ -216,22 +217,25 @@ class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditB
                 enabled = expandedModeEnabled
             ),
             GenericSettingsItem.SwitchSetting(
-                complication.showOnMusic,
+                complication.showOnMusic && musicAvailable,
                 getString(R.string.complication_edit_show_on_music_title),
                 when {
-                    nativeLockAvailable -> {
+                    nativeLockAvailable && nativeMusicAvailable -> {
                         getString(R.string.complication_edit_show_on_music_content)
                     }
                     oemLockAvailable -> {
                         getString(R.string.complication_edit_show_on_music_content_oem)
                     }
-                    else -> {
+                    !nativeLockAvailable -> {
                         getString(R.string.complication_edit_show_on_music_content_incompatible)
+                    }
+                    else -> {
+                        getString(R.string.complication_edit_show_on_music_content_incompatible_15)
                     }
                 },
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_show_on_music),
                 onChanged = viewModel::onShowOnMusicChanged,
-                enabled = nativeLockAvailable || oemLockAvailable
+                enabled = musicAvailable
             ),
             *expandedSettings,
             GenericSettingsItem.Header(

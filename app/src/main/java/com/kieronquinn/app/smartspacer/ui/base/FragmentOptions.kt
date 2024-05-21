@@ -22,6 +22,7 @@ interface CanShowSnackbar {
 
 interface ProvidesBack {
     fun onBackPressed(): Boolean
+    fun interceptBack() = true
 }
 
 interface ProvidesTitle {

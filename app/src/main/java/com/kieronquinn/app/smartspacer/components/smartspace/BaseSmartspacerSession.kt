@@ -78,6 +78,7 @@ abstract class BaseSmartspacerSession<T, I>(
 
     open val uiSurface = flowOf(config.uiSurface)
     open val enablePeriodicUpdates = true
+    open val supportsAodAudio = true
 
     private val dispatcher by lazy {
         LifecycleRegistry(this)
@@ -100,9 +101,13 @@ abstract class BaseSmartspacerSession<T, I>(
         }
     }
 
-    private val aodAudio = combine(context.screenOff(), mediaPlaying) { screen, audio ->
-        screen && audio
-    }.distinctUntilChanged()
+    private val aodAudio by lazy {
+        if(supportsAodAudio) {
+            combine(context.screenOff(), mediaPlaying) { screen, audio ->
+                screen && audio
+            }.distinctUntilChanged()
+        }else flowOf(false)
+    }
 
     private val expandedOpenMode by lazy {
         combine(

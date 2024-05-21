@@ -446,13 +446,16 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<NativeModeSettingsViewModel> { NativeModeSettingsViewModelImpl(get(), get(), get()) }
         viewModel { NativeModePageLimitViewModel(get()) }
         viewModel<DonateViewModel> { DonateViewModelImpl(get(), get()) }
-        viewModel<ExpandedViewModel> { ExpandedViewModelImpl(
-            get(),
-            get(),
-            get(),
-            get(),
-            get()
-        ) }
+        viewModel<ExpandedViewModel> { parameters ->
+            ExpandedViewModelImpl(
+                parameters.get(),
+                get(),
+                get(),
+                get(),
+                get(),
+                get()
+            )
+        }
         viewModel<ExpandedSettingsViewModel> { ExpandedSettingsViewModelImpl(get(), get(), get(), get()) }
         viewModel<ExpandedSettingsSearchProviderViewModel> { ExpandedSettingsSearchProviderViewModelImpl(get(), get()) }
         viewModel { ExpandedHomeOpenModeSettingsViewModel(get()) }

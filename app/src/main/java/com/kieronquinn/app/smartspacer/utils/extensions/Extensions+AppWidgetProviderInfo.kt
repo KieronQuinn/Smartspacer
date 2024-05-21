@@ -94,6 +94,26 @@ fun Context.getWidgetColumnCount(availableWidth: Int): Int {
     return floor(availableWidth / width.toFloat()).toInt()
 }
 
+private val batteryRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.battery_recommendations)
+}
+
+private val conversationsRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.conversations_recommendations)
+}
+
+private val noteTakingRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.note_taking_recommendations)
+}
+
+private val snapshotRecommendations by lazy {
+    val context by inject<Context>(Context::class.java)
+    context.resources.getStringArray(R.array.snapshot_recommendations)
+}
+
 private val weatherRecommendations by lazy {
     val context by inject<Context>(Context::class.java)
     context.resources.getStringArray(R.array.weather_recommendations)
@@ -106,6 +126,18 @@ private val fitnessRecommendations by lazy {
 
 fun AppWidgetProviderInfo.getCategory(): WidgetCategory {
     val component = provider.flattenToString()
+    if(batteryRecommendations.contains(component)) {
+        return WidgetCategory.BATTERY
+    }
+    if(conversationsRecommendations.contains(component)) {
+        return WidgetCategory.CONVERSATIONS
+    }
+    if(noteTakingRecommendations.contains(component)) {
+        return WidgetCategory.NOTE_TAKING
+    }
+    if(snapshotRecommendations.contains(component)) {
+        return WidgetCategory.SNAPSHOT
+    }
     if(weatherRecommendations.contains(component)) {
         return WidgetCategory.WEATHER
     }
@@ -125,10 +157,14 @@ fun AppWidgetProviderInfo.getCategory(): WidgetCategory {
 }
 
 enum class WidgetCategory(@StringRes val labelRes: Int) {
+    BATTERY(R.string.battery_widget_recommendation_category_label),
+    CONVERSATIONS(R.string.conversations_widget_recommendation_category_label),
+    NOTE_TAKING(R.string.note_taking_widget_recommendation_category_label),
+    SNAPSHOT(R.string.snapshot_widget_recommendation_category_label),
     PRODUCTIVITY(R.string.productivity_widget_recommendation_category_label),
+    WEATHER(R.string.weather_widget_recommendation_category_label),
     NEWS(R.string.news_widget_recommendation_category_label),
     FITNESS(R.string.fitness_widget_recommendation_category_label),
-    WEATHER(R.string.weather_widget_recommendation_category_label),
     OTHERS(R.string.others_widget_recommendation_category_label),
     SOCIAL(R.string.social_widget_recommendation_category_label),
     ENTERTAINMENT(R.string.entertainment_widget_recommendation_category_label),

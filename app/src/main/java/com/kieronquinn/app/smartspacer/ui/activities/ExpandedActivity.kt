@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Process
 import android.view.WindowManager
 import androidx.activity.addCallback
 import androidx.core.view.WindowCompat
@@ -19,10 +20,12 @@ class ExpandedActivity: MonetCompatActivity() {
 
     companion object {
         private const val KEY_IS_OVERLAY = "is_overlay"
+        private const val KEY_UID = "uid"
 
-        fun createOverlayIntent(context: Context): Intent {
+        fun createOverlayIntent(context: Context, uid: Int): Intent {
             return Intent(context, ExpandedActivity::class.java).apply {
                 putExtra(KEY_IS_OVERLAY, true)
+                putExtra(KEY_UID, uid)
             }
         }
 
@@ -37,6 +40,10 @@ class ExpandedActivity: MonetCompatActivity() {
 
         fun isOverlay(expandedActivity: ExpandedActivity): Boolean {
             return expandedActivity.intent.getBooleanExtra(KEY_IS_OVERLAY, false)
+        }
+
+        fun getUid(expandedActivity: ExpandedActivity): Int {
+            return expandedActivity.intent.getIntExtra(KEY_UID, Process.myUid())
         }
     }
 

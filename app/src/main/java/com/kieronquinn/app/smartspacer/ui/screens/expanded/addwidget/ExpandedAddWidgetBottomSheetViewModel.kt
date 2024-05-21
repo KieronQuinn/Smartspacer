@@ -223,7 +223,8 @@ class ExpandedAddWidgetBottomSheetViewModelImpl(
         State.Loaded(listOfNotNull(predicted) + widgets)
     }.flowOn(Dispatchers.IO).stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
-    override val exitBus = context.lockscreenShowing().drop(1)
+    override val exitBus = context.lockscreenShowing()
+        .drop(1)
 
     override fun setSearchTerm(term: String) {
         vmScope.launch {

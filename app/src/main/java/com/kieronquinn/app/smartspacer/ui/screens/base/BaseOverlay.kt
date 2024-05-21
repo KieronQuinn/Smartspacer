@@ -54,8 +54,8 @@ abstract class BaseOverlay<T: ViewBinding>(
         lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_CREATE)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroy(isFinishing: Boolean) {
+        super.onDestroy(isFinishing)
         lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_DESTROY)
         _binding = null
     }
