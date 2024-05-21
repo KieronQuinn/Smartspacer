@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">音樂播放時，在您的常亮顯示上顯示此目標</string>
     <string name="target_edit_show_on_music_content_oem">音樂播放時，若可用的話，在您的常亮顯示上顯示此目標</string>
     <string name="target_edit_show_on_music_content_incompatible">需要原生 Smartspace 支援鎖定畫面功能</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">擴充 Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">鎖定時顯示</string>
     <string name="target_edit_expanded_show_when_locked_content">當裝置鎖定時，在擴充 Smartspace 中顯示此目標</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">在播放音樂時，在您的常亮顯示上顯示此複雜功能</string>
     <string name="complication_edit_show_on_music_content_oem">在播放音樂時，如果可用，在您的常亮顯示上顯示此複雜功能</string>
     <string name="complication_edit_show_on_music_content_incompatible">需要原生 Smartspace 支援鎖定畫面功能</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">擴充 Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">鎖定時顯示</string>
     <string name="complication_edit_expanded_show_when_locked_content">在鎖定畫面時在擴充 Smartspace 中顯示這個組件</string>
@@ -1039,6 +1041,10 @@
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">無限制</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
     <string name="weather_widget_recommendation_category_label">Weather</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
