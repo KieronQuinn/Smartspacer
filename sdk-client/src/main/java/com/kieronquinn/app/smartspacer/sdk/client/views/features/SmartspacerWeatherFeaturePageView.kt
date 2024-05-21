@@ -55,7 +55,11 @@ class SmartspacerWeatherFeaturePageView(context: Context): SmartspacerBaseFeatur
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
         }.also {
-            startActivity(it)
+            try {
+                startActivity(it)
+            }catch (e: Exception) {
+                //No calendar to launch, nothing we can do
+            }
         }
     }
 
