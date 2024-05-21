@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
+import androidx.core.os.BuildCompat
 import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.model.database.Target
@@ -77,6 +78,7 @@ abstract class TargetEditViewModel(scope: CoroutineScope?): BaseViewModel(scope)
         val nativeHomeAvailable: Boolean,
         val oemHomeAvailable: Boolean,
         val nativeLockAvailable: Boolean,
+        val nativeMusicAvailable: Boolean,
         val oemLockAvailable: Boolean,
         val providerPackageLabel: CharSequence,
         val configInfo: ConfigActivityInfo?,
@@ -109,6 +111,7 @@ class TargetEditViewModelImpl(
 
     private val packageManager = context.packageManager
 
+    @OptIn(BuildCompat.PrereleaseSdkCheck::class)
     override val state = target.mapNotNull {
         if(it == null) return@mapNotNull null
         val smartspaceTarget = SmartspaceTarget(context, it.authority, it.id, it.packageName)
@@ -123,6 +126,7 @@ class TargetEditViewModelImpl(
         val nativeLockAvailable = nativePreviouslyUsed && reports.any { packageName ->
             packageName.packageName == PACKAGE_KEYGUARD
         }
+        val nativeMusicAvailable = !BuildCompat.isAtLeastV()
         val oemLockAvailable: Boolean
         val oemHomeAvailable: Boolean
         if(!nativeHomeAvailable || !nativeLockAvailable) {
@@ -147,6 +151,7 @@ class TargetEditViewModelImpl(
             nativeHomeAvailable,
             oemHomeAvailable,
             nativeLockAvailable,
+            nativeMusicAvailable,
             oemLockAvailable,
             packageLabel,
             configInfo,

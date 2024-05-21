@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.res.CompatibilityInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.IBinder;
 
 import androidx.annotation.RequiresApi;
@@ -75,6 +76,33 @@ public class ActivityThread {
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
+    public boolean performDestroyActivity(ActivityClientRecord r, boolean finishing, int configChanges, boolean getNonConfigInstance, String reason) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @RequiresApi(35)
+    public boolean performDestroyActivity(ActivityClientRecord r, boolean finishing, boolean getNonConfigInstance, String reason) {
+        throw new RuntimeException("Stub!");
+    }
+
+    //maxApi = R
+    @Deprecated
+    public Activity performLaunchActivity(IBinder token, Intent customIntent) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    public Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
+        throw new RuntimeException("Stub!");
+    }
+
+    //maxApi = R
+    @Deprecated
+    public void performDestroyActivity(IBinder token, boolean finishing, int configChanges, boolean getNonConfigInstance, String reason) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
     public void performRestartActivity(ActivityClientRecord r, boolean start) {
         throw new RuntimeException("Stub!");
     }
@@ -84,8 +112,18 @@ public class ActivityThread {
         throw new RuntimeException("Stub!");
     }
 
-    public final LoadedApk getPackageInfoNoCheck(ApplicationInfo ai,
-                                                 CompatibilityInfo compatInfo) {
+    //maxApi = R
+    @Deprecated
+    public Bundle performPauseActivity(IBinder token, boolean finished, String reason, PendingTransactionActions pendingActions) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    public Bundle performPauseActivity(ActivityClientRecord r, boolean finished, String reason, PendingTransactionActions pendingActions) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public final LoadedApk getPackageInfoNoCheck(ApplicationInfo ai, CompatibilityInfo compatInfo) {
         throw new RuntimeException("Stub!");
     }
 

@@ -105,7 +105,9 @@ class WiFiRepositoryImpl(
     }.stateIn(scope, SharingStarted.Eagerly, null)
 
     private val scanResultBus = scanRefreshBus.flatMapLatest {
-        context.broadcastReceiverAsFlow(IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
+        context.broadcastReceiverAsFlow(
+            IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)
+        )
     }
 
     /**

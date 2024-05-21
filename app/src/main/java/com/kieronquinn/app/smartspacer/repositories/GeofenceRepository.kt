@@ -19,11 +19,18 @@ import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.GeofenceRequirement.GeofenceRequirementData
 import com.kieronquinn.app.smartspacer.model.database.RequirementDataType
 import com.kieronquinn.app.smartspacer.receivers.GeofenceReceiver
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
+import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
+import com.kieronquinn.app.smartspacer.utils.extensions.geocode
+import com.kieronquinn.app.smartspacer.utils.extensions.hasPermission
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 interface GeofenceRepository {

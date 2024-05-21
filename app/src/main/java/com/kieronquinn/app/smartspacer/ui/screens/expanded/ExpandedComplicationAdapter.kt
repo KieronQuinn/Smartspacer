@@ -12,7 +12,7 @@ import com.kieronquinn.app.smartspacer.sdk.client.utils.shouldHeaderTintIcon
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedComplicationAdapter.ViewHolder
-import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.Complications.Complication
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 

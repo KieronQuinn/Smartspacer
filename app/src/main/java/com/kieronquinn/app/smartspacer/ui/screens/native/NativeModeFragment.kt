@@ -85,6 +85,10 @@ class NativeModeFragment: BoundFragment<FragmentNativeBinding>(FragmentNativeBin
         return !args.isFromSettings
     }
 
+    override fun interceptBack(): Boolean {
+        return wasLaunchedFromDeepLink() || wasLaunchedFromNotification()
+    }
+
     override fun onBackPressed(): Boolean {
         return when {
             wasLaunchedFromDeepLink() -> {

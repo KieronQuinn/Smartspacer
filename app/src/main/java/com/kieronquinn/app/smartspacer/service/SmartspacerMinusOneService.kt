@@ -45,8 +45,8 @@ class SmartspacerMinusOneService: LifecycleService() {
     }
 
     private inner class OverlayController: ConfigurationOverlayController(this) {
-        override fun getOverlay(context: Context): GsaOverlayController {
-            return SmartspacerOverlay(context)
+        override fun getOverlay(uid: Int, context: Context): GsaOverlayController {
+            return SmartspacerOverlay(uid, context)
         }
     }
 

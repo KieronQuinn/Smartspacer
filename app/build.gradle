@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.7.3'
-def tagCode = 173
+def tagName = '1.7.4'
+def tagCode = 174
 
 android {
     compileSdk 34
@@ -70,17 +70,17 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.12.0-rc01'
+    implementation 'com.google.android.material:material:1.13.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.lifecycle:lifecycle-service:2.7.0"
+    implementation "androidx.lifecycle:lifecycle-service:2.8.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "androidx.fragment:fragment-ktx:1.6.2"
-    implementation "androidx.activity:activity-ktx:1.8.2"
+    implementation "androidx.fragment:fragment-ktx:1.7.1"
+    implementation "androidx.activity:activity-ktx:1.9.0"
     implementation "androidx.work:work-runtime-ktx:2.9.0"
     implementation "androidx.core:core-remoteviews:1.0.0"
     implementation "androidx.security:security-crypto:1.1.0-alpha06"
@@ -142,7 +142,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation 'androidx.palette:palette-ktx:1.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.20"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.22"
     implementation "com.tbuonomo:dotsindicator:5.0"
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
@@ -159,7 +159,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
     //Firebase Analytics + Crashlytics
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
 

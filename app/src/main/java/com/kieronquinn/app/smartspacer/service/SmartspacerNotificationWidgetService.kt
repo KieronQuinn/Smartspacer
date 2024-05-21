@@ -56,7 +56,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
             if(isServiceRunning(context)) return
             val intent = Intent(context, SmartspacerNotificationWidgetService::class.java)
             try {
-                context.startForegroundService(intent)
+                context.startService(intent)
             }catch (e: Exception) {
                 //Not allowed to start
             }

@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.base
 
 import android.animation.ValueAnimator
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -165,6 +166,16 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
             })
             start()
         }
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        applyBlur(0f)
+        super.onCancel(dialog)
+    }
+
+    override fun dismiss() {
+        applyBlur(0f)
+        super.dismiss()
     }
 
     private fun applyBlur(ratio: Float){

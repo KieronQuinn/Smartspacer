@@ -74,7 +74,8 @@ class ExpandedRearrangeViewModelImpl(
         State.Loaded(widgets, multiColumn)
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
-    override val exitBus = context.lockscreenShowing().drop(1)
+    override val exitBus = context.lockscreenShowing()
+        .drop(1)
 
     override fun onBackPressed() {
         vmScope.launch {

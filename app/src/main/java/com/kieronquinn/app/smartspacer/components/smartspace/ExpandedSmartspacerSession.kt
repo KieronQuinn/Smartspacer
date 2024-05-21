@@ -9,7 +9,6 @@ import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
 import android.graphics.Bitmap
 import android.os.DeadObjectException
-import android.os.RemoteException
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
@@ -36,7 +35,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.BaseShortcut
-import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.Complications.Complication
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
 import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundColour
 import com.kieronquinn.app.smartspacer.utils.extensions.isColorDark
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
@@ -56,7 +55,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
 import java.util.LinkedList
-import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedViewModel.Complications as ExpandedComplications
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications as ExpandedComplications
 
 @Suppress("CloseTarget")
 class ExpandedSmartspacerSession(

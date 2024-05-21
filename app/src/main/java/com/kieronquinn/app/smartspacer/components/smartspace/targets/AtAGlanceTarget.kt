@@ -2,7 +2,6 @@ package com.kieronquinn.app.smartspacer.components.smartspace.targets
 
 import android.app.PendingIntent
 import android.content.ComponentName
-import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.widgets.AtAGlanceWidget
@@ -44,7 +43,6 @@ class AtAGlanceTarget: SmartspacerTargetProvider() {
             }else state.clickPendingIntent
             //Icons which have a content description should not be tinted as they are weather related
             val isTinted = state.iconContentDescription.isNullOrEmpty()
-            Log.d("AAG", "isTinted: $isTinted")
             TargetTemplate.Basic(
                 "at_a_glance_$index",
                 ComponentName(BuildConfig.APPLICATION_ID, "at_a_glance"),
