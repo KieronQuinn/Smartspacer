@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">Показывать эту Цель на AoD, пока играет музыка</string>
     <string name="target_edit_show_on_music_content_oem">Показывать эту Цель на AoD (если доступно), пока играет музыка</string>
     <string name="target_edit_show_on_music_content_incompatible">Требуется поддержка экрана блокировки и Нативный режим</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">Расширенное Пространство</string>
     <string name="target_edit_expanded_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="target_edit_expanded_show_when_locked_content">Показывать эту Цель в Расширенном Пространстве при заблокированном экране</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">Показывать это Дополнение на AoD, пока играет музыка</string>
     <string name="complication_edit_show_on_music_content_oem">Показывать это Дополнение на AoD (если доступно), пока играет музыка</string>
     <string name="complication_edit_show_on_music_content_incompatible">Требуется поддержка экрана блокировки и Нативный режим</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">Расширенное Пространство</string>
     <string name="complication_edit_expanded_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="complication_edit_expanded_show_when_locked_content">Показывать это Дополнение в Расширенном Пространстве при заблокированном экране</string>
@@ -1039,6 +1041,10 @@
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Неограниченно</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
     <string name="weather_widget_recommendation_category_label">Weather</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
