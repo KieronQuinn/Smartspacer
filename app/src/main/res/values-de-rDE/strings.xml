@@ -794,7 +794,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="donate_prompt_content">Wenn du Smartspacer nützlich findest, zieh bitte eine Spende in Betracht. Tippe für weitere Informationen.</string>
     <string name="donate_prompt_dismiss">Schließen</string>
     <string name="donate_paragraph_1">Vielen Dank, dass du in Erwägung ziehst, zu spenden. Smartspacer ist eine komplexe App und hat viel Zeit in der Entwicklung beansprucht, obwohl sie kostenlos und Open Source verfügbar ist.</string>
-    <string name="donate_paragraph_2">Wenn du spenden möchtest, die derzeit einzige verfügbare Option ist PayPal (unten verlinkt). Andere Optionen könnten in der Zukunft verfügbar sein, falls erforderlich - öffnen eine GitHub-Issue, wenn du einen Vorschlag hast. Zusätzlich können auf Anfrage auch Direktzahlungen z.B. mit Wise angeboten werden.</string>
+    <string name="donate_paragraph_2">Wenn du spenden möchtest, ist die einzige verfügbare Option derzeit PayPal (unten verlinkt). Andere Optionen können, falls erforderlich, in der Zukunft verfügbar gemacht werden - öffne eine GitHub-Issue, wenn du einen Vorschlag hast. Zusätzlich können auf Anfrage auch Direktzahlungen z.B. mit Wise angeboten werden.</string>
     <string name="donate_paragraph_3">Wenn du bereits gespendet hast oder dazu derzeit nicht in der Lage bist, kannst du das Banner mit der Spendenaufforderung unten dauerhaft ausblenden (du kannst immer noch unten in den Einstellungen auf diese Seite zugreifen).</string>
     <string name="donate_disable">Spendenaufforderung ausblenden</string>
     <string name="donate_paypal">PayPal</string>
