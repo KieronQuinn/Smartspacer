@@ -458,23 +458,23 @@
     <string name="setup_notifications_request">Concedi Permesso</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Target</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
+    <string name="setup_targets_info_p1">I <b>Target</b> sono pagine di informazioni visualizzate su Smartspace, che solitamente consistono in almeno un titolo, un sottotitolo e un\'icona. Molti Target hanno anche informazioni supplementari - dove supportate - come immagini ed elenchi.</string>
+    <string name="setup_targets_info_p2">I Target possono essere sia statici che dinamici. Puoi personalizzare ulteriormente la loro comparsa usando i <b>Requisiti</b>, e le impostazioni associate ai vari Target (accessibili toccando sul Target all\'interno della UI di Smartspacer).</string>
+    <string name="setup_targets_info_p3">L\'integrazione del riepilogo di Smartspacer è fornita dal target \"Riepilogo\", che può mostrare le normali informazioni che offre Google come gli eventi dal calendario o i voli. Tieni presente che <b>non</b> mostrerà sempre la data odierna se non sono disponibili informazioni, e dovresti valutare di aggiungere il Target \"Data\" separatamente se desideri avere sempre la data visibile.</string>
+    <string name="setup_targets_info_example_one_title">Traffico intenso nelle vicinanze</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
-    <string name="setup_targets_info_example_two_title">Shopping List</string>
-    <string name="setup_targets_info_example_two_subtitle">8 items</string>
-    <string name="setup_targets_info_example_two_item_1">Bread</string>
-    <string name="setup_targets_info_example_two_item_2">Milk</string>
-    <string name="setup_targets_info_example_two_item_3">Eggs</string>
-    <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
-    <string name="setup_targets_caption_list">Example of a Target with a list</string>
+    <string name="setup_targets_info_example_two_title">Lista della Spesa</string>
+    <string name="setup_targets_info_example_two_subtitle">8 elementi</string>
+    <string name="setup_targets_info_example_two_item_1">Pane</string>
+    <string name="setup_targets_info_example_two_item_2">Latte</string>
+    <string name="setup_targets_info_example_two_item_3">Uova</string>
+    <string name="setup_targets_caption_google_maps">Esempio di un Target con una immagine</string>
+    <string name="setup_targets_caption_list">Esempio di un Target con una lista</string>
     <!-- Setup > Add Targets -->
-    <string name="setup_targets_title">Add Targets</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
-    <string name="setup_targets_controls_next">Next</string>
-    <string name="setup_targets_controls_skip">Skip</string>
+    <string name="setup_targets_title">Aggiungi Target</string>
+    <string name="setup_targets_controls_label">Puoi aggiungere, modificare, eliminare o riordinare i Target più tardi nelle impostazioni</string>
+    <string name="setup_targets_controls_next">Avanti</string>
+    <string name="setup_targets_controls_skip">Salta</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Complicazioni</string>
     <string name="setup_complications_info_p1">Le <b>complicazioni</b> sono informazioni extra che possono essere visualizzate accanto ai target. Di solito si tratta di testi brevi e di icone, ad esempio delle email non lette o delle condizioni meteorologiche attuali.</string>
@@ -534,16 +534,16 @@
     <string name="enhanced_mode_enable_content_header"><b>La Modalità avanzata permette a Smartspacer di:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrarsi nello Smartspace sulla schermata di blocco</string>
     <string name="enhanced_mode_enable_content_native_launcher">• Integrarsi nello Smartspace su launcher compatibili</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
-    <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
-    <string name="enhanced_mode_skip_button">Skip</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrare nello Smartspace OEM (se disponibile)</string>
+    <string name="enhanced_mode_enable_content_system">• Mostra Target e Complicazioni Smartspace di sistema in Smartspacer</string>
+    <string name="enhanced_mode_enable_content_app_prediction">• Utilizzare le previsioni dell\'app di sistema come requisito</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Utilizzare applicazioni recenti come requisito</string>
+    <string name="enhanced_mode_skip_button">Salta</string>
+    <string name="enhanced_mode_skip_info">É ancora possibile utilizzare il Widget Smartspace, i Target, le Complicazioni ed i Plugin anche con la Modalità Avanzata disabilitata</string>
+    <string name="enhanced_mode_disable_toast">Potrebbe essere necessario riavviare il dispositivo perché le modifiche abbiano effetto</string>
     <!-- Native Mode -->
-    <string name="native_title">Native Smartspace</string>
-    <string name="native_switch">Enable Native Smartspace</string>
+    <string name="native_title">Smartspace nativo</string>
+    <string name="native_switch">Abilita Smartspace Nativo</string>
     <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
     <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
     <string name="native_switch_content_many">%1s and %1s</string>
