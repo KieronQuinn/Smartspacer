@@ -443,21 +443,21 @@
     <string name="compatibility_template_carousel_content">Consente di mostrare fino a quattro icone con intestazione e piè di pagina, oltre al titolo e sottotitolo</string>
     <string name="compatibility_template_sub_image_title">Immagini</string>
     <string name="compatibility_template_sub_images_content">Consente di mostrare una sequenza di immagini oltre al titolo e sottotitolo</string>
-    <string name="compatibility_label_systemui">Lock Screen</string>
+    <string name="compatibility_label_systemui">Blocco schermo</string>
     <!-- Setup -->
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">Per iniziare</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
-    <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer uses a lot of experimental and "hidden" Android APIs, which may be prone to crashing on some devices due to OEM modifications.<br>To help bug fixing, Smartspacer can send crash reports to Firebase Crashlytics, as well as basic analytic information (app launches).<br>This data is all anonymous, and is entirely optional, more details and privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">here</a>]]></string>
-    <string name="setup_analytics_allow">Allow</string>
-    <string name="setup_analytics_deny">Deny</string>
+    <string name="setup_analytics_title">Analytics &amp; Crash Report</string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare il bug fixing, Smartspacer può inviare crash report a Firebase Crashlitics, insieme a delle analytics di base (lanci dell'app).<br>Questi dati sono tutti anonimi, e sono assolutamente opzionali, maggiori dettagli e privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
+    <string name="setup_analytics_allow">Consenti</string>
+    <string name="setup_analytics_deny">Nega</string>
     <!-- Setup > Notifications -->
-    <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
-    <string name="setup_notifications_request">Grant Permission</string>
+    <string name="setup_notifications_title">Notifiche</string>
+    <string name="setup_notifications_content">Smartspacer usa le notifiche per mostrare informazioni, avvisi ed errori, nonché promemoria relativi alla modalità Avanzata, se abilitata.</string>
+    <string name="setup_notifications_request">Concedi Permesso</string>
     <!-- Setup > Target Info -->
-    <string name="setup_targets_info_title">Targets</string>
+    <string name="setup_targets_info_title">Target</string>
     <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
     <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
     <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
