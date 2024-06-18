@@ -544,41 +544,41 @@
     <!-- Native Mode -->
     <string name="native_title">Smartspace nativo</string>
     <string name="native_switch">Abilita Smartspace Nativo</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_switch_info"><b>Importante:</b> Quando si abilita lo Smartspace Nativo, Smartspacer riavvierà la SystemUI. <b>Potresti vedere un messaggio che dice che la SystemUI ha smesso di funzionare, e successivamente la tua schermata di blocco.</b> Questo è normale, chiudi il messaggio e sblocca il tuo dispositivo per continuare.</string>
+    <string name="native_switch_content">Smartspace Nativo integra Smartspacer nel tuo %1s, mostrando i Target e le Complicazioni di Smartspacer al suo interno.\nDovrai riabilitare Smartspace Nativo dopo ogni riavvio, a causa di limitazioni del sistema.</string>
+    <string name="native_switch_content_many">%1s e %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Compatibilità</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
-    <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_available"><b>Disponibile</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Non Disponibile</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_title">Smartspace Nativo</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer ha riscontrato un loop di feedback durante l\'avvio dello Smartspace Nativo. Per assicurarsi che tutti i Target &amp; Complicazioni funzionino correttamente, lo Smartspace Nativo deve essere stoppato e avviato nuovamente per permettere la riconnessione.</string>
+    <string name="native_restart_disconnect_content">Smartspacer ha perso la connessione dal Riepilogo. Per assicurarsi che tutti i Target &amp; Complicazioni funzionino correttamente, lo Smartspace Nativo deve essere stoppato e avviato nuovamente per permettere la riconnessione.</string>
+    <string name="native_restart_info"><b>Importante:</b> Quando si riconnette lo Smartspace Nativo, Smartspacer riavvierà la SystemUI. <b>Potresti vedere un messaggio che dice che la SystemUI ha smesso di funzionare, e successivamente la tua schermata di blocco.</b> Questo è normale, chiudi il messaggio e sblocca il tuo dispositivo per continuare.</string>
+    <string name="native_restart_button">Riconnetti ora</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
-    <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
-    <string name="notification_native_mode_enable_now">Enable Now</string>
+    <string name="notification_native_mode_enable_title">Riattiva Smartspace Nativo</string>
+    <string name="notification_native_mode_enable_content">È necessario riattivare Smartspacer Nativo dopo un riavvio, toccare per abilitare</string>
+    <string name="notification_native_mode_enable_dismiss">Non Mostrare Più</string>
+    <string name="notification_native_mode_enable_now">Abilita Ora</string>
     <!-- Native Mode restart notification -->
-    <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
-    <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
+    <string name="notification_native_mode_restart_title">Riconnetti Smartspace Nativo</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer ha riscontrato un loop di feedback durante l\'avvio dello Smartspace Nativo. Tocca per riconnetterti e riprovare.</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer è stato disconnesso dal Riepilogo, tocca per riconnettere.</string>
+    <string name="notification_native_mode_restart_just_reconnect">Riconnetti ora</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
-    <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_target">The At a Glance Target requires Shizuku be started, tap to open</string>
-    <string name="notification_shizuku_content_at_a_glance_complication">The At a Glance Complication requires Shizuku be started, tap to open</string>
+    <string name="notification_shizuku_title">Shizuku Richiesto</string>
+    <string name="notification_shizuku_content_app_prediction">Il Requisito di Predizione App richiede che Shizuku sia avviato, tocca per aprire</string>
+    <string name="notification_shizuku_content_recent_task">Il Requisito di Attività Recenti richiede che Shizuku sia avviato, tocca per aprire</string>
+    <string name="notification_shizuku_content_at_a_glance_target">Il Target Riepilogo richiede che Shizuku sia avviato, tocca per aprire</string>
+    <string name="notification_shizuku_content_at_a_glance_complication">La Complicazione Riepilogo richiede che Shizuku sia avviato, tocca per aprire</string>
     <!-- Sui service notifications -->
-    <string name="notification_sui_title">Sui or Shizuku as Root Required</string>
-    <string name="notification_sui_content_oem_smartspace">OEM Smartspace requires Shizuku to be started as root, or Sui. Smartspacer was unable to connect, so the service has been disabled.</string>
+    <string name="notification_sui_title">Sui o Shizuku come utente root richiesto</string>
+    <string name="notification_sui_content_oem_smartspace">Smartspace OEM richiede Shizuku avviato come root, o Sui. Smartspacer non è stato in grado di connettersi, di conseguenza il servizio è stato disabilitato.</string>
     <!-- Battery optimisation notification -->
-    <string name="notification_battery_optimisation_title">Disable Battery Optimisation</string>
+    <string name="notification_battery_optimisation_title">Disabilita Ottimizzazione Batteria</string>
     <string name="notification_battery_optimisation_content">Smartspacer requires battery optimisation to be disabled in order to update Targets &amp; Complications in the background, tap to disable</string>
     <string name="notification_battery_optimisation_failed_toast">Failed to open settings, please grant the permission manually</string>
     <!-- Music Target -->
