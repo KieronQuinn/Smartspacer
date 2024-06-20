@@ -21,7 +21,11 @@ import com.kieronquinn.app.smartspacer.utils.extensions.toColorOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.toHexString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.properties.ReadWriteProperty
@@ -389,8 +393,10 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         }
 
         override fun asFlow() = callbackFlow {
-            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
-                trySend(rawSetting ?: default)
+            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+                if(key == this@SmartspacerSettingImpl.key) {
+                    trySend(rawSetting ?: default)
+                }
             }
             sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
             trySend(rawSetting ?: default)
@@ -400,8 +406,10 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         }.flowOn(Dispatchers.IO)
 
         override fun asFlowNullable() = callbackFlow {
-            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
-                trySend(rawSetting)
+            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+                if(key == this@SmartspacerSettingImpl.key) {
+                    trySend(rawSetting)
+                }
             }
             sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
             if(existsSync()) trySend(rawSetting)

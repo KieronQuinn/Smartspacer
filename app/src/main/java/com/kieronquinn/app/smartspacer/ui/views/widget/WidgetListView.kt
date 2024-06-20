@@ -2,15 +2,19 @@ package com.kieronquinn.app.smartspacer.ui.views.widget
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.AbsListView
 import android.widget.ListView
 import android.widget.ListViewHidden
 import androidx.core.view.NestedScrollingChild
 import androidx.core.view.NestedScrollingChildHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.kieronquinn.app.smartspacer.R
 
 /**
- *  A [ListView] with [NestedScrollingChild] support, for seamless vertical scrolling
+ *  A [ListView] with [NestedScrollingChild] support, for seamless vertical scrolling, as well
+ *  as automatic passing of item long click events onto a parent with the ID of
+ *  [R.id.item_expanded_widget_container].
  */
 class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) :
     ListViewHidden(context, attributeSet, 0, 0), NestedScrollingChild, AbsListView.OnScrollListener {
@@ -111,6 +115,23 @@ class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) 
         isAtTop = computeVerticalScrollOffset() == 0
         isAtBottom = firstVisibleItem + visibleItemCount >= totalItemCount
         externalOnScrollListener?.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        setLongClickListenerFromParent()
+    }
+
+    private fun setLongClickListenerFromParent() {
+        val parent = findContainerParent() ?: return
+        setOnItemLongClickListener { _, _, _, _ ->
+            parent.performLongClick(0f, 0f)
+        }
+    }
+
+    private fun View.findContainerParent(): View? {
+        if(this.id == R.id.item_expanded_widget_container) return this
+        return (parent as? View)?.findContainerParent()
     }
 
 }

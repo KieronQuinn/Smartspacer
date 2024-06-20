@@ -1,6 +1,8 @@
 package com.kieronquinn.app.smartspacer.ui.screens.configuration.notification
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -39,12 +41,12 @@ abstract class NotificationTargetConfigurationViewModel(scope: CoroutineScope?):
     abstract fun onTrimNewLinesChanged(enabled: Boolean)
 
     sealed class State {
-        object Loading: State()
-        object GrantNotificationAccess: State()
-        object GrantAssociation: State()
+        data object Loading: State()
+        data object GrantNotificationAccess: State()
+        data object GrantAssociation: State()
         data class Settings(
             val selectedAppLabel: CharSequence?,
-            val availableChannels: List<NotificationChannel>,
+            val availableChannels: Map<NotificationChannelGroup?, List<NotificationChannel>>,
             val options: TargetData
         ): State()
     }
@@ -77,9 +79,15 @@ class NotificationTargetConfigurationViewModelImpl(
         notificationRepository.getNotificationChannelsAvailable()
     }
 
+    @SuppressLint("NewApi")
     private val channels = settings.mapLatest {
         val packageName = it?.packageName ?: return@mapLatest emptyList()
         notificationRepository.getNotificationChannelsForPackage(packageName)
+    }
+
+    private val groups = settings.mapLatest {
+        val packageName = it?.packageName ?: return@mapLatest emptyList()
+        notificationRepository.getNotificationChannelGroupsForPackage(packageName)
     }
 
     override fun setupWithId(smartspacerId: String) {
@@ -98,8 +106,12 @@ class NotificationTargetConfigurationViewModelImpl(
         notificationListenerEnabled,
         notificationChannelsAvailable,
         settings.filterNotNull(),
-        channels
-    ) { listenerEnabled, channelsAvailable, settings, notificationChannels ->
+        channels,
+        groups
+    ) { listenerEnabled, channelsAvailable, settings, notificationChannels, notificationGroups ->
+        val channels = notificationChannels.groupBy { notification ->
+            notificationGroups.firstOrNull { it.id == notification.group }
+        }
         when {
             !listenerEnabled -> State.GrantNotificationAccess
             !channelsAvailable -> State.GrantAssociation
@@ -107,7 +119,7 @@ class NotificationTargetConfigurationViewModelImpl(
                 val appName = settings.packageName?.let {
                     packageManager.getPackageLabel(it)
                 }
-                State.Settings(appName, notificationChannels, settings)
+                State.Settings(appName, channels, settings)
             }
         }
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)

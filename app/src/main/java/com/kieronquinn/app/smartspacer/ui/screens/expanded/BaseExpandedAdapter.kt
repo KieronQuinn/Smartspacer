@@ -55,7 +55,6 @@ interface BaseExpandedAdapter: KoinComponent {
             }else{
                 onWidgetLongClicked(this@setup, widget.appWidgetId)
             }
-            false
         }
         if(widget.appWidgetId != null){
             itemExpandedWidgetConfigure.isVisible = false
@@ -139,8 +138,8 @@ interface BaseExpandedAdapter: KoinComponent {
         expandedRepository.destroyHosts(sessionId)
     }
 
-    fun onCustomWidgetLongClicked(view: View, widget: Item.Widget)
-    fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?)
+    fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean
+    fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?): Boolean
     fun onConfigureWidgetClicked(provider: AppWidgetProviderInfo, id: String?, config: CustomExpandedAppWidgetConfig?)
     fun onDeleteWidgetClicked(widget: Item.RemovedWidget)
 
@@ -153,8 +152,8 @@ interface BaseExpandedAdapter: KoinComponent {
         fun onDoodleClicked(doodleImage: DoodleImage)
         fun onAppShortcutClicked(appShortcut: AppShortcut)
         fun onAddWidgetClicked()
-        fun onCustomWidgetLongClicked(view: View, widget: Item.Widget)
-        fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?)
+        fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean
+        fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?): Boolean
         fun onWidgetDeleteClicked(widget: Item.RemovedWidget)
     }
 

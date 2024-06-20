@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.companion.CompanionDeviceManager
@@ -20,10 +21,16 @@ import com.kieronquinn.app.smartspacer.receivers.StartShizukuReceiver
 import com.kieronquinn.app.smartspacer.sdk.callbacks.IResolveIntentCallback
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationListenerService
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationWidgetService
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.utils.extensions.hasNotificationPermission
+import com.kieronquinn.app.smartspacer.utils.extensions.isNotificationServiceEnabled
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import android.app.Notification as AndroidNotification
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel as NotificationsNotificationChannel
@@ -83,6 +90,11 @@ interface NotificationRepository {
      *  Gets a list of notification channels for a given [packageName]
      */
     fun getNotificationChannelsForPackage(packageName: String): List<NotificationChannel>
+
+    /**
+     *  Gets a list of notification channel groups for a given [packageName]
+     */
+    fun getNotificationChannelGroupsForPackage(packageName: String): List<NotificationChannelGroup>
 
     /**
      *  Returns whether a given [packageName] has a notification listener registered
@@ -166,6 +178,11 @@ class NotificationRepositoryImpl(
     override fun getNotificationChannelsForPackage(packageName: String): List<NotificationChannel> {
         return SmartspacerNotificationListenerService.getAllNotificationChannels(packageName)
             ?.filterUncategorised() ?: emptyList()
+    }
+
+    override fun getNotificationChannelGroupsForPackage(packageName: String): List<NotificationChannelGroup> {
+        return SmartspacerNotificationListenerService.getNotificationChannelGroups(packageName)
+            ?: emptyList()
     }
 
     override fun hasNotificationListener(packageName: String): Boolean {

@@ -365,12 +365,12 @@ class ExpandedAdapter(
         }
     }
 
-    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget) {
-        expandedAdapterListener.onCustomWidgetLongClicked(view, widget)
+    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
+        return expandedAdapterListener.onCustomWidgetLongClicked(view, widget)
     }
 
-    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?) {
-        expandedAdapterListener.onWidgetLongClicked(viewHolder, appWidgetId)
+    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?): Boolean {
+        return expandedAdapterListener.onWidgetLongClicked(viewHolder, appWidgetId)
     }
 
     override fun onDeleteWidgetClicked(widget: Item.RemovedWidget) {
