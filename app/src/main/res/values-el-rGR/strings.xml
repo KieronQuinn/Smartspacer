@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
-    <string name="bottom_nav_complications">Complications</string>
-    <string name="bottom_nav_plugins">Plugins</string>
-    <string name="bottom_nav_settings">Settings</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
-    <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
+    <string name="xposed_desc"><b>Προαιρετικό</b>: Ενεργοποιήστε αυτήν την πρόσθετη υπηρεσία στον εκκινητή σας ή στην θέση του Google Feed της εφαρμογής εκκίνησης για να επιτρέψετε την αντικατάσταση της ροής Google Discover με το Expanded Smartspace. Πρέπει επίσης να ενεργοποιήσετε την επιλογή στις ρυθμίσεις Expanded Smartspace στο Smartspacer.</string>
+    <string name="dummy_home_content">Αυτή η οθόνη υπάρχει για να διορθώνει τα γραφικά στοιχεία που χρησιμοποιούνται από τα πρόσθετα του Smartspacer και δεν έχουν εφαρμοστεί σωστά.\n\nΤο Smartspacer δεν μπορεί να λειτουργήσει ως εκκινητής, επιλέξτε διαφορετικό πρόγραμμα εκκίνησης.</string>
+    <string name="dummy_home_open_settings">Άνοιγμα Ρυθμίσεων</string>
+    <string name="notification_service">Υπηρεσία Ειδοποιήσεων Smartspacer</string>
+    <string name="loading">Φόρτωση…</string>
+    <string name="saving">Αποθήκευση…</string>
+    <string name="search">Αναζήτηση</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="close">Κλείσιμο</string>
+    <string name="reset">Επαναφορά</string>
+    <string name="menu_rerun_setup">Επανεκτέλεση αρχικής εγκατάστασης</string>
+    <string name="bottom_nav_targets">Στόχοι</string>
+    <string name="bottom_nav_complications">Πρόσθετα Στοιχεία</string>
+    <string name="bottom_nav_plugins">Πρόσθετα</string>
+    <string name="bottom_nav_settings">Ρυθμίσεις</string>
+    <string name="toast_restricted_mode">Να επιτρέπονται οι περιορισμένες ρυθμίσεις στο μενού υπερχείλισης</string>
+    <string name="restricted_mode_content_accessibility">Από το Android 13, η Google πρόσθεσε έναν έλεγχο ασφαλείας στις ρυθμίσεις, εμποδίζοντας τις εφαρμογές που εγκαθίστανται εκτός Play Store να χρησιμοποιούν τις υπηρεσίες προσβασιμότητας από προεπιλογή.\n\n<b>Αν δείτε ένα μήνυμα σχετικά με μια περιορισμένη ρύθμιση όταν προσπαθείτε να ενεργοποιήσετε την υπηρεσία προσβασιμότητας, πρέπει να ανοίξετε τις Πληροφορίες Εφαρμογής και να επιτρέψετε τις περιορισμένες ρυθμίσεις.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
@@ -206,6 +206,7 @@
     <string name="target_edit_show_on_music_content">Show this target on your always on display while music is playing</string>
     <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
     <string name="target_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="target_edit_expanded_header">Expanded Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="target_edit_expanded_show_when_locked_content">Show this Target in Expanded Smartspace when locked</string>
@@ -249,6 +250,7 @@
     <string name="complication_edit_show_on_music_content">Show this complication on your always on display while music is playing</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
     <string name="complication_edit_expanded_header">Expanded Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
@@ -969,13 +971,13 @@
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
     <!-- Blank Target -->
-    <string name="target_blank_title">Blank Target</string>
+    <string name="target_blank_title">Κενός Στόχος</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
-    <string name="target_blank_settings_show_complications_title">Show Complications</string>
+    <string name="target_blank_settings_show_complications_title">Εμφάνιση Πρόσθετων Στοιχείων</string>
     <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
-    <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
-    <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
-    <string name="target_blank_settings_title">Settings</string>
+    <string name="target_blank_settings_hide_if_no_complications_title">Απόκρυψη αν δεν υπάρχουν Πρόσθετα Στοιχεία</string>
+    <string name="target_blank_settings_hide_if_no_complications_content">Αν δεν υπάρχουν Πρόσθετα Στοιχεία για να εμφανιστούν, αποκρύψτε αυτόν τον στόχο εξ\' ολοκλήρου</string>
+    <string name="target_blank_settings_title">Ρυθμίσεις</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
     <string name="target_date_settings_date_format_title">Date Format</string>
@@ -1021,10 +1023,10 @@
     <string name="complication_missed_calls_description">Show the number of missed calls</string>
     <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
     <!-- Next Alarm Complication -->
-    <string name="complication_alarm_label">Next Alarm</string>
-    <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
-    <string name="complication_blank_title">Blank Complication</string>
-    <string name="complication_blank_content">Useful for minimal setups or spacers</string>
+    <string name="complication_alarm_label">Επόμενο Ξυπνητήρι</string>
+    <string name="complication_alarm_description">Εμφανίζει το επόμενο σετ ξυπνητηριού, εντός των επόμενων 12 ωρών</string>
+    <string name="complication_blank_title">Κενό Πρόσθετο Στοιχείο</string>
+    <string name="complication_blank_content">Χρήσιμο για μινιμαλιστικές ρυθμίσεις ή διαχωριστικά</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Recent App</string>
     <string name="requirement_recent_apps_description">Only show when a specific app is in the recent apps, and hide when the app is cleared from the list</string>
@@ -1033,12 +1035,16 @@
     <string name="requirement_recent_apps_description_unsupported">This Requirement requires Enhanced Mode, enable in the settings</string>
     <string name="requirement_recent_apps_configuration_app_title">Selected App</string>
     <string name="requirement_recent_apps_configuration_app_content">Not selected</string>
-    <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
+    <string name="requirement_recent_apps_configuration_limit_title">Όριο</string>
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
+    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
     <string name="weather_widget_recommendation_category_label">Weather</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
