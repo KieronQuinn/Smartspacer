@@ -966,6 +966,7 @@
     <string name="target_notification_configuration_app_content">Selecione o aplicativo para exibir notificações</string>
     <string name="target_notification_configuration_settings">Configurações</string>
     <string name="target_notification_channels">Canais de notificação</string>
+    <string name="target_notification_channels_no_group">Other</string>
     <string name="target_notification_channels_empty">Este aplicativo não usa Canais de Notificação, portanto todas as notificações dele serão exibidas</string>
     <string name="target_notification_configuration_options">Opções</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remover quebras de linha</string>
