@@ -966,6 +966,7 @@
     <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
     <string name="target_notification_configuration_settings">Ustawienia</string>
     <string name="target_notification_channels">Notification Channels</string>
+    <string name="target_notification_channels_no_group">Other</string>
     <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
