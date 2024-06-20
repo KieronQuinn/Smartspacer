@@ -104,12 +104,12 @@ class ExpandedRearrangeAdapter(
         return false
     }
 
-    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?) {
-        listener.onWidgetLongClicked(viewHolder, appWidgetId)
+    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?): Boolean {
+        return listener.onWidgetLongClicked(viewHolder, appWidgetId)
     }
 
-    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget) {
-        listener.onCustomWidgetLongClicked(view, widget)
+    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
+        return listener.onCustomWidgetLongClicked(view, widget)
     }
 
     fun moveItem(indexFrom: Int, indexTo: Int): Boolean {

@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.service
 
 import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
 import android.content.ComponentName
 import android.content.Context
 import android.media.MediaMetadata
@@ -39,6 +40,14 @@ class SmartspacerNotificationListenerService: LifecycleNotificationListenerServi
         fun getAllNotificationChannels(packageName: String): List<NotificationChannel>? {
             return try {
                 INSTANCE?.getNotificationChannels(packageName, Process.myUserHandle())
+            }catch (e: SecurityException){
+                return null
+            }
+        }
+
+        fun getNotificationChannelGroups(packageName: String): List<NotificationChannelGroup>? {
+            return try {
+                INSTANCE?.getNotificationChannelGroups(packageName, Process.myUserHandle())
             }catch (e: SecurityException){
                 return null
             }

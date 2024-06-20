@@ -26,6 +26,7 @@ import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
@@ -38,6 +39,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.BaseShor
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
 import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundColour
 import com.kieronquinn.app.smartspacer.utils.extensions.isColorDark
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.split
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
@@ -97,12 +99,22 @@ class ExpandedSmartspacerSession(
         }
     }
 
+    private val isSystemDarkMode = resumeBus.mapLatest {
+        context.isDarkMode
+    }.stateIn(lifecycleScope, SharingStarted.Eagerly, context.isDarkMode)
+
     private val isDark = combine(
         isDarkMode.filterNotNull(),
+        isSystemDarkMode,
+        settingsRepository.expandedBackground.asFlow(),
         settingsRepository.expandedTintColour.asFlow()
-    ) { dark, mode ->
+    ) { dark, systemDark, background, mode ->
         when(mode){
-            TintColour.AUTOMATIC -> dark
+            TintColour.AUTOMATIC -> if(background == ExpandedBackground.SOLID) {
+                !systemDark
+            } else {
+                dark
+            }
             TintColour.BLACK -> true
             TintColour.WHITE -> false
         }

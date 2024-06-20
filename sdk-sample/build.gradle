@@ -33,10 +33,10 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation "androidx.fragment:fragment-ktx:1.7.1"
-    implementation "androidx.lifecycle:lifecycle-service:2.8.0"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.0"
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation "androidx.fragment:fragment-ktx:1.8.0"
+    implementation "androidx.lifecycle:lifecycle-service:2.8.2"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
     implementation project(path: ':sdk-plugin')
     implementation project(path: ':sdk-client')

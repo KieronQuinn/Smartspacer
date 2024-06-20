@@ -162,6 +162,17 @@
                 android:value="true" />
         </activity-alias>
 
+        <activity-alias
+            android:name=".ui.activities.MinusOneExpandedActivity"
+            android:exported="true"
+            android:permission="android.permission.SYSTEM_APPLICATION_OVERLAY"
+            android:targetActivity=".ui.activities.ExpandedActivity">
+            <intent-filter>
+                <action android:name="com.android.launcher3.WINDOW_OVERLAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
+
         <activity
             android:name=".ui.activities.configuration.ConfigurationActivity"
             android:excludeFromRecents="true"

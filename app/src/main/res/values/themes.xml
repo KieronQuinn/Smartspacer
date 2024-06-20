@@ -53,6 +53,14 @@
         <item name="android:windowAnimationStyle">@style/WallpaperFadeTransition</item>
     </style>
 
+    <style name="Theme.Smartspacer.MinusOne" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
+        <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
+        <item name="android:overScrollMode">@integer/overscroll_enabled</item>
+    </style>
+
     <style name="Theme.Smartspacer.Wallpaper.Light" parent="Theme.Smartspacer.Wallpaper">
         <item name="android:textColorPrimary">@color/expanded_text_color_light</item>
         <item name="materialThemeOverlay">@style/Theme.Smartspacer.Wallpaper.Light.Overlay</item>

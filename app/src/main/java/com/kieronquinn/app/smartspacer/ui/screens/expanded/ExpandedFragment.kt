@@ -16,7 +16,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.ContextThemeWrapper
-import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -131,15 +130,25 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         ExpandedActivity.isOverlay(requireActivity() as ExpandedActivity)
     }
 
+    private val isMinusOne by lazy {
+        ExpandedActivity.isMinusOne(requireActivity() as ExpandedActivity)
+    }
+
     private val uid by lazy {
         ExpandedActivity.getUid(requireActivity() as ExpandedActivity)
     }
 
     private val sessionId by lazy {
-        if(isOverlay){
-            "overlay"
-        }else{
-            "expanded"
+        when {
+            isMinusOne -> {
+                "minusOne"
+            }
+            isOverlay -> {
+                "overlay"
+            }
+            else -> {
+                "expanded"
+            }
         }
     }
 
@@ -155,6 +164,8 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     private var popup: Balloon? = null
     private var topInset = 0
     private var multiColumnEnabled = true
+
+    override val applyTransitions = false
 
     private val widgetBindResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -211,6 +222,9 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         WindowCompat.getInsetsController(requireActivity().window, view).run {
             isAppearanceLightNavigationBars = isDark
             isAppearanceLightStatusBars = isDark
+        }
+        if(isMinusOne) {
+            setBlurEnabled(true)
         }
         setupLoading()
         setupState()
@@ -290,11 +304,15 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     override fun onResume() {
         super.onResume()
         viewModel.onResume()
-        setBlurEnabled(true)
+        if(!isMinusOne) {
+            setBlurEnabled(true)
+        }
     }
 
     override fun onPause() {
-        setBlurEnabled(false)
+        if(!isMinusOne) {
+            setBlurEnabled(false)
+        }
         super.onPause()
         viewModel.onPause()
     }
@@ -355,7 +373,8 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 multiColumnEnabled = state.multiColumnEnabled
                 binding.expandedLoading.isVisible = false
                 binding.expandedRecyclerView.isVisible = true
-                binding.expandedUnlockContainer.isVisible = state.isLocked && !isOverlay
+                binding.expandedUnlockContainer.isVisible =
+                    state.isLocked && !isOverlay && !isMinusOne
                 binding.expandedDisabled.isVisible = false
                 binding.expandedPermission.isVisible = false
                 setStatusBarLight(state.lightStatusIcons)
@@ -404,6 +423,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                     action = Intent.ACTION_VIEW
                     data = Uri.parse("smartspacer://expanded")
                     putExtra(MainActivity.EXTRA_SKIP_SPLASH, true)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }.also { intent ->
                     startActivity(intent)
                 }
@@ -484,6 +504,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     override fun onDoodleClicked(doodleImage: DoodleImage) {
         unlockAndInvoke {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 data = Uri.parse(doodleImage.searchUrl ?: return@apply)
             })
         }
@@ -491,14 +512,18 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
 
     override fun onSearchBoxClicked(searchApp: SearchApp) {
         unlockAndInvoke {
-            startActivity(searchApp.launchIntent)
+            startActivity(searchApp.launchIntent.apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            })
         }
     }
 
     private fun unlockAndLaunch(intent: Intent?) {
         unlockAndInvoke {
             try {
-                startActivity(intent ?: return@unlockAndInvoke)
+                startActivity(intent?.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                } ?: return@unlockAndInvoke)
             }catch (e: Exception) {
                 Toast.makeText(
                     requireContext(),
@@ -601,15 +626,14 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
     }
 
-    override fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?) {
-        if(appWidgetId == null) return
+    override fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?): Boolean {
+        if(appWidgetId == null) return false
         val view = viewHolder.itemView
         lastSwipe?.let {
             if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return //Likely a swipe
+                return false //Likely a swipe
             }
         }
-        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popupView = SmartspaceExpandedLongPressPopupWidgetBinding.inflate(layoutInflater)
         val background = requireContext().getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
@@ -635,6 +659,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             }
         }
         this.popup = popup
+        return true
     }
 
     override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
@@ -694,13 +719,12 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         return true
     }
 
-    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget) {
+    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
         lastSwipe?.let {
             if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return //Likely a swipe
+                return false //Likely a swipe
             }
         }
-        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, 0)
         val popupView = SmartspaceExpandedLongPressPopupCustomWidgetBinding.inflate(layoutInflater)
         val background = requireContext().getAttrColor(android.R.attr.colorBackground)
         val textColour = background.getContrastColor()
@@ -757,6 +781,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             }
         }
         this.popup = popup
+        return true
     }
 
     override fun onScrollChange(

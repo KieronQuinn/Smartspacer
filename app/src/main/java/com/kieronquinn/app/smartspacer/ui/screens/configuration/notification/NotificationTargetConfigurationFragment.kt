@@ -161,14 +161,24 @@ class NotificationTargetConfigurationFragment: BoundFragment<FragmentConfigurati
             val header = GenericSettingsItem.Header(
                 getString(R.string.target_notification_channels)
             )
-            listOf(header) + availableChannels.map {
-                GenericSettingsItem.SwitchSetting(
-                    options.channels.contains(it.id),
-                    it.name,
-                    it.description?.ifBlank { null } ?: it.id,
-                    null
-                ) { enabled ->
-                    viewModel.onChannelChanged(it.id, enabled)
+            listOf(header) + availableChannels.toList()
+                .sortedWith(compareBy(nullsLast()) { it.first?.name?.toString()?.lowercase() })
+                .flatMap {
+                listOf(
+                    GenericSettingsItem.Header(
+                        it.first?.name ?: getString(R.string.target_notification_channels_no_group)
+                    )
+                ) + it.second.sortedBy { channel ->
+                    channel.name?.toString()?.lowercase()
+                }.map { channel ->
+                    GenericSettingsItem.SwitchSetting(
+                        options.channels.contains(channel.id),
+                        channel.name ?: "",
+                        channel.description ?: "",
+                        null
+                    ) { enabled ->
+                        viewModel.onChannelChanged(channel.id, enabled)
+                    }
                 }
             }
         }else if(options.packageName != null){

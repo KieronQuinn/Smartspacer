@@ -190,12 +190,13 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         //No-op
     }
 
-    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget) {
-        //No-op
+    override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
+        return false
     }
 
-    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?) {
+    override fun onWidgetLongClicked(viewHolder: ViewHolder, appWidgetId: Int?): Boolean {
         itemTouchHelper.startDrag(viewHolder)
+        return true
     }
 
     override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
