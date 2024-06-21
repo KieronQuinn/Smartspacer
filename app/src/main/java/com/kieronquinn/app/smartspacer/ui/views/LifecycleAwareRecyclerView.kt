@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import androidx.recyclerview.widget.AnimationFixedRecyclerView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.handleLifecycleEventSafe
  *  **Note: Only supports [LinearLayoutManager], and assumes that the [Adapter] will be un-set when
  *  the fragment is destroyed**
  */
-open class LifecycleAwareRecyclerView : RecyclerView {
+open class LifecycleAwareRecyclerView : AnimationFixedRecyclerView {
 
     constructor(context: Context, attributeSet: AttributeSet? = null, defStyleRes: Int):
             super(context, attributeSet, defStyleRes)
