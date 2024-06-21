@@ -79,7 +79,7 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
     }
 
     private fun setupInsets() {
-        val standardPadding = resources.getDimensionPixelSize(R.dimen.margin_16)
+        val standardPadding = resources.getDimensionPixelSize(R.dimen.margin_16) * 4
         binding.addWidgetRecyclerView.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(
                 WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime()

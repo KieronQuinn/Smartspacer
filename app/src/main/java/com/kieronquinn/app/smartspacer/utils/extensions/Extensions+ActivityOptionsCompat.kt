@@ -14,7 +14,6 @@ fun ActivityOptionsCompat.allowBackground() = apply {
         }.get(this) as ActivityOptions
         inner.apply {
             pendingIntentBackgroundActivityStartMode = MODE_BACKGROUND_ACTIVITY_START_ALLOWED
-            pendingIntentCreatorBackgroundActivityStartMode = MODE_BACKGROUND_ACTIVITY_START_ALLOWED
         }
     }
 }

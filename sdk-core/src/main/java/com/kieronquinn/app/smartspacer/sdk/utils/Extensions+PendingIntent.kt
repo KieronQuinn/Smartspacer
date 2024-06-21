@@ -24,8 +24,6 @@ private fun getActivityOptions(): ActivityOptions {
         if (Build.VERSION.SDK_INT >= 34) {
             pendingIntentBackgroundActivityStartMode =
                 ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED
-            pendingIntentCreatorBackgroundActivityStartMode =
-                ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED
         }
     }
 }

@@ -103,8 +103,6 @@ class OverlayTrampolineActivity: AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 34) {
             activityOptions.pendingIntentBackgroundActivityStartMode =
                 ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED
-            activityOptions.pendingIntentCreatorBackgroundActivityStartMode =
-                ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED
         }
         try {
             // The NEW_TASK flags are applied through the activity options and not as a part of
