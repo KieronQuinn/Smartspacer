@@ -4,7 +4,7 @@
     <string name="smartspace_long_press_popup_dismiss">Dismiss</string>
     <string name="smartspace_long_press_popup_feedback">Feedback</string>
     <string name="smartspace_long_press_popup_about">About this content</string>
-    <string name="smartspace_long_press_popup_settings">Settings</string>
+    <string name="smartspace_long_press_popup_settings">設定</string>
     <string name="smartspace_long_press_popup_failed_to_launch">Failed to launch action</string>
     <string name="smartspace_toast_could_not_dismiss">This Target cannot be dismissed</string>
 </resources>

@@ -968,6 +968,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_configuration_app_content">Wähle App von der Benachrichtigungen angezeigt werden sollen</string>
     <string name="target_notification_configuration_settings">Einstellungen</string>
     <string name="target_notification_channels">Benachrichtigungskanäle</string>
+    <string name="target_notification_channels_no_group">Other</string>
     <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
     <string name="target_notification_configuration_options">Einstellungen</string>
     <string name="target_notification_configuration_trim_new_lines_title">Entferne neue Zeilen</string>

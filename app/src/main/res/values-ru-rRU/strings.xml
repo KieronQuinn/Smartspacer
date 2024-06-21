@@ -966,6 +966,7 @@
     <string name="target_notification_configuration_app_content">Выберите приложение, от которого нужно отображать уведомления</string>
     <string name="target_notification_configuration_settings">Настройки</string>
     <string name="target_notification_channels">Каналы уведомлений</string>
+    <string name="target_notification_channels_no_group">Other</string>
     <string name="target_notification_channels_empty">Это приложение не использует каналы уведомлений, поэтому будут показаны все уведомления</string>
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
