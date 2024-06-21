@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="xposed_desc"><b>任意</b>: Google DiscoverをExpanded Smartspaceに置き換えるためにランチャーのGoogle Discoverを有効にしてください。また、Expanded Smartspaceの設定でオプションを有効にする必要があります。</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
+    <string name="dummy_home_content">この画面は、Smartspacer プラグインで使用されているウィジェットをうまく動作させるために存在します。\n\nSmartspacerはランチャーとしては動作しません。別のランチャーを選択してください。</string>
+    <string name="dummy_home_open_settings">設定を開く</string>
+    <string name="notification_service">Smartspacer通知サービス</string>
+    <string name="loading">読み込み中…</string>
+    <string name="saving">保存中…</string>
+    <string name="search">検索</string>
+    <string name="delete">削除</string>
+    <string name="save">保存</string>
+    <string name="close">閉じる</string>
+    <string name="reset">リセット</string>
+    <string name="menu_rerun_setup">セットアップをもう一度行う</string>
+    <string name="bottom_nav_targets">ターゲット</string>
     <string name="bottom_nav_complications">Complications</string>
     <string name="bottom_nav_plugins">Plugins</string>
     <string name="bottom_nav_settings">Settings</string>
