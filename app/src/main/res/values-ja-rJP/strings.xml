@@ -254,7 +254,7 @@
     <string name="complication_edit_expanded_header">Expanded Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
-    <string name="complication_edit_settings_header">Settings</string>
+    <string name="complication_edit_settings_header">設定</string>
     <string name="complication_edit_requirements_title">条件の設定</string>
     <string name="complication_edit_requirements_content">Set the requirements for this complication to appear</string>
     <string name="complication_edit_requirements_content_any_one">%1d Any Requirement configured</string>
@@ -880,12 +880,12 @@
     <string name="donate">Donate</string>
     <string name="twitter">Follow me on Twitter</string>
     <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
-    <string name="about_contributors">Contributors</string>
+    <string name="about_contributors">貢献者</string>
     <!-- Contributors -->
-    <string name="about_contributors_icons">Icons</string>
+    <string name="about_contributors_icons">アイコン</string>
     <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parts of the Smartspacer SDK contain code based on Lawnchair, under the <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a>]]></string>
+    <string name="about_contributors_sdk_content"><![CDATA[Smartspacer SDK の一部には、<a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a> に基づいてLawnchair ベースのコードが含まれています。]]></string>
     <string name="about_translators">Translators</string>
     <!-- Wallpaper Colour Picker -->
     <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
