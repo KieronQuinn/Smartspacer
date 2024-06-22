@@ -12,8 +12,8 @@
     <string name="close">Κλείσιμο</string>
     <string name="reset">Επαναφορά</string>
     <string name="menu_rerun_setup">Επανεκτέλεση αρχικής εγκατάστασης</string>
-    <string name="bottom_nav_targets">Στόχοι</string>
-    <string name="bottom_nav_complications">Πρόσθετα Στοιχεία</string>
+    <string name="bottom_nav_targets">Βασικά στοιχεία</string>
+    <string name="bottom_nav_complications">Επιμέρους στοιχεία</string>
     <string name="bottom_nav_plugins">Πρόσθετα</string>
     <string name="bottom_nav_settings">Ρυθμίσεις</string>
     <string name="toast_restricted_mode">Να επιτρέπονται οι περιορισμένες ρυθμίσεις στο μενού υπερχείλισης</string>
