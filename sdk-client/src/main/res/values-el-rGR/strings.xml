@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="smartspace_accessibility_smartspace_page">Page %1$d of %2$d</string>
-    <string name="smartspace_long_press_popup_dismiss">Dismiss</string>
-    <string name="smartspace_long_press_popup_feedback">Feedback</string>
-    <string name="smartspace_long_press_popup_about">About this content</string>
-    <string name="smartspace_long_press_popup_settings">Settings</string>
-    <string name="smartspace_long_press_popup_failed_to_launch">Failed to launch action</string>
-    <string name="smartspace_toast_could_not_dismiss">This Target cannot be dismissed</string>
+    <string name="smartspace_accessibility_smartspace_page">Σελίδα %1$d από %2$d</string>
+    <string name="smartspace_long_press_popup_dismiss">Παράβλεψη</string>
+    <string name="smartspace_long_press_popup_feedback">Σχόλια</string>
+    <string name="smartspace_long_press_popup_about">Σχετικά με αυτό το περιεχόμενο</string>
+    <string name="smartspace_long_press_popup_settings">Ρυθμίσεις</string>
+    <string name="smartspace_long_press_popup_failed_to_launch">Αποτυχία εκκίνησης ενέργειας</string>
+    <string name="smartspace_toast_could_not_dismiss">Αυτό το Βασικό στοιχείο δεν μπορεί να παραβλεφθεί</string>
 </resources>
