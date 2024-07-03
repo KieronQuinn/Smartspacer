@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">Dieses Ziel erfordert die Google-App</string>
     <string name="target_google_weather_forecast_title">Google Wettervorhersage</string>
     <string name="target_google_weather_forecast_content">Zeigt das aktuelle Wetter und die Vorhersage für die nächsten vier Stunden von Google Wetter an</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Benachrichtigungs-Listener deaktiviert</string>
     <string name="target_notification_warning_description">Zum Aktivieren tippen</string>
     <string name="complication_default_label">Auf einen Blick Komplikationen</string>
@@ -608,6 +609,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="native_mode_settings_hide_incompatible_targets_content">Ziele ausblenden, die nicht mit deinem Gerät kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
     <string name="native_mode_settings_use_split_smartspace">Nutze geteilten Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Mit Android 14 wurde ein geteilter Smartspace auf dem Sperrbildschirm eingeführt, der immer das Datum und das Wetter über den regulären Zielen &amp; Komplikationen anzeigt. Smartspacer kann das Wetter durch deine erste Komplikation ersetzen, aber dies funktioniert möglicherweise nicht mit allen Uhrenstilen, und deine erste Komplikation könnte verschwinden. Wenn das passiert, deaktivieren diese Funktion.</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer-Berechtigung erforderlich</string>
     <string name="target_permission_request_content">Zum Erteilen tippen</string>
