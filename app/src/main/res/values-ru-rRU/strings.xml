@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Для этой цели нужно приложение Google</string>
     <string name="target_google_weather_forecast_title">Прогноз погоды Google</string>
     <string name="target_google_weather_forecast_content">Отображает текущую погоду и прогноз на ближайшие четыре часа на основе данных Google</string>
-    <string name="target_google_weather_forecast_incompatible">Эта цель требует приложение Google и Android 12 или выше</string>
     <string name="target_notification_warning_title">Сервис доступа к уведомлениям отключён</string>
     <string name="target_notification_warning_description">Нажмите, чтобы включить</string>
     <string name="complication_default_label">Дополнения \"Самое главное\"</string>

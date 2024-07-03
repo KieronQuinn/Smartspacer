@@ -27,9 +27,9 @@ abstract class EnhancedModeRequestViewModel(scope: CoroutineScope?): BaseViewMod
 
     abstract val state: StateFlow<State>
 
-    abstract fun onGetShizukuClicked(context: Context)
-    abstract fun onGetSuiClicked()
-    abstract fun onOpenShizukuClicked()
+    abstract fun onGetShizukuClicked(context: Context, isSetup: Boolean)
+    abstract fun onGetSuiClicked(isSetup: Boolean)
+    abstract fun onOpenShizukuClicked(isSetup: Boolean)
     abstract fun onGranted(isSetup: Boolean)
     abstract fun onDenied(isSetup: Boolean)
 
@@ -84,30 +84,42 @@ class EnhancedModeRequestViewModelImpl(
         return packageManager.isPackageInstalled(ShizukuProvider.MANAGER_APPLICATION_ID)
     }
 
-    override fun onGetShizukuClicked(context: Context) {
+    override fun onGetShizukuClicked(context: Context, isSetup: Boolean) {
         vmScope.launch {
             val shizukuIntent = context.getPlayStoreIntentForPackage(
                 ShizukuProvider.MANAGER_APPLICATION_ID, "https://shizuku.rikka.app/download/"
             )
-            setupNavigation.navigate(shizukuIntent ?: return@launch)
+            if(isSetup) {
+                setupNavigation.navigate(shizukuIntent ?: return@launch)
+            }else{
+                containerNavigation.navigate(shizukuIntent ?: return@launch)
+            }
         }
     }
 
-    override fun onGetSuiClicked() {
+    override fun onGetSuiClicked(isSetup: Boolean) {
         vmScope.launch {
             val suiIntent = Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://github.com/RikkaApps/Sui")
             }
-            setupNavigation.navigate(suiIntent)
+            if(isSetup) {
+                setupNavigation.navigate(suiIntent)
+            }else{
+                containerNavigation.navigate(suiIntent)
+            }
         }
     }
 
-    override fun onOpenShizukuClicked() {
+    override fun onOpenShizukuClicked(isSetup: Boolean) {
         vmScope.launch {
             val intent = packageManager.getLaunchIntentForPackage(
                 ShizukuProvider.MANAGER_APPLICATION_ID
             ) ?: return@launch
-            setupNavigation.navigate(intent)
+            if(isSetup) {
+                setupNavigation.navigate(intent)
+            }else{
+                containerNavigation.navigate(intent)
+            }
         }
     }
 

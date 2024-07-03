@@ -21,6 +21,7 @@ class NativeModeSettingsViewModelTests: BaseTest<NativeModeSettingsViewModel>() 
     private val nativeHideIncompatibleMock = mockSmartspacerSetting(false)
     private val nativeUseSplitSmartspaceMock = mockSmartspacerSetting(false)
     private val nativeTargetCountLimitMock = mockSmartspacerSetting(TargetCountLimit.ONE)
+    private val nativeImmediateStartMock = mockSmartspacerSetting(false)
     private var supportsSplitSmartspace = true
 
     private val navigationMock = mock<ContainerNavigation>()
@@ -35,6 +36,7 @@ class NativeModeSettingsViewModelTests: BaseTest<NativeModeSettingsViewModel>() 
         every { nativeHideIncompatible } returns nativeHideIncompatibleMock
         every { nativeUseSplitSmartspace } returns nativeUseSplitSmartspaceMock
         every { nativeTargetCountLimit } returns nativeTargetCountLimitMock
+        every { nativeImmediateStart } returns nativeImmediateStartMock
     }
 
     override val sut by lazy {
@@ -99,6 +101,19 @@ class NativeModeSettingsViewModelTests: BaseTest<NativeModeSettingsViewModel>() 
             sut.state.assertOutputs<State, State.Loaded>()
             val item = expectMostRecentItem() as State.Loaded
             assertFalse(item.supportsSplitSmartspace)
+        }
+    }
+
+    @Test
+    fun testOnImmediateStartChanged() = runTest {
+        sut.state.test {
+            sut.state.assertOutputs<State, State.Loaded>()
+            sut.onImmediateStartChanged(true)
+            awaitItem()
+            val item = awaitItem()
+            assertTrue(item is State.Loaded)
+            item as State.Loaded
+            assertTrue(item.immediateStart)
         }
     }
 

@@ -132,7 +132,7 @@
     <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
     <string name="target_google_weather_forecast_title">Google Weather Forecast</string>
     <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
-    <string name="target_google_weather_forecast_incompatible">This Target requires Android 12+ and the Google App</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
 
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Tap to enable</string>
@@ -695,6 +695,9 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
+
 
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>

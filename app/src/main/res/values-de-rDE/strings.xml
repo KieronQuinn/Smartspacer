@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Dieses Ziel erfordert die Google-App</string>
     <string name="target_google_weather_forecast_title">Google Wettervorhersage</string>
     <string name="target_google_weather_forecast_content">Zeigt das aktuelle Wetter und die Vorhersage für die nächsten vier Stunden von Google Wetter an</string>
-    <string name="target_google_weather_forecast_incompatible">Dieses Ziel erfordert Android 12+ und die Google-App</string>
     <string name="target_notification_warning_title">Benachrichtigungs-Listener deaktiviert</string>
     <string name="target_notification_warning_description">Zum Aktivieren tippen</string>
     <string name="complication_default_label">Auf einen Blick Komplikationen</string>

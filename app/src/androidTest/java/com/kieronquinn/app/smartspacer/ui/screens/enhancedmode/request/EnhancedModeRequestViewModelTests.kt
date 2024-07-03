@@ -62,7 +62,7 @@ class EnhancedModeRequestViewModelTests: BaseTest<EnhancedModeRequestViewModel>(
 
     @Test
     fun testOnGetShizukuClicked() = runTest {
-        sut.onGetShizukuClicked(contextMock)
+        sut.onGetShizukuClicked(contextMock, true)
         coVerify {
             setupNavigationMock.navigate(any<Intent>())
         }
@@ -70,7 +70,7 @@ class EnhancedModeRequestViewModelTests: BaseTest<EnhancedModeRequestViewModel>(
 
     @Test
     fun testOnGetSuiClicked() = runTest {
-        sut.onGetSuiClicked()
+        sut.onGetSuiClicked(true)
         coVerify {
             setupNavigationMock.navigate(any<Intent>())
         }
@@ -78,7 +78,7 @@ class EnhancedModeRequestViewModelTests: BaseTest<EnhancedModeRequestViewModel>(
 
     @Test
     fun testOnOpenShizukuClicked() = runTest {
-        sut.onOpenShizukuClicked()
+        sut.onOpenShizukuClicked(true)
         coVerify {
             setupNavigationMock.navigate(any<Intent>())
         }

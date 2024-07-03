@@ -40,12 +40,16 @@ open class BcSmartspaceView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs), SmartspaceTargetInteractionListener {
 
-    private val config = SmartspaceConfig(
+    open val config = SmartspaceConfig(
         5, UiSurface.HOMESCREEN, context.packageName
     )
 
     private val client = SmartspacerClient.getInstance(context)
-    private val provider = SmartspacerHelper(client, config)
+
+    private val provider by lazy {
+        SmartspacerHelper(client, config)
+    }
+
     private lateinit var viewPager: ViewPager
     private lateinit var indicator: PageIndicator
     private val adapter = CardPagerAdapter(this)

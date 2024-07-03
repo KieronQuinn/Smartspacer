@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Ten Cel wymaga aplikacji Google</string>
     <string name="target_google_weather_forecast_title">Prognoza pogody Google</string>
     <string name="target_google_weather_forecast_content">Wyświetla bieżącą pogodę i prognozę na następne cztery godziny z Google Weather</string>
-    <string name="target_google_weather_forecast_incompatible">Ten Cel wymaga Androida 12+ i aplikacji Google</string>
     <string name="target_notification_warning_title">Słuchacz powiadomień jest wyłączony</string>
     <string name="target_notification_warning_description">Dotknij, by włączyć</string>
     <string name="complication_default_label">Komplikacje At a Glance</string>

@@ -200,8 +200,8 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         sessionId: SystemSmartspaceSessionId,
         init: Boolean = false
     ) {
-        when {
-            config.uiSurface == UiSurface.MEDIA_DATA_MANAGER -> {
+        when (config.uiSurface) {
+            UiSurface.MEDIA_DATA_MANAGER -> {
                 mediaDataSessions[sessionId] = MediaDataSmartspacerSession(
                     this@SmartspacerSmartspaceService,
                     config,
@@ -211,7 +211,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                     if(init) it.onResume()
                 }
             }
-            config.uiSurface == UiSurface.GLANCEABLE_HUB -> {
+            UiSurface.GLANCEABLE_HUB -> {
                 glanceableHubSessions[sessionId] = GlanceableHubSmartspacerSession(
                     this@SmartspacerSmartspaceService,
                     config,

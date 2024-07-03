@@ -20,6 +20,7 @@ abstract class NativeModeSettingsViewModel(scope: CoroutineScope?): BaseViewMode
     abstract fun onCountLimitClicked(isFromSettings: Boolean)
     abstract fun onHideIncompatibleChanged(enabled: Boolean)
     abstract fun onUseSplitSmartspaceChanged(enabled: Boolean)
+    abstract fun onImmediateStartChanged(enabled: Boolean)
 
     sealed class State {
         object Loading: State()
@@ -27,7 +28,8 @@ abstract class NativeModeSettingsViewModel(scope: CoroutineScope?): BaseViewMode
             val targetCountLimit: TargetCountLimit,
             val hideIncompatibleTargets: Boolean,
             val supportsSplitSmartspace: Boolean,
-            val useSplitSmartspace: Boolean
+            val useSplitSmartspace: Boolean,
+            val immediateStart: Boolean
         ): State()
     }
 
@@ -42,6 +44,7 @@ class NativeModeSettingsViewModelImpl(
 
     private val hideIncompatible = settingsRepository.nativeHideIncompatible
     private val useSplitSmartspace = settingsRepository.nativeUseSplitSmartspace
+    private val immediateStart = settingsRepository.nativeImmediateStart
 
     private val splitSupported = flow {
         emit(compatibilityRepository.doesSystemUISupportSplitSmartspace())
@@ -51,9 +54,10 @@ class NativeModeSettingsViewModelImpl(
         settingsRepository.nativeTargetCountLimit.asFlow(),
         hideIncompatible.asFlow(),
         useSplitSmartspace.asFlow(),
-        splitSupported
-    ) { countLimit, hideIncompatible, splitSmartspace, splitSupported ->
-        State.Loaded(countLimit, hideIncompatible, splitSupported, splitSmartspace)
+        splitSupported,
+        immediateStart.asFlow()
+    ) { countLimit, hideIncompatible, splitSmartspace, splitSupported, immediateStart ->
+        State.Loaded(countLimit, hideIncompatible, splitSupported, splitSmartspace, immediateStart)
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
     override fun onCountLimitClicked(isFromSettings: Boolean) {
@@ -71,6 +75,12 @@ class NativeModeSettingsViewModelImpl(
     override fun onUseSplitSmartspaceChanged(enabled: Boolean) {
         vmScope.launch {
             useSplitSmartspace.set(enabled)
+        }
+    }
+
+    override fun onImmediateStartChanged(enabled: Boolean) {
+        vmScope.launch {
+            immediateStart.set(enabled)
         }
     }
 

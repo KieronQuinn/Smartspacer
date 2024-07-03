@@ -19,6 +19,7 @@ import com.kieronquinn.app.smartspacer.components.notifications.NotificationChan
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.receivers.NativeDismissReceiver
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.isNativeModeAvailable
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository.ShizukuServiceResponse
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.service.SmartspacerSmartspaceService
@@ -32,6 +33,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.toSmartspaceTarget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -57,14 +59,14 @@ interface SystemSmartspaceRepository {
      *  Sets the Smartspacer service as the native system Smartspace service
      */
     @RequiresApi(Build.VERSION_CODES.S)
-    suspend fun setService()
+    suspend fun setService(): Boolean
 
     /**
      *  Un-sets the Smartspacer service. Setting [onlyIfAvailable] to true will not start Shizuku
      *  and only use an existing connection (for safe mode)
      */
     @RequiresApi(Build.VERSION_CODES.S)
-    suspend fun resetService(onlyIfAvailable: Boolean = false, killSystemUi: Boolean = true)
+    suspend fun resetService(onlyIfAvailable: Boolean = false, killSystemUi: Boolean = true): Boolean
 
     /**
      *  An (estimated) current state of the native service. Set to true in service's onCreate,
@@ -134,6 +136,11 @@ class SystemSmartspaceRepositoryImpl(
     private val scope: CoroutineScope = MainScope()
 ): SystemSmartspaceRepository, KoinComponent {
 
+    companion object {
+        //Don't show the notifications more than once per 60s
+        private const val LAST_SHOWED_NOTIFICATION_RATE_LIMIT = 60_000L
+    }
+
     @VisibleForTesting
     val _homeTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
@@ -147,6 +154,8 @@ class SystemSmartspaceRepositoryImpl(
     val _hubTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
     private val user = Process.myUserHandle().getIdentifier()
+    private var lastShowedNativeReminderAt = 0L
+    private var lastShowedReconnectAt = 0L
 
     override val serviceRunning = MutableStateFlow(false)
 
@@ -264,19 +273,19 @@ class SystemSmartspaceRepositoryImpl(
         setupService()
     }
 
-    override suspend fun setService() {
-        withContext(Dispatchers.IO) {
+    override suspend fun setService(): Boolean {
+        return withContext(Dispatchers.IO) {
             shizuku.runWithService {
                 val killPackages = getLaunchersToKill()
                 it.setSmartspaceService(
                     SmartspacerSmartspaceService.COMPONENT, user, true, killPackages
                 )
-            }
+            } is ShizukuServiceResponse.Success
         }
     }
 
-    override suspend fun resetService(onlyIfAvailable: Boolean, killSystemUi: Boolean) {
-        withContext(Dispatchers.IO){
+    override suspend fun resetService(onlyIfAvailable: Boolean, killSystemUi: Boolean): Boolean {
+        return withContext(Dispatchers.IO){
             val default = context.getDefaultSmartspaceComponent()
             val killPackages = if(killSystemUi) {
                 getLaunchersToKill()
@@ -288,13 +297,14 @@ class SystemSmartspaceRepositoryImpl(
                     service.clearSmartspaceService(user, killSystemUi, killPackages)
                 }
             }
-            if(onlyIfAvailable){
+            val result = if(onlyIfAvailable){
                 shizuku.runWithServiceIfAvailable(block)
             }else {
                 shizuku.runWithService(block)
-            }
+            } is ShizukuServiceResponse.Success
             serviceRunning.emit(false)
             setupService()
+            result
         }
     }
 
@@ -314,20 +324,51 @@ class SystemSmartspaceRepositoryImpl(
 
     override fun showNativeStartReminderIfNeeded() {
         scope.launch {
+            val now = System.currentTimeMillis()
+            //Rate limit showing notifications / restarting
+            if(now - lastShowedNativeReminderAt <= LAST_SHOWED_NOTIFICATION_RATE_LIMIT) return@launch
+            lastShowedNativeReminderAt = now
             //Check Enhanced Mode is on, it's still compatible, and native mode has previously started
             if(settings.enhancedMode.get() && settings.hasUsedNativeMode.get() &&
                 compatibility.getCompatibilityReports().isNativeModeAvailable() &&
                 !serviceRunning.value){
-                context.showNotification()
+                if(settings.nativeImmediateStart.get()){
+                    if(!setService()) {
+                        //Service was unable to be started for whatever reason, show notification
+                        context.showNotification()
+                    }
+                }else{
+                    context.showNotification()
+                }
             }
         }
     }
 
     override fun onAsiStopped() {
-        context.showReconnectNotification(false)
+        val now = System.currentTimeMillis()
+        //Rate limit showing notifications / restarting
+        if(now - lastShowedReconnectAt <= LAST_SHOWED_NOTIFICATION_RATE_LIMIT) return
+        lastShowedReconnectAt = now
+        scope.launch {
+            if(settings.nativeImmediateStart.get()) {
+                if(!reconnectService()) {
+                    //Failed to reconnect automatically, show notification
+                    context.showReconnectNotification(false)
+                }
+            }else{
+                context.showReconnectNotification(false)
+            }
+        }
+    }
+
+    private suspend fun reconnectService(): Boolean {
+        if(!resetService(onlyIfAvailable = false, killSystemUi = true)) return false
+        delay(2500L)
+        return setService()
     }
 
     override fun onFeedbackLoopDetected() {
+        //Don't auto-reconnect for feedback loops to prevent repeatedly killing SystemUI in worst case
         context.showReconnectNotification(true)
     }
 

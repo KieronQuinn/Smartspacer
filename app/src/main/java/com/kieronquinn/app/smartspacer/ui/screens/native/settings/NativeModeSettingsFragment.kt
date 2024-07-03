@@ -86,7 +86,14 @@ class NativeModeSettingsFragment: BaseSettingsFragment(), BackAvailable, HideBot
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_complication_google_weather),
                 onChanged = viewModel::onUseSplitSmartspaceChanged
             )
-        }else null
+        }else null,
+        GenericSettingsItem.SwitchSetting(
+            immediateStart,
+            getString(R.string.native_mode_immediate_start_title),
+            getText(R.string.native_mode_immediate_start_content),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_reset),
+            onChanged = viewModel::onImmediateStartChanged
+        )
     )
 
     inner class Adapter: BaseSettingsAdapter(binding.settingsBaseRecyclerView, emptyList())

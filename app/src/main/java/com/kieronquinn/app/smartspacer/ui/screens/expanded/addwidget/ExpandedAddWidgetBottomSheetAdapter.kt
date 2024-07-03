@@ -1,10 +1,12 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget
 
 import android.view.LayoutInflater
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewbinding.ViewBinding
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -217,9 +219,14 @@ class ExpandedAddWidgetBottomSheetAdapter(
             item.widgets
         )
         widgetAddPredictedViewPager.adapter = adapter
+        val cycleListener = OnClickListener {
+            widgetAddPredictedViewPager.cyclePage(item.widgets.size)
+        }
         widgetAddPredictedDots.attachTo(widgetAddPredictedViewPager)
         widgetAddPredictedDots.setStrokeDotsIndicatorColor(monet.getColorSurface(context))
         widgetAddPredictedDots.setDotIndicatorColor(monet.getAccentColor(context))
+        widgetAddPredictedDots.setOnClickListener(cycleListener)
+        widgetAddPredictedCategory.setOnClickListener(cycleListener)
         setCategory()
         whenResumed {
             ViewPager2ViewHeightAnimator.register(widgetAddPredictedViewPager)
@@ -234,6 +241,12 @@ class ExpandedAddWidgetBottomSheetAdapter(
                 onWidgetClicked(it.first, it.second, it.third)
             }
         }
+    }
+
+    private fun ViewPager2.cyclePage(itemCount: Int) {
+        var next = currentItem + 1
+        if(next >= itemCount) next = 0
+        currentItem = next
     }
 
     sealed class ViewHolder(

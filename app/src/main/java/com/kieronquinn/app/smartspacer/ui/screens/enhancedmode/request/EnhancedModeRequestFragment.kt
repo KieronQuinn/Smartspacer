@@ -38,7 +38,7 @@ class EnhancedModeRequestFragment: BoundFragment<FragmentEnhancedModeRequestBind
         binding.enhancedModeRequestShizuku.applyBackgroundTint(monet)
         whenResumed {
             binding.enhancedModeRequestShizukuButton.onClicked().collect {
-                viewModel.onGetShizukuClicked(requireContext())
+                viewModel.onGetShizukuClicked(requireContext(), args.isSetup)
             }
         }
     }
@@ -47,7 +47,7 @@ class EnhancedModeRequestFragment: BoundFragment<FragmentEnhancedModeRequestBind
         binding.enhancedModeRequestSui.applyBackgroundTint(monet)
         whenResumed {
             binding.enhancedModeRequestSuiButton.onClicked().collect {
-                viewModel.onGetSuiClicked()
+                viewModel.onGetSuiClicked(args.isSetup)
             }
         }
     }
@@ -56,7 +56,7 @@ class EnhancedModeRequestFragment: BoundFragment<FragmentEnhancedModeRequestBind
         applyMonet()
         viewLifecycleOwner.lifecycleScope.launch {
             onClicked().collect {
-                viewModel.onOpenShizukuClicked()
+                viewModel.onOpenShizukuClicked(args.isSetup)
             }
         }
     }
