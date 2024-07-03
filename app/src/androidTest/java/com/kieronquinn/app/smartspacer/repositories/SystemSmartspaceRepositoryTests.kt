@@ -225,12 +225,16 @@ class SystemSmartspaceRepositoryTests: BaseTest<SystemSmartspaceRepository>() {
     fun testShowNativeStartReminderIfNeeded() = runTest {
         val enhancedEnabled = mockSmartspacerSetting(false)
         val hasUsedNativeMode = mockSmartspacerSetting(false)
+        val immediateStart = mockSmartspacerSetting(false)
         every {
             settingsRepositoryMock.enhancedMode
         } returns enhancedEnabled
         every {
             settingsRepositoryMock.hasUsedNativeMode
         } returns hasUsedNativeMode
+        every {
+            settingsRepositoryMock.nativeImmediateStart
+        } returns immediateStart
         coEvery {
             compatibilityRepositoryMock.getCompatibilityReports()
         } returns emptyList()

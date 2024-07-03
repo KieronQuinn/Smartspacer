@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Questo Target richiede l\'app Google</string>
     <string name="target_google_weather_forecast_title">Previsioni Meteo Google</string>
     <string name="target_google_weather_forecast_content">Mostra meteo attuale e le previsioni per le prossime quattro ore da Google Meteo</string>
-    <string name="target_google_weather_forecast_incompatible">Questo Target richiede Android 12+ e l\'app Google</string>
     <string name="target_notification_warning_title">Intercettazione delle notifiche disabilitata</string>
     <string name="target_notification_warning_description">Tocca per abilitare</string>
     <string name="complication_default_label">Complicazioni del Riepilogo</string>

@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Dette målet krever Google-appen</string>
     <string name="target_google_weather_forecast_title">Google-værvarsel</string>
     <string name="target_google_weather_forecast_content">Viser været for øyeblikket og værvarslet for de neste fire timene fra Google Vær</string>
-    <string name="target_google_weather_forecast_incompatible">Dette målet krever Android 12+ og Google-appen</string>
     <string name="target_notification_warning_title">Varslingslytteren er deaktivert</string>
     <string name="target_notification_warning_description">Trykk for å aktivere</string>
     <string name="complication_default_label">«Kort fortalt»-komplikasjoner</string>

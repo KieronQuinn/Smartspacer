@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">Este destaque requer o aplicativo do Google</string>
     <string name="target_google_weather_forecast_title">Previsão do tempo do Google</string>
     <string name="target_google_weather_forecast_content">Exibe o clima atual e a previsão para as próximas quatro horas do Clima do Google</string>
-    <string name="target_google_weather_forecast_incompatible">Este destaque requer o Android 12+ e o aplicativo do Google</string>
     <string name="target_notification_warning_title">Receptor de notificação desativado</string>
     <string name="target_notification_warning_description">Toque para ativar</string>
     <string name="complication_default_label">Complementos do Resumo</string>

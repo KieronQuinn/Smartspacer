@@ -86,6 +86,12 @@ interface SmartspacerSettingsRepository {
     val nativeUseSplitSmartspace: SmartspacerSetting<Boolean>
 
     /**
+     *  If enabled, will attempt to start/restart the native Smartspace Service rather than showing
+     *  the notification. This will cause unprompted SystemUI restarts, so disabled by default.
+     */
+    val nativeImmediateStart: SmartspacerSetting<Boolean>
+
+    /**
      *  Hides targets marked as sensitive's content on the Lock Screen UI surface
      */
     val hideSensitive: SmartspacerSetting<HideSensitive>
@@ -376,6 +382,9 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_NATIVE_USE_SPLIT_SMARTSPACE = "native_use_split_smartspace"
 
+        private const val KEY_NATIVE_IMMEDIATE_START = "native_immediate_start"
+        private const val DEFAULT_NATIVE_IMMEDIATE_START = false
+
         private const val KEY_HIDE_SENSITIVE = "hide_sensitive"
 
         private const val KEY_EXPANDED_MODE_ENABLED = "expanded_mode_enabled"
@@ -496,6 +505,7 @@ class SmartspacerSettingsRepositoryImpl(
     override val nativeHideIncompatible = boolean(KEY_NATIVE_HIDE_INCOMPATIBLE, DEFAULT_NATIVE_HIDE_INCOMPATIBLE)
     override val nativeShowMediaSuggestions = boolean(KEY_NATIVE_SHOW_MEDIA_SUGGESTIONS, DEFAULT_NATIVE_SHOW_MEDIA_SUGGESTIONS)
     override val nativeUseSplitSmartspace = boolean(KEY_NATIVE_USE_SPLIT_SMARTSPACE, doesHaveSplitSmartspace())
+    override val nativeImmediateStart = boolean(KEY_NATIVE_IMMEDIATE_START, DEFAULT_NATIVE_IMMEDIATE_START)
     override val hideSensitive = enum(KEY_HIDE_SENSITIVE, context.getSystemHideSensitive())
     override val expandedModeEnabled = boolean(KEY_EXPANDED_MODE_ENABLED, DEFAULT_EXPANDED_MODE_ENABLED)
     override val expandedShowHeader = boolean(KEY_EXPANDED_SHOW_HEADER, DEFAULT_EXPANDED_SHOW_HEADER)

@@ -71,7 +71,6 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnCount
 import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
-import com.kieronquinn.app.smartspacer.utils.extensions.runAfterAnimationsFinished
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
@@ -378,17 +377,13 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 binding.expandedDisabled.isVisible = false
                 binding.expandedPermission.isVisible = false
                 setStatusBarLight(state.lightStatusIcons)
-                whenResumed {
-                    binding.expandedRecyclerView.runAfterAnimationsFinished {
-                        adapter.submitList(state.items) {
-                            try {
-                                whenCreated {
-                                    adapterUpdateBus.emit(System.currentTimeMillis())
-                                }
-                            }catch (e: IllegalStateException) {
-                                //Overlay has been killed
-                            }
+                adapter.submitList(state.items) {
+                    try {
+                        whenCreated {
+                            adapterUpdateBus.emit(System.currentTimeMillis())
                         }
+                    }catch (e: IllegalStateException) {
+                        //Overlay has been killed
                     }
                 }
             }

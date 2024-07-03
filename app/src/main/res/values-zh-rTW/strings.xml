@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">此目標需要 Google 應用程式</string>
     <string name="target_google_weather_forecast_title">Google 天氣預報</string>
     <string name="target_google_weather_forecast_content">顯示來自 Google 天氣的當前天氣狀況及接下來四小時的預報</string>
-    <string name="target_google_weather_forecast_incompatible">此目標需要 Android 12+ 以及 Google 應用程式</string>
     <string name="target_notification_warning_title">通知監聽器已停用</string>
     <string name="target_notification_warning_description">點擊以啟用</string>
     <string name="complication_default_label">資訊一覽的複雜功能</string>

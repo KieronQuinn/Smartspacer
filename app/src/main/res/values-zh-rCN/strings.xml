@@ -119,7 +119,6 @@
     <string name="target_at_a_glance_description_unsupported">该对象需要 Google 应用</string>
     <string name="target_google_weather_forecast_title">Google 天气预报</string>
     <string name="target_google_weather_forecast_content">显示来自 Google 天气的当前天气状况及接下来四小时的预报信息</string>
-    <string name="target_google_weather_forecast_incompatible">该对象需要 Android 12+ 以及 Google 应用</string>
     <string name="target_notification_warning_title">已禁用通知读取器</string>
     <string name="target_notification_warning_description">点击开启</string>
     <string name="complication_default_label">资讯一览附件</string>
