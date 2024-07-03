@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">此目標需要 Google 應用程式</string>
     <string name="target_google_weather_forecast_title">Google 天氣預報</string>
     <string name="target_google_weather_forecast_content">顯示來自 Google 天氣的當前天氣狀況及接下來四小時的預報</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">通知監聽器已停用</string>
     <string name="target_notification_warning_description">點擊以啟用</string>
     <string name="complication_default_label">資訊一覽的複雜功能</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">隱藏與您裝置不相容的目標，而不是僅顯示它們的標題和副標題</string>
     <string name="native_mode_settings_use_split_smartspace">使用分割 Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 在鎖定螢幕上引入了分割的 Smartspace，總是在常規的目標 &amp; 複雜功能上方顯示日期和天氣。Smartspacer 能夠用你的第一個複雜功能替換天氣，但這可能不適用於所有的時鐘樣式，你的第一個複雜功能可能會消失。如果發生這種情況，請禁用此功能。</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">需要 Smartspacer 權限</string>
     <string name="target_permission_request_content">點擊以授權</string>
