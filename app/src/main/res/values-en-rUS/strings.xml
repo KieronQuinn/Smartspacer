@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
     <string name="target_google_weather_forecast_title">Google Weather Forecast</string>
     <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Tap to enable</string>
     <string name="complication_default_label">At a Glance Complications</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer Permission Required</string>
     <string name="target_permission_request_content">Tap to grant</string>
@@ -989,17 +992,17 @@
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Flashlight</string>
-    <string name="target_flashlight_description">Show a reminder when the flashlight is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Flashlight</string>
+    <string name="target_flashlight_title">Torch</string>
+    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
+    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
     <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the flashlight based on light levels</string>
-    <string name="target_flashlight_title_on">Flashlight on</string>
+    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
+    <string name="target_flashlight_title_on">Torch on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Flashlight off</string>
+    <string name="target_flashlight_title_off">Torch off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Flashlight Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the flashlight when the light level is low (may use more battery)</string>
+    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
     <string name="target_flashlight_toast">Grant the Camera permission</string>
     <!-- Gmail Complication -->
