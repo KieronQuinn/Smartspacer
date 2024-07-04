@@ -609,8 +609,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="native_mode_settings_hide_incompatible_targets_content">Ziele ausblenden, die nicht mit deinem Gerät kompatibel sind, statt nur ihren Titel und Untertitel anzuzeigen</string>
     <string name="native_mode_settings_use_split_smartspace">Nutze geteilten Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Mit Android 14 wurde ein geteilter Smartspace auf dem Sperrbildschirm eingeführt, der immer das Datum und das Wetter über den regulären Zielen &amp; Komplikationen anzeigt. Smartspacer kann das Wetter durch deine erste Komplikation ersetzen, aber dies funktioniert möglicherweise nicht mit allen Uhrenstilen, und deine erste Komplikation könnte verschwinden. Wenn das passiert, deaktivieren diese Funktion.</string>
-    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
-    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
+    <string name="native_mode_immediate_start_title">Nativen Smartspace automatisch aktivieren</string>
+    <string name="native_mode_immediate_start_content">Wenn aktiviert, versucht Smartspacer, den nativen Smartspace automatisch zu aktivieren, in Fällen, in denen dies möglich ist, z. B. nach einem Neustart oder wenn die Verbindung zum Dienst unterbrochen wurde.\n\n<b>WARNUNG:</b> DIE AKTIVIERUNG DIESER OPTION FÜHRT ZU UNAUFGEFORDERTEN NEUSTARTS DER SYSTEMUI, WAS ZU EINER UNTERBRECHUNG DER NORMALEN NUTZUNG DEINES GERÄTS FÜHREN KANN, UM DEN DIENST ZU STARTEN. DIES IST KEIN FEHLER.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Smartspacer-Berechtigung erforderlich</string>
     <string name="target_permission_request_content">Zum Erteilen tippen</string>
