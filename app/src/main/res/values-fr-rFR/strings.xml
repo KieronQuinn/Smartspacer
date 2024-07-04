@@ -119,7 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">Cette cible requiert l\'application Google</string>
     <string name="target_google_weather_forecast_title">Prévisions météo Google</string>
     <string name="target_google_weather_forecast_content">Affiche la météo actuelle et les prévisions sur 4 heures de Google Météo</string>
-    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
+    <string name="target_google_weather_forecast_incompatible">Cette cible requiert un appareil Pixel ou une ROM Pixel, avec l\'application Google installée</string>
     <string name="target_notification_warning_title">Auditeur de notifications désactivé</string>
     <string name="target_notification_warning_description">Appuyez pour activer</string>
     <string name="complication_default_label">Complications Aperçu</string>
@@ -608,7 +608,7 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Masquer les cibles incompatibles avec votre appareil, plutôt que d\'afficher uniquement leur titre et leur sous-titre</string>
     <string name="native_mode_settings_use_split_smartspace">Utiliser Smartspace séparé</string>
     <string name="native_mode_settings_use_split_smartspace_content">Depuis Android 14, il existe un Smartspace dédié à l\'écran de verrouillage qui affiche la date et la météo en priorité par rapport aux cibles et aux complications standard. Smartspacer peut remplacer la météo avec votre première complication, mais cela pourrait ne pas fonctionner avec tous les styles d\'horloge, et votre première complication pourrait disparaître. Si cela se produit, désactivez cette option.</string>
-    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_title">Activer automatiquement Smartspace natif</string>
     <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Autorisation Smartspacer nécessaire</string>
