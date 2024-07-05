@@ -132,8 +132,8 @@
     <string name="complication_google_weather_label">Pogoda Google</string>
     <string name="complication_google_weather_description">Pokazuje pogodę z aplikacji Google</string>
     <string name="complication_google_weather_description_unsupported">Ten Cel wymaga aplikacji Google</string>
-    <string name="complication_date_label">Date</string>
-    <string name="complication_date_description">Shows the current date</string>
+    <string name="complication_date_label">Data</string>
+    <string name="complication_date_description">Pokazuje bieżącą datę</string>
     <string name="plugin_target_default_label">Cel wtyczki</string>
     <string name="plugin_action_default_label">Komplikacja wtyczki</string>
     <string name="plugin_requirement_default_label">Wymagania wtyczki</string>
@@ -206,7 +206,7 @@
     <string name="target_edit_show_on_music_content">Pokaż ten cel na ekranie zawsze, kiedy jest odtwarzana muzyka</string>
     <string name="target_edit_show_on_music_content_oem">Show this target on your always on display (if available) while music is playing</string>
     <string name="target_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
-    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Niedostępne na tym urządzeniu</string>
     <string name="target_edit_expanded_header">Rozszerzony Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="target_edit_expanded_show_when_locked_content">Show this Target in Expanded Smartspace when locked</string>
@@ -223,7 +223,7 @@
     <string name="target_edit_disable_subcomplication_title">Wyłącz subkomplikacje</string>
     <string name="target_edit_disable_subcomplication_content">Zapobiega dodaniu Komplikacji obok tego Celu, jeśli dostępna jest przestrzeń</string>
     <string name="target_edit_settings_header">Ustawienia</string>
-    <string name="target_edit_requirements_title">Requirements</string>
+    <string name="target_edit_requirements_title">Wymagania</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>
     <string name="target_edit_requirements_content_any_one">%1d Any Requirement configured</string>
     <string name="target_edit_requirements_content_any_other">%1d Any Requirements configured</string>
@@ -250,7 +250,7 @@
     <string name="complication_edit_show_on_music_content">Pokaż tą Komplikację na AoD, kiedy jest odtwarzana muzyka</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
-    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Niedostępne na tym urządzeniu</string>
     <string name="complication_edit_expanded_header">Rozszerzony Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
@@ -290,7 +290,7 @@
     <string name="configuration_notification_association_toast">An error occurred, please try again</string>
     <string name="configuration_notification_picker_empty">No notifications found</string>
     <string name="configuration_notification_picker_error">An error occurred getting notification channels</string>
-    <string name="requirements_title">Requirements</string>
+    <string name="requirements_title">Wymagania</string>
     <string name="requirements_empty_label">No Requirements added for this type</string>
     <string name="requirements_tab_any">Którykolwiek z</string>
     <string name="requirements_tab_all">Wszystkie z</string>
@@ -331,7 +331,7 @@
     <string name="requirement_geofence_configuration_background_location_grant">Przyznaj uprawnienie</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limit Reached</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
-    <string name="requirement_wifi_title">Wi-Fi Network</string>
+    <string name="requirement_wifi_title">Sieć Wi-Fi</string>
     <string name="requirement_wifi_content">Pokazuj tylko wtedy, gdy jest w zasięgu lub jest podłączony do sieci Wi-Fi</string>
     <string name="requirement_wifi_content_base">Only show when %1s to %1s</string>
     <string name="requirement_wifi_content_connected_to">połączony</string>
@@ -347,7 +347,7 @@
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
     <string name="requirement_wifi_configuration_ssid_title">Nazwa sieci</string>
     <string name="requirement_wifi_configuration_ssid_content_unset">Set the Network Name (SSID) of the network</string>
-    <string name="requirement_wifi_configuration_mac_title">MAC Address</string>
+    <string name="requirement_wifi_configuration_mac_title">Adres MAC</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
     <string name="requirement_wifi_configuration_picker_available">Dostępne sieci</string>
@@ -375,7 +375,7 @@
     <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
     <string name="requirement_app_prediction_configuration_title">Wybierz aplikację</string>
     <string name="requirement_music_playing_label">Music Playing</string>
-    <string name="requirement_music_playing_content">Only show when music is playing</string>
+    <string name="requirement_music_playing_content">Pokaż tylko, gdy muzyka jest odtwarzana</string>
     <string name="permission_dialog_widget_title_prefix">Zezwól</string>
     <string name="permission_dialog_widget_title_suffix">to access widgets using Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
@@ -445,7 +445,7 @@
     <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
     <string name="compatibility_label_systemui">Ekran blokady</string>
     <!-- Setup -->
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">Zaczynamy</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
@@ -494,8 +494,8 @@
     <string name="setup_add_widget_content">Dodaj Smartspacer do ekranu głównego</string>
     <string name="setup_add_widget_lock"><![CDATA[Uwaga: Jeśli chcesz dodać Smartspacer do ekranu blokady, musisz użyć aplikacji takiej jak <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> aby dodać widżet.]]></string>
     <!-- Setup > Requirements -->
-    <string name="setup_requirements_info_title">Requirements</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace.</string>
+    <string name="setup_requirements_info_title">Wymagania</string>
+    <string name="setup_requirements_info_p1"><b>Wymagania</b> pozwalają na dostosowanie, kiedy Cel lub Komplikacja są wyświetlane w Smartspace. Dzięki temu możesz tworzyć scenariusze, w których w Smartspace wyświetlane są przydatne informacje.</string>
     <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
     <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
     <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
@@ -569,7 +569,7 @@
     <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
     <string name="notification_native_mode_restart_just_reconnect">Reconnect now</string>
     <!-- Shizuku Start Notifications -->
-    <string name="notification_shizuku_title">Shizuku Required</string>
+    <string name="notification_shizuku_title">Shizuku jest wymagany</string>
     <string name="notification_shizuku_content_app_prediction">The App Prediction Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_recent_task">The Recent Task Requirement requires Shizuku be started, tap to open</string>
     <string name="notification_shizuku_content_at_a_glance_target">The At a Glance Target requires Shizuku be started, tap to open</string>
@@ -595,7 +595,7 @@
     <!-- Native Mode Settings -->
     <string name="native_mode_settings_menu_title">Native Smartspace Settings</string>
     <string name="native_mode_settings_title">Natywny Smartspace</string>
-    <string name="native_mode_settings_target_limit_title">Page Limit</string>
+    <string name="native_mode_settings_target_limit_title">Limit stron</string>
     <string name="native_mode_settings_target_limit_content">The maximum number of pages of Targets and Complications to show: %1s</string>
     <string name="native_mode_settings_target_limit_warning"><b>Warning:</b> On some devices with some combinations of Targets, you may experience periodic SystemUI and Native Smartspace compatible launcher crashes with options higher than Single Page enabled.</string>
     <string name="native_mode_settings_target_limit_one">Pojedyncza strona</string>
@@ -604,7 +604,7 @@
     <string name="native_mode_settings_target_limit_automatic_content">Follow the limit requested by the Launcher or Lock Screen</string>
     <string name="native_mode_settings_target_limit_unlimited">Wymuś nieograniczoną liczbę stron</string>
     <string name="native_mode_settings_target_limit_unlimited_content">Ignore the requested limit and show as many pages as are available</string>
-    <string name="native_mode_settings_hide_incompatible_targets_title">Hide Incompatible Targets</string>
+    <string name="native_mode_settings_hide_incompatible_targets_title">Ukryj niekompatybilne Cele</string>
     <string name="native_mode_settings_hide_incompatible_targets_content">Hide Targets incompatible with your device, rather than showing just their title and subtitle</string>
     <string name="native_mode_settings_use_split_smartspace">Use Split Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 introduced a split Smartspace on the lock screen, always showing the date and weather above regular Targets &amp; Complications. Smartspacer is able to replace the weather with your first complication, but this may not work with all Clock styles, and your first Complication may disappear. If that happens, disable this.</string>
@@ -655,32 +655,32 @@
     <string name="expanded_settings_close_when_locked_title">Close When Locked</string>
     <string name="expanded_settings_close_when_locked_content">Exit Expanded Smartspace when the device is locked</string>
     <string name="expanded_settings_header_style">Style</string>
-    <string name="expanded_settings_background_mode_title">Background</string>
-    <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
-    <string name="expanded_settings_background_mode_blur">Blurred Wallpaper</string>
-    <string name="expanded_settings_background_mode_scrim">Dimmed Wallpaper</string>
-    <string name="expanded_settings_background_mode_solid">Solid Colour</string>
-    <string name="expanded_settings_widgets_use_google_sans_title">Use Google Sans in Widgets</string>
+    <string name="expanded_settings_background_mode_title">Tło</string>
+    <string name="expanded_settings_background_mode_content">Tło do pokazania za Rozszerzonym Smartspace: %1s</string>
+    <string name="expanded_settings_background_mode_blur">Rozmyta tapeta</string>
+    <string name="expanded_settings_background_mode_scrim">Przyciemniona tapeta</string>
+    <string name="expanded_settings_background_mode_solid">Jednolity kolor</string>
+    <string name="expanded_settings_widgets_use_google_sans_title">Użyj Google Sans w widżetach</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
-    <string name="expanded_settings_xposed_enabled_title">Replace Google Discover</string>
+    <string name="expanded_settings_xposed_enabled_title">Zastąp Google Discover</string>
     <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
-    <string name="expanded_settings_xposed_enabled_content_disabled">This option requires Xposed</string>
-    <string name="expanded_settings_hide_add_button_title">Hide Add Button</string>
+    <string name="expanded_settings_xposed_enabled_content_disabled">Ta opcja wymaga Xposed</string>
+    <string name="expanded_settings_hide_add_button_title">Ukryj przycisk Dodaj</string>
     <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
-    <string name="expanded_settings_hide_add_button_never">Never</string>
+    <string name="expanded_settings_hide_add_button_never">Nigdy</string>
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
-    <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_hide_add_button_always">Zawsze</string>
     <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
     <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
     <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
-    <string name="expanded_settings_open_mode_never_title">Never</string>
+    <string name="expanded_settings_open_mode_never_title">Nigdy</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_open_mode_always_title">Always</string>
+    <string name="expanded_settings_open_mode_always_title">Zawsze</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
     <string name="expanded_settings_tint_colour">Tint Colour</string>
@@ -699,15 +699,15 @@
     <string name="oem_smartspace_settings">Settings</string>
     <string name="oem_smartspace_label_systemui">Lock Screen</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
-    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
-    <string name="expanded_search_box_search">Search…</string>
-    <string name="expanded_footer">Add Widget</string>
-    <string name="expanded_custom_widget_delete">Remove</string>
+    <string name="oem_smartspace_hide_incompatible_content">Ukryj Cele niekompatybilne z OEM Smartspace, zamiast pokazywać tylko ich tytuł i podtytuł</string>
+    <string name="expanded_search_box_search">Szukaj…</string>
+    <string name="expanded_footer">Dodaj widżet</string>
+    <string name="expanded_custom_widget_delete">Usuń</string>
     <string name="expanded_custom_widget_options">Options</string>
     <string name="expanded_custom_widget_rearrange">Rearrange</string>
     <string name="expanded_custom_widget_rearrange_title">Drag to rearrange</string>
     <string name="expanded_widget_reset_title">Reset</string>
-    <string name="expanded_add_widget_title">Add Widget</string>
+    <string name="expanded_add_widget_title">Dodaj widżet</string>
     <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
@@ -723,7 +723,7 @@
     <string name="expanded_custom_widget_options_reconfigure_content">Change settings for this widget in its app</string>
     <string name="expanded_custom_widget_options_show_when_locked_title">Show when locked</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Show this widget in Expanded Smartspace when the device is locked</string>
-    <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
+    <string name="expanded_custom_widget_options_round_corners_title">Wymuś zaokrąglone narożniki</string>
     <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
     <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
@@ -737,9 +737,9 @@
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
     <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
-    <string name="battery_optimisation_footer_link">Learn More</string>
+    <string name="battery_optimisation_footer_link">Dowiedz się więcej</string>
     <string name="plugin_repository_tab_installed">Installed</string>
-    <string name="plugin_repository_tab_available">Available</string>
+    <string name="plugin_repository_tab_available">Dostępne</string>
     <string name="plugin_repository_empty_title_not_found">Not Found</string>
     <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
     <string name="plugin_repository_empty_title_empty">No Plugins loaded</string>
@@ -748,7 +748,7 @@
     <string name="plugin_repository_empty_title_browse">No Plugins Installed</string>
     <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet.</string>
     <string name="plugin_repository_empty_button_browse">Browse Plugins</string>
-    <string name="plugin_repository_update_available">Update Available!</string>
+    <string name="plugin_repository_update_available">Dostępna aktualizacja!</string>
     <string name="plugin_repository_recommended">Recommended for:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">Install</string>
