@@ -41,12 +41,12 @@
     <string name="widget_configuration_title">Widżet Smartspacer</string>
     <string name="widget_configuration_tab_horizontal">Horizontal</string>
     <string name="widget_configuration_tab_vertical">Vertical</string>
-    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_horizontal_info"><b>Uwaga:</b> Ze względu na ograniczenie Androida, widżety nie mogą być przewijane poziomo. Zamiast tego widżet Smartspacer ma przyciski.</string>
     <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">Włącz usługę ułatwień dostępu</string>
     <string name="widget_configuration_accessibility_content">Widżet Smartspacer wymaga usługi ułatwień dostępu, aby dowiedzieć się, która aplikacja jest obecnie otwarta na twoim urządzeniu, oraz funkcji start/stop Celów oraz Komplikacji. Pozwala to na ich aktualizację bez konieczności ciągłej pracy — oszczędza baterię.</string>
-    <string name="widget_configuration_accessibility_enable">Tap to enable</string>
-    <string name="widget_configuration_behaviour_title">Behaviour</string>
+    <string name="widget_configuration_accessibility_enable">Dotknij, aby włączyć</string>
+    <string name="widget_configuration_behaviour_title">Zachowanie</string>
     <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
     <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
@@ -66,8 +66,8 @@
     <string name="widget_configuration_shadow_title">Text Shadow</string>
     <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
-    <string name="widget_configuration_mock_target_subtitle">Target</string>
-    <string name="widget_configuration_mock_complication_title">Complication</string>
+    <string name="widget_configuration_mock_target_subtitle">Cel</string>
+    <string name="widget_configuration_mock_complication_title">Komplikacja</string>
     <string name="widget_options_configure">Skonfiguruj widget</string>
     <string name="accessibility_service_label">Usługa widżetu Smartspacer</string>
     <string name="accessibility_service_description">Włącza widżet Smartspacer, aby zachować aktualne cele i komplikacje bez zużywania baterii poprzez ich ciągłe działanie.\n\nUwaga: Nie jest to wymagane, jeśli włączony jest tryb zaawansowany.</string>
@@ -266,7 +266,7 @@
     <string name="complication_edit_external_content">Skonfiguruj więcej ustawień w %1s</string>
     <string name="complication_edit_external_error">Nie udało się uruchomić ustawień dla tej Komplikacji</string>
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
-    <string name="requirement_edit_invert">Invert this requirement</string>
+    <string name="requirement_edit_invert">Odwróć ten wymóg</string>
     <string name="safe_mode_title">Tryb awaryjny</string>
     <string name="safe_mode_content">Smartspacer entered safe mode due to an app crashing, to prevent a crash-loop. These crashes are usually caused by a misbehaving target or complication, so if they persist check for updates to your plugins.</string>
     <string name="safe_mode_relaunch">Uruchom ponownie Smartspacer</string>
@@ -448,7 +448,7 @@
     <string name="landing_button_get_started">Zaczynamy</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
-    <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
+    <string name="setup_analytics_title">Analityka &amp; Zgłaszanie awarii</string>
     <string name="setup_analytics_content"><![CDATA[Smartspacer używa wielu eksperymentalnych i "ukrytych" API Androida, które mogą być podatne na awarię na niektórych urządzeniach z powodu modyfikacji OEM.<br>Aby pomóc w naprawieniu błędów, Smartspacer może wysyłać raporty o awarii do Firebase Crashlytics, jak również podstawowe informacje analityczne (takie jak uruchamiania aplikacji).<br>Te dane są anonimowe i są całkowicie opcjonalne, więcej szczegółów i polityki prywatności możesz znaleźć <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">tutaj</a>]]></string>
     <string name="setup_analytics_allow">Zezwól</string>
     <string name="setup_analytics_deny">Odmów</string>
@@ -743,13 +743,13 @@
     <string name="plugin_repository_empty_title_not_found">Not Found</string>
     <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
     <string name="plugin_repository_empty_title_empty">No Plugins loaded</string>
-    <string name="plugin_repository_empty_subtitle_empty">Check your network connection</string>
-    <string name="plugin_repository_empty_button_empty">Refresh</string>
-    <string name="plugin_repository_empty_title_browse">No Plugins Installed</string>
-    <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet.</string>
-    <string name="plugin_repository_empty_button_browse">Browse Plugins</string>
+    <string name="plugin_repository_empty_subtitle_empty">Sprawdź połączenie z internetem</string>
+    <string name="plugin_repository_empty_button_empty">Odśwież</string>
+    <string name="plugin_repository_empty_title_browse">Brak zainstalowanych wtyczek</string>
+    <string name="plugin_repository_empty_subtitle_browse">Nie masz jeszcze żadnych zainstalowanych wtyczek.</string>
+    <string name="plugin_repository_empty_button_browse">Przeglądaj wtyczki</string>
     <string name="plugin_repository_update_available">Dostępna aktualizacja!</string>
-    <string name="plugin_repository_recommended">Recommended for:</string>
+    <string name="plugin_repository_recommended">Zalecane dla:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
     <string name="plugin_details_install">Install</string>
     <string name="plugin_details_start_install">Start Install</string>
@@ -764,47 +764,47 @@
     <string name="plugin_details_incompatible_missing_app">This plugin requires you to have a companion app installed, tap to download</string>
     <string name="plugin_details_incompatible_outdated">This plugin requires a newer version of Smartspacer, please update Smartspacer to install it</string>
     <string name="plugin_details_downloading_title">Downloading plugin…</string>
-    <string name="plugin_details_download_failed">Download failed</string>
-    <string name="plugin_settings_title">Plugin Repository</string>
-    <string name="plugin_settings_content">Change settings related to the Smartspacer Plugin Repository, including disabling it entirely if you wish</string>
-    <string name="plugin_settings_enabled">Enable Plugin Repository</string>
-    <string name="plugin_settings_update_check_enabled_title">Automatically Check for Updates</string>
+    <string name="plugin_details_download_failed">Pobieranie nie powiodło się</string>
+    <string name="plugin_settings_title">Repozytorium wtyczek</string>
+    <string name="plugin_settings_content">Zmień ustawienia związane z repozytorium wtyczek Smartspacer, w tym wyłączając je całkowicie, jeśli chcesz</string>
+    <string name="plugin_settings_enabled">Włącz repozytorium wtyczek</string>
+    <string name="plugin_settings_update_check_enabled_title">Automatycznie sprawdzaj dostępność aktualizacji</string>
     <string name="plugin_settings_update_check_enabled_content">Check for updates to Smartspacer plugins once a day and notify you when any are available</string>
     <string name="plugin_settings_url_title">Plugin Repository URL</string>
     <string name="plugin_settings_url_content"><b>Advanced:</b> Change the URL to load plugin repository data from</string>
     <string name="plugin_settings_footer">The Smartspacer Plugin Repository allows you to install and manage Smartspacer plugins as well as find plugins compatible with apps installed on your device</string>
     <!-- Update downloader -->
-    <string name="snackbar_update">Update available</string>
-    <string name="snackbar_update_button">Update</string>
-    <string name="update_heading">Smartspacer version %1s</string>
+    <string name="snackbar_update">Dostępna aktualizacja</string>
+    <string name="snackbar_update_button">Aktualizuj</string>
+    <string name="update_heading">Wersja Smartspacer %1s</string>
     <string name="update_subheading">Current version %1s</string>
     <string name="update_changes">Changes</string>
     <string name="update_open_installer">Start Install</string>
     <string name="update_done">Download Complete</string>
-    <string name="update_loading">Loading…</string>
-    <string name="update_fab">Download</string>
-    <string name="download_manager_description">Downloading update…</string>
-    <string name="update_downloader_downloading_title">Downloading update…</string>
-    <string name="update_downloader_downloading_failed">Download failed</string>
-    <string name="update_downloader_github">Download via browser</string>
-    <string name="update_notification_title">Smartspacer update available</string>
+    <string name="update_loading">Wczytywanie…</string>
+    <string name="update_fab">Pobierz</string>
+    <string name="download_manager_description">Pobieranie aktualizacji…</string>
+    <string name="update_downloader_downloading_title">Pobieranie aktualizacji…</string>
+    <string name="update_downloader_downloading_failed">Pobieranie nie powiodło się</string>
+    <string name="update_downloader_github">Pobierz przez przeglądarkę</string>
+    <string name="update_notification_title">Dostępna aktualizacja Smartspacer</string>
     <string name="update_notification_content">An update is available for Smartspacer (%1s to %1s)</string>
     <!-- Donate info -->
-    <string name="donate_prompt_title">Enjoying Smartspacer?</string>
-    <string name="donate_prompt_content">If you find Smartspacer useful, please consider making a donation. Tap for more info.</string>
-    <string name="donate_prompt_dismiss">Dismiss</string>
+    <string name="donate_prompt_title">Podoba Ci się Smartspacer?</string>
+    <string name="donate_prompt_content">Jeśli uważasz, że Smartspacer jest przydatny, rozważ dokonanie darowizny. Dotknij, aby uzyskać więcej informacji.</string>
+    <string name="donate_prompt_dismiss">Odrzuć</string>
     <string name="donate_paragraph_1">Thank you for considering making a donation. Smartspacer is a complex app and has taken a lot of time in development, even though it is available for free and is open source.</string>
     <string name="donate_paragraph_2">If you would like to donate, currently the only available option is PayPal (linked below). Other options may be available in the future, if required - open a GitHub issue if you have a suggestion. Additionally, direct payment options such as Wise can be provided on request.</string>
     <string name="donate_paragraph_3">If you have already donated or are unable to at this time, you can hide the donation prompt banner permanently below (you will still be able to access this screen from the bottom of the settings).</string>
     <string name="donate_disable">Hide Donation Prompt</string>
     <string name="donate_paypal">PayPal</string>
     <!-- Permissions settings -->
-    <string name="permissions_empty_label">No Smartspacer permissions have been granted to other apps</string>
-    <string name="permissions_allow">Allow</string>
-    <string name="permissions_deny">Deny</string>
-    <string name="permissions_ask_every_time">Ask every time</string>
+    <string name="permissions_empty_label">Nie przyznano żadnych uprawnień Smartspacer innym aplikacjom</string>
+    <string name="permissions_allow">Zezwól</string>
+    <string name="permissions_deny">Odmów</string>
+    <string name="permissions_ask_every_time">Zawsze pytaj</string>
     <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
-    <string name="permissions_title">Permissions</string>
+    <string name="permissions_title">Uprawnienia</string>
     <string name="permissions_content">Manage permissions granted to Plugins &amp; apps integrating Smartspacer</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
@@ -812,12 +812,12 @@
     <!-- Backup & Restore -->
     <string name="backup_restore_title">Backup &amp; Restore</string>
     <string name="backup_restore_content">Backup &amp; restore Smartspacer Targets, Complications, Requirements and settings</string>
-    <string name="backup_title">Backup</string>
+    <string name="backup_title">Kopia zapasowa</string>
     <string name="backup_content">Create a Smartspacer backup of Targets, Complications, Requirements and settings, either to a local file or to the cloud.</string>
-    <string name="backup_creating_backup">Creating backup…</string>
-    <string name="backup_creating_targets_backup">Creating Targets backup…</string>
-    <string name="backup_creating_complications_backup">Creating Complications backup…</string>
-    <string name="backup_creating_requirements_backup">Creating Requirements backup…</string>
+    <string name="backup_creating_backup">Tworzenie kopii zapasowej…</string>
+    <string name="backup_creating_targets_backup">Tworzenie kopii zapasowej Celów…</string>
+    <string name="backup_creating_complications_backup">Tworzenie kopii zapasowej Komplikacji…</string>
+    <string name="backup_creating_requirements_backup">Tworzenie kopii zapasowej Wymagań…</string>
     <string name="backup_creating_widgets_backup">Creating Expanded Smartspace widgets backup…</string>
     <string name="backup_creating_settings_backup">Creating settings backup…</string>
     <string name="backup_created">Backup created</string>
@@ -849,14 +849,14 @@
     <string name="restore_target_title">Cele</string>
     <string name="restore_target_reason_not_installed">The Plugin providing this Target is no longer installed (%1s)</string>
     <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
-    <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
-    <string name="restore_target_footer">Tap a Target to restore it.\n<b>Targets are added in order of restoration</b></string>
+    <string name="restore_target_collision"><b>Dodanie tego celu nadpisze aktualną konfigurację</b></string>
+    <string name="restore_target_footer">Naciśnij Cel, aby go przywrócić.\n<b>Cele są dodawane w kolejności przywrócenia</b></string>
     <string name="restore_complications_title">Komplikacje</string>
-    <string name="restore_complication_reason_not_installed">The Plugin providing this Complication is no longer installed (%1s)</string>
-    <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
-    <string name="restore_complication_collision"><b>Adding this Complication will overwrite your current config</b></string>
-    <string name="restore_complication_footer">Tap a Complication to restore it.\n<b>Complications are added in order of restoration</b></string>
-    <string name="restore_requirements_title">Requirements</string>
+    <string name="restore_complication_reason_not_installed">Wtyczka dostarczająca tę Komplikację nie jest już zainstalowana (%1s)</string>
+    <string name="restore_complication_duplicate">Ta Komplikacja została już dodana i nie może być dodana więcej niż raz. Najpierw usuń istniejącą Komplikację przed przywróceniem.</string>
+    <string name="restore_complication_collision"><b>Dodanie tej Komplikacji nadpisze aktualną konfigurację</b></string>
+    <string name="restore_complication_footer">Naciśnij Komplikację, aby ją przywrócić.\n<b>Komplikacje są dodawane w kolejności przywrócenia</b></string>
+    <string name="restore_requirements_title">Wymagania</string>
     <string name="restore_requirements_reason_not_installed">The Plugin providing this Requirement is no longer installed (%1s)</string>
     <string name="restore_requirements_reason_not_added">The Target or Complication this Requirement was attached to has not been added. Please add it first before restoring its Requirement.</string>
     <string name="restore_requirements_duplicate">This Requirement has already been added and cannot be added more than once. Remove the existing Requirement first before restoring.</string>
@@ -876,10 +876,10 @@
     <string name="notification_widget_tint_title">Tint</string>
     <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
-    <string name="xda_thread">XDA Thread</string>
+    <string name="xda_thread">Wątek na XDA</string>
     <string name="github">GitHub</string>
     <string name="libraries">Biblioteki firm trzecich</string>
-    <string name="donate">Donate</string>
+    <string name="donate">Przekaż darowiznę</string>
     <string name="twitter">Śledź mnie na Twitterze</string>
     <string name="about_version">Wersja %1s\nstworzona przez Kieron Quinn</string>
     <string name="about_contributors">Współtwórcy</string>
@@ -894,23 +894,23 @@
     <string name="wallpaper_colour_picker_title">Kolor tapety</string>
     <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
     <!-- Digital Wellbeing Target -->
-    <string name="target_digital_wellbeing_label">Digital Wellbeing</string>
+    <string name="target_digital_wellbeing_label">Cyfrowa równowaga</string>
     <string name="target_digital_wellbeing_description">Shows the screen time and top 3 apps from Digital Wellbeing</string>
     <string name="target_digital_wellbeing_unsupported">This Target requires the Digital Wellbeing App</string>
     <!-- Digital Wellbeing Complication -->
-    <string name="complication_digital_wellbeing_label">Digital Wellbeing</string>
+    <string name="complication_digital_wellbeing_label">Cyfrowa równowaga</string>
     <string name="complication_digital_wellbeing_description">Shows the screen on time from Digital Wellbeing</string>
     <string name="complication_digital_wellbeing_unsupported">This Complication requires the Digital Wellbeing App</string>
     <!-- Clock Complication -->
     <string name="complication_clock_label">Zegar</string>
     <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
-    <string name="complication_clock_description_short">Shows the current time</string>
+    <string name="complication_clock_description_short">Pokazuje bieżący czas</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Kalendarz</string>
-    <string name="target_calendar_description">Shows Calendar events from selected calendars</string>
-    <string name="target_calendar_description_filled">Shows Calendar events from %1s</string>
+    <string name="target_calendar_description">Pokazuje wydarzenia kalendarza z wybranych kalendarzy</string>
+    <string name="target_calendar_description_filled">Pokazuje wydarzenia kalendarza z %1s</string>
     <string name="target_calendar_configuration_title">Ustawienia</string>
-    <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
+    <string name="target_calendar_configuration_description">Skonfiguruj kalendarze do wyświetlania i opcje, kiedy pokazywać wydarzenia</string>
     <string name="target_calendar_title_default">Untitled Event</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
     <string name="target_calendar_subtitle_with_yesterday">Yesterday, %1s – %1s</string>
@@ -957,14 +957,14 @@
     <string name="target_default_settings_hide_earthquake_alert">Earthquake Alert</string>
     <string name="target_default_settings_hide_commute">Commute</string>
     <string name="target_default_settings_hide_time_to_leave">Time to Leave</string>
-    <string name="target_default_settings_hide_weather_alerts">Weather Alerts</string>
+    <string name="target_default_settings_hide_weather_alerts">Alerty pogodowe</string>
     <string name="target_default_settings_hide_travel">Flights</string>
     <string name="target_default_settings_hide_calendar">Kalendarz</string>
     <string name="target_default_settings_hide_work_profile">Work Profile</string>
     <string name="target_default_settings_hide_food">Food &amp; Household Orders</string>
     <string name="target_default_settings_cross_device_timer">Cross-device Timer</string>
     <!-- Notification Target -->
-    <string name="target_notification_configuration_app_title">Select App</string>
+    <string name="target_notification_configuration_app_title">Wybierz aplikację</string>
     <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
     <string name="target_notification_configuration_settings">Ustawienia</string>
     <string name="target_notification_channels">Notification Channels</string>
@@ -987,7 +987,7 @@
     <string name="target_date_settings_date_format_automatic">Automatic</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
     <string name="target_date_settings_title">Ustawienia</string>
-    <string name="target_date_settings_description">Configure the date format</string>
+    <string name="target_date_settings_description">Skonfiguruj format daty</string>
     <string name="target_date_settings_custom">Custom</string>
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
@@ -1011,24 +1011,24 @@
     <string name="complication_gmail_description_filled_one">Show the number of unread Gmail emails at %1s in %1d label</string>
     <string name="complication_gmail_description_filled_other">Show the number of unread Gmail emails at %1s in %1d labels</string>
     <string name="complication_gmail_unknown">\???</string>
-    <string name="complication_gmail_settings_account_title">Account</string>
+    <string name="complication_gmail_settings_account_title">Konto</string>
     <string name="complication_gmail_settings_account_unselected">Not selected</string>
-    <string name="complication_gmail_settings_title_labels">Select Labels</string>
-    <string name="complication_gmail_settings_title">Settings</string>
+    <string name="complication_gmail_settings_title_labels">Wybierz etykiety</string>
+    <string name="complication_gmail_settings_title">Ustawienia</string>
     <string name="complication_gmail_settings_description">Select the account and labels to show unread emails from</string>
     <string name="complication_gmail_settings_toast">Grant the emails permission in Permissions &gt; Additional Permissions</string>
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS Unread</string>
-    <string name="complication_sms_description">Show the number of unread SMS/RCS messages</string>
+    <string name="complication_sms_description">Pokaż liczbę nieprzeczytanych wiadomości SMS/RCS</string>
     <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Missed Calls</string>
     <string name="complication_missed_calls_description">Show the number of missed calls</string>
     <string name="complication_missed_calls_settings_toast">Grant the Call Log permission in Permissions</string>
     <!-- Next Alarm Complication -->
-    <string name="complication_alarm_label">Next Alarm</string>
-    <string name="complication_alarm_description">Shows the next alarm set, within the next 12 hours</string>
-    <string name="complication_blank_title">Blank Complication</string>
+    <string name="complication_alarm_label">Następny alarm</string>
+    <string name="complication_alarm_description">Pokazuje następny ustawiony alarm w ciągu następnych 12 godzin</string>
+    <string name="complication_blank_title">Pusta Komplikacja</string>
     <string name="complication_blank_content">Useful for minimal setups or spacers</string>
     <!-- Recent Apps Requirement -->
     <string name="requirement_recent_apps_label">Recent App</string>
@@ -1044,14 +1044,14 @@
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
-    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="battery_widget_recommendation_category_label">Bateria</string>
     <string name="conversations_widget_recommendation_category_label">Conversations</string>
     <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
     <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
-    <string name="weather_widget_recommendation_category_label">Weather</string>
+    <string name="weather_widget_recommendation_category_label">Pogoda</string>
     <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
     <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
     <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
-    <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="others_widget_recommendation_category_label">Sugerowane dla Ciebie</string>
 </resources>
