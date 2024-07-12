@@ -714,7 +714,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_add_widget_widgets_other">%1d Widgets</string>
     <string name="expanded_add_widget_category_battery">Akku</string>
     <string name="expanded_add_widget_category_conversations">Unterhaltungen</string>
-    <string name="expanded_add_widget_category_note_taking">Note-taking</string>
+    <string name="expanded_add_widget_category_note_taking">Notizen machen</string>
     <string name="expanded_add_widget_category_weather">Wetter</string>
     <string name="expanded_custom_widget_options_span_x_title">Breite</string>
     <string name="expanded_custom_widget_options_span_x_content">Die Breite für dieses Widget, in Spalten</string>
@@ -970,7 +970,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_configuration_app_content">Wähle App von der Benachrichtigungen angezeigt werden sollen</string>
     <string name="target_notification_configuration_settings">Einstellungen</string>
     <string name="target_notification_channels">Benachrichtigungskanäle</string>
-    <string name="target_notification_channels_no_group">Other</string>
+    <string name="target_notification_channels_no_group">Anderes</string>
     <string name="target_notification_channels_empty">Diese App verwendet keine Benachrichtigungskanäle, also werden alle Benachrichtigungen angezeigt</string>
     <string name="target_notification_configuration_options">Einstellungen</string>
     <string name="target_notification_configuration_trim_new_lines_title">Entferne neue Zeilen</string>
@@ -1048,8 +1048,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="productivity_widget_recommendation_category_label">Grundlegendes</string>
     <string name="battery_widget_recommendation_category_label">Akku</string>
     <string name="conversations_widget_recommendation_category_label">Unterhaltungen</string>
-    <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
-    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
+    <string name="note_taking_widget_recommendation_category_label">Notizen machen</string>
+    <string name="snapshot_widget_recommendation_category_label">Schnappschuss</string>
     <string name="social_widget_recommendation_category_label">Sozial</string>
     <string name="weather_widget_recommendation_category_label">Wetter</string>
     <string name="entertainment_widget_recommendation_category_label">Unterhaltung</string>
