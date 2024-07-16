@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">该对象需要 Google 应用</string>
     <string name="target_google_weather_forecast_title">Google 天气预报</string>
     <string name="target_google_weather_forecast_content">显示来自 Google 天气的当前天气状况及接下来四小时的预报信息</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">已禁用通知读取器</string>
     <string name="target_notification_warning_description">点击开启</string>
     <string name="complication_default_label">资讯一览附件</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">隐藏与你的设备不兼容的对象，而不是仅显示它们的标题和子标题</string>
     <string name="native_mode_settings_use_split_smartspace">使用拆分式 Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 为锁屏引入了可在常规对象 &amp; 附件上方总是显示的独立 Smartspace。Smartspacer 可以用你的第一个对象替代天气，但并不一定对所有时钟样式都适用，你的第一个对象也有可能会消失。遇到这种情况时请禁用该选项。</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">需要 Smartspacer 权限</string>
     <string name="target_permission_request_content">点击授予</string>
