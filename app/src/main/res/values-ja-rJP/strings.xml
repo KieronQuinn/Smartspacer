@@ -93,7 +93,7 @@
     <string name="target_default_configuration_description">Hide default Targets, and access more settings in the Google app</string>
     <string name="target_date_label">日付</string>
     <string name="target_date_description">Shows the current date, with space for two Complications</string>
-    <string name="target_greeting_label">Greeting</string>
+    <string name="target_greeting_label">挨拶</string>
     <string name="target_greeting_description">Shows a short greeting, with space for two Complications</string>
     <string name="target_greeting_morning">おはようございます</string>
     <string name="target_greeting_morning_name">おはようございます、 %1s</string>
@@ -117,7 +117,7 @@
     <string name="target_at_a_glance_label">At a Glance (ウィジット)</string>
     <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
     <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
-    <string name="target_google_weather_forecast_title">Google Weather Forecast</string>
+    <string name="target_google_weather_forecast_title">Google天気予報</string>
     <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
     <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
@@ -129,10 +129,10 @@
     <string name="complication_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
     <string name="complication_default_configuration_title">At a Glanceの設定</string>
     <string name="complication_default_configuration_description">Configure more settings in the Google App</string>
-    <string name="complication_google_weather_label">Google Weather</string>
+    <string name="complication_google_weather_label">Google天気</string>
     <string name="complication_google_weather_description">Shows weather pulled from the Google App</string>
     <string name="complication_google_weather_description_unsupported">This Target requires the Google App</string>
-    <string name="complication_date_label">Date</string>
+    <string name="complication_date_label">日付</string>
     <string name="complication_date_description">Shows the current date</string>
     <string name="plugin_target_default_label">Plugin Target</string>
     <string name="plugin_action_default_label">Plugin Complication</string>
@@ -170,7 +170,7 @@
     <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
     <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
     <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
-    <string name="fab_targets_add">Add Target</string>
+    <string name="fab_targets_add">ターゲットを追加</string>
     <string name="targets_empty_label">ターゲットが追加されていません</string>
     <string name="target_not_available">このターゲットはもう利用できません。タップして削除してください</string>
     <string name="target_not_available_alt">このターゲットの読み込みに失敗しました。問題が解決しない場合は、ターゲットの開発者に連絡してください</string>
@@ -195,7 +195,7 @@
     <string name="target_edit_show_on_home_content">Show this target on your home screen</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
     <string name="target_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
-    <string name="target_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
+    <string name="target_edit_show_on_lock_screen_title_widget">ロック画面に表示</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
@@ -235,7 +235,7 @@
     <string name="target_edit_external_error">Failed to launch settings for this Target</string>
     <string name="complication_edit_title">Edit Complication</string>
     <string name="complication_edit_target_header">Complication</string>
-    <string name="complication_edit_show_on_home_title">Show on Home Screen</string>
+    <string name="complication_edit_show_on_home_title">ホーム画面に表示</string>
     <string name="complication_edit_show_on_home_content">Show this complication on your home screen</string>
     <string name="complication_edit_show_on_home_content_widget">Show this complication on widgets added to your home screen</string>
     <string name="complication_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
@@ -250,8 +250,8 @@
     <string name="complication_edit_show_on_music_content">Show this complication on your always on display while music is playing</string>
     <string name="complication_edit_show_on_music_content_oem">Show this complication on your always on display (if available) while music is playing</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requires Native Smartspace with Lock Screen support</string>
-    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
-    <string name="complication_edit_expanded_header">Expanded Smartspace</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">このデバイスでは使用できません</string>
+    <string name="complication_edit_expanded_header">拡張Smartspace</string>
     <string name="complication_edit_expanded_show_when_locked_title">Show while Locked</string>
     <string name="complication_edit_expanded_show_when_locked_content">Show this Complication in Expanded Smartspace when locked</string>
     <string name="complication_edit_settings_header">設定</string>
@@ -321,8 +321,8 @@
     <string name="requirement_geofence_configuration_loitering_delay_title">Loitering Delay</string>
     <string name="requirement_geofence_configuration_loitering_delay_content">Set how long you must be within the location radius before this requirement is met</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_none">No delay</string>
-    <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minute</string>
-    <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutes</string>
+    <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d分</string>
+    <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d分</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsiveness</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d seconds</string>
@@ -353,12 +353,12 @@
     <string name="requirement_wifi_configuration_picker_available">Available Networks</string>
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
     <string name="requirement_wifi_configuration_picker_saved">Saved Networks</string>
-    <string name="requirement_wifi_configuration_picker_unknown_network">Unknown Network</string>
-    <string name="requirement_bluetooth_title">Bluetooth Device Connected</string>
+    <string name="requirement_wifi_configuration_picker_unknown_network">未知のネットワーク</string>
+    <string name="requirement_bluetooth_title">Bluetoothデバイスが接続されました</string>
     <string name="requirement_bluetooth_description">Only show when a specified Bluetooth device is connected</string>
     <string name="requirement_bluetooth_description_set">Only show when connected to a Bluetooth device named %1s</string>
     <string name="requirement_bluetooth_incompatible">This Requirement requires Bluetooth</string>
-    <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
+    <string name="requirement_bluetooth_configuration_pick_title">デバイスを選択</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
@@ -373,7 +373,7 @@
     <string name="requirement_app_prediction_generic_label">Unknown App</string>
     <string name="requirement_app_prediction_incompatible">This Requirement is not compatible with your device as it does not have an System App Prediction Service</string>
     <string name="requirement_app_prediction_enhanced">This Requirement requires Enhanced Mode, enable in the settings</string>
-    <string name="requirement_app_prediction_configuration_title">Select App</string>
+    <string name="requirement_app_prediction_configuration_title">アプリを選択</string>
     <string name="requirement_music_playing_label">Music Playing</string>
     <string name="requirement_music_playing_content">Only show when music is playing</string>
     <string name="permission_dialog_widget_title_prefix">Allow</string>
@@ -382,9 +382,9 @@
     <string name="permission_dialog_widget_title_unknown">Unknown</string>
     <string name="permission_dialog_widget_allow_once">Allow once</string>
     <string name="permission_dialog_widget_allow_always">Allow always</string>
-    <string name="permission_dialog_widget_deny">Deny</string>
-    <string name="permission_dialog_notification_title_prefix">Allow</string>
-    <string name="permission_dialog_notification_title_suffix">to access app notifications using Smartspacer?</string>
+    <string name="permission_dialog_widget_deny">許可しない</string>
+    <string name="permission_dialog_notification_title_prefix">許可する</string>
+    <string name="permission_dialog_notification_title_suffix">Smartspacer を使用してアプリの通知にアクセスしますか？</string>
     <string name="permission_dialog_notification_title_warning">You may be asked for system permission after this step</string>
     <string name="permission_dialog_notification_title_unknown">Unknown</string>
     <string name="permission_dialog_notification_allow_once">Allow once</string>
@@ -400,7 +400,7 @@
     <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
     <string name="settings_targets_complications">Targets &amp; Complications</string>
     <string name="settings_plugins">拡張機能</string>
-    <string name="settings_options">Options</string>
+    <string name="settings_options">オプション</string>
     <string name="settings_enable_update_check_title">Automatically Check for Updates</string>
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
@@ -408,7 +408,7 @@
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
-    <string name="settings_hide_sensitive_contents_disabled">Do not hide</string>
+    <string name="settings_hide_sensitive_contents_disabled">非表示にしない</string>
     <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Hide contents</string>
     <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
@@ -561,7 +561,7 @@
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
     <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
-    <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
+    <string name="notification_native_mode_enable_dismiss">二度と表示しない</string>
     <string name="notification_native_mode_enable_now">Enable Now</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
