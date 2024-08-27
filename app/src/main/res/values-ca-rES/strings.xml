@@ -405,6 +405,9 @@
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
@@ -882,6 +885,7 @@
     <string name="twitter">Follow me on Twitter</string>
     <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
     <string name="about_contributors">Contributors</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Icons</string>
     <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>

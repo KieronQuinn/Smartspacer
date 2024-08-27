@@ -405,6 +405,9 @@
     <string name="settings_enable_update_check_content">Verificar atualizações do Smartspacer automaticamente e exibir uma notificação se houver alguma disponível</string>
     <string name="settings_enable_analytics_title">Ativar análises &amp; relatórios de falhas</string>
     <string name="settings_enable_analytics_content">Permitir o envio de relatórios de falhas anônimos e análises básicas ao Firebase, para ajudar a corrigir bugs</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Ocultar destaques sensíveis</string>
     <string name="settings_hide_sensitive_contents_title_short">Ocultar conteúdo sensível</string>
     <string name="settings_hide_sensitive_contents_content">Ocultar destaques na tela de bloqueio quando marcados como sensíveis: %1s</string>
@@ -882,6 +885,7 @@
     <string name="twitter">Siga-me no Twitter</string>
     <string name="about_version">Versão %1s\nCriada por Kieron Quinn</string>
     <string name="about_contributors">Colaboradores</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Ícones</string>
     <string name="about_contributors_icons_content"><![CDATA[Ícones por <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Ícones Material Design</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Licença Livre</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Sucesso por Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>

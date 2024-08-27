@@ -406,6 +406,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="settings_enable_update_check_content">Automatisch auf Smartspacer-Updates prüfen und eine Benachrichtigung anzeigen, wenn eines verfügbar ist</string>
     <string name="settings_enable_analytics_title">Analysen &amp; Absturzberichte aktivieren</string>
     <string name="settings_enable_analytics_content">Erlaube das Senden anonymer Absturzberichte und grundlegender Analysen an Firebase, um Fehler zu beheben</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Sensible Ziele ausblenden</string>
     <string name="settings_hide_sensitive_contents_title_short">Sensibles ausblenden</string>
     <string name="settings_hide_sensitive_contents_content">Blende Ziele auf dem Sperrbildschirm aus, wenn sie als sensibel markiert sind: %1s</string>
@@ -884,6 +887,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="twitter">Folge mir auf Twitter</string>
     <string name="about_version">Version %1s\nErstellt von Kieron Quinn</string>
     <string name="about_contributors">Mitwirkende</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Icons</string>
     <string name="about_contributors_icons_content"><![CDATA[Icons von <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Google Pay - Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>

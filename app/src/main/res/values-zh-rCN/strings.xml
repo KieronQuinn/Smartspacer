@@ -405,6 +405,9 @@
     <string name="settings_enable_update_check_content">自动检查 Smartspacer 更新并在更新可用时显示通知</string>
     <string name="settings_enable_analytics_title">开启数据分析 &amp; 崩溃报告</string>
     <string name="settings_enable_analytics_content">允许应用向 Firebase 发送匿名崩溃报告和基本的数据分析来协助修复问题</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">隐藏敏感对象</string>
     <string name="settings_hide_sensitive_contents_title_short">隐藏敏感对象</string>
     <string name="settings_hide_sensitive_contents_content">在锁屏中隐藏被标记为敏感的对象：%1s</string>
@@ -882,6 +885,7 @@
     <string name="twitter">在 X 上关注我</string>
     <string name="about_version">版本 %1s\n由 Kieron Quinn 创建</string>
     <string name="about_contributors">贡献者</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">图标</string>
     <string name="about_contributors_icons_content"><![CDATA[图标来源 <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>

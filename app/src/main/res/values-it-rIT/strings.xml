@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Impostazioni</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di utilizzare i servizi di accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio di accessibilità, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle applicazioni che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App consenti le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle applicazioni installate utilizzando Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'applicazione basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'app <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la modalità Enhanced attivata, Smartspacer aggirerà questo requisito (non può essere fatto senza Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -405,6 +405,9 @@
     <string name="settings_enable_update_check_content">Controlla automaticamente gli aggiornamenti di Smartspacer e mostra una notifica se sono disponibili</string>
     <string name="settings_enable_analytics_title">Abilita le statistiche e la segnalazione dei crash</string>
     <string name="settings_enable_analytics_content">Consenti l\'invio di crash report anonimi e statistiche basilari a Firebase, per aiutare a correggere i bug</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Nascondi target sensibili</string>
     <string name="settings_hide_sensitive_contents_title_short">Nascondi sensibili</string>
     <string name="settings_hide_sensitive_contents_content">Nascondi i target nella schermata di blocco lì dove contrassegnati come sensibili: %1s</string>
@@ -449,7 +452,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analytics &amp; Crash Report</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare il bug fixing, Smartspacer può inviare crash report a Firebase Crashlitics, insieme a delle analytics di base (lanci dell\'app).<br>Questi dati sono tutti anonimi, e sono assolutamente opzionali, maggiori dettagli e privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare il bug fixing, Smartspacer può inviare crash report a Firebase Crashlitics, insieme a delle analytics di base (lanci dell'app).<br>Questi dati sono tutti anonimi, e sono assolutamente opzionali, maggiori dettagli e privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
     <string name="setup_analytics_allow">Consenti</string>
     <string name="setup_analytics_deny">Nega</string>
     <!-- Setup > Notifications -->
@@ -492,7 +495,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Aggiungi widget</string>
     <string name="setup_add_widget_content">Aggiungi Smartspacer alla schermata home</string>
-    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla schermata di blocco, è necessario utilizzare un\'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla schermata di blocco, è necessario utilizzare un'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Requisiti</string>
     <string name="setup_requirements_info_p1">I <b>Requisiti</b> consentono di personalizzare quando un target o una complicazione devono essere visualizzati in Smartspace. Con essi è possibile creare scenari in cui le informazioni utili vengono mostrate nello Smartspace.</string>
@@ -882,6 +885,7 @@
     <string name="twitter">Follow me on Twitter</string>
     <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
     <string name="about_contributors">Contributors</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Icons</string>
     <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
