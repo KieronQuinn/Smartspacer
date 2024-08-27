@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">Este destaque requer o aplicativo do Google</string>
     <string name="target_google_weather_forecast_title">Previsão do tempo do Google</string>
     <string name="target_google_weather_forecast_content">Exibe o clima atual e a previsão para as próximas quatro horas do Clima do Google</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Receptor de notificação desativado</string>
     <string name="target_notification_warning_description">Toque para ativar</string>
     <string name="complication_default_label">Complementos do Resumo</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar destaques incompatíveis com o seu dispositivo, em vez de mostrar apenas o título e o subtítulo</string>
     <string name="native_mode_settings_use_split_smartspace">Use o Smartspace dividido</string>
     <string name="native_mode_settings_use_split_smartspace_content">O Android 14 dividiu o Smartspace na tela de bloqueio, sempre mostrando a data e o clima acima dos destaques e complementos comuns. O Smartspacer pode substituir o clima pela sua primeira complicação, mas isso pode não funcionar com todos os estilos de relógio e sua primeira complicação pode desaparecer. Se isso acontecer, desative essa opção.</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Permissão do Smartspacer é necessária</string>
     <string name="target_permission_request_content">Toque para conceder</string>

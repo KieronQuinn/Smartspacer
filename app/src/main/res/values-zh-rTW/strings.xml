@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="xposed_desc"><b>可選</b>：在您的啟動器或啟動器的 Google Feed 外掛上啟用此模組，以便將 Google Discover 替換為擴展的 Smartspace。您還必須在 Smartspacer 的擴展 Smartspace 設定中啟用此選項。</string>
     <string name="dummy_home_content">這個畫面的存在是為了解決 Smartspacer 外掛使用的功能組件執行不佳的問題。\n\nSmartspacer 無法充當啟動器，請選擇其他啟動器。</string>
     <string name="dummy_home_open_settings">開啟設定</string>
     <string name="notification_service">Smartspacer 通知服務</string>
@@ -26,15 +26,15 @@
     <string name="target_sensitive_title">內容已隱藏</string>
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">自動（基於桌布）</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
+    <string name="tint_colour_automatic_alt">自動（基於主題）</string>
     <string name="tint_colour_automatic_content">小工具中的文字和圖標將自動調整色調，以便在桌布上清晰可見</string>
-    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
+    <string name="tint_colour_automatic_content_alt">通知中的文字和圖示將自動根據您的主題進行調整，以確保其可見性。</string>
     <string name="tint_colour_white">白色</string>
     <string name="tint_colour_white_content">小工具中的文字和圖標將始終顯示為白色</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
+    <string name="tint_colour_white_content_alt">通知中的文字和圖示將始終顯示為白色。</string>
     <string name="tint_colour_black">黑色</string>
     <string name="tint_colour_black_content">小工具中的文字和圖標將始終顯示為黑色</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
+    <string name="tint_colour_black_content_alt">通知中的文字和圖示將始終顯示為黑色。</string>
     <string name="widget_description_smartspacer">顯示 Smartspacer 目標與複雜功能</string>
     <string name="widget_loading_smartspacer">載入中…</string>
     <string name="widget_loading_smartspacer_subtitle">如果此訊息持續出現，請檢查 Smartspacer 輔助功能服務是否已啟用</string>
@@ -49,9 +49,9 @@
     <string name="widget_configuration_behaviour_title">Behaviour</string>
     <string name="widget_configuration_is_lock_screen_title">Lock Screen Widget</string>
     <string name="widget_configuration_is_lock_screen_content">Enable <b>only</b> if this widget is being added to the lock screen.\nThis does <b>not</b> add the widget to the lock screen on its own, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
-    <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">此小工具不適用。請注意，Smartspacer 無法讓小工具顯示在鎖定螢幕上，如需此功能，請從 Google Play 下載例如「Lockscreen Widgets」的應用程式。</string>
     <string name="widget_configuration_page_single_title">單頁面</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_page_single_content">將小工具鎖定為僅顯示一頁的目標和複雜功能（如果空間允許的話）。這意味著您只會在小工具中看到最上方的目標/複雜功能。</string>
     <string name="widget_configuration_customisation_title">Customisation</string>
     <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
     <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">此目標需要 Google 應用程式</string>
     <string name="target_google_weather_forecast_title">Google 天氣預報</string>
     <string name="target_google_weather_forecast_content">顯示來自 Google 天氣的當前天氣狀況及接下來四小時的預報</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">通知監聽器已停用</string>
     <string name="target_notification_warning_description">點擊以啟用</string>
     <string name="complication_default_label">資訊一覽的複雜功能</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">隱藏與您裝置不相容的目標，而不是僅顯示它們的標題和副標題</string>
     <string name="native_mode_settings_use_split_smartspace">使用分割 Smartspace</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 在鎖定螢幕上引入了分割的 Smartspace，總是在常規的目標 &amp; 複雜功能上方顯示日期和天氣。Smartspacer 能夠用你的第一個複雜功能替換天氣，但這可能不適用於所有的時鐘樣式，你的第一個複雜功能可能會消失。如果發生這種情況，請禁用此功能。</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">需要 Smartspacer 權限</string>
     <string name="target_permission_request_content">點擊以授權</string>
@@ -668,7 +671,7 @@
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
     <string name="expanded_settings_hide_add_button_always">Always</string>
     <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
-    <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
+    <string name="expanded_settings_enable_columns_content">在較寬的裝置上，如果有足夠的空間，Smartspacer 目標、額外內容和自訂小工具將同時以橫向和縱向顯示。</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
     <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
@@ -969,7 +972,7 @@
     <string name="target_notification_channels_empty">此應用程式未使用通知頻道，因此將顯示來自它的所有通知</string>
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
-    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_configuration_trim_new_lines_content">移除通知內容中的換行符號，盡可能將更多內容納入目標中。這可能會移除通知的一些格式。</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空目標</string>
     <string name="target_blank_content">超極簡模式，可用來完全不顯示任何內容，或只顯示複雜功能</string>

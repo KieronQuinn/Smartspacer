@@ -119,6 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">Для этой цели нужно приложение Google</string>
     <string name="target_google_weather_forecast_title">Прогноз погоды Google</string>
     <string name="target_google_weather_forecast_content">Отображает текущую погоду и прогноз на ближайшие четыре часа на основе данных Google</string>
+    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Сервис доступа к уведомлениям отключён</string>
     <string name="target_notification_warning_description">Нажмите, чтобы включить</string>
     <string name="complication_default_label">Дополнения \"Самое главное\"</string>
@@ -607,6 +608,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Скрыть Цели, несовместимые с вашим устройством, вместо показа их заголовка и подзаголовка</string>
     <string name="native_mode_settings_use_split_smartspace">Использовать Разделённое Пространство</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 добавил Разделённое Пространство на экран блокировки, отображающее дату и погоду над обычными Целями и Дополнениями. Smartspacer может заменить Погоду вашим первым Дополнением, но это может работать не со всеми стилями часов, и ваше первое Дополнение может исчезать. Если это происходит, выключите это.</string>
+    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
+    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Требуется разрешение Smartspacer</string>
     <string name="target_permission_request_content">Нажмите, чтобы предоставить</string>
