@@ -54,7 +54,8 @@ class FlashlightTarget: SmartspacerTargetProvider() {
             resources.getString(R.string.target_flashlight_description),
             AndroidIcon.createWithResource(provideContext(), R.drawable.ic_target_flashlight),
             configActivity = createIntent(provideContext(), NavGraphMapping.TARGET_FLASHLIGHT),
-            compatibilityState = getCompatibilityState()
+            compatibilityState = getCompatibilityState(),
+            allowAddingMoreThanOnce = true
         )
     }
 

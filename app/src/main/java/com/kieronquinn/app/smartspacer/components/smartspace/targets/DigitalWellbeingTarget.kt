@@ -89,7 +89,8 @@ class DigitalWellbeingTarget: SmartspacerTargetProvider() {
             ),
             compatibilityState = getCompatibility(),
             widgetProvider = "${BuildConfig.APPLICATION_ID}.widget.digitalwellbeing",
-            refreshPeriodMinutes = 1
+            refreshPeriodMinutes = 1,
+            allowAddingMoreThanOnce = true
         )
     }
 

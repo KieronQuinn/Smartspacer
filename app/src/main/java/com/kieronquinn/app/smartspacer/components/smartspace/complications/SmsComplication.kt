@@ -41,7 +41,8 @@ class SmsComplication: SmartspacerComplicationProvider() {
             label = resources.getString(R.string.complication_sms_label),
             description = resources.getString(R.string.complication_sms_description),
             icon = AndroidIcon.createWithResource(provideContext(), R.drawable.ic_complication_sms),
-            setupActivity = Intent(provideContext(), SmsPermissionActivity::class.java)
+            setupActivity = Intent(provideContext(), SmsPermissionActivity::class.java),
+            allowAddingMoreThanOnce = true
         )
     }
 

@@ -88,7 +88,8 @@ class MusicTarget: SmartspacerTargetProvider() {
             setupActivity = Intent(provideContext(), NotificationPermissionActivity::class.java),
             configActivity = ConfigurationActivity.createIntent(
                 provideContext(), NavGraphMapping.TARGET_MUSIC
-            )
+            ),
+            allowAddingMoreThanOnce = true
         )
     }
 

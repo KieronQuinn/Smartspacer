@@ -682,7 +682,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Åpner «Utvidet Smartspace» hvis målet som er trykket på har ytterligere handlinger som er tilgjengelige i «Utvidet Smartspace». Hvis du trykker på målet på nytt i «Utvidet Smartspace», så vil målets trykkhandling kjøres.</string>
     <string name="expanded_settings_open_mode_always_title">Alltid</string>
     <string name="expanded_settings_open_mode_always_content">Åpner alltid «Utvidet Smartspace» hvis et mål er trykket på. Hvis du trykker på målet på nytt i «Utvidet Smartspace», så vil målets trykkhandling kjøres.</string>
-    <string name="expanded_settings_date_info">Merk deg at på grunn av systembegrensinger kan «Utvidet Smartspace» ikke åpnes fra «Dato»-målet</string>
     <string name="expanded_settings_tint_colour">Fargetone</string>
     <string name="expanded_settings_tint_colour_content">Fargen som skal brukes for tekst og ikoner i «Utvidet Smartspace»: %1s</string>
     <!-- OEM Smartspace settings -->

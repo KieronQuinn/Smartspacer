@@ -31,6 +31,8 @@ class ExportedSmartspaceTrampolineProxyActivity: AppCompatActivity() {
             "com.google.android.googlequicksearchbox",
             "com.google.android.apps.search.weather.WeatherActivity"
         )
+
+        private const val ACTION_WEATHER = "com.google.android.apps.weather.action.VIEW_LOCATION_EXTERNAL"
     }
 
     private val shizukuServiceRepository by inject<ShizukuServiceRepository>()
@@ -65,6 +67,7 @@ class ExportedSmartspaceTrampolineProxyActivity: AppCompatActivity() {
                 }
                 component = EXPORTED_WEATHER_COMPONENT
             }
+            intent?.action == ACTION_WEATHER -> intent
             intent?.action == SMARTSPACER_INTENT_EXTRA_ACTION_GM -> {
                 startGmailPlid(intent, rootIntent)
                 return false

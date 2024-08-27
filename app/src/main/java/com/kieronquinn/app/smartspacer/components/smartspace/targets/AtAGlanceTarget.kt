@@ -75,7 +75,8 @@ class AtAGlanceTarget: SmartspacerTargetProvider() {
             AndroidIcon.createWithResource(provideContext(), R.drawable.ic_target_at_a_glance),
             compatibilityState = getCompatibility(),
             widgetProvider = AtAGlanceWidget.AUTHORITY,
-            configActivity = TrampolineActivity.createGlanceTrampolineIntent(provideContext())
+            configActivity = TrampolineActivity.createGlanceTrampolineIntent(provideContext()),
+            allowAddingMoreThanOnce = true
         )
     }
 

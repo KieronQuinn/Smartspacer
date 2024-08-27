@@ -92,9 +92,10 @@ sealed class GenericSettingsItem(val type: GenericSettingsItemType): BaseSetting
     data class Card(
         val icon: Drawable?,
         val content: CharSequence,
-        val onClick: (() -> Unit)? = null
+        val onClick: (() -> Unit)? = null,
+        val contentHash: Long? = null
     ): GenericSettingsItem(GenericSettingsItemType.CARD) {
-        override fun getItemId() = content.hashCode().toLong()
+        override fun getItemId() = contentHash ?: content.hashCode().toLong()
     }
 
     data class Footer(
@@ -109,7 +110,7 @@ sealed class GenericSettingsItem(val type: GenericSettingsItemType): BaseSetting
     data class RadioCard(
         val isChecked: Boolean,
         val title: CharSequence,
-        val content: CharSequence,
+        val content: CharSequence?,
         val onClick: () -> Unit
     ): GenericSettingsItem(GenericSettingsItemType.RADIO_CARD) {
         override fun getItemId() = title.hashCode().toLong()

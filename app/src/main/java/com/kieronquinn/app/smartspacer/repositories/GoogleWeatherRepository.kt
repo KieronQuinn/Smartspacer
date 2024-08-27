@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.repositories
 
+import android.app.PendingIntent
 import android.graphics.Bitmap
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.ForecastState
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.TodayState
@@ -21,7 +22,8 @@ interface GoogleWeatherRepository {
         val location: String,
         val condition: String,
         val now: ForecastItem,
-        val forecast: List<ForecastItem>
+        val forecast: List<ForecastItem>,
+        val clickIntent: PendingIntent?
     ) {
         data class ForecastItem(
             val time: String?,

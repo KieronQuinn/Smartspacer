@@ -1,6 +1,5 @@
 package com.kieronquinn.app.smartspacer.components.smartspace.complications
 
-import android.content.ComponentName
 import android.content.Intent
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
@@ -14,6 +13,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerComplicationProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.ComplicationTemplate
+import com.kieronquinn.app.smartspacer.utils.extensions.getGoogleWeatherIntent
 import org.koin.android.ext.android.inject
 import android.graphics.drawable.Icon as AndroidIcon
 
@@ -33,11 +33,7 @@ class GoogleWeatherComplication: SmartspacerComplicationProvider() {
                 icon = Icon(AndroidIcon.createWithBitmap(state.icon), shouldTint = false),
                 content = Text(state.temperature),
                 onClick = TapAction(
-                    intent = Intent().apply {
-                        component = ComponentName(
-                            "com.google.android.googlequicksearchbox",
-                            "com.google.android.apps.search.weather.WeatherExportedActivity"
-                        )
+                    intent = provideContext().getGoogleWeatherIntent().apply {
                         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)

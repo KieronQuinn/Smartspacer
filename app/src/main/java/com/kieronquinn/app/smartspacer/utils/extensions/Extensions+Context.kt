@@ -21,6 +21,7 @@ import android.content.pm.LauncherApps
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.NameNotFoundException
 import android.content.res.Configuration
+import android.content.res.XmlResourceParser
 import android.database.ContentObserver
 import android.graphics.Rect
 import android.hardware.Sensor
@@ -41,6 +42,7 @@ import android.provider.Settings
 import android.service.notification.NotificationListenerService
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import androidx.core.app.LocaleManagerCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -57,6 +59,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import java.util.Locale
 import java.util.concurrent.Executor
 import kotlin.math.max
 import kotlin.math.min
@@ -515,4 +518,30 @@ fun Context.hasFlashlight(): Boolean {
 fun Context.hasLightSensor(): Boolean {
     val sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
     return sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null
+}
+
+@SuppressLint("DiscouragedApi")
+fun Context.getSupportedLocales(): List<Locale> {
+    val id = resources.getIdentifier(
+        "_generated_res_locale_config",
+        "xml",
+        packageName
+    )
+    val localeXml = resources.getXml(id)
+    val locales = ArrayList<String>()
+    var event = localeXml.next()
+    while(event != XmlResourceParser.END_DOCUMENT) {
+        if(event == XmlResourceParser.START_TAG && localeXml.name == "locale") {
+            locales.add(localeXml.getAttributeValue(0))
+        }
+        event = localeXml.next()
+    }
+    return locales.map {
+        Locale.forLanguageTag(it)
+    }
+}
+
+fun Context.getSelectedLanguage(supportedLocales: List<String>): Locale? {
+    return LocaleManagerCompat.getApplicationLocales(this)
+        .getFirstMatch(supportedLocales.toTypedArray())
 }

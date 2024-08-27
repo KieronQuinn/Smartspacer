@@ -682,7 +682,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">如果对象能在 Smartspace 扩展面板中提供额外选项则打开面板。在面板中再次点击对象可以继续执行原始操作。</string>
     <string name="expanded_settings_open_mode_always_title">总是</string>
     <string name="expanded_settings_open_mode_always_content">总是打开 Smartspace 扩展面板。在 Smartspacer 扩展面板中再次点击对象来执行对象的原始操作。</string>
-    <string name="expanded_settings_date_info"><b>注意：</b>因为系统限制，该选项不适用于点击日期对象中的日期（或显示在附件上方的日期对象填充）</string>
     <string name="expanded_settings_tint_colour">着色</string>
     <string name="expanded_settings_tint_colour_content">Smartspace 扩展面板文本和图标所使用的颜色：%1s</string>
     <!-- OEM Smartspace settings -->

@@ -39,6 +39,8 @@ val EXPORTED_WEATHER_COMPONENT = ComponentName(
     "com.google.android.apps.search.weather.WeatherExportedActivity"
 )
 
+private const val PACKAGE_GOOGLE_WEATHER = "com.google.android.apps.weather"
+
 private const val EXTRA_FEEDBACK_FEATURE_TYPE = "com.google.android.apps.search.assistant.verticals.ambient.shared.constants.SMARTSPACE_EXTRA_CONTEXTUAL_FEEDBACK_FEATURE_TYPE"
 
 fun Intent?.isValid(context: Context): Boolean {
@@ -123,4 +125,10 @@ fun getIgnoreBatteryOptimisationsIntent(): Intent {
 
 fun Intent.setClassLoaderToPackage(context: Context, packageName: String) {
     setExtrasClassLoader(context.getClassLoaderForPackage(packageName) ?: return)
+}
+
+fun Context.getGoogleWeatherIntent(): Intent {
+    return packageManager.getLaunchIntentForPackage(PACKAGE_GOOGLE_WEATHER) ?: Intent().apply {
+        component = EXPORTED_WEATHER_COMPONENT
+    }
 }

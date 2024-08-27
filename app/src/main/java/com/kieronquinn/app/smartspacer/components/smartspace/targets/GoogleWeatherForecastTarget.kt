@@ -1,7 +1,6 @@
 package com.kieronquinn.app.smartspacer.components.smartspace.targets
 
 import android.content.ComponentName
-import android.content.Intent
 import android.os.Build
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
@@ -19,7 +18,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.ComplicationTemplate
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate
-import com.kieronquinn.app.smartspacer.utils.extensions.EXPORTED_WEATHER_COMPONENT
+import com.kieronquinn.app.smartspacer.utils.extensions.getGoogleWeatherIntent
 import org.koin.android.ext.android.inject
 import android.graphics.drawable.Icon as AndroidIcon
 
@@ -34,7 +33,7 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
     }
 
     private fun ForecastState.toTarget(smartpacerId: String): SmartspaceTarget {
-        val tapAction = getTapAction()
+        val tapAction = clickIntent?.let { TapAction(pendingIntent = it) } ?: getTapAction()
         return TargetTemplate.Carousel(
             id = "google_weather_forecast_$smartpacerId",
             componentName = ComponentName(provideContext(), this::class.java),
@@ -63,9 +62,7 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
 
     private fun getTapAction(): TapAction {
         return TapAction(
-            intent = Intent().apply {
-                component = EXPORTED_WEATHER_COMPONENT
-            }
+            intent = provideContext().getGoogleWeatherIntent()
         )
     }
 
@@ -77,7 +74,8 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
                 provideContext(), R.drawable.ic_complication_google_weather
             ),
             widgetProvider = "${BuildConfig.APPLICATION_ID}.widget.googleweatherforecast",
-            compatibilityState = getCompatibilityState()
+            compatibilityState = getCompatibilityState(),
+            allowAddingMoreThanOnce = true
         )
     }
 

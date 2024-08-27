@@ -2,10 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.Material3.CardView.Filled.Smartspacer"
-    app:cardBackgroundColor="?android:colorControlHighlight"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_16">
+    android:layout_margin="@dimen/margin_16"
+    app:cardBackgroundColor="?android:colorControlHighlight">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,22 +13,22 @@
         android:padding="@dimen/margin_16">
 
         <ImageView
+            android:id="@+id/item_updates_about_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@mipmap/ic_launcher"
             android:layout_marginTop="@dimen/margin_8"
-            android:id="@+id/item_updates_about_icon"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/item_updates_about_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
-            android:layout_marginTop="@dimen/margin_16"
             android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
             app:layout_constraintTop_toBottomOf="@id/item_updates_about_icon" />
 
@@ -42,93 +42,101 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
             app:layout_constraintTop_toBottomOf="@id/item_updates_about_title" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_contributors"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8"
-            android:minHeight="0dp"
-            android:text="@string/about_contributors"
-            app:chipIcon="@drawable/ic_community"
-            app:chipSpacing="0dp"
-            app:layout_constraintEnd_toStartOf="@id/item_updates_about_donate"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_content" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_donate"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:layout_marginTop="@dimen/margin_8"
-            android:minHeight="0dp"
-            android:text="@string/donate"
-            app:chipIcon="@drawable/ic_donate"
-            app:chipSpacing="0dp"
+            app:flexWrap="wrap"
+            app:justifyContent="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_updates_about_contributors"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_content" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_github"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:minHeight="0dp"
-            android:text="@string/github"
-            app:chipIcon="@drawable/ic_github"
-            app:chipSpacing="0dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toStartOf="@id/item_updates_about_twitter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_contributors" />
+            app:layout_constraintTop_toBottomOf="@id/item_updates_about_content">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_twitter"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:minHeight="0dp"
-            android:text="@string/twitter"
-            app:chipIcon="@drawable/ic_twitter"
-            app:chipSpacing="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_updates_about_github"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_contributors" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_contributors"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/about_contributors"
+                app:chipIcon="@drawable/ic_community"
+                app:chipSpacing="0dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_xda"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:minHeight="0dp"
-            android:text="@string/xda_thread"
-            app:chipIcon="@drawable/ic_xda"
-            app:chipSpacing="0dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toStartOf="@id/item_updates_about_libraries"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_github" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_donate"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/donate"
+                app:chipIcon="@drawable/ic_donate"
+                app:chipSpacing="0dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/item_updates_about_libraries"
-            style="@style/Widget.Material3.Chip.Icon.Smartspacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:minHeight="0dp"
-            android:text="@string/libraries"
-            app:chipIcon="@drawable/ic_libraries"
-            app:chipSpacing="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/item_updates_about_xda"
-            app:layout_constraintTop_toBottomOf="@id/item_updates_about_github" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_github"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/github"
+                app:chipIcon="@drawable/ic_github"
+                app:chipSpacing="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_crowdin"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/about_crowdin"
+                app:chipIcon="@drawable/ic_language"
+                app:chipSpacing="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_twitter"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/twitter"
+                app:chipIcon="@drawable/ic_twitter"
+                app:chipSpacing="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_xda"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/xda_thread"
+                app:chipIcon="@drawable/ic_xda"
+                app:chipSpacing="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/item_updates_about_libraries"
+                style="@style/Widget.Material3.Chip.Icon.Smartspacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:minHeight="0dp"
+                android:text="@string/libraries"
+                app:chipIcon="@drawable/ic_libraries"
+                app:chipSpacing="0dp" />
+
+        </com.google.android.flexbox.FlexboxLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
