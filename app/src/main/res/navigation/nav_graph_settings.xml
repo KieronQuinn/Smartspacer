@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_notificationWidgetSettingsFragment"
             app:destination="@id/notificationWidgetSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsLanguageFragment"
+            app:destination="@id/settingsLanguageFragment" />
     </fragment>
     <fragment
         android:id="@+id/nativeModeFragment2"
@@ -221,6 +224,11 @@
         android:id="@+id/notificationWidgetSettingsFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.notificationwidget.NotificationWidgetSettingsFragment"
         android:label="@string/notification_widget_title_short"
+        tools:layout="@layout/fragment_settings_base" />
+    <fragment
+        android:id="@+id/settingsLanguageFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.language.SettingsLanguageFragment"
+        android:label="@string/settings_language_title"
         tools:layout="@layout/fragment_settings_base" />
 
 </navigation>

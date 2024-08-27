@@ -682,7 +682,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Открывает Расширенное Пространство, если у Цели есть дополнительные опции для Расширенного Пространства. Нажатие на Цель снова в Расширенном Пространстве запустит действие по нажатию.</string>
     <string name="expanded_settings_open_mode_always_title">Всегда</string>
     <string name="expanded_settings_open_mode_always_content">Всегда открывает Расширенное Пространство. Нажатие на Цель в Расширенном Пространстве запустит её действие по нажатию.</string>
-    <string name="expanded_settings_date_info"><b>Примечание:</b> из-за ограничений системы, эта настройка не применяется к нажатию на цель \"Дата\" (или цель-филлер \"Дата\", отображаемую, когда есть свободные Дополнения)</string>
     <string name="expanded_settings_tint_colour">Цвет</string>
     <string name="expanded_settings_tint_colour_content">Цвет, который будут использовать текст и иконки в Расширенном Пространстве: %1s</string>
     <!-- OEM Smartspace settings -->

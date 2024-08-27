@@ -10,6 +10,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.enhancedmode.request.EnhancedModeRequestViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
+import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
@@ -28,6 +29,13 @@ class EnhancedModeRequestFragment: BoundFragment<FragmentEnhancedModeRequestBind
         setupSui()
         setupShizukuError()
         setupState()
+        if(!args.isSetup) {
+            setupInsets()
+        }
+    }
+
+    private fun setupInsets() {
+        binding.enhancedModeRequestInfo.applyBottomNavigationInset()
     }
 
     private fun setupLoading() {

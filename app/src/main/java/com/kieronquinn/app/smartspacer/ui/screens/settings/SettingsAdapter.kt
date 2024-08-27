@@ -67,6 +67,7 @@ class SettingsAdapter(
             itemUpdatesAboutContributors to about.onContributorsClicked,
             itemUpdatesAboutDonate to about.onDonateClicked,
             itemUpdatesAboutGithub to about.onGitHubClicked,
+            itemUpdatesAboutCrowdin to about.onCrowdinClicked,
             itemUpdatesAboutLibraries to about.onLibrariesClicked,
             itemUpdatesAboutTwitter to about.onTwitterClicked,
             itemUpdatesAboutXda to about.onXdaClicked

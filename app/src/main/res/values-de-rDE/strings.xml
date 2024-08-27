@@ -683,7 +683,6 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_open_mode_if_has_extras_content">Öffnet den erweiterten Smartspace, wenn das Ziel zusätzliche Einstellungen hat, die im erweiterten Smartspace verfügbar sind. Durch erneutes Antippen des Ziels im erweiterten Smartspace wird die ursprüngliche Aktion des Ziels ausgeführt.</string>
     <string name="expanded_settings_open_mode_always_title">Immer</string>
     <string name="expanded_settings_open_mode_always_content">Öffnet immer den erweiterten Smartspace. Wenn das Ziel im erweiterten Smartspace erneut angetippt wird, führt es die ursprüngliche Aktion des Ziels aus.</string>
-    <string name="expanded_settings_date_info"><b>Hinweis:</b> Aufgrund von Systembeschränkungen, gilt diese Option nicht für das Antippen des Datums vom Datumsziel (oder ein Fülldatum, das oberhalb der Komplikationen angezeigt wird)</string>
     <string name="expanded_settings_tint_colour">Farbton</string>
     <string name="expanded_settings_tint_colour_content">Die Farbe für Text und Icons auf dem erweiterten Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->

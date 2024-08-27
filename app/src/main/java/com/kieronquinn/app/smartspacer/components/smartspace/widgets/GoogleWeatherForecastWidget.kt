@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetProviderInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.util.SizeF
+import android.view.View
 import android.widget.ImageView
 import android.widget.RemoteViews
 import android.widget.TextView
@@ -16,6 +17,7 @@ import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerWidgetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.findViewByIdentifier
+import com.kieronquinn.app.smartspacer.sdk.utils.getClickPendingIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import org.koin.android.ext.android.inject
 
@@ -80,8 +82,10 @@ class GoogleWeatherForecastWidget: SmartspacerWidgetProvider() {
             )?.getImageAsBitmap()?.scale() ?: continue
             forecasts.add(ForecastItem(forecastTime, forecastTemperature, forecastIcon))
         }
+        val clickIntent = views.findViewById<View>(android.R.id.background)
+            ?.getClickPendingIntent()
         val forecastState = ForecastState(
-            location, condition, ForecastItem(null, temperature, icon), forecasts
+            location, condition, ForecastItem(null, temperature, icon), forecasts, clickIntent
         )
         googleWeatherRepository.setForecastState(forecastState)
         SmartspacerTargetProvider.notifyChange(

@@ -1,7 +1,13 @@
 package com.kieronquinn.app.smartspacer.components.smartspace.compat
 
 import android.content.ComponentName
+import android.content.ContentUris
+import android.content.Intent
+import android.icu.text.DateFormat
+import android.icu.text.DisplayContext
 import android.os.Bundle
+import android.provider.CalendarContract
+import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.model.smartspace.Action
 import com.kieronquinn.app.smartspacer.model.smartspace.ActionHolder
 import com.kieronquinn.app.smartspacer.model.smartspace.Target
@@ -18,11 +24,15 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_SHOW_ON_LOCKSCREEN
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData.SubItemInfo
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BasicTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.model.weather.WeatherData
 import com.kieronquinn.app.smartspacer.utils.extensions.cloneWithUniqneness
 import com.kieronquinn.app.smartspacer.utils.extensions.popOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.reformatBullet
+import java.util.Calendar
 import java.util.LinkedList
 import java.util.UUID
 
@@ -221,7 +231,11 @@ abstract class TargetMerger {
             val action = actionQueue.popOrNull() ?: break
             val secondAction = actionQueue.popOrNull()
             val page = SmartspacePageHolder(
-                createBlankTarget(action.action, secondAction?.action),
+                createBlankTarget(
+                    action.action,
+                    secondAction?.action,
+                    useExpandedIntent = openMode == ExpandedOpenMode.ALWAYS
+                ),
                 null,
                 listOfNotNull(action.parent, secondAction?.parent)
             )
@@ -264,8 +278,6 @@ abstract class TargetMerger {
         return this
     }
 
-    protected open val blankFeatureType = SmartspaceTarget.FEATURE_WEATHER
-
     /**
      *  Creates a blank target, with one or two [SmartspaceAction]s. If [base] is not specified,
      *  a blank base will be used. The launcher will surround these actions with the default
@@ -274,20 +286,19 @@ abstract class TargetMerger {
     protected fun createBlankTarget(
         header: SmartspaceAction,
         base: SmartspaceAction?,
-        templateData: BasicTemplateData? = null
+        templateData: BasicTemplateData? = null,
+        useExpandedIntent: Boolean = false
     ): SmartspaceTarget {
         //Strip undocumented extras from the complication so it can't inject them into the target
         base?.extras?.stripUndocumentedExtras()
         return SmartspaceTarget(
             smartspaceTargetId = "${BLANK_TARGET_PREFIX}_${UUID.randomUUID()}",
             headerAction = header.reformatBullet(base == null),
-            baseAction = base ?: SmartspaceAction(
-                id = "",
-                title = ""
-            ),
-            featureType = blankFeatureType,
+            baseAction = base ?: createBlankHeader(useExpandedIntent),
+            featureType = SmartspaceTarget.FEATURE_UNDEFINED,
             componentName = ComponentName("package_name", "class_name"),
             templateData = BasicTemplateData(
+                primaryItem = createBlankTitle(useExpandedIntent),
                 subtitleItem = header.subItemInfo ?: templateData?.subtitleItem
                     ?: header.generateSubItemInfo().reformatBullet(base == null),
                 subtitleSupplementalItem = base?.subItemInfo
@@ -296,6 +307,60 @@ abstract class TargetMerger {
             ),
             canBeDismissed = false
         )
+    }
+
+    private fun createBlankHeader(useExpandedIntent: Boolean): SmartspaceAction {
+        val date = DateFormat.getInstanceForSkeleton("EEEMMMd").apply {
+            setContext(DisplayContext.CAPITALIZATION_FOR_BEGINNING_OF_SENTENCE)
+        }.format(Calendar.getInstance().time)
+        return SmartspaceAction(
+            id = "",
+            icon = null,
+            title = date,
+            intent = if(useExpandedIntent) {
+                getExpandedIntent()
+            }else{
+                getCalendarIntent()
+            }
+        ).apply {
+            launchDisplayOnLockScreen = useExpandedIntent
+        }
+    }
+
+    private fun createBlankTitle(useExpandedIntent: Boolean): SubItemInfo? {
+        val date = DateFormat.getInstanceForSkeleton("EEEMMMd").apply {
+            setContext(DisplayContext.CAPITALIZATION_FOR_BEGINNING_OF_SENTENCE)
+        }.format(Calendar.getInstance().time)
+        val intent = if(useExpandedIntent) {
+            getExpandedIntent()
+        }else{
+            getCalendarIntent()
+        }
+        return SubItemInfo(
+            text = Text(date),
+            tapAction = TapAction(intent = intent, shouldShowOnLockScreen = useExpandedIntent)
+        )
+    }
+
+    private fun getCalendarIntent(): Intent {
+        return Intent(Intent.ACTION_VIEW).apply {
+            data = ContentUris.appendId(
+                CalendarContract.CONTENT_URI.buildUpon().appendPath("time"),
+                System.currentTimeMillis()
+            ).build()
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+        }
+    }
+
+    private fun getExpandedIntent(): Intent {
+        return Intent("com.kieronquinn.app.smartspacer.SMARTSPACE").apply {
+            component = ComponentName(
+                BuildConfig.APPLICATION_ID,
+                "com.kieronquinn.app.smartspacer.ui.activities.ExportedExpandedActivity"
+            )
+        }
     }
 
 }

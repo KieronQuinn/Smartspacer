@@ -63,7 +63,8 @@ class AlarmComplication: SmartspacerComplicationProvider() {
         return Config(
             resources.getString(R.string.complication_alarm_label),
             resources.getString(R.string.complication_alarm_description),
-            AndroidIcon.createWithResource(provideContext(), R.drawable.ic_alarm)
+            AndroidIcon.createWithResource(provideContext(), R.drawable.ic_alarm),
+            allowAddingMoreThanOnce = true
         )
     }
 

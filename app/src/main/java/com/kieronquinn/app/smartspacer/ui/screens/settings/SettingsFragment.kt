@@ -14,6 +14,7 @@ import com.kieronquinn.app.smartspacer.ui.base.Root
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsFragment
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel.SettingsSettingsItem
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel.State
+import com.kieronquinn.app.smartspacer.utils.extensions.getSelectedLanguage
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -157,6 +158,13 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_analytics),
             onChanged = viewModel::onEnableAnalyticsChanged
         ),
+        Setting(
+            getString(R.string.settings_language_title),
+            requireContext().getSelectedLanguage(supportedLocales)?.displayName
+                ?: getString(R.string.settings_language_default),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_language),
+            onClick = viewModel::onLanguageClicked
+        ),
         Header(getString(R.string.settings_debug_header)),
         Setting(
             getString(R.string.settings_dump_title),
@@ -168,6 +176,7 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             viewModel::onContributorsClicked,
             viewModel::onDonateClicked,
             viewModel::onGitHubClicked,
+            viewModel::onCrowdinClicked,
             viewModel::onTwitterClicked,
             viewModel::onXdaClicked,
             viewModel::onLibrariesClicked

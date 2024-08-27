@@ -8,7 +8,11 @@ import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.model.database.TargetDataType
-import com.kieronquinn.app.smartspacer.repositories.*
+import com.kieronquinn.app.smartspacer.repositories.DataRepository
+import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.sdk.model.Backup
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -109,7 +113,8 @@ class DefaultTarget: SmartspacerTargetProvider() {
             compatibilityState = getCompatibilityState(),
             configActivity = TrampolineActivity.createAsiTrampolineIntent(provideContext())?.let {
                 ConfigurationActivity.createIntent(provideContext(), TARGET_DEFAULT)
-            }
+            },
+            allowAddingMoreThanOnce = true
         )
     }
 

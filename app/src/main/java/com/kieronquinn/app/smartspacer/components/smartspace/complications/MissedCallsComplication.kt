@@ -41,7 +41,8 @@ class MissedCallsComplication: SmartspacerComplicationProvider() {
             resources.getString(R.string.complication_missed_calls_label),
             resources.getString(R.string.complication_missed_calls_description),
             AndroidIcon.createWithResource(provideContext(), R.drawable.ic_complication_missed_calls),
-            setupActivity = Intent(provideContext(), CallLogPermissionActivity::class.java)
+            setupActivity = Intent(provideContext(), CallLogPermissionActivity::class.java),
+            allowAddingMoreThanOnce = true
         )
     }
 

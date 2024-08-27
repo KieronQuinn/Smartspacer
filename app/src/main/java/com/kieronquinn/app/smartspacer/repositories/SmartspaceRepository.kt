@@ -1,9 +1,8 @@
 package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
+import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerRegular
 import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerSplit
-import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerUndefined
-import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerWeather
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
 import com.kieronquinn.app.smartspacer.model.smartspace.Action
@@ -24,7 +23,6 @@ import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerUpdateReceiver
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerVisibilityChangedReceiver
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.fixActionsIfNeeded
-import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import com.kieronquinn.app.smartspacer.utils.extensions.stripSmartspacerUniqueness
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -426,17 +424,8 @@ class SmartspaceRepositoryImpl(
                     actionsFirst
                 )
             }
-            //Native on 14+ still requires the UNDEFINED feature type
-            isNative && isAtLeastU() -> {
-                TargetMergerUndefined.mergeTargetsAndActions(
-                    targets,
-                    actions,
-                    openMode,
-                    actionsFirst
-                )
-            }
             else -> {
-                TargetMergerWeather.mergeTargetsAndActions(
+                TargetMergerRegular.mergeTargetsAndActions(
                     targets,
                     actions,
                     openMode,

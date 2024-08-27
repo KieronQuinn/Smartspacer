@@ -246,6 +246,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.S
 import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.settings.language.SettingsLanguageViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.settings.language.SettingsLanguageViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.sensitive.SettingsHideSensitiveViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.setup.analytics.SetupAnalyticsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.setup.analytics.SetupAnalyticsViewModelImpl
@@ -417,7 +419,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<GeofenceRequirementConfigurationViewModel> { GeofenceRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<GeofenceRequirementConfigurationNameViewModel> { GeofenceRequirementConfigurationNameViewModelImpl() }
         viewModel<AppPredictionRequirementConfigurationViewModel> { AppPredictionRequirementConfigurationViewModelImpl(get(), get()) }
-        viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get()) }
+        viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get()) }
         viewModel { SettingsHideSensitiveViewModel(get()) }
         viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get()) }
         viewModel<SetupAnalyticsViewModel> { SetupAnalyticsViewModelImpl(get(), get()) }
@@ -523,6 +525,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<BluetoothRequirementConfigurationViewModel> { BluetoothRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<FlashlightTargetConfigurationViewModel> { FlashlightTargetConfigurationViewModelImpl(get(), get()) }
         viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get()) }
+        viewModel<SettingsLanguageViewModel> { SettingsLanguageViewModelImpl(get()) }
     }
 
     override fun attachBaseContext(base: Context) {

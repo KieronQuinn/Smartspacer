@@ -682,7 +682,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Siempre</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_date_info"><b>Nota:</b> Debido a limitaciones del sistema, esta opción no se aplica al presionar la fecha del objetivo de fecha (o una fecha de objetivo de relleno mostrada encima de las complicaciones)</string>
     <string name="expanded_settings_tint_colour">Tono</string>
     <string name="expanded_settings_tint_colour_content">Color que se usa para el texto y los iconos en Smartspace expandido: %1s</string>
     <!-- OEM Smartspace settings -->

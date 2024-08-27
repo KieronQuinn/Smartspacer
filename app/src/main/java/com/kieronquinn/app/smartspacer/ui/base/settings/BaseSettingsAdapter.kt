@@ -276,6 +276,7 @@ abstract class BaseSettingsAdapter(
     private fun GenericViewHolder.RadioCard.setup(item: GenericSettingsItem.RadioCard) = with(binding) {
         settingsRadioCardTitle.text = item.title
         settingsRadioCardContent.text = item.content
+        settingsRadioCardContent.isVisible = item.content != null
         settingsRadioCardRadio.isChecked = item.isChecked
         settingsRadioCardRadio.applyMonet()
         val background = monet.getPrimaryColor(root.context, !root.context.isDarkMode)

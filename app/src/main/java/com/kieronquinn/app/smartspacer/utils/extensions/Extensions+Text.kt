@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.core.text.getSpans
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.utils.spans.SmartspacerForegroundColorSpan
+import java.util.Locale
 import android.app.smartspace.uitemplatedata.Text as SystemText
 
 
@@ -53,4 +54,10 @@ fun TextView.setShadowEnabled(enabled: Boolean) {
         shadowDy,
         if(enabled) Color.BLACK else Color.TRANSPARENT
     )
+}
+
+fun String.capitalise(): String {
+    return replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+    }
 }

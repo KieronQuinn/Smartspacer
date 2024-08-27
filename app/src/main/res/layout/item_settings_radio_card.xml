@@ -23,34 +23,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/settings_radio_card_title"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="@dimen/margin_16"
+        android:orientation="vertical"
         android:paddingTop="@dimen/margin_16"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
-        android:textColor="?android:textColorPrimary"
-        app:layout_constraintBottom_toTopOf="@id/settings_radio_card_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/settings_radio_card_radio"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Title" />
-
-    <TextView
-        android:id="@+id/settings_radio_card_content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="@dimen/margin_16"
         android:paddingBottom="@dimen/margin_16"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/settings_radio_card_radio"
-        app:layout_constraintTop_toBottomOf="@id/settings_radio_card_title"
-        tools:text="Content" />
+        app:layout_constraintStart_toEndOf="@id/settings_radio_card_radio">
+
+        <TextView
+            android:id="@+id/settings_radio_card_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+            android:textColor="?android:textColorPrimary"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/settings_radio_card_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            tools:text="Content" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

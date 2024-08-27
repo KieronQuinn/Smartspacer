@@ -682,7 +682,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Abre o Smartspace Expandido se o Destaque tiver opções extras disponíveis nele. Tocar novamente no Destaque dentro do Smartspace Expandido executará sua ação original.</string>
     <string name="expanded_settings_open_mode_always_title">Sempre</string>
     <string name="expanded_settings_open_mode_always_content">Sempre abre o Smartspace Expandido. Tocar novamente no Destaque dentro do Smartspace Expandido executará sua ação original.</string>
-    <string name="expanded_settings_date_info"><b>Observação:</b> Devido a limitações do sistema, esta opção não se aplica ao tocar na data do destaque de Data (ou um destaque de data de preenchimento mostrado acima dos complementos)</string>
     <string name="expanded_settings_tint_colour">Tonalidade da Cor</string>
     <string name="expanded_settings_tint_colour_content">Cor a ser usada para texto e ícones do smartspace expandido: %1s</string>
     <!-- OEM Smartspace settings -->

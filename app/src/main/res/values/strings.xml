@@ -456,6 +456,10 @@
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
@@ -775,7 +779,6 @@
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_open_mode_always_title">Always</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_date_info"><b>Note:</b> Due to system limitations, this option does not apply to tapping the date from the Date Target (or a filler date Target shown above Complications)</string>
 
     <string name="expanded_settings_tint_colour">Tint Colour</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
@@ -988,6 +991,7 @@
     <string name="twitter">Follow me on Twitter</string>
     <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
     <string name="about_contributors">Contributors</string>
+    <string name="about_crowdin">Crowdin</string>
 
     <!-- Contributors -->
     <string name="about_contributors_icons">Icons</string>

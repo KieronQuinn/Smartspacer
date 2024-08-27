@@ -74,7 +74,8 @@ class DefaultComplication: SmartspacerComplicationProvider() {
             description = resources.getText(description),
             icon = Icon.createWithResource(provideContext(), R.drawable.ic_target_default),
             compatibilityState = getCompatibilityState(),
-            configActivity = TrampolineActivity.createAsiTrampolineIntent(provideContext())
+            configActivity = TrampolineActivity.createAsiTrampolineIntent(provideContext()),
+            allowAddingMoreThanOnce = true
         )
     }
 

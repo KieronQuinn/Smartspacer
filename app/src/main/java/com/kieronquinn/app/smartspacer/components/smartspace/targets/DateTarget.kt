@@ -5,6 +5,8 @@ import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Icon
+import android.icu.text.DateFormat
+import android.icu.text.DisplayContext
 import android.provider.CalendarContract
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -25,7 +27,9 @@ import com.kieronquinn.app.smartspacer.ui.activities.configuration.Configuration
 import org.koin.android.ext.android.inject
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Date
 import java.util.UUID
+
 
 class DateTarget: SmartspacerTargetProvider() {
 
@@ -33,27 +37,19 @@ class DateTarget: SmartspacerTargetProvider() {
     private val gson by inject<Gson>()
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
-        val dateFormat = getDateFormat(smartspacerId)
-        val featureType = if(dateFormat != null) {
-            SmartspaceTarget.FEATURE_UNDEFINED
-        }else{
-            SmartspaceTarget.FEATURE_WEATHER
-        }
-        val header = if(dateFormat != null) {
-            SmartspaceAction(
-                id = "",
-                icon = null,
-                title = dateFormat.format(ZonedDateTime.now()),
-                intent = getCalendarIntent()
-            )
-        }else null
+        val dateFormat = getDateFormat(smartspacerId) ?: getDefaultDateFormat()
+        val featureType = SmartspaceTarget.FEATURE_UNDEFINED
+        val header = SmartspaceAction(
+            id = "",
+            icon = null,
+            title = dateFormat.format(ZonedDateTime.now()),
+            intent = getCalendarIntent()
+        )
         val templateData = BasicTemplateData(
-            primaryItem = if(dateFormat != null) {
-                SubItemInfo(
-                    text = Text(dateFormat.format(ZonedDateTime.now())),
-                    tapAction = TapAction(intent = getCalendarIntent())
-                )
-            }else null
+            primaryItem = SubItemInfo(
+                text = Text(dateFormat.format(ZonedDateTime.now())),
+                tapAction = TapAction(intent = getCalendarIntent())
+            )
         )
         return listOf(
             SmartspaceTarget(
@@ -121,13 +117,15 @@ class DateTarget: SmartspacerTargetProvider() {
         notifyChange(smartspacerId)
     }
 
-    private fun getDateFormat(smartspacerId: String): DateTimeFormatter? {
-        return dataRepository.getTargetData(smartspacerId, TargetData::class.java)?.let {
+    private fun getDateFormat(smartspacerId: String): Formatter? {
+        return dataRepository.getTargetData(smartspacerId, TargetData::class.java)?.dateFormat?.let {
             try {
-                DateTimeFormatter.ofPattern(it.dateFormat)
+                DateTimeFormatter.ofPattern(it)
             }catch (e: IllegalArgumentException) {
                 null
             }
+        }?.let {
+            Formatter.DateTimeFormatter(it)
         }
     }
 
@@ -141,6 +139,29 @@ class DateTarget: SmartspacerTargetProvider() {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
         }
+    }
+
+    private fun getDefaultDateFormat(): Formatter.DateFormat {
+        return DateFormat.getInstanceForSkeleton("EEEMMMd").apply {
+            setContext(DisplayContext.CAPITALIZATION_FOR_BEGINNING_OF_SENTENCE)
+        }.let {
+            Formatter.DateFormat(it)
+        }
+    }
+
+    sealed class Formatter {
+        data class DateTimeFormatter(val formatter: java.time.format.DateTimeFormatter): Formatter() {
+            override fun format(date: ZonedDateTime): String {
+                return formatter.format(date)
+            }
+        }
+        data class DateFormat(val formatter: android.icu.text.DateFormat): Formatter() {
+            override fun format(date: ZonedDateTime): String {
+                return formatter.format(Date.from(date.toInstant()))
+            }
+        }
+
+        abstract fun format(date: ZonedDateTime): String
     }
 
     data class TargetData(

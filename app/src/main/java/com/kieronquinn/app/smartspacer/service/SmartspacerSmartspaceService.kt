@@ -16,6 +16,7 @@ import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.GlanceableHubSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.MediaDataSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.SystemSmartspacerSession
+import com.kieronquinn.app.smartspacer.receivers.DailyUpdateAlarmReceiver.Companion.INTENT_DAY_CHANGED
 import com.kieronquinn.app.smartspacer.receivers.SafeModeReceiver
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
@@ -64,7 +65,10 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
         @Suppress("DEPRECATION") //Deprecated in favour of something we cannot use
         private val RELOAD_BROADCASTS = arrayOf(
-            Intent.ACTION_WALLPAPER_CHANGED
+            Intent.ACTION_WALLPAPER_CHANGED,
+            Intent.ACTION_TIME_CHANGED,
+            Intent.ACTION_TIMEZONE_CHANGED,
+            INTENT_DAY_CHANGED
         )
     }
 

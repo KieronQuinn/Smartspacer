@@ -30,7 +30,8 @@ class AsNowPlayingTarget: NowPlayingTarget() {
             icon = Icon.createWithResource(provideContext(), R.drawable.ic_target_now_playing),
             setupActivity = Intent(provideContext(), NotificationPermissionActivity::class.java),
             compatibilityState = getCompatibilityState(),
-            notificationProvider = AsNowPlayingTargetNotification.AUTHORITY
+            notificationProvider = AsNowPlayingTargetNotification.AUTHORITY,
+            allowAddingMoreThanOnce = true
         )
     }
 

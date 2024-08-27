@@ -17,8 +17,6 @@ import java.util.LinkedList
  */
 object TargetMergerSplit: TargetMerger() {
 
-    override val blankFeatureType = SmartspaceTarget.FEATURE_UNDEFINED
-
     override fun getSplitTargets(
         actions: LinkedList<SmartspaceActionHolder>
     ): List<SmartspacePageHolder> {
