@@ -405,6 +405,9 @@
     <string name="settings_enable_update_check_content">Comprobar automáticamente las actualizaciones de Smartspacer y mostrar una notificación si una está disponible</string>
     <string name="settings_enable_analytics_title">Usar estadísticas e informe de fallos</string>
     <string name="settings_enable_analytics_content">Permite enviar informes de bloqueos anónimos y estadísticas básicas a Firebase, para ayudar a corregir errores</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Ocultar objetivos sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Ocultar contenido sensible</string>
     <string name="settings_hide_sensitive_contents_content">Ocultar objetivos en la pantalla de bloqueo que hayan sido marcados como sensibles: %1s</string>
@@ -882,6 +885,7 @@
     <string name="twitter">Sígueme en X</string>
     <string name="about_version">Versión %1s\nCreado por Kieron Quinn</string>
     <string name="about_contributors">Contribuidores</string>
+    <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
     <string name="about_contributors_icons">Íconos</string>
     <string name="about_contributors_icons_content"><![CDATA[Iconos por <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success por Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
