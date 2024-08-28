@@ -105,7 +105,7 @@
     <string name="target_greeting_night_name">おやすみなさい、 %1s</string>
     <string name="target_greeting_configuration_hide_if_no_complications_title">動的に隠す</string>
     <string name="target_greeting_configuration_hide_if_no_complications_content">Hides the Target if no Complications are available to show below it</string>
-    <string name="target_greeting_configuration_hide_title_on_aod_title">Hide Title on AoD</string>
+    <string name="target_greeting_configuration_hide_title_on_aod_title">AoDでのタイトルを隠す</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Hides the Target\'s title on the Always on Display (Native Smartspace only)</string>
     <string name="target_greeting_configuration_name_title">挨拶に使用する名前</string>
     <string name="target_greeting_configuration_name_content">Your name to show in the greeting: %1s</string>
