@@ -5,7 +5,7 @@
     <string name="dummy_home_open_settings">Einstellungen öffnen</string>
     <string name="notification_service">Smartspacer Benachrichtigungsdienst</string>
     <string name="loading">Wird geladen…</string>
-    <string name="saving">Speichere…</string>
+    <string name="saving">Speichern…</string>
     <string name="search">Suchen</string>
     <string name="delete">Löschen</string>
     <string name="save">Speichern</string>
@@ -23,10 +23,10 @@
     <string name="restricted_mode_content_warning_notification"><![CDATA[Seit Android 14 verhindert Google, dass Apps, die über den Paket-Installer sideloaded wurden, Benachrichtigungszugriff verwenden können.<br><br><b>Wenn du eine Meldung über eingeschränkte Einstellungen siehst, musst du Smartspacer deinstallieren und erneut installieren, indem du eine Session Installer-basierte App wie <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> oder die <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror App</a> verwendest. Das einfache Installieren darüber (ohne erneute Installation) ist NICHT ausreichend.<br><br></b>Alternativ wird Smartspacer mit aktiviertem erweiterten Modus diese Anforderung umgehen (dies ist ohne Shizuku oder Root-Zugriff nicht möglich).]]></string>
     <string name="restricted_mode_button">App-Info öffnen</string>
     <string name="restricted_mode_warning_button">Berechtigungen mit Shizuku erteilen</string>
-    <string name="target_sensitive_title">Inhalt versteckt</string>
+    <string name="target_sensitive_title">Inhalte versteckt</string>
     <!-- Shared by widget, notification & expanded -->
-    <string name="tint_colour_automatic">Automatisch (Hintergrundbasierend)</string>
-    <string name="tint_colour_automatic_alt">Automatisch (Theme-basierend)</string>
+    <string name="tint_colour_automatic">Automatisch (Hintergrundbild basierend)</string>
+    <string name="tint_colour_automatic_alt">Automatisch (Theme basierend)</string>
     <string name="tint_colour_automatic_content">Text und Icons im Widget werden automatisch eingefärbt, um auf dem Hintergrundbild sichtbar zu sein</string>
     <string name="tint_colour_automatic_content_alt">Text und Icons in der Benachrichtigung werden automatisch eingefärbt, damit sie je nach Theme sichtbar sind</string>
     <string name="tint_colour_white">Weiß</string>
@@ -36,7 +36,7 @@
     <string name="tint_colour_black_content">Text und Icons im Widget werden immer schwarz sein</string>
     <string name="tint_colour_black_content_alt">Text und Icons in der Benachrichtigung werden immer schwarz sein</string>
     <string name="widget_description_smartspacer">Smartspacer Ziele &amp; Komplikationen anzeigen</string>
-    <string name="widget_loading_smartspacer">Lädt…</string>
+    <string name="widget_loading_smartspacer">Wird geladen…</string>
     <string name="widget_loading_smartspacer_subtitle">Überprüfe, ob die Bedienungshilfen aktiviert sind, sofern diese Nachricht bestehen bleibt</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
     <string name="widget_configuration_tab_horizontal">Horizontal</string>
@@ -406,9 +406,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="settings_enable_update_check_content">Automatisch auf Smartspacer-Updates prüfen und eine Benachrichtigung anzeigen, wenn eines verfügbar ist</string>
     <string name="settings_enable_analytics_title">Analysen &amp; Absturzberichte aktivieren</string>
     <string name="settings_enable_analytics_content">Erlaube das Senden anonymer Absturzberichte und grundlegender Analysen an Firebase, um Fehler zu beheben</string>
-    <string name="settings_language_title">Language</string>
-    <string name="settings_language_default">System Default</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+    <string name="settings_language_title">Sprache</string>
+    <string name="settings_language_default">System Standard</string>
+    <string name="settings_language_info"><b>Hinweis:</b> Nicht alle Sprachen sind vollständig, du kannst bei der Übersetzung beim Smartspacer Crowdin beitragen</string>
     <string name="settings_hide_sensitive_contents_title">Sensible Ziele ausblenden</string>
     <string name="settings_hide_sensitive_contents_title_short">Sensibles ausblenden</string>
     <string name="settings_hide_sensitive_contents_content">Blende Ziele auf dem Sperrbildschirm aus, wenn sie als sensibel markiert sind: %1s</string>
