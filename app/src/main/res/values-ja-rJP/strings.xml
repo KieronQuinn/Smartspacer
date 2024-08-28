@@ -84,9 +84,9 @@
     <string name="target_ambient_music_mod_label">Now Playing (Ambient Music Mod)</string>
     <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>
     <string name="target_ambient_music_mod_description_unavailable">This target requires Ambient Music Mod</string>
-    <string name="target_default_label">スナップショット (Smartspace)</string>
-    <string name="target_default_description">Targets from Google At a Glance, loaded using Smartspace</string>
-    <string name="target_default_description_recommended">Targets from Google At a Glance, loaded using Smartspace <b>(recommended)</b></string>
+    <string name="target_default_label">At a Glance (Smartspace)</string>
+    <string name="target_default_description">Google At a Glance のターゲット（Smartspace を使用してロード）</string>
+    <string name="target_default_description_recommended"><b>（推奨）</b>Google At a Glance のターゲット（Smartspace を使用してロード）</string>
     <string name="target_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
     <string name="target_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
     <string name="target_default_configuration_title">設定</string>
@@ -114,20 +114,20 @@
     <string name="target_greeting_configuration_description">Set your name, dynamically hide the Target and hide the title on the AoD</string>
     <string name="target_greeting_configuration_open_expanded_title">Open Expanded Smartspace</string>
     <string name="target_greeting_configuration_open_expanded_content">Open Expanded Smartspace on click, rather than doing nothing</string>
-    <string name="target_at_a_glance_label">スナップショット (ウィジット)</string>
-    <string name="target_at_a_glance_description">Googleのウィジェットを使用して読み込まれるGoogle スナップショットからの制限されたターゲット</string>
+    <string name="target_at_a_glance_label">At a Glance (ウィジェット)</string>
+    <string name="target_at_a_glance_description">Googleのウィジェットを使用して読み込まれるスナップショット（At a Glance）からの制限されたターゲット</string>
     <string name="target_at_a_glance_description_unsupported">このターゲットにはGoogleアプリが必要です</string>
     <string name="target_google_weather_forecast_title">Google天気予報</string>
     <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
     <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">タップして有効にする</string>
-    <string name="complication_default_label">スナップショットコンプリケーション</string>
+    <string name="complication_default_label">スナップショット（At a Glance）</string>
     <string name="complication_default_description">Complications from Google At a Glance, including weather</string>
     <string name="complication_default_description_recommended">Complications from Google At a Glance, including weather <b>(recommended)</b></string>
-    <string name="complication_default_description_unsupported">お使いのデバイスはSmartspaceを使用したスナップショットをサポートしていません</string>
+    <string name="complication_default_description_unsupported">お使いのデバイスはSmartspaceを使用したスナップショット（At a Glance）をサポートしていません</string>
     <string name="complication_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
-    <string name="complication_default_configuration_title">スナップショットの設定</string>
+    <string name="complication_default_configuration_title">スナップショット（At a Glance）の設定</string>
     <string name="complication_default_configuration_description">Configure more settings in the Google App</string>
     <string name="complication_google_weather_label">Google天気</string>
     <string name="complication_google_weather_description">Shows weather pulled from the Google App</string>
@@ -405,9 +405,9 @@
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
-    <string name="settings_language_title">Language</string>
+    <string name="settings_language_title">言語</string>
     <string name="settings_language_default">端末の言語</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+    <string name="settings_language_info"><b>注意:</b> すべての言語の翻訳が完了しているわけではありません。Smartspacer Crowdin で翻訳を投稿することができます。</string>
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
@@ -417,9 +417,9 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
     <string name="settings_hide_sensitive_contents_hide">Hide target</string>
     <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
-    <string name="settings_debug_header">Debug</string>
+    <string name="settings_debug_header">デバッグ</string>
     <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
+    <string name="settings_dump_content">現在のターゲットとアクションのコンテンツとデバッグ情報を表示し、トラブルシューティングに役立つようにファイルに書き込みます。</string>
     <string name="settings_dump_title_short">Dump</string>
     <string name="settings_dump_button">Write to File</string>
     <string name="settings_dump_complete">Written to file</string>
@@ -683,7 +683,7 @@
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
     <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
-    <string name="expanded_settings_open_mode_always_title">Always</string>
+    <string name="expanded_settings_open_mode_always_title">常時</string>
     <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
     <string name="expanded_settings_tint_colour">Tint Colour</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
@@ -826,7 +826,7 @@
     <string name="backup_error">Error creating backup</string>
     <string name="backup_error_failed_to_create">Failed to create file</string>
     <string name="backup_error_failed_to_write">Failed to write file</string>
-    <string name="restore_title">Restore</string>
+    <string name="restore_title">復元</string>
     <string name="restore_content">Restore a Smartspacer backup from a local file or the cloud.</string>
     <string name="restore_loading_backup">Loading backup…</string>
     <string name="restore_error">Error restoring backup</string>
@@ -845,10 +845,10 @@
     <string name="restore_restore_widgets_title">Expanded Smartspace Widgets</string>
     <string name="restore_restore_widgets_content">Restore the list and order of widgets added to Expanded Smartspace.\n<b>This will overwrite your current widget list.</b></string>
     <string name="restore_restore_widgets_content_empty">No widgets found to restore</string>
-    <string name="restore_restore_settings_title">Settings</string>
+    <string name="restore_restore_settings_title">設定</string>
     <string name="restore_restore_settings_content">Restore your Smartspacer settings.\n<b>This will overwrite your current settings.</b></string>
     <string name="restore_restore_settings_content_empty">No settings found to restore</string>
-    <string name="restore_target_title">Targets</string>
+    <string name="restore_target_title">ターゲット</string>
     <string name="restore_target_reason_not_installed">The Plugin providing this Target is no longer installed (%1s)</string>
     <string name="restore_target_duplicate">This Target has already been added and cannot be added more than once. Remove the existing Target first before restoring.</string>
     <string name="restore_target_collision"><b>Adding this Target will overwrite your current config</b></string>
@@ -872,18 +872,18 @@
     <string name="notification_widget_title">ロック画面での通知</string>
     <string name="notification_widget_title_short">ロック画面</string>
     <string name="notification_widget_content">Options for showing Smartspacer as a notification when your lock screen is showing</string>
-    <string name="notification_widget_toggle">Show Notification</string>
+    <string name="notification_widget_toggle">通知を表示</string>
     <string name="notification_widget_info">This option shows <b>limited</b> Smartspacer content on the Lock Screen, as a notification. Only one page can be shown, and you will need to expand the notification to see more than basic content.</string>
     <string name="notification_widget_notifications_disabled">Notifications are disabled, so this option will not work. Tap to enable.</string>
-    <string name="notification_widget_tint_title">Tint</string>
+    <string name="notification_widget_tint_title">色合い</string>
     <string name="notification_widget_tint_content">The colour to use for text and icons in the notification: %1s</string>
     <!-- About Footer -->
-    <string name="xda_thread">XDA Thread</string>
+    <string name="xda_thread">XDAのスレッド</string>
     <string name="github">GitHub</string>
-    <string name="libraries">Third party libraries</string>
-    <string name="donate">Donate</string>
-    <string name="twitter">Follow me on Twitter</string>
-    <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
+    <string name="libraries">サードパーティ ライブラリ</string>
+    <string name="donate">寄付</string>
+    <string name="twitter">Twitterでフォロー</string>
+    <string name="about_version">バージョン %1s\nKieron Quinn氏によって作成されました</string>
     <string name="about_contributors">貢献者</string>
     <string name="about_crowdin">Crowdin</string>
     <!-- Contributors -->
@@ -891,11 +891,11 @@
     <string name="about_contributors_icons_content"><![CDATA[Icons by <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache Licence 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Pictogrammers Free Licence</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success by Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Lottie Simple License</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
     <string name="about_contributors_sdk_content"><![CDATA[Smartspacer SDK の一部には、<a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Apache Licence 2.0</a> に基づいてLawnchair ベースのコードが含まれています。]]></string>
-    <string name="about_translators">Translators</string>
+    <string name="about_translators">翻訳者</string>
     <!-- Wallpaper Colour Picker -->
-    <string name="wallpaper_colour_picker_menu">Wallpaper Colour Picker</string>
-    <string name="wallpaper_colour_picker_title">Wallpaper Colour</string>
-    <string name="color_picker_unavailable">Wallpaper Colour Picker unavailable for the currently selected wallpaper</string>
+    <string name="wallpaper_colour_picker_menu">壁紙の色の選択</string>
+    <string name="wallpaper_colour_picker_title">壁紙の色</string>
+    <string name="color_picker_unavailable">現在選択されている壁紙では、壁紙のカラーピッカーは使用できません</string>
     <!-- Digital Wellbeing Target -->
     <string name="target_digital_wellbeing_label">Digital Wellbeing</string>
     <string name="target_digital_wellbeing_description">Shows the screen time and top 3 apps from Digital Wellbeing</string>
@@ -907,12 +907,12 @@
     <!-- Clock Complication -->
     <string name="complication_clock_label">時計</string>
     <string name="complication_clock_description">Shows the current time.\n<b>Warning:</b> This Complication may cause battery drain.</string>
-    <string name="complication_clock_description_short">Shows the current time</string>
+    <string name="complication_clock_description_short">現在時刻を表示</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">カレンダー</string>
     <string name="target_calendar_description">Shows Calendar events from selected calendars</string>
     <string name="target_calendar_description_filled">Shows Calendar events from %1s</string>
-    <string name="target_calendar_configuration_title">Settings</string>
+    <string name="target_calendar_configuration_title">設定</string>
     <string name="target_calendar_configuration_description">Configure which Calendars to display and options for when to show events</string>
     <string name="target_calendar_title_default">Untitled Event</string>
     <string name="target_calendar_title_with_time">%1s in %1dm</string>
@@ -948,7 +948,7 @@
     <string name="target_default_settings_more_title">スナップショット（At a Glance）の設定</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
     <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
-    <string name="target_default_settings_hide_title">Hide Targets</string>
+    <string name="target_default_settings_hide_title">ターゲットを隠す</string>
     <string name="target_default_settings_hide_doorbell">ドアホン</string>
     <string name="target_default_settings_hide_package">荷物の配達</string>
     <string name="target_default_settings_hide_timer">タイマーとストップウォッチ</string>
@@ -967,9 +967,9 @@
     <string name="target_default_settings_hide_food">食品と日用品の注文</string>
     <string name="target_default_settings_cross_device_timer">クロスデバイス タイマー</string>
     <!-- Notification Target -->
-    <string name="target_notification_configuration_app_title">Select App</string>
+    <string name="target_notification_configuration_app_title">アプリを選択</string>
     <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
-    <string name="target_notification_configuration_settings">Settings</string>
+    <string name="target_notification_configuration_settings">設定</string>
     <string name="target_notification_channels">Notification Channels</string>
     <string name="target_notification_channels_no_group">Other</string>
     <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
@@ -983,13 +983,13 @@
     <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
-    <string name="target_blank_settings_title">Settings</string>
+    <string name="target_blank_settings_title">設定</string>
     <string name="target_blank_settings_description">Configure whether show Complications on this Blank Target</string>
     <!-- Date Target -->
     <string name="target_date_settings_date_format_title">Date Format</string>
     <string name="target_date_settings_date_format_automatic">Automatic</string>
     <string name="target_date_settings_date_format_automatic_content">System defined</string>
-    <string name="target_date_settings_title">Settings</string>
+    <string name="target_date_settings_title">設定</string>
     <string name="target_date_settings_description">Configure the date format</string>
     <string name="target_date_settings_custom">Custom</string>
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
@@ -998,7 +998,7 @@
     <string name="target_flashlight_title">Torch</string>
     <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
     <string name="target_flashlight_incompatible">This Target requires a Torch</string>
-    <string name="target_flashlight_settings_title">Settings</string>
+    <string name="target_flashlight_settings_title">設定</string>
     <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
     <string name="target_flashlight_title_on">Torch on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
@@ -1044,17 +1044,17 @@
     <string name="requirement_recent_apps_configuration_limit_title">Limit</string>
     <string name="requirement_recent_apps_configuration_limit_content">The number of recent apps to look for the selected app in: %1s</string>
     <string name="requirement_recent_apps_configuration_limit_content_bs">The number of recent apps to look for the selected app in</string>
-    <string name="requirement_recent_apps_configuration_limit_content_unlimited">Unlimited</string>
+    <string name="requirement_recent_apps_configuration_limit_content_unlimited">制限なし</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
     <string name="productivity_widget_recommendation_category_label">Essentials</string>
-    <string name="battery_widget_recommendation_category_label">Battery</string>
+    <string name="battery_widget_recommendation_category_label">バッテリー</string>
     <string name="conversations_widget_recommendation_category_label">Conversations</string>
     <string name="note_taking_widget_recommendation_category_label">Note-taking</string>
     <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
     <string name="social_widget_recommendation_category_label">Social</string>
-    <string name="weather_widget_recommendation_category_label">Weather</string>
-    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
-    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
-    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
-    <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="weather_widget_recommendation_category_label">天気</string>
+    <string name="entertainment_widget_recommendation_category_label">娯楽やエンタメ</string>
+    <string name="fitness_widget_recommendation_category_label">健康とフィットネス</string>
+    <string name="news_widget_recommendation_category_label">ニュースと雑誌</string>
+    <string name="others_widget_recommendation_category_label">あなたへのおすすめ</string>
 </resources>
