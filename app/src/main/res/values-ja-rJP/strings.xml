@@ -328,13 +328,13 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d seconds</string>
     <string name="requirement_geofence_configuration_background_location_title">Enable Background Location</string>
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
-    <string name="requirement_geofence_configuration_background_location_grant">Grant Permission</string>
-    <string name="requirement_geofence_configuration_limit_reached_title">Limit Reached</string>
+    <string name="requirement_geofence_configuration_background_location_grant">権限を付与</string>
+    <string name="requirement_geofence_configuration_limit_reached_title">上限に達しました</string>
     <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
-    <string name="requirement_wifi_title">Wi-Fi Network</string>
+    <string name="requirement_wifi_title">Wi-Fi ネットワーク</string>
     <string name="requirement_wifi_content">Only show when in range of or connected to a Wi-Fi network</string>
     <string name="requirement_wifi_content_base">Only show when %1s to %1s</string>
-    <string name="requirement_wifi_content_connected_to">connected</string>
+    <string name="requirement_wifi_content_connected_to">接続済み</string>
     <string name="requirement_wifi_content_in_range_or_connected_to">in range or connected</string>
     <string name="requirement_wifi_content_ssid_mac">%1s with MAC %1s</string>
     <string name="requirement_wifi_configuration_in_range_title">Allow Unconnected (In Range) Network</string>
@@ -406,7 +406,7 @@
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
     <string name="settings_language_title">Language</string>
-    <string name="settings_language_default">System Default</string>
+    <string name="settings_language_default">端末の言語</string>
     <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
     <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
@@ -446,7 +446,7 @@
     <string name="compatibility_template_carousel_content">Allows showing up to four icons with a header and footer, in addition to the title &amp; subtitle</string>
     <string name="compatibility_template_sub_image_title">Images</string>
     <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
-    <string name="compatibility_label_systemui">Lock Screen</string>
+    <string name="compatibility_label_systemui">ロック画面</string>
     <!-- Setup -->
     <string name="landing_button_get_started">Get Started</string>
     <!-- Setup > Analytics -->
@@ -699,7 +699,7 @@
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">Settings</string>
-    <string name="oem_smartspace_label_systemui">Lock Screen</string>
+    <string name="oem_smartspace_label_systemui">ロック画面</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
     <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
     <string name="expanded_search_box_search">Search…</string>
@@ -732,7 +732,7 @@
     <string name="add_widget_empty_label">No Widgets found</string>
     <string name="battery_optimisation_title">Battery Optimisation</string>
     <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
-    <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
+    <string name="battery_optimisation_system_title">バッテリーの最適化を無効にする</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
