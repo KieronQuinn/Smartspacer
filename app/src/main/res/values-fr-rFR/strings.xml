@@ -405,9 +405,9 @@
     <string name="settings_enable_update_check_content">Rechercher automatiquement les mises à jour de Smartspacer et afficher une notification si une mise à jour est disponible</string>
     <string name="settings_enable_analytics_title">Activer la collecte de données et l\'envoi des rapports de plantage</string>
     <string name="settings_enable_analytics_content">Autoriser la collecte de données basiques, et l\'envoi à Firebase de ces données et de rapports de plantage pour aider à corriger les bugs. Toutes les données envoyées sont anonymes.</string>
-    <string name="settings_language_title">Language</string>
-    <string name="settings_language_default">System Default</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+    <string name="settings_language_title">Langue</string>
+    <string name="settings_language_default">Paramètre par défaut du système</string>
+    <string name="settings_language_info"><b>Remarque :</b> l\'application n\'est pas traduite à 100 % dans toutes les langues, vous pouvez nous aider en rejoignant le projet Smartspacer sur Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Masquer les cibles sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Cibles sensibles</string>
     <string name="settings_hide_sensitive_contents_content">Masquer les cibles sur l\'écran de verrouillage lorsqu\'elles sont marquées comme sensibles : %1s</string>
@@ -578,8 +578,8 @@
     <string name="notification_shizuku_content_at_a_glance_target">La cible Aperçu nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <string name="notification_shizuku_content_at_a_glance_complication">La complication Aperçu nécessite le démarrage de Shizuku, appuyez pour ouvrir</string>
     <!-- Sui service notifications -->
-    <string name="notification_sui_title">Sui ou Shizuku en root requis</string>
-    <string name="notification_sui_content_oem_smartspace">Smartspace OEM nécessite le démarrage de Shizuku en root, ou Sui. Smartspacer n\'a pas pu se connecter, le service a donc été désactivé.</string>
+    <string name="notification_sui_title">Sui ou Shizuku en tant que root requis</string>
+    <string name="notification_sui_content_oem_smartspace">Smartspace OEM requiert Sui ou le démarrage de Shizuku en tant que root. Smartspacer n\'a pas pu se connecter, le service a donc été désactivé.</string>
     <!-- Battery optimisation notification -->
     <string name="notification_battery_optimisation_title">Désactivez l\'optimisation de la batterie</string>
     <string name="notification_battery_optimisation_content">L\'utilisation de la batterie par Smartspacer ne doit pas être restreinte afin de mettre à jour en arrière-plan les cibles et les complications, appuyez pour lever les restrictions</string>
@@ -691,7 +691,7 @@
     <string name="oem_smartspace_title">Smartspace OEM</string>
     <string name="oem_smartspace_content">Options pour Smartspacer dans les lanceurs d\'applications classiques et sur l\'écran de verrouillage de certains appareils</string>
     <string name="oem_smartspace_content_enhanced">Cette option nécessite l\'activation du mode amélioré</string>
-    <string name="oem_smartspace_incompatible">Désolé, l\'activation de cette option nécessite que votre appareil soit rooté à cause de limitations systèmes. Si c\'est déjà le cas, installez le module Magisk Sui ou démarrez Shizuku en root.</string>
+    <string name="oem_smartspace_incompatible">Désolé, l\'activation de cette option nécessite que votre appareil soit rooté en raison de limitations systèmes. S\'il est déjà rooté, installez le module Magisk Sui ou démarrez Shizuku en tant que root.</string>
     <string name="oem_smartspace_info">Smartspace OEM affiche les cibles et les complications Smartspacer dans les lanceurs d\'applications et sur les écrans de verrouillage compatibles.\n\n<b>Notez que ce mode est très limité par rapport aux autres :</b>\n— la cible est affichée uniquement avec son titre et son sous-titre, aucune image ou autre élément n\'est affiché ;\n— une seule cible et une seule complication affichées à la fois ;\n— certains fabricants n\'affichent pas les complications lorsque aucune cible n\'est disponible ;\n— la disposition des cibles et des complications pourrait être différente sur votre appareil à cause des modifications du fabricant ;\n— il se peut que vous ne puissiez pas accéder à toutes les options des cibles avec plusieurs complications ;\n— certains fabricants désactivent Smartspace par défaut, il faudra alors exécuter une commande ou modifier un paramètre, accédez à la page du Wiki ci-dessous pour plus d\'infos.</string>
     <string name="oem_smartspace_more_info">Plus d\'infos</string>
     <string name="oem_smartspace_no_apps">Aucune application compatible avec Smartspace OEM n\'est installée sur votre appareil.</string>
