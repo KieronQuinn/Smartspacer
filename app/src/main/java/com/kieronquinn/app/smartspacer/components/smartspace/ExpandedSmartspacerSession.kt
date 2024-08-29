@@ -332,7 +332,9 @@ class ExpandedSmartspacerSession(
             }
             val base = target.templateData?.subtitleSupplementalItem?.let {
                 Complication.SubItemInfo(target, it)
-            } ?: target.baseAction?.let {
+            } ?: target.baseAction?.takeUnless {
+                target.smartspaceTargetId.startsWith(BLANK_TARGET_PREFIX)
+            }?.let {
                 Complication.Action(target, it)
             }
             listOfNotNull(header, base)
