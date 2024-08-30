@@ -142,7 +142,7 @@
     <string name="notification_channel_background_service_title">Background Service</string>
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
     <string name="notification_title_background_service">Smartspacerは実行中です</string>
-    <string name="notification_content_background_service">Smartspacerはバックグラウンドで実行されています。タップして非表示にします</string>
+    <string name="notification_content_background_service">Smartspacerはバックグラウンドで実行中です。タップしてこの通知を非表示にします。</string>
     <string name="notification_background_service_subtitle">Smartspacerはバックグラウンドで実行中です</string>
     <string name="notification_channel_safe_mode_title">セーフモード</string>
     <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
@@ -813,7 +813,7 @@
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
     <string name="backup_restore_title">バックアップと復元</string>
-    <string name="backup_restore_content">Smartspacer のターゲット、コンプリケーション、要件、設定のバックアップと復元</string>
+    <string name="backup_restore_content">Smartspacer のターゲット、コンプリケーション、条件、設定のバックアップと復元</string>
     <string name="backup_title">バックアップ</string>
     <string name="backup_content">ターゲット、コンプリケーション、条件、および設定のSmartspacerバックアップをローカルファイルまたはクラウドに作成します。</string>
     <string name="backup_creating_backup">バックアップを作成中…</string>
