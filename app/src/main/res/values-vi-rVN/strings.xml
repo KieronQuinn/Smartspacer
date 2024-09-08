@@ -33,8 +33,8 @@
     <string name="tint_colour_white_content">Văn bản và biểu tượng trong tiện ích sẽ luôn có màu trắng</string>
     <string name="tint_colour_white_content_alt">Văn bản và biểu tượng trong thông báo sẽ luôn có màu trắng</string>
     <string name="tint_colour_black">Đen</string>
-    <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
+    <string name="tint_colour_black_content"></string>
+    <string name="tint_colour_black_content_alt"></string>
     <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
     <string name="widget_loading_smartspacer">Loading…</string>
     <string name="widget_loading_smartspacer_subtitle">Check the Smartspacer Accessibility Service is enabled if this message persists</string>
