@@ -6,5 +6,5 @@
     <string name="smartspace_long_press_popup_about">Informazioni su questo contenuto</string>
     <string name="smartspace_long_press_popup_settings">Impostazioni</string>
     <string name="smartspace_long_press_popup_failed_to_launch">Impossibile avviare l\'azione</string>
-    <string name="smartspace_toast_could_not_dismiss">Questo target non può essere eliminato</string>
+    <string name="smartspace_toast_could_not_dismiss">Questo Target non può essere rimosso</string>
 </resources>
