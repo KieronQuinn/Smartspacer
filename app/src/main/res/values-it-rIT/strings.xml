@@ -638,7 +638,7 @@
     <string name="expanded_settings_title">Expanded Smartspace</string>
     <string name="expanded_settings_title_short">Expanded</string>
     <string name="expanded_settings_content">Mostra Target e Complicazioni di Smartspace a schermo intero, con ulteriori informazioni tra cui widget, scorciatoie ad app e altro</string>
-    <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
+    <string name="expanded_settings_footer">Expanded Smartspace mostra tutti i Target e le Complicazioni di Smartspace e le informazioni, inclusi widget, scorciatoie delle app e altro, per Target compatibili. Può essere aperto dalla Schermata Home, dalla Schermata di Blocco o da una Scorciatoia dell\'App dall\'icona di Smartspacer. Se si utilizza Discover Killer, Smartspacer può anche sostituire il tuo Google Discover Feed.</string>
     <string name="expanded_settings_switch">Abilita Expanded Smartspace</string>
     <string name="expanded_settings_header_search">Cerca</string>
     <string name="expanded_settings_show_search_box_title">Mostra Casella di Ricerca</string>
@@ -680,11 +680,11 @@
     <string name="expanded_show_shadow_title">Ombre dei Testi e delle Icone</string>
     <string name="expanded_show_shadow_content">Mostra un\'ombra su testi e icone che potrebbero non essere leggibili sul tuo sfondo</string>
     <string name="expanded_settings_open_mode_never_title">Mai</string>
-    <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
+    <string name="expanded_settings_open_mode_never_content">Esegue le azioni al tocco del Target, invece di aprire Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Se il Target ha opzioni estese</string>
-    <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_if_has_extras_content">Apre Expanded Smartspace se il Target ha opzioni aggiuntive, disponibile in Expanded Smartspace. Toccare nuovamente il Target in Expanded Smartspace eseguirà l\'azione originale del Target.</string>
     <string name="expanded_settings_open_mode_always_title">Sempre</string>
-    <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_always_content">Apri sempre Expanded Smartspace. Toccare nuovamente il Target in Expanded Smartspace eseguirà l\'azione originale del Target.</string>
     <string name="expanded_settings_tint_colour">Colore di Tinta</string>
     <string name="expanded_settings_tint_colour_content">Il colore da usare per testo e icone su Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
@@ -774,7 +774,7 @@
     <string name="plugin_settings_update_check_enabled_content">Controlla gli aggiornamenti dei plugin di Smartspacer ogni giorno e ti notifica se sono disponibili</string>
     <string name="plugin_settings_url_title">URL della Repository dei Plugin</string>
     <string name="plugin_settings_url_content"><b>Avanzato:</b> Modifica l\'URL per caricare i dati della repository dei plugin da</string>
-    <string name="plugin_settings_footer">The Smartspacer Plugin Repository allows you to install and manage Smartspacer plugins as well as find plugins compatible with apps installed on your device</string>
+    <string name="plugin_settings_footer">La Repository dei Plugin di Smartspacer consente di installare e gestire i plugin Smartspacer e di trovare i plugin compatibili con le app installate sul tuo dispositivo</string>
     <!-- Update downloader -->
     <string name="snackbar_update">Aggiornamento disponibile</string>
     <string name="snackbar_update_button">Aggiorna</string>
@@ -805,7 +805,7 @@
     <string name="permissions_allow">Consenti</string>
     <string name="permissions_deny">Nega</string>
     <string name="permissions_ask_every_time">Chiedi ogni volta</string>
-    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
+    <string name="permissions_header">I permessi di accesso sono applicati solo quando si aggiunge un Target o una Complicazione. Per revocare completamente la capacità di un plugin di accedere a notifiche o widget, è anche necessario rimuovere i suoi Target e le Complicazioni.</string>
     <string name="permissions_title">Permessi</string>
     <string name="permissions_content">Gestisci le autorizzazioni concesse ai plugin e alle app che integrano Smartspacer</string>
     <string name="permissions_widgets">Accesso ai widget tramite Smartspacer</string>
@@ -855,7 +855,7 @@
     <string name="restore_target_footer">Tocca un Target per ripristinarlo.\n<b>I Target vengono aggiunti nell\'ordine in cui li ripristini</b></string>
     <string name="restore_complications_title">Complicazioni</string>
     <string name="restore_complication_reason_not_installed">Il Plugin che fornisce questa Complicazione non è più installato (%1s)</string>
-    <string name="restore_complication_duplicate">This Complication has already been added and cannot be added more than once. Remove the existing Complication first before restoring.</string>
+    <string name="restore_complication_duplicate">Questa Complicazione è già stata aggiunta e non può essere aggiunta più di una volta. Rimuovere prima la Complicazione esistente prima di ripristinare.</string>
     <string name="restore_complication_collision"><b>Aggiungere questa Complicazione sovrascriverà la tua configurazione corrente</b></string>
     <string name="restore_complication_footer">Tocca una Complicazione per ripristinarla.\n<b>Le Complicazione vengono aggiunte nell\'ordine in cui le ripristini</b></string>
     <string name="restore_requirements_title">Requisiti</string>
@@ -930,7 +930,7 @@
     <string name="target_calendar_settings_show_unconfirmed_title">Mostra Non Confermati</string>
     <string name="target_calendar_settings_show_unconfirmed_content">Mostra gli eventi di cui non hai confermato la tua partecipazione.\n<b>Importante:</b> Alcuni calendari non supportano questa funzione e disabilitare questa opzione nasconderà tutti gli eventi.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Usa ID degli Eventi Alternativi</string>
-    <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
+    <string name="target_calendar_settings_use_alternative_event_id_content">Crea ID per ogni evento in base al titolo, agli orari di inizio e fine piuttosto che usare gli ID forniti dal sistema, quando si eliminano gli eventi. Questo è utile se si utilizza un\'app o un servizio che \'sincronizza\' Calendari tra gli account e ricrea nuovi eventi quando le cose cambiano.</string>
     <string name="target_calendar_settings_pre_event_time_title">Mostra l\'evento prima che inizi</string>
     <string name="target_calendar_settings_post_event_time_title">Mostra l\'evento dopo il suo inizio</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Pulisci gli Eventi Cancellati</string>
@@ -947,7 +947,7 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Impostazioni di A Colpo d\'Occhio</string>
     <string name="target_default_settings_more_content">Configura altre impostazioni nell\'app Google</string>
-    <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
+    <string name="target_default_settings_hide_infobox"><b>Nota bene:</b> Alcuni Target potrebbero non essere disponibili sul tuo dispositivo. La loro disattivazione qui non si sincronizza sul tuo Account Google per cui saranno ancora visibili su altri dispositivi.</string>
     <string name="target_default_settings_hide_title">Nascondi Target</string>
     <string name="target_default_settings_hide_doorbell">Campanello</string>
     <string name="target_default_settings_hide_package">Consegna di un Pacchetto</string>
@@ -975,12 +975,12 @@
     <string name="target_notification_channels_empty">Questa app non utilizza i Canali di Notifica, quindi tutte le sue notifiche verranno visualizzate</string>
     <string name="target_notification_configuration_options">Opzioni</string>
     <string name="target_notification_configuration_trim_new_lines_title">Rimuovi gli A Capo</string>
-    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Rimuovi le nuove righe dal contenuto della notifica, cercando di inserirne il più possibile nel Target. Questo potrebbe rovinare la formattazione della notifica.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Target Vuoto</string>
     <string name="target_blank_content">Ultra minimale, può essere usato per mostrare solo Complicazioni o nulla affatto</string>
     <string name="target_blank_settings_show_complications_title">Mostra Complicazione</string>
-    <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
+    <string name="target_blank_settings_show_complications_content">Consenti di mostrare fino a due Complicazioni sotto il titolo del Target vuoto. Questo è utile se si desidera non avere una data, ma continuare a mostrare Complicazioni.</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Nascondi se non ci sono Complicazioni</string>
     <string name="target_blank_settings_hide_if_no_complications_content">Se non ci sono Complicazioni da mostrare, nascondi questo Target interamente</string>
     <string name="target_blank_settings_title">Impostazioni</string>
