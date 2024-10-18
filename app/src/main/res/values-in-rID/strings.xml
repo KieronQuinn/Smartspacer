@@ -143,7 +143,7 @@
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
     <string name="notification_title_background_service">Smartspacer is running</string>
     <string name="notification_content_background_service">Smartspacer is running in the background, tap to hide</string>
-    <string name="notification_background_service_subtitle">Smartspacer is running in the background</string>
+    <string name="notification_background_service_subtitle">Indonesia</string>
     <string name="notification_channel_safe_mode_title">Safe Mode</string>
     <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
     <string name="notification_safe_mode_content">Smartspacer has entered Safe Mode due to %1s crashing. Tap for more info.</string>
@@ -346,7 +346,7 @@
     <string name="requirement_wifi_configuration_pick_title">Select Network</string>
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
     <string name="requirement_wifi_configuration_ssid_title">Network Name</string>
-    <string name="requirement_wifi_configuration_ssid_content_unset">Set the Network Name (SSID) of the network</string>
+    <string name="requirement_wifi_configuration_ssid_content_unset"></string>
     <string name="requirement_wifi_configuration_mac_title">MAC Address</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
