@@ -30,8 +30,8 @@
     <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
     <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
     <string name="tint_colour_white">White</string>
-    <string name="tint_colour_white_content">Text and icons in the widget will always be white</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
+    <string name="tint_colour_white_content">위젯의 텍스트 및 아이콘을 항상 흰색으로 표시합니다.</string>
+    <string name="tint_colour_white_content_alt">알림의 텍스트 및 아이콘을 항상 흰색으로 표시합니다.</string>
     <string name="tint_colour_black">Black</string>
     <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
     <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
@@ -63,7 +63,7 @@
     <string name="widget_configuration_animation_switch_title">Animate Changes</string>
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">색상</string>
-    <string name="widget_configuration_shadow_title">Text Shadow</string>
+    <string name="widget_configuration_shadow_title">텍스트 그림자</string>
     <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Target</string>
@@ -677,7 +677,7 @@
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
-    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
+    <string name="expanded_show_shadow_title">텍스트 및 아이콘 그림자</string>
     <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
     <string name="expanded_settings_open_mode_never_title">Never</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
