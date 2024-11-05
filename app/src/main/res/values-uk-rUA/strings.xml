@@ -75,9 +75,9 @@
     <string name="target_notification_description">Shows notifications from an app</string>
     <string name="target_notification_description_selected">Shows notifications from %1s</string>
     <string name="target_notification_description_selected_with_channels">Shows notifications from %1s (%1d %1s)</string>
-    <string name="target_notification_description_channels_one">channel</string>
-    <string name="target_notification_description_channels_other">channels</string>
-    <string name="target_now_playing_label">Pixel Now Playing</string>
+    <string name="target_notification_description_channels_one">канал</string>
+    <string name="target_notification_description_channels_other">канали</string>
+    <string name="target_now_playing_label">Функція \"Зараз грає\"</string>
     <string name="target_now_playing_description">Shows the currently playing song from Pixel Now Playing</string>
     <string name="target_now_playing_description_unavailable">This target requires Now Playing on a Pixel</string>
     <string name="target_now_playing_shortcut_history">History</string>
