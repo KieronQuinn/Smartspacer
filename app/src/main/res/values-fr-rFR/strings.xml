@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optionnel</b> : activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
+    <string name="xposed_desc"><b>Optionnel</b> : Activez ce module dans votre lanceur d\'applications ou son plugin Google Feed pour remplacer Google Discover par Smartspace étendu. Vous devrez également activer l\'option dans les paramètres Smartspace étendu dans Smartspacer.</string>
     <string name="dummy_home_content">Cet écran a été créé afin de contourner des problèmes liés aux widgets mal implémentés qui sont utilisés par des plugins Smartspacer.\n\nSmartspacer ne peut pas être utilisé comme lanceur d\'applications, veuillez en sélectionner un autre.</string>
     <string name="dummy_home_open_settings">Ouvrir les paramètres</string>
     <string name="notification_service">Service de notification Smartspacer</string>
@@ -495,7 +495,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Ajouter le widget</string>
     <string name="setup_add_widget_content">Ajouter Smartspacer à votre écran d\'accueil</string>
-    <string name="setup_add_widget_lock"><![CDATA[Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
+    <string name="setup_add_widget_lock">Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.</string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Conditions</string>
     <string name="setup_requirements_info_p1"><b>Les conditions</b> vous permettent de choisir quand afficher dans Smartspace une cible ou une complication. À l\'aide des conditions, vous pouvez créer des scénarios où des informations utiles seront affichées dans Smartspace.</string>
