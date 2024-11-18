@@ -41,8 +41,8 @@
     <string name="widget_configuration_title">Widget Smartspacer</string>
     <string name="widget_configuration_tab_horizontal">Horizontal</string>
     <string name="widget_configuration_tab_vertical">Vertical</string>
-    <string name="widget_configuration_horizontal_info"><b>Remarque :</b> en raison d\'une limitation d\'Android, il est impossible de faire défiler les widgets horizontalement. Pour contourner cela, le widget Smartspacer vous permet de changer de page par un appui sur les commandes.</string>
-    <string name="widget_configuration_vertical_info"><b>Remarque :</b> en utilisant le format liste, vous pourriez rencontrer des problèmes de performance et la batterie pourrait être davantage sollicitée. Cela est dû au fait que le widget doit être mis à jour dans son entièreté à chaque changement. Il est impossible d\'y remédier.</string>
+    <string name="widget_configuration_horizontal_info"><b>Remarque :</b> En raison d\'une limitation d\'Android, il est impossible de faire défiler les widgets horizontalement. Pour contourner cela, le widget Smartspacer vous permet de changer de page par un appui sur les commandes.</string>
+    <string name="widget_configuration_vertical_info"><b>Remarque :</b> En utilisant le format liste, vous pourriez rencontrer des problèmes de performance et la batterie pourrait être davantage sollicitée. Cela est dû au fait que le widget doit être mis à jour dans son entièreté à chaque changement. Il est impossible d\'y remédier.</string>
     <string name="widget_configuration_accessibility_title">Activer le service d\'accessibilité</string>
     <string name="widget_configuration_accessibility_content">Le widget Smartspacer nécessite un service d\'accessibilité pour connaître les applications ouvertes sur votre appareil, et démarrer et arrêter les cibles et les complications. Cela permet de les maintenir à jour sans avoir besoin de les exécuter en permanence, ce qui économise de la batterie.</string>
     <string name="widget_configuration_accessibility_enable">Appuyez pour activer</string>
@@ -70,7 +70,7 @@
     <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
-    <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
+    <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : Il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Affiche les notifications provenant d\'une application</string>
     <string name="target_notification_description_selected">Affiche les notifications provenant de %1s</string>
@@ -278,7 +278,7 @@
     <string name="configuration_notification_enable_content">Autorisez Smartspacer à accéder aux notifications de l\'appareil et des applications dans les paramètres système.</string>
     <string name="configuration_notification_enable_button">Autoriser l\'accès aux notifications</string>
     <string name="configuration_accessibility_enable_title">Activer le service d\'accessibilité</string>
-    <string name="configuration_accessibility_enable_content">Activez le service d\'accessibilité de Smartspacer dans les paramètres système.\n\n<b>Remarque :</b> malgré l\'avertissement système, Smartspacer ne lit aucune donnée et n\'interagit pas avec votre appareil, le service est utilisé uniquement pour connaître les applications en cours d\'exécution.</string>
+    <string name="configuration_accessibility_enable_content">Activez le service d\'accessibilité de Smartspacer dans les paramètres système.\n\n<b>Remarque :</b> Malgré l\'avertissement du système, Smartspacer ne lit aucune donnée et n\'interagit pas avec votre appareil, le service est utilisé uniquement pour connaître les applications en cours d\'exécution.</string>
     <string name="configuration_accessibility_enable_button">Activer le service d\'accessibilité</string>
     <string name="target_notification_configuration_title">Paramètres des notifications</string>
     <string name="target_notification_configuration_content">Sélectionnez les applications et les catégories des notifications à afficher</string>
@@ -359,7 +359,7 @@
     <string name="requirement_bluetooth_description_set">Afficher uniquement lorsque votre appareil est connecté à un appareil Bluetooth nommé « %1s »</string>
     <string name="requirement_bluetooth_incompatible">Cette condition requiert le Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Sélectionner un appareil</string>
-    <string name="requirement_bluetooth_configuration_pick_permission">Autorisations Bluetooth et Position requises, appuyez pour autoriser.\n<b>Remarque :</b> l\'accès à la position est requis par Android pour pouvoir connaître les appareils Bluetooth connectés.</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Autorisations Bluetooth et Position requises, appuyez pour autoriser.\n<b>Remarque :</b> L\'accès à la position est requis par Android pour pouvoir connaître les appareils Bluetooth connectés.</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer doit suivre en arrière-plan les connexions Bluetooth ; pour ce faire, Smartspacer a besoin que l\'autorisation Position soit définie sur « Toujours autoriser », appuyez pour définir</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth désactivé, appuyez pour l\'activer</string>
     <string name="requirement_bluetooth_configuration_pick_info">Seuls les appareils actuellement ou précédemment associés peuvent être sélectionnés</string>
@@ -407,7 +407,7 @@
     <string name="settings_enable_analytics_content">Autoriser la collecte de données basiques, et l\'envoi à Firebase de ces données et de rapports de plantage pour aider à corriger les bugs. Toutes les données envoyées sont anonymes.</string>
     <string name="settings_language_title">Langue</string>
     <string name="settings_language_default">Paramètre par défaut du système</string>
-    <string name="settings_language_info"><b>Remarque :</b> l\'application n\'est pas traduite à 100 % dans toutes les langues, vous pouvez nous aider en rejoignant le projet Smartspacer sur Crowdin</string>
+    <string name="settings_language_info"><b>Remarque :</b> L\'application n\'est pas traduite à 100 % dans toutes les langues, vous pouvez nous aider en rejoignant le projet Smartspacer sur Crowdin.</string>
     <string name="settings_hide_sensitive_contents_title">Masquer les cibles sensibles</string>
     <string name="settings_hide_sensitive_contents_title_short">Cibles sensibles</string>
     <string name="settings_hide_sensitive_contents_content">Masquer les cibles sur l\'écran de verrouillage lorsqu\'elles sont marquées comme sensibles : %1s</string>
@@ -495,7 +495,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Ajouter le widget</string>
     <string name="setup_add_widget_content">Ajouter Smartspacer à votre écran d\'accueil</string>
-    <string name="setup_add_widget_lock"><![CDATA[Remarque : si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Remarque : Si vous souhaitez ajouter Smartspacer à votre écran de verrouillage, vous devez utiliser une application telle que <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> pour ajouter le widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Conditions</string>
     <string name="setup_requirements_info_p1"><b>Les conditions</b> vous permettent de choisir quand afficher dans Smartspace une cible ou une complication. À l\'aide des conditions, vous pouvez créer des scénarios où des informations utiles seront affichées dans Smartspace.</string>
@@ -666,7 +666,7 @@
     <string name="expanded_settings_widgets_use_google_sans_title">Utiliser Google Sans dans les widgets</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Forcer les widgets à utiliser la police Google Sans dès que possible, cela pourrait causer des problèmes de mise en page avec certains widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Remplacer Google Discover</string>
-    <string name="expanded_settings_xposed_enabled_content">Remplacer le flux Google Discover par Smartspace étendu.\n<b>Remarque :</b> pour activer cette option, vous devez activer le module Xposed pour votre lanceur d\'applications ou pour votre plugin Google Feed, puis redémarrer votre appareil.</string>
+    <string name="expanded_settings_xposed_enabled_content">Remplacer le flux Google Discover par Smartspace étendu.\n<b>Remarque :</b> Pour activer cette option, vous devez activer le module Xposed pour votre lanceur d\'applications ou pour votre plugin Google Feed, puis redémarrer votre appareil.</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">Cette option requiert Xposed</string>
     <string name="expanded_settings_hide_add_button_title">Masquer le bouton +</string>
     <string name="expanded_settings_hide_add_button_content">Masquer le bouton pour ajouter des widgets personnalisés : %1s</string>
@@ -728,7 +728,7 @@
     <string name="expanded_custom_widget_options_round_corners_title">Forcer les coins arrondis</string>
     <string name="expanded_custom_widget_options_round_corners_content">Appliquer des coins arrondis à ce widget, bien qu\'il n\'ait pas été prévu pour</string>
     <string name="expanded_custom_widget_full_width_title">Remplir la largeur</string>
-    <string name="expanded_custom_widget_full_width_content">Force ce widget à occuper la largeur totale d\'une ligne dans Smartspace étendu, sans augmenter sa largeur.\n\n<b>Remarque :</b> sur les grands appareils avec plusieurs colonnes, le widget occupera la largeur d\'une seule colonne.</string>
+    <string name="expanded_custom_widget_full_width_content">Force ce widget à occuper la largeur totale d\'une ligne dans Smartspace étendu, sans augmenter sa largeur.\n\n<b>Remarque :</b> Sur les grands appareils avec plusieurs colonnes, le widget occupera la largeur d\'une seule colonne.</string>
     <string name="add_widget_empty_label">Aucun widget</string>
     <string name="battery_optimisation_title">Optimisation de la batterie</string>
     <string name="battery_optimisation_content">Options permettant de désactiver l\'optimisation de la batterie pour améliorer la fiabilité de Smartspacer</string>
@@ -947,7 +947,7 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Paramètres Aperçu</string>
     <string name="target_default_settings_more_content">Configurer d\'autres paramètres dans l\'application Google</string>
-    <string name="target_default_settings_hide_infobox"><b>Remarque :</b> certaines cibles peuvent être indisponibles sur votre appareil. Les choix effectués sur cet écran ne sont pas synchronisés avec votre compte Google, les cibles masquées resteront donc affichées sur vos autres appareils.</string>
+    <string name="target_default_settings_hide_infobox"><b>Remarque :</b> Certaines cibles peuvent être indisponibles sur votre appareil. Les choix effectués sur cet écran ne sont pas synchronisés avec votre compte Google, les cibles masquées resteront donc affichées sur vos autres appareils.</string>
     <string name="target_default_settings_hide_title">Masquer des cibles</string>
     <string name="target_default_settings_hide_doorbell">Sonnette</string>
     <string name="target_default_settings_hide_package">Livraison de colis</string>
