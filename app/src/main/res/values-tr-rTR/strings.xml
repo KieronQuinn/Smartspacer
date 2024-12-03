@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
-    <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
-    <string name="bottom_nav_complications">Complications</string>
-    <string name="bottom_nav_plugins">Plugins</string>
-    <string name="bottom_nav_settings">Settings</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
-    <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_button">Open App Info</string>
-    <string name="restricted_mode_warning_button">Grant Permission with Shizuku</string>
-    <string name="target_sensitive_title">Contents hidden</string>
+    <string name="xposed_desc"><b>Opsiyonel</b>: Google Discover\'in Expanded Smarspace ile değiştirilmesine izin vermek için başlatıcınızda veya başlatıcının Google Feed eklentisinde bu ayarı etkinleştirin. Ayrıca Smartspacer\'daki Expanded Smartspace ayarlarında da bu seçeneği etkinleştirmeniz gerekir.</string>
+    <string name="dummy_home_content">Bu ekran Smartspacer Eklentileri tarafından kullanılan kötü uygulanmış Widget\'larla çalışmak için vardır.\n\nSmartspacer bir başlatıcı olarak hareket edemez, lütfen farklı bir başlatıcı seçin.</string>
+    <string name="dummy_home_open_settings">Ayarları aç</string>
+    <string name="notification_service">Smartspace Bildirim Servisi</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="saving">Kaydediliyor…</string>
+    <string name="search">Ara</string>
+    <string name="delete">Sil</string>
+    <string name="save">Kaydet</string>
+    <string name="close">Kapat</string>
+    <string name="reset">Sıfırla</string>
+    <string name="menu_rerun_setup">Kurulumu yeniden başlat</string>
+    <string name="bottom_nav_targets">Hedefler</string>
+    <string name="bottom_nav_complications">Komplikasyonlar</string>
+    <string name="bottom_nav_plugins">Eklentiler</string>
+    <string name="bottom_nav_settings">Ayarlar</string>
+    <string name="toast_restricted_mode">Taşan menüsünde kısıtlı ayarlara izin ver</string>
+    <string name="restricted_mode_content_accessibility">Android 13\'ten beri Google, ayarlara bir güvenlik kontrolü ekleyerek yandan yüklenen uygulamaların varsayılan olarak Erişilebilirlik Hizmetlerini kullanmasına izin verilmesini engelliyor.\n\n<b>Erişilebilirlik hizmetini etkinleştirmeye çalışırken kısıtlanmış bir ayarla ilgili bir mesaj görürseniz, kısıtlanmış ayarlara izin veren Uygulama Bilgisi\'ni açmanız gerekir.</b></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Android 14'ten beri Google, Paket Yükleyici ile yandan yüklenmis uygulamaların Erişilebilirlik Servisini kullanmasini önlüyor.<br><br><b>Eğer kısıtlanmış ayarlarla ilgili bir mesaj görürseniz Smartspacer'i silip <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ya da <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> gibi bir oturum yükleyici-tabanlı uygulama ile tekrar yüklemelisiniz. Üstüne yükleme(yeniden yüklemesiz) yeterli DEĞİLDİR.<br><br></b>Alternatif olarak, Gelişmiş Mod açıkken Smartspacer bu gereksinimi atlayacaktır(Shizuku veya root ile yapılamaz).]]></string>
+    <string name="restricted_mode_content_notification">Android 13\'ten beri Google, ayarlara bir güvenlik kontrolü ekleyerek yandan yüklenen uygulamaların varsayılan olarak Bildirim Erişiminin kullanmasına izin verilmesini engelliyor.\n\n<b>Bildirim erişimini verdikten sonra kısitlanmış erişim ile ilgili bir mesaj görürseniz, Uygulama Bilgileri\'ni açıp kısıtlanmış ayarları etkinleştirmeniz gerekir.</b></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Android 14'ten beri Google, Paket Yükleyici ile yandan yüklenmis uygulamaların Bildirim Erişimini kullanmasini önlüyor.<br><br><b>Eğer kısıtlanmış ayarlarla ilgili bir mesaj görürseniz Smartspacer'i silip <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ya da <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> gibi bir oturum yükleyici-tabanlı uygulama ile tekrar yüklemelisiniz. Üstüne yükleme(yeniden yüklemesiz) yeterli DEĞİLDİR.<br><br></b>Alternatif olarak, Gelişmiş Mod açıkken Smartspacer bu gereksinimi atlayacaktır(Shizuku veya root ile yapılamaz).]]></string>
+    <string name="restricted_mode_button">Uygulama Bilgilerini Aç</string>
+    <string name="restricted_mode_warning_button">Shizuku ile izin ver</string>
+    <string name="target_sensitive_title">İçerikler gizli</string>
     <!-- Shared by widget, notification & expanded -->
-    <string name="tint_colour_automatic">Automatic (Wallpaper Based)</string>
-    <string name="tint_colour_automatic_alt">Automatic (Theme Based)</string>
-    <string name="tint_colour_automatic_content">Text and icons in the widget will automatically be tinted to be visible on the wallpaper</string>
-    <string name="tint_colour_automatic_content_alt">Text and icons in the notification will automatically be tinted to be visible based on your theme</string>
-    <string name="tint_colour_white">White</string>
-    <string name="tint_colour_white_content">Text and icons in the widget will always be white</string>
-    <string name="tint_colour_white_content_alt">Text and icons in the notification will always be white</string>
-    <string name="tint_colour_black">Black</string>
-    <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
-    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
-    <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
+    <string name="tint_colour_automatic">Otomatik (Arkaplan Tabanlı)</string>
+    <string name="tint_colour_automatic_alt">Otomatik (Tema Tabanlı)</string>
+    <string name="tint_colour_automatic_content">Widget\'taki metin ve simgeler duvar kağıdında görünecek şekilde otomatik olarak renklendirilir</string>
+    <string name="tint_colour_automatic_content_alt">Bildirimdeki metin ve simgeler temanıza göre otomatik olarak görünür olacak şekilde renklendirilecektir</string>
+    <string name="tint_colour_white">Beyaz</string>
+    <string name="tint_colour_white_content">Widget\'lardaki yazi ve ikonlar her zaman beyaz olacaktır</string>
+    <string name="tint_colour_white_content_alt">Bildirimlerdeki yazı ve ikonlar her zaman beyaz olacaktır</string>
+    <string name="tint_colour_black">Siyah</string>
+    <string name="tint_colour_black_content">Widget\'lardaki yazi ve ikonlar her zaman siyah olacaktır</string>
+    <string name="tint_colour_black_content_alt">Bildirimlerdeki yazı ve ikonlar her zaman siyah olacaktır</string>
+    <string name="widget_description_smartspacer">Smartspacer hedeflerinin &amp; komplikasyonlarını göster</string>
     <string name="widget_loading_smartspacer">Loading…</string>
     <string name="widget_loading_smartspacer_subtitle">Check the Smartspacer Accessibility Service is enabled if this message persists</string>
     <string name="widget_configuration_title">Smartspacer Widget</string>
