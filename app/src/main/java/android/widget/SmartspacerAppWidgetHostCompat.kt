@@ -421,7 +421,7 @@ open class SmartspacerAppWidgetHostCompat @JvmOverloads constructor(
         }
     }
 
-    fun getIntentSenderForConfigureActivity(appWidgetId: Int, intentFlags: Int = 0): IntentSender {
+    fun getIntentSenderForConfigureActivityCompat(appWidgetId: Int, intentFlags: Int = 0): IntentSender {
         return sService.createAppWidgetConfigIntentSender(
             BuildConfig.APPLICATION_ID, appWidgetId, intentFlags
         )

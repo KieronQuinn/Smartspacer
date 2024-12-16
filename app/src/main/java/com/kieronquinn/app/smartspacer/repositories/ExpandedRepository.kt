@@ -14,7 +14,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.os.Process
-import android.util.Log
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.google.gson.annotations.SerializedName
@@ -322,7 +321,7 @@ class ExpandedRepositoryImpl(
     }
 
     override fun createConfigIntentSender(appWidgetId: Int): IntentSender {
-        return appWidgetHost.getIntentSenderForConfigureActivity(appWidgetId, 0)
+        return appWidgetHost.getIntentSenderForConfigureActivityCompat(appWidgetId, 0)
     }
 
     override fun createHost(

@@ -109,7 +109,7 @@ interface AppWidgetHost {
     fun allocateAppWidgetId(): Int
     fun deleteAppWidgetId(appWidgetId: Int)
     fun startListening()
-    fun getIntentSenderForConfigureActivity(appWidgetId: Int, intentFlags: Int): IntentSender
+    fun getIntentSenderForConfigureActivityCompat(appWidgetId: Int, intentFlags: Int): IntentSender
 
 }
 

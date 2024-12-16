@@ -6,7 +6,7 @@ import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.content.IntentSender
 import android.widget.SmartspacerAppWidgetHost.ProxyAppWidgetHostListener
-import com.kieronquinn.app.smartspacer.utils.extensions.getIntentSenderForConfigureActivityCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.getIntentSenderForConfigureActivityCompatInternal
 
 /**
  *  AppWidgetHost which supports multiple of the same App Widget ID, by intercepting requests to
@@ -32,8 +32,8 @@ abstract class SmartspacerAppWidgetHost(context: Context, id: Int): AppWidgetHos
         proxyListeners[appWidgetId]?.removeProxyListener(view as AppWidgetHostListener)
     }
 
-    fun getIntentSenderForConfigureActivity(appWidgetId: Int, intentFlags: Int): IntentSender {
-        return getIntentSenderForConfigureActivityCompat(appWidgetId, intentFlags)
+    fun getIntentSenderForConfigureActivityCompat(appWidgetId: Int, intentFlags: Int): IntentSender {
+        return getIntentSenderForConfigureActivityCompatInternal(appWidgetId, intentFlags)
     }
 
     private class ProxyAppWidgetHostListener: AppWidgetHostListener {

@@ -10,7 +10,7 @@ import com.android.internal.appwidget.IAppWidgetService
 import com.kieronquinn.app.smartspacer.BuildConfig
 
 @SuppressLint("DiscouragedPrivateApi")
-fun AppWidgetHost.getIntentSenderForConfigureActivityCompat(
+fun AppWidgetHost.getIntentSenderForConfigureActivityCompatInternal(
     appWidgetId: Int, intentFlags: Int
 ): IntentSender {
     val sService = AppWidgetHost::class.java.getDeclaredField("sService").apply {
