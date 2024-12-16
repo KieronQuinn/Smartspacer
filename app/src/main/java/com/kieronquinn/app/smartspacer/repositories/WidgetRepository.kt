@@ -229,7 +229,7 @@ class WidgetRepositoryImpl(
     }
 
     override fun createConfigIntentSender(appWidgetId: Int): IntentSender {
-        return appWidgetHost.getIntentSenderForConfigureActivity(appWidgetId, 0)
+        return appWidgetHost.getIntentSenderForConfigureActivityCompat(appWidgetId, 0)
     }
 
     override fun clickAppWidgetIdView(appWidgetId: Int, identifier: String?, id: Int?) {

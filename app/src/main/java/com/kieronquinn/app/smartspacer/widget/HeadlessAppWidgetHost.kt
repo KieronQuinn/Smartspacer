@@ -6,7 +6,7 @@ import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.content.IntentSender
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView
-import com.kieronquinn.app.smartspacer.utils.extensions.getIntentSenderForConfigureActivityCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.getIntentSenderForConfigureActivityCompatInternal
 import com.kieronquinn.app.smartspacer.utils.extensions.removeListener
 
 class HeadlessAppWidgetHost(
@@ -27,8 +27,8 @@ class HeadlessAppWidgetHost(
         onProvidersChangedListener.onProvidersChanged()
     }
 
-    fun getIntentSenderForConfigureActivity(appWidgetId: Int, intentFlags: Int): IntentSender {
-        return getIntentSenderForConfigureActivityCompat(appWidgetId, intentFlags)
+    fun getIntentSenderForConfigureActivityCompat(appWidgetId: Int, intentFlags: Int): IntentSender {
+        return getIntentSenderForConfigureActivityCompatInternal(appWidgetId, intentFlags)
     }
 
     fun destroyView(appWidgetHostView: AppWidgetHostView) {
