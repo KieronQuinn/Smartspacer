@@ -49,7 +49,7 @@
     <string name="widget_configuration_behaviour_title">動作</string>
     <string name="widget_configuration_is_lock_screen_title">ロック画面ウィジェット</string>
     <string name="widget_configuration_is_lock_screen_content">このウィジェットがロック画面に追加される場合に<b>のみ</b>有効にします。\nこれによりウィジェットがロック画面に自動的に追加されることは<b>ありません</b>。追加するには、Google Play から「Lockscreen Widgets」などのアプリをダウンロードしてください。</string>
-    <string name="widget_configuration_is_lock_screen_content_disabled">Not available for this widget. Please note that Smartspacer does not enable widgets to be displayed on the lock screen, download an app from Google Play such as \"Lockscreen Widgets\" to do so.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">このウィジェットでは使用できません。Smartspacer ではウィジェットをロック画面に表示できないため、Google Play から「Lockscreen Widgets」などのアプリをダウンロードしてください。</string>
     <string name="widget_configuration_page_single_title">単一ページ</string>
     <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
     <string name="widget_configuration_customisation_title">カスタマイズ</string>
