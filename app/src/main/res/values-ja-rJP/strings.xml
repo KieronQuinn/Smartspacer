@@ -64,7 +64,7 @@
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">色</string>
     <string name="widget_configuration_shadow_title">テキストの影</string>
-    <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
+    <string name="widget_configuration_shadow_content">壁紙によって文字が読みにくい場合は、文字に影を付けて見やすくします</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">ターゲット</string>
     <string name="widget_configuration_mock_complication_title">コンプリケーション</string>
@@ -145,14 +145,14 @@
     <string name="notification_content_background_service">Smartspacerはバックグラウンドで実行中です。タップしてこの通知を非表示にします。</string>
     <string name="notification_background_service_subtitle">Smartspacerはバックグラウンドで実行中です</string>
     <string name="notification_channel_safe_mode_title">セーフモード</string>
-    <string name="notification_channel_safe_mode_subtitle">Notifications shown if Smartspacer enters Safe Mode</string>
-    <string name="notification_safe_mode_content">Smartspacer has entered Safe Mode due to %1s crashing. Tap for more info.</string>
+    <string name="notification_channel_safe_mode_subtitle">Smartspacerがセーフモードに入った場合に通知を表示します</string>
+    <string name="notification_safe_mode_content">%1s がクラッシュしたため、Smartspacerはセーフモードに入りました。詳細はタップしてください。</string>
     <string name="notification_channel_error_title">エラー</string>
-    <string name="notification_channel_error_content">Notifications shown if Smartspacer encounters an issue</string>
+    <string name="notification_channel_error_content">Smartspacerに問題が発生した場合、通知が表示されます</string>
     <string name="notification_channel_accessibility_title">ユーザー補助</string>
     <string name="notification_channel_accessibility_content">Smartspacerのアクセシビリティサービスに関するメッセージ</string>
     <string name="notification_channel_native_title">Native Smartspace</string>
-    <string name="notification_channel_native_content">Messages related to Smartspacer\'s Shizuku Service</string>
+    <string name="notification_channel_native_content">SmartspacerのShizukuサービスに関連するメッセージ</string>
     <string name="notification_channel_oem_title">OEM Smartspace</string>
     <string name="notification_channel_oem_content">Messages related to Smartspacer\'s OEM Smartspace Service</string>
     <string name="notification_channel_shizuku_reminder_title">Shizuku リマインダー</string>
