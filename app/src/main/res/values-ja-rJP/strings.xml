@@ -1003,7 +1003,7 @@
     <string name="target_flashlight_title_on">トーチ ON</string>
     <string name="target_flashlight_subtitle_on">タップで OFF にする</string>
     <string name="target_flashlight_title_off">トーチ OFF</string>
-    <string name="target_flashlight_subtitle_off">タップで ON にする</string>
+    <string name="target_flashlight_subtitle_off">ライト : ON</string>
     <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
     <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
