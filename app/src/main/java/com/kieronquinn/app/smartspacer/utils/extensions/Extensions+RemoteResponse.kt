@@ -54,3 +54,9 @@ fun SystemRemoteResponse.toRemoteResponse(): RemoteResponse {
         getElementNames() ?: ArrayList()
     )
 }
+
+@SuppressLint("BlockedPrivateApi")
+fun SystemRemoteResponse.setInteractionType(type: Int) = apply {
+    SystemRemoteResponse::class.java.getDeclaredMethod("setInteractionType", Integer.TYPE)
+        .apply { isAccessible = true }.invoke(this, type)
+}

@@ -288,7 +288,8 @@ abstract class BaseSmartspacerSession<T, I>(
                 surface,
                 doesHaveSplitSmartspace() && settings.useSplitSmartspace,
                 this is SystemSmartspacerSession,
-                settings.actionsFirst
+                settings.actionsFirst,
+                supportsRemoteViews()
             )
         }
     }
@@ -301,6 +302,8 @@ abstract class BaseSmartspacerSession<T, I>(
     open fun filterTargets(targets: Flow<List<TargetHolder>>): Flow<List<TargetHolder>> {
         return targets
     }
+
+    open suspend fun supportsRemoteViews() = false
 
     open fun applyActionOverrides(targets: Flow<List<TargetHolder>>): Flow<List<TargetHolder>> {
         return combine(

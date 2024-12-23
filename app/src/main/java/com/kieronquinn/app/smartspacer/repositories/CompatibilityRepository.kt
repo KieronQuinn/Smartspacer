@@ -102,6 +102,14 @@ interface CompatibilityRepository {
                 //Compatible apps must have at least one compatible Template or Feature available.
                 return any { it.compatibility.any { compatible -> compatible.compatible } }
             }
+
+            fun List<CompatibilityReport>.areRemoteViewsSupported(): Boolean {
+                //No compatible apps found
+                if(isEmpty()) return false
+                return any { it.compatibility.any { compatible ->
+                    compatible.compatible && compatible.item == Feature.REMOTE_VIEWS
+                }}
+            }
         }
 
     }
@@ -164,6 +172,11 @@ interface CompatibilityRepository {
             R.string.compatibility_feature_loyalty_title,
             R.string.compatibility_feature_loyalty_content,
             SmartspaceTarget.FEATURE_LOYALTY_CARD
+        ),
+        REMOTE_VIEWS(
+            "BcSmartspaceRemoteViewsCard",
+            R.string.compatibility_feature_remoteviews_title,
+            R.string.compatibility_feature_remoteviews_content
         ),
         SHOPPING_LIST(
             "BcSmartspaceCardShoppingList",

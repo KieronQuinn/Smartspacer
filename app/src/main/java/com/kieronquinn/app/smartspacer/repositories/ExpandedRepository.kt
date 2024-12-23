@@ -414,7 +414,11 @@ class ExpandedRepositoryImpl(
         }
         createWidgetPredictorSession(listener, getWidgetsForPredictor())
         awaitClose {
-            destroyWidgetPredictorSession()
+            try {
+                destroyWidgetPredictorSession()
+            }catch (e: IllegalStateException) {
+                //Already destroyed
+            }
         }
     }
 

@@ -7,13 +7,20 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.os.Process
 import android.os.UserHandle
+import android.widget.RemoteViews
 import androidx.annotation.RestrictTo
 import androidx.core.os.bundleOf
 import com.kieronquinn.app.smartspacer.sdk.annotations.LimitedNativeSupport
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_UNDEFINED
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_UPCOMING_ALARM
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState
-import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.*
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.CarouselTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.CombinedCardsTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.HeadToHeadTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubCardTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubImageTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubListTemplateData
 import com.kieronquinn.app.smartspacer.sdk.utils.getEnumList
 import com.kieronquinn.app.smartspacer.sdk.utils.getParcelableArrayListCompat
 import com.kieronquinn.app.smartspacer.sdk.utils.getParcelableCompat
@@ -115,6 +122,11 @@ data class SmartspaceTarget(
      *  [AppWidgetProviderInfo] if this target is a widget (not currently used)
      */
     var widget: AppWidgetProviderInfo? = null,
+    /**
+     *  [RemoteViews] if this Target has RemoteViews
+     */
+    @set:RestrictTo(RestrictTo.Scope.LIBRARY)
+    var remoteViews: RemoteViews? = null,
     /**
      *  [BaseTemplateData] for the layout and format on Android 13+ (ignored on 12/12L)
      */
@@ -218,6 +230,7 @@ data class SmartspaceTarget(
         private const val KEY_ASSOCIATED_SMARTSPACE_TARGET_ID = "associated_smartspace_target_id"
         private const val KEY_SLICE_URI = "slice_uri"
         private const val KEY_WIDGET = "widget"
+        private const val KEY_REMOTE_VIEWS = "remote_views"
         private const val KEY_TEMPLATE_DATA = "template_data"
         private const val KEY_TEMPLATE_DATA_TYPE = "template_data_type"
         private const val KEY_EXPANDED_STATE = "expanded_state"
@@ -312,6 +325,7 @@ data class SmartspaceTarget(
         associatedSmartspaceTargetId = bundle.getString(KEY_ASSOCIATED_SMARTSPACE_TARGET_ID),
         sliceUri = bundle.getParcelableCompat(KEY_SLICE_URI, Uri::class.java),
         widget = bundle.getParcelableCompat(KEY_WIDGET, AppWidgetProviderInfo::class.java),
+        remoteViews = bundle.getParcelableCompat(KEY_REMOTE_VIEWS, RemoteViews::class.java),
         templateData = bundle.getTemplateData(),
         expandedState = bundle.getBundle(KEY_EXPANDED_STATE)?.let { ExpandedState(it) },
         canBeDismissed = bundle.getBoolean(KEY_CAN_BE_DISMISSED),
@@ -338,6 +352,7 @@ data class SmartspaceTarget(
         target.associatedSmartspaceTargetId,
         target.sliceUri,
         target.widget,
+        target.remoteViews,
         target.templateData,
         target.expandedState,
         target.canBeDismissed,
@@ -422,6 +437,7 @@ data class SmartspaceTarget(
             KEY_ASSOCIATED_SMARTSPACE_TARGET_ID to associatedSmartspaceTargetId,
             KEY_SLICE_URI to sliceUri,
             KEY_WIDGET to widget,
+            KEY_REMOTE_VIEWS to remoteViews,
             KEY_EXPANDED_STATE to expandedState?.toBundle(),
             KEY_CAN_BE_DISMISSED to canBeDismissed,
             KEY_CAN_TAKE_TWO_COMPLICATIONS to canTakeTwoComplications,

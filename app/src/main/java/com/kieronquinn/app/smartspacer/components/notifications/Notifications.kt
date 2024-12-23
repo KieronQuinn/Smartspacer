@@ -21,6 +21,7 @@ fun Context.createNotification(
             channel.importance
         ).apply {
             description = getString(channel.descRes)
+            channel.options(this)
         }
     notificationManager.createNotificationChannel(notificationChannel)
     return NotificationCompat.Builder(this, channel.id).apply(builder).apply {
@@ -33,13 +34,15 @@ enum class NotificationChannel(
     val id: String,
     val importance: Int,
     val titleRes: Int,
-    val descRes: Int
+    val descRes: Int,
+    val options: AndroidNotificationChannel.() -> Unit = {}
 ) {
     BACKGROUND_SERVICE(
         "background_service",
         NotificationManager.IMPORTANCE_DEFAULT,
         R.string.notification_channel_background_service_title,
-        R.string.notification_channel_background_service_subtitle
+        R.string.notification_channel_background_service_subtitle,
+        options = { setShowBadge(false) }
     ),
     SAFE_MODE(
         "safe_mode",
@@ -93,7 +96,8 @@ enum class NotificationChannel(
         "widget_notification",
         NotificationManager.IMPORTANCE_MAX,
         R.string.notification_channel_widget_title,
-        R.string.notification_channel_widget_content
+        R.string.notification_channel_widget_content,
+        options = { setShowBadge(false) }
     );
 
     fun isEnabled(context: Context): Boolean {
@@ -137,5 +141,5 @@ enum class NotificationId {
     CLOCK_COMPLICATION,
     BLUETOOTH_REQUIRED,
     FLASHLIGHT,
-    WIDGET_LIST
+    CLOCK_TARGET
 }

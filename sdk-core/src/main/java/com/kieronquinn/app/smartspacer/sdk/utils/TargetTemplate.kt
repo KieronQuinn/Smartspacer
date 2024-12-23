@@ -990,6 +990,29 @@ sealed class TargetTemplate {
 
     }
 
+
+
+    /**
+     *  Fully customisable Target layout, supported on Smartspacer and Native Smartspace on
+     *  Android 15 QPR2 or Android 16+.
+     *
+     *  You must provide a fallback template, which will be shown when RemoteViews are not
+     *  supported. The Smartspacer ID from this fallback will be used all the time.
+     */
+    data class RemoteViews(
+        val remoteViews: android.widget.RemoteViews,
+        val fallback: TargetTemplate
+    ): TargetTemplate() {
+        override fun create(): SmartspaceTarget {
+            if(fallback is RemoteViews) {
+                throw IllegalArgumentException("Fallback cannot also be RemoteViews template")
+            }
+            return fallback.create().apply {
+                remoteViews = this@RemoteViews.remoteViews
+            }
+        }
+    }
+
     protected fun Icon.toBitmap(context: Context): Bitmap? {
         return icon.loadDrawable(context)?.toBitmap()
     }

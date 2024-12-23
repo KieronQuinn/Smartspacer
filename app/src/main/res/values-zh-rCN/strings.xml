@@ -710,7 +710,6 @@
     <string name="expanded_custom_widget_rearrange_title">拖拽以重排</string>
     <string name="expanded_widget_reset_title">重置</string>
     <string name="expanded_add_widget_title">添加小组件</string>
-    <string name="expanded_add_widget_widget_label">%1s（%1d x %1d）</string>
     <string name="expanded_add_widget_widgets_one">%1d 个小组件</string>
     <string name="expanded_add_widget_widgets_other">%1d 个小组件</string>
     <string name="expanded_add_widget_category_battery">Battery</string>

@@ -710,7 +710,6 @@
     <string name="expanded_custom_widget_rearrange_title">ドラッグで並べ替え</string>
     <string name="expanded_widget_reset_title">リセット</string>
     <string name="expanded_add_widget_title">ウィジェットを追加</string>
-    <string name="expanded_add_widget_widget_label">%1s (%1d x %1d)</string>
     <string name="expanded_add_widget_widgets_one">%1d 個のウィジェット</string>
     <string name="expanded_add_widget_widgets_other">%1d 個のウィジェット</string>
     <string name="expanded_add_widget_category_battery">バッテリー</string>

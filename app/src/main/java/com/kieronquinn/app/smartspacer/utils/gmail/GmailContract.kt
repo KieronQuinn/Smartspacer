@@ -79,11 +79,12 @@ object GmailContract {
                 PackageManager.GET_PROVIDERS or PackageManager.GET_PERMISSIONS
             )
             var allowRead = false
-            if (info.permissions != null) {
+            val permissions = info.permissions
+            if (permissions != null) {
                 var i = 0
-                val len = info.permissions.size
+                val len = permissions.size
                 while (i < len) {
-                    val perm = info.permissions[i]
+                    val perm = permissions[i]
                     if (PERMISSION == perm.name && perm.protectionLevel < PermissionInfo.PROTECTION_SIGNATURE) {
                         allowRead = true
                         break
@@ -91,11 +92,12 @@ object GmailContract {
                     i++
                 }
             }
-            if (allowRead && info.providers != null) {
+            val providers = info.providers
+            if (allowRead && providers != null) {
                 var i = 0
-                val len = info.providers.size
+                val len = providers.size
                 while (i < len) {
-                    val provider = info.providers[i]
+                    val provider = providers[i]
                     if (AUTHORITY == provider.authority &&
                         TextUtils.equals(PERMISSION, provider.readPermission)
                     ) {

@@ -499,15 +499,16 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         //Allow restricted settings automatically to help users who are using enhanced mode
         grantRestrictedSettings()
         //Hide the stop button in the Task Manager to prevent users from killing the service by mistake
-        hideStopButtonInTaskManager()
+        undoHideStopButtonInTaskManager()
     }
 
     override fun grantRestrictedSettings() {
         runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} ACCESS_RESTRICTED_SETTINGS allow")
     }
 
-    private fun hideStopButtonInTaskManager() {
-        runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} SYSTEM_EXEMPT_FROM_POWER_RESTRICTIONS allow")
+    private fun undoHideStopButtonInTaskManager() {
+        //Breaks battery optimisation toggle on some devices, undo earlier change if needed
+        runCommand("cmd appops set ${BuildConfig.APPLICATION_ID} SYSTEM_EXEMPT_FROM_POWER_RESTRICTIONS deny")
     }
 
     override fun enableBluetooth() {

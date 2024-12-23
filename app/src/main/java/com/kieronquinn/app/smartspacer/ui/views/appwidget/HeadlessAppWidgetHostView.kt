@@ -16,7 +16,7 @@ import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostV
 import com.kieronquinn.app.smartspacer.utils.extensions.createPackageContextOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.extractAdapterIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionItems
-import com.kieronquinn.app.smartspacer.utils.extensions.getActionsIncludingNested
+import com.kieronquinn.app.smartspacer.utils.extensions.getActionsIncludingSized
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteCollectionItemListAdapter
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteViewsAdapterIntent
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteViewsFactoryWrapper
@@ -162,14 +162,14 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
     }
 
     private fun RemoteViews.findRemoteViewsAdapters(): List<Pair<Int, Intent>> {
-        return getActionsIncludingNested().filter { it.isRemoteViewsAdapterIntent() }.map {
+        return getActionsIncludingSized().filter { it.isRemoteViewsAdapterIntent() }.map {
             it.extractAdapterIntent()
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun RemoteViews.findRemoteViewsCollectionListAdapters(): List<Pair<Int, RemoteCollectionItems>> {
-        return getActionsIncludingNested().filter {
+        return getActionsIncludingSized().filter {
             it.isRemoteCollectionItemListAdapter()
         }.mapNotNull {
             it.extractRemoteCollectionItems()

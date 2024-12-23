@@ -8,7 +8,7 @@ import java.io.IOException
 fun Bitmap.setTint(colour: Int): Bitmap {
     val paint = Paint()
     paint.colorFilter = PorterDuffColorFilter(colour, PorterDuff.Mode.SRC_IN)
-    val bitmap = Bitmap.createBitmap(width, height, config)
+    val bitmap = Bitmap.createBitmap(width, height, config ?: Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     canvas.drawBitmap(this, 0f, 0f, paint)
     return bitmap

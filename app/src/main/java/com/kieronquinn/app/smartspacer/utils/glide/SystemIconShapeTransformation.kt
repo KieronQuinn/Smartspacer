@@ -37,7 +37,7 @@ class SystemIconShapeTransformation: BitmapTransformation() {
             }
             it.transform(scaleMatrix)
             val bitmap = Bitmap.createBitmap(
-                toTransform.width, toTransform.height, toTransform.config
+                toTransform.width, toTransform.height, toTransform.config ?: Bitmap.Config.ARGB_8888
             )
             val canvas = Canvas(bitmap)
             canvas.clipPath(it)

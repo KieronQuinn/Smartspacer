@@ -106,6 +106,7 @@ class AlarmRepositoryImpl(
     private val context: Context,
     private val notificationRepository: NotificationRepository,
     private val calendarRepository: CalendarRepository,
+    private val batteryOptimisationRepository: BatteryOptimisationRepository,
     dataRepository: DataRepository,
     private val scope: CoroutineScope = MainScope()
 ): AlarmRepository {
@@ -303,24 +304,26 @@ class AlarmRepositoryImpl(
     }
 
     override fun enqueueDailyUpdateReceiver() {
-        if(!canScheduleExactAlarm()) {
-            showBatteryOptimisationNotification()
-            return
-        }else{
-            notificationRepository.cancelNotification(NotificationId.BATTERY_OPTIMISATION)
-        }
-        val intent = DailyUpdateAlarmReceiver.createIntent(context)
-        val time = LocalDate.now().atStartOfDay().plusDays(1).atZone(ZoneId.systemDefault())
-        alarmManager.setExactAndAllowWhileIdle(
-            AlarmManager.RTC,
-            time.toInstant().toEpochMilli(),
-            PendingIntent.getBroadcast(
-                context,
-                NotificationId.DAILY_UPDATE_ALARM.ordinal,
-                intent,
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        scope.launch {
+            if(!canScheduleExactAlarm()) {
+                showBatteryOptimisationNotification()
+                return@launch
+            }else{
+                notificationRepository.cancelNotification(NotificationId.BATTERY_OPTIMISATION)
+            }
+            val intent = DailyUpdateAlarmReceiver.createIntent(context)
+            val time = LocalDate.now().atStartOfDay().plusDays(1).atZone(ZoneId.systemDefault())
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC,
+                time.toInstant().toEpochMilli(),
+                PendingIntent.getBroadcast(
+                    context,
+                    NotificationId.DAILY_UPDATE_ALARM.ordinal,
+                    intent,
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                )
             )
-        )
+        }
     }
 
     override fun onRequirementChanged() {
@@ -378,7 +381,7 @@ class AlarmRepositoryImpl(
 
     override fun canScheduleExactAlarm(): Boolean {
         //Left open for if Google change their minds again and require it separate from battery
-        return powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
+        return batteryOptimisationRepository.areBatteryOptimisationsDisabled()
     }
 
     @VisibleForTesting

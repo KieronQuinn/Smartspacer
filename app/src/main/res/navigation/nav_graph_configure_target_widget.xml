@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_configure_target_widget"
+    app:startDestination="@id/widgetTargetConfigurationFragment">
+
+    <fragment
+        android:id="@+id/widgetTargetConfigurationFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.configuration.WidgetTargetConfigurationFragment"
+        android:label="@string/target_widget_title"/>
+</navigation>

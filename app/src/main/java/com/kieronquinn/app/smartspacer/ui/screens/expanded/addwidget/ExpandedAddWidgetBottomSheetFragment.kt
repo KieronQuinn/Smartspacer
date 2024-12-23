@@ -18,6 +18,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedBottomSheetAddWidgetBinding
 import com.kieronquinn.app.smartspacer.ui.base.BaseBottomSheetFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.AddState
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.Item
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.allowBackground
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
@@ -30,9 +31,10 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpandedBottomSheetAddWidgetBinding>(FragmentExpandedBottomSheetAddWidgetBinding::inflate) {
+open class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpandedBottomSheetAddWidgetBinding>(FragmentExpandedBottomSheetAddWidgetBinding::inflate) {
 
     private val viewModel by viewModel<ExpandedAddWidgetBottomSheetViewModel>()
+    open val titleRes: Int = R.string.expanded_add_widget_title
 
     private val widgetBindResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -53,12 +55,13 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
             binding.addWidgetRecyclerView,
             ::getAvailableWidth,
             viewModel::onExpandClicked,
-            viewModel::onWidgetClicked
+            ::onWidgetClicked
         )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.addWidgetTitle.setText(titleRes)
         setupMonet()
         setupInsets()
         setupRecyclerView()
@@ -132,6 +135,10 @@ class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<FragmentExpa
                 adapter.submitList(state.items)
             }
         }
+    }
+
+    open fun onWidgetClicked(item: Item.Widget, spanX: Int, spanY: Int) {
+        viewModel.onWidgetClicked(item, spanX, spanY)
     }
 
     private fun setupSearch() {

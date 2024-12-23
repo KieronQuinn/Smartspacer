@@ -166,8 +166,10 @@ fun PackageManager.resolveContentProvider(authority: String): ProviderInfo? {
 fun PackageManager.packageHasPermission(packageName: String, permission: String): Boolean {
     return try {
         val info = getPackageInfoCompat(packageName, PackageManager.GET_PERMISSIONS)
-        val permissions = info.requestedPermissions.zip(info.requestedPermissionsFlags.toTypedArray())
-        permissions.any { it.first == permission && it.second and REQUESTED_PERMISSION_GRANTED != 0 }
+        val flags = info.requestedPermissionsFlags?.toTypedArray() ?: return false
+        val permissions = info.requestedPermissions?.zip(flags)
+        permissions?.any { it.first == permission && it.second and REQUESTED_PERMISSION_GRANTED != 0 }
+            ?: return false
     }catch (e: NameNotFoundException){
         false
     }

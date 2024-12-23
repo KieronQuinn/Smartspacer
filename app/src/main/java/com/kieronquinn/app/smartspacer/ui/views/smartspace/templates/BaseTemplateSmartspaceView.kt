@@ -105,6 +105,9 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         remoteViews.setOnClickAction(
             context, R.id.smartspace_view_root, isList, template.primaryItem?.tapAction
         )
+        remoteViews.setOnClickAction(
+            context, R.id.smartspace_view_title, isList, template.primaryItem?.tapAction
+        )
         val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
         remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
         template.subtitleItem?.text?.let {
@@ -224,7 +227,7 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         isList: Boolean,
         action: TapAction?
     ) {
-        setOnClickAction(context, id, targetId, surface, action)
+        setOnClickAction(context, id, targetId, surface, action, isList)
     }
 
 }

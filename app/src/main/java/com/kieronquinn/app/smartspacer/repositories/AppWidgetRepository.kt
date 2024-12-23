@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Rect
+import android.os.Build
 import android.os.DeadSystemException
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -27,10 +28,12 @@ import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspa
 import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerSession
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
+import com.kieronquinn.app.smartspacer.receivers.WidgetListClickReceiver
 import com.kieronquinn.app.smartspacer.receivers.WidgetPageChangeReceiver
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTargetEvent
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
+import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
 import com.kieronquinn.app.smartspacer.service.SmartspacerListWidgetRemoteViewsService
 import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuActivity
@@ -41,6 +44,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FL
 import com.kieronquinn.app.smartspacer.utils.extensions.dip
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
 import com.kieronquinn.app.smartspacer.utils.extensions.launch
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
@@ -490,6 +494,21 @@ class AppWidgetRepositoryImpl(
         val remoteViews = listContainer(widget) {
             RemoteViews(packageName, R.layout.widget_smartspacer_list)
         }
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val pendingIntentCode = listOf(widget.appWidgetId, widget.ownerPackage).hashCode()
+            val pendingIntent = PendingIntent.getBroadcast(
+                context,
+                pendingIntentCode,
+                Intent(context, WidgetListClickReceiver::class.java).apply {
+                    applySecurity(context)
+                },
+                PendingIntent.FLAG_MUTABLE
+            )
+            remoteViews.setPendingIntentTemplate(
+                R.id.widget_list,
+                pendingIntent
+            )
+        }
         remoteViews.setRemoteAdapter(
             R.id.widget_list,
             SmartspacerListWidgetRemoteViewsService.createIntent(
@@ -577,6 +596,10 @@ class AppWidgetRepositoryImpl(
                     it.setViewPadding(R.id.smartspace_view_root, padding, 0, padding, 0)
                 }
             }
+        }
+        if(isList && isAtLeastBaklava()) {
+            //Orientation is no longer supported, might be an Android bug?
+            return portrait
         }
         val landscape = container {
             view.inflate(
