@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Paramètres</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -440,6 +440,8 @@
     <string name="compatibility_feature_loyalty_content">Permet d\'afficher un bouton en plus du titre et du sous-titre.</string>
     <string name="compatibility_feature_shopping_list_title">Liste</string>
     <string name="compatibility_feature_shopping_list_content">Permet d\'afficher une courte liste en plus du titre et du sous-titre</string>
+    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
+    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Sports</string>
     <string name="compatibility_feature_sports_content">Permet d\'afficher le score d\'un match à deux équipes en plus du titre et du sous-titre</string>
     <string name="compatibility_template_carousel_title">Carrousel</string>
@@ -452,7 +454,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -672,6 +674,7 @@
     <string name="expanded_settings_hide_add_button_content">Masquer le bouton pour ajouter des widgets personnalisés : %1s</string>
     <string name="expanded_settings_hide_add_button_never">Jamais</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Lorsque Google Discover est remplacé</string>
+    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Toujours</string>
     <string name="expanded_settings_enable_columns_title">Activer le mode multicolonne</string>
     <string name="expanded_settings_enable_columns_content">Sur les appareils dont la largeur est suffisante, afficher les cibles Smartspacer, le contenu additionnel et les widgets personnalisés dans plusieurs colonnes</string>
@@ -907,6 +910,10 @@
     <string name="complication_clock_label">Horloge</string>
     <string name="complication_clock_description">Affiche l\'heure actuelle.\n<b>Attention :</b> cette complication pourrait diminuer l\'autonomie de votre appareil.</string>
     <string name="complication_clock_description_short">Affiche l\'heure actuelle</string>
+    <!-- Clock Target -->
+    <string name="target_clock_label">Clock</string>
+    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
+    <string name="target_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Agenda</string>
     <string name="target_calendar_description">Affiche les événements provenant des agendas sélectionnés</string>
@@ -1007,6 +1014,38 @@
     <string name="target_flashlight_settings_show_recommendation_content">Proposer d\'activer la lampe de poche lorsque la luminosité ambiante est faible (peut diminuer l\'autonomie de votre appareil)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">Cette option est incompatible avec votre appareil</string>
     <string name="target_flashlight_toast">Accordez l\'autorisation Caméra</string>
+    <!-- Widget Target -->
+    <string name="target_widget_title">Widget</string>
+    <string name="target_widget_description"><b>Experimental:</b> Show a 4x1 widget</string>
+    <string name="target_widget_description_set">Shows %1s from %1s</string>
+    <string name="target_widget_not_supported_title">Widgets not Supported</string>
+    <string name="target_widget_not_supported_content">Widgets are not supported here</string>
+    <string name="target_widget_not_compatible_title">Widget not compatible</string>
+    <string name="target_widget_not_compatible_content">Sorry, this widget is not compatible</string>
+    <string name="target_widget_setup_title">Select Widget</string>
+    <string name="target_widget_settings_title">Settings</string>
+    <string name="target_widget_settings_description">Configure widget options</string>
+    <string name="target_widget_settings_limitations_content">Due to system limitations, there are some restrictions on widgets in Smartspace:</string>
+    <string name="target_widget_settings_limitations_bull1">Widgets are not supported in Native Smartspace on Android versions older than 16 or 15 QPR2</string>
+    <string name="target_widget_settings_limitations_bull2">Widgets will be sized to fit Smartspace - 4x1 widgets work best</string>
+    <string name="target_widget_settings_limitations_bull3">Widgets containing lists are not supported.</string>
+    <string name="target_widget_settings_limitations_bull4">Widgets will be displayed on the Always on Display if shown in Native Smartspace - which may cause burn in.</string>
+    <string name="target_widget_settings_limitations_bull5">Some interactivity may be limited or non-functional.</string>
+    <string name="target_widget_settings_limitations_bull6">When the device is locked, you may need to unlock manually to complete interactions with some widgets.</string>
+    <string name="target_widget_settings_limitations_bull7">Some widgets may not look right.</string>
+    <string name="target_widget_settings_limitations_bull8">Some widgets may not work at all and will show \"Couldn\'t add widget\", or nothing at all.</string>
+    <string name="target_widget_settings_limitations_footer"><b>These restrictions cannot be worked around, please do not report them as bugs.</b></string>
+    <string name="target_widget_settings_widget_title">Widget</string>
+    <string name="target_widget_settings_widget_content">%1s from %1s\n\nSelected widget cannot be changed after adding, remove this Target and re-add to change widget</string>
+    <string name="target_widget_settings_padding_title">Padding</string>
+    <string name="target_widget_settings_padding_content">The amount of padding above &amp; below the widget: %1s</string>
+    <string name="target_widget_settings_rounded_title">Round Corners</string>
+    <string name="target_widget_settings_rounded_content">Apply rounded corners to this widget. May not work with all widgets.</string>
+    <string name="target_widget_padding_none">Minimum</string>
+    <string name="target_widget_padding_small">Small</string>
+    <string name="target_widget_padding_medium">Medium</string>
+    <string name="target_widget_padding_large">Large</string>
+    <string name="target_widget_padding_disable">Disabled</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Non lus (Gmail)</string>
     <string name="complication_gmail_description">Affiche le nombre d\'e-mails non lus sur Gmail ayant les libellés sélectionnés</string>
