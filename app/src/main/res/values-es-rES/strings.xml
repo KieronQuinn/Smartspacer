@@ -440,6 +440,8 @@
     <string name="compatibility_feature_loyalty_content">Permite mostrar un botón, además un título y un subtítulo</string>
     <string name="compatibility_feature_shopping_list_title">Lista</string>
     <string name="compatibility_feature_shopping_list_content">Permite mostrar una lista corta además del título &amp; subtítulo</string>
+    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
+    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Deportes</string>
     <string name="compatibility_feature_sports_content">Permite mostrar la puntuación de dos equipos, además un título y un subtítulo</string>
     <string name="compatibility_template_carousel_title">Carrusel</string>
@@ -672,6 +674,7 @@
     <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Nunca</string>
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
+    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Siempre</string>
     <string name="expanded_settings_enable_columns_title">Activar multicolumna</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
@@ -907,6 +910,10 @@
     <string name="complication_clock_label">Reloj</string>
     <string name="complication_clock_description">Muestra la hora actual.\n<b>Advertencia:</b> Esta complicación puede causar alto consumo de batería.</string>
     <string name="complication_clock_description_short">Muestra la hora actual</string>
+    <!-- Clock Target -->
+    <string name="target_clock_label">Clock</string>
+    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
+    <string name="target_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendario</string>
     <string name="target_calendar_description">Muestra eventos de Calendario de calendarios seleccionados</string>
@@ -1007,6 +1014,38 @@
     <string name="target_flashlight_settings_show_recommendation_content">Sugiere activar la linterna cuando el nivel de luz sea bajo (puede usar más batería)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">Esta opción no es compatible con tu dispositivo</string>
     <string name="target_flashlight_toast">Permite el acceso a la cámara</string>
+    <!-- Widget Target -->
+    <string name="target_widget_title">Widget</string>
+    <string name="target_widget_description"><b>Experimental:</b> Show a 4x1 widget</string>
+    <string name="target_widget_description_set">Shows %1s from %1s</string>
+    <string name="target_widget_not_supported_title">Widgets not Supported</string>
+    <string name="target_widget_not_supported_content">Widgets are not supported here</string>
+    <string name="target_widget_not_compatible_title">Widget not compatible</string>
+    <string name="target_widget_not_compatible_content">Sorry, this widget is not compatible</string>
+    <string name="target_widget_setup_title">Select Widget</string>
+    <string name="target_widget_settings_title">Settings</string>
+    <string name="target_widget_settings_description">Configure widget options</string>
+    <string name="target_widget_settings_limitations_content">Due to system limitations, there are some restrictions on widgets in Smartspace:</string>
+    <string name="target_widget_settings_limitations_bull1">Widgets are not supported in Native Smartspace on Android versions older than 16 or 15 QPR2</string>
+    <string name="target_widget_settings_limitations_bull2">Widgets will be sized to fit Smartspace - 4x1 widgets work best</string>
+    <string name="target_widget_settings_limitations_bull3">Widgets containing lists are not supported.</string>
+    <string name="target_widget_settings_limitations_bull4">Widgets will be displayed on the Always on Display if shown in Native Smartspace - which may cause burn in.</string>
+    <string name="target_widget_settings_limitations_bull5">Some interactivity may be limited or non-functional.</string>
+    <string name="target_widget_settings_limitations_bull6">When the device is locked, you may need to unlock manually to complete interactions with some widgets.</string>
+    <string name="target_widget_settings_limitations_bull7">Some widgets may not look right.</string>
+    <string name="target_widget_settings_limitations_bull8">Some widgets may not work at all and will show \"Couldn\'t add widget\", or nothing at all.</string>
+    <string name="target_widget_settings_limitations_footer"><b>These restrictions cannot be worked around, please do not report them as bugs.</b></string>
+    <string name="target_widget_settings_widget_title">Widget</string>
+    <string name="target_widget_settings_widget_content">%1s from %1s\n\nSelected widget cannot be changed after adding, remove this Target and re-add to change widget</string>
+    <string name="target_widget_settings_padding_title">Padding</string>
+    <string name="target_widget_settings_padding_content">The amount of padding above &amp; below the widget: %1s</string>
+    <string name="target_widget_settings_rounded_title">Round Corners</string>
+    <string name="target_widget_settings_rounded_content">Apply rounded corners to this widget. May not work with all widgets.</string>
+    <string name="target_widget_padding_none">Minimum</string>
+    <string name="target_widget_padding_small">Small</string>
+    <string name="target_widget_padding_medium">Medium</string>
+    <string name="target_widget_padding_large">Large</string>
+    <string name="target_widget_padding_disable">Disabled</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
