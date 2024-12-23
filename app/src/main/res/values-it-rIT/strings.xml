@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Impostazioni</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle app che sono state installate tramite sideload di utilizzare i servizi d\'accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio d\'accessibilità, è necessario aprire Informazioni App per consentire le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di utilizzare i servizi d\'accessibilità.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'app basata su installer a sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di utilizzare i servizi d'accessibilità.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'app basata su installer a sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle app che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App per consentire le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'app basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'app basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -440,6 +440,8 @@
     <string name="compatibility_feature_loyalty_content">Consente di mostrare un pulsante oltre al titolo e sottotitolo.</string>
     <string name="compatibility_feature_shopping_list_title">Elenco</string>
     <string name="compatibility_feature_shopping_list_content">Consente di visualizzare un breve elenco oltre al titolo e sottotitolo</string>
+    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
+    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Sport</string>
     <string name="compatibility_feature_sports_content">Consente di visualizzare un punteggio per due squadre oltre al titolo e sottotitolo</string>
     <string name="compatibility_template_carousel_title">Carosello</string>
@@ -452,7 +454,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analitiche e Report dei Crash</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare la risoluzione di bug, Smartspacer può inviare crash report a Firebase Crashlytics, insieme ad altre informazioni analitiche di base (lanci dell\'app).<br>Questi dati sono tutti anonimi, e sono assolutamente facoltativi, maggiori dettagli e informativa sulla privacy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare la risoluzione di bug, Smartspacer può inviare crash report a Firebase Crashlytics, insieme ad altre informazioni analitiche di base (lanci dell'app).<br>Questi dati sono tutti anonimi, e sono assolutamente facoltativi, maggiori dettagli e informativa sulla privacy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
     <string name="setup_analytics_allow">Consenti</string>
     <string name="setup_analytics_deny">Nega</string>
     <!-- Setup > Notifications -->
@@ -495,7 +497,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Aggiungi widget</string>
     <string name="setup_add_widget_content">Aggiungi Smartspacer alla Schermata Home</string>
-    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un\'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Requisiti</string>
     <string name="setup_requirements_info_p1">I <b>Requisiti</b> consentono di personalizzare quando un Target o una Complicazione devono essere visualizzati in Smartspace. Con essi è possibile creare scenari in cui le informazioni utili vengono mostrate in Smartspace.</string>
@@ -672,6 +674,7 @@
     <string name="expanded_settings_hide_add_button_content">Nascondi il pulsante per aggiungere widget personalizzati: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Mai</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Quando si sostituisce Google Discover</string>
+    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Sempre</string>
     <string name="expanded_settings_enable_columns_title">Abilita Multi-Colonna</string>
     <string name="expanded_settings_enable_columns_content">Su dispositivi più larghi, visualizza i Target di Smartspacer, i contenuti extra e i widget personalizzati orizzontalmente oltre che verticalmente, se lo spazio è disponibile</string>
@@ -889,7 +892,7 @@
     <string name="about_contributors_icons">Icone</string>
     <string name="about_contributors_icons_content"><![CDATA[Icone provenienti da <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Licenza Apache 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Licenza Pictogrammers Free</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success di Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Licenza Lottie Simple</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parti dell\'SDK di Smartspacer contengono codice basato su Lawnchair, sotto la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Licenza Apache 2.0</a>]]></string>
+    <string name="about_contributors_sdk_content"><![CDATA[Parti dell'SDK di Smartspacer contengono codice basato su Lawnchair, sotto la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Licenza Apache 2.0</a>]]></string>
     <string name="about_translators">Traduttori</string>
     <!-- Wallpaper Colour Picker -->
     <string name="wallpaper_colour_picker_menu">Selettore del Colore di Sfondo</string>
@@ -907,6 +910,10 @@
     <string name="complication_clock_label">Orologio</string>
     <string name="complication_clock_description">Mostra il tempo corrente.\n<b>Attenzione:</b> Questa Complicazione potrebbe aumentare il consumo della batteria.</string>
     <string name="complication_clock_description_short">Mostra l\'ora corrente</string>
+    <!-- Clock Target -->
+    <string name="target_clock_label">Clock</string>
+    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
+    <string name="target_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendario</string>
     <string name="target_calendar_description">Mostra gli eventi di calendario dai calendari selezionati</string>
@@ -1007,6 +1014,38 @@
     <string name="target_flashlight_settings_show_recommendation_content">Propone di accendere la torcia se il livello di luce è basso (potrebbe usare più batteria)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">Questa opzione non è compatibile con il tuo dispositivo</string>
     <string name="target_flashlight_toast">Concedi il permesso Fotocamera</string>
+    <!-- Widget Target -->
+    <string name="target_widget_title">Widget</string>
+    <string name="target_widget_description"><b>Experimental:</b> Show a 4x1 widget</string>
+    <string name="target_widget_description_set">Shows %1s from %1s</string>
+    <string name="target_widget_not_supported_title">Widgets not Supported</string>
+    <string name="target_widget_not_supported_content">Widgets are not supported here</string>
+    <string name="target_widget_not_compatible_title">Widget not compatible</string>
+    <string name="target_widget_not_compatible_content">Sorry, this widget is not compatible</string>
+    <string name="target_widget_setup_title">Select Widget</string>
+    <string name="target_widget_settings_title">Settings</string>
+    <string name="target_widget_settings_description">Configure widget options</string>
+    <string name="target_widget_settings_limitations_content">Due to system limitations, there are some restrictions on widgets in Smartspace:</string>
+    <string name="target_widget_settings_limitations_bull1">Widgets are not supported in Native Smartspace on Android versions older than 16 or 15 QPR2</string>
+    <string name="target_widget_settings_limitations_bull2">Widgets will be sized to fit Smartspace - 4x1 widgets work best</string>
+    <string name="target_widget_settings_limitations_bull3">Widgets containing lists are not supported.</string>
+    <string name="target_widget_settings_limitations_bull4">Widgets will be displayed on the Always on Display if shown in Native Smartspace - which may cause burn in.</string>
+    <string name="target_widget_settings_limitations_bull5">Some interactivity may be limited or non-functional.</string>
+    <string name="target_widget_settings_limitations_bull6">When the device is locked, you may need to unlock manually to complete interactions with some widgets.</string>
+    <string name="target_widget_settings_limitations_bull7">Some widgets may not look right.</string>
+    <string name="target_widget_settings_limitations_bull8">Some widgets may not work at all and will show \"Couldn\'t add widget\", or nothing at all.</string>
+    <string name="target_widget_settings_limitations_footer"><b>These restrictions cannot be worked around, please do not report them as bugs.</b></string>
+    <string name="target_widget_settings_widget_title">Widget</string>
+    <string name="target_widget_settings_widget_content">%1s from %1s\n\nSelected widget cannot be changed after adding, remove this Target and re-add to change widget</string>
+    <string name="target_widget_settings_padding_title">Padding</string>
+    <string name="target_widget_settings_padding_content">The amount of padding above &amp; below the widget: %1s</string>
+    <string name="target_widget_settings_rounded_title">Round Corners</string>
+    <string name="target_widget_settings_rounded_content">Apply rounded corners to this widget. May not work with all widgets.</string>
+    <string name="target_widget_padding_none">Minimum</string>
+    <string name="target_widget_padding_small">Small</string>
+    <string name="target_widget_padding_medium">Medium</string>
+    <string name="target_widget_padding_large">Large</string>
+    <string name="target_widget_padding_disable">Disabled</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Gmail Non Lette</string>
     <string name="complication_gmail_description">Mostra il numero di mail delle etichette selezionate non lette su Gmail</string>
