@@ -12,6 +12,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getIgnoreBatteryOptimisa
 
 interface BatteryOptimisationRepository {
 
+    fun areBatteryOptimisationsDisabled(): Boolean
     fun getDisableBatteryOptimisationsIntent(): Intent?
     fun areOemOptimisationsAvailable(context: Context): Boolean
     fun startOemOptimisationSettings(context: Context)
@@ -25,7 +26,7 @@ class BatteryOptimisationRepositoryImpl(
     private val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
     private val autoStarter = AutoStartPermissionHelper.getInstance()
 
-    private fun areBatteryOptimisationsDisabled(): Boolean {
+    override fun areBatteryOptimisationsDisabled(): Boolean {
         return powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
     }
 

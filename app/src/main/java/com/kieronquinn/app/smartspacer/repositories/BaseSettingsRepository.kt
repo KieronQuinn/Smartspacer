@@ -20,12 +20,17 @@ import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.S
 import com.kieronquinn.app.smartspacer.utils.extensions.toColorOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.toHexString
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.coroutines.flow.onSubscription
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlin.properties.ReadWriteProperty
@@ -135,6 +140,18 @@ interface BaseSettingsRepository {
 }
 
 abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
+
+    private val scope = MainScope()
+
+    private val onPrefsChange = callbackFlow {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            trySend(key)
+        }
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+        awaitClose {
+            sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
+        }
+    }.shareIn(scope, SharingStarted.Eagerly)
 
     fun boolean(key: String, default: Boolean, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
@@ -392,31 +409,21 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
             }
         }
 
-        override fun asFlow() = callbackFlow {
-            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-                if(key == this@SmartspacerSettingImpl.key) {
-                    trySend(rawSetting ?: default)
-                }
-            }
-            sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
-            trySend(rawSetting ?: default)
-            awaitClose {
-                sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
-            }
-        }.flowOn(Dispatchers.IO)
+        override fun asFlow() = onPrefsChange
+            .onSubscription { emit(key) }
+            .mapNotNull {
+                if(it == key) {
+                    rawSetting ?: default
+                }else null
+            }.flowOn(Dispatchers.IO)
 
-        override fun asFlowNullable() = callbackFlow {
-            val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-                if(key == this@SmartspacerSettingImpl.key) {
-                    trySend(rawSetting)
-                }
+        override fun asFlowNullable() = onPrefsChange
+            .onSubscription { if(exists()) emit(key) }
+            .mapNotNull {
+                if(it == key) {
+                    rawSetting ?: default
+                }else null
             }
-            sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
-            if(existsSync()) trySend(rawSetting)
-            awaitClose {
-                sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
-            }
-        }.flowOn(Dispatchers.IO)
 
         override fun key(): String {
             return key

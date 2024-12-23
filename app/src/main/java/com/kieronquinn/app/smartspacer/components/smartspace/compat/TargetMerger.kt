@@ -75,7 +75,8 @@ abstract class TargetMerger {
         targets: List<TargetHolder>,
         actions: List<ActionHolder>,
         openMode: ExpandedOpenMode,
-        actionsFirst: Boolean
+        actionsFirst: Boolean,
+        supportsRemoteViews: Boolean
     ): List<SmartspacePageHolder> {
         val uniqueTargets = makeTargetsUnique(targets)
         val uniqueActions = makeActionsUnique(actions)
@@ -88,7 +89,8 @@ abstract class TargetMerger {
         return prefixedTargets + getSplitTargets(actionQueue) + uniqueTargets.mapNotNull {
             val pageActions = ArrayList<Action>()
             var target = it.target
-            val headerAction = if(target.canTakeHeaderAction(actionQueue.peek())){
+            val canTakeHeader = target.canTakeHeaderAction(actionQueue.peek(), supportsRemoteViews)
+            val headerAction = if(canTakeHeader){
                 actionQueue.pop()
             }else null
             if(headerAction != null){
@@ -100,7 +102,9 @@ abstract class TargetMerger {
                 target.templateData?.subtitleItem = headerAction.action.subItemInfo
                 pageActions.add(headerAction.parent)
             }
-            val baseAction = if(target.canTakeBaseAction(it.parent, actionQueue.peek())) {
+            val canTakeBase = target
+                .canTakeBaseAction(it.parent, actionQueue.peek(), supportsRemoteViews)
+            val baseAction = if(canTakeBase) {
                 actionQueue.pop()
             }else null
             if(baseAction != null) {
@@ -185,8 +189,12 @@ abstract class TargetMerger {
         }.flatten()
     }
 
-    private fun SmartspaceTarget.canTakeHeaderAction(holder: SmartspaceActionHolder?): Boolean {
+    private fun SmartspaceTarget.canTakeHeaderAction(
+        holder: SmartspaceActionHolder?,
+        supportsRemoteViews: Boolean
+    ): Boolean {
         if(holder == null) return false //End of list
+        if(supportsRemoteViews && remoteViews != null) return false //Never add with RemoteViews
         //Override specified by target
         if(canTakeTwoComplications && featureType == SmartspaceTarget.FEATURE_UNDEFINED) return true
         //Weather target
@@ -198,9 +206,11 @@ abstract class TargetMerger {
 
     private fun SmartspaceTarget.canTakeBaseAction(
         target: Target,
-        holder: SmartspaceActionHolder?
+        holder: SmartspaceActionHolder?,
+        supportsRemoteViews: Boolean
     ): Boolean {
         val action = holder?.action ?: return false //End of list
+        if(supportsRemoteViews && remoteViews != null) return false //Never add with RemoteViews
         if(target.config.disableSubComplications) return false //Disabled by user
         //Override specified by target
         if(canTakeTwoComplications && featureType == SmartspaceTarget.FEATURE_UNDEFINED) return true

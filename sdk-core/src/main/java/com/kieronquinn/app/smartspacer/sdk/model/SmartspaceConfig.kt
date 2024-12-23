@@ -31,7 +31,12 @@ data class SmartspaceConfig(
      *  - Request to get periodic updates
      *  - Request to support multiple clients for the same UISurface.
      */
-    val extras: Bundle? = null
+    val extras: Bundle? = null,
+    /**
+     *  The SDK version code, if this is using the Smartspacer SDK. SDK version 1 does not provide
+     *  this value, so the default value is `1`
+     */
+    val sdkVersion: Int = 1
 ): Parcelable {
 
     companion object {
@@ -39,6 +44,7 @@ data class SmartspaceConfig(
         private const val KEY_UI_SURFACE ="ui_surface"
         private const val KEY_PACKAGE_NAME = "package_name"
         private const val KEY_EXTRAS = "extras"
+        private const val KEY_SDK_VERSION = "sdk_version"
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -46,7 +52,8 @@ data class SmartspaceConfig(
         bundle.getInt(KEY_SMARTSPACE_TARGET_COUNT),
         UiSurface.from(bundle.getString(KEY_UI_SURFACE)!!),
         bundle.getString(KEY_PACKAGE_NAME)!!,
-        bundle.getBundle(KEY_EXTRAS)
+        bundle.getBundle(KEY_EXTRAS),
+        bundle.getInt(KEY_SDK_VERSION, 1)
     )
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -55,7 +62,8 @@ data class SmartspaceConfig(
             KEY_SMARTSPACE_TARGET_COUNT to smartspaceTargetCount,
             KEY_UI_SURFACE to uiSurface.surface,
             KEY_PACKAGE_NAME to packageName,
-            KEY_EXTRAS to extras
+            KEY_EXTRAS to extras,
+            KEY_SDK_VERSION to sdkVersion
         )
     }
 

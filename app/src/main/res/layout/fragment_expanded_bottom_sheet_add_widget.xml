@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipToPadding="false"
+    android:orientation="vertical"
     tools:background="@drawable/bottom_sheet_rounded_bg_dark"
     tools:layout_gravity="bottom">
 
@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/margin_16"
-        android:text="@string/expanded_add_widget_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large.Smartspacer"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/expanded_add_widget_title" />
 
     <include
         android:id="@+id/add_widget_search"
@@ -71,8 +71,8 @@
             android:id="@+id/add_widget_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
             android:clipChildren="false"
+            android:clipToPadding="false"
             android:paddingTop="32dp"
             android:paddingBottom="@dimen/margin_16"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

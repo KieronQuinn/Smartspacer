@@ -8,12 +8,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Build
+import android.widget.RemoteViews
 import androidx.annotation.RequiresApi
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.WidgetTarget
 import com.kieronquinn.app.smartspacer.model.smartspace.Widget
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.RemoteAdapter
 import com.kieronquinn.app.smartspacer.sdk.utils.getClickPendingIntent
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
+import com.kieronquinn.app.smartspacer.utils.extensions.getAllInstalledProviders
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceUriActionsWithProxy
@@ -61,6 +65,9 @@ interface WidgetRepository {
     fun loadAdapter(smartspacerId: String, appWidgetId: Int, identifier: String?, id: Int?)
     fun launchFillInIntent(pendingIntent: PendingIntent, fillInIntent: Intent)
 
+    fun setWidgetTargetWidget(smartspacerId: String, remoteViews: RemoteViews)
+    fun getWidgetTargetWidget(smartspacerId: String): RemoteViews?
+
 }
 
 class WidgetRepositoryImpl(
@@ -98,6 +105,7 @@ class WidgetRepositoryImpl(
     private val widgetContext = WidgetContextWrapper(context)
     private val displayPortraitWidth = context.getDisplayPortraitWidth()
     private val displayPortraitHeight = context.getDisplayPortraitHeight()
+    private val widgetTargetWidgets = HashMap<String, RemoteViews>()
 
     @VisibleForTesting
     val appWidgetHostPool = mutableListOf<HeadlessAppWidgetHostView>()
@@ -110,8 +118,12 @@ class WidgetRepositoryImpl(
     }
 
     override val providers = providersChanged.mapLatest {
-        appWidgetManager.installedProviders.filterIncompatible()
-    }.stateIn(scope, SharingStarted.Eagerly, appWidgetManager.installedProviders.filterIncompatible())
+        appWidgetManager.getAllInstalledProviders(context).filterIncompatible()
+    }.stateIn(
+        scope,
+        SharingStarted.Eagerly,
+        appWidgetManager.getAllInstalledProviders(context).filterIncompatible()
+    )
 
     override val widgets = combine(
         databaseWidgets,
@@ -335,6 +347,20 @@ class WidgetRepositoryImpl(
         context.startIntentSender(
             pendingIntent.intentSender, fillInIntent, 0, 0, 0
         )
+    }
+
+    override fun setWidgetTargetWidget(smartspacerId: String, remoteViews: RemoteViews) {
+        synchronized(widgetTargetWidgets) {
+            widgetTargetWidgets[smartspacerId] = remoteViews
+        }.also {
+            SmartspacerTargetProvider.notifyChange(context, WidgetTarget::class.java)
+        }
+    }
+
+    override fun getWidgetTargetWidget(smartspacerId: String): RemoteViews? {
+        return synchronized(widgetTargetWidgets) {
+            widgetTargetWidgets[smartspacerId]
+        }
     }
 
     private fun List<AppWidgetProviderInfo>.filterIncompatible(): List<AppWidgetProviderInfo> {

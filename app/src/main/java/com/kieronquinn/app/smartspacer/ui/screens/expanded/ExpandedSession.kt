@@ -3,7 +3,6 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded
 import android.content.Context
 import android.os.Process
 import android.provider.Settings
-import android.util.Log
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
@@ -148,11 +147,13 @@ class ExpandedSessionImpl(
 
     private val hideAddButton = combine(
         isOverlay.filterNotNull(),
-        settingsRepository.expandedHideAddButton.asFlow()
-    ) { overlay, hideAdd ->
+        settingsRepository.expandedHideAddButton.asFlow(),
+        isLocked
+    ) { overlay, hideAdd, locked ->
         when(hideAdd) {
             SmartspacerSettingsRepository.ExpandedHideAddButton.NEVER -> false
             SmartspacerSettingsRepository.ExpandedHideAddButton.ALWAYS -> true
+            SmartspacerSettingsRepository.ExpandedHideAddButton.WHEN_LOCKED -> locked
             SmartspacerSettingsRepository.ExpandedHideAddButton.OVERLAY_ONLY -> overlay
         }
     }

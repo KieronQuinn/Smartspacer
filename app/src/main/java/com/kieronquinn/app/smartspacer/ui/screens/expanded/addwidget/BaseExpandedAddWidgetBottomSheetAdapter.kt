@@ -2,6 +2,8 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget
 
 import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
+import android.os.Process
+import android.os.UserHandle
 import android.util.SizeF
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,6 +16,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.glide.Widget
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.PreviewAppWidgetHostView
 import com.kieronquinn.app.smartspacer.utils.extensions.getBestRemoteViews
+import com.kieronquinn.app.smartspacer.utils.extensions.getIdentifier
 import com.kieronquinn.app.smartspacer.utils.extensions.loadPreview
 
 interface BaseExpandedAddWidgetBottomSheetAdapter {
@@ -21,6 +24,7 @@ interface BaseExpandedAddWidgetBottomSheetAdapter {
     fun setupWidget(
         widgetContext: Context,
         glide: RequestManager,
+        profile: UserHandle,
         info: AppWidgetProviderInfo,
         spanX: Int,
         spanY: Int,
@@ -71,11 +75,15 @@ interface BaseExpandedAddWidgetBottomSheetAdapter {
                 .into(imageImageView)
                 .waitForLayout()
         }
+        val icon = if(profile != info.profile) {
+            " 💼"
+        }else ""
         nameTextView.text = root.context.getString(
             R.string.expanded_add_widget_widget_label,
             label,
             spanX,
-            spanY
+            spanY,
+            icon
         )
         descriptionTextView.text = description
         descriptionTextView.isVisible = description != null

@@ -5,18 +5,21 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.Icon
+import android.os.Build
 import android.view.View
 import android.widget.RemoteViews
 import androidx.annotation.IdRes
 import androidx.core.graphics.drawable.toBitmap
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.receivers.SmartspacerWidgetClickReceiver
+import com.kieronquinn.app.smartspacer.receivers.WidgetListClickReceiver
 import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.client.utils.getEnabledDrawableOrNull
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.features.BaseFeatureSmartspaceView
+import com.kieronquinn.app.smartspacer.ui.views.smartspace.remoteviews.RemoteViewsSmartspaceView
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.templates.BaseTemplateSmartspaceView
 import com.kieronquinn.app.smartspacer.utils.extensions.setImageViewImageTintListCompat
 import org.koin.core.component.KoinComponent
@@ -33,7 +36,9 @@ abstract class SmartspaceView(
             surface: UiSurface,
             forceBasic: Boolean
         ): SmartspaceView {
-            return target.templateData?.let { template ->
+            return target.remoteViews?.let {
+                RemoteViewsSmartspaceView(target, surface)
+            } ?: target.templateData?.let { template ->
                 BaseTemplateSmartspaceView.create(
                     target.smartspaceTargetId, target, template, surface, forceBasic
                 )
@@ -123,28 +128,34 @@ abstract class SmartspaceView(
         id: Int,
         targetId: String,
         surface: UiSurface,
-        action: TapAction?
+        action: TapAction?,
+        isList: Boolean
     ) {
         val intent = SmartspacerWidgetClickReceiver.createIntent(
             context, targetId, surface, tapAction = action
         )
-        setOnClickIntent(context, targetId, id, intent)
+        setOnClickIntent(context, targetId, id, intent, isList)
     }
 
     protected fun RemoteViews.setOnClickIntent(
         context: Context,
         targetId: String,
         id: Int,
-        intent: Intent
+        intent: Intent,
+        isList: Boolean
     ) {
-        val pendingIntentCode = listOf(targetId, id).hashCode()
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            pendingIntentCode,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        setOnClickPendingIntent(id, pendingIntent)
+        if(isList && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            setOnClickFillInIntent(id, WidgetListClickReceiver.getIntent(intent))
+        }else{
+            val pendingIntentCode = listOf(targetId, id).hashCode()
+            val pendingIntent = PendingIntent.getBroadcast(
+                context,
+                pendingIntentCode,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+            setOnClickPendingIntent(id, pendingIntent)
+        }
     }
 
     protected fun RemoteViews.setupOverflow(
@@ -171,7 +182,8 @@ abstract class SmartspaceView(
             R.id.widget_smartspacer_list_item_overflow,
             target.smartspaceTargetId,
             surface,
-            tapAction
+            tapAction,
+            true
         )
     }
 
@@ -204,7 +216,8 @@ abstract class SmartspaceView(
         FEATURE_UNDEFINED,
         FEATURE_WEATHER,
         FEATURE_COMMUTE_TIME,
-        FEATURE_DOORBELL
+        FEATURE_DOORBELL,
+        REMOTE_VIEWS
     }
 
 }

@@ -23,7 +23,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.widget.RemoteViewsCompat.setImageViewColorFilter
 import androidx.core.widget.RemoteViewsCompat.setImageViewImageTintList
 import com.kieronquinn.app.smartspacer.providers.SmartspacerWidgetProxyContentProvider.Companion.createSmartspacerWidgetProxyUri
+import com.kieronquinn.app.smartspacer.receivers.WidgetListClickReceiver
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
+import com.kieronquinn.app.smartspacer.sdk.model.RemoteOnClickResponse.RemoteResponse.Companion.INTERACTION_TYPE_CHECKED_CHANGE
+import com.kieronquinn.app.smartspacer.sdk.utils.copy
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import dev.rikka.tools.refine.Refine
 import java.lang.reflect.Field
@@ -31,22 +34,39 @@ import java.util.concurrent.CompletableFuture
 import kotlin.Pair
 import android.util.Pair as AndroidPair
 
-@Suppress("UNCHECKED_CAST")
 @SuppressLint("DiscouragedPrivateApi")
-private fun RemoteViews.getActions(): ArrayList<Any>? {
-    return RemoteViews::class.java.getDeclaredField("mActions").apply {
-        isAccessible = true
-    }.get(this) as? ArrayList<Any>
+private val mActions = RemoteViews::class.java.getDeclaredField("mActions").apply {
+    isAccessible = true
 }
 
 @Suppress("UNCHECKED_CAST")
+private var RemoteViews.actions: ArrayList<Any>?
+    get() = mActions.get(this) as? ArrayList<Any>
+    set(value) = mActions.set(this, value)
+
+@Suppress("UNCHECKED_CAST")
 @SuppressLint("DiscouragedPrivateApi")
-fun RemoteViews.getActionsIncludingNested(): List<Any> {
-    val myActions = getActions()?.toList() ?: emptyList()
+fun RemoteViews.getActionsIncludingSized(): List<Any> {
+    val myActions = actions?.toList() ?: emptyList()
     val sizedActions = getSizedRemoteViews().mapNotNull {
-        it.getActions()
+        it.actions
     }.flatten()
     return myActions + sizedActions
+}
+
+fun RemoteViews.getActionsIncludingNested(): List<Any> {
+    val actions = getActionsIncludingSized()
+    val actionsIncludingNested = ArrayList(actions)
+    actions.forEach {
+        when(it.javaClass.simpleName) {
+            "ViewGroupActionAdd" -> {
+                it.getViewGroupActionAddRemoteViews().getActionsIncludingNested().let { actions ->
+                    actionsIncludingNested.addAll(actions)
+                }
+            }
+        }
+    }
+    return actionsIncludingNested.distinct()
 }
 
 private val setRemoteViewsAdapterIntentClass by lazy {
@@ -145,7 +165,7 @@ var Any.reflectionActionValue: Any?
     set(value) = reflectionActionValueField.set(this, value)
 
 fun RemoteViews.removeActionsForId(id: Int) {
-    val actions = getActions() ?: return
+    val actions = actions ?: return
     actions.removeAll { it.getId() == id }
     getSizedRemoteViews().forEach {
         it.removeActionsForId(id)
@@ -156,7 +176,7 @@ fun RemoteViews.replaceUriActionsWithProxy(
     context: Context,
     pluginPackageName: String
 ): RemoteViews = apply {
-    val uriActions = getActionsIncludingNested().filter {
+    val uriActions = getActionsIncludingSized().filter {
         it::class.java == reflectionActionClass && it.reflectionActionValue is Uri
     }.map {
         Pair(it, it.reflectionActionValue as Uri)
@@ -291,3 +311,89 @@ private fun Class<*>.getDeclaredField(vararg options: String): Field {
         }
     } ?: throw lastException
 }
+
+/**
+ *  Replaces click actions with fill in proxy actions, running via [WidgetListClickReceiver]
+ */
+fun RemoteViews.replaceClickWithFillIntent(): RemoteViews {
+    //Not required on Android < 13 since we disable this requirement
+    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return this
+    actions = actions?.map {
+        when(it.javaClass.simpleName) {
+            "ViewGroupActionAdd" -> it.replaceClickWithFillIntent()
+            "SetOnClickResponse" -> it.convertOnClickResponse()
+            "SetOnCheckedChangeResponse" -> it.convertOnCheckedChangeResponse()
+            else -> it
+        }
+    } as ArrayList<Any>?
+    return this
+}
+
+@SuppressLint("PrivateApi", "SoonBlockedPrivateApi")
+private fun Any.replaceClickWithFillIntent() = apply {
+    val action = Class.forName("android.widget.RemoteViews\$ViewGroupActionAdd")
+    val mNestedViews = action.getDeclaredField("mNestedViews").apply {
+        isAccessible = true
+    }
+    val nestedViews = mNestedViews.get(this) as RemoteViews
+    mNestedViews.set(this, nestedViews.replaceClickWithFillIntent())
+}
+
+@SuppressLint("PrivateApi", "SoonBlockedPrivateApi")
+private fun Any.getViewGroupActionAddRemoteViews(): RemoteViews {
+    val action = Class.forName("android.widget.RemoteViews\$ViewGroupActionAdd")
+    val mNestedViews = action.getDeclaredField("mNestedViews").apply {
+        isAccessible = true
+    }
+    return mNestedViews.get(this) as RemoteViews
+}
+
+@SuppressLint("PrivateApi")
+private fun Any.convertOnClickResponse() = apply {
+    val action = Class.forName("android.widget.RemoteViews\$SetOnClickResponse")
+    val mResponse = action.getDeclaredField("mResponse").apply {
+        isAccessible = true
+    }
+    val remoteResponse = mResponse.get(this) as RemoteResponse
+    val newResponse = RemoteResponse
+        .fromFillInIntent(WidgetListClickReceiver.getIntent(remoteResponse))
+    mResponse.set(this, newResponse)
+}
+
+@SuppressLint("PrivateApi")
+private fun Any.convertOnCheckedChangeResponse() = apply {
+    val action = Class.forName("android.widget.RemoteViews\$SetOnCheckedChangeResponse")
+    val mResponse = action.getDeclaredField("mResponse").apply {
+        isAccessible = true
+    }
+    val remoteResponse = mResponse.get(this) as RemoteResponse
+    val newResponse = RemoteResponse
+        .fromFillInIntent(WidgetListClickReceiver.getIntent(remoteResponse))
+        .setInteractionType(INTERACTION_TYPE_CHECKED_CHANGE)
+    mResponse.set(this, newResponse)
+}
+
+private val INCOMPATIBLE_ACTIONS = setOf(
+    "SetRemoteCollectionItemListAdapterAction",
+    "SetRemoteViewsAdapterIntent"
+)
+
+fun RemoteViews.checkCompatibility(): Boolean {
+    return getActionsIncludingSized().none {
+        INCOMPATIBLE_ACTIONS.contains(it.javaClass.simpleName)
+    }
+}
+
+@SuppressLint("SoonBlockedPrivateApi")
+private val mIsRoot = RemoteViews::class.java.getDeclaredField("mIsRoot").apply {
+    isAccessible = true
+}
+
+fun RemoteViews.copyAsRoot(): RemoteViews {
+    isRoot = true
+    return copy()
+}
+
+private var RemoteViews.isRoot: Boolean
+    get() = mIsRoot.getBoolean(this)
+    set(value) = mIsRoot.setBoolean(this, value)

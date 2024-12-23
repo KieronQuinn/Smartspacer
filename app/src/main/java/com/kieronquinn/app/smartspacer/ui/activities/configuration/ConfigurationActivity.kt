@@ -87,6 +87,14 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.configuration.target.flashlight.FlashlightTargetConfigurationActivity",
             R.navigation.nav_graph_configure_target_flashlight
         ),
+        TARGET_WIDGET(
+            ".ui.activities.configuration.target.widget.WidgetTargetConfigurationActivity",
+            R.navigation.nav_graph_configure_target_widget
+        ),
+        TARGET_WIDGET_SETUP(
+            ".ui.activities.configuration.target.widget.WidgetTargetSetupActivity",
+            R.navigation.nav_graph_setup_target_widget
+        ),
         COMPLICATION_GMAIL(
             ".ui.activities.configuration.complication.GmailComplicationConfigurationActivity",
             R.navigation.nav_graph_configure_complication_gmail

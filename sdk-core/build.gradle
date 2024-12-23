@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdk'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 29
@@ -39,11 +39,11 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "androidx.core:core-ktx:1.15.0"
 }
 
 mavenPublishing {
-    coordinates("com.kieronquinn.smartspacer", "sdk-core", "1.0.5")
+    coordinates("com.kieronquinn.smartspacer", "sdk-core", "1.1.1")
 
     pom {
         name = "Smartspacer Core SDK"

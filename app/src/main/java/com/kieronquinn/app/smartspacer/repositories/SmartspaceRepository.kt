@@ -67,7 +67,8 @@ interface SmartspaceRepository {
         surface: UiSurface,
         doesHaveSplitSmartspace: Boolean,
         isNative: Boolean,
-        actionsFirst: Boolean
+        actionsFirst: Boolean,
+        supportsRemoteViews: Boolean
     ): List<SmartspacePageHolder>
 
     /**
@@ -413,7 +414,8 @@ class SmartspaceRepositoryImpl(
         surface: UiSurface,
         doesHaveSplitSmartspace: Boolean,
         isNative: Boolean,
-        actionsFirst: Boolean
+        actionsFirst: Boolean,
+        supportsRemoteViews: Boolean
     ): List<SmartspacePageHolder> {
         return when {
             doesHaveSplitSmartspace && surface == UiSurface.LOCKSCREEN -> {
@@ -421,7 +423,8 @@ class SmartspaceRepositoryImpl(
                     targets,
                     actions,
                     openMode,
-                    actionsFirst
+                    actionsFirst,
+                    supportsRemoteViews
                 )
             }
             else -> {
@@ -429,7 +432,8 @@ class SmartspaceRepositoryImpl(
                     targets,
                     actions,
                     openMode,
-                    actionsFirst
+                    actionsFirst,
+                    supportsRemoteViews
                 )
             }
         }

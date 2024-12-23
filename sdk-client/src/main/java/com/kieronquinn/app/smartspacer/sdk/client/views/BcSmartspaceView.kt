@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.appwidget.AppWidgetHostView
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -15,8 +16,10 @@ import android.view.View.MeasureSpec.makeMeasureSpec
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.allViews
 import androidx.viewpager.widget.ViewPager
 import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants.SMARTSPACER_PACKAGE_NAME
+import com.kieronquinn.app.smartspacer.sdk.client.BuildConfig
 import com.kieronquinn.app.smartspacer.sdk.client.R
 import com.kieronquinn.app.smartspacer.sdk.client.SmartspacerClient
 import com.kieronquinn.app.smartspacer.sdk.client.helper.SmartspacerHelper
@@ -47,7 +50,7 @@ open class BcSmartspaceView @JvmOverloads constructor(
     private val client = SmartspacerClient.getInstance(context)
 
     private val provider by lazy {
-        SmartspacerHelper(client, config)
+        SmartspacerHelper(client, config.copy(sdkVersion = BuildConfig.SDK_VERSION))
     }
 
     private lateinit var viewPager: ViewPager
@@ -214,7 +217,9 @@ open class BcSmartspaceView @JvmOverloads constructor(
     }
 
     private fun animateSmartspaceUpdate(oldCard: View) {
-        if (runningAnimation != null || oldCard.parent != null) return
+        if (runningAnimation != null || oldCard.parent != null ||
+            //Don't animate widget updates
+            oldCard.allViews.any { it is AppWidgetHostView }) return
 
         val animParent = viewPager.parent as ViewGroup
         oldCard.measure(makeMeasureSpec(viewPager.width, EXACTLY), makeMeasureSpec(viewPager.height, EXACTLY))

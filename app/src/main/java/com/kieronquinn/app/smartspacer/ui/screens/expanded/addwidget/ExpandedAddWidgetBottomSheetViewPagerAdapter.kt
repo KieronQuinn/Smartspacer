@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget
 
 import android.content.Context
+import android.os.Process
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class ExpandedAddWidgetBottomSheetViewPagerAdapter(
 
     private var onClickListener: ((widget: Item.Widget, spanX: Int, spanY: Int) -> Unit)? = null
     private val layoutInflater = LayoutInflater.from(context)
+    private val handle = Process.myUserHandle()
 
     override fun getItemCount(): Int = items.size
 
@@ -53,6 +55,7 @@ class ExpandedAddWidgetBottomSheetViewPagerAdapter(
         setupWidget(
             widgetContext,
             glide,
+            handle,
             item.info,
             spanX,
             spanY,

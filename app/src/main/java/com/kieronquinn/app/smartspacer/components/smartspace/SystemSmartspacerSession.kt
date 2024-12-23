@@ -5,6 +5,7 @@ import androidx.core.os.BuildCompat
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.areRemoteViewsSupported
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Feature
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Template
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
@@ -31,7 +32,7 @@ import android.app.smartspace.SmartspaceSessionId as SystemSmartspaceSessionId
 import android.app.smartspace.SmartspaceTarget as SystemSmartspaceTarget
 
 class SystemSmartspacerSession(
-    context: Context,
+    private val context: Context,
     config: SmartspaceConfig,
     override val sessionId: SystemSmartspaceSessionId,
     private val collectInto: suspend (SystemSmartspaceSessionId, List<SystemSmartspaceTarget>) -> Unit
@@ -73,7 +74,7 @@ class SystemSmartspacerSession(
         uiSurface: Flow<UiSurface>
     ): Flow<List<SystemSmartspaceTarget>> {
         return combine(pages, uiSurface) { p, s ->
-            p.map { it.page.toSystemSmartspaceTarget(s) }
+            p.map { it.page.toSystemSmartspaceTarget(context, s) }
         }.flowOn(Dispatchers.IO)
     }
 
@@ -137,6 +138,10 @@ class SystemSmartspacerSession(
 
     override fun doesHaveSplitSmartspace(): Boolean {
         return isAtLeastU()
+    }
+
+    override suspend fun supportsRemoteViews(): Boolean {
+        return compatibilityRepository.getCompatibilityReports().areRemoteViewsSupported()
     }
 
     /**

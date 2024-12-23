@@ -7,6 +7,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
 import android.provider.Settings
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
@@ -29,6 +30,7 @@ import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.broadcastReceiverAsFlow
 import com.kieronquinn.app.smartspacer.utils.extensions.getDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
+import com.kieronquinn.app.smartspacer.utils.extensions.observerAsFlow
 import com.kieronquinn.app.smartspacer.utils.extensions.startForeground
 import com.kieronquinn.app.smartspacer.utils.extensions.toSmartspaceConfig
 import com.kieronquinn.app.smartspacer.utils.extensions.toSystemSmartspaceTargetEvent
@@ -425,8 +427,12 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                 System.currentTimeMillis()
             }.stateIn(lifecycleScope, SharingStarted.Eagerly, System.currentTimeMillis())
         }
+        val materialTheme = contentResolver.observerAsFlow(
+            Settings.Secure.getUriFor("theme_customization_overlay_packages")
+        )
         combine(
             broadcasts,
+            materialTheme,
             getDarkMode(lifecycleScope)
         ) { _ ->
             sessions.forEach { it.value.forceReload() }

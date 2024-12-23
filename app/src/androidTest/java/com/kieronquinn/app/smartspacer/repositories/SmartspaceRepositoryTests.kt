@@ -175,7 +175,7 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             contextMock,
             shizukuServiceRepositoryMock,
             systemSmartspaceRepositoryMock,
-            targetsRepositoryMock,
+            mock(),
             scope,
             Dispatchers.Main
         )
@@ -274,7 +274,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             UiSurface.HOMESCREEN,
             doesHaveSplitSmartspace = false,
             isNative = false,
-            actionsFirst = false
+            actionsFirst = false,
+            supportsRemoteViews = false
         )
         val mockHomeTargets = listOfNotNull(targetOne.targets, targetTwo.targets).flatten()
         val mockHomeActions = listOfNotNull(actionOne.actions, actionTwo.actions).flatten()
@@ -295,7 +296,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             UiSurface.LOCKSCREEN,
             doesHaveSplitSmartspace = false,
             isNative = false,
-            actionsFirst = false
+            actionsFirst = false,
+            supportsRemoteViews = false
         )
         val mockLockTargets = listOfNotNull(targetOne.targets).flatten()
         val mockLockActions = listOfNotNull(actionOne.actions).flatten()
@@ -316,7 +318,8 @@ class SmartspaceRepositoryTests: BaseTest<SmartspaceRepository>() {
             UiSurface.LOCKSCREEN,
             doesHaveSplitSmartspace = true,
             isNative = false,
-            actionsFirst = false
+            actionsFirst = false,
+            supportsRemoteViews = false
         )
         val splitFirstPage = split.subList(0, 1)
         val splitRemainder = split.subList(1, split.size)

@@ -282,6 +282,19 @@
             android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
 
         <activity-alias
+            android:name=".ui.activities.configuration.target.widget.WidgetTargetConfigurationActivity"
+            android:description="@string/target_widget_settings_description"
+            android:exported="true"
+            android:icon="@drawable/ic_settings"
+            android:label="@string/target_widget_settings_title"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
+            android:name=".ui.activities.configuration.target.widget.WidgetTargetSetupActivity"
+            android:exported="true"
+            android:targetActivity=".ui.activities.configuration.ConfigurationActivity" />
+
+        <activity-alias
             android:name=".ui.activities.configuration.complication.GmailComplicationConfigurationActivity"
             android:description="@string/complication_gmail_settings_description"
             android:exported="true"
@@ -576,6 +589,24 @@
             </intent-filter>
         </provider>
 
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.TimeTarget"
+            android:authorities="${applicationId}.target.clock"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
+        <provider
+            android:name="com.kieronquinn.app.smartspacer.components.smartspace.targets.WidgetTarget"
+            android:authorities="${applicationId}.target.widget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET" />
+            </intent-filter>
+        </provider>
+
         <!-- Built in complications -->
         <provider
             android:name="com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication"
@@ -687,6 +718,11 @@
         <provider
             android:name=".components.smartspace.widgets.GoogleWeatherForecastWidget"
             android:authorities="${applicationId}.widget.googleweatherforecast"
+            android:exported="false" />
+
+        <provider
+            android:name=".components.smartspace.widgets.WidgetWidget"
+            android:authorities="${applicationId}.widget.widget"
             android:exported="false" />
 
         <!-- Built in requirements -->
@@ -854,6 +890,7 @@
         </receiver>
 
         <receiver android:name=".receivers.WidgetPageChangeReceiver"/>
+        <receiver android:name=".receivers.WidgetListClickReceiver"/>
 
         <activity
             android:name=".ui.activities.safemode.SafeModeActivity"

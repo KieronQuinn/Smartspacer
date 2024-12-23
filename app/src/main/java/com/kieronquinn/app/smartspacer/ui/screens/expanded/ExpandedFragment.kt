@@ -580,7 +580,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         id: String?,
         config: CustomExpandedAppWidgetConfig?
     ) {
-        if(isOverlay){
+        if(isOverlay || isMinusOne){
             launchOverlayAction(OpenFromOverlayAction.ConfigureWidget(info, id, config, getScroll()))
         }else{
             unlockAndInvoke {
@@ -596,7 +596,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     }
 
     override fun onAddWidgetClicked() {
-        if(isOverlay){
+        if(isOverlay || isMinusOne){
             launchOverlayAction(OpenFromOverlayAction.AddWidget(getScroll()))
         }else{
             unlockAndInvoke {

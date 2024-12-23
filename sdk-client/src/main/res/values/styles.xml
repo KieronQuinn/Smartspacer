@@ -53,5 +53,13 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+
+    <style name="RemoteViews.Light" parent="@android:style/Theme.DeviceDefault.Light"/>
+    <style name="RemoteViews.Dark" parent="@android:style/Theme.DeviceDefault"/>
+
+    <style name="WidgetRoot">
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
     
 </resources>

@@ -200,9 +200,14 @@ class SmartspacerClient(context: Context) {
                     service = null
                 }
             }
-            val success = applicationContext.bindService(
-                getServiceIntent(), serviceConnection, Context.BIND_AUTO_CREATE
-            )
+            val success = try {
+                applicationContext.bindService(
+                    getServiceIntent(), serviceConnection, Context.BIND_AUTO_CREATE
+                )
+            }catch (e: IllegalStateException) {
+                //Rare case where Android thinks there's too many bind requests, despite locking
+                false
+            }
             if(!success){
                 hasResumed = true
                 it.resume(null)

@@ -20,6 +20,14 @@ public class RemoteViewsHidden extends RemoteViews {
         super(landscape, portrait);
     }
 
+    public RemoteViewsHidden(RemoteViews source) {
+        super(source);
+    }
+
+    public RemoteViewsHidden(String packageName, int layout) {
+        super(packageName, layout);
+    }
+
     /**
      * Handler for view interactions (such as clicks) within a RemoteViews.
      */
@@ -71,6 +79,10 @@ public class RemoteViewsHidden extends RemoteViews {
     }
 
     public void addFlags(int flags) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean hasFlags(int flag) {
         throw new RuntimeException("Stub!");
     }
 

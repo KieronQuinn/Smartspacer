@@ -4,8 +4,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.TimeComplication
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.TimeTarget
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerBroadcastProvider
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerComplicationProvider
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 
 class TimeChangedBroadcast: SmartspacerBroadcastProvider() {
 
@@ -22,6 +24,7 @@ class TimeChangedBroadcast: SmartspacerBroadcastProvider() {
 
     override fun onReceive(intent: Intent) {
         SmartspacerComplicationProvider.notifyChange(provideContext(), TimeComplication::class.java)
+        SmartspacerTargetProvider.notifyChange(provideContext(), TimeTarget::class.java)
     }
 
     override fun getConfig(smartspacerId: String): Config {

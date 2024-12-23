@@ -12,6 +12,7 @@ import com.kieronquinn.app.smartspacer.sdk.client.views.features.SmartspacerComm
 import com.kieronquinn.app.smartspacer.sdk.client.views.features.SmartspacerDoorbellFeaturePageView
 import com.kieronquinn.app.smartspacer.sdk.client.views.features.SmartspacerUndefinedFeaturePageView
 import com.kieronquinn.app.smartspacer.sdk.client.views.features.SmartspacerWeatherFeaturePageView
+import com.kieronquinn.app.smartspacer.sdk.client.views.remoteviews.SmartspacerRemoteViewsPageView
 import com.kieronquinn.app.smartspacer.sdk.client.views.templates.SmartspacerBasicTemplatePageView
 import com.kieronquinn.app.smartspacer.sdk.client.views.templates.SmartspacerCardImagesPageView
 import com.kieronquinn.app.smartspacer.sdk.client.views.templates.SmartspacerCardTemplatePageView
@@ -143,33 +144,40 @@ open class SmartspacerView: FrameLayout {
         applyShadowIfRequired: Boolean
     ): SmartspacerBasePageView<*>? {
         return try {
-            val clazz = if(target.templateData != null){
-                when(target.templateData){
-                    is CarouselTemplateData -> SmartspacerCarouselTemplatePageView::class.java
-                    is HeadToHeadTemplateData -> SmartspacerHeadToHeadTemplatePageView::class.java
-                    is SubCardTemplateData -> SmartspacerCardTemplatePageView::class.java
-                    is SubListTemplateData -> SmartspacerListTemplatePageView::class.java
-                    is SubImageTemplateData -> SmartspacerCardImagesPageView::class.java
-                    else -> {
-                        if(target.featureType == FEATURE_WEATHER){
-                            SmartspacerWeatherTemplatePageView::class.java
-                        }else {
-                            SmartspacerBasicTemplatePageView::class.java
+            val clazz = when {
+                target.remoteViews != null -> SmartspacerRemoteViewsPageView::class.java
+                target.templateData != null -> {
+                    when(target.templateData){
+                        is CarouselTemplateData -> SmartspacerCarouselTemplatePageView::class.java
+                        is HeadToHeadTemplateData -> SmartspacerHeadToHeadTemplatePageView::class.java
+                        is SubCardTemplateData -> SmartspacerCardTemplatePageView::class.java
+                        is SubListTemplateData -> SmartspacerListTemplatePageView::class.java
+                        is SubImageTemplateData -> SmartspacerCardImagesPageView::class.java
+                        else -> {
+                            if(target.featureType == FEATURE_WEATHER){
+                                SmartspacerWeatherTemplatePageView::class.java
+                            }else {
+                                SmartspacerBasicTemplatePageView::class.java
+                            }
                         }
                     }
                 }
-            }else{
-                when{
-                    FEATURE_ALLOWLIST_DOORBELL.contains(target.featureType) -> {
-                        SmartspacerDoorbellFeaturePageView::class.java
+                else -> {
+                    when{
+                        FEATURE_ALLOWLIST_DOORBELL.contains(target.featureType) -> {
+                            SmartspacerDoorbellFeaturePageView::class.java
+                        }
+
+                        FEATURE_ALLOWLIST_IMAGE.contains(target.featureType) -> {
+                            SmartspacerCommuteTimeFeaturePageView::class.java
+                        }
+
+                        target.featureType == FEATURE_WEATHER -> {
+                            SmartspacerWeatherFeaturePageView::class.java
+                        }
+
+                        else -> SmartspacerUndefinedFeaturePageView::class.java
                     }
-                    FEATURE_ALLOWLIST_IMAGE.contains(target.featureType) -> {
-                        SmartspacerCommuteTimeFeaturePageView::class.java
-                    }
-                    target.featureType == FEATURE_WEATHER -> {
-                        SmartspacerWeatherFeaturePageView::class.java
-                    }
-                    else -> SmartspacerUndefinedFeaturePageView::class.java
                 }
             }
             SmartspacerBasePageView.createInstance(

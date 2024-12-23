@@ -64,6 +64,7 @@ class AlarmRepositoryTests: BaseTest<AlarmRepository>() {
             contextMock,
             notificationRepositoryMock,
             mock(),
+            mock(),
             dataRepositoryMock,
             scope
         )

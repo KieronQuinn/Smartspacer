@@ -13,4 +13,8 @@ class NotificationSmartspacerSession(
 
     override val includeBasic = true
 
+    override suspend fun supportsRemoteViews(): Boolean {
+        return true
+    }
+
 }

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdksample'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.kieronquinn.app.smartspacer.sdksample"
@@ -34,10 +34,10 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation "androidx.fragment:fragment-ktx:1.8.2"
-    implementation "androidx.lifecycle:lifecycle-service:2.8.4"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+    implementation "androidx.fragment:fragment-ktx:1.8.5"
+    implementation "androidx.lifecycle:lifecycle-service:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
     implementation project(path: ':sdk-plugin')
     implementation project(path: ':sdk-client')
 }

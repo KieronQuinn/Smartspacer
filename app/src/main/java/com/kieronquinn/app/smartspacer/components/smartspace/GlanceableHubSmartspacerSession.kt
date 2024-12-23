@@ -24,7 +24,7 @@ import android.app.smartspace.SmartspaceTarget as SystemSmartspaceTarget
  *  config.
  */
 class GlanceableHubSmartspacerSession(
-    context: Context,
+    private val context: Context,
     config: SmartspaceConfig,
     override val sessionId: SystemSmartspaceSessionId,
     private val collectInto: suspend (SystemSmartspaceSessionId, List<SystemSmartspaceTarget>) -> Unit
@@ -43,7 +43,7 @@ class GlanceableHubSmartspacerSession(
         uiSurface: Flow<UiSurface>
     ): Flow<List<SystemSmartspaceTarget>> {
         return combine(pages, uiSurface) { p, s ->
-            p.map { it.page.toSystemSmartspaceTarget(s) }
+            p.map { it.page.toSystemSmartspaceTarget(context, s) }
         }.flowOn(Dispatchers.IO)
     }
 
@@ -66,7 +66,9 @@ class GlanceableHubSmartspacerSession(
         systemSmartspaceRepository.mediaTargets.collect {
             collectInto.invoke(
                 sessionId,
-                it.map { target -> target.toSystemSmartspaceTarget(UiSurface.GLANCEABLE_HUB) }
+                it.map { target ->
+                    target.toSystemSmartspaceTarget(context, UiSurface.GLANCEABLE_HUB)
+                }
             )
         }
     }

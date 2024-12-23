@@ -3,13 +3,16 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 import android.annotation.SuppressLint
 import android.appwidget.AppWidgetProviderInfo
 import android.appwidget.AppWidgetProviderInfoHidden
+import android.content.ComponentName
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.Build
 import android.widget.RemoteViews
 import androidx.annotation.StringRes
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import dev.rikka.tools.refine.Refine
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.floor
@@ -178,4 +181,20 @@ private fun getSpan(minSize: Int, spanSize: Int): Int {
         }
     }
     return 1
+}
+
+fun Context.createFakeWidgetProviderInfo(): AppWidgetProviderInfo {
+    val activityInfo = packageManager.getActivityInfo(
+        ComponentName(this, MainActivity::class.java)
+    )
+    return AppWidgetProviderInfo().apply {
+        //Used to load widget description, has to be a real activity info
+        providerInfo = activityInfo
+    }
+}
+
+class FakeActivityInfo: ActivityInfo() {
+    override fun loadLabel(pm: PackageManager): CharSequence {
+        return ""
+    }
 }

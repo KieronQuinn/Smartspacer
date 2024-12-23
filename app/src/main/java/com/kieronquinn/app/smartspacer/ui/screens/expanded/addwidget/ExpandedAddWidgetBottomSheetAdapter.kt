@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget
 
+import android.os.Process
 import android.view.LayoutInflater
 import android.view.View.OnClickListener
 import android.view.ViewGroup
@@ -73,6 +74,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
 
     private val context = recyclerView.context
     private val widgetContext = ContextThemeWrapper(recyclerView.context.applicationContext, theme)
+    private val handle = Process.myUserHandle()
 
     private val layoutInflater = LayoutInflater.from(context)
     private val glide = Glide.with(recyclerView.context)
@@ -185,6 +187,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
         setupWidget(
             widgetContext,
             glide,
+            handle,
             item.info,
             spanX,
             spanY,

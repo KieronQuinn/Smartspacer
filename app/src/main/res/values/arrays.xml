@@ -44,4 +44,14 @@
     <array name="snapshot_recommendations">
         <item>com.google.android.apps.pixel.familyspace/com.google.android.apps.pixel.familyspace.widget.FamilySpaceWidgetProvider</item>
     </array>
+    <string-array name="target_widget_settings_limitations">
+        <item>@string/target_widget_settings_limitations_bull1</item>
+        <item>@string/target_widget_settings_limitations_bull2</item>
+        <item>@string/target_widget_settings_limitations_bull3</item>
+        <item>@string/target_widget_settings_limitations_bull4</item>
+        <item>@string/target_widget_settings_limitations_bull5</item>
+        <item>@string/target_widget_settings_limitations_bull6</item>
+        <item>@string/target_widget_settings_limitations_bull7</item>
+        <item>@string/target_widget_settings_limitations_bull8</item>
+    </string-array>
 </resources>

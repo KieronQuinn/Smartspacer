@@ -336,6 +336,7 @@ interface SmartspacerSettingsRepository {
     enum class ExpandedHideAddButton(@StringRes val label: Int) {
         NEVER(R.string.expanded_settings_hide_add_button_never),
         OVERLAY_ONLY(R.string.expanded_settings_hide_add_button_overlay_only),
+        WHEN_LOCKED(R.string.expanded_settings_hide_add_button_when_locked),
         ALWAYS(R.string.expanded_settings_hide_add_button_always),
     }
 

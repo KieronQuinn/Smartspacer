@@ -6,6 +6,7 @@ import android.os.Build
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
 import com.kieronquinn.app.smartspacer.model.smartspace.Target
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
+import com.kieronquinn.app.smartspacer.sdk.client.utils.wrap
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import org.koin.java.KoinJavaComponent
@@ -19,7 +20,10 @@ private fun <T> T?.clone(to: (T) -> SystemSmartspaceTarget.Builder) {
 }
 
 @Synchronized
-fun SmartspaceTarget.toSystemSmartspaceTarget(uiSurface: UiSurface): SystemSmartspaceTarget {
+fun SmartspaceTarget.toSystemSmartspaceTarget(
+    context: Context,
+    uiSurface: UiSurface
+): SystemSmartspaceTarget {
     val from = this
     val wallpaperRepository by KoinJavaComponent.inject<WallpaperRepository>(WallpaperRepository::class.java)
     val dark = when(uiSurface){
@@ -48,6 +52,9 @@ fun SmartspaceTarget.toSystemSmartspaceTarget(uiSurface: UiSurface): SystemSmart
         from.associatedSmartspaceTargetId.clone(::setAssociatedSmartspaceTargetId)
         from.sliceUri.clone(::setSliceUri)
         from.widget.clone(::setWidget)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            from.remoteViews?.wrap(context, dark)?.copyAsRoot().clone(::setRemoteViews)
+        }
         if(supportsUiTemplate()){
             from.templateData
                 ?.toSystemBaseTemplateData(tintColour)
@@ -76,6 +83,9 @@ fun SystemSmartspaceTarget.toSmartspaceTarget(): SmartspaceTarget {
         associatedSmartspaceTargetId = associatedSmartspaceTargetId,
         sliceUri = sliceUri,
         widget = widget,
+        remoteViews = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            remoteViews
+        } else null,
         templateData = if(supportsUiTemplate()) templateData?.toBaseTemplateData() else null,
         expandedState = null,
         canBeDismissed = featureType != SmartspaceTarget.FEATURE_WEATHER

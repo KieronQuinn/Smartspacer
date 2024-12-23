@@ -185,6 +185,10 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.limit
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.recenttask.limit.RecentTaskRequirementConfigurationLimitBottomSheetViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.configuration.WidgetTargetConfigurationViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.configuration.WidgetTargetConfigurationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.setup.WidgetTargetSetupViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.setup.WidgetTargetSetupViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequirementConfigurationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequirementConfigurationViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.mac.WiFiRequirementConfigurationMACBottomSheetViewModel
@@ -355,7 +359,7 @@ class Smartspacer: Application(), Configuration.Provider {
             get(),
             get()
         ) }
-        single<AlarmRepository>(createdAtStart = true) { AlarmRepositoryImpl(get(), get(), get(), get()) }
+        single<AlarmRepository>(createdAtStart = true) { AlarmRepositoryImpl(get(), get(), get(), get(), get()) }
         single<NotificationRepository>(createdAtStart = true) { NotificationRepositoryImpl(get(), get(), get(), get()) }
         single<WallpaperRepository> { WallpaperRepositoryImpl(get()) }
         single<PackageRepository> { PackageRepositoryImpl(get()) }
@@ -526,6 +530,11 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<FlashlightTargetConfigurationViewModel> { FlashlightTargetConfigurationViewModelImpl(get(), get()) }
         viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get()) }
         viewModel<SettingsLanguageViewModel> { SettingsLanguageViewModelImpl(get()) }
+        viewModel<WidgetTargetSetupViewModel> { WidgetTargetSetupViewModelImpl(get(), it.get()) }
+        viewModel<WidgetTargetConfigurationViewModel> { WidgetTargetConfigurationViewModelImpl(
+            get(),
+            it.get()
+        ) }
     }
 
     override fun attachBaseContext(base: Context) {

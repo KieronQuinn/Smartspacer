@@ -119,12 +119,14 @@ abstract class BaseFeatureSmartspaceView(
         remoteViews.setOnClickAction(
             context,
             R.id.smartspace_view_root,
-            target.headerAction
+            target.headerAction,
+            isList
         )
         remoteViews.setOnClickAction(
             context,
             R.id.smartspace_view_title,
-            target.headerAction
+            target.headerAction,
+            isList
         )
         val action = target.baseAction
         if(supportsSubAction && (action?.subtitle?.isNotEmpty() == true || action?.icon != null)){
@@ -138,7 +140,8 @@ abstract class BaseFeatureSmartspaceView(
                 remoteViews.setOnClickAction(
                     context,
                     R.id.smartspace_view_action_icon,
-                    action
+                    action,
+                    isList
                 )
                 remoteViews.setViewVisibility(R.id.smartspace_view_action_icon, View.VISIBLE)
             }else{
@@ -152,12 +155,14 @@ abstract class BaseFeatureSmartspaceView(
                 remoteViews.setOnClickAction(
                     context,
                     R.id.smartspace_view_action_text,
-                    action
+                    action,
+                    isList
                 )
                 remoteViews.setOnClickAction(
                     context,
                     R.id.smartspace_view_action_text,
-                    target.baseAction
+                    target.baseAction,
+                    isList
                 )
                 remoteViews.setTextViewTextSize(
                     R.id.smartspace_view_action_text, TypedValue.COMPLEX_UNIT_PX, subtitleSize
@@ -179,12 +184,13 @@ abstract class BaseFeatureSmartspaceView(
     private fun RemoteViews.setOnClickAction(
         context: Context,
         id: Int,
-        action: SmartspaceAction?
+        action: SmartspaceAction?,
+        isList: Boolean
     ) {
         val intent = SmartspacerWidgetClickReceiver.createIntent(
             context, targetId, surface, smartspaceAction = action?.stripData()
         )
-        setOnClickIntent(context, targetId, id, intent)
+        setOnClickIntent(context, targetId, id, intent, isList)
     }
 
     /**

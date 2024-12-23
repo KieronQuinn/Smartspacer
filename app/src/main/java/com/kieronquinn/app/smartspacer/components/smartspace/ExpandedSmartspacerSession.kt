@@ -37,6 +37,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.BaseShortcut
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
+import com.kieronquinn.app.smartspacer.utils.extensions.createFakeWidgetProviderInfo
 import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundColour
 import com.kieronquinn.app.smartspacer.utils.extensions.isColorDark
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
@@ -61,7 +62,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Compl
 
 @Suppress("CloseTarget")
 class ExpandedSmartspacerSession(
-    context: Context,
+    private val context: Context,
     override val sessionId: SmartspaceSessionId,
     private val collectInto: suspend (List<Item>) -> Unit
 ): BaseSmartspacerSession<Item, SmartspaceSessionId>(
@@ -251,6 +252,13 @@ class ExpandedSmartspacerSession(
         }.flowOn(Dispatchers.IO)
     }
 
+    private fun SmartspaceTarget.addFakeWidgetIfNeeded() = apply {
+        remoteViews?.let {
+            if(widget != null) return@let
+            widget = context.createFakeWidgetProviderInfo()
+        }
+    }
+
     override fun applyActionOverrides(targets: Flow<List<TargetHolder>>): Flow<List<TargetHolder>> {
         return targets //Don't override actions in expanded mode
     }
@@ -304,7 +312,12 @@ class ExpandedSmartspacerSession(
                 isDark,
                 settings.useGoogleSans
             )
-            list.add(Item.Target(it.page, it.target?.id, extras.isNotEmpty(), applyShadow, isDark))
+            list.add(Item.Target(
+                it.page.addFakeWidgetIfNeeded(),
+                it.target?.id, extras.isNotEmpty(),
+                applyShadow,
+                isDark
+            ))
             //Force a new line if any extras are being shown alongside this Target
             if(extras.isNotEmpty()) {
                 list.add(Item.Spacer(isDark))

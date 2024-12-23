@@ -32,7 +32,7 @@ import java.util.UUID
 
 abstract class WidgetSmartspacerSession(
     context: Context,
-    widget: AppWidget,
+    private val widget: AppWidget,
     private val config: SmartspaceConfig = widget.getConfig(),
     private val collectInto: suspend (AppWidget) -> Unit
 ): BaseSmartspacerSession<SmartspaceView, AppWidget>(context, config, widget) {
@@ -86,6 +86,7 @@ abstract class WidgetSmartspacerSession(
 
     private fun SmartspacePageHolder.toSmartspaceViewState(): Flow<SmartspacerViewState> {
         val template = page.templateData
+        val isList = widget.listMode
         val basic = if(includeBasic) {
             SmartspaceView.fromTarget(page, config.uiSurface, true)
         }else null

@@ -73,7 +73,8 @@ class WeatherTemplateSmartspaceView(
             R.id.smartspace_view_title,
             targetId,
             surface,
-            tapAction
+            tapAction,
+            isList
         )
     }
 
