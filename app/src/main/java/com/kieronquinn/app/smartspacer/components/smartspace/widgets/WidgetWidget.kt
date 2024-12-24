@@ -28,7 +28,11 @@ class WidgetWidget: SmartspacerWidgetProvider() {
         val widget = dataRepository.getTargetData(smartspacerId, WidgetTarget.TargetData::class.java)
             ?: return Config()
         return Config(
-            height = widget.padding.height.dp
+            height = if(widget.useAlternativeSizing) {
+                widget.padding.height
+            } else {
+                widget.padding.height.dp
+            }
         )
     }
 

@@ -91,7 +91,14 @@ class WidgetTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable {
             Padding.entries
         ) {
             it.label
-        }
+        },
+        GenericSettingsItem.SwitchSetting(
+            data.useAlternativeSizing,
+            getString(R.string.target_widget_alt_sizing_title),
+            getText(R.string.target_widget_alt_sizing_content),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_widget_configuration_sizing),
+            onChanged = viewModel::onAltSizingChanged
+        )
     )
 
     private fun createInfoText() = SpannableStringBuilder().apply {

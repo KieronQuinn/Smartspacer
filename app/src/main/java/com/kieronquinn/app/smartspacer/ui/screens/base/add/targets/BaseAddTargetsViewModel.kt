@@ -15,6 +15,7 @@ import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
 import com.kieronquinn.app.smartspacer.repositories.TargetsRepository
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerWidgetProvider
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import com.kieronquinn.app.smartspacer.utils.extensions.resolveActivityCompat
 import kotlinx.coroutines.CoroutineDispatcher
@@ -47,7 +48,11 @@ abstract class BaseAddTargetsViewModel(scope: CoroutineScope?): BaseViewModel(sc
 
     abstract fun showWidgetPermissionsDialog(grant: Grant)
     abstract fun showNotificationPermissionsDialog(grant: Grant)
-    abstract fun bindAppWidgetIfAllowed(provider: ComponentName, id: Int): Boolean
+    abstract fun bindAppWidgetIfAllowed(
+        provider: ComponentName,
+        id: Int,
+        config: SmartspacerWidgetProvider.Config
+    ): Boolean
     abstract fun createConfigIntentSender(appWidgetId: Int): IntentSender
 
     sealed class State {
@@ -95,6 +100,7 @@ abstract class BaseAddTargetsViewModel(scope: CoroutineScope?): BaseViewModel(sc
         data class BindWidget(
             val target: Item.Target,
             val info: AppWidgetProviderInfo,
+            val config: SmartspacerWidgetProvider.Config,
             val id: Int
         ): AddState() {
             override fun equals(other: Any?): Boolean {
@@ -214,9 +220,10 @@ abstract class BaseAddTargetsViewModelImpl(
                 }
                 target.widgetAuthority != null -> {
                     val info = target.getWidgetInfo()
+                    val config = target.getWidgetConfig()
                     val id = allocateAppWidgetId()
-                    if(info != null){
-                        addState.emit(AddState.BindWidget(target, info, id))
+                    if(info != null && config != null){
+                        addState.emit(AddState.BindWidget(target, info, config, id))
                     }else{
                         deallocateAppWidgetId(id)
                         addState.emit(AddState.WidgetError)
@@ -296,9 +303,10 @@ abstract class BaseAddTargetsViewModelImpl(
                 }
                 target.widgetAuthority != null -> {
                     val info = target.getWidgetInfo()
-                    if(info != null){
+                    val config = target.getWidgetConfig()
+                    if(info != null && config != null){
                         val id = allocateAppWidgetId()
-                        addState.emit(AddState.BindWidget(target, info, id))
+                        addState.emit(AddState.BindWidget(target, info, config, id))
                     }else{
                         cancelAddingTarget(target, true)
                     }
@@ -368,6 +376,12 @@ abstract class BaseAddTargetsViewModelImpl(
         }
     }
 
+    private suspend fun Item.Target.getWidgetConfig(): SmartspacerWidgetProvider.Config? {
+        return withContext(Dispatchers.IO){
+            widgetRepository.getWidgetConfig(widgetAuthority ?: return@withContext null, id)
+        }
+    }
+
     private suspend fun cancelAddingTarget(target: Item.Target, isWidget: Boolean = false) {
         val smartspaceTarget = targetsRepository.getAllTargets().firstOrNull {
             it.authority == target.authority && it.id == target.id
@@ -390,8 +404,12 @@ abstract class BaseAddTargetsViewModelImpl(
         widgetRepository.deallocateAppWidgetId(id)
     }
 
-    override fun bindAppWidgetIfAllowed(provider: ComponentName, id: Int): Boolean {
-        return widgetRepository.bindAppWidgetIdIfAllowed(id, provider)
+    override fun bindAppWidgetIfAllowed(
+        provider: ComponentName,
+        id: Int,
+        config: SmartspacerWidgetProvider.Config
+    ): Boolean {
+        return widgetRepository.bindAppWidgetIdIfAllowed(id, provider, config)
     }
 
     override fun createConfigIntentSender(appWidgetId: Int): IntentSender {

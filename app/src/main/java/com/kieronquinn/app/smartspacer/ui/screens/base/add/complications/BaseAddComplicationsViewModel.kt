@@ -15,6 +15,7 @@ import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
 import com.kieronquinn.app.smartspacer.repositories.TargetsRepository
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerWidgetProvider
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import com.kieronquinn.app.smartspacer.utils.extensions.resolveActivityCompat
 import kotlinx.coroutines.CoroutineDispatcher
@@ -47,7 +48,11 @@ abstract class BaseAddComplicationsViewModel(scope: CoroutineScope?): BaseViewMo
 
     abstract fun showWidgetPermissionDialog(grant: Grant)
     abstract fun showNotificationsPermissionDialog(grant: Grant)
-    abstract fun bindAppWidgetIfAllowed(provider: ComponentName, id: Int): Boolean
+    abstract fun bindAppWidgetIfAllowed(
+        provider: ComponentName,
+        id: Int,
+        config: SmartspacerWidgetProvider.Config
+    ): Boolean
     abstract fun createConfigIntentSender(appWidgetId: Int): IntentSender
 
     sealed class State {
@@ -87,6 +92,7 @@ abstract class BaseAddComplicationsViewModel(scope: CoroutineScope?): BaseViewMo
         data class BindWidget(
             val complication: Item.Complication,
             val info: AppWidgetProviderInfo,
+            val config: SmartspacerWidgetProvider.Config,
             val id: Int
         ): AddState()
         data class ConfigureWidget(
@@ -199,8 +205,9 @@ abstract class BaseAddComplicationsViewModelImpl(
                 complication.widgetAuthority != null -> {
                     val info = complication.getWidgetInfo()
                     val id = allocateAppWidgetId()
-                    if(info != null){
-                        addState.emit(AddState.BindWidget(complication, info, id))
+                    val config = complication.getWidgetConfig()
+                    if(info != null && config != null){
+                        addState.emit(AddState.BindWidget(complication, info, config, id))
                     }else{
                         deallocateAppWidgetId(id)
                         addState.emit(AddState.WidgetError)
@@ -222,9 +229,10 @@ abstract class BaseAddComplicationsViewModelImpl(
                 }
                 complication.widgetAuthority != null -> {
                     val info = complication.getWidgetInfo()
-                    if(info != null){
+                    val config = complication.getWidgetConfig()
+                    if(info != null && config != null){
                         val id = allocateAppWidgetId()
-                        addState.emit(AddState.BindWidget(complication, info, id))
+                        addState.emit(AddState.BindWidget(complication, info, config, id))
                     }else{
                         cancelAddingComplication(complication)
                     }
@@ -352,6 +360,12 @@ abstract class BaseAddComplicationsViewModelImpl(
         }
     }
 
+    private suspend fun Item.Complication.getWidgetConfig(): SmartspacerWidgetProvider.Config? {
+        return withContext(dispatcher) {
+            widgetRepository.getWidgetConfig(widgetAuthority ?: return@withContext null, id)
+        }
+    }
+
     private suspend fun cancelAddingComplication(complication: Item.Complication) {
         val smartspaceTarget = targetsRepository.getAllTargets().firstOrNull {
             it.authority == complication.authority && it.id == complication.id
@@ -370,8 +384,12 @@ abstract class BaseAddComplicationsViewModelImpl(
         widgetRepository.deallocateAppWidgetId(id)
     }
 
-    override fun bindAppWidgetIfAllowed(provider: ComponentName, id: Int): Boolean {
-        return widgetRepository.bindAppWidgetIdIfAllowed(id, provider)
+    override fun bindAppWidgetIfAllowed(
+        provider: ComponentName,
+        id: Int,
+        config: SmartspacerWidgetProvider.Config
+    ): Boolean {
+        return widgetRepository.bindAppWidgetIdIfAllowed(id, provider, config)
     }
 
     override fun createConfigIntentSender(appWidgetId: Int): IntentSender {

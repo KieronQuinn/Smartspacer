@@ -100,7 +100,7 @@ abstract class BaseAddTargetsFragment<V: ViewBinding>(inflate: (LayoutInflater, 
                 notificationListenerResult.launch(notificationPermissionActivity)
             }
             is AddState.BindWidget -> {
-                if(viewModel.bindAppWidgetIfAllowed(state.info.provider, state.id)){
+                if(viewModel.bindAppWidgetIfAllowed(state.info.provider, state.id, state.config)){
                     viewModel.onWidgetBindResult(true)
                 }else{
                     val bindIntent = Intent(AppWidgetManager.ACTION_APPWIDGET_BIND).apply {

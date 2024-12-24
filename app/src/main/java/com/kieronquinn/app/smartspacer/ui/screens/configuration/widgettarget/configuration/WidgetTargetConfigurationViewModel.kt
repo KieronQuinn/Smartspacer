@@ -20,6 +20,7 @@ abstract class WidgetTargetConfigurationViewModel: ViewModel() {
 
     abstract fun onPaddingChanged(padding: Padding)
     abstract fun onRoundChanged(enabled: Boolean)
+    abstract fun onAltSizingChanged(enabled: Boolean)
 
     sealed class State {
         data object Loading: State()
@@ -40,18 +41,24 @@ class WidgetTargetConfigurationViewModelImpl(
         .stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
 
     override fun onPaddingChanged(padding: Padding) {
-        val current = (state.value as? State.Loaded)?.data ?: return
-        dataRepository.updateTargetData(
-            smartspacerId,
-            TargetData::class.java,
-            TargetDataType.WIDGET,
-            ::onUpdate
-        ) {
-            current.copy(padding = padding)
+        update {
+            copy(padding = padding)
         }
     }
 
     override fun onRoundChanged(enabled: Boolean) {
+        update {
+            copy(rounded = enabled)
+        }
+    }
+
+    override fun onAltSizingChanged(enabled: Boolean) {
+        update {
+            copy(altSizing = enabled)
+        }
+    }
+
+    private fun update(block: TargetData.() -> TargetData) {
         val current = (state.value as? State.Loaded)?.data ?: return
         dataRepository.updateTargetData(
             smartspacerId,
@@ -59,7 +66,7 @@ class WidgetTargetConfigurationViewModelImpl(
             TargetDataType.WIDGET,
             ::onUpdate
         ) {
-            current.copy(rounded = enabled)
+            current.block()
         }
     }
 
