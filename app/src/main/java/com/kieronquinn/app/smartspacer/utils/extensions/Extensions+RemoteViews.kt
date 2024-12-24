@@ -46,7 +46,7 @@ private var RemoteViews.actions: ArrayList<Any>?
 
 @Suppress("UNCHECKED_CAST")
 @SuppressLint("DiscouragedPrivateApi")
-fun RemoteViews.getActionsIncludingSized(): List<Any> {
+private fun RemoteViews.getActionsIncludingSized(): List<Any> {
     val myActions = actions?.toList() ?: emptyList()
     val sizedActions = getSizedRemoteViews().mapNotNull {
         it.actions
@@ -125,31 +125,56 @@ fun Any.extractAdapterIntent(): Pair<Int, Intent> {
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-fun Any.extractRemoteCollectionItems(): Pair<Int, RemoteCollectionItems>? {
-    val items = setRemoteCollectionItemListAdapterClass.declaredFields.firstNotNullOfOrNull {
+fun Any.extractRemoteCollectionItems(): ExtractedRemoteCollectionItems? {
+   return setRemoteCollectionItemListAdapterClass.declaredFields.firstNotNullOfOrNull {
         when(it.name) {
-            "mItems" -> getRemoteCollectItemsLegacy(it)
-            "mItemsFuture" -> getRemoteCollectItemsFuture(it)
+            "mItems" -> getRemoteCollectItemsLegacy(it)?.let { items ->
+                ExtractedRemoteCollectionItems.Items(getId(), items)
+            }
+            "mItemsFuture" -> getRemoteCollectItemsFuture(it)?.let { items ->
+                ExtractedRemoteCollectionItems.Items(getId(), items)
+            }
+            "mServiceIntent" -> getRemoteCollectIntent(it)?.let { intent ->
+                ExtractedRemoteCollectionItems.Intent(getId(), intent)
+            }
             else -> null
         }
-    } ?: return null
-    return Pair(getId(), items)
+    }
+}
+
+sealed class ExtractedRemoteCollectionItems(open val id: Int) {
+    data class Items(
+        override val id: Int,
+        val items: RemoteCollectionItems
+    ): ExtractedRemoteCollectionItems(id)
+    data class Intent(
+        override val id: Int,
+        val intent: android.content.Intent
+    ): ExtractedRemoteCollectionItems(id)
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-private fun Any.getRemoteCollectItemsLegacy(field: Field): RemoteCollectionItems {
+private fun Any.getRemoteCollectItemsLegacy(field: Field): RemoteCollectionItems? {
     return field.let {
         it.isAccessible = true
-        it.get(this) as RemoteCollectionItems
+        it.get(this) as? RemoteCollectionItems
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-private fun Any.getRemoteCollectItemsFuture(field: Field): RemoteCollectionItems {
+private fun Any.getRemoteCollectItemsFuture(field: Field): RemoteCollectionItems? {
     return field.let {
         it.isAccessible = true
-        val future = it.get(this) as CompletableFuture<RemoteCollectionItems>
+        val future = it.get(this) as CompletableFuture<RemoteCollectionItems?>
         future.get()
+    }
+}
+
+@RequiresApi(Build.VERSION_CODES.S)
+private fun Any.getRemoteCollectIntent(field: Field): Intent? {
+    return field.let {
+        it.isAccessible = true
+        it.get(this) as? Intent
     }
 }
 
@@ -176,7 +201,7 @@ fun RemoteViews.replaceUriActionsWithProxy(
     context: Context,
     pluginPackageName: String
 ): RemoteViews = apply {
-    val uriActions = getActionsIncludingSized().filter {
+    val uriActions = getActionsIncludingNested().filter {
         it::class.java == reflectionActionClass && it.reflectionActionValue is Uri
     }.map {
         Pair(it, it.reflectionActionValue as Uri)
@@ -379,7 +404,7 @@ private val INCOMPATIBLE_ACTIONS = setOf(
 )
 
 fun RemoteViews.checkCompatibility(): Boolean {
-    return getActionsIncludingSized().none {
+    return getActionsIncludingNested().none {
         INCOMPATIBLE_ACTIONS.contains(it.javaClass.simpleName)
     }
 }

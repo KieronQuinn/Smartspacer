@@ -19,6 +19,29 @@ private fun <T> T?.clone(to: (T) -> SystemSmartspaceTarget.Builder) {
     this?.let { to.invoke(it) }
 }
 
+private fun Class<*>.hasMethod(name: String, vararg parameters: Class<*>): Boolean {
+    return try {
+        getDeclaredMethod(name, *parameters)
+        true
+    } catch (e: NoSuchMethodException) {
+        false
+    }
+}
+
+private fun supportsRemoteViews(): Boolean {
+    return when {
+        //Always supported on 15+
+        Build.VERSION.SDK_INT > Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> return true
+        //Never supported on < 14
+        Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> return false
+        else -> {
+            //RemoteViews was added in QPR2, so check the method exists
+            SystemSmartspaceTarget::class.java.hasMethod("getRemoteViews")
+        }
+    }
+}
+
+
 @Synchronized
 fun SmartspaceTarget.toSystemSmartspaceTarget(
     context: Context,
@@ -52,7 +75,8 @@ fun SmartspaceTarget.toSystemSmartspaceTarget(
         from.associatedSmartspaceTargetId.clone(::setAssociatedSmartspaceTargetId)
         from.sliceUri.clone(::setSliceUri)
         from.widget.clone(::setWidget)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        if (supportsRemoteViews()) {
+            @Suppress("NewApi") //Checked above
             from.remoteViews?.wrap(context, dark)?.copyAsRoot().clone(::setRemoteViews)
         }
         if(supportsUiTemplate()){
@@ -83,7 +107,8 @@ fun SystemSmartspaceTarget.toSmartspaceTarget(): SmartspaceTarget {
         associatedSmartspaceTargetId = associatedSmartspaceTargetId,
         sliceUri = sliceUri,
         widget = widget,
-        remoteViews = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        remoteViews = if(supportsRemoteViews()) {
+            @Suppress("NewApi") //Checked above
             remoteViews
         } else null,
         templateData = if(supportsUiTemplate()) templateData?.toBaseTemplateData() else null,

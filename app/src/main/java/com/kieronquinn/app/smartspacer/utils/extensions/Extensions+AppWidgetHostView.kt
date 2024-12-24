@@ -44,6 +44,8 @@ fun AppWidgetHostView.updateAppWidgetSize(
     }
 }
 
+
+
 fun AppWidgetHostView.getSizeMinusPadding(
     context: Context,
     widthWithoutPadding: Float,

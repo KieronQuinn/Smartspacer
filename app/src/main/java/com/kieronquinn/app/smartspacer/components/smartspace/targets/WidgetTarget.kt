@@ -115,8 +115,13 @@ class WidgetTarget: SmartspacerTargetProvider() {
         @SerializedName("rounded")
         val rounded: Boolean = true,
         @SerializedName("padding")
-        val padding: Padding = Padding.NONE
+        val padding: Padding = Padding.NONE,
+        @SerializedName("alt_sizing")
+        val altSizing: Boolean? = false
     ) {
+        val useAlternativeSizing
+            get() = altSizing ?: false
+
         enum class Padding(@StringRes val label: Int, @LayoutRes val layout: Int, val height: Int) {
             NONE(R.string.target_widget_padding_none, R.layout.remoteviews_wrapper_padding_none, 96),
             SMALL(R.string.target_widget_padding_small, R.layout.remoteviews_wrapper_padding_small, 92),

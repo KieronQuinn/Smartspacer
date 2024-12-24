@@ -71,6 +71,20 @@ class Widget(
                 AppWidgetProviderInfo::class.java
             )
         }
+
+        fun getConfig(contentResolver: ContentResolver, authority: String, id: String): Config? {
+            val uri = Uri.Builder()
+                .scheme("content")
+                .authority(authority)
+                .build()
+            val config = contentResolver.callSafely(
+                uri,
+                METHOD_GET_CONFIG,
+                null,
+                bundleOf(EXTRA_SMARTSPACER_ID to id)
+            ) ?: return null
+            return Config(config)
+        }
     }
 
     private val idBasedUri = Uri.Builder()

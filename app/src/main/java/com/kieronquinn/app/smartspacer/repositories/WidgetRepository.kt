@@ -13,13 +13,16 @@ import androidx.annotation.RequiresApi
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.WidgetTarget
 import com.kieronquinn.app.smartspacer.model.smartspace.Widget
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerWidgetProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.RemoteAdapter
 import com.kieronquinn.app.smartspacer.sdk.utils.getClickPendingIntent
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
+import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.RemoteViewsCollectionListAdapter
 import com.kieronquinn.app.smartspacer.utils.extensions.getAllInstalledProviders
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
+import com.kieronquinn.app.smartspacer.utils.extensions.initialiseAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceUriActionsWithProxy
 import com.kieronquinn.app.smartspacer.utils.extensions.updateAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteCollectionItemsWrapper
@@ -52,10 +55,11 @@ interface WidgetRepository {
     fun getProviders(): List<AppWidgetProviderInfo>
 
     fun getWidgetInfo(authority: String, id: String): AppWidgetProviderInfo?
+    fun getWidgetConfig(authority: String, id: String): SmartspacerWidgetProvider.Config?
 
     fun allocateAppWidgetId(): Int
     fun deallocateAppWidgetId(id: Int)
-    fun bindAppWidgetIdIfAllowed(id: Int, provider: ComponentName): Boolean
+    fun bindAppWidgetIdIfAllowed(id: Int, provider: ComponentName, config: SmartspacerWidgetProvider.Config): Boolean
     fun createConfigIntentSender(appWidgetId: Int): IntentSender
     fun clickAppWidgetIdView(appWidgetId: Int, identifier: String?, id: Int?)
     @RequiresApi(Build.VERSION_CODES.S)
@@ -196,8 +200,9 @@ class WidgetRepositoryImpl(
         appWidgetId = widget.appWidgetId
         widget.getPluginConfig().filterNotNull().flatMapLatest {
             val options = appWidgetManager.getAppWidgetOptions(widget.appWidgetId)
-            val width = it.width ?: displayPortraitWidth
-            val height = it.height ?: (displayPortraitHeight / 4f).roundToInt()
+            val width = it.width?.takeIf { w -> w > 0 } ?: displayPortraitWidth
+            val height = it.height?.takeIf { h -> h > 0 } ?: (displayPortraitHeight / 4f)
+                .roundToInt()
             updateAppWidgetSize(context, width.toFloat(), height.toFloat(), options)
             this@setup
         }.collectLatest {
@@ -228,6 +233,10 @@ class WidgetRepositoryImpl(
         return Widget.getAppWidgetProviderInfo(contentResolver, authority, id)
     }
 
+    override fun getWidgetConfig(authority: String, id: String): SmartspacerWidgetProvider.Config? {
+        return Widget.getConfig(contentResolver, authority, id)
+    }
+
     override fun allocateAppWidgetId(): Int {
         return appWidgetHost.allocateAppWidgetId()
     }
@@ -236,8 +245,19 @@ class WidgetRepositoryImpl(
         appWidgetHost.deleteAppWidgetId(id)
     }
 
-    override fun bindAppWidgetIdIfAllowed(id: Int, provider: ComponentName): Boolean {
-        return appWidgetManager.bindAppWidgetIdIfAllowed(id, provider)
+    override fun bindAppWidgetIdIfAllowed(id: Int, provider: ComponentName, config: SmartspacerWidgetProvider.Config): Boolean {
+        return appWidgetManager.bindAppWidgetIdIfAllowed(id, provider).also {
+            if(it) {
+                val width = config.width?.takeIf { w -> w > 0 } ?: displayPortraitWidth
+                val height = config.height?.takeIf { h -> h > 0 } ?: (displayPortraitHeight / 4f)
+                    .roundToInt()
+                appWidgetManager.initialiseAppWidgetSize(
+                    context, id,
+                    width.toFloat(),
+                    height.toFloat()
+                )
+            }
+        }
     }
 
     override fun createConfigIntentSender(appWidgetId: Int): IntentSender {
@@ -277,7 +297,7 @@ class WidgetRepositoryImpl(
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    private fun getRemoteCollectionAdapter(
+    private suspend fun getRemoteCollectionAdapter(
         appWidgetId: Int,
         identifier: String?,
         id: Int?
@@ -291,8 +311,14 @@ class WidgetRepositoryImpl(
         val adapterView = hostView.findAdapterView(identifier, id) ?: return null
         val adapter = hostView.findRemoteViewsCollectionListAdapter(identifier, id)
             ?: return null
+        val remote = when(adapter) {
+            is RemoteViewsCollectionListAdapter.Items -> {
+                RemoteCollectionItemsWrapper(context, adapter.items)
+            }
+            is RemoteViewsCollectionListAdapter.Wrapper -> adapter.wrapper.awaitConnected()
+        }
         return RemoteAdapter(
-            RemoteCollectionItemsWrapper(context, adapter),
+            remote,
             adapterView.getClickPendingIntent(),
             identifier,
             id
@@ -312,8 +338,7 @@ class WidgetRepositoryImpl(
         id: Int?
     ) {
         scope.launch(Dispatchers.IO) {
-            val remoteAdapter = getRemoteAdapter(appWidgetId, identifier, id)
-                ?: return@launch
+            val remoteAdapter = getRemoteAdapter(appWidgetId, identifier, id) ?: return@launch
             widgets.value?.firstOrNull {
                 it.id == smartspacerId && it.appWidgetId == appWidgetId
             }?.run {

@@ -193,8 +193,22 @@ fun Context.createFakeWidgetProviderInfo(): AppWidgetProviderInfo {
     }
 }
 
-class FakeActivityInfo: ActivityInfo() {
+fun Context.createFakeWidgetProviderInfo(packageName: String): AppWidgetProviderInfo {
+    val applicationInfo = packageManager.getApplicationInfo(packageName)
+    return AppWidgetProviderInfo().apply {
+        providerInfo = FakeActivityInfo(applicationInfo)
+    }
+}
+
+private class FakeActivityInfo(applicationInfo: ApplicationInfo): ActivityInfo() {
+
+    init {
+        this.applicationInfo = applicationInfo
+        this.packageName = applicationInfo.packageName
+    }
+
     override fun loadLabel(pm: PackageManager): CharSequence {
         return ""
     }
+
 }
