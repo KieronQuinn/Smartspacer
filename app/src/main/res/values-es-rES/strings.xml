@@ -1046,6 +1046,8 @@
     <string name="target_widget_padding_medium">Medium</string>
     <string name="target_widget_padding_large">Large</string>
     <string name="target_widget_padding_disable">Disabled</string>
+    <string name="target_widget_alt_sizing_title">Use Alternative Sizing</string>
+    <string name="target_widget_alt_sizing_content">Use different vertical sizing, which may improve the layout of some widgets.\n\n<b>Note:</b> A reboot may be required for this change to take effect.</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Correo no leído de Gmail</string>
     <string name="complication_gmail_description">Mostrar el número de correos de Gmail no leídos de las etiquetas seleccionadas</string>
