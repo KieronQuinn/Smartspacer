@@ -185,6 +185,16 @@
         </provider>
 
         <provider
+            android:authorities="${applicationId}.target.remoteviews"
+            android:permission="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_TARGETS"
+            android:exported="true"
+            android:name=".plugin.targets.RemoteViewsTarget">
+            <intent-filter>
+                <action android:name="com.kieronquinn.app.smartspacer.TARGET"/>
+            </intent-filter>
+        </provider>
+
+        <provider
             android:authorities="${applicationId}.complication.basic"
             android:permission="com.kieronquinn.app.smartspacer.permission.ACCESS_SMARTSPACER_COMPLICATIONS"
             android:name=".plugin.complications.BasicComplication"
