@@ -676,7 +676,7 @@
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
     <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Always</string>
-    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_title">启用多栏</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
