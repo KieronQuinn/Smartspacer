@@ -27,13 +27,13 @@
     <!-- Shared by widget, notification & expanded -->
     <string name="tint_colour_automatic">Automatico (Basato sullo Sfondo)</string>
     <string name="tint_colour_automatic_alt">Automatico (Basato sul tema)</string>
-    <string name="tint_colour_automatic_content">Testo e icone nel widget verranno automaticamente colorate per essere visibili sullo sfondo</string>
+    <string name="tint_colour_automatic_content">Testo e icone nel Widget verranno automaticamente colorate per essere visibili sullo sfondo</string>
     <string name="tint_colour_automatic_content_alt">Testo e icone nelle notifiche saranno automaticamente colorate per essere visibili basandosi sul tuo tema</string>
     <string name="tint_colour_white">Bianco</string>
-    <string name="tint_colour_white_content">Testo e icone nel widget saranno sempre bianche</string>
+    <string name="tint_colour_white_content">Testo e icone nel Widget saranno sempre bianche</string>
     <string name="tint_colour_white_content_alt">Testo e icone nelle notifiche saranno sempre bianche</string>
     <string name="tint_colour_black">Nero</string>
-    <string name="tint_colour_black_content">Testo e icone nel widget saranno sempre nere</string>
+    <string name="tint_colour_black_content">Testo e icone nel Widget saranno sempre nere</string>
     <string name="tint_colour_black_content_alt">Testo e icone nelle notifiche saranno sempre neri</string>
     <string name="widget_description_smartspacer">Mostra Target e Complicazioni di Smartspacer</string>
     <string name="widget_loading_smartspacer">Caricamento…</string>
@@ -41,27 +41,27 @@
     <string name="widget_configuration_title">Widget di Smartspacer</string>
     <string name="widget_configuration_tab_horizontal">Orizzontale</string>
     <string name="widget_configuration_tab_vertical">Verticale</string>
-    <string name="widget_configuration_horizontal_info"><b>Nota:</b> Per le limitazioni di Android, i widgets non possono essere scrollati orizzontalmente. Invece, il Widget di Smartspacer ha la possibilità di cambiare pagina con un tocco.</string>
-    <string name="widget_configuration_vertical_info"><b>Nota:</b> È possibile riscontrare problemi di prestazioni e un maggiore utilizzo della batteria quando si utilizza il widget elenco. Ciò è dovuto all\'intero widget che deve essere aggiornato per ogni cambiamento e non può essere corretto.</string>
+    <string name="widget_configuration_horizontal_info"><b>Nota:</b> Per le limitazioni di Android, i Widget non possono essere scrollati orizzontalmente. Invece, il Widget di Smartspacer ha la possibilità di cambiare pagina con un tocco.</string>
+    <string name="widget_configuration_vertical_info"><b>Nota:</b> È possibile riscontrare problemi di prestazioni e un maggiore utilizzo della batteria quando si utilizza il Widget elenco. Ciò è dovuto all\'intero Widget che deve essere aggiornato per ogni cambiamento e non può essere corretto.</string>
     <string name="widget_configuration_accessibility_title">Abilita Servizi di Accessibilità</string>
     <string name="widget_configuration_accessibility_content">Il Widget di Smartspacer richiede un Servizio di Accessibilità per sapere quale app sono aperte sul tuo dispositivo e avviare/fermare Target e Complicazioni. Questo permette di tenerli aggiornati senza tenerli in esecuzione, risparmiando batteria.</string>
     <string name="widget_configuration_accessibility_enable">Premio per abilitare</string>
     <string name="widget_configuration_behaviour_title">Comportamento</string>
     <string name="widget_configuration_is_lock_screen_title">Widget sulla Schermata di Blocco</string>
-    <string name="widget_configuration_is_lock_screen_content">Abilita <b>solo</b> se questo widget viene aggiunto alla Schermata di Blocco.\nQuesto <b>nob</b> aggiunge il widget alla Schermata di Blocco da solo, scarica un\'app come \"Lockscreen Widgets\" da Google Play per farlo.</string>
-    <string name="widget_configuration_is_lock_screen_content_disabled">Non disponibile per questo widget. Nota che Smartspacer non abilita la visualizzazione di widget sulla Schermata di Blocco, scarica un app come \"Lockscreen Widgets\" da Google Play per farlo.</string>
+    <string name="widget_configuration_is_lock_screen_content">Abilita <b>solo</b> se questo Widget viene aggiunto alla Schermata di Blocco.\nQuesto da solo <b>non</b> aggiunge il Widget alla Schermata di Blocco, scarica un\'app come \"Lockscreen Widgets\" da Google Play per farlo.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">Non disponibile per questo Widget. Nota che Smartspacer non abilita la visualizzazione di Widget sulla Schermata di Blocco, scarica un app come \"Lockscreen Widgets\" da Google Play per farlo.</string>
     <string name="widget_configuration_page_single_title">Pagina singola</string>
-    <string name="widget_configuration_page_single_content">Blocca il widget per visualizzare solo una pagina di Target e Complicazione (se lo spazio lo consente). Questo significa che vedrai solo il tuo principale Target/Compilation nel widget.</string>
+    <string name="widget_configuration_page_single_content">Blocca il Widget per visualizzare solo una pagina di Target e Complicazione (se lo spazio lo consente). Questo significa che vedrai solo il tuo Target/Complicazione principale nel Widget.</string>
     <string name="widget_configuration_customisation_title">Personalizzazione</string>
     <string name="widget_configuration_page_arrows_title">Mostra Controlli Pagina</string>
     <string name="widget_configuration_page_arrows_content">Abilita i controlli freccia per passare facilmente tra le pagine. Se disabilitato, toccare gli indicatori di punto per spostarsi alla pagina successiva, tornando alla prima pagina una volta raggiunta la fine.</string>
     <string name="widget_configuration_page_controls_invisible_title">Controlli Invisibili</string>
     <string name="widget_configuration_page_controls_invisible_content">Rendere i controlli invisibili. Sono ancora lì e sono cliccabili, ma sono invisibili.</string>
     <string name="widget_configuration_padding_title">Extra Padding</string>
-    <string name="widget_configuration_padding_content">Aggiungi margine aggiuntivo a sinistra e a destra del widget. Nota che questo è <b>aggiunto</b> a qualsiasi margine che il vostro launcher potrebbe aggiungere.</string>
+    <string name="widget_configuration_padding_content">Aggiungi margine aggiuntivo a sinistra e a destra del Widget. Nota che questo è <b>aggiunto</b> a qualsiasi margine che il vostro launcher potrebbe aggiungere.</string>
     <string name="widget_configuration_animation">Animazione</string>
     <string name="widget_configuration_animation_switch_title">Animazioni ai cambiamenti</string>
-    <string name="widget_configuration_animation_switch_content">Dissolvenza tra le modifiche al widget ove possibile</string>
+    <string name="widget_configuration_animation_switch_content">Dissolvenza tra le modifiche al Widget ove possibile</string>
     <string name="widget_configuration_colour">Colore</string>
     <string name="widget_configuration_shadow_title">Ombra del testo</string>
     <string name="widget_configuration_shadow_content">Mostra un\'ombra sul testo che potrebbe non essere leggibile sul tuo sfondo</string>
@@ -70,7 +70,7 @@
     <string name="widget_configuration_mock_complication_title">Complicazione</string>
     <string name="widget_options_configure">Configura Widget</string>
     <string name="accessibility_service_label">Servizio Widget di Smartspacer</string>
-    <string name="accessibility_service_description">Abilita il widget Smartspacer per tenere i Target e le Complicazioni aggiornati, senza scaricare la batteria avendoli sempre in esecuzione.\n\nNota: Questo non è necessario se la Modalità Avanzata è abilitata.</string>
+    <string name="accessibility_service_description">Abilita il Widget Smartspacer per tenere i Target e le Complicazioni aggiornati, senza scaricare la batteria avendoli sempre in esecuzione.\n\nNota: Questo non è necessario se la Modalità Avanzata è abilitata.</string>
     <string name="target_notification_label">Notifiche</string>
     <string name="target_notification_description">Mostra le notifiche da un\'app</string>
     <string name="target_notification_description_selected">Mostra le notifiche da %1s</string>
@@ -115,7 +115,7 @@
     <string name="target_greeting_configuration_open_expanded_title">Apri Expanded Smartspace</string>
     <string name="target_greeting_configuration_open_expanded_content">Apri Expanded Smartspace al tocco invece di non fare nulla</string>
     <string name="target_at_a_glance_label">A Colpo d\'Occhio (Widget)</string>
-    <string name="target_at_a_glance_description">Limita Target da A Colpo d\'Occhio di Google, caricati utilizzando il widget di Google</string>
+    <string name="target_at_a_glance_description">Limita Target da A Colpo d\'Occhio di Google, caricati utilizzando il Widget di Google</string>
     <string name="target_at_a_glance_description_unsupported">Questo Target richiede l\'app Google</string>
     <string name="target_google_weather_forecast_title">Previsioni Meteo Google</string>
     <string name="target_google_weather_forecast_content">Mostra meteo attuale e le previsioni per le prossime quattro ore da Google Meteo</string>
@@ -168,7 +168,7 @@
     <string name="notification_plugin_updates_content_other">%1d aggiornamenti dei plugin Smartspacer sono disponibili, tocca per visualizzare</string>
     <string name="notification_location_permission_required_title">Posizione in background</string>
     <string name="notification_location_permission_required_content">Smartspacer richiede l\'accesso alla Posizione in Background, tocca per concedere</string>
-    <string name="notification_accessibility_widget_title">Abilita servizio accessibilità widget</string>
+    <string name="notification_accessibility_widget_title">Abilita Servizio Accessibilità Widget</string>
     <string name="notification_accessibility_widget_content">Il Servizio di Accessibilità dei Widget di Smartspacer deve essere abilitato perché i widget funzionino, tocca per abilitare. In alternativa, attiva la Modalità Avanzata e assicurati che Shizuku sia avviato.</string>
     <string name="fab_targets_add">Aggiungi Target</string>
     <string name="targets_empty_label">Nessun Target aggiunto</string>
@@ -180,11 +180,11 @@
     <string name="complication_not_available_alt">Questa complicazione non è stata caricata, se il problema persiste si prega di contattare lo sviluppatore della Complicazione</string>
     <string name="targets_add_empty_label">Nessun Obiettivo rimanente da aggiungere</string>
     <string name="targets_add_incompatible_generic">Questo Target non è compatibile con il tuo dispositivo</string>
-    <string name="targets_add_incompatible_widget">Il widget richiesto per questo Target non è disponibile</string>
+    <string name="targets_add_incompatible_widget">Il Widget richiesto per questo Target non è disponibile</string>
     <string name="targets_add_failed_to_launch_setup">Impossibile avviare la configurazione per questo Target</string>
     <string name="complications_add_empty_label">Nessun\'altra complicazione da aggiungere</string>
     <string name="complications_add_incompatible_generic">Questa complicazione non è compatibile con il tuo dispositivo</string>
-    <string name="complications_add_incompatible_widget">Il widget richiesto per questa complicazione non è disponibile</string>
+    <string name="complications_add_incompatible_widget">Il Widget richiesto per questa Complicazione non è disponibile</string>
     <string name="complications_add_failed_to_launch_setup">Impossibile avviare la configurazione per questa complicazione</string>
     <string name="requirements_add_empty_label">Nessun requisito da aggiungere</string>
     <string name="requirements_add_incompatible_generic">Questo requisito non è compatibile con il tuo dispositivo</string>
@@ -193,11 +193,11 @@
     <string name="target_edit_target_header">Target</string>
     <string name="target_edit_show_on_home_title">Mostra nella Schermata Home</string>
     <string name="target_edit_show_on_home_content">Mostra questo Target sulla tua Schermata Home</string>
-    <string name="target_edit_show_on_home_content_widget">Mostra questo Target sui widget aggiunti alla Schermata Home</string>
+    <string name="target_edit_show_on_home_content_widget">Mostra questo Target sui Widget aggiunti alla Schermata Home</string>
     <string name="target_edit_show_on_lock_screen_title">Mostra sulla Schermata di Blocco e sul Display Sempre Attivo</string>
     <string name="target_edit_show_on_lock_screen_title_widget">Mostra sulla Schermata di Blocco</string>
     <string name="target_edit_show_on_lock_screen_content">Mostra questo Target sulla Schermata di Blocco e sul Display Sempre Attivo, mentre la musica non è in riproduzione</string>
-    <string name="target_edit_show_on_lock_screen_content_widget">Mostra questo Target sui widget aggiunti alla Schermata di Blocco</string>
+    <string name="target_edit_show_on_lock_screen_content_widget">Mostra questo Target sui Widget aggiunti alla Schermata di Blocco</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Mostra questo Target sulla Schermata di Blocco e sul Display Sempre Attivo (se supportato), mentre la musica non è in riproduzione</string>
     <string name="target_edit_show_on_expanded_title">Mostra su Expanded Smartspace</string>
     <string name="target_edit_show_on_expanded_content">Mostra questo Target su Expanded Smartspace</string>
@@ -210,8 +210,8 @@
     <string name="target_edit_expanded_header">Expanded Smartspace</string>
     <string name="target_edit_expanded_show_when_locked_title">Mostra mentre è bloccato</string>
     <string name="target_edit_expanded_show_when_locked_content">Mostra questo Target su Expanded Smartspace quando è bloccato</string>
-    <string name="target_edit_expanded_show_widget_title">Mostra widget</string>
-    <string name="target_edit_expanded_show_widget_content">Mostra il widget associato a questo Target, se disponibile</string>
+    <string name="target_edit_expanded_show_widget_title">Mostra Widget</string>
+    <string name="target_edit_expanded_show_widget_content">Mostra il Widget associato a questo Target, se disponibile</string>
     <string name="target_edit_expanded_show_remoteviews_title">Mostra contenuto aggiuntivo</string>
     <string name="target_edit_expanded_show_remoteviews_content">Mostra contenuti aggiuntivi forniti da questo Target, se disponibili</string>
     <string name="target_edit_expanded_show_shortcuts_title">Mostra Scorciatoie</string>
@@ -237,12 +237,12 @@
     <string name="complication_edit_target_header">Complicazione</string>
     <string name="complication_edit_show_on_home_title">Mostra nella Schermata Home</string>
     <string name="complication_edit_show_on_home_content">Mostra questa Complicazione sulla tua Schermata Home</string>
-    <string name="complication_edit_show_on_home_content_widget">Mostra questa Complicazione sui widget aggiunti alla Schermata Home</string>
+    <string name="complication_edit_show_on_home_content_widget">Mostra questa Complicazione sui Widget aggiunti alla Schermata Home</string>
     <string name="complication_edit_show_on_lock_screen_title">Mostra sulla Schermata di Blocco e sul Display Sempre Attivo</string>
     <string name="complication_edit_show_on_lock_screen_title_widget">Mostra sulla Schermata di Blocco</string>
     <string name="complication_edit_show_on_lock_screen_content">Mostra questa Complicazione sulla Schermata di Blocco e sul Display Sempre Attivo, mentre la musica non è in riproduzione</string>
     <string name="complication_edit_show_on_lock_screen_content_oem">Mostra questa Complicazione sulla Schermata di Blocco e sul Display Sempre Attivo (se disponibile), mentre la musica non è in riproduzione</string>
-    <string name="complication_edit_show_on_lock_screen_content_widget">Mostra questa Complicazione sui widget aggiunti alla Schermata di Blocco</string>
+    <string name="complication_edit_show_on_lock_screen_content_widget">Mostra questa Complicazione sui Widget aggiunti alla Schermata di Blocco</string>
     <string name="complication_edit_show_on_expanded_title">Mostra su Expanded Smartspace</string>
     <string name="complication_edit_show_on_expanded_content">Mostra questa Complicazione su Expanded Smartspace</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Expanded Smartspace è disabilitato</string>
@@ -377,7 +377,7 @@
     <string name="requirement_music_playing_label">Riproduzione musicale</string>
     <string name="requirement_music_playing_content">Mostra solo quando la musica è in riproduzione</string>
     <string name="permission_dialog_widget_title_prefix">Consenti</string>
-    <string name="permission_dialog_widget_title_suffix">di accedere ai widget utilizzando Smartspacer?</string>
+    <string name="permission_dialog_widget_title_suffix">di accedere ai Widget utilizzando Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">Potrebbe essere richiesto il permesso di sistema dopo questo passaggio</string>
     <string name="permission_dialog_widget_title_unknown">Sconosciuto</string>
     <string name="permission_dialog_widget_allow_once">Consenti una volta</string>
@@ -495,9 +495,9 @@
     <string name="setup_complications_controls_next">Avanti</string>
     <string name="setup_complications_controls_skip">Salta</string>
     <!-- Setup > Add Widget -->
-    <string name="setup_add_widget_title">Aggiungi widget</string>
+    <string name="setup_add_widget_title">Aggiungi Widget</string>
     <string name="setup_add_widget_content">Aggiungi Smartspacer alla Schermata Home</string>
-    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il Widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Requisiti</string>
     <string name="setup_requirements_info_p1">I <b>Requisiti</b> consentono di personalizzare quando un Target o una Complicazione devono essere visualizzati in Smartspace. Con essi è possibile creare scenari in cui le informazioni utili vengono mostrate in Smartspace.</string>
@@ -507,10 +507,10 @@
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Esteso</string>
     <string name="setup_expanded_switch">Abilita Expanded Smartspace</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> è una versione a schermo intero di Smartspace che mostra tutti i Target e le Complicazioni disponibili, oltre ad altre informazioni dinamiche come widget e scorciatoie, specificate dai Target. Puoi anche aggiungere widget personalizzati a questa schermata.</string>
+    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> è una versione a schermo intero di Smartspace che mostra tutti i Target e le Complicazioni disponibili, oltre ad altre informazioni dinamiche come Widget e scorciatoie, specificate dai Target. Puoi anche aggiungere Widget personalizzati a questa schermata.</string>
     <string name="setup_expanded_info_p2">Progettato per essere un modo per controllare rapidamente tutte le informazioni attuali, l\'Expanded Smartspace può essere configurato in modo che si apra toccando un Target, se sono disponibili altre informazioni dinamiche. Questo è utile se si vuole accedere facilmente ad informazioni contestuali toccando un pulsante.</string>
     <string name="setup_expanded_open_title">Apri Expanded Smartspace dinamicamente</string>
-    <string name="setup_expanded_open_content">Se abilitato, l\'Expanded Smartspace si aprirà quando un Target viene toccato se ha informazioni aggiuntive da mostrare come un widget o scorciatoie</string>
+    <string name="setup_expanded_open_content">Se abilitato, l\'Expanded Smartspace si aprirà quando un Target viene toccato se ha informazioni aggiuntive da mostrare come un Widget o scorciatoie</string>
     <string name="setup_expanded_info_footer">Puoi accedere a opzioni aggiuntive, inclusa l\'apertura dell\'Expanded Smartspace quando un Target viene toccato (anche se non ha informazioni aggiuntive) in Impostazioni &gt; Expanded Smartspace dopo la configurazione.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Plugin</string>
@@ -519,7 +519,7 @@
     <string name="setup_plugins_info_finish">Fine</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Configurazione completata</string>
-    <string name="setup_complete_content">Target, complicazioni e widget potrebbero avere bisogno di ulteriori permessi. Essi saranno richiesti quando sarà necessario.</string>
+    <string name="setup_complete_content">Target, Complicazioni e Widget potrebbero avere bisogno di ulteriori permessi. Essi saranno richiesti quando sarà necessario.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Richiesta del permesso…</string>
     <string name="enhanced_mode_request_loading_subtitle">Concedi il permesso Shizuku/Sui se richiesto</string>
@@ -627,8 +627,8 @@
     <!-- Expanded Smartspace -->
     <string name="expanded_disabled">Expanded Smartspace è disabilitato</string>
     <string name="expanded_disabled_settings">Impostazioni</string>
-    <string name="expanded_widget_configure">Tocca per configurare il widget</string>
-    <string name="expanded_widget_deleted">Questo widget è stato disinstallato, tocca per rimuovere</string>
+    <string name="expanded_widget_configure">Tocca per configurare il Widget</string>
+    <string name="expanded_widget_deleted">Questo Widget è stato disinstallato, tocca per rimuovere</string>
     <string name="expanded_widget_deleted_rearrange">Widget Disinstallato</string>
     <string name="expanded_permission_title">Consenti il permesso di Visualizzare Sopra ad Altre App</string>
     <string name="expanded_permission_title_short">Mostra Sopra ad Altre App</string>
@@ -639,8 +639,8 @@
     <!-- Expanded Smartspace Settings -->
     <string name="expanded_settings_title">Expanded Smartspace</string>
     <string name="expanded_settings_title_short">Expanded</string>
-    <string name="expanded_settings_content">Mostra Target e Complicazioni di Smartspace a schermo intero, con ulteriori informazioni tra cui widget, scorciatoie ad app e altro</string>
-    <string name="expanded_settings_footer">Expanded Smartspace mostra tutti i Target e le Complicazioni di Smartspace e le informazioni, inclusi widget, scorciatoie delle app e altro, per Target compatibili. Può essere aperto dalla Schermata Home, dalla Schermata di Blocco o da una Scorciatoia dell\'App dall\'icona di Smartspacer. Se si utilizza Discover Killer, Smartspacer può anche sostituire il tuo Google Discover Feed.</string>
+    <string name="expanded_settings_content">Mostra Target e Complicazioni di Smartspace a schermo intero, con ulteriori informazioni tra cui Widget, scorciatoie ad app e altro</string>
+    <string name="expanded_settings_footer">Expanded Smartspace mostra tutti i Target e le Complicazioni di Smartspace e le informazioni, inclusi Widget, scorciatoie delle app e altro, per Target compatibili. Può essere aperto dalla Schermata Home, dalla Schermata di Blocco o da una Scorciatoia dell\'App dall\'icona di Smartspacer. Se si utilizza Discover Killer, Smartspacer può anche sostituire il tuo Google Discover Feed.</string>
     <string name="expanded_settings_switch">Abilita Expanded Smartspace</string>
     <string name="expanded_settings_header_search">Cerca</string>
     <string name="expanded_settings_show_search_box_title">Mostra Casella di Ricerca</string>
