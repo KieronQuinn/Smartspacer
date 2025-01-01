@@ -440,7 +440,7 @@
     <string name="compatibility_feature_loyalty_content">Consente di mostrare un pulsante oltre al titolo e sottotitolo.</string>
     <string name="compatibility_feature_shopping_list_title">Elenco</string>
     <string name="compatibility_feature_shopping_list_content">Consente di visualizzare un breve elenco oltre al titolo e sottotitolo</string>
-    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
+    <string name="compatibility_feature_remoteviews_title">Contenuti personalizzati</string>
     <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Sport</string>
     <string name="compatibility_feature_sports_content">Consente di visualizzare un punteggio per due squadre oltre al titolo e sottotitolo</string>
@@ -674,7 +674,7 @@
     <string name="expanded_settings_hide_add_button_content">Nascondi il pulsante per aggiungere widget personalizzati: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Mai</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Quando si sostituisce Google Discover</string>
-    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
+    <string name="expanded_settings_hide_add_button_when_locked">Mentre bloccato</string>
     <string name="expanded_settings_hide_add_button_always">Sempre</string>
     <string name="expanded_settings_enable_columns_title">Abilita Multi-Colonna</string>
     <string name="expanded_settings_enable_columns_content">Su dispositivi più larghi, visualizza i Target di Smartspacer, i contenuti extra e i widget personalizzati orizzontalmente oltre che verticalmente, se lo spazio è disponibile</string>
@@ -911,9 +911,9 @@
     <string name="complication_clock_description">Mostra il tempo corrente.\n<b>Attenzione:</b> Questa Complicazione potrebbe aumentare il consumo della batteria.</string>
     <string name="complication_clock_description_short">Mostra l\'ora corrente</string>
     <!-- Clock Target -->
-    <string name="target_clock_label">Clock</string>
-    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
-    <string name="target_clock_description_short">Shows the current time</string>
+    <string name="target_clock_label">Orologio</string>
+    <string name="target_clock_description">Mostra il tempo corrente.\n<b>Attenzione:</b> Questo Target potrebbe aumentare il consumo della batteria.</string>
+    <string name="target_clock_description_short">Mostra l\'ora corrente</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendario</string>
     <string name="target_calendar_description">Mostra gli eventi di calendario dai calendari selezionati</string>
@@ -1016,9 +1016,9 @@
     <string name="target_flashlight_toast">Concedi il permesso Fotocamera</string>
     <!-- Widget Target -->
     <string name="target_widget_title">Widget</string>
-    <string name="target_widget_description"><b>Experimental:</b> Show a 4x1 widget</string>
-    <string name="target_widget_description_set">Shows %1s from %1s</string>
-    <string name="target_widget_not_supported_title">Widgets not Supported</string>
+    <string name="target_widget_description"><b>Sperimentale:</b> Mostra un widget 4×1</string>
+    <string name="target_widget_description_set">Mostra %1s da %1s</string>
+    <string name="target_widget_not_supported_title">Widget non Supportati</string>
     <string name="target_widget_not_supported_content">Widgets are not supported here</string>
     <string name="target_widget_not_compatible_title">Widget not compatible</string>
     <string name="target_widget_not_compatible_content">Sorry, this widget is not compatible</string>
