@@ -441,8 +441,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="compatibility_feature_loyalty_content">Erlaubt die Anzeige eines Buttons neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_shopping_list_title">Liste</string>
     <string name="compatibility_feature_shopping_list_content">Erlaubt die Anzeige einer kurzen Liste zusätzlich zum Titel &amp; Untertitel</string>
-    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
-    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
+    <string name="compatibility_feature_remoteviews_title"></string>
+    <string name="compatibility_feature_remoteviews_content"></string>
     <string name="compatibility_feature_sports_title">Sport</string>
     <string name="compatibility_feature_sports_content">Erlaubt die Anzeige einer Punktzahl für zwei Teams zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_template_carousel_title">Karussell</string>
