@@ -90,7 +90,7 @@
     <string name="target_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
     <string name="target_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
     <string name="target_default_configuration_title">Settings</string>
-    <string name="target_default_configuration_description">Hide default Targets, and access more settings in the Google app</string>
+    <string name="target_default_configuration_description">Ẩn Mục tiêu mặc định và truy cập nhiều cài đặt hơn trong ứng dụng Google</string>
     <string name="target_date_label">Date</string>
     <string name="target_date_description">Shows the current date, with space for two Complications</string>
     <string name="target_greeting_label">Greeting</string>
@@ -107,7 +107,7 @@
     <string name="target_greeting_configuration_hide_if_no_complications_content">Hides the Target if no Complications are available to show below it</string>
     <string name="target_greeting_configuration_hide_title_on_aod_title">Hide Title on AoD</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Hides the Target\'s title on the Always on Display (Native Smartspace only)</string>
-    <string name="target_greeting_configuration_name_title">Greeting Name</string>
+    <string name="target_greeting_configuration_name_title">Tên</string>
     <string name="target_greeting_configuration_name_content">Your name to show in the greeting: %1s</string>
     <string name="target_greeting_configuration_name_content_empty">Your name to show in the greeting</string>
     <string name="target_greeting_configuration_title">Settings</string>
