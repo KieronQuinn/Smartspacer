@@ -132,7 +132,7 @@
     <string name="complication_google_weather_label">Google Погода</string>
     <string name="complication_google_weather_description">Показывает погоду из приложения Google</string>
     <string name="complication_google_weather_description_unsupported">Для этой цели нужно приложение Google</string>
-    <string name="complication_date_label">Date</string>
+    <string name="complication_date_label">Дата</string>
     <string name="complication_date_description">Shows the current date</string>
     <string name="plugin_target_default_label">Цель из плагина</string>
     <string name="plugin_action_default_label">Дополнение из плагина</string>
@@ -206,7 +206,7 @@
     <string name="target_edit_show_on_music_content">Показывать эту Цель на AoD, пока играет музыка</string>
     <string name="target_edit_show_on_music_content_oem">Показывать эту Цель на AoD (если доступно), пока играет музыка</string>
     <string name="target_edit_show_on_music_content_incompatible">Требуется поддержка экрана блокировки и Нативный режим</string>
-    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Недоступно на данном устройстве</string>
     <string name="target_edit_expanded_header">Расширенное Пространство</string>
     <string name="target_edit_expanded_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="target_edit_expanded_show_when_locked_content">Показывать эту Цель в Расширенном Пространстве при заблокированном экране</string>
@@ -250,7 +250,7 @@
     <string name="complication_edit_show_on_music_content">Показывать это Дополнение на AoD, пока играет музыка</string>
     <string name="complication_edit_show_on_music_content_oem">Показывать это Дополнение на AoD (если доступно), пока играет музыка</string>
     <string name="complication_edit_show_on_music_content_incompatible">Требуется поддержка экрана блокировки и Нативный режим</string>
-    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Недоступно на данном устройстве</string>
     <string name="complication_edit_expanded_header">Расширенное Пространство</string>
     <string name="complication_edit_expanded_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="complication_edit_expanded_show_when_locked_content">Показывать это Дополнение в Расширенном Пространстве при заблокированном экране</string>
@@ -361,11 +361,11 @@
     <string name="requirement_bluetooth_configuration_pick_title">Select Device</string>
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
-    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth is disabled, tap to enable</string>
+    <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth отключен, нажмите для включения</string>
     <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
-    <string name="requirement_bluetooth_configuration_pick_empty">No paired devices found</string>
+    <string name="requirement_bluetooth_configuration_pick_empty">Не найдено сопряженных устройств</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
-    <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
+    <string name="requirement_bluetooth_notification_title">Требуется разрешение Bluetooth</string>
     <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
     <string name="requirement_app_prediction">Подсказка приложений</string>
     <string name="requirement_app_prediction_content_generic">Показывать только если определённое приложение находится в топ-5 Подсказках Приложений (обычно отображаются в меню приложений)</string>
@@ -375,7 +375,7 @@
     <string name="requirement_app_prediction_enhanced">Требуется Усиленный режим, включите его в настройках</string>
     <string name="requirement_app_prediction_configuration_title">Выберите приложение</string>
     <string name="requirement_music_playing_label">Music Playing</string>
-    <string name="requirement_music_playing_content">Only show when music is playing</string>
+    <string name="requirement_music_playing_content">Показывать только при воспроизведении музыки</string>
     <string name="permission_dialog_widget_title_prefix">Разрешить</string>
     <string name="permission_dialog_widget_title_suffix">доступ к виджетам с помощью Smartspacer?</string>
     <string name="permission_dialog_widget_title_warning">После этого шага вам может быть предложено выдать системные разрешения</string>
@@ -405,7 +405,7 @@
     <string name="settings_enable_update_check_content">Автоматически проверять наличие обновлений для Smartspacer и уведомлять, если они доступны</string>
     <string name="settings_enable_analytics_title">Включить аналитику и отчёты о сбоях</string>
     <string name="settings_enable_analytics_content">Разрешить отправку анонимных отчётов о сбоях и основной аналитики в Firebase, чтобы помочь исправлять ошибки</string>
-    <string name="settings_language_title">Language</string>
+    <string name="settings_language_title">Язык</string>
     <string name="settings_language_default">System Default</string>
     <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Скрыть Цели с чувствительными данными</string>
@@ -660,7 +660,7 @@
     <string name="expanded_settings_close_when_locked_title">Закрыть при блокировке</string>
     <string name="expanded_settings_close_when_locked_content">Выйти из Расширенного Пространства при блокировке экрана</string>
     <string name="expanded_settings_header_style">Стиль</string>
-    <string name="expanded_settings_background_mode_title">Background</string>
+    <string name="expanded_settings_background_mode_title">Фон</string>
     <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
     <string name="expanded_settings_background_mode_blur">Blurred Wallpaper</string>
     <string name="expanded_settings_background_mode_scrim">Dimmed Wallpaper</string>
