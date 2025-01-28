@@ -39,9 +39,9 @@
     <string name="widget_loading_smartspacer">正在加载…</string>
     <string name="widget_loading_smartspacer_subtitle">如果该消息依然存在，请检查 Smartspacer 的无障碍服务是否开启</string>
     <string name="widget_configuration_title">Smartspacer 小组件</string>
-    <string name="widget_configuration_tab_horizontal">Horizontal</string>
-    <string name="widget_configuration_tab_vertical">Vertical</string>
-    <string name="widget_configuration_horizontal_info"><b>Note:</b> Due to an Android limitation, widgets cannot be scrolled horizontally. Instead, the Smartspacer Widget has controls to change pages on tap.</string>
+    <string name="widget_configuration_tab_horizontal">横向</string>
+    <string name="widget_configuration_tab_vertical">垂直</string>
+    <string name="widget_configuration_horizontal_info"><b>注：</b>由于安卓系统的限制，部件无法水平滚动。相反，Smartspacer Widget 具有控制功能，可在轻点时更改页面。</string>
     <string name="widget_configuration_vertical_info"><b>Note:</b> You may experience performance issues and higher battery usage when using the list widget. This is due to the whole widget needing to update for every change, and cannot be fixed.</string>
     <string name="widget_configuration_accessibility_title">启用无障碍服务</string>
     <string name="widget_configuration_accessibility_content">Smartspacer 小组件需要无障碍服务来获知你设备上哪些应用正在运行，以此启动/停止对象和附件。这种方式能够以更省电的方式保证信息即时更新，无需一直运行。</string>
@@ -676,7 +676,7 @@
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
     <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Always</string>
-    <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
+    <string name="expanded_settings_enable_columns_title">启用多栏</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
     <string name="expanded_complications_first_content">Put your Complications in a grid above all Targets, instead of filling spaces alongside Targets &amp; showing remaining ones below</string>
