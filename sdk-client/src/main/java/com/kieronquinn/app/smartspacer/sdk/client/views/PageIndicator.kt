@@ -30,7 +30,7 @@ class PageIndicator @JvmOverloads constructor(
 
     private val primaryColor = context.getAttrColor(android.R.attr.textColorPrimary)
     private var currentPageIndex = -1
-    private var numPages = -1
+    private var numPages = 0
 
     private val defaultTintColour by lazy {
         context.getAttrColor(android.R.attr.textColorPrimary)
