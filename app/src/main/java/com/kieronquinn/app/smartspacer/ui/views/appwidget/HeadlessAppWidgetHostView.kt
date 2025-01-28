@@ -13,11 +13,13 @@ import androidx.annotation.RequiresApi
 import com.kieronquinn.app.smartspacer.sdk.utils.findViewByIdentifier
 import com.kieronquinn.app.smartspacer.ui.views.RoundedCornersEnforcingAppWidgetHostView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
-import com.kieronquinn.app.smartspacer.utils.extensions.ExtractedRemoteCollectionItems
 import com.kieronquinn.app.smartspacer.utils.extensions.createPackageContextOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.extractAdapterIntent
+import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionItems
 import com.kieronquinn.app.smartspacer.utils.extensions.getActionsIncludingNested
+import com.kieronquinn.app.smartspacer.utils.extensions.getCollectionCache
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteCollectionItemListAdapter
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteViewsAdapterIntent
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteViewsFactoryWrapper
@@ -127,15 +129,38 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
         findViewById<View>(id)?.performClick()
     }
 
-    fun findRemoteViewsAdapter(identifier: String?, id: Int?): RemoteViewsFactoryWrapper? {
+    fun findRemoteViewsAdapter(identifier: String?, id: Int?): RemoteViewsAdapter? {
         val viewId = identifier?.let { findViewByIdentifier(it)?.id } ?: id ?: return null
-        return adapterPool[viewId] ?: run {
+        return adapterPool[viewId]?.let {
+            RemoteViewsAdapter.RemoteWrapper(it)
+        } ?: run {
+            val remoteViews = lastRemoteViews?.remoteViews
             val packageName = info?.provider?.packageName ?: return null
-            val intent = lastRemoteViews?.remoteViews?.findRemoteViewsAdapters()?.firstOrNull {
+            val intent = remoteViews?.findRemoteViewsAdapters()?.firstOrNull {
                 it.first == viewId
-            }?.second ?: return null
-            wrapRemoteViewsAdapterIntent(packageName, viewId, intent)
+            }?.second
+            if(intent != null) {
+                return wrapRemoteViewsAdapterIntent(packageName, viewId, intent)?.let {
+                    RemoteViewsAdapter.RemoteWrapper(it)
+                }
+            }
+            if(isAtLeastBaklava()) {
+                val collectionIntent = remoteViews?.findRemoteViewsCollectionListIntents()
+                    ?.firstOrNull { it.first == viewId }?.second?.toUri(0)
+                val items = remoteViews?.getCollectionCache()?.get(collectionIntent)
+                if(items != null) {
+                    remoteViews.getCollectionCache().let {
+                        return RemoteViewsAdapter.CollectionItems(items)
+                    }
+                }
+            }
+            return null
         }
+    }
+
+    sealed class RemoteViewsAdapter {
+        data class RemoteWrapper(val wrapper: RemoteViewsFactoryWrapper): RemoteViewsAdapter()
+        data class CollectionItems(val items: RemoteCollectionItems): RemoteViewsAdapter()
     }
 
     private fun wrapRemoteViewsAdapterIntent(
@@ -155,29 +180,11 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    fun findRemoteViewsCollectionListAdapter(identifier: String?, id: Int?): RemoteViewsCollectionListAdapter? {
+    fun findRemoteViewsCollectionListAdapter(identifier: String?, id: Int?): RemoteCollectionItems? {
         val viewId = identifier?.let { findViewByIdentifier(it)?.id } ?: id ?: return null
         return lastRemoteViews?.remoteViews?.findRemoteViewsCollectionListAdapters()?.firstOrNull {
-            it.id == viewId
-        }?.let {
-            when(it) {
-                is ExtractedRemoteCollectionItems.Items -> {
-                    RemoteViewsCollectionListAdapter.Items(it.items)
-                }
-                is ExtractedRemoteCollectionItems.Intent -> {
-                    val packageName = info?.provider?.packageName ?: return null
-                    RemoteViewsCollectionListAdapter.Wrapper(
-                        wrapRemoteViewsAdapterIntent(packageName, viewId, it.intent)
-                            ?: return null
-                    )
-                }
-            }
-        }
-    }
-
-    sealed class RemoteViewsCollectionListAdapter {
-        data class Items(val items: RemoteCollectionItems): RemoteViewsCollectionListAdapter()
-        data class Wrapper(val wrapper: RemoteViewsFactoryWrapper): RemoteViewsCollectionListAdapter()
+            it.first == viewId
+        }?.second
     }
 
     fun findAdapterView(identifier: String?, id: Int?): AdapterView<*>? {
@@ -196,11 +203,21 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    private fun RemoteViews.findRemoteViewsCollectionListAdapters(): List<ExtractedRemoteCollectionItems> {
+    private fun RemoteViews.findRemoteViewsCollectionListAdapters(): List<Pair<Int, RemoteCollectionItems>> {
         return getActionsIncludingNested().filter {
             it.isRemoteCollectionItemListAdapter()
         }.mapNotNull {
             it.extractRemoteCollectionItems()
+        }
+    }
+
+    //Requires 36
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun RemoteViews.findRemoteViewsCollectionListIntents(): List<Pair<Int, Intent>> {
+        return getActionsIncludingNested().filter {
+            it.isRemoteCollectionItemListAdapter()
+        }.mapNotNull {
+            it.extractRemoteCollectionIntent()
         }
     }
 

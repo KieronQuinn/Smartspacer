@@ -19,3 +19,18 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontobfuscate
+
+-keep class com.kieronquinn.app.smartspacer.** { *; }
+-keep class android.** { *; }
+
+-dontwarn de.robv.android.xposed.**
+-dontwarn javax.naming.**
+
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
+  <fields>;
+}
+
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile

@@ -11,6 +11,7 @@ import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarg
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.FlashlightTarget
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.PACKAGE_PIXEL_LAUNCHER
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityState
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Feature
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Template
@@ -30,6 +31,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getAppPredictionComponen
 import com.kieronquinn.app.smartspacer.utils.extensions.getClassLoaderForPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastU
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -96,6 +98,8 @@ interface CompatibilityRepository {
     ) {
 
         companion object {
+            internal const val PACKAGE_PIXEL_LAUNCHER = "com.google.android.apps.nexuslauncher"
+
             fun List<CompatibilityReport>.isNativeModeAvailable(): Boolean {
                 //No compatible apps found
                 if(isEmpty()) return false
@@ -106,9 +110,11 @@ interface CompatibilityRepository {
             fun List<CompatibilityReport>.areRemoteViewsSupported(): Boolean {
                 //No compatible apps found
                 if(isEmpty()) return false
-                return any { it.compatibility.any { compatible ->
-                    compatible.compatible && compatible.item == Feature.REMOTE_VIEWS
-                }}
+                return any {
+                    it.compatibility.any { compatible ->
+                        compatible.compatible && compatible.item == Feature.REMOTE_VIEWS
+                    } || (it.packageName == PACKAGE_PIXEL_LAUNCHER && isAtLeastBaklava())
+                }
             }
         }
 
@@ -380,8 +386,12 @@ class CompatibilityRepositoryImpl(
     ): List<Compatibility> = withContext(Dispatchers.IO) {
         val classLoader = context.getClassLoaderForPackage(packageName)
             ?: return@withContext emptyList()
-        Feature.values().map {
-            Compatibility(it, classLoader.exists(it.getClassName()))
+        Feature.entries.map {
+            if(it == Feature.REMOTE_VIEWS && packageName == PACKAGE_PIXEL_LAUNCHER && isAtLeastBaklava()) {
+                Compatibility(it, true)
+            }else{
+                Compatibility(it, classLoader.exists(it.getClassName()))
+            }
         }
     }
 
@@ -390,7 +400,7 @@ class CompatibilityRepositoryImpl(
     ): List<Compatibility> = withContext(Dispatchers.IO) {
         val classLoader = context.getClassLoaderForPackage(packageName)
             ?: return@withContext emptyList()
-        Template.values().map {
+        Template.entries.map {
             Compatibility(it, classLoader.exists(it.getClassName()))
         }
     }

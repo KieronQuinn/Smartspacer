@@ -11,7 +11,7 @@ import android.content.Intent
 import android.os.IBinder
 import android.os.UserHandle
 import android.util.Log
-import androidx.core.os.BuildCompat
+import androidx.core.os.BuildCompat.isAtLeastT
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -156,14 +156,15 @@ private fun IActivityManager.broadcastIntentOptionC(
 fun IActivityManager.bindServiceInstanceCompat(
     context: Context,
     serviceConnection: IServiceConnection,
-    thread: IApplicationThread,
+    thread: IApplicationThread?,
     token: IBinder?,
     intent: Intent,
-    flags: Int
+    flags: Int,
+    packageNameOverride: String? = null
 ): Int {
     try {
-        val packageName = Context::class.java.getMethod("getOpPackageName")
-            .invoke(context) as String
+        val packageName = packageNameOverride
+            ?: Context::class.java.getMethod("getOpPackageName").invoke(context) as String
         val userHandle = Context::class.java.getMethod("getUser").invoke(context) as UserHandle
         val identifier =
             UserHandle::class.java.getMethod("getIdentifier").invoke(userHandle) as Int
@@ -198,29 +199,45 @@ private fun IActivityManager.bindServiceInstanceCompat(
     callingPackage: String?,
     userId: Int
 ): Int {
-    return if (BuildCompat.isAtLeastT()) {
-        bindServiceInstance(
-            caller,
-            token,
-            service,
-            resolvedType,
-            connection,
-            flags,
-            instanceName,
-            callingPackage,
-            userId
-        )
-    } else {
-        bindIsolatedService(
-            caller,
-            token,
-            service,
-            resolvedType,
-            connection,
-            flags,
-            instanceName,
-            callingPackage,
-            userId
-        )
+    return when {
+        isAtLeastU() -> {
+            bindServiceInstance(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags.toLong(),
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
+        isAtLeastT() -> {
+            bindServiceInstance(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags,
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
+        else -> {
+            bindIsolatedService(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags,
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
     }
 }

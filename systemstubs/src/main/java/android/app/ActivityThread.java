@@ -28,6 +28,10 @@ public class ActivityThread {
         throw new RuntimeException("Stub!");
     }
 
+    public static Application currentApplication() {
+        throw new RuntimeException("Stub!");
+    }
+
     public final ActivityInfo resolveActivityInfo(Intent intent) {
         throw new RuntimeException("Stub!");
     }
