@@ -6,6 +6,7 @@ import com.kieronquinn.app.smartspacer.ISmartspaceSession;
 import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener;
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener;
 import com.kieronquinn.app.smartspacer.ITaskObserver;
+import com.kieronquinn.app.smartspacer.ISmartspaceSessionCallback;
 import com.kieronquinn.app.smartspacer.model.appshortcuts.ShortcutQueryWrapper;
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcutIcon;
 import android.content.pm.ParceledListSlice;
@@ -16,8 +17,8 @@ interface ISmartspacerShizukuService {
     boolean isRoot() = 2;
     void setSmartspaceService(in ComponentName component, int userId, boolean killSystemUi, in List<String> killPackages) = 3;
     void clearSmartspaceService(int userId, boolean killSystemUi, in List<String> killPackages) = 4;
-    ISmartspaceSession createSmartspaceSession(in SmartspaceConfig config) = 5;
-    void destroySmartspaceSession(in SmartspaceSessionId sessionId) = 6;
+    int bindService(in IBinder serviceConnection, in IBinder applicationThread, in Intent intent) = 5;
+    void unbindService(in IBinder serviceConnection) = 6;
 
     void createAppPredictorSession(in IAppPredictionOnTargetsAvailableListener listener) = 7;
     void destroyAppPredictorSession() = 8;

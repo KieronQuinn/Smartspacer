@@ -5,15 +5,14 @@ package com.kieronquinn.app.smartspacer.service
 import android.annotation.SuppressLint
 import android.app.IActivityManager
 import android.app.IActivityTaskManager
+import android.app.IApplicationThread
 import android.app.IProcessObserver
+import android.app.IServiceConnection
 import android.app.PendingIntent
 import android.app.prediction.AppPredictionContext
 import android.app.prediction.AppPredictionManager
 import android.app.prediction.AppPredictor
 import android.app.smartspace.ISmartspaceManager
-import android.app.smartspace.SmartspaceConfig
-import android.app.smartspace.SmartspaceManager
-import android.app.smartspace.SmartspaceSessionId
 import android.content.AttributionSource
 import android.content.ComponentName
 import android.content.Context
@@ -40,7 +39,6 @@ import android.util.Log
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.IAppPredictionOnTargetsAvailableListener
 import com.kieronquinn.app.smartspacer.IRunningAppObserver
-import com.kieronquinn.app.smartspacer.ISmartspaceSession
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.ITaskObserver
@@ -49,6 +47,7 @@ import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcutIcon
 import com.kieronquinn.app.smartspacer.model.appshortcuts.ShortcutQueryWrapper
 import com.kieronquinn.app.smartspacer.utils.appprediction.AppPredictionSessionWrapper
 import com.kieronquinn.app.smartspacer.utils.context.ShellContext
+import com.kieronquinn.app.smartspacer.utils.extensions.bindServiceInstanceCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.getIdentifier
 import com.kieronquinn.app.smartspacer.utils.extensions.getIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.getPrivilegedConfiguredNetworks
@@ -56,7 +55,6 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getTaskPackages
 import com.kieronquinn.app.smartspacer.utils.extensions.getUser
 import com.kieronquinn.app.smartspacer.utils.extensions.processDied
 import com.kieronquinn.app.smartspacer.utils.extensions.toggleTorch
-import com.kieronquinn.app.smartspacer.utils.smartspace.ProxySmartspaceSession
 import com.topjohnwu.superuser.internal.Utils
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -119,10 +117,6 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
 
     private val packageManager by lazy {
         context.packageManager
-    }
-
-    private val smartspaceManager by lazy {
-        context.getSystemService("smartspace") as SmartspaceManager
     }
 
     private val systemSmartspaceManager by lazy {
@@ -217,8 +211,24 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         }
     }
 
-    override fun createSmartspaceSession(config: SmartspaceConfig): ISmartspaceSession {
-        return ProxySmartspaceSession(smartspaceManager.createSmartspaceSession(config))
+    override fun bindService(
+        serviceConnection: IBinder,
+        applicationThread: IBinder,
+        intent: Intent
+    ): Int {
+        return activityManager.bindServiceInstanceCompat(
+            context,
+            IServiceConnection.Stub.asInterface(serviceConnection),
+            IApplicationThread.Stub.asInterface(applicationThread),
+            null,
+            intent,
+            Context.BIND_AUTO_CREATE,
+            "com.android.systemui"
+        )
+    }
+
+    override fun unbindService(serviceConnection: IBinder) {
+        activityManager.unbindService(IServiceConnection.Stub.asInterface(serviceConnection))
     }
 
     override fun createAppPredictorSession(listener: IAppPredictionOnTargetsAvailableListener) {
@@ -296,9 +306,9 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         Unit
     }
 
-    override fun destroySmartspaceSession(sessionId: SmartspaceSessionId){
+    /*override fun destroySmartspaceSession(sessionId: SmartspaceSessionId){
         systemSmartspaceManager.destroySmartspaceSession(sessionId)
-    }
+    }*/
 
     override fun getShortcuts(query: ShortcutQueryWrapper): ParceledListSlice<ShortcutInfo> {
         val token = clearCallingIdentity()

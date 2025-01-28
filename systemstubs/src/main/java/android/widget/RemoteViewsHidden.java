@@ -46,6 +46,12 @@ public class RemoteViewsHidden extends RemoteViews {
                 RemoteResponse response);
     }
 
+    class RemoteCollectionCache {
+        RemoteCollectionItems getItemsForId(int intentId) {
+            throw new RuntimeException("Stub!");
+        }
+    }
+
     public interface OnClickHandler {
         boolean onClickHandler(View view, PendingIntent pendingIntent, RemoteResponse response);
     }

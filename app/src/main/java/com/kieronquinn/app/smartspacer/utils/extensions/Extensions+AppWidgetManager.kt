@@ -26,8 +26,8 @@ fun AppWidgetManager.bindRemoteViewsService(
     flags: Int = Context.BIND_AUTO_CREATE or 0x02000000 //BIND_FOREGROUND_SERVICE_WHILE_AWAKE
 ): Boolean {
     if(isAtLeastBaklava()) {
-        return false //TODO currently disabled due to service changes, awaiting upstream
-        //context.bindService(intent, serviceConnection, flags)
+        //Not supported anymore, collection item migration mechanic will be used instead.
+        return false
     }else{
         val dispatcher = context.getServiceDispatcher(serviceConnection, handler, flags)
         return try {

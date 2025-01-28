@@ -7,7 +7,6 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
 import android.provider.Settings
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
@@ -134,9 +133,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                 session.createdAt
             }.drop(1).forEach { session ->
                 session.onDestroy()
-                shizuku.runWithService { service ->
-                    service.destroySmartspaceSession(session.sessionId)
-                }
+                systemSmartspace.destroySmartspaceSession(session.sessionId)
                 sessions.remove(session.sessionId)
             }
         }
@@ -154,9 +151,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                 session.createdAt
             }.drop(1).forEach { session ->
                 session.onDestroy()
-                shizuku.runWithService { service ->
-                    service.destroySmartspaceSession(session.sessionId)
-                }
+                systemSmartspace.destroySmartspaceSession(session.sessionId)
                 mediaDataSessions.remove(session.sessionId)
             }
         }
@@ -174,9 +169,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                 session.createdAt
             }.drop(1).forEach { session ->
                 session.onDestroy()
-                shizuku.runWithService { service ->
-                    service.destroySmartspaceSession(session.sessionId)
-                }
+                systemSmartspace.destroySmartspaceSession(session.sessionId)
                 glanceableHubSessions.remove(session.sessionId)
             }
         }

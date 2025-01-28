@@ -18,7 +18,8 @@ import com.kieronquinn.app.smartspacer.sdk.utils.RemoteAdapter
 import com.kieronquinn.app.smartspacer.sdk.utils.getClickPendingIntent
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
-import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.RemoteViewsCollectionListAdapter
+import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.RemoteViewsAdapter
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getAllInstalledProviders
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitHeight
 import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
@@ -26,6 +27,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.initialiseAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.extensions.replaceUriActionsWithProxy
 import com.kieronquinn.app.smartspacer.utils.extensions.updateAppWidgetSize
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteCollectionItemsWrapper
+import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteViewsCollectionItemsWrapper
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
 import com.kieronquinn.app.smartspacer.widget.HeadlessAppWidgetHost
 import com.kieronquinn.app.smartspacer.widget.HeadlessAppWidgetHost.OnProvidersChangedListener
@@ -56,6 +58,7 @@ interface WidgetRepository {
 
     fun getWidgetInfo(authority: String, id: String): AppWidgetProviderInfo?
     fun getWidgetConfig(authority: String, id: String): SmartspacerWidgetProvider.Config?
+    fun getDefaultWidth(): Int
 
     fun allocateAppWidgetId(): Int
     fun deallocateAppWidgetId(id: Int)
@@ -233,6 +236,10 @@ class WidgetRepositoryImpl(
         return Widget.getAppWidgetProviderInfo(contentResolver, authority, id)
     }
 
+    override fun getDefaultWidth(): Int {
+        return displayPortraitWidth - 16.dp
+    }
+
     override fun getWidgetConfig(authority: String, id: String): SmartspacerWidgetProvider.Config? {
         return Widget.getConfig(contentResolver, authority, id)
     }
@@ -248,7 +255,7 @@ class WidgetRepositoryImpl(
     override fun bindAppWidgetIdIfAllowed(id: Int, provider: ComponentName, config: SmartspacerWidgetProvider.Config): Boolean {
         return appWidgetManager.bindAppWidgetIdIfAllowed(id, provider).also {
             if(it) {
-                val width = config.width?.takeIf { w -> w > 0 } ?: displayPortraitWidth
+                val width = config.width?.takeIf { w -> w > 0 } ?: getDefaultWidth()
                 val height = config.height?.takeIf { h -> h > 0 } ?: (displayPortraitHeight / 4f)
                     .roundToInt()
                 appWidgetManager.initialiseAppWidgetSize(
@@ -297,7 +304,7 @@ class WidgetRepositoryImpl(
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    private suspend fun getRemoteCollectionAdapter(
+    private fun getRemoteCollectionAdapter(
         appWidgetId: Int,
         identifier: String?,
         id: Int?
@@ -309,14 +316,9 @@ class WidgetRepositoryImpl(
             } ?: return null
         }
         val adapterView = hostView.findAdapterView(identifier, id) ?: return null
-        val adapter = hostView.findRemoteViewsCollectionListAdapter(identifier, id)
+        val items = hostView.findRemoteViewsCollectionListAdapter(identifier, id)
             ?: return null
-        val remote = when(adapter) {
-            is RemoteViewsCollectionListAdapter.Items -> {
-                RemoteCollectionItemsWrapper(context, adapter.items)
-            }
-            is RemoteViewsCollectionListAdapter.Wrapper -> adapter.wrapper.awaitConnected()
-        }
+        val remote = RemoteCollectionItemsWrapper(context, items)
         return RemoteAdapter(
             remote,
             adapterView.getClickPendingIntent(),
@@ -360,8 +362,17 @@ class WidgetRepositoryImpl(
         }
         val adapterView = hostView.findAdapterView(identifier, id) ?: return null
         val adapter = hostView.findRemoteViewsAdapter(identifier, id) ?: return null
+        val remoteAdapter = when(adapter) {
+            is RemoteViewsAdapter.RemoteWrapper -> adapter.wrapper.awaitConnected()
+            is RemoteViewsAdapter.CollectionItems -> {
+                RemoteViewsCollectionItemsWrapper(
+                    context,
+                    adapter.items
+                )
+            }
+        }
         return RemoteAdapter(
-            adapter.awaitConnected(),
+            remoteAdapter,
             adapterView.getClickPendingIntent(),
             identifier,
             id

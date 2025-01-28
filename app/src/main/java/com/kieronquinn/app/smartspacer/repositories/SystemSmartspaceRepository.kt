@@ -2,21 +2,20 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
-import android.app.smartspace.SmartspaceConfig
+import android.app.smartspace.SmartspaceSessionId
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ParceledListSlice
 import android.net.Uri
 import android.os.Build
 import android.os.Process
 import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
-import com.kieronquinn.app.smartspacer.ISmartspaceOnTargetsAvailableListener
 import com.kieronquinn.app.smartspacer.ISmartspacerShizukuService
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.Smartspacer
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
+import com.kieronquinn.app.smartspacer.components.smartspace.SmartspacerSmartspaceManager
 import com.kieronquinn.app.smartspacer.receivers.NativeDismissReceiver
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.isNativeModeAvailable
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository.ShizukuServiceResponse
@@ -45,7 +44,7 @@ import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
-import android.app.smartspace.SmartspaceTarget as SystemSmartspaceTarget
+import java.util.concurrent.Executors
 
 
 /**
@@ -124,6 +123,11 @@ interface SystemSmartspaceRepository {
      */
     fun onFeedbackLoopDetected()
 
+    /**
+     *  Destroys an existing Smartspace session in the system service
+     */
+    suspend fun destroySmartspaceSession(sessionId: SmartspaceSessionId)
+
 }
 
 @SuppressLint("newApi")
@@ -154,8 +158,13 @@ class SystemSmartspaceRepositoryImpl(
     val _hubTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
     private val user = Process.myUserHandle().getIdentifier()
+    private val executor = Executors.newSingleThreadExecutor()
     private var lastShowedNativeReminderAt = 0L
     private var lastShowedReconnectAt = 0L
+
+    private val smartspaceManager by lazy {
+        SmartspacerSmartspaceManager(context)
+    }
 
     override val serviceRunning = MutableStateFlow(false)
 
@@ -203,50 +212,21 @@ class SystemSmartspaceRepositoryImpl(
 
     private fun setupService() = scope.launch {
         shouldBeEnabled.collect {
-            initService()
+            setupSessions()
         }
     }
 
-    private suspend fun initService() {
-        shizuku.runWithService {
-            it.setupSession(UiSurface.HOMESCREEN) { targets ->
-                _homeTargets.emit(targets)
-            }
-            it.setupSession(UiSurface.LOCKSCREEN) { targets ->
-                _lockTargets.emit(targets)
-            }
-            it.setupSession(UiSurface.MEDIA_DATA_MANAGER) { targets ->
-                _mediaTargets.emit(targets)
-            }
-            it.setupSession(UiSurface.GLANCEABLE_HUB) { targets ->
-                _hubTargets.emit(targets)
-            }
-            true
-        }
-    }
-
-    private fun ISmartspacerShizukuService.setupSession(
-        surface: UiSurface, onTargetsAvailable: suspend (targets: List<SmartspaceTarget>) -> Unit
-    ) {
-        val smartspaceConfig = SmartspaceConfig.Builder(context, surface.surface)
-            .setSmartspaceTargetCount(5)
-            .build()
-        val session = createSmartspaceSession(smartspaceConfig)
-        val callback = createCallback(onTargetsAvailable)
-        session?.addOnTargetsAvailableListener(callback)
-        session?.requestSmartspaceUpdate()
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    private fun createCallback(
-        onTargetsAvailable: suspend (targets: List<SmartspaceTarget>) -> Unit
-    ): ISmartspaceOnTargetsAvailableListener.Stub {
-        return object: ISmartspaceOnTargetsAvailableListener.Stub() {
-            override fun onTargetsAvailable(targets: ParceledListSlice<*>?) {
-                val availableTargets = (targets as ParceledListSlice<SystemSmartspaceTarget>).list
+    private suspend fun setupSessions() {
+        if(smartspaceManager.isAvailable) {
+            smartspaceManager.createSmartspaceSessions { surface, targets ->
                 scope.launch(Dispatchers.IO) {
-                    val converted = availableTargets.map { it.toSmartspaceTarget() }
-                    onTargetsAvailable(converted)
+                    val converted = targets.map { target -> target.toSmartspaceTarget() }
+                    when(surface) {
+                        UiSurface.HOMESCREEN -> _homeTargets.emit(converted)
+                        UiSurface.LOCKSCREEN -> _lockTargets.emit(converted)
+                        UiSurface.MEDIA_DATA_MANAGER -> _mediaTargets.emit(converted)
+                        UiSurface.GLANCEABLE_HUB -> _hubTargets.emit(converted)
+                    }
                 }
             }
         }
@@ -370,6 +350,12 @@ class SystemSmartspaceRepositoryImpl(
     override fun onFeedbackLoopDetected() {
         //Don't auto-reconnect for feedback loops to prevent repeatedly killing SystemUI in worst case
         context.showReconnectNotification(true)
+    }
+
+    override suspend fun destroySmartspaceSession(sessionId: SmartspaceSessionId) {
+        if(smartspaceManager.isAvailable) {
+            smartspaceManager.destroySmartspaceSession(sessionId)
+        }
     }
 
     private fun Context.showNotification() {

@@ -20,7 +20,6 @@ import com.kieronquinn.app.smartspacer.ui.activities.configuration.Configuration
 import com.kieronquinn.app.smartspacer.utils.extensions.checkCompatibility
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getBestRemoteViews
-import com.kieronquinn.app.smartspacer.utils.extensions.getDisplayPortraitWidth
 import org.koin.android.ext.android.inject
 import android.graphics.drawable.Icon as AndroidIcon
 
@@ -35,7 +34,7 @@ class WidgetTarget: SmartspacerTargetProvider() {
         val data = dataRepository.getTargetData(smartspacerId, TargetData::class.java)
         val padding = data?.padding ?: Padding.NONE
         val size = SizeF(
-            provideContext().getDisplayPortraitWidth().toFloat(),
+            widgetRepository.getDefaultWidth().toFloat(),
             padding.height.dp.toFloat()
         )
         val bestRemoteViews = remoteViews.getBestRemoteViews(provideContext(), size)

@@ -54,6 +54,17 @@ private fun RemoteViews.getActionsIncludingSized(): List<Any> {
     return myActions + sizedActions
 }
 
+@SuppressLint("PrivateApi")
+fun RemoteViews.getCollectionCache(): Map<String, RemoteCollectionItems> {
+    val collectionCache = RemoteViews::class.java.getDeclaredField("mCollectionCache").apply {
+        isAccessible = true
+    }.get(this)
+    return Class.forName("android.widget.RemoteViews\$RemoteCollectionCache")
+        .getDeclaredField("mUriToCollectionMapping").apply {
+            isAccessible = true
+        }.get(collectionCache) as Map<String, RemoteCollectionItems>
+}
+
 fun RemoteViews.getActionsIncludingNested(): List<Any> {
     val actions = getActionsIncludingSized()
     val actionsIncludingNested = ArrayList(actions)
@@ -125,17 +136,27 @@ fun Any.extractAdapterIntent(): Pair<Int, Intent> {
 }
 
 @RequiresApi(Build.VERSION_CODES.S)
-fun Any.extractRemoteCollectionItems(): ExtractedRemoteCollectionItems? {
+fun Any.extractRemoteCollectionItems(): Pair<Int, RemoteCollectionItems>? {
    return setRemoteCollectionItemListAdapterClass.declaredFields.firstNotNullOfOrNull {
         when(it.name) {
             "mItems" -> getRemoteCollectItemsLegacy(it)?.let { items ->
-                ExtractedRemoteCollectionItems.Items(getId(), items)
+                Pair(getId(), items)
             }
             "mItemsFuture" -> getRemoteCollectItemsFuture(it)?.let { items ->
-                ExtractedRemoteCollectionItems.Items(getId(), items)
+                Pair(getId(), items)
             }
+            else -> null
+        }
+    }
+}
+
+//Requires 36
+@RequiresApi(Build.VERSION_CODES.S)
+fun Any.extractRemoteCollectionIntent(): Pair<Int, Intent>? {
+   return setRemoteCollectionItemListAdapterClass.declaredFields.firstNotNullOfOrNull {
+        when(it.name) {
             "mServiceIntent" -> getRemoteCollectIntent(it)?.let { intent ->
-                ExtractedRemoteCollectionItems.Intent(getId(), intent)
+                Pair(getId(), intent)
             }
             else -> null
         }
@@ -146,10 +167,6 @@ sealed class ExtractedRemoteCollectionItems(open val id: Int) {
     data class Items(
         override val id: Int,
         val items: RemoteCollectionItems
-    ): ExtractedRemoteCollectionItems(id)
-    data class Intent(
-        override val id: Int,
-        val intent: android.content.Intent
     ): ExtractedRemoteCollectionItems(id)
 }
 

@@ -35,6 +35,7 @@ import com.kieronquinn.app.smartspacer.components.navigation.setupWithNavigation
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.getTopFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
@@ -123,7 +124,7 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
             val leftInsets = systemInsets.left
             val rightInsets = systemInsets.right
             view.updateLayoutParams<CoordinatorLayout.LayoutParams> {
-                height = bottomNavHeight + bottomInsets
+                height = bottomNavHeight + bottomInsets + 2.dp
             }
             view.updatePadding(bottom = bottomInsets, left = leftInsets, right = rightInsets)
         }

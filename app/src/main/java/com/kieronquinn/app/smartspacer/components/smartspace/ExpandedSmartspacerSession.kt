@@ -487,6 +487,8 @@ class ExpandedSmartspacerSession(
         return id
     }
 
+    override suspend fun supportsRemoteViews() = true
+
     sealed class Item(val type: Type, open val isDark: Boolean) {
         data class StatusBarSpace(
             val topInset: Int,

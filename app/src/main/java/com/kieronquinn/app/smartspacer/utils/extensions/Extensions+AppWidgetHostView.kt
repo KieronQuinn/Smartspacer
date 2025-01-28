@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.appwidget.AppWidgetHostView
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProviderInfo
@@ -9,7 +10,9 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.SizeF
+import android.view.View
 import android.widget.AppWidgetHostViewHidden
+import android.widget.RemoteViews
 import android.widget.RemoteViewsHidden.InteractionHandler
 import android.widget.RemoteViewsHidden.OnClickHandler
 import androidx.annotation.RequiresApi
@@ -94,41 +97,55 @@ fun AppWidgetHostView.setInteractionHandler(
     }
 }
 
+@Suppress("ObjectLiteralToLambda")
 @RequiresApi(Build.VERSION_CODES.S)
 fun SmartspaceTargetInteractionListener.getInteractionHandler(
     appWidgetId: Int?,
     trampoline: Boolean
 ): InteractionHandler {
-    return InteractionHandler { view, pendingIntent, response ->
-        launchAction(pendingIntent?.isActivity ?: true) {
-            appWidgetId?.let {
-                AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+    return object: InteractionHandler {
+        override fun onInteraction(
+            view: View,
+            pendingIntent: PendingIntent,
+            response: RemoteViews.RemoteResponse
+        ): Boolean {
+            launchAction(pendingIntent.isActivity) {
+                appWidgetId?.let {
+                    AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+                }
+                if(trampoline) {
+                    RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+                }else{
+                    RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+                }
             }
-            if(trampoline) {
-                RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }else{
-                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }
+            return true
         }
-        true
     }
 }
 
+@Suppress("ObjectLiteralToLambda")
 fun SmartspaceTargetInteractionListener.getOnClickHandler(
     appWidgetId: Int?,
     trampoline: Boolean
 ): OnClickHandler {
-    return OnClickHandler { view, pendingIntent, response ->
-        launchAction(true) {
-            appWidgetId?.let {
-                AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+    return object: OnClickHandler {
+        override fun onClickHandler(
+            view: View,
+            pendingIntent: PendingIntent,
+            response: RemoteViews.RemoteResponse
+        ): Boolean {
+            launchAction(true) {
+                appWidgetId?.let {
+                    AppWidgetManager.getInstance(view.context).noteAppWidgetTappedCompat(it)
+                }
+                if(trampoline){
+                    RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+                }else{
+                    RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
+                }
             }
-            if(trampoline){
-                RemoteViews_trampolinePendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }else{
-                RemoteViews_startPendingIntent(view, pendingIntent, response.getLaunchOptions(view))
-            }
+            return true
         }
-        true
     }
 }
