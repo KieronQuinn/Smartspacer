@@ -675,7 +675,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="expanded_settings_hide_add_button_content">Den Button ausblenden, um eigene Widgets hinzuzufügen: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Niemals</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Beim Ersetzen von Google Discover</string>
-    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
+    <string name="expanded_settings_hide_add_button_when_locked">Wenn gesperrt</string>
     <string name="expanded_settings_hide_add_button_always">Immer</string>
     <string name="expanded_settings_enable_columns_title">Mehrspaltig aktivieren</string>
     <string name="expanded_settings_enable_columns_content">Auf Geräten mit größerer Breite Smartspacer-Ziele, zusätzliche Inhalte und benutzerdefinierte Widgets sowohl horizontal als auch vertikal anzeigen, sofern Platz vorhanden ist</string>
@@ -913,7 +913,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="complication_clock_description">Zeigt die aktuelle Zeit.\n<b>Warnung:</b> Diese Komplikation kann erhöhten Akkuverbrauch verursachen.</string>
     <string name="complication_clock_description_short">Zeigt die aktuelle Zeit</string>
     <!-- Clock Target -->
-    <string name="target_clock_label">Clock</string>
+    <string name="target_clock_label">Uhr</string>
     <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
     <string name="target_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
