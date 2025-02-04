@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -437,6 +438,16 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 onChanged = viewModel::onShadowChanged
             ).takeIf {
                 widget.tintColour == TintColour.AUTOMATIC || widget.tintColour == TintColour.WHITE
+            },
+            SwitchSetting(
+                widget.materialYouStyled,
+                getString(R.string.widget_material_you_description),
+                getString(R.string.widget_material_you_title),
+                null,
+                true,
+                onChanged = viewModel::onMaterialYouChanged
+            ).takeIf {
+                !widget.listMode && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
             }
         )
     }
