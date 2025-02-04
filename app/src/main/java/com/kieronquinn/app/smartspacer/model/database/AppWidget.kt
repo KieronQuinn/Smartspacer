@@ -72,7 +72,12 @@ data class AppWidget(
      *  they're just invisible.
      */
     @ColumnInfo("hide_controls")
-    val hideControls: Boolean = false
+    val hideControls: Boolean = false,
+    /**
+     * Whether the widget is MaterialYou styled
+     */
+    @ColumnInfo("materialyou_styled")
+    val materialYouStyled: Boolean = false,
 ): Parcelable {
 
     fun cloneWithId(newAppWidgetId: Int): AppWidget {

@@ -45,6 +45,7 @@ abstract class WidgetConfigurationViewModel: ViewModel() {
     abstract fun onTintColourChanged(tintColour: TintColour)
     abstract fun onShadowChanged(enabled: Boolean)
     abstract fun onPaddingChanged(padding: Int)
+    abstract fun onMaterialYouChanged(enabled: Boolean)
 
     abstract fun Context.getPagedWidget(
         appWidgetId: Int,
@@ -207,6 +208,12 @@ class WidgetConfigurationViewModelImpl(
     override fun onPaddingChanged(padding: Int) {
         updateAppWidget {
             copy(padding = padding)
+        }
+    }
+
+    override fun onMaterialYouChanged(enabled: Boolean){
+        updateAppWidget {
+            copy(materialYouStyled=enabled)
         }
     }
 
