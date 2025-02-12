@@ -323,7 +323,7 @@
     <string name="requirement_geofence_configuration_loitering_delay_label_none">Sin retraso</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minuto</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutos</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsividad</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsive</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d segundos</string>
     <string name="requirement_geofence_configuration_background_location_title">Habilitar ubicación de fondo</string>
