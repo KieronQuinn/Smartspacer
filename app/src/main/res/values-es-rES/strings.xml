@@ -324,13 +324,13 @@
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minuto</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutos</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsive</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_content"></string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d segundos</string>
     <string name="requirement_geofence_configuration_background_location_title">Habilitar ubicación de fondo</string>
     <string name="requirement_geofence_configuration_background_location_content">Las reglas de ubicación requieren el permiso de ubicación en segundo plano. En configuración, habilita este permiso para continuar, seleccionando en Permisos &gt; Ubicación &gt; Permitir todo el tiempo, y después regresa a esta app.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Conceder permiso</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Límite alcanzado</string>
-    <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
+    <string name="requirement_geofence_configuration_limit_reached_content">.</string>
     <string name="requirement_wifi_title">Red Wi-Fi</string>
     <string name="requirement_wifi_content">Solo mostrar cuando esté dentro de un rango de alcance o conectado a una red Wi-Fi</string>
     <string name="requirement_wifi_content_base">Solo mostrar cuando %1s con %1s</string>
