@@ -715,7 +715,7 @@
     <string name="expanded_add_widget_title">Add Widget</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
-    <string name="expanded_add_widget_category_battery">Battery</string>
+    <string name="expanded_add_widget_category_battery">Μπαταρία</string>
     <string name="expanded_add_widget_category_conversations">Conversations</string>
     <string name="expanded_add_widget_category_note_taking">Note-taking</string>
     <string name="expanded_add_widget_category_weather">Weather</string>
@@ -732,9 +732,9 @@
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
     <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">No Widgets found</string>
-    <string name="battery_optimisation_title">Battery Optimisation</string>
-    <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
-    <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
+    <string name="battery_optimisation_title">Βελτιστοποίηση Μπαταρίας</string>
+    <string name="battery_optimisation_content">Επιλογές απενεργοποίησης Βελτιστοποίησης μπαταρίας για βελτιωμένη αξιοπιστία του Smartspacer</string>
+    <string name="battery_optimisation_system_title">Απενεργοποίηση Βελτιστοποίησης Μπαταρίας</string>
     <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
