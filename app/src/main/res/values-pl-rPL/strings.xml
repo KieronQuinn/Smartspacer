@@ -405,7 +405,7 @@
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
-    <string name="settings_language_title">Language</string>
+    <string name="settings_language_title">Język</string>
     <string name="settings_language_default">System Default</string>
     <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Ukryj wrażliwe Cele</string>
