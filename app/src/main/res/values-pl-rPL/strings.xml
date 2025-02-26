@@ -390,7 +390,7 @@
     <string name="permission_dialog_notification_allow_once">Zezwól raz</string>
     <string name="permission_dialog_notification_allow_always">Zawsze zezwalaj</string>
     <string name="permission_dialog_notification_deny">Odmów</string>
-    <string name="settings_integrations">Integrations</string>
+    <string name="settings_integrations">Integracje</string>
     <string name="settings_enhanced_title">Enhanced Mode</string>
     <string name="settings_enhanced_content">Allows Smartspacer to interact and integrate with system features</string>
     <string name="settings_enhanced_content_unsupported">This option is not compatible with your device</string>
@@ -402,22 +402,22 @@
     <string name="settings_plugins">Wtyczki</string>
     <string name="settings_options">Opcje</string>
     <string name="settings_enable_update_check_title">Automatycznie sprawdzaj dostępność aktualizacji</string>
-    <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
+    <string name="settings_enable_update_check_content">Automatycznie sprawdzaj aktualizacje Smartspacera i pokaż powiadomienie, jeśli jest dostępna</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
     <string name="settings_language_title">Język</string>
-    <string name="settings_language_default">System Default</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+    <string name="settings_language_default">Domyślny</string>
+    <string name="settings_language_info"><b>Uwaga:</b> Nie wszystkie języki są kompletne, możesz przyczynić się do tłumaczeń na Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Ukryj wrażliwe Cele</string>
     <string name="settings_hide_sensitive_contents_title_short">Ukryj wrażliwe</string>
     <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
     <string name="settings_hide_sensitive_contents_disabled">Nie ukrywaj</string>
     <string name="settings_hide_sensitive_contents_disabled_content">Zawsze pokazuj Cele i ich zawartość</string>
     <string name="settings_hide_sensitive_contents_hide_contents">Ukryj zawartość</string>
-    <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
+    <string name="settings_hide_sensitive_contents_hide_contents_content">Pokaż Cel, ale ukryj jego zawartość</string>
     <string name="settings_hide_sensitive_contents_hide">Ukryj Cel</string>
-    <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
-    <string name="settings_debug_header">Debug</string>
+    <string name="settings_hide_sensitive_contents_hide_content">Całkowicie ukryj Cel</string>
+    <string name="settings_debug_header">Debugowanie</string>
     <string name="settings_dump_title">Dump Targets &amp; Actions</string>
     <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
     <string name="settings_dump_title_short">Dump</string>
@@ -464,7 +464,7 @@
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Cele</string>
     <string name="setup_targets_info_p1"><b>Cele</b> są stronami z informacjami wyświetlanymi w Smartspace, zazwyczaj składające się co najmniej z tytułu, napisów i ikony. Wiele Celów posiada również dodatkowe informacje – o ile jest to możliwe – takie jak obrazy lub listy.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
+    <string name="setup_targets_info_p2">Cele mogą być dynamiczne, pokazywane i ukrywane stosownie do potrzeb, lub statyczne i wyświetlane przez cały czas. Możesz je bardziej dostosować, gdy mają się pokazywać przy użyciu <b>Wymagań</b>, i ustawień Celów (dostępne poprzez ich dotknięcie w Smartspacer).</string>
     <string name="setup_targets_info_p3">Integracja At a Glance w Smartspacer jest zapewniona przez Cel \"At a Glance\", który może wyświetlać regularne informacje z Google, takie jak wydarzenia w kalendarzu i loty. Pamiętaj, że to <b>nie</b> zawsze pokazuje dzisiejszą datę, jeśli żadna informacja nie jest dostępna, i powinieneś dodać Cel \"Data\" oddzielnie, jeśli chcesz zawsze mieć widoczną datę.</string>
     <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
     <string name="setup_targets_info_example_one_subtitle">Mapy Google</string>
@@ -484,7 +484,7 @@
     <string name="setup_complications_info_title">Komplikacje</string>
     <string name="setup_complications_info_p1"><b>Komplikacje</b> to dodatkowe informacje, które mogą być wyświetlane obok Celów. Są to zazwyczaj krótkie teksty i ikony, na przykład nieprzeczytane wiadomości e-mail lub aktualne warunki pogodowe.</string>
     <string name="setup_complications_info_p2">Komplikacje będą wyświetlane obok Celów wszędzie tam, gdzie dostępna jest przestrzeń, lub jeśli żadne pozostałe Cele nie są dostępne, będą wyświetlone na dodatkowych stronach obok daty.</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
+    <string name="setup_complications_info_p3">Podobnie jak Cele, Komplikacje mogą być dynamiczne lub statyczne, i mogą być ukryte, jeśli nie ma obecnie informacji do wyświetlenia. Możesz je bardziej dostosować, kiedy mają się wyświetlać, przy pomocy <b>Wymagań</b>, i ustawień dostarczanych przez wiele Komplikacji (dostępne poprzez naciśnięcie komplikacji w interfejsie Smartspacer).</string>
     <string name="setup_complications_example_gmail">8</string>
     <string name="setup_complications_caption_gmail">Przykład Komplikacji pokazującej nieprzeczytane e-maile</string>
     <string name="setup_complications_example_weather">20°</string>
@@ -501,25 +501,25 @@
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Wymagania</string>
     <string name="setup_requirements_info_p1"><b>Wymagania</b> pozwalają na dostosowanie, kiedy Cel lub Komplikacja są wyświetlane w Smartspace. Dzięki temu możesz tworzyć scenariusze, w których w Smartspace wyświetlane są przydatne informacje.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_p2"><b>Możesz znaleźć Wymagania, naciskając na dodany Cel lub Komplikację w interfejsie Smartspacer, i wybierając \"Wymagania\" na dole ustawień.</b></string>
+    <string name="setup_requirements_info_p3">W przypadku <b>Dowolnych Wymagań</b>, którykolwiek z dodanych wymagań może być spełniony, aby pokazać Cel lub Komplikację. Na przykład, możesz użyć Wymogu Wi-Fi do wyświetlania listy zakupów z Google Keep w zasięgu sieci w dowolnym lokalnym sklepie.</string>
+    <string name="setup_requirements_info_p4">Z Wymogiem <b>Wszystkie wymagania</b>, wszystkie dodane wymagania muszą być spełnione, aby pokazać cel lub komplikację. Na przykład, możesz użyć Wymogu Czasu i Daty oraz Wymogu Lokalizacji, aby wyświetlić przepustkę na siłownię z Portfela Google we wtorkowy wieczór, kiedy jesteś blisko bramy.</string>
     <!-- Setup > Expanded -->
-    <string name="setup_expanded_title">Expanded</string>
+    <string name="setup_expanded_title">Rozwinięcie</string>
     <string name="setup_expanded_switch">Włącz Rozszerzony Smartspace</string>
     <string name="setup_expanded_info_p1"><b>Rozszerzony Smartspace</b> jest wersją pełnoekranową Smartspace wyświetlającą wszystkie dostępne Cele i Komplikacje, a także dodatkowe informacje dynamiczne, takie jak widżety i skróty, określone przez Cele. Możesz również dodać własne widżety do tego ekranu.</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
+    <string name="setup_expanded_info_p2">Zaprojektowane, aby móc szybko spojrzeć na wszystkie informacje. Możesz ustawić, aby Rozszerzony Smartspace się otworzył, gdy klikniesz Cel i dostępne będą dodatkowe informacje dynamiczne. Jest to przydatne, jeśli chcesz mieć łatwy dostęp do informacji przy dotknięciu przycisku.</string>
     <string name="setup_expanded_open_title">Dynamicznie otwórz Rozszerzone Smartspace</string>
     <string name="setup_expanded_open_content">Jeśli włączone, Rozszerzony Smartspace zostanie otwarty po naciśnięciu Celu, jeżeli ma dodatkowe informacje takie jak widżet lub skróty</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_info_footer">Możesz uzyskać dostęp do dodatkowych opcji, w tym możliwość otwierania Rozszerzonego Smartspace po naciśnięciu celu (nawet jeśli nie posiada dodatkowych informacji) w Ustawieniach &gt; Rozszerzonego Smartspace po pierwszej konfiguracji.</string>
     <!-- Setup > Plugins -->
-    <string name="setup_plugins_title">Plugins</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
+    <string name="setup_plugins_title">Wtyczki</string>
+    <string name="setup_plugins_info_p1">Możesz pobrać dodatkowe <b>wtyczki</b>, dodające dodatkowe Cele, Komplikacje i Wymagania w zakładce Wtyczki na dolnym pasku.</string>
+    <string name="setup_plugins_info_p2">Po zainstalowaniu, są one dodawane jak wszystkie inne, używając przycisków <b>Dodaj Cel</b> oraz <b>Dodaj Komplikację</b>, lub wybierając <b>Dodaj Wymaganie</b> w ustawieniach Wymagań dla Celów i Komplikacji.</string>
     <string name="setup_plugins_info_finish">Ukończ</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">Konfiguracja zakończona</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_content">Cele, Komplikacje i Widżety mogą potrzebować dodatkowych uprawnień, zostaniesz o nie zapytany, gdy będą potrzebne.</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Żądanie uprawnienia…</string>
     <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
@@ -535,7 +535,7 @@
     <!-- Enhanced Mode -->
     <string name="enhanced_mode_title">Enhanced Mode</string>
     <string name="enhanced_mode_enable_title">Enable Enhanced Mode</string>
-    <string name="enhanced_mode_enable_subtitle">Requires Shizuku or Sui</string>
+    <string name="enhanced_mode_enable_subtitle">Wymaga Shizuku lub Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Tryb Ulepszony pozwala Smartspacer na:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrację Smartspace na ekranie blokady</string>
     <string name="enhanced_mode_enable_content_native_launcher">• Integrację Smartspace na kompatybilnych launcherach</string>
@@ -544,8 +544,8 @@
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
     <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
     <string name="enhanced_mode_skip_button">Pomiń</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_skip_info">Nadal możesz używać widżetu Smartspacer, Celów, Komplikacji i Wtyczek z wyłączonym trybem zaawansowanym</string>
+    <string name="enhanced_mode_disable_toast">Może być konieczne ponowne uruchomienie urządzenia, aby zmiany odniosły skutek</string>
     <!-- Native Mode -->
     <string name="native_title">Native Smartspace</string>
     <string name="native_switch">Włącz Rozszerzony Smartspace</string>
@@ -630,8 +630,8 @@
     <string name="expanded_widget_configure">Dotknij, aby skonfigurować widżet</string>
     <string name="expanded_widget_deleted">Ten widżet został odinstalowany, dotknij, aby usunąć</string>
     <string name="expanded_widget_deleted_rearrange">Odinstalowany widżet</string>
-    <string name="expanded_permission_title">Allow Display Over Other Apps permission</string>
-    <string name="expanded_permission_title_short">Display Over Other Apps</string>
+    <string name="expanded_permission_title">Zezwalaj na Wyświetlanie nad innymi aplikacjami</string>
+    <string name="expanded_permission_title_short">Wyświetlanie nad innymi aplikacjami</string>
     <string name="expanded_permission_content">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay. Either open Smartspacer to grant the permission, or grant it manually from Smartspacer\'s App Info screen.</string>
     <string name="expanded_permission_content_sheet">Expanded Smartspace replacing the Google Discover Feed requires this permission to be able to launch apps from the overlay.</string>
     <string name="expanded_permission_later">Później</string>
@@ -732,20 +732,20 @@
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
     <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
     <string name="add_widget_empty_label">No Widgets found</string>
-    <string name="battery_optimisation_title">Battery Optimisation</string>
+    <string name="battery_optimisation_title">Optymalizacja baterii</string>
     <string name="battery_optimisation_content">Options to disable Battery Optimisation for improved Smartspacer reliability</string>
-    <string name="battery_optimisation_system_title">Disable Battery Optimisation</string>
-    <string name="battery_optimisation_system_content">This is required to allow Smartspacer to stay running in the background.</string>
+    <string name="battery_optimisation_system_title">Wyłącz optymalizację baterii</string>
+    <string name="battery_optimisation_system_content">Wymagane, aby umożliwić Smartspacer działanie w tle.</string>
     <string name="battery_optimisation_schedule_exact_alarm_title">Allow Alarms &amp; Reminders</string>
     <string name="battery_optimisation_schedule_exact_alarm_content">Required for Smartspacer to reliably update Targets &amp; Complications in the background.</string>
     <string name="battery_optimisation_oem_title">OEM Battery Optimisation</string>
     <string name="battery_optimisation_oem_content">Your device appears to have some OEM-specific battery optimisations. These cannot be disabled automatically, tap to open OEM battery settings.</string>
-    <string name="battery_optimisation_footer">Smartspacer runs in the background, so to prevent it being killed by the system, Battery Optimisations should be disabled.</string>
+    <string name="battery_optimisation_footer">Smartspacer działa w tle, aby zapobiec zamknięciu aplikacji przez system, musisz wyłączyć optymalizację baterii.</string>
     <string name="battery_optimisation_footer_link">Dowiedz się więcej</string>
     <string name="plugin_repository_tab_installed">Installed</string>
     <string name="plugin_repository_tab_available">Dostępne</string>
-    <string name="plugin_repository_empty_title_not_found">Not Found</string>
-    <string name="plugin_repository_empty_subtitle_not_found">No plugins matching this search term were found</string>
+    <string name="plugin_repository_empty_title_not_found">Nie znaleziono</string>
+    <string name="plugin_repository_empty_subtitle_not_found">Nie znaleziono pasujących wtyczek</string>
     <string name="plugin_repository_empty_title_empty">No Plugins loaded</string>
     <string name="plugin_repository_empty_subtitle_empty">Sprawdź połączenie z internetem</string>
     <string name="plugin_repository_empty_button_empty">Odśwież</string>
@@ -814,7 +814,7 @@
     <string name="permissions_notifications">Access notifications via Smartspacer</string>
     <string name="permissions_smartspace">Load Smartspacer Targets &amp; Complications</string>
     <!-- Backup & Restore -->
-    <string name="backup_restore_title">Backup &amp; Restore</string>
+    <string name="backup_restore_title">Kopia zapasowa i przywracanie</string>
     <string name="backup_restore_content">Backup &amp; restore Smartspacer Targets, Complications, Requirements and settings</string>
     <string name="backup_title">Kopia zapasowa</string>
     <string name="backup_content">Create a Smartspacer backup of Targets, Complications, Requirements and settings, either to a local file or to the cloud.</string>
@@ -828,12 +828,12 @@
     <string name="backup_error">Error creating backup</string>
     <string name="backup_error_failed_to_create">Failed to create file</string>
     <string name="backup_error_failed_to_write">Failed to write file</string>
-    <string name="restore_title">Restore</string>
-    <string name="restore_content">Restore a Smartspacer backup from a local file or the cloud.</string>
+    <string name="restore_title">Przywróć</string>
+    <string name="restore_content">Przywróć kopię zapasową Smartspacera z lokalnego pliku lub chmury.</string>
     <string name="restore_loading_backup">Loading backup…</string>
-    <string name="restore_error">Error restoring backup</string>
-    <string name="restore_error_failed_to_read">Failed to read backup file</string>
-    <string name="restore_error_failed_to_load">Failed to load backup from file</string>
+    <string name="restore_error">Błąd</string>
+    <string name="restore_error_failed_to_read">Nie można odczytać pliku kopii zapasowej</string>
+    <string name="restore_error_failed_to_load">Nie udało się załadować kopii zapasowej z pliku</string>
     <string name="restore_restore_targets_title">Targets</string>
     <string name="restore_restore_targets_content">Restore your targets &amp; their configuration</string>
     <string name="restore_restore_targets_content_empty">No Targets found to restore</string>
