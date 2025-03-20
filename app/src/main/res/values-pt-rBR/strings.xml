@@ -119,7 +119,7 @@
     <string name="target_at_a_glance_description_unsupported">Este destaque requer o aplicativo do Google</string>
     <string name="target_google_weather_forecast_title">Previsão do tempo do Google</string>
     <string name="target_google_weather_forecast_content">Exibe o clima atual e a previsão para as próximas quatro horas do Clima do Google</string>
-    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
+    <string name="target_google_weather_forecast_incompatible">Este Destaque requer um dispositivo Pixel ou uma ROM baseada em Pixel, com o app do Google instalado.</string>
     <string name="target_notification_warning_title">Receptor de notificação desativado</string>
     <string name="target_notification_warning_description">Toque para ativar</string>
     <string name="complication_default_label">Complementos do Resumo</string>
@@ -206,7 +206,7 @@
     <string name="target_edit_show_on_music_content">Exiba este destaque na tela sempre ativa enquanto a música estiver tocando</string>
     <string name="target_edit_show_on_music_content_oem">Exiba este destaque na tela sempre ativa (se disponível) enquanto a música estiver tocando</string>
     <string name="target_edit_show_on_music_content_incompatible">Requer Smartspace nativo com suporte à tela de bloqueio</string>
-    <string name="target_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="target_edit_show_on_music_content_incompatible_15">Não disponível neste dispositivo</string>
     <string name="target_edit_expanded_header">Smartspace expandido</string>
     <string name="target_edit_expanded_show_when_locked_title">Exibir enquanto estiver bloqueado</string>
     <string name="target_edit_expanded_show_when_locked_content">Exibir este destaque no Smartspace expandido enquanto estiver bloqueado</string>
@@ -250,7 +250,7 @@
     <string name="complication_edit_show_on_music_content">Exiba este complemento na tela sempre ativa enquanto a música estiver tocando</string>
     <string name="complication_edit_show_on_music_content_oem">Exiba este complemento na tela sempre ativa (se disponível) enquanto a música estiver tocando</string>
     <string name="complication_edit_show_on_music_content_incompatible">Requer Smartspace nativo com suporte à tela de bloqueio</string>
-    <string name="complication_edit_show_on_music_content_incompatible_15">Not available on this device</string>
+    <string name="complication_edit_show_on_music_content_incompatible_15">Não disponível neste dispositivo</string>
     <string name="complication_edit_expanded_header">Smartspace expandido</string>
     <string name="complication_edit_expanded_show_when_locked_title">Exibir enquanto estiver bloqueado</string>
     <string name="complication_edit_expanded_show_when_locked_content">Exibir este complemento no Smartspace expandido enquanto estiver bloqueado</string>
@@ -405,9 +405,9 @@
     <string name="settings_enable_update_check_content">Verificar atualizações do Smartspacer automaticamente e exibir uma notificação se houver alguma disponível</string>
     <string name="settings_enable_analytics_title">Ativar análises &amp; relatórios de falhas</string>
     <string name="settings_enable_analytics_content">Permitir o envio de relatórios de falhas anônimos e análises básicas ao Firebase, para ajudar a corrigir bugs</string>
-    <string name="settings_language_title">Language</string>
-    <string name="settings_language_default">System Default</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
+    <string name="settings_language_title">Idioma</string>
+    <string name="settings_language_default">Padrão do sistema</string>
+    <string name="settings_language_info"><b>Nota:</b> Nem todos os idiomas estão completos. Você pode contribuir com traduções no Smartspacer Crowdin</string>
     <string name="settings_hide_sensitive_contents_title">Ocultar destaques sensíveis</string>
     <string name="settings_hide_sensitive_contents_title_short">Ocultar conteúdo sensível</string>
     <string name="settings_hide_sensitive_contents_content">Ocultar destaques na tela de bloqueio quando marcados como sensíveis: %1s</string>
@@ -440,8 +440,8 @@
     <string name="compatibility_feature_loyalty_content">Permite exibir um botão além do título e do subtítulo.</string>
     <string name="compatibility_feature_shopping_list_title">Lista</string>
     <string name="compatibility_feature_shopping_list_content">Permite exibir uma pequena lista além do título e subtítulo</string>
-    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
-    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
+    <string name="compatibility_feature_remoteviews_title">Conteúdo Personalizado</string>
+    <string name="compatibility_feature_remoteviews_content">Permite exibir conteúdo personalizado que não se enquadra em um modelo (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Esportes</string>
     <string name="compatibility_feature_sports_content">Permite exibir o placar de uma partida entre duas equipes, além do título e do subtítulo</string>
     <string name="compatibility_template_carousel_title">Carrossel</string>
@@ -613,8 +613,8 @@
     <string name="native_mode_settings_hide_incompatible_targets_content">Ocultar destaques incompatíveis com o seu dispositivo, em vez de mostrar apenas o título e o subtítulo</string>
     <string name="native_mode_settings_use_split_smartspace">Use o Smartspace dividido</string>
     <string name="native_mode_settings_use_split_smartspace_content">O Android 14 dividiu o Smartspace na tela de bloqueio, sempre mostrando a data e o clima acima dos destaques e complementos comuns. O Smartspacer pode substituir o clima pela sua primeira complicação, mas isso pode não funcionar com todos os estilos de relógio e sua primeira complicação pode desaparecer. Se isso acontecer, desative essa opção.</string>
-    <string name="native_mode_immediate_start_title">Automatically Enable Native Smartspace</string>
-    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
+    <string name="native_mode_immediate_start_title">Ativar automaticamente o Smartspace nativo</string>
+    <string name="native_mode_immediate_start_content">Quando ativado, o Smartspacer tentará habilitar automaticamente o Smartspace nativo sempre que possível, por exemplo após uma reinicialização ou se o serviço se desconectar.\n\n<b>AVISO:</b> ATIVAR ESTA OPÇÃO CAUSARÁ REINICIALIZAÇÕES NÃO SOLICITADAS DO SYSTEMUI, O QUE PODE INTERROMPER O USO NORMAL DO SEU DISPOSITIVO, PARA INICIAR O SERVIÇO. ISTO NÃO É UM ERRO.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Permissão do Smartspacer é necessária</string>
     <string name="target_permission_request_content">Toque para conceder</string>
@@ -674,7 +674,7 @@
     <string name="expanded_settings_hide_add_button_content">Oculte o botão para adicionar widgets personalizados: %1s</string>
     <string name="expanded_settings_hide_add_button_never">Nunca</string>
     <string name="expanded_settings_hide_add_button_overlay_only">Ao substituir o Google Discover</string>
-    <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
+    <string name="expanded_settings_hide_add_button_when_locked">Quando bloqueado</string>
     <string name="expanded_settings_hide_add_button_always">Sempre</string>
     <string name="expanded_settings_enable_columns_title">Ativar Multicolunas</string>
     <string name="expanded_settings_enable_columns_content">Em dispositivos com telas maiores, exiba Destaques do Smartspacer, conteúdo extra e widgets personalizados na horizontal e vertical, onde houver espaço disponível</string>
@@ -911,9 +911,9 @@
     <string name="complication_clock_description">Exibe a hora atual.\n<b>Atenção:</b> Este Complemento pode consumir mais bateria.</string>
     <string name="complication_clock_description_short">Exibe a hora atual</string>
     <!-- Clock Target -->
-    <string name="target_clock_label">Clock</string>
-    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
-    <string name="target_clock_description_short">Shows the current time</string>
+    <string name="target_clock_label">Relógio</string>
+    <string name="target_clock_description">Exibe a hora atual.\n<b>Atenção:</b> Este Destaque pode consumir mais bateria.</string>
+    <string name="target_clock_description_short">Exibe a hora atual</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">Calendário</string>
     <string name="target_calendar_description">Exibe eventos do Calendário a partir dos calendários selecionados</string>
@@ -977,7 +977,7 @@
     <string name="target_notification_configuration_app_content">Selecione o aplicativo para exibir notificações</string>
     <string name="target_notification_configuration_settings">Configurações</string>
     <string name="target_notification_channels">Canais de notificação</string>
-    <string name="target_notification_channels_no_group">Other</string>
+    <string name="target_notification_channels_no_group">Outros</string>
     <string name="target_notification_channels_empty">Este aplicativo não usa Canais de Notificação, portanto todas as notificações dele serão exibidas</string>
     <string name="target_notification_configuration_options">Opções</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remover quebras de linha</string>
@@ -1016,7 +1016,7 @@
     <string name="target_flashlight_toast">Conceder Permissão de acesso à Câmara</string>
     <!-- Widget Target -->
     <string name="target_widget_title">Widget</string>
-    <string name="target_widget_description"><b>Experimental:</b> Show a 4x1 widget</string>
+    <string name="target_widget_description"><b>Experimental:</b> Exibe um widget 4x1</string>
     <string name="target_widget_description_set">Shows %1s from %1s</string>
     <string name="target_widget_not_supported_title">Widgets not Supported</string>
     <string name="target_widget_not_supported_content">Widgets are not supported here</string>
