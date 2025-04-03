@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="smartspace_accessibility_smartspace_page">Page %1$d of %2$d</string>
+    <string name="smartspace_accessibility_smartspace_page">%2$dページ中の%1$d目</string>
     <string name="smartspace_long_press_popup_dismiss">閉じる</string>
     <string name="smartspace_long_press_popup_feedback">フィードバック</string>
     <string name="smartspace_long_press_popup_about">このコンテンツについて</string>
     <string name="smartspace_long_press_popup_settings">設定</string>
-    <string name="smartspace_long_press_popup_failed_to_launch">Failed to launch action</string>
-    <string name="smartspace_toast_could_not_dismiss">This Target cannot be dismissed</string>
+    <string name="smartspace_long_press_popup_failed_to_launch">アクションの起動に失敗しました</string>
+    <string name="smartspace_toast_could_not_dismiss">このターゲットは閉じることができません</string>
 </resources>
