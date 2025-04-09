@@ -5,6 +5,7 @@ import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import com.google.gson.annotations.SerializedName
@@ -176,6 +177,7 @@ class Target(
             contentResolver?.callSafely(authority, method, null, extras)
         }catch (e: Throwable){
             //Provider has gone
+            Log.w("Target", Log.getStackTraceString(e))
             null
         }
     }
