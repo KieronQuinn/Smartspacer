@@ -711,7 +711,7 @@
     <string name="expanded_custom_widget_options">Options</string>
     <string name="expanded_custom_widget_rearrange">Rearrange</string>
     <string name="expanded_custom_widget_rearrange_title">Drag to rearrange</string>
-    <string name="expanded_widget_reset_title">Reset</string>
+    <string name="expanded_widget_reset_title">Resetuj</string>
     <string name="expanded_add_widget_title">Dodaj widżet</string>
     <string name="expanded_add_widget_widgets_one">%1d widget</string>
     <string name="expanded_add_widget_widgets_other">%1d widgets</string>
@@ -1063,7 +1063,7 @@
     <!-- SMS Complication -->
     <string name="complication_sms_label">SMS Unread</string>
     <string name="complication_sms_description">Pokaż liczbę nieprzeczytanych wiadomości SMS/RCS</string>
-    <string name="complication_sms_settings_toast">Grant the Read SMS permission in Permissions</string>
+    <string name="complication_sms_settings_toast">Przyznaj uprawnienia do odczytu SMS</string>
     <!-- Missed Calls Complication -->
     <string name="complication_missed_calls_label">Missed Calls</string>
     <string name="complication_missed_calls_description">Show the number of missed calls</string>
