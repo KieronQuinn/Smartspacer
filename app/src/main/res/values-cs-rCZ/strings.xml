@@ -133,11 +133,11 @@
     <string name="complication_google_weather_description">Shows weather pulled from the Google App</string>
     <string name="complication_google_weather_description_unsupported">This Target requires the Google App</string>
     <string name="complication_date_label">Date</string>
-    <string name="complication_date_description">Shows the current date</string>
-    <string name="plugin_target_default_label">Plugin Target</string>
-    <string name="plugin_action_default_label">Plugin Complication</string>
-    <string name="plugin_requirement_default_label">Plugin Requirement</string>
-    <string name="permission_sdk_label">Read Smartspacer targets &amp; complications</string>
+    <string name="complication_date_description">Ukazuje současný datum</string>
+    <string name="plugin_target_default_label">Cíl pluginu</string>
+    <string name="plugin_action_default_label">Komplikace Pluginu</string>
+    <string name="plugin_requirement_default_label">Požadavek Pluginu</string>
+    <string name="permission_sdk_label">Přečtěte si cíle Smartspacer &amp; komplikace</string>
     <string name="permission_sdk_description">Allows access to read and interact with Smartspacer targets &amp; complications</string>
     <string name="notification_channel_background_service_title">Background Service</string>
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
