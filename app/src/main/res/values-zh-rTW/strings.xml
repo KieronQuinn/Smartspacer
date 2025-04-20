@@ -1006,7 +1006,7 @@
     <string name="target_flashlight_description">啟用手電筒時顯示提示</string>
     <string name="target_flashlight_incompatible">此目標需要手電筒</string>
     <string name="target_flashlight_settings_title">設置</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
+    <string name="target_flashlight_settings_description">設置根據光線等級是否提示啟用手電筒</string>
     <string name="target_flashlight_title_on">開啟手電筒</string>
     <string name="target_flashlight_subtitle_on">輕觸即可關閉</string>
     <string name="target_flashlight_title_off">關閉手電筒</string>
@@ -1018,7 +1018,7 @@
     <!-- Widget Target -->
     <string name="target_widget_title">小工具</string>
     <string name="target_widget_description"><b>實驗性：</b>顯示4x1小工具</string>
-    <string name="target_widget_description_set">Shows %1s from %1s</string>
+    <string name="target_widget_description_set">顯示 %1s 來自 %1s</string>
     <string name="target_widget_not_supported_title">小工具不支援</string>
     <string name="target_widget_not_supported_content">這裡不支援小工具</string>
     <string name="target_widget_not_compatible_title">小工具不相容</string>
@@ -1027,19 +1027,19 @@
     <string name="target_widget_settings_title">設置</string>
     <string name="target_widget_settings_description">設定小工具選項</string>
     <string name="target_widget_settings_limitations_content">由於系統限制，Smartspace中的小工具有一些限制：</string>
-    <string name="target_widget_settings_limitations_bull1">Widgets are not supported in Native Smartspace on Android versions older than 16 or 15 QPR2</string>
+    <string name="target_widget_settings_limitations_bull1">在Android版本低於16或15 QPR2的原生Smartspace中不支援小工具</string>
     <string name="target_widget_settings_limitations_bull2">小工具的大小將適用於Smartspace - 4x1小工具效果最佳</string>
     <string name="target_widget_settings_limitations_bull3">不支援包含清單的小工具。</string>
-    <string name="target_widget_settings_limitations_bull4">Widgets will be displayed on the Always on Display if shown in Native Smartspace - which may cause burn in.</string>
+    <string name="target_widget_settings_limitations_bull4">如果小工具顯示在原生Smartspace中，它們將會顯示在始終顯示畫面上，這可能會導致螢幕烙印。</string>
     <string name="target_widget_settings_limitations_bull5">某些互動功能可能會受到限制或無法運作。</string>
     <string name="target_widget_settings_limitations_bull6">裝置鎖定時，您可能需要手動解鎖才能完成與某些小工具的互動。</string>
     <string name="target_widget_settings_limitations_bull7">有些小工具可能看起來不正確。</string>
     <string name="target_widget_settings_limitations_bull8">有些小工具可能完全無法運作，會顯示「無法新增小工具」，或完全沒有任何顯示。</string>
     <string name="target_widget_settings_limitations_footer"><b>這些限制無法變更，請勿將其回報為錯誤。</b></string>
     <string name="target_widget_settings_widget_title">小工具</string>
-    <string name="target_widget_settings_widget_content">%1s from %1s\n\nSelected widget cannot be changed after adding, remove this Target and re-add to change widget</string>
+    <string name="target_widget_settings_widget_content">%1s 來自 %1s\n\n選定的小工具在添加後無法更改，請移除此目標並重新添加以更改小工具</string>
     <string name="target_widget_settings_padding_title">內間距</string>
-    <string name="target_widget_settings_padding_content">The amount of padding above &amp; below the widget: %1s</string>
+    <string name="target_widget_settings_padding_content">小工具上&amp;下方的內距量：%1s</string>
     <string name="target_widget_settings_rounded_title">圓角</string>
     <string name="target_widget_settings_rounded_content">將圓角套用至此小工具。可能不適用於所有小工具。</string>
     <string name="target_widget_padding_none">最小</string>
