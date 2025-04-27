@@ -16,7 +16,7 @@
     <string name="bottom_nav_complications">コンプリケーション</string>
     <string name="bottom_nav_plugins">拡張機能</string>
     <string name="bottom_nav_settings">設定</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
+    <string name="toast_restricted_mode">オーバーフローメニューで制限された設定を許可する</string>
     <string name="restricted_mode_content_accessibility">Android 13 から、Google はセキュリティ強化のため、サイドローディングされたアプリがアクセシビリティサービスを最初から使用できないように設定を変更しました。\n\n<b>アクセシビリティサービスを有効にしようとしたときに「制限付き設定」または「アプリはアクセスを拒否されました」というメッセージが表示された場合、アプリ情報の3点リーダーを開いて「制限付き設定を許可」または「制限付きの権限の許可」をオンにする必要があります。</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Android 14 以降、Google はパッケージ インストーラーを使用してサイドロードされたアプリがアクセシビリティサービスを使用できないようにしています。<br><br><b>制限付き設定に関するメッセージが表示された場合は、Smartspacer をアンインストールし、<a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> や <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror アプリ</a> などのセッション インストーラー ベースのアプリを使用して再インストールする必要があります。再インストールせずに上書きインストールするだけでは不十分です。<br><br></b>または、拡張モードを有効にすると、Smartspacer はこの要件を回避します (Shizuku またはルートなしでは実行できません)。]]></string>
     <string name="restricted_mode_content_notification">Android 13 から、Google はセキュリティ強化のため、サイドローディングされたアプリが通知へのアクセスを最初から使用できないように設定を変更しました。\n\n<b>通知へのアクセスを有効にしようとしたときに「制限付き設定」または「アプリはアクセスを拒否されました」というメッセージが表示された場合、アプリ情報の3点リーダーを開いて「制限付き設定を許可」または「制限付きの権限の許可」をオンにする必要があります。</b></string>
@@ -60,7 +60,7 @@
     <string name="widget_configuration_padding_title">Extra Padding</string>
     <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
     <string name="widget_configuration_animation">アニメーション</string>
-    <string name="widget_configuration_animation_switch_title">Animate Changes</string>
+    <string name="widget_configuration_animation_switch_title">アニメーションを変更する</string>
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">色</string>
     <string name="widget_configuration_shadow_title">テキストの影</string>
@@ -126,7 +126,7 @@
     <string name="complication_default_description">Complications from Google At a Glance, including weather</string>
     <string name="complication_default_description_recommended">Complications from Google At a Glance, including weather <b>(recommended)</b></string>
     <string name="complication_default_description_unsupported">お使いのデバイスはSmartspaceを使用したスナップショット（At a Glance）をサポートしていません</string>
-    <string name="complication_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
+    <string name="complication_default_description_enhanced">拡張モードが必要です、設定で有効にしてください</string>
     <string name="complication_default_configuration_title">スナップショット（At a Glance）の設定</string>
     <string name="complication_default_configuration_description">Configure more settings in the Google App</string>
     <string name="complication_google_weather_label">Google天気</string>
@@ -168,23 +168,23 @@
     <string name="notification_plugin_updates_content_other">%1d Smartspacer plugin updates are available, tap to view</string>
     <string name="notification_location_permission_required_title">Background Location</string>
     <string name="notification_location_permission_required_content">Smartspacer requires Background Location access, tap to grant</string>
-    <string name="notification_accessibility_widget_title">Enable Widget Accessibility Service</string>
-    <string name="notification_accessibility_widget_content">Smartspacer\'s Widget Accessibility Service needs to be enabled for widgets to work, tap to enable. Alternatively, enable Enhanced Mode and make sure Shizuku is started.</string>
+    <string name="notification_accessibility_widget_title">ウィジェットアクセシビリティサービスを有効にする</string>
+    <string name="notification_accessibility_widget_content">ウィジェットを動作させるにはSmartspacerのウィジェットアクセシビリティサービスを有効にする必要があります。タップして有効にしてください。もしくは、拡張モードを有効にしShizukuが起動していることを確認してください。</string>
     <string name="fab_targets_add">ターゲットを追加</string>
     <string name="targets_empty_label">ターゲットが追加されていません</string>
     <string name="target_not_available">このターゲットはもう利用できません。タップして削除してください</string>
     <string name="target_not_available_alt">このターゲットの読み込みに失敗しました。問題が解決しない場合は、ターゲットの開発者に連絡してください</string>
     <string name="fab_complications_add">コンプリケーションを追加</string>
     <string name="complications_empty_label">コンプリケーションが追加されていません</string>
-    <string name="complication_not_available">This Complication is no longer available, tap to remove</string>
-    <string name="complication_not_available_alt">This Complication failed to load, if the issue persists please contact the Complication\'s developer</string>
+    <string name="complication_not_available">このコンプリケーションは利用できなくなりました。タップすれば削除できます</string>
+    <string name="complication_not_available_alt">このコンプリケーションの読み込みに失敗しました。問題が解決しない場合は、コンプリケーションの開発者にお問い合わせください</string>
     <string name="targets_add_empty_label">No Targets left to add</string>
     <string name="targets_add_incompatible_generic">This Target is not compatible with your device</string>
     <string name="targets_add_incompatible_widget">The widget required for this Target is not available</string>
     <string name="targets_add_failed_to_launch_setup">Failed to launch the setup for this Target</string>
     <string name="complications_add_empty_label">追加するコンプリケーションが残っていません</string>
     <string name="complications_add_incompatible_generic">This Complication is not compatible with your device</string>
-    <string name="complications_add_incompatible_widget">The widget required for this Complication is not available</string>
+    <string name="complications_add_incompatible_widget">このコンプリケーションに必要なウィジェットが利用できません</string>
     <string name="complications_add_failed_to_launch_setup">Failed to launch the setup for this Complication</string>
     <string name="requirements_add_empty_label">No Requirements left to add</string>
     <string name="requirements_add_incompatible_generic">This Requirement is not compatible with your device</string>
