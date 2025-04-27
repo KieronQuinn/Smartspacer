@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="xposed_desc">.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings"></string>
+    <string name="dummy_home_content"></string>
+    <string name="dummy_home_open_settings">Open Settings</string>
     <string name="notification_service"></string>
-    <string name="loading"></string>
-    <string name="saving">Saving…</string>
+    <string name="loading">…</string>
+    <string name="saving">B</string>
     <string name="search">Search</string>
     <string name="delete">Delete</string>
-    <string name="save">Save</string>
+    <string name="save"></string>
     <string name="close">Close</string>
     <string name="reset">Reset</string>
     <string name="menu_rerun_setup">Re-run setup</string>
@@ -1001,17 +1001,17 @@
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Torch</string>
-    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
+    <string name="target_flashlight_title">Flashlight</string>
+    <string name="target_flashlight_description">Show a reminder when the flashlight is enabled</string>
+    <string name="target_flashlight_incompatible">This Target requires a Flashlight</string>
     <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
-    <string name="target_flashlight_title_on">Torch on</string>
+    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the flashlight based on light levels</string>
+    <string name="target_flashlight_title_on">Flashlight on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Torch off</string>
+    <string name="target_flashlight_title_off">Flashlight off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
+    <string name="target_flashlight_settings_show_recommendation">Show Flashlight Enable Prompt</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the flashlight when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
     <string name="target_flashlight_toast">Grant the Camera permission</string>
     <!-- Widget Target -->
