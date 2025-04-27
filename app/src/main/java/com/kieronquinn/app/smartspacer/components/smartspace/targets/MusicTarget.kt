@@ -225,7 +225,7 @@ class MusicTarget: SmartspacerTargetProvider() {
             containsKey(METADATA_KEY_ART) -> {
                 getBitmap(METADATA_KEY_ART)
             }
-            containsKey(METADATA_KEY_ART_URI) -> {
+            containsKey(METADATA_KEY_ART_URI) && getString(METADATA_KEY_ART_URI) != null -> {
                 val uri = Uri.parse(getString(METADATA_KEY_ART_URI))
                 val inputStream = provideContext().contentResolver.openInputStream(uri)
                     ?: return null
@@ -236,7 +236,7 @@ class MusicTarget: SmartspacerTargetProvider() {
             containsKey(METADATA_KEY_ALBUM_ART) -> {
                 getBitmap(METADATA_KEY_ALBUM_ART)
             }
-            containsKey(METADATA_KEY_ALBUM_ART_URI) -> {
+            containsKey(METADATA_KEY_ALBUM_ART_URI) && getString(METADATA_KEY_ALBUM_ART_URI) != null -> {
                 val uri = Uri.parse(getString(METADATA_KEY_ALBUM_ART_URI))
                 val inputStream = provideContext().contentResolver.openInputStream(uri)
                     ?: return null
