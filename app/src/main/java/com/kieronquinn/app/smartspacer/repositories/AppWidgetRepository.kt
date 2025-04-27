@@ -15,9 +15,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RemoteViews
+import android.widget.RemoteViews.MARGIN_END
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.widget.RemoteViewsCompat.setImageViewImageAlpha
+import androidx.core.widget.RemoteViewsCompat.setViewBackgroundColor
+import androidx.core.widget.RemoteViewsCompat.setViewBackgroundResource
 import androidx.core.widget.RemoteViewsCompat.setViewEnabled
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
@@ -543,6 +546,7 @@ class AppWidgetRepositoryImpl(
         val textColour = config.getTextColour()
         val iconColour = ColorStateList.valueOf(textColour)
         val shadowEnabled = (config?.showShadow ?: true) && textColour == Color.WHITE
+        val materialYouEnabled = config?.materialYouStyled == true
         return if(session != null) {
             getPageRemoteViews(appWidgetId, session.page.view, config, false, null) {
                 container(
@@ -552,6 +556,7 @@ class AppWidgetRepositoryImpl(
                     config?.padding?.dp ?: 0,
                     session,
                     config?.ownerPackage,
+                    materialYouEnabled,
                     it
                 )
             }
@@ -629,6 +634,13 @@ class AppWidgetRepositoryImpl(
     }
 
     private fun AppWidget?.getTextColour(): Int {
+        if(this?.materialYouStyled == true){
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                context.getColor(android.R.color.system_accent1_700)
+            } else {
+                context.getColor(android.R.color.darker_gray)
+            }
+        }
         return when(this?.tintColour ?: TintColour.AUTOMATIC) {
             TintColour.AUTOMATIC -> getWallpaperTextColour()
             TintColour.WHITE -> Color.WHITE
@@ -643,6 +655,7 @@ class AppWidgetRepositoryImpl(
         padding: Int,
         state: PagedWidgetSmartspacerSessionState,
         owner: String?,
+        materialYouStyled: Boolean,
         child: () -> RemoteViews
     ): RemoteViews {
         val container = RemoteViews(packageName, R.layout.widget_smartspacer)
@@ -650,6 +663,25 @@ class AppWidgetRepositoryImpl(
         container.removeAllViews(R.id.widget_smartspacer_container_no_animation)
         container.removeAllViews(R.id.widget_smartspacer_dots)
         container.setViewPadding(android.R.id.background, padding, 0, padding, 0)
+        if(materialYouStyled){
+            container.setViewBackgroundResource(android.R.id.background, R.drawable.rounded_widget_bg)
+            val padding4dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4.0F,
+                context.resources.displayMetrics).toInt()
+            val padding16dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16.0F,
+                context.resources.displayMetrics).toInt()
+            container.setViewPadding(R.id.widget_status_layout, padding16dp, padding16dp,
+                padding16dp, padding16dp)
+            container.setViewPadding(R.id.widget_smartspacer_dots, padding4dp, 0, 0, 0)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                container.setViewLayoutMargin(R.id.widget_smartspacer_controls, MARGIN_END, 8.0F,
+                    TypedValue.COMPLEX_UNIT_DIP)
+            }
+        } else {
+            container.setViewBackgroundColor(android.R.id.background, Color.TRANSPARENT)
+            container.setViewPadding(R.id.widget_status_layout, 0, 0, 0, 0)
+            container.setViewPadding(R.id.widget_smartspacer_dots, 0, 0, 0, 0)
+            container.setViewPadding(R.id.widget_smartspacer_controls, 0, 0, 0, 0)
+        }
         if(state.animate) {
             container.setViewVisibility(R.id.widget_smartspacer_container_animated, View.VISIBLE)
             container.setViewVisibility(R.id.widget_smartspacer_container_no_animation, View.GONE)
