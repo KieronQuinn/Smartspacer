@@ -1097,4 +1097,6 @@
     <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
     <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
     <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="widget_material_you_description">MaterialYou style</string>
+    <string name="widget_material_you_title">Use dynamic MaterialYou styling for widget</string>
 </resources>
