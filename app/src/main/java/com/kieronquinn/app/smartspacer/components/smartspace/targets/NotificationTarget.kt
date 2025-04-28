@@ -4,6 +4,9 @@ import android.app.Notification
 import android.content.ComponentName
 import android.content.Context
 import android.service.notification.StatusBarNotification
+import android.widget.RemoteViews
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -28,6 +31,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.configuration.Configuration
 import com.kieronquinn.app.smartspacer.utils.extensions.getContentText
 import com.kieronquinn.app.smartspacer.utils.extensions.getContentTitle
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import org.koin.android.ext.android.inject
 import android.graphics.drawable.Icon as AndroidIcon
 
@@ -43,7 +47,7 @@ class NotificationTarget: SmartspacerTargetProvider() {
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
         val settings = getSettings(smartspacerId) ?: return emptyList()
-        return getNotifications(smartspacerId).map { it.toTarget(settings) }
+        return getNotifications(smartspacerId).mapNotNull { it.toTarget(settings) }
             .applyAppShortcuts(settings.packageName)
     }
 
@@ -87,7 +91,8 @@ class NotificationTarget: SmartspacerTargetProvider() {
         }
     }
 
-    private fun StatusBarNotification.toTarget(data: TargetData): SmartspaceTarget {
+    @Suppress("DEPRECATION")
+    private fun StatusBarNotification.toTarget(data: TargetData): SmartspaceTarget? {
         val notification = notification
         return TargetTemplate.Basic(
             id = "$TARGET_ID_PREFIX$id",
@@ -101,6 +106,48 @@ class NotificationTarget: SmartspacerTargetProvider() {
             )?.let { Text(it) },
             onClick = TapAction(pendingIntent = notification.contentIntent)
         ).create().apply {
+            val remoteViews = when(data.remoteViews) {
+                TargetData.RemoteViews.NONE -> null
+                TargetData.RemoteViews.SMALL -> {
+                    notification.contentView
+                }
+                TargetData.RemoteViews.LARGE -> {
+                    notification.bigContentView
+                }
+                TargetData.RemoteViews.HEADS_UP -> {
+                    notification.headsUpContentView
+                }
+            }
+            if(remoteViews != null) {
+                val backgroundLayout = data.remoteViewsBackground.getLayout(
+                    provideContext().isDarkMode
+                )
+                val backgroundRemoteViews = if(backgroundLayout != null) {
+                    RemoteViews(
+                        provideContext().packageName,
+                        backgroundLayout
+                    ).apply {
+                        removeAllViews(R.id.remoteviews_background_wrapper)
+                        addView(R.id.remoteviews_background_wrapper, remoteViews)
+                    }
+                }else remoteViews
+                val paddedRemoteViews = RemoteViews(
+                    provideContext().packageName,
+                    data.remoteViewsPadding.layout
+                ).apply {
+                    removeAllViews(R.id.remoteviews_padding_wrapper)
+                    addView(R.id.remoteviews_padding_wrapper, backgroundRemoteViews)
+                    if(data.remoteViewsReplaceClick && notification.contentIntent != null) {
+                        setOnClickPendingIntent(
+                            R.id.remoteviews_padding_wrapper,
+                            notification.contentIntent
+                        )
+                    }
+                }
+                this.remoteViews = paddedRemoteViews
+            }else{
+                this.remoteViews = null
+            }
             sourceNotificationKey = key
             isSensitive = notification.visibility == Notification.VISIBILITY_SECRET
             val actions = notification.actions?.filter {
@@ -211,11 +258,68 @@ class NotificationTarget: SmartspacerTargetProvider() {
         @SerializedName("trim_new_lines")
         val _trimNewLines: Boolean? = null,
         @SerializedName("channels")
-        val channels: Set<String> = emptySet()
+        val channels: Set<String> = emptySet(),
+        @SerializedName("remote_views")
+        val _remoteViews: RemoteViews? = null,
+        @SerializedName("remote_views_background")
+        val _remoteViewsBackground: Background? = null,
+        @SerializedName("remote_views_padding")
+        val _remoteViewsPadding: Padding? = null,
+        @SerializedName("remote_views_replace_click")
+        val _remoteViewsReplaceClick: Boolean? = null
     ) {
 
         val trimNewLines: Boolean
             get() = _trimNewLines ?: false
+
+        val remoteViews: RemoteViews
+            get() = _remoteViews ?: RemoteViews.NONE
+
+        val remoteViewsBackground: Background
+            get() = _remoteViewsBackground ?: Background.SEMI
+
+        val remoteViewsPadding: Padding
+            get() = _remoteViewsPadding ?: Padding.MEDIUM
+
+        val remoteViewsReplaceClick: Boolean
+            get() = _remoteViewsReplaceClick ?: false
+
+        enum class RemoteViews(@StringRes val label: Int) {
+            NONE(R.string.target_notification_remoteviews_source_none),
+            SMALL(R.string.target_notification_remoteviews_source_small),
+            LARGE(R.string.target_notification_remoteviews_source_large),
+            HEADS_UP(R.string.target_notification_remoteviews_source_heads_up),
+        }
+
+        enum class Background(
+            @StringRes val label: Int,
+            @LayoutRes val layoutLight: Int?,
+            @LayoutRes val layoutDark: Int?
+        ) {
+            NONE(R.string.target_notification_remoteviews_background_none, null, null),
+            SEMI(
+                R.string.target_notification_remoteviews_background_semi,
+                R.layout.remoteviews_wrapper_background_50_light,
+                R.layout.remoteviews_wrapper_background_50_dark
+            ),
+            OPAQUE(
+                R.string.target_notification_remoteviews_background_opaque,
+                R.layout.remoteviews_wrapper_background_100_light,
+                R.layout.remoteviews_wrapper_background_100_dark
+            );
+
+            fun getLayout(darkMode: Boolean): Int? {
+                return if(darkMode) layoutDark else layoutLight
+            }
+        }
+
+        enum class Padding(@StringRes val label: Int, @LayoutRes val layout: Int, val height: Int) {
+            NONE(R.string.target_widget_padding_none, R.layout.remoteviews_wrapper_padding_none, 96),
+            SMALL(R.string.target_widget_padding_small, R.layout.remoteviews_wrapper_padding_small, 92),
+            MEDIUM(R.string.target_widget_padding_medium, R.layout.remoteviews_wrapper_padding_medium, 88),
+            LARGE(R.string.target_widget_padding_large, R.layout.remoteviews_wrapper_padding_large, 80),
+            DISABLED(R.string.target_widget_padding_disable, R.layout.remoteviews_wrapper_padding_disabled, 96),
+        }
 
     }
 

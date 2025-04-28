@@ -18,6 +18,7 @@ class FlashlightReceiver: BroadcastReceiver(), KoinComponent {
         }.unwrap() ?: run {
             context.startActivity(Intent(context, FlashlightToggleActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             })
         }
     }

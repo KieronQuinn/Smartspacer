@@ -507,9 +507,15 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
 
     override fun onSearchBoxClicked(searchApp: SearchApp) {
         unlockAndInvoke {
-            startActivity(searchApp.launchIntent.apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
+            try {
+                startActivity(searchApp.launchIntent.apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                })
+            }catch (e: Exception) {
+                val fallback = requireContext().packageManager
+                    .getLaunchIntentForPackage(searchApp.packageName) ?: return@unlockAndInvoke
+                startActivity(fallback)
+            }
         }
     }
 

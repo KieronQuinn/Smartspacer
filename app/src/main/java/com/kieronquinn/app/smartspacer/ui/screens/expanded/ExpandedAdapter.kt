@@ -271,7 +271,9 @@ class ExpandedAdapter(
             root.backgroundTintList = ColorStateList.valueOf(item.searchBackgroundColor)
         }else{
             root.setBackgroundResource(R.drawable.background_expanded_header)
-            root.backgroundTintList = null
+            root.backgroundTintList = (if(item.isDark) Color.BLACK else Color.WHITE).let {
+                ColorStateList.valueOf(it)
+            }
         }
         whenResumed {
             onClicked().collect {

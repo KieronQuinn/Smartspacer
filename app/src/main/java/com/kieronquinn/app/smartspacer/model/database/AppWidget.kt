@@ -95,6 +95,7 @@ data class AppWidget(
         if(other.hideControls != hideControls) return false
         if(other.animate != animate) return false
         if(other.showShadow != showShadow) return false
+        if(other.materialYouStyled != materialYouStyled) return false
         return true
     }
 

@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.text.SpannableStringBuilder
 import android.text.util.Linkify
 import android.view.View
 import android.widget.Toast
@@ -23,6 +24,9 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.Background
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.Padding
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.RemoteViews
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationTargetNotificationBinding
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
@@ -189,7 +193,7 @@ class NotificationTargetConfigurationFragment: BoundFragment<FragmentConfigurati
                 )
             )
         }else emptyList()
-        val settings = listOf(
+        val settings = listOfNotNull(
             GenericSettingsItem.Header(getString(R.string.target_notification_configuration_options)),
             GenericSettingsItem.SwitchSetting(
                 options.trimNewLines,
@@ -197,9 +201,59 @@ class NotificationTargetConfigurationFragment: BoundFragment<FragmentConfigurati
                 getString(R.string.target_notification_configuration_trim_new_lines_content),
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_target_notification_new_line),
                 onChanged = viewModel::onTrimNewLinesChanged
+            ),
+            GenericSettingsItem.Dropdown(
+                getString(R.string.target_notification_remoteviews_source_title),
+                options.remoteViews.getContent(),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_show_remoteviews),
+                options.remoteViews,
+                viewModel::onRemoteViewsChanged,
+                RemoteViews.entries
+            ) {
+                it.label
+            },
+            GenericSettingsItem.Dropdown(
+                getString(R.string.target_notification_remoteviews_background_title),
+                getString(options.remoteViewsBackground.label),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_expanded_blur_background),
+                options.remoteViewsBackground,
+                viewModel::onRemoteViewsBackgroundChanged,
+                Background.entries
+            ) {
+                it.label
+            }.takeIf { options.remoteViews != RemoteViews.NONE },
+            GenericSettingsItem.Dropdown(
+                getString(R.string.target_notification_remoteviews_padding_title),
+                getString(options.remoteViewsPadding.label),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_widget_configuration_padding),
+                options.remoteViewsPadding,
+                viewModel::onRemoteViewsPaddingChanged,
+                Padding.entries
+            ) {
+                it.label
+            }.takeIf { options.remoteViews != RemoteViews.NONE },
+            GenericSettingsItem.SwitchSetting(
+                options.remoteViewsReplaceClick,
+                getString(R.string.target_notification_remoteviews_click_title),
+                getString(R.string.target_notification_remoteviews_click_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_open_external),
+                onChanged = viewModel::onRemoteViewsClickChanged
             )
         ).takeIf { options.packageName != null } ?: emptyList()
         return listOf(app) + channels + settings
+    }
+
+    private fun RemoteViews.getContent(): CharSequence {
+        return SpannableStringBuilder().apply {
+            append(getString(R.string.target_notification_remoteviews_source_subtitle))
+            append(" ")
+            append(getString(label))
+            if(this@getContent == RemoteViews.LARGE) {
+                appendLine()
+                appendLine()
+                append(getText(R.string.target_notification_remoteviews_source_large_info))
+            }
+        }
     }
 
     private fun requestPairing() {

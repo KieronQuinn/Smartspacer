@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.9.2'
-def tagCode = 192
+def tagName = '1.10'
+def tagCode = 1100
 
 android {
     compileSdk 35
@@ -72,28 +72,28 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.core:core-ktx:1.16.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.13.0-alpha10'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'com.google.android.material:material:1.13.0-alpha13'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation "androidx.lifecycle:lifecycle-service:2.8.7"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "androidx.fragment:fragment-ktx:1.8.5"
-    implementation "androidx.activity:activity-ktx:1.10.0"
-    implementation "androidx.work:work-runtime-ktx:2.10.0"
+    implementation "androidx.fragment:fragment-ktx:1.8.6"
+    implementation "androidx.activity:activity-ktx:1.10.1"
+    implementation "androidx.work:work-runtime-ktx:2.10.1"
     implementation "androidx.core:core-remoteviews:1.1.0"
-    implementation "androidx.security:security-crypto:1.1.0-alpha06"
+    implementation "androidx.security:security-crypto:1.1.0-alpha07"
     implementation project(path: ':proto')
 
-    def room_version = "2.6.1"
+    def room_version = "2.7.1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1"
     implementation(project(path: ':sdk-plugin')) {
         exclude group: "com.kieronquinn.smartspacer", module: "sdk-core"
     }
@@ -109,7 +109,7 @@ dependencies {
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
 
     implementation 'com.google.android.gms:play-services-location:21.3.0'
-    implementation 'com.google.android.gms:play-services-maps:19.0.0'
+    implementation 'com.google.android.gms:play-services-maps:19.2.0'
 
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
     implementation 'com.google.code.gson:gson:2.11.0'
@@ -130,21 +130,21 @@ dependencies {
 
     //Image Loading
     implementation 'com.github.bumptech.glide:glide:4.16.0'
-    ksp 'com.github.bumptech.glide:ksp:4.15.1'
+    ksp 'com.github.bumptech.glide:ksp:4.16.0'
 
     implementation 'com.google.android.gms:play-services-location:21.3.0'
-    implementation 'com.google.android.gms:play-services-maps:19.0.0'
+    implementation 'com.google.android.gms:play-services-maps:19.2.0'
     implementation 'com.google.maps.android:android-maps-utils:3.8.2'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
-    implementation 'com.airbnb.android:lottie:6.4.1'
+    implementation 'com.airbnb.android:lottie:6.6.2'
     implementation 'com.github.skydoves:balloon:1.4.7'
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     implementation "dev.rikka.tools.refine:runtime:$refine_version"
     implementation "com.squareup.retrofit2:retrofit:2.11.0"
     implementation "com.squareup.retrofit2:converter-gson:2.11.0"
     implementation 'androidx.palette:palette-ktx:1.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.21"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.1.0"
     implementation "com.tbuonomo:dotsindicator:5.0"
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
@@ -161,7 +161,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-oss-licenses:17.1.0'
 
     //Firebase Analytics + Crashlytics
-    implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
 
@@ -173,7 +173,7 @@ dependencies {
     androidTestImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'io.mockk:mockk-android:1.13.8'
     androidTestImplementation 'app.cash.turbine:turbine:0.13.0'
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     androidTestImplementation 'com.google.truth:truth:1.1.3'

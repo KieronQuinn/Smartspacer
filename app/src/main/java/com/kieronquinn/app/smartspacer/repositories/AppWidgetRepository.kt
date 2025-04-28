@@ -48,6 +48,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.dip
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.launch
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
@@ -527,7 +528,7 @@ class AppWidgetRepositoryImpl(
         widget: AppWidget,
         container: () -> RemoteViews
     ): RemoteViews {
-        val textColour = widget.getTextColour()
+        val textColour = widget.getTextColour(true)
         val shadowContainer = if(widget.showShadow && textColour == Color.WHITE) {
             RemoteViews(context.packageName, R.layout.widget_shadow_enabled)
         }else{
@@ -543,7 +544,7 @@ class AppWidgetRepositoryImpl(
         session: PagedWidgetSmartspacerSessionState?,
         config: AppWidget?
     ): RemoteViews? {
-        val textColour = config.getTextColour()
+        val textColour = config.getTextColour(false)
         val iconColour = ColorStateList.valueOf(textColour)
         val shadowEnabled = (config?.showShadow ?: true) && textColour == Color.WHITE
         val materialYouEnabled = config?.materialYouStyled == true
@@ -571,7 +572,7 @@ class AppWidgetRepositoryImpl(
         overflowIntent: Intent?,
         container: (() -> RemoteViews) -> RemoteViews
     ): RemoteViews {
-        val textColour = config.getTextColour()
+        val textColour = config.getTextColour(isList)
         val shadowEnabled = (config?.showShadow ?: true) && textColour == Color.WHITE
         val titleSize = resources.getDimension(R.dimen.smartspace_view_title_size)
         val subtitleSize = resources.getDimension(R.dimen.smartspace_view_subtitle_size)
@@ -633,12 +634,18 @@ class AppWidgetRepositoryImpl(
         return FlagDisabledRemoteViews(landscape, portrait)
     }
 
-    private fun AppWidget?.getTextColour(): Int {
-        if(this?.materialYouStyled == true){
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                context.getColor(android.R.color.system_accent1_700)
-            } else {
-                context.getColor(android.R.color.darker_gray)
+    private fun AppWidget?.getTextColour(list: Boolean): Int {
+        if(!list && this?.materialYouStyled == true){
+            val darkMode = context.isDarkMode
+            return when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && darkMode -> {
+                    context.getColor(android.R.color.system_accent1_50)
+                }
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                    context.getColor(android.R.color.system_accent1_700)
+                }
+                darkMode -> Color.WHITE
+                else -> Color.BLACK
             }
         }
         return when(this?.tintColour ?: TintColour.AUTOMATIC) {

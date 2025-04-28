@@ -34,6 +34,7 @@ import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Card
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Dropdown
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Header
+import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Setting
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Slider
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.SwitchSetting
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
@@ -420,15 +421,34 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
             ) {
                 viewModel.onPaddingChanged(it.roundToInt())
             },
-            Dropdown(
-                getString(R.string.widget_configuration_colour),
-                getString(widget.tintColour.label),
+            SwitchSetting(
+                widget.materialYouStyled,
+                getString(R.string.widget_configuration_material_you_title),
+                getText(R.string.widget_configuration_material_you_description),
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
-                widget.tintColour,
-                viewModel::onTintColourChanged,
-                TintColour.entries
-            ) {
-                it.label
+                true,
+                onChanged = viewModel::onMaterialYouChanged
+            ).takeIf {
+                !widget.listMode && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+            },
+            if(!widget.materialYouStyled) {
+                Dropdown(
+                    getString(R.string.widget_configuration_colour),
+                    getString(widget.tintColour.label),
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
+                    widget.tintColour,
+                    viewModel::onTintColourChanged,
+                    TintColour.entries
+                ) {
+                    it.label
+                }
+            }else{
+                Setting(
+                    getString(R.string.widget_configuration_colour),
+                    getString(R.string.widget_configuration_colour_disabled),
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
+                    isEnabled = false
+                ) {}
             },
             SwitchSetting(
                 widget.showShadow,
@@ -438,16 +458,6 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 onChanged = viewModel::onShadowChanged
             ).takeIf {
                 widget.tintColour == TintColour.AUTOMATIC || widget.tintColour == TintColour.WHITE
-            },
-            SwitchSetting(
-                widget.materialYouStyled,
-                getString(R.string.widget_material_you_description),
-                getString(R.string.widget_material_you_title),
-                null,
-                true,
-                onChanged = viewModel::onMaterialYouChanged
-            ).takeIf {
-                !widget.listMode && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
             }
         )
     }
