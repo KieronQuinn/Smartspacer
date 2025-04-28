@@ -32,7 +32,7 @@ class NotificationTargetNotification: SmartspacerNotificationProvider() {
                 listOf(it.value.lastOrNull())
             }else it.value
         }.filterNotNull().filterNot {
-            it.notification?.getContentTitle() == null
+            it.notification?.getContentTitle() == null && it.notification?.bigContentView == null
         }.filter {
             !settings.hasChannels || settings.channels.contains(it.notification.channelId)
         }

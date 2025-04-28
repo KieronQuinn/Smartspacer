@@ -37,6 +37,10 @@ class TaskListener(private val onStackChanged: () -> Unit): ITaskStackListener.S
         //No-op
     }
 
+    override fun onActivityDismissingDockedTask() {
+        //No-op
+    }
+
     override fun onActivityDismissingDockedStack() {
         //No-op
     }
@@ -79,7 +83,18 @@ class TaskListener(private val onStackChanged: () -> Unit): ITaskStackListener.S
         //No-op
     }
 
+    override fun onTaskProfileLocked(
+        taskInfo: ActivityManager.RunningTaskInfo?,
+        userId: Int
+    ) {
+        //No-op
+    }
+
     override fun onTaskProfileLocked(taskId: Int, userId: Int) {
+        //No-op
+    }
+
+    override fun onTaskSnapshotInvalidated(taskId: Int) {
         //No-op
     }
 
@@ -145,6 +160,10 @@ class TaskListener(private val onStackChanged: () -> Unit): ITaskStackListener.S
     }
 
     override fun onLockTaskModeChanged(mode: Int) {
+        //No-op
+    }
+
+    override fun onRecentTaskRemovedForAddTask(taskId: Int) {
         //No-op
     }
 

@@ -57,6 +57,11 @@ public interface ITaskStackListener {
     void onActivityForcedResizable(String packageName, int taskId, int reason);
 
     /**
+     * Called when we launched an activity that dismissed the docked task.
+     */
+    void onActivityDismissingDockedTask();
+
+    /**
      * Called when we launched an activity that dismissed the docked stack.
      */
     void onActivityDismissingDockedStack();
@@ -134,7 +139,19 @@ public interface ITaskStackListener {
      * activities inside it belong to a managed profile user, and that user has just
      * been locked.
      */
+    void onTaskProfileLocked(ActivityManager.RunningTaskInfo taskInfo, int userId);
+
+    /**
+     * Called when the task has been put a locked state because one or more of the
+     * activities inside it belong to a managed profile user, and that user has just
+     * been locked.
+     */
     void onTaskProfileLocked(int taskId, int userId);
+
+    /**
+     * Called when a task snapshot become invalidated.
+     */
+    void onTaskSnapshotInvalidated(int taskId);
 
     /**
      * Called when a task snapshot got updated.
@@ -258,5 +275,10 @@ public interface ITaskStackListener {
      * LockTaskController.
      */
     void onLockTaskModeChanged(int mode);
+
+    /**
+     *  Called when a task is removed from the recent tasks list as a result of adding a new task.
+     */
+    void onRecentTaskRemovedForAddTask(int taskId);
 
 }

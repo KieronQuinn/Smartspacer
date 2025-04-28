@@ -10,6 +10,9 @@ import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNaviga
 import com.kieronquinn.app.smartspacer.components.smartspace.notifications.NotificationTargetNotification
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.Background
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.Padding
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget.TargetData.RemoteViews
 import com.kieronquinn.app.smartspacer.model.database.TargetDataType
 import com.kieronquinn.app.smartspacer.repositories.DataRepository
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
@@ -39,6 +42,11 @@ abstract class NotificationTargetConfigurationViewModel(scope: CoroutineScope?):
     abstract fun onAppClicked()
     abstract fun onChannelChanged(channelId: String, enabled: Boolean)
     abstract fun onTrimNewLinesChanged(enabled: Boolean)
+
+    abstract fun onRemoteViewsChanged(remoteViews: RemoteViews)
+    abstract fun onRemoteViewsBackgroundChanged(background: Background)
+    abstract fun onRemoteViewsPaddingChanged(padding: Padding)
+    abstract fun onRemoteViewsClickChanged(enabled: Boolean)
 
     sealed class State {
         data object Loading: State()
@@ -141,8 +149,7 @@ class NotificationTargetConfigurationViewModelImpl(
         }
     }
 
-    override fun onChannelChanged(channelId: String, enabled: Boolean) {
-        val settings = settings.value ?: return
+    private fun updateData(block: TargetData.() -> TargetData) {
         val id = smartspacerId.value ?: return
         dataRepository.updateTargetData(
             id,
@@ -150,13 +157,20 @@ class NotificationTargetConfigurationViewModelImpl(
             TargetDataType.NOTIFICATION,
             ::onSettingsUpdated
         ) {
+            val data = it ?: TargetData()
+            block(data)
+        }
+    }
+
+    override fun onChannelChanged(channelId: String, enabled: Boolean) {
+        val settings = settings.value ?: return
+        updateData {
             val newChannels = if(enabled){
                 settings.channels + channelId
             }else{
                 settings.channels - channelId
             }
-            val data = it ?: TargetData()
-            data.copy(
+            copy(
                 hasChannels = true,
                 channels = newChannels
             )
@@ -164,17 +178,34 @@ class NotificationTargetConfigurationViewModelImpl(
     }
 
     override fun onTrimNewLinesChanged(enabled: Boolean) {
-        val id = smartspacerId.value ?: return
-        dataRepository.updateTargetData(
-            id,
-            TargetData::class.java,
-            TargetDataType.NOTIFICATION,
-            ::onSettingsUpdated
-        ) {
-            val data = it ?: TargetData()
-            data.copy(
+        updateData {
+            copy(
                 _trimNewLines = enabled
             )
+        }
+    }
+
+    override fun onRemoteViewsChanged(remoteViews: RemoteViews) {
+        updateData {
+            copy(_remoteViews = remoteViews)
+        }
+    }
+
+    override fun onRemoteViewsBackgroundChanged(background: Background) {
+        updateData {
+            copy(_remoteViewsBackground = background)
+        }
+    }
+
+    override fun onRemoteViewsPaddingChanged(padding: Padding) {
+        updateData {
+            copy(_remoteViewsPadding = padding)
+        }
+    }
+
+    override fun onRemoteViewsClickChanged(enabled: Boolean) {
+        updateData {
+            copy(_remoteViewsReplaceClick = enabled)
         }
     }
 

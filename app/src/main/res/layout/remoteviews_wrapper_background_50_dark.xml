@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/remoteviews_background_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:padding="@dimen/margin_16"
+    android:clipToPadding="false"
+    android:backgroundTint="#80000000"
+    android:background="@drawable/remoteviews_background"
+    android:clipToOutline="true"
+    android:outlineProvider="background"
+    tools:ignore="UnusedAttribute" />

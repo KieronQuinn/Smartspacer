@@ -22,6 +22,7 @@ import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.smartspace.OemSmartspacerSession
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.NotificationTarget
 import com.kieronquinn.app.smartspacer.repositories.AccessibilityRepository
 import com.kieronquinn.app.smartspacer.repositories.GrantRepository
 import com.kieronquinn.app.smartspacer.repositories.NotificationRepository
@@ -30,8 +31,10 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositor
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.utils.extensions.Intent_FLAG_RECEIVER_FROM_SHELL
 import com.kieronquinn.app.smartspacer.utils.extensions.displayOff
+import com.kieronquinn.app.smartspacer.utils.extensions.getDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.isServiceRunning
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.runningApp
@@ -41,6 +44,8 @@ import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -81,7 +86,7 @@ class SmartspacerBackgroundService: LifecycleService() {
         it.runningApp()
     }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
 
-    private val shizukuRrunningApp = shizukuServiceRepository.shizukuService.flatMapLatest {
+    private val shizukuRunningApp = shizukuServiceRepository.shizukuService.flatMapLatest {
         if(it != null) {
             isUsingEnhancedModeAppListener = true
             notifications.cancelNotification(NotificationId.ENABLE_ACCESSIBILITY)
@@ -118,6 +123,7 @@ class SmartspacerBackgroundService: LifecycleService() {
         setupOemSessions()
         setupOemVisibility()
         setupEnhancedModeAppListenerIfPossible()
+        setupDarkModeListener()
     }
 
     override fun onDestroy() {
@@ -286,8 +292,16 @@ class SmartspacerBackgroundService: LifecycleService() {
     }
 
     private fun setupEnhancedModeAppListenerIfPossible() = whenCreated {
-        shizukuRrunningApp.filterNotNull().collect {
+        shizukuRunningApp.filterNotNull().collect {
             accessibilityRepository.setForegroundPackage(it)
+        }
+    }
+
+    private fun setupDarkModeListener() = whenCreated {
+        getDarkMode(lifecycleScope).drop(1).distinctUntilChanged().collect {
+            SmartspacerTargetProvider.notifyChange(
+                this@SmartspacerBackgroundService, NotificationTarget::class.java
+            )
         }
     }
 

@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
+import android.content.Intent
 import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerRegular
 import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMergerSplit
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication
@@ -21,8 +22,10 @@ import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerComplicationUpda
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerTargetUpdateReceiver
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerUpdateReceiver
 import com.kieronquinn.app.smartspacer.sdk.receivers.SmartspacerVisibilityChangedReceiver
+import com.kieronquinn.app.smartspacer.ui.activities.FlashlightToggleActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.fixActionsIfNeeded
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
 import com.kieronquinn.app.smartspacer.utils.extensions.stripSmartspacerUniqueness
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -480,7 +483,14 @@ class SmartspaceRepositoryImpl(
     }
 
     private fun toggleTorch() = scope.launch {
-        shizukuServiceRepository.runWithService { it.toggleTorch() }
+        if (isAtLeastBaklava()) {
+            context.startActivity(Intent(context, FlashlightToggleActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            })
+        } else {
+            shizukuServiceRepository.runWithService { it.toggleTorch() }
+        }
     }
 
     /**
