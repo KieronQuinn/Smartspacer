@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Animer les modifications</string>
     <string name="widget_configuration_animation_switch_content">Dès que possible, appliquer un fondu lorsque le widget est modifié</string>
     <string name="widget_configuration_colour">Couleur</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Ombre derrière le texte</string>
     <string name="widget_configuration_shadow_content">Afficher une ombre derrière le texte, permettant de le rendre lisible quel que soit votre fond d\'écran</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Cible</string>
     <string name="widget_configuration_mock_complication_title">Complication</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configurer le widget</string>
     <string name="accessibility_service_label">Service widget Smartspacer</string>
     <string name="accessibility_service_description">Permet au widget Smartspacer de maintenir à jour les cibles et les complications tout en évitant de les exécuter en permanence, ce qui économise de la batterie.\n\nRemarque : Il n\'est pas nécessaire d\'activer cette option si le mode amélioré est activé.</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Supprimer les retours à la ligne</string>
     <string name="target_notification_configuration_trim_new_lines_content">Supprime les retours à la ligne du contenu de la notification afin d\'essayer de faire rentrer autant de texte que possible dans la cible. Cela pourrait affecter le formatage de la notification.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Cible vide</string>
     <string name="target_blank_content">Ultra minimaliste, peut être utilisé pour afficher uniquement les complications, voire ne rien afficher du tout</string>
@@ -1097,6 +1114,4 @@
     <string name="fitness_widget_recommendation_category_label">Santé et bien-être</string>
     <string name="news_widget_recommendation_category_label">Actualités et magazines</string>
     <string name="others_widget_recommendation_category_label">Recommandations</string>
-    <string name="widget_material_you_description">Style Material You</string>
-    <string name="widget_material_you_title">Utilisez le style Material You dynamique dans les widgets</string>
 </resources>
