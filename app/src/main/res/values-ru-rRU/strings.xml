@@ -51,10 +51,10 @@
     <string name="widget_configuration_is_lock_screen_content">Включите <b>только в том случае</b>, если этот виджет добавляется на экран блокировки.\nЕсли это <b>не позволяет</b> добавить виджет на экран блокировки самостоятельно, загрузите приложение из Google Play, например \"Виджеты экрана блокировки\", чтобы сделать это.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">.</string>
     <string name="widget_configuration_page_single_title">Одна страница</string>
-    <string name="widget_configuration_page_single_content"></string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
     <string name="widget_configuration_customisation_title">Кастомизация</string>
     <string name="widget_configuration_page_arrows_title">Показывать управление страницами</string>
-    <string name="widget_configuration_page_arrows_content"></string>
+    <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
     <string name="widget_configuration_page_controls_invisible_title">Невидимые элементы управления</string>
     <string name="widget_configuration_page_controls_invisible_content">Сделать элементы управления невидимыми. Они все еще есть и действительны, но не видны.</string>
     <string name="widget_configuration_padding_title">Дополнительный отступ</string>
@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Анимировать изменения</string>
     <string name="widget_configuration_animation_switch_content">Плавные переходы между изменениями в виджете - где это возможно</string>
     <string name="widget_configuration_colour">Цвет</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Тень текста</string>
     <string name="widget_configuration_shadow_content">Показать тень на тексте, который не может быть разборчивым на ваших обоях</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Цель</string>
     <string name="widget_configuration_mock_complication_title">Дополнение</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Настроить виджет</string>
     <string name="accessibility_service_label">Служба виджетов Smartspacer</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Опции</string>
     <string name="target_notification_configuration_trim_new_lines_title">Удалить новые строки</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Пустая Цель</string>
     <string name="target_blank_content">Минималистично. Может быть использована для показа только Дополнений или вообще ничего</string>
@@ -1097,6 +1114,4 @@
     <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
     <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
     <string name="others_widget_recommendation_category_label">Предложения для вас</string>
-    <string name="widget_material_you_description">MaterialYou style</string>
-    <string name="widget_material_you_title">Use dynamic MaterialYou styling for widget</string>
 </resources>
