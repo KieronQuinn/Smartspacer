@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Animazioni ai cambiamenti</string>
     <string name="widget_configuration_animation_switch_content">Dissolvenza tra le modifiche al Widget ove possibile</string>
     <string name="widget_configuration_colour">Colore</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Ombra del testo</string>
     <string name="widget_configuration_shadow_content">Mostra un\'ombra sul testo che potrebbe non essere leggibile sul tuo sfondo</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Target</string>
     <string name="widget_configuration_mock_complication_title">Complicazione</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configura Widget</string>
     <string name="accessibility_service_label">Servizio Widget di Smartspacer</string>
     <string name="accessibility_service_description">Abilita il Widget Smartspacer per tenere i Target e le Complicazioni aggiornati, senza scaricare la batteria avendoli sempre in esecuzione.\n\nNota: Questo non è necessario se la Modalità Avanzata è abilitata.</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Opzioni</string>
     <string name="target_notification_configuration_trim_new_lines_title">Rimuovi gli A Capo</string>
     <string name="target_notification_configuration_trim_new_lines_content">Rimuovi le nuove righe dal contenuto della notifica, cercando di inserirne il più possibile nel Target. Questo potrebbe rovinare la formattazione della notifica.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Target Vuoto</string>
     <string name="target_blank_content">Ultra minimale, può essere usato per mostrare solo Complicazioni o nulla affatto</string>
@@ -1097,6 +1114,4 @@
     <string name="fitness_widget_recommendation_category_label">Salute e benessere</string>
     <string name="news_widget_recommendation_category_label">Notizie e riviste</string>
     <string name="others_widget_recommendation_category_label">Suggeriti per te</string>
-    <string name="widget_material_you_description">MaterialYou style</string>
-    <string name="widget_material_you_title">Use dynamic MaterialYou styling for widget</string>
 </resources>
