@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">動畫變更</string>
     <string name="widget_configuration_animation_switch_content">在可能的情況下，小工具變更時進行淡入淡出</string>
     <string name="widget_configuration_colour">顏色</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">文字陰影</string>
     <string name="widget_configuration_shadow_content">在壁紙上可能無法辨認的文字上顯示陰影</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">目標</string>
     <string name="widget_configuration_mock_complication_title">複雜功能</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">設定小工具</string>
     <string name="accessibility_service_label">Smartspacer 小工具服務</string>
     <string name="accessibility_service_description">使Smartspacer的小工具能夠保持目標和複雜情況的最新狀態，而不會因為它們總是在運行而消耗電池壽命。\n\n注意：如果啟用了增強模式則不需要此功能。</string>
@@ -983,6 +986,20 @@
     <string name="target_notification_configuration_options">選項</string>
     <string name="target_notification_configuration_trim_new_lines_title">移除新行</string>
     <string name="target_notification_configuration_trim_new_lines_content">移除通知內容中的換行符號，盡可能將更多內容納入目標中。這可能會移除通知的一些格式。</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空目標</string>
     <string name="target_blank_content">超極簡模式，可用來完全不顯示任何內容，或只顯示複雜功能</string>

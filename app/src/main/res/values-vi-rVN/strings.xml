@@ -19,7 +19,7 @@
     <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
     <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_content_notification"></string>
+    <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[.]]></string>
     <string name="restricted_mode_button">Mở thông tin ứng dụng</string>
     <string name="restricted_mode_warning_button">Cấp quyền với Shizuku</string>
@@ -33,8 +33,8 @@
     <string name="tint_colour_white_content">Văn bản và biểu tượng trong tiện ích sẽ luôn có màu trắng</string>
     <string name="tint_colour_white_content_alt">Văn bản và biểu tượng trong thông báo sẽ luôn có màu trắng</string>
     <string name="tint_colour_black">Đen</string>
-    <string name="tint_colour_black_content"></string>
-    <string name="tint_colour_black_content_alt"></string>
+    <string name="tint_colour_black_content">Text and icons in the widget will always be black</string>
+    <string name="tint_colour_black_content_alt">Text and icons in the notification will always be black</string>
     <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
     <string name="widget_loading_smartspacer">Loading…</string>
     <string name="widget_loading_smartspacer_subtitle">Check the Smartspacer Accessibility Service is enabled if this message persists</string>
@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Animate Changes</string>
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
     <string name="widget_configuration_colour">Colour</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Text Shadow</string>
     <string name="widget_configuration_shadow_content">Show a shadow on text which may not be legible on your wallpaper</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Mục tiêu</string>
     <string name="widget_configuration_mock_complication_title">Complication</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Blank Target</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>

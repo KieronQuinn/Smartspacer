@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Impostazioni</string>
     <string name="toast_restricted_mode">Consenti impostazioni limitate nel menu di overflow</string>
     <string name="restricted_mode_content_accessibility">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle app che sono state installate tramite sideload di utilizzare i servizi d\'accessibilità per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare il servizio d\'accessibilità, è necessario aprire Informazioni App per consentire le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'app basata su installer a sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di utilizzare i servizi di accessibilità.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'app basata su installer a sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
     <string name="restricted_mode_content_notification">Da Android 13, Google ha aggiunto un controllo di sicurezza alle impostazioni, impedendo alle app che sono state installate tramite sideload di inviare notifiche per impostazione predefinita.\n\n<b>Se vedi un messaggio di impostazioni limitate quando cerchi di abilitare le notifiche, è necessario aprire Informazioni App per consentire le impostazioni limitate.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un\'app basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l\'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l\'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Da Android 14, Google ha impedito alle app installate tramite sideload con Installazione Pacchetti di inviare notifiche.<br><br><b>Se vedi un messaggio riguardo a impostazioni limitate, è necessario disinstallare Smartspacer e reinstallarlo utilizzando un'app basata su installer di sessione come <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> o l'<a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">app APKMirror</a>. Aggiornare l'app (senza disinstallarla) NON è sufficiente.<br><br></b>In alternativa, con la Modalità Avanzata abilitata, Smartspacer aggirerà questo requisito (è necessario Shizuku o root).]]></string>
     <string name="restricted_mode_button">Apri le informazioni dell\'app</string>
     <string name="restricted_mode_warning_button">Concedi il permesso con Shizuku</string>
     <string name="target_sensitive_title">Contenuto nascosto</string>
@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Animazioni ai cambiamenti</string>
     <string name="widget_configuration_animation_switch_content">Dissolvenza tra le modifiche al Widget ove possibile</string>
     <string name="widget_configuration_colour">Colore</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Ombra del testo</string>
     <string name="widget_configuration_shadow_content">Mostra un\'ombra sul testo che potrebbe non essere leggibile sul tuo sfondo</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Target</string>
     <string name="widget_configuration_mock_complication_title">Complicazione</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configura Widget</string>
     <string name="accessibility_service_label">Servizio Widget di Smartspacer</string>
     <string name="accessibility_service_description">Abilita il Widget Smartspacer per tenere i Target e le Complicazioni aggiornati, senza scaricare la batteria avendoli sempre in esecuzione.\n\nNota: Questo non è necessario se la Modalità Avanzata è abilitata.</string>
@@ -454,7 +457,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analitiche e Report dei Crash</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare la risoluzione di bug, Smartspacer può inviare crash report a Firebase Crashlytics, insieme ad altre informazioni analitiche di base (lanci dell\'app).<br>Questi dati sono tutti anonimi, e sono assolutamente facoltativi, maggiori dettagli e informativa sulla privacy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilizza molte API Android sperimentali e "nascoste", che potrebbero essere maggiormente soggette a crash su alcuni device a causa di modifiche degli OEM.<br>Per agevolare la risoluzione di bug, Smartspacer può inviare crash report a Firebase Crashlytics, insieme ad altre informazioni analitiche di base (lanci dell'app).<br>Questi dati sono tutti anonimi, e sono assolutamente facoltativi, maggiori dettagli e informativa sulla privacy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">qui</a>]]></string>
     <string name="setup_analytics_allow">Consenti</string>
     <string name="setup_analytics_deny">Nega</string>
     <!-- Setup > Notifications -->
@@ -497,7 +500,7 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Aggiungi Widget</string>
     <string name="setup_add_widget_content">Aggiungi Smartspacer alla Schermata Home</string>
-    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un\'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il Widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Nota: Se si desidera aggiungere Smartspacer alla Schermata di Blocco, è necessario utilizzare un'app come <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> per aggiungere il Widget.]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">Requisiti</string>
     <string name="setup_requirements_info_p1">I <b>Requisiti</b> consentono di personalizzare quando un Target o una Complicazione devono essere visualizzati in Smartspace. Con essi è possibile creare scenari in cui le informazioni utili vengono mostrate in Smartspace.</string>
@@ -892,7 +895,7 @@
     <string name="about_contributors_icons">Icone</string>
     <string name="about_contributors_icons_content"><![CDATA[Icone provenienti da <b><a href="https://material.io/resources/icons">Material Icons</a></b> (<a href="https://www.apache.org/licenses/LICENSE-2.0.html">Licenza Apache 2.0</a>)<br><b><a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a></b> (<a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">Licenza Pictogrammers Free</a>)<br><b><a href="https://lottiefiles.com/54141-google-pay-success">Success di Rohith R Krishnan</a></b> (<a href="https://lottiefiles.com/license">Licenza Lottie Simple</a>)]]></string>
     <string name="about_contributors_sdk">SDK</string>
-    <string name="about_contributors_sdk_content"><![CDATA[Parti dell\'SDK di Smartspacer contengono codice basato su Lawnchair, sotto la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Licenza Apache 2.0</a>]]></string>
+    <string name="about_contributors_sdk_content"><![CDATA[Parti dell'SDK di Smartspacer contengono codice basato su Lawnchair, sotto la <a href="https://github.com/LawnchairLauncher/lawnchair/blob/12.1-dev/LICENSE.txt>Licenza Apache 2.0</a>]]></string>
     <string name="about_translators">Traduttori</string>
     <!-- Wallpaper Colour Picker -->
     <string name="wallpaper_colour_picker_menu">Selettore del Colore di Sfondo</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Opzioni</string>
     <string name="target_notification_configuration_trim_new_lines_title">Rimuovi gli A Capo</string>
     <string name="target_notification_configuration_trim_new_lines_content">Rimuovi le nuove righe dal contenuto della notifica, cercando di inserirne il più possibile nel Target. Questo potrebbe rovinare la formattazione della notifica.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Target Vuoto</string>
     <string name="target_blank_content">Ultra minimale, può essere usato per mostrare solo Complicazioni o nulla affatto</string>

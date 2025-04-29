@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Animasikan Perubahan</string>
     <string name="widget_configuration_animation_switch_content">Memudar di antara perubahan pada widget jika memungkinkan</string>
     <string name="widget_configuration_colour">Warna</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Bayangan Teks</string>
     <string name="widget_configuration_shadow_content">Menampilkan bayangan pada teks yang mungkin tidak terbaca pada wallpaper Anda</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Target</string>
     <string name="widget_configuration_mock_complication_title">Komplikasi</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Konfigurasi Widget</string>
     <string name="accessibility_service_label">Layanan Widget Smartspacer</string>
     <string name="accessibility_service_description">Memungkinkan widget Smartspacer untuk selalu memperbarui Target dan Komplikasi, tanpa menguras daya tahan baterai karena selalu berjalan.\n\nCatatan: Ini tidak diperlukan jika Anda mengaktifkan Enhanced Mode.</string>
@@ -83,7 +86,7 @@
     <string name="target_now_playing_shortcut_history">Riwayat</string>
     <string name="target_ambient_music_mod_label">Now Playing (Ambient Music Mod)</string>
     <string name="target_ambient_music_mod_description">Menampilkan lagu yang sedang diputar dari Ambient Music Mod</string>
-    <string name="target_ambient_music_mod_description_unavailable"></string>
+    <string name="target_ambient_music_mod_description_unavailable">This target requires Ambient Music Mod</string>
     <string name="target_default_label">At a Glance (Smartspace)</string>
     <string name="target_default_description">Targets from Google At a Glance, loaded using Smartspace</string>
     <string name="target_default_description_recommended">Targets from Google At a Glance, loaded using Smartspace <b>(recommended)</b></string>
@@ -112,7 +115,7 @@
     <string name="target_greeting_configuration_name_content_empty">Your name to show in the greeting</string>
     <string name="target_greeting_configuration_title">Pengaturan</string>
     <string name="target_greeting_configuration_description">Set your name, dynamically hide the Target and hide the title on the AoD</string>
-    <string name="target_greeting_configuration_open_expanded_title"></string>
+    <string name="target_greeting_configuration_open_expanded_title">Open Expanded Smartspace</string>
     <string name="target_greeting_configuration_open_expanded_content">Open Expanded Smartspace on click, rather than doing nothing</string>
     <string name="target_at_a_glance_label">At a Glance (Widget)</string>
     <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
@@ -195,7 +198,7 @@
     <string name="target_edit_show_on_home_content">Tampilkan target ini di layar beranda Anda</string>
     <string name="target_edit_show_on_home_content_widget">Show this target on widgets added to your home screen</string>
     <string name="target_edit_show_on_lock_screen_title">Show on Lock Screen and AoD</string>
-    <string name="target_edit_show_on_lock_screen_title_widget"></string>
+    <string name="target_edit_show_on_lock_screen_title_widget">Show on Lock Screen</string>
     <string name="target_edit_show_on_lock_screen_content">Show this target on your lock screen and always on display, when music is not playing</string>
     <string name="target_edit_show_on_lock_screen_content_widget">Show this target on widgets added to your lock screen</string>
     <string name="target_edit_show_on_lock_screen_content_oem">Show this target on your lock screen and always on display (if supported), when music is not playing</string>
@@ -346,7 +349,7 @@
     <string name="requirement_wifi_configuration_pick_title">Select Network</string>
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
     <string name="requirement_wifi_configuration_ssid_title">Network Name</string>
-    <string name="requirement_wifi_configuration_ssid_content_unset"></string>
+    <string name="requirement_wifi_configuration_ssid_content_unset">Set the Network Name (SSID) of the network</string>
     <string name="requirement_wifi_configuration_mac_title">MAC Address</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Set the MAC address of the network (Optional, leave blank to match any with the Network Name)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
@@ -982,6 +985,20 @@
     <string name="target_notification_configuration_options">Options</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
     <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Blank Target</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
