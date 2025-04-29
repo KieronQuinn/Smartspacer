@@ -4,7 +4,7 @@
     <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
     <string name="dummy_home_open_settings">Open Settings</string>
     <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">…</string>
+    <string name="loading">Loading…</string>
     <string name="saving">Saving…</string>
     <string name="search">Search</string>
     <string name="delete">Delete</string>
