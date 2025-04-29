@@ -63,11 +63,14 @@
     <string name="widget_configuration_animation_switch_title">Änderungen animieren</string>
     <string name="widget_configuration_animation_switch_content">Zwischen Änderungen des Widgets überblenden, wenn möglich</string>
     <string name="widget_configuration_colour">Farbe</string>
+    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">Textschatten</string>
     <string name="widget_configuration_shadow_content">Einen Schatten unter Text anzeigen, der auf dem Hintergrund möglicherweise nicht lesbar ist</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Ziel</string>
     <string name="widget_configuration_mock_complication_title">Komplikation</string>
+    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Widget konfigurieren</string>
     <string name="accessibility_service_label">Smartspacer Widget-Dienst</string>
     <string name="accessibility_service_description">Ermöglicht es dem Smartspacer-Widget, Ziele und Komplikationen auf dem neuesten Stand zu halten, ohne den Akku zu belasten, weil es ständig läuft.\n\nHinweis: Dies ist nicht erforderlich, wenn du den erweiterten Modus aktiviert hast.</string>
@@ -441,8 +444,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="compatibility_feature_loyalty_content">Erlaubt die Anzeige eines Buttons neben dem Titel &amp; Untertitel.</string>
     <string name="compatibility_feature_shopping_list_title">Liste</string>
     <string name="compatibility_feature_shopping_list_content">Erlaubt die Anzeige einer kurzen Liste zusätzlich zum Titel &amp; Untertitel</string>
-    <string name="compatibility_feature_remoteviews_title"></string>
-    <string name="compatibility_feature_remoteviews_content"></string>
+    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
+    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
     <string name="compatibility_feature_sports_title">Sport</string>
     <string name="compatibility_feature_sports_content">Erlaubt die Anzeige einer Punktzahl für zwei Teams zusätzlich zum Titel &amp; Untertitel</string>
     <string name="compatibility_template_carousel_title">Karussell</string>
@@ -984,6 +987,20 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_configuration_options">Einstellungen</string>
     <string name="target_notification_configuration_trim_new_lines_title">Entferne neue Zeilen</string>
     <string name="target_notification_configuration_trim_new_lines_content">Entferne neue Zeilen aus dem Inhalt der Benachrichtigung, um so viel wie möglich in das Ziel zu passen. Dadurch kann die Formatierungen der Benachrichtigung verloren gehen.</string>
+    <string name="target_notification_remoteviews_source_title">Custom Content</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_none">Disabled</string>
+    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
+    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
+    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
+    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
+    <string name="target_notification_remoteviews_background_none">Transparent</string>
+    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Leeres Ziel</string>
     <string name="target_blank_content">Absolut minimal, kann verwendet werden, um überhaupt nichts oder nur Komplikationen anzuzeigen</string>
@@ -1099,6 +1116,4 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="fitness_widget_recommendation_category_label">Gesundheit &amp; Fitness</string>
     <string name="news_widget_recommendation_category_label">Nachrichten &amp; Zeitschriften</string>
     <string name="others_widget_recommendation_category_label">Empfohlen für dich</string>
-    <string name="widget_material_you_description">MaterialYou style</string>
-    <string name="widget_material_you_title">Use dynamic MaterialYou styling for widget</string>
 </resources>
