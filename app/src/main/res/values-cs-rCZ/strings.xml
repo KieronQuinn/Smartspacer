@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
+    <string name="xposed_desc"><b>Volitelný</b>: Povolte tento modul ve vašem spouštěči nebo pluginu Google Feed spouštěči, abyste mohli nahradit Google Discover funkcí Expanded Smartspace. Tuto možnost je také nutné povolit v nastavení Expanded Smartspace v aplikaci Smartspacer.</string>
+    <string name="dummy_home_content">Tato obrazovka existuje proto, aby obešla špatně implementované widgety používané pluginy Smartspacer.\n\nSmartspacer nemůže fungovat jako spouštěč, vyberte prosím jiný spouštěč.</string>
+    <string name="dummy_home_open_settings">Otevřít nastavení</string>
     <string name="notification_service">Oznamovací služba Chytrý Distanční vložka</string>
     <string name="loading">Načítání…</string>
     <string name="saving">Ukládání …</string>
@@ -63,7 +63,7 @@
     <string name="widget_configuration_animation_switch_title">Změny animace</string>
     <string name="widget_configuration_animation_switch_content">Pokud je to možné, prolínejte mezi změnami widgetu</string>
     <string name="widget_configuration_colour">Barva</string>
-    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
+    <string name="widget_configuration_colour_disabled">Tato možnost není k dispozici, pokud je použit styl Materiál You.</string>
     <string name="widget_configuration_shadow_title">Stín textu</string>
     <string name="widget_configuration_shadow_content">Zobrazit stín na textu, který nemusí být čitelný na tapetě</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
