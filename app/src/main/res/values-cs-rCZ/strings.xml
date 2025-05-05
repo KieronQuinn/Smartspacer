@@ -247,7 +247,7 @@
     <string name="complication_edit_show_on_lock_screen_content_oem">Zobrazit tuto komplikaci na zamykací obrazovce a na AoD (pokud je k dispozici), když se nepřehrává hudba</string>
     <string name="complication_edit_show_on_lock_screen_content_widget">Zobrazit tuto komplikaci na widgetech přidaných na zamykací obrazovku</string>
     <string name="complication_edit_show_on_expanded_title">Zobrazit na Expanded Smartspace</string>
-    <string name="complication_edit_show_on_expanded_content">Show this Complication on Expanded Smartspace</string>
+    <string name="complication_edit_show_on_expanded_content">Zobrazit tuto komplikaci na Expanded Smartspace</string>
     <string name="complication_edit_show_on_expanded_content_disabled">Rozšířený Smartspace je zakázán</string>
     <string name="complication_edit_show_on_music_title">Rozšířený Smartspace je zakázán</string>
     <string name="complication_edit_show_on_music_content">Zobrazte tuto komplikaci na displeji, který je vždy zapnutý, i když hraje hudba</string>
