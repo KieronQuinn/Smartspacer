@@ -51,7 +51,7 @@
     <string name="widget_configuration_is_lock_screen_content">Включите <b>только в том случае</b>, если этот виджет добавляется на экран блокировки.\nЕсли это <b>не позволяет</b> добавить виджет на экран блокировки самостоятельно, загрузите приложение из Google Play, например \"Виджеты экрана блокировки\", чтобы сделать это.</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">.</string>
     <string name="widget_configuration_page_single_title">Одна страница</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_page_single_content">.</string>
     <string name="widget_configuration_customisation_title">Кастомизация</string>
     <string name="widget_configuration_page_arrows_title">Показывать управление страницами</string>
     <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
