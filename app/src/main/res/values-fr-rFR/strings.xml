@@ -998,7 +998,7 @@
     <string name="target_notification_remoteviews_background_semi">Semi-transparent</string>
     <string name="target_notification_remoteviews_background_opaque">Opaque</string>
     <string name="target_notification_remoteviews_click_title">Remplacer l\'action d\'appui du contenu personnalisé</string>
-    <string name="target_notification_remoteviews_click_content">Remplacez l\'action déclenchée lorsque vous appuyez sur du contenu personnalisé par l\'action de la notification. Activation nécessaire pour que vous puissiez appuyer sur certaines notifications.</string>
+    <string name="target_notification_remoteviews_click_content">Remplacez l\'action déclenchée lorsque vous appuyez sur du contenu personnalisé par l\'action de la notification. Requis pour pouvoir appuyer sur certaines notifications.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Cible vide</string>
     <string name="target_blank_content">Ultra minimaliste, peut être utilisé pour afficher uniquement les complications, voire ne rien afficher du tout</string>
