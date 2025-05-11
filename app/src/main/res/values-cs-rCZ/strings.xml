@@ -398,33 +398,33 @@
     <string name="settings_enhanced_content">Umožňuje Smartspaceru interakci a integraci se systémovými funkcemi</string>
     <string name="settings_enhanced_content_unsupported">Tato možnost není kompatibilní s vaším zařízením</string>
     <string name="settings_native_smartspace_settings_title">Nativní Smartspace</string>
-    <string name="settings_native_smartspace_settings_content">Options for Smartspacer showing in the Smartspace within compatible launchers and on the Lock Screen</string>
-    <string name="settings_native_smartspace_settings_content_incompatible">This option is not compatible with your device</string>
-    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">This option requires Enhanced Mode</string>
-    <string name="settings_targets_complications">Targets &amp; Complications</string>
-    <string name="settings_plugins">Plugins</string>
-    <string name="settings_options">Options</string>
-    <string name="settings_enable_update_check_title">Automatically Check for Updates</string>
-    <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
-    <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
-    <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
-    <string name="settings_language_title">Language</string>
-    <string name="settings_language_default">System Default</string>
-    <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
-    <string name="settings_hide_sensitive_contents_title">Hide Sensitive Targets</string>
-    <string name="settings_hide_sensitive_contents_title_short">Hide Sensitive</string>
-    <string name="settings_hide_sensitive_contents_content">Hide Targets on the lock screen where they are marked as sensitive: %1s</string>
-    <string name="settings_hide_sensitive_contents_disabled">Do not hide</string>
-    <string name="settings_hide_sensitive_contents_disabled_content">Always show Targets and their content</string>
-    <string name="settings_hide_sensitive_contents_hide_contents">Hide contents</string>
-    <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
-    <string name="settings_hide_sensitive_contents_hide">Hide target</string>
-    <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
-    <string name="settings_debug_header">Debug</string>
-    <string name="settings_dump_title">Dump Targets &amp; Actions</string>
-    <string name="settings_dump_content">Show the content and debug information for current Targets &amp; Actions, and write them to file to help troubleshooting</string>
-    <string name="settings_dump_title_short">Dump</string>
-    <string name="settings_dump_button">Write to File</string>
+    <string name="settings_native_smartspace_settings_content">Možnosti zobrazování Smartspaceru ve Smartspace v kompatibilních launcherech a na zamykací obrazovce</string>
+    <string name="settings_native_smartspace_settings_content_incompatible">Tato možnost není kompatibilní s vaším zařízením</string>
+    <string name="settings_native_smartspace_settings_content_incompatible_enhanced">Tato možnost vyžaduje Rozšířený mód</string>
+    <string name="settings_targets_complications">Cíl &amp; komplikace</string>
+    <string name="settings_plugins">Pluginy</string>
+    <string name="settings_options">Možnosti</string>
+    <string name="settings_enable_update_check_title">Automaticky kontrolovat aktualizace</string>
+    <string name="settings_enable_update_check_content">Automaticky kontrolovat aktualizace Smartspaceru a zobrazit oznámení, pokud jsou k dispozici</string>
+    <string name="settings_enable_analytics_title">Povolit analyzování &amp; hlášení pádů</string>
+    <string name="settings_enable_analytics_content">Povolit odesílání anonymních hlášení o selhání a základních analýz do Firebase, což pomůže opravit chyby</string>
+    <string name="settings_language_title">Jazyk</string>
+    <string name="settings_language_default">Výchozí nastavení systému</string>
+    <string name="settings_language_info"><b>Poznámka:</b> Ne všechny jazyky jsou kompletní, můžete přispívat překlady na Smartspacer Crowdin</string>
+    <string name="settings_hide_sensitive_contents_title">Skrýt citlivé cíle</string>
+    <string name="settings_hide_sensitive_contents_title_short">Skrýt citlivé</string>
+    <string name="settings_hide_sensitive_contents_content">Skrýt cíle na zamykací obrazovce, kde jsou označeny jako citlivé: %1s</string>
+    <string name="settings_hide_sensitive_contents_disabled">Neskrývat</string>
+    <string name="settings_hide_sensitive_contents_disabled_content">Vždy zobrazovat cíle a jejich obsah</string>
+    <string name="settings_hide_sensitive_contents_hide_contents">Skrytý obsah</string>
+    <string name="settings_hide_sensitive_contents_hide_contents_content">Zobrazit cíl, ale skrýt jeho obsah</string>
+    <string name="settings_hide_sensitive_contents_hide">Skrýt cíl</string>
+    <string name="settings_hide_sensitive_contents_hide_content">Úplně skryjte cíl</string>
+    <string name="settings_debug_header">Ladit</string>
+    <string name="settings_dump_title">Výpis cílů &amp; Akce</string>
+    <string name="settings_dump_content">Zobrazit obsah a ladicí informace pro aktuální cíle &amp; Akce a zapište je do souboru pro pomoc s řešením problémů</string>
+    <string name="settings_dump_title_short">Výpis</string>
+    <string name="settings_dump_button">Zapsat do souboru</string>
     <string name="settings_dump_complete">Written to file</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Basic</string>
@@ -481,43 +481,43 @@
     <!-- Setup > Add Targets -->
     <string name="setup_targets_title">Add Targets</string>
     <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
-    <string name="setup_targets_controls_next">Next</string>
-    <string name="setup_targets_controls_skip">Skip</string>
+    <string name="setup_targets_controls_next">Další</string>
+    <string name="setup_targets_controls_skip">Přeskočit</string>
     <!-- Setup > Complication Info -->
-    <string name="setup_complications_info_title">Complications</string>
-    <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
-    <string name="setup_complications_info_p2">Complications will be shown alongside Targets wherever space is available, or if no remaining Targets are available will be shown in additional pages alongside the date.</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
+    <string name="setup_complications_info_title">Komplikace</string>
+    <string name="setup_complications_info_p1"><b>Komplikace</b> jsou další informace, které lze zobrazit vedle cílů. Obvykle se jedná o krátký text a ikony, například nepřečtené e-maily nebo aktuální počasí</string>
+    <string name="setup_complications_info_p2">Komplikace budou zobrazeny vedle cílů, kdekoli bude k dispozici místo, nebo pokud už žádné cíle nejsou k dispozici, budou zobrazeny na dalších stránkách vedle data</string>
+    <string name="setup_complications_info_p3">Podobně jako cíle mohou být komplikace dynamické nebo statické a mohou se skrýt, pokud aktuálně nejsou k dispozici informace k zobrazení. Jejich zobrazení si můžete dále přizpůsobit pomocí <b>Požadavky</b>, a nastavení poskytovaná mnoha komplikacemi (přístupná klepnutím na komplikaci v uživatelském rozhraní Smartspaceru).</string>
     <string name="setup_complications_example_gmail">8</string>
-    <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
+    <string name="setup_complications_caption_gmail">Příklad komplikace zobrazující nepřečtené e-maily</string>
     <string name="setup_complications_example_weather">20°</string>
-    <string name="setup_complications_caption_weather">Example of a Complication showing weather conditions</string>
+    <string name="setup_complications_caption_weather">Příklad komplikace zobrazující povětrnostní podmínky</string>
     <!-- Setup > Add Complications -->
-    <string name="setup_complications_title">Add Complications</string>
-    <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
-    <string name="setup_complications_controls_next">Next</string>
-    <string name="setup_complications_controls_skip">Skip</string>
+    <string name="setup_complications_title">Přidat komplikace</string>
+    <string name="setup_complications_controls_label">Komplikace můžete později přidávat, upravovat, mazat a měnit jejich pořadí v nastavení</string>
+    <string name="setup_complications_controls_next">Další</string>
+    <string name="setup_complications_controls_skip">Přeskočit</string>
     <!-- Setup > Add Widget -->
-    <string name="setup_add_widget_title">Add Widget</string>
-    <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
+    <string name="setup_add_widget_title">Přidat Widget</string>
+    <string name="setup_add_widget_content">Přidejte si Smartspacer na domovskou obrazovku</string>
+    <string name="setup_add_widget_lock"><![CDATA[Poznámka: Pokud chcete přidat Smartspacer na zamykací obrazovku, musíte použít aplikaci jako <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Widget zamykací obrazovky</a> přidat widget.]]></string>
     <!-- Setup > Requirements -->
-    <string name="setup_requirements_info_title">Requirements</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace.</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_title">Požadavky</string>
+    <string name="setup_requirements_info_p1"><b>Požadavky</b> umožňují přizpůsobit, kdy se cíl nebo komplikace zobrazí ve Smartspace. S jejich pomocí můžete vytvářet scénáře, kde se ve Smartspace zobrazí užitečné informace.</string>
+    <string name="setup_requirements_info_p2"><b>Nastavení požadavků získáte klepnutím na přidaný cíl nebo komplikaci v uživatelském rozhraní Smartspaceru a výběrem možnosti „Požadavky“ ve spodní části nastavení.</b></string>
+    <string name="setup_requirements_info_p3">S <b>Jakékoliv požadavky</b>, pro zobrazení Cíle nebo Komplikace lze splnit kterýkoli z přidaných požadavků. Například můžete použít požadavek na Wi-Fi k zobrazení nákupního seznamu z Google Keep, když jste v dosahu sítí v kterékoli z vašich místních obchodů.</string>
+    <string name="setup_requirements_info_p4">S <b> Všechny požadavky</b>, pro zobrazení Cíle nebo Komplikace musí být splněny všechny přidané Požadavky. Můžete například použít čas&amp; Požadavky na datum a místo, kdy je nutné v úterý večer v blízkosti posilovny předložit permanentku z Peněženky Google.</string>
     <!-- Setup > Expanded -->
-    <string name="setup_expanded_title">Expanded</string>
-    <string name="setup_expanded_switch">Enable Expanded Smartspace</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_title">Rozšířený</string>
+    <string name="setup_expanded_switch">Povolit Rozšířený Smartspace</string>
+    <string name="setup_expanded_info_p1"><b>Rozšířený Smartspace</b> je verze Smartspace na celou obrazovku zobrazující všechny dostupné cíle a komplikace a také další dynamické informace, jako jsou widgety a zkratky určené cíli. Na tuto obrazovku si také můžete přidat vlastní widgety.</string>
+    <string name="setup_expanded_info_p2">Rozšířený Smartspace, navržený pro rychlý přehled všech aktuálních informací, můžete nastavit tak, aby se otevřel po kliknutí na cíl a zpřístupnil dynamické informace auditora. To je užitečné, pokud chcete mít snadný přístup ke kontextovým informacím stisknutím tlačítka.</string>
+    <string name="setup_expanded_open_title">Dynamicky otevřený Rozšířený Smartspace</string>
+    <string name="setup_expanded_open_content">Pokud je tato možnost povolena, rozšířený Smartspace se otevře po klepnutí na cíl, pokud má cíl k dispozici další informace, například widget nebo zkratky</string>
+    <string name="setup_expanded_info_footer">Další možnosti, včetně možnosti vždy otevřít rozšířený Smartspace při klepnutí na cíl (i když neobsahuje žádné další informace), najdete v Nastavení &gt; Rozšířený Smartspace po nastavení.</string>
     <!-- Setup > Plugins -->
-    <string name="setup_plugins_title">Plugins</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
+    <string name="setup_plugins_title">Pluginy</string>
+    <string name="setup_plugins_info_p1">Můžete si stáhnout další <b> Pluginy</b>,poskytováním dalších Cílů, Komplikací a Požadavků na kartě Pluginy v dolní části.</string>
     <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
     <string name="setup_plugins_info_finish">Finish</string>
     <!-- Setup > Complete -->
