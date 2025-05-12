@@ -457,30 +457,30 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analýza</string>
     <string name="setup_analytics_title">Analýza &amp; Hlášení o haváriích</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer uses a lot of experimental and "hidden" Android APIs, which may be prone to crashing on some devices due to OEM modifications.<br>To help bug fixing, Smartspacer can send crash reports to Firebase Crashlytics, as well as basic analytic information (app launches).<br>This data is all anonymous, and is entirely optional, more details and privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">here</a>]]></string>
-    <string name="setup_analytics_allow">Allow</string>
-    <string name="setup_analytics_deny">Deny</string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer používá mnoho experimentálních a „skrytých“ API pro Android, která mohou být na některých zařízeních náchylná k pádům kvůli úpravám od výrobce.<br>Pro pomoc s opravou chyb může Smartspacer odesílat hlášení o selhání do Firebase Crashlytics a také základní analytické informace (spuštění aplikací).<br>Tato data jsou anonymní a zcela volitelná, více informací a zásady ochrany osobních údajů<a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">tady</a>]]></string>
+    <string name="setup_analytics_allow">Povolit</string>
+    <string name="setup_analytics_deny">Zamítnout</string>
     <!-- Setup > Notifications -->
-    <string name="setup_notifications_title">Notifications</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
-    <string name="setup_notifications_request">Grant Permission</string>
+    <string name="setup_notifications_title">Notifikace</string>
+    <string name="setup_notifications_content">Smartspacer používá oznámení k zobrazování informací, varování a chyb, stejně jako připomenutí souvisejících s vylepšeným režimem, pokud je povolen.</string>
+    <string name="setup_notifications_request">Udělte povolení</string>
     <!-- Setup > Target Info -->
-    <string name="setup_targets_info_title">Targets</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
+    <string name="setup_targets_info_title">Cíle</string>
+    <string name="setup_targets_info_p1"><b>Cíle</b> jsou stránky s informacemi zobrazené na Smartspace, obvykle sestávající alespoň z názvu, podtitulku a ikony. Mnoho Cílů má také další informace – pokud jsou podporovány – jako jsou obrázky nebo seznamy.</string>
     <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
-    <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
-    <string name="setup_targets_info_example_two_title">Shopping List</string>
-    <string name="setup_targets_info_example_two_subtitle">8 items</string>
-    <string name="setup_targets_info_example_two_item_1">Bread</string>
-    <string name="setup_targets_info_example_two_item_2">Milk</string>
-    <string name="setup_targets_info_example_two_item_3">Eggs</string>
-    <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
-    <string name="setup_targets_caption_list">Example of a Target with a list</string>
+    <string name="setup_targets_info_p3">Integrace funkce „At a Glance“ od Smartspaceru je zajištěna pomocí cíle „At a Glance“, který dokáže zobrazit běžné informace z Googlu, jako jsou události v kalendáři a lety. Vezměte prosím na vědomí, že toto platí<b>ne</b> pokud nejsou k dispozici žádné informace, vždy zobrazujte dnešní datum. Pokud chcete mít datum vždy viditelné, měli byste cíl „Datum“ přidat samostatně.</string>
+    <string name="setup_targets_info_example_one_title">Hustá doprava v okolí</string>
+    <string name="setup_targets_info_example_one_subtitle">Google Mapy</string>
+    <string name="setup_targets_info_example_two_title">Nákupní seznam</string>
+    <string name="setup_targets_info_example_two_subtitle">8 předmětů</string>
+    <string name="setup_targets_info_example_two_item_1">Chléb</string>
+    <string name="setup_targets_info_example_two_item_2">Mléko</string>
+    <string name="setup_targets_info_example_two_item_3">Vejce</string>
+    <string name="setup_targets_caption_google_maps">Příklad cíle s obrázkem</string>
+    <string name="setup_targets_caption_list">Příklad cíle se seznamem</string>
     <!-- Setup > Add Targets -->
-    <string name="setup_targets_title">Add Targets</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
+    <string name="setup_targets_title">Přidat cíle</string>
+    <string name="setup_targets_controls_label">Cíle můžete později přidávat, upravovat, mazat a měnit jejich pořadí v nastavení</string>
     <string name="setup_targets_controls_next">Další</string>
     <string name="setup_targets_controls_skip">Přeskočit</string>
     <!-- Setup > Complication Info -->
@@ -540,37 +540,37 @@
     <string name="enhanced_mode_enable_title">Povolit Rozšířený mód</string>
     <string name="enhanced_mode_enable_subtitle">Požadavky Shizuku nebo Sui</string>
     <string name="enhanced_mode_enable_content_header"><b>Rozšířený mód umožňuje Smartspaceru:</b></string>
-    <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
-    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
-    <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
-    <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
-    <string name="enhanced_mode_enable_content_recent_apps">• Use Recent Apps as a Requirement</string>
-    <string name="enhanced_mode_skip_button">Skip</string>
-    <string name="enhanced_mode_skip_info">You can still use Smartspacer\'s Widget, Targets, Complications and Plugins with Enhanced Mode disabled</string>
-    <string name="enhanced_mode_disable_toast">You may need to reboot your device for changes to take effect</string>
+    <string name="enhanced_mode_enable_content_native_systemui">• Integrace do Smartspace na zamykací obrazovce</string>
+    <string name="enhanced_mode_enable_content_native_launcher">• Integrace do Smartspace na kompatibilních launcherech</string>
+    <string name="enhanced_mode_enable_content_oem_smartspace">• Integrace do OEM Smartspace (pokud je k dispozici)</string>
+    <string name="enhanced_mode_enable_content_system">• Zobrazit cíle a komplikace systémového Smartspace v aplikaci Smartspacer</string>
+    <string name="enhanced_mode_enable_content_app_prediction">• Používejte predikce systémových aplikací jako požadavek</string>
+    <string name="enhanced_mode_enable_content_recent_apps">• Používejte Nedávné aplikace jako požadavek</string>
+    <string name="enhanced_mode_skip_button">Přeskočit</string>
+    <string name="enhanced_mode_skip_info">Widget, cíle, komplikace a pluginy Smartspaceru můžete stále používat i s vypnutým rozšířeným režimem</string>
+    <string name="enhanced_mode_disable_toast">Pro projevení změn může být nutné restartovat zařízení</string>
     <!-- Native Mode -->
-    <string name="native_title">Native Smartspace</string>
-    <string name="native_switch">Enable Native Smartspace</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
-    <string name="native_switch_content_many">%1s and %1s</string>
+    <string name="native_title">Nativní Smartspace</string>
+    <string name="native_switch">Povolte Nativní Smartspace</string>
+    <string name="native_switch_info"><b>Důležité:</b> Po povolení nativního Smartspace Smartspacer restartuje SystemUI. <b>Může se zobrazit zpráva, že SystemUI se zastavilo, a poté se zobrazí zamykací obrazovka.</b> To je normální, zprávu zavřete a odemkněte zařízení, abyste mohli pokračovat.</string>
+    <string name="native_switch_content">Nativní Smartspace integruje Smartspacer do vašeho %1s zobrazující cíle Smartspaceru a komplikace v nich.\nPo každém restartu budete muset znovu povolit funkci Nativní Smartspace. Je to kvůli systémovým omezením.</string>
+    <string name="native_switch_content_many">%1s a %1s</string>
     <string name="native_switch_content_joiner">,</string>
-    <string name="native_switch_compatibility">Compatibility</string>
+    <string name="native_switch_compatibility">Kompatibilita</string>
     <string name="native_switch_compatibility_item">• %1s:</string>
-    <string name="native_switch_compatibility_available"><b>Available</b></string>
-    <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
+    <string name="native_switch_compatibility_available"><b>Dostupné</b></string>
+    <string name="native_switch_compatibility_not_available"><b>Nedostupné</b></string>
     <!-- Native Mode Restart -->
-    <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_restart_button">Reconnect now</string>
+    <string name="native_restart_title">Nativní Smartspace</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer narazil na zpětnou vazbu při spuštění Nativního Smartspace. Aby se zajistilo, že všechny Cíle &amp; Komplikace fungují správně, pro opětovné připojení je nutné Native Smartspace zastavit a znovu spustit.</string>
+    <string name="native_restart_disconnect_content">Smartspacer se odpojil od funkce At a Glance. Abyste se ujistili, že všechny cíle &amp; Komplikace fungují správně, pro opětovné připojení je nutné Native Smartspace zastavit a znovu spustit.</string>
+    <string name="native_restart_info"><b>Důležité</b> Při opětovném připojení Native Smartspace Smartspacer restartuje SystemUI. <b>Může se zobrazit zpráva, že SystemUI se zastavilo, a poté se zobrazí zamykací obrazovka.</b> To je normální, zprávu zavřete a odemkněte zařízení, abyste mohli pokračovat.</string>
+    <string name="native_restart_button">Znovu připojte teď</string>
     <!-- Native Mode boot notification -->
-    <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
-    <string name="notification_native_mode_enable_content">You must re-enable Smartspacer\'s Native Smartspace mode after a restart, tap to enable</string>
-    <string name="notification_native_mode_enable_dismiss">Don\'t Show Again</string>
-    <string name="notification_native_mode_enable_now">Enable Now</string>
+    <string name="notification_native_mode_enable_title">Znovu povolit Nativní Smartspace</string>
+    <string name="notification_native_mode_enable_content">Po restartu musíte znovu povolit nativní režim Smartspace aplikace Smartspacer, klepnutím jej povolíte</string>
+    <string name="notification_native_mode_enable_dismiss">Po restartu musíte znovu povolit nativní režim Smartspace aplikace Smartspacer, klepnutím jej povolíte</string>
+    <string name="notification_native_mode_enable_now">Povolit nyní</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
     <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
