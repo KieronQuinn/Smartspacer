@@ -829,13 +829,13 @@
     <string name="backup_creating_settings_backup">Vytváření zálohy nastavení…</string>
     <string name="backup_created">Záloha vytvořena</string>
     <string name="backup_error">Chyba při vytváření zálohy</string>
-    <string name="backup_error_failed_to_create">Failed to create file</string>
+    <string name="backup_error_failed_to_create">Vytvoření souboru se nezdařilo</string>
     <string name="backup_error_failed_to_write">Nepodařilo se zapsat souboru</string>
     <string name="restore_title">Obnovit</string>
     <string name="restore_content">Obnovte zálohu Smartspaceru z lokálního souboru nebo cloudu.</string>
     <string name="restore_loading_backup">Načítání zálohy…</string>
     <string name="restore_error">Chyba při obnovení zálohy</string>
-    <string name="restore_error_failed_to_read">Failed to read backup file</string>
+    <string name="restore_error_failed_to_read">Nepodařilo se přečíst záložní soubor</string>
     <string name="restore_error_failed_to_load">Nepodařilo se přečíst záložní soubor</string>
     <string name="restore_restore_targets_title">Cíle</string>
     <string name="restore_restore_targets_content">Obnovte své cíle &amp; jejich konfigurace</string>
