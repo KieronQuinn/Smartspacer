@@ -1108,10 +1108,10 @@
     <string name="conversations_widget_recommendation_category_label">Konverzace</string>
     <string name="note_taking_widget_recommendation_category_label">Psaní poznámek</string>
     <string name="snapshot_widget_recommendation_category_label">Momentka</string>
-    <string name="social_widget_recommendation_category_label">Social</string>
-    <string name="weather_widget_recommendation_category_label">Weather</string>
-    <string name="entertainment_widget_recommendation_category_label">Entertainment</string>
-    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
-    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
-    <string name="others_widget_recommendation_category_label">Suggested for you</string>
+    <string name="social_widget_recommendation_category_label">Sociální</string>
+    <string name="weather_widget_recommendation_category_label">Počasí</string>
+    <string name="entertainment_widget_recommendation_category_label">Zábava</string>
+    <string name="fitness_widget_recommendation_category_label">Zdraví &amp; fitnes</string>
+    <string name="news_widget_recommendation_category_label">Zprávy &amp; časopisy</string>
+    <string name="others_widget_recommendation_category_label">Navrhováno pro vás</string>
 </resources>
