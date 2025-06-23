@@ -1046,7 +1046,7 @@
     <string name="target_widget_settings_limitations_bull1">Les widgets ne sont pas pris en charge dans Smartspace natif si la version d\'Android est antérieure aux versions 16 ou 15 QPR2</string>
     <string name="target_widget_settings_limitations_bull2">Les widgets seront redimensionnés à la taille du Smartspace, c\'est pourquoi les widgets 4x1 sont recommandés</string>
     <string name="target_widget_settings_limitations_bull3">Les widgets contenant des listes ne sont pas pris en charge</string>
-    <string name="target_widget_settings_limitations_bull4">Si les widgets sont ajoutés au Smartspace natif, ils seront présents sur l\'écran Always-on, ce qui peut laisser des marques sur l\'écran</string>
+    <string name="target_widget_settings_limitations_bull4">Les widgets seront affichés sur l\'écran Always-on s\'ils sont ajoutés au Smartspace natif, ce qui est susceptible de causer des brûlures d\'écran ou burn-in</string>
     <string name="target_widget_settings_limitations_bull5">Certaines interactions peuvent être limitées ou ne pas fonctionner</string>
     <string name="target_widget_settings_limitations_bull6">Lorsque l\'appareil est verrouillé, il se peut que vous deviez déverrouiller l\'appareil manuellement afin de valider les interactions avec certains widgets</string>
     <string name="target_widget_settings_limitations_bull7">Certains widgets peuvent ne pas s\'afficher correctement</string>
