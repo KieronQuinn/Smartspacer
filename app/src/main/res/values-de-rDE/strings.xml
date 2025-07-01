@@ -988,17 +988,17 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_configuration_trim_new_lines_title">Entferne neue Zeilen</string>
     <string name="target_notification_configuration_trim_new_lines_content">Entferne neue Zeilen aus dem Inhalt der Benachrichtigung, um so viel wie möglich in das Ziel zu passen. Dadurch kann die Formatierungen der Benachrichtigung verloren gehen.</string>
     <string name="target_notification_remoteviews_source_title">Benutzerdefinierter Inhalt</string>
-    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_subtitle">Wenn verfügbar, verwendet benutzerdefinierte Benachrichtigungsinhalte von:</string>
     <string name="target_notification_remoteviews_source_none">Deaktiviert</string>
     <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
     <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
     <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
-    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Hinweis:</b> Kann Skalierungsprobleme verursachen</string>
     <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
     <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
     <string name="target_notification_remoteviews_background_none">Transparent</string>
-    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
-    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
+    <string name="target_notification_remoteviews_background_semi">Halbtransparent</string>
+    <string name="target_notification_remoteviews_background_opaque">Undurchsichtig</string>
     <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
     <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
     <!-- Blank Target -->
