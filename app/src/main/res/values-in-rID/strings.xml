@@ -6,12 +6,12 @@
     <string name="notification_service">Layanan Notifikasi Penyusun Cerdas</string>
     <string name="loading">Memuat...</string>
     <string name="saving">Menyimpan..</string>
-    <string name="search">Mencari</string>
+    <string name="search">Cari</string>
     <string name="delete">Hapus</string>
     <string name="save">Simpan</string>
     <string name="close">Tutup</string>
-    <string name="reset">Mengatur ulang</string>
-    <string name="menu_rerun_setup">Jalankan kembali pengaturan</string>
+    <string name="reset">Setel ulang</string>
+    <string name="menu_rerun_setup">Jalankan kembali penyiapan</string>
     <string name="bottom_nav_targets">Target</string>
     <string name="bottom_nav_complications">Kompilasi</string>
     <string name="bottom_nav_plugins">Plugin</string>
@@ -146,7 +146,7 @@
     <string name="notification_channel_background_service_subtitle">Notifications shown when Smartspacer is running in the background</string>
     <string name="notification_title_background_service">Smartspacer sedang berjalan</string>
     <string name="notification_content_background_service">Smartspacer sedang berjalan di latar belakang, ketuk untuk menyembunyikan</string>
-    <string name="notification_background_service_subtitle">Indonesia</string>
+    <string name="notification_background_service_subtitle">Smartspacer sedang berjalan di latar belakang</string>
     <string name="notification_channel_safe_mode_title">Mode Aman</string>
     <string name="notification_channel_safe_mode_subtitle">Notifikasi yang ditampilkan jika Smartspacer masuk ke Mode Aman</string>
     <string name="notification_safe_mode_content">Smartspacer telah masuk ke Mode Aman karena %1s mengalami crash. Ketuk untuk info lebih lanjut.</string>
@@ -215,9 +215,9 @@
     <string name="target_edit_expanded_show_when_locked_content">Show this Target in Expanded Smartspace when locked</string>
     <string name="target_edit_expanded_show_widget_title">Tampilkan widget</string>
     <string name="target_edit_expanded_show_widget_content">Show the widget associated with this Target, if available</string>
-    <string name="target_edit_expanded_show_remoteviews_title">Show Additional Content</string>
+    <string name="target_edit_expanded_show_remoteviews_title">Tampilkan Konten Tambahan</string>
     <string name="target_edit_expanded_show_remoteviews_content">Show additional content provided by this Target, if available</string>
-    <string name="target_edit_expanded_show_shortcuts_title">Show Shortcuts</string>
+    <string name="target_edit_expanded_show_shortcuts_title">Tampilkan Pintasan</string>
     <string name="target_edit_expanded_show_shortcuts_content">Show shortcuts associated with this Target, if available</string>
     <string name="target_edit_expanded_show_app_shortcuts_title">Tampilkan Pintasan Aplikasi</string>
     <string name="target_edit_expanded_show_app_shortcuts_content">Show App Shortcuts associated with this Target, if available</string>
@@ -317,7 +317,7 @@
     <string name="requirement_geofence_title">Lokasi</string>
     <string name="requirement_geofence_bottom_sheet_title">Opsi</string>
     <string name="requirement_geofence_configuration_setting_name_title">Nama</string>
-    <string name="requirement_geofence_configuration_setting_name_content">Set a name for this location</string>
+    <string name="requirement_geofence_configuration_setting_name_content">Tetapkan nama untuk lokasi ini</string>
     <string name="requirement_geofence_configuration_setting_radius_title">Radius</string>
     <string name="requirement_geofence_configuration_setting_radius_content">Set the radius inside which the item will be shown</string>
     <string name="requirement_geofence_configuration_setting_radius_label">%1d metres</string>
@@ -329,7 +329,7 @@
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsiveness</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d seconds</string>
-    <string name="requirement_geofence_configuration_background_location_title">Enable Background Location</string>
+    <string name="requirement_geofence_configuration_background_location_title">Aktifkan Lokasi Latar Belakang</string>
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
     <string name="requirement_geofence_configuration_background_location_grant">Grant Permission</string>
     <string name="requirement_geofence_configuration_limit_reached_title">Limit Reached</string>
@@ -431,29 +431,29 @@
     <string name="compatibility_feature_basic_content">Memungkinkan menampilkan judul &amp; subjudul dengan ikon. Target yang tidak didukung akan kembali ke gaya ini.</string>
     <string name="compatibility_feature_combination_title">Tombol</string>
     <string name="compatibility_feature_combination_content">Memungkinkan menampilkan tombol selain judul &amp; subjudul.</string>
-    <string name="compatibility_feature_combination_at_store_title">Combination at Store</string>
-    <string name="compatibility_feature_combination_at_store_content">Allows showing a button and shopping list in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_doorbell_title">Doorbell</string>
-    <string name="compatibility_feature_doorbell_content">Allows showing a complex view in addition to the title &amp; subtitle, with support for a live doorbell preview on some screens.</string>
-    <string name="compatibility_feature_flight_title">Flight</string>
-    <string name="compatibility_feature_flight_content">Allows showing basic flight information such as flight number and airline in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_combination_at_store_title">Kombinasi di Toko</string>
+    <string name="compatibility_feature_combination_at_store_content">Memungkinkan menampilkan tombol dan daftar belanja selain judul &amp; subjudul.</string>
+    <string name="compatibility_feature_doorbell_title">Bel pintu</string>
+    <string name="compatibility_feature_doorbell_content">Memungkinkan menampilkan tampilan kompleks selain judul &amp; subjudul, dengan dukungan untuk pratinjau bel pintu langsung di beberapa layar.</string>
+    <string name="compatibility_feature_flight_title">Penerbangan</string>
+    <string name="compatibility_feature_flight_content">Memungkinkan menampilkan informasi penerbangan dasar seperti nomor penerbangan dan maskapai penerbangan selain judul &amp; subjudul.</string>
     <string name="compatibility_feature_image_title">Gambar</string>
-    <string name="compatibility_feature_image_content">Allows showing an image in addition to the title &amp; subtitle.</string>
-    <string name="compatibility_feature_loyalty_title">Loyalty</string>
-    <string name="compatibility_feature_loyalty_content">Allows showing a button in addition to the title &amp; subtitle.</string>
+    <string name="compatibility_feature_image_content">Memungkinkan menampilkan gambar selain judul &amp; subjudul.</string>
+    <string name="compatibility_feature_loyalty_title">Loyalitas</string>
+    <string name="compatibility_feature_loyalty_content">Memungkinkan menampilkan tombol selain judul &amp; subjudul.</string>
     <string name="compatibility_feature_shopping_list_title">Daftar</string>
-    <string name="compatibility_feature_shopping_list_content">Allows displaying a short list in addition to the title &amp; subtitle</string>
-    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
-    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
-    <string name="compatibility_feature_sports_title">Sports</string>
-    <string name="compatibility_feature_sports_content">Allows displaying a score for two teams in addition to the title &amp; subtitle</string>
-    <string name="compatibility_template_carousel_title">Carousel</string>
-    <string name="compatibility_template_carousel_content">Allows showing up to four icons with a header and footer, in addition to the title &amp; subtitle</string>
-    <string name="compatibility_template_sub_image_title">Images</string>
-    <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
+    <string name="compatibility_feature_shopping_list_content">Memungkinkan menampilkan daftar pendek selain judul &amp; subjudul</string>
+    <string name="compatibility_feature_remoteviews_title">Konten Kustom</string>
+    <string name="compatibility_feature_remoteviews_content">Memungkinkan menampilkan konten kustom yang tidak sesuai dengan template (RemoteViews)</string>
+    <string name="compatibility_feature_sports_title">Olahraga</string>
+    <string name="compatibility_feature_sports_content">Memungkinkan menampilkan skor untuk dua tim selain judul &amp; subjudul</string>
+    <string name="compatibility_template_carousel_title">Korsel</string>
+    <string name="compatibility_template_carousel_content">Memungkinkan menampilkan hingga empat ikon dengan header dan footer, selain judul &amp; subjudul</string>
+    <string name="compatibility_template_sub_image_title">Gambar</string>
+    <string name="compatibility_template_sub_images_content">Memungkinkan menampilkan rangkaian gambar selain judul &amp; subjudul</string>
     <string name="compatibility_label_systemui">Layar Kunci</string>
     <!-- Setup -->
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">Mulai</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Analytics</string>
     <string name="setup_analytics_title">Analytics &amp; Crash Reporting</string>
@@ -462,27 +462,27 @@
     <string name="setup_analytics_deny">Tolak</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">Notifikasi</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacer menggunakan notifikasi untuk menampilkan informasi, peringatan dan kesalahan, serta pengingat terkait Enchanced Mode, jika diaktifkan.</string>
     <string name="setup_notifications_request">Berikan Izin</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">Target</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
+    <string name="setup_targets_info_p1"><b>Target</b> adalah halaman informasi yang ditampilkan di Smartspace, biasanya terdiri dari setidaknya judul, subjudul, dan ikon. Banyak Target juga memiliki informasi tambahan - jika didukung - seperti gambar atau daftar.</string>
+    <string name="setup_targets_info_p2">Target dapat bersifat dinamis, ditampilkan dan disembunyikan sesuai kebutuhan, atau statis dan ditampilkan sepanjang waktu. Anda dapat menyesuaikan lebih lanjut kapan target tersebut muncul menggunakan <b>Persyaratan</b>, dan pengaturan yang disediakan oleh banyak Target (dapat diakses dengan mengetuk Target di UI Smartspacer).</string>
+    <string name="setup_targets_info_p3">Integrasi At a Glance Smartspacer disediakan oleh Target \"At a Glance\", yang dapat menampilkan informasi rutin dari Google seperti acara kalender dan penerbangan. Harap perhatikan bahwa ini <b>tidak</b> selalu menampilkan tanggal hari ini jika tidak ada informasi yang tersedia, dan Anda harus menambahkan Target \"Tanggal\" secara terpisah jika Anda ingin tanggal selalu terlihat.</string>
+    <string name="setup_targets_info_example_one_title">Lalu lintas padat di sekitar</string>
     <string name="setup_targets_info_example_one_subtitle">Google Maps</string>
     <string name="setup_targets_info_example_two_title">Daftar Belanja</string>
-    <string name="setup_targets_info_example_two_subtitle">8 items</string>
+    <string name="setup_targets_info_example_two_subtitle">8 item</string>
     <string name="setup_targets_info_example_two_item_1">Roti</string>
     <string name="setup_targets_info_example_two_item_2">Susu</string>
     <string name="setup_targets_info_example_two_item_3">Telur</string>
-    <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
+    <string name="setup_targets_caption_google_maps">Contoh Target dengan gambar</string>
     <string name="setup_targets_caption_list">Contoh Target dengan daftar</string>
     <!-- Setup > Add Targets -->
-    <string name="setup_targets_title">Add Targets</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
-    <string name="setup_targets_controls_next">Next</string>
-    <string name="setup_targets_controls_skip">Skip</string>
+    <string name="setup_targets_title">Tambahkan Target</string>
+    <string name="setup_targets_controls_label">Anda dapat menambahkan, mengedit, menghapus, dan menyusun ulang Target nanti di pengaturan</string>
+    <string name="setup_targets_controls_next">Berikutnya</string>
+    <string name="setup_targets_controls_skip">Lewati</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">Complications</string>
     <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
@@ -495,8 +495,8 @@
     <!-- Setup > Add Complications -->
     <string name="setup_complications_title">Add Complications</string>
     <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
-    <string name="setup_complications_controls_next">Next</string>
-    <string name="setup_complications_controls_skip">Skip</string>
+    <string name="setup_complications_controls_next">Berikutnya</string>
+    <string name="setup_complications_controls_skip">Lewati</string>
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">Add Widget</string>
     <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
