@@ -653,7 +653,7 @@
     <string name="expanded_settings_search_provider_content_unset">Choose the app to launch when the search box is opened</string>
     <string name="expanded_settings_show_doodle_title">Google Doodle を表示する</string>
     <string name="expanded_settings_show_doodle_content">Display today\'s Google Doodle at the top of Expanded Smartspace</string>
-    <string name="expanded_settings_header_behaviour">Behaviour</string>
+    <string name="expanded_settings_header_behaviour">動作</string>
     <string name="expanded_settings_open_mode_home_screen_title">ホーム画面から開く</string>
     <string name="expanded_settings_open_mode_home_screen_title_short">ホーム画面</string>
     <string name="expanded_settings_open_mode_home_screen_content">Open Expanded Smartspace when a Smartspace Target is clicked on the home screen: %1s</string>
