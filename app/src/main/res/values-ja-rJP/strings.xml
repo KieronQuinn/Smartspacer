@@ -915,7 +915,7 @@
     <string name="complication_clock_description_short">現在時刻を表示</string>
     <!-- Clock Target -->
     <string name="target_clock_label">Clock</string>
-    <string name="target_clock_description">Shows the current time.\n<b>Warning:</b> This Target may cause battery drain.</string>
+    <string name="target_clock_description">現在時刻を表示します。\n<b>警告：</b> このターゲットはバッテリーを消耗させる可能性があります。</string>
     <string name="target_clock_description_short">Shows the current time</string>
     <!-- Calendar Target -->
     <string name="target_calendar_label">カレンダー</string>
