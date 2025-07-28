@@ -163,7 +163,7 @@
     <string name="notification_channel_updates_title">Aktualizacje Smartspacer</string>
     <string name="notification_channel_updates_content">Notifications shown when there is an update for Smartspacer</string>
     <string name="notification_channel_plugin_updates_title">Aktualizacje wtyczek</string>
-    <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
+    <string name="notification_channel_plugin_updates_content">Powiadomienia wyświetlane w przypadku dostępności aktualizacji wtyczek Smartspacer</string>
     <string name="notification_channel_widget_title">Smartspacer jako powiadomienie</string>
     <string name="notification_channel_widget_content">Wyświetla Smartspacer jako powiadomienie na ekranie blokady</string>
     <string name="notification_plugin_updates_title">Dostępne aktualizacje wtyczek</string>
@@ -365,7 +365,7 @@
     <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
     <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth jest wyłączony, dotknij, aby włączyć</string>
-    <string name="requirement_bluetooth_configuration_pick_info">Only devices which have previously been or are currently paired can be selected</string>
+    <string name="requirement_bluetooth_configuration_pick_info">Tylko urządzenia, które wcześniej były lub są obecnie sparowane, mogą być wybrane</string>
     <string name="requirement_bluetooth_configuration_pick_empty">Nie znaleziono sparowanych urządzeń</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (Selected)</string>
     <string name="requirement_bluetooth_notification_title">Bluetooth permission required</string>
