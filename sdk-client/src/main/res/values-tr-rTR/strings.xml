@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="smartspace_accessibility_smartspace_page">Sayfa %1$d/%2$d</string>
-    <string name="smartspace_long_press_popup_dismiss">Kaldır</string>
+    <string name="smartspace_accessibility_smartspace_page">%2$d sayfanın %1$d. sayfası</string>
+    <string name="smartspace_long_press_popup_dismiss">Kapat</string>
     <string name="smartspace_long_press_popup_feedback">Geri bildirim</string>
     <string name="smartspace_long_press_popup_about">Bu içerik hakkında</string>
     <string name="smartspace_long_press_popup_settings">Ayarlar</string>
     <string name="smartspace_long_press_popup_failed_to_launch">Eylem başlatılamadı</string>
-    <string name="smartspace_toast_could_not_dismiss">Bu hedef kaldırılamaz</string>
+    <string name="smartspace_toast_could_not_dismiss">Bu hedef kapatılamıyor</string>
 </resources>
