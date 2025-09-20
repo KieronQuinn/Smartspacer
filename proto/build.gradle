@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.oemsmartspace'
-    compileSdk 34
+    compileSdkVersion 36
 
     defaultConfig {
         minSdk 24

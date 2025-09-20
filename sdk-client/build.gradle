@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdk.client'
-    compileSdk 35
+    compileSdkVersion 36
 
     defaultConfig {
         minSdk 29
