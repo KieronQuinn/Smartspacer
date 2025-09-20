@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.setup
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import com.kieronquinn.app.smartspacer.R
@@ -30,6 +31,11 @@ class WidgetTargetSetupFragment: ExpandedAddWidgetBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupDismiss()
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        requireActivity().finish()
     }
 
     private fun setupDismiss() = whenResumed {

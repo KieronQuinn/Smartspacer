@@ -113,6 +113,16 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
         override fun onForegroundServicesChanged(pid: Int, uid: Int, serviceTypes: Int) {
             //No-op
         }
+
+        override fun onProcessStarted(
+            pid: Int,
+            processUid: Int,
+            packageUid: Int,
+            packageName: String?,
+            processName: String?
+        ) {
+            //No-op
+        }
     }
 
     private val packageManager by lazy {

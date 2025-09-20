@@ -13,11 +13,11 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.10'
-def tagCode = 1100
+def tagName = '1.10.1'
+def tagCode = 1101
 
 android {
-    compileSdk 35
+    compileSdkVersion 36
 
     defaultConfig {
         applicationId "com.kieronquinn.app.smartspacer"
@@ -72,28 +72,28 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.16.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.13.0-alpha13'
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation "androidx.lifecycle:lifecycle-service:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-service:2.9.4"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "androidx.fragment:fragment-ktx:1.8.6"
-    implementation "androidx.activity:activity-ktx:1.10.1"
-    implementation "androidx.work:work-runtime-ktx:2.10.1"
+    implementation "androidx.fragment:fragment-ktx:1.8.9"
+    implementation "androidx.activity:activity-ktx:1.11.0"
+    implementation "androidx.work:work-runtime-ktx:2.10.4"
     implementation "androidx.core:core-remoteviews:1.1.0"
-    implementation "androidx.security:security-crypto:1.1.0-alpha07"
+    implementation "androidx.security:security-crypto:1.1.0"
     implementation project(path: ':proto')
 
-    def room_version = "2.7.1"
+    def room_version = "2.8.0"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
     implementation(project(path: ':sdk-plugin')) {
         exclude group: "com.kieronquinn.smartspacer", module: "sdk-core"
     }
@@ -106,49 +106,51 @@ dependencies {
     compileOnly project(path: ':systemstubs')
 
     //Bypass hidden API restrictions
-    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
 
     implementation 'com.google.android.gms:play-services-location:21.3.0'
     implementation 'com.google.android.gms:play-services-maps:19.2.0'
 
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
-    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.google.code.gson:gson:2.13.2'
 
     //Shizuku for Shell service
     def shizuku_version = '13.1.5'
     implementation "dev.rikka.shizuku:api:$shizuku_version"
     implementation "dev.rikka.shizuku:provider:$shizuku_version"
 
-    def libsuVersion = '5.2.2'
+    def libsuVersion = '6.0.0'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
     implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
 
     //Dependency Injection
-    implementation "io.insert-koin:koin-android:3.5.6"
+    implementation "io.insert-koin:koin-android:4.1.1"
 
     implementation 'com.jakewharton:process-phoenix:3.0.0'
 
     //Image Loading
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
-    ksp 'com.github.bumptech.glide:ksp:4.16.0'
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+    ksp 'com.github.bumptech.glide:ksp:5.0.5'
 
     implementation 'com.google.android.gms:play-services-location:21.3.0'
     implementation 'com.google.android.gms:play-services-maps:19.2.0'
-    implementation 'com.google.maps.android:android-maps-utils:3.8.2'
+    implementation 'com.google.maps.android:android-maps-utils:3.19.0'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
-    implementation 'com.airbnb.android:lottie:6.6.2'
-    implementation 'com.github.skydoves:balloon:1.4.7'
+    implementation 'com.airbnb.android:lottie:6.6.9'
+    implementation 'com.github.skydoves:balloon:1.6.13'
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
     implementation "dev.rikka.tools.refine:runtime:$refine_version"
-    implementation "com.squareup.retrofit2:retrofit:2.11.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.11.0"
+    implementation "com.squareup.retrofit2:retrofit:3.0.0"
+    implementation "com.squareup.retrofit2:converter-gson:3.0.0"
     implementation 'androidx.palette:palette-ktx:1.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-reflect:2.1.0"
-    implementation "com.tbuonomo:dotsindicator:5.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.2.0"
+    implementation "com.tbuonomo:dotsindicator:5.1.0"
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
-    implementation 'com.github.judemanutd:autostarter:1.1.0'
+    implementation ("com.github.judemanutd:autostarter:1.1.0") {
+        exclude(group: "org.jetbrains.kotlin", module: "kotlin-android-extensions-runtime")
+    }
 
     //Markdown support
     implementation "io.noties.markwon:core:4.6.2"
@@ -158,26 +160,26 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     //OSS libraries activity
-    implementation 'com.google.android.gms:play-services-oss-licenses:17.1.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.3.0'
 
     //Firebase Analytics + Crashlytics
-    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
-    implementation("com.google.firebase:firebase-crashlytics-ktx")
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
 
     //Xposed for Discover replacement
     compileOnly("de.robv.android.xposed:api:82")
 
-    androidTestImplementation 'androidx.test:core-ktx:1.6.1'
-    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test:core-ktx:1.7.0'
+    androidTestImplementation 'androidx.test:rules:1.7.0'
     androidTestImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'io.mockk:mockk-android:1.13.8'
-    androidTestImplementation 'app.cash.turbine:turbine:0.13.0'
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    androidTestImplementation 'com.google.truth:truth:1.1.3'
-    androidTestImplementation 'androidx.test:runner:1.6.2'
-    androidTestUtil 'androidx.test:orchestrator:1.5.1'
+    androidTestImplementation 'io.mockk:mockk-android:1.14.5'
+    androidTestImplementation 'app.cash.turbine:turbine:1.2.1'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    androidTestImplementation 'com.google.truth:truth:1.4.5'
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    androidTestUtil 'androidx.test:orchestrator:1.6.1'
     androidTestCompileOnly project(path: ':systemstubs')
 }

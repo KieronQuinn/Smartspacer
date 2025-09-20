@@ -7,5 +7,5 @@
     <dialog
         android:id="@+id/widgetTargetSetupFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.configuration.widgettarget.setup.WidgetTargetSetupFragment"
-        android:label="WidgetTargetSetupFragment" />
+        android:label=" " />
 </navigation>

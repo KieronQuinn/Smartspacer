@@ -32,6 +32,16 @@ fun IActivityManager.processDied() = callbackFlow<Int> {
         override fun onForegroundServicesChanged(pid: Int, uid: Int, serviceTypes: Int) {
             //No-op
         }
+
+        override fun onProcessStarted(
+            pid: Int,
+            processUid: Int,
+            packageUid: Int,
+            packageName: String?,
+            processName: String?
+        ) {
+            //No-op
+        }
     }
     registerProcessObserver(observer)
     awaitClose {

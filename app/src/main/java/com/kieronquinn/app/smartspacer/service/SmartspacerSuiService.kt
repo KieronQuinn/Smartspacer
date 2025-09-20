@@ -57,6 +57,16 @@ class SmartspacerSuiService: ISmartspacerSuiService.Stub() {
         override fun onForegroundServicesChanged(pid: Int, uid: Int, serviceTypes: Int) {
             //No-op
         }
+
+        override fun onProcessStarted(
+            pid: Int,
+            processUid: Int,
+            packageUid: Int,
+            packageName: String?,
+            processName: String?
+        ) {
+            //No-op
+        }
     }
 
     override fun ping(): Boolean {

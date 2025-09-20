@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavOptions
+import androidx.navigation.internal.NavContext
 import androidx.navigation.ui.NavigationUI
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -35,6 +37,7 @@ fun NavController.setOnBackPressedCallback(callback: OnBackPressedCallback) {
  *  Copy of [NavigationUI.onNavDestinationSelected] but without the force unwrap on the animation
  *  which breaks if the stack is cleared before it is used.
  */
+@SuppressLint("RestrictedApi")
 fun NavController.onNavDestinationSelected(item: MenuItem): Boolean {
     val builder = NavOptions.Builder().setLaunchSingleTop(true).setRestoreState(true)
     if (item.order and Menu.CATEGORY_SECONDARY == 0) {
@@ -51,7 +54,7 @@ fun NavController.onNavDestinationSelected(item: MenuItem): Boolean {
         // Return true only if the destination we've navigated to matches the MenuItem
         currentDestination?.matchDestination(item.itemId) == true
     } catch (e: IllegalArgumentException) {
-        val name = NavDestination.getDisplayName(context, item.itemId)
+        val name = NavDestination.getDisplayName(NavContext(context), item.itemId)
         Log.i(
             "NavigationUI",
             "Ignoring onNavDestinationSelected for MenuItem $name as it cannot be found " +
