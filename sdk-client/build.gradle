@@ -40,13 +40,13 @@ android {
 
 dependencies {
     api('com.kieronquinn.smartspacer:sdk-core:1.1.1')
-    implementation('androidx.core:core-ktx:1.15.0')
-    implementation('androidx.fragment:fragment-ktx:1.8.5')
-    implementation('androidx.constraintlayout:constraintlayout:2.2.0')
-    implementation('androidx.lifecycle:lifecycle-service:2.8.7')
-    implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.8.7')
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1')
-    implementation('com.github.skydoves:balloon:1.4.7')
+    implementation('androidx.core:core-ktx:1.17.0')
+    implementation('androidx.fragment:fragment-ktx:1.8.9')
+    implementation('androidx.constraintlayout:constraintlayout:2.2.1')
+    implementation('androidx.lifecycle:lifecycle-service:2.9.4')
+    implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.9.4')
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2')
+    implementation('com.github.skydoves:balloon:1.6.13')
 }
 
 mavenPublishing {

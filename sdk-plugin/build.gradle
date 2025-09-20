@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.core:core-ktx:1.17.0'
     api('com.kieronquinn.smartspacer:sdk-core:1.1.1')
 }
 

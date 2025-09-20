@@ -1,45 +1,30 @@
 package com.kieronquinn.app.smartspacer.ui.views.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
-import android.widget.AbsListView
 import android.widget.ListView
-import android.widget.ListViewHidden
 import androidx.core.view.NestedScrollingChild
 import androidx.core.view.NestedScrollingChildHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.view.ViewCompat
 import com.kieronquinn.app.smartspacer.R
 
-/**
- *  A [ListView] with [NestedScrollingChild] support, for seamless vertical scrolling, as well
- *  as automatic passing of item long click events onto a parent with the ID of
- *  [R.id.item_expanded_widget_container].
- */
-class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) :
-    ListViewHidden(context, attributeSet, 0, 0), NestedScrollingChild, AbsListView.OnScrollListener {
+class WidgetListView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : ListView(context, attrs, defStyleAttr), NestedScrollingChild {
 
     private val mScrollingChildHelper = NestedScrollingChildHelper(this)
-    private var externalOnScrollListener: OnScrollListener? = null
-
-    private val scrollingParent by lazy {
-        var scrollingView: RecyclerView? = null
-        var parentView = parent
-        while(parentView.parent != null){
-            if(parentView is RecyclerView){
-                scrollingView = parentView as RecyclerView
-            }
-            parentView = parentView.parent
-        }
-        scrollingView
-    }
-
-    private var isAtTop = true
-    private var isAtBottom = false
+    private val mScrollOffset = IntArray(2)
+    private val mScrollConsumed = IntArray(2)
+    private var mLastY: Int = 0
+    private var mNestedYOffset: Int = 0
 
     init {
         isNestedScrollingEnabled = true
-        super.setOnScrollListener(this)
     }
 
     override fun setNestedScrollingEnabled(enabled: Boolean) {
@@ -63,12 +48,18 @@ class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) 
     }
 
     override fun dispatchNestedScroll(
-        dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int,
-        dyUnconsumed: Int, offsetInWindow: IntArray?
+        dxConsumed: Int,
+        dyConsumed: Int,
+        dxUnconsumed: Int,
+        dyUnconsumed: Int,
+        offsetInWindow: IntArray?
     ): Boolean {
         return mScrollingChildHelper.dispatchNestedScroll(
-            dxConsumed, dyConsumed,
-            dxUnconsumed, dyUnconsumed, offsetInWindow
+            dxConsumed,
+            dyConsumed,
+            dxUnconsumed,
+            dyUnconsumed,
+            offsetInWindow
         )
     }
 
@@ -78,13 +69,6 @@ class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) 
         consumed: IntArray?,
         offsetInWindow: IntArray?
     ): Boolean {
-        if(isAtTop && dy < 0){
-            scrollingParent?.scrollBy(dx, dy)
-            return true
-        } else if(isAtBottom && dy > 0){
-            scrollingParent?.scrollBy(dx, dy)
-            return true
-        }
         return mScrollingChildHelper.dispatchNestedPreScroll(dx, dy, consumed, offsetInWindow)
     }
 
@@ -97,24 +81,53 @@ class WidgetListView constructor(context: Context, attributeSet: AttributeSet?) 
     }
 
     override fun dispatchNestedPreFling(velocityX: Float, velocityY: Float): Boolean {
-        if(isAtTop && velocityY < 0){
-            scrollingParent?.fling((velocityX / 3f).toInt(), (velocityY / 3f).toInt())
-            return true
-        } else if(isAtBottom && velocityY > 0){
-            scrollingParent?.fling((velocityX / 3f).toInt(), (velocityY / 3f).toInt())
-            return true
-        }
         return mScrollingChildHelper.dispatchNestedPreFling(velocityX, velocityY)
     }
 
-    override fun onScrollStateChanged(view: AbsListView, state: Int) {
-        externalOnScrollListener?.onScrollStateChanged(view, state)
-    }
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(ev: MotionEvent): Boolean {
+        val event = MotionEvent.obtain(ev)
+        val action = ev.actionMasked
+        val y = ev.y.toInt()
 
-    override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
-        isAtTop = computeVerticalScrollOffset() == 0
-        isAtBottom = firstVisibleItem + visibleItemCount >= totalItemCount
-        externalOnScrollListener?.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount)
+        if (action == MotionEvent.ACTION_DOWN) {
+            mNestedYOffset = 0
+        }
+        event.offsetLocation(0f, mNestedYOffset.toFloat())
+
+        when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                mLastY = y
+                startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL)
+            }
+            MotionEvent.ACTION_MOVE -> {
+                var deltaY = mLastY - y
+                mLastY = y
+
+                if (dispatchNestedPreScroll(0, deltaY, mScrollConsumed, mScrollOffset)) {
+                    deltaY -= mScrollConsumed[1]
+                    event.offsetLocation(0f, (-mScrollOffset[1]).toFloat())
+                    mNestedYOffset += mScrollOffset[1]
+                }
+
+                val oldScrollY = scrollY
+                val newScrollY = 0.coerceAtLeast(oldScrollY + deltaY)
+                val dyConsumed = newScrollY - oldScrollY
+                val dyUnconsumed = deltaY - dyConsumed
+
+                if (dispatchNestedScroll(0, dyConsumed, 0, dyUnconsumed, mScrollOffset)) {
+                    mLastY -= mScrollOffset[1]
+                    event.offsetLocation(0f, mScrollOffset[1].toFloat())
+                    mNestedYOffset += mScrollOffset[1]
+                }
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                stopNestedScroll()
+            }
+        }
+        val result = super.onTouchEvent(event)
+        event.recycle()
+        return result
     }
 
     override fun onAttachedToWindow() {

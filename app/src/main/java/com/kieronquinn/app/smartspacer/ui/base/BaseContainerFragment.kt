@@ -3,11 +3,13 @@ package com.kieronquinn.app.smartspacer.ui.base
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -51,6 +53,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.setOnBackPressedCallback
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.toArgb
+
 
 abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): BoundFragment<V>(inflate) {
 
@@ -195,6 +198,10 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
 
     @SuppressLint("RestrictedApi")
     private fun setupBack() {
+        if(!isUsingGestureNavigation()) {
+            setupBackLegacy()
+            return
+        }
         val callback = object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
@@ -216,12 +223,34 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         }
     }
 
-    private fun getBackNavDestination(): NavDestination? {
-        return navController.previousBackStackEntry?.destination
+    @SuppressLint("RestrictedApi")
+    private fun setupBackLegacy() {
+        val callback = object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
+                    if(!it.interceptBack()) return@let
+                    if(it.onBackPressed()) return
+                }
+                if(!navController.popBackStack()) {
+                    requireActivity().finish()
+                }
+            }
+        }
+        navController.setOnBackPressedCallback(callback)
+        navController.enableOnBackPressed(true)
+        navController.setOnBackPressedDispatcher(requireActivity().onBackPressedDispatcher)
     }
 
-    private fun getCurrentNavDestination(): NavDestination? {
-        return navController.currentBackStackEntry?.destination
+    @Suppress("DEPRECATION")
+    private fun isUsingGestureNavigation(): Boolean {
+        //If insets are not available, default to no fancy animations
+        val rootInsets = requireActivity().window.decorView.getRootWindowInsets() ?: return false
+        val insets = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            rootInsets.getInsets(WindowInsets.Type.systemGestures())
+        } else {
+            rootInsets.systemGestureInsets
+        }
+        return insets.left > 0 || insets.right > 0
     }
 
     private fun shouldBackDispatcherBeEnabled(): Boolean {
