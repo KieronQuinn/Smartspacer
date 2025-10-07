@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc">.&lt;b&gt;</string>
-    <string name="dummy_home_content">.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
+    <string name="xposed_desc"><b>Optional</b>: Enable this module on your launcher or launcher\'s Google Feed plugin to allow replace Google Discover with Expanded Smartspace. You must also enable the option in the Expanded Smartspace settings in Smartspacer.</string>
+    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
+    <string name="dummy_home_open_settings"></string>
+    <string name="notification_service"></string>
+    <string name="loading"></string>
     <string name="saving">Saving…</string>
     <string name="search">Search</string>
     <string name="delete">Delete</string>
@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Settings</string>
     <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
     <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
-    <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[.]]></string>
+    <string name="restricted_mode_content_notification"></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[<br>.]]></string>
     <string name="restricted_mode_button">Open App Info</string>
     <string name="restricted_mode_warning_button">Grant Permission with Shizuku</string>
     <string name="target_sensitive_title">Contents hidden</string>
@@ -53,12 +53,12 @@
     <string name="widget_configuration_page_single_title">Single Page</string>
     <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
     <string name="widget_configuration_customisation_title">Customisation</string>
-    <string name="widget_configuration_page_arrows_title">PageControls</string>
-    <string name="widget_configuration_page_arrows_content">\"widget_configuration_page_arrows_content\".</string>
-    <string name="widget_configuration_page_controls_invisible_title">\"widget_config\"</string>
+    <string name="widget_configuration_page_arrows_title">Show Page Controls</string>
+    <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
+    <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
     <string name="widget_configuration_page_controls_invisible_content">Make the controls invisible. They\'re still there and are clickable, but are invisible.</string>
     <string name="widget_configuration_padding_title">Extra Padding</string>
-    <string name="widget_configuration_padding_content">.</string>
+    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
     <string name="widget_configuration_animation">Animation</string>
     <string name="widget_configuration_animation_switch_title">Animate Changes</string>
     <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
@@ -73,10 +73,10 @@
     <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
-    <string name="accessibility_service_description">\n\nNote.</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
     <string name="target_notification_label">Notifications</string>
     <string name="target_notification_description">Shows notifications from an app</string>
-    <string name="target_notification_description_selected">%1s</string>
+    <string name="target_notification_description_selected">Shows notifications from %1s</string>
     <string name="target_notification_description_selected_with_channels">Shows notifications from %1s (%1d %1s)</string>
     <string name="target_notification_description_channels_one">channel</string>
     <string name="target_notification_description_channels_other">channels</string>
@@ -89,7 +89,7 @@
     <string name="target_ambient_music_mod_description_unavailable">This target requires Ambient Music Mod</string>
     <string name="target_default_label">At a Glance (Smartspace)</string>
     <string name="target_default_description">Targets from Google At a Glance, loaded using Smartspace</string>
-    <string name="target_default_description_recommended">(\"target_default_description_recommended\")</string>
+    <string name="target_default_description_recommended">Targets from Google At a Glance, loaded using Smartspace <b>(recommended)</b></string>
     <string name="target_default_description_unsupported">Your device does not support At a Glance using Smartspace</string>
     <string name="target_default_description_enhanced">Requires Enhanced Mode, enable in the settings</string>
     <string name="target_default_configuration_title">Settings</string>
@@ -1018,17 +1018,17 @@
     <string name="target_date_settings_custom_content">Enter a Java compatible date format</string>
     <string name="target_date_settings_custom_invalid">Invalid date format</string>
     <!-- Flashlight Target -->
-    <string name="target_flashlight_title">Flashlight</string>
-    <string name="target_flashlight_description">Show a reminder when the flashlight is enabled</string>
-    <string name="target_flashlight_incompatible">This Target requires a Flashlight</string>
+    <string name="target_flashlight_title">Torch</string>
+    <string name="target_flashlight_description">Show a reminder when the torch is enabled</string>
+    <string name="target_flashlight_incompatible">This Target requires a Torch</string>
     <string name="target_flashlight_settings_title">Settings</string>
-    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the flashlight based on light levels</string>
-    <string name="target_flashlight_title_on">Flashlight on</string>
+    <string name="target_flashlight_settings_description">Configure whether to prompt to enable the torch based on light levels</string>
+    <string name="target_flashlight_title_on">Torch on</string>
     <string name="target_flashlight_subtitle_on">Tap to turn off</string>
-    <string name="target_flashlight_title_off">Flashlight off</string>
+    <string name="target_flashlight_title_off">Torch off</string>
     <string name="target_flashlight_subtitle_off">Tap to turn on</string>
-    <string name="target_flashlight_settings_show_recommendation">Show Flashlight Enable Prompt</string>
-    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the flashlight when the light level is low (may use more battery)</string>
+    <string name="target_flashlight_settings_show_recommendation">Show Torch Enable Prompt</string>
+    <string name="target_flashlight_settings_show_recommendation_content">Prompt to enable the torch when the light level is low (may use more battery)</string>
     <string name="target_flashlight_settings_show_recommendation_incompatible">This option is not compatible with your device</string>
     <string name="target_flashlight_toast">Grant the Camera permission</string>
     <!-- Widget Target -->
