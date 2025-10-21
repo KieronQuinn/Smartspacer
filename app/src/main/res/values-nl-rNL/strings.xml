@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="xposed_desc"><b>Optioneel</b>: Schakel deze module in op uw launcher of de Google Feed plugin van uw launcher om Google Discover te vervangen door Uitgebreide Smartspace. U moet ook de optie inschakelen in de uitgebreide Smartspace instellingen in Smartspacer.</string>
-    <string name="dummy_home_content">This screen exists to work around badly implemented Widgets used by Smartspacer Plugins.\n\nSmartspacer can\'t act as a launcher, please select a different launcher.</string>
-    <string name="dummy_home_open_settings">Open Settings</string>
-    <string name="notification_service">Smartspacer Notification Service</string>
-    <string name="loading">Loading…</string>
-    <string name="saving">Saving…</string>
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="close">Close</string>
+    <string name="dummy_home_content">Dit scherm bestaat voor slecht geïmplementeerde Widgets die gebruikt worden door Smartspacer Plugins.\n\nSmartspacer kan niet gebruikt worden als launcher, selecteer alstublieft een andere launcher.</string>
+    <string name="dummy_home_open_settings">Open Instellingen</string>
+    <string name="notification_service">Smartspacer Meldingen Service</string>
+    <string name="loading">Laden…</string>
+    <string name="saving">Opslaan…</string>
+    <string name="search">Zoeken</string>
+    <string name="delete">Verwijder</string>
+    <string name="save">Opslaan</string>
+    <string name="close">Sluiten</string>
     <string name="reset">Reset</string>
-    <string name="menu_rerun_setup">Re-run setup</string>
-    <string name="bottom_nav_targets">Targets</string>
-    <string name="bottom_nav_complications">Complications</string>
-    <string name="bottom_nav_plugins">Plugins</string>
-    <string name="bottom_nav_settings">Settings</string>
-    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
+    <string name="menu_rerun_setup">Setup opnieuw uitvoeren</string>
+    <string name="bottom_nav_targets">Doelen</string>
+    <string name="bottom_nav_complications">Complicaties</string>
+    <string name="bottom_nav_plugins">Plug-ins</string>
+    <string name="bottom_nav_settings">Instellingen</string>
+    <string name="toast_restricted_mode">Beperkte instellingen in overloop menu toestaan</string>
     <string name="restricted_mode_content_accessibility">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Accessibility Services by default.\n\n<b>If you see a message about a restricted setting when trying to enable the accessibility service, you need to open App Info allow restricted settings.</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_content_notification">Since Android 13, Google added a security check to the settings, preventing sideloaded apps from being allowed to use Notification Access by default.\n\n<b>If you see a message about a restricted setting when trying to enable notification access, you need to open App Info allow restricted settings.</b></string>
