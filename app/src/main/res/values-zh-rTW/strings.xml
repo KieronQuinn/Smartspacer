@@ -991,15 +991,15 @@
     <string name="target_notification_remoteviews_source_none">已停用</string>
     <string name="target_notification_remoteviews_source_small">摺疊通知</string>
     <string name="target_notification_remoteviews_source_large">擴展通知</string>
-    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
-    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
-    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
-    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
-    <string name="target_notification_remoteviews_background_none">Transparent</string>
-    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
-    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
-    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
-    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
+    <string name="target_notification_remoteviews_source_heads_up">彈出式通知</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>注意：</b>可能會導致縮放問題</string>
+    <string name="target_notification_remoteviews_padding_title">自訂內容內距</string>
+    <string name="target_notification_remoteviews_background_title">自訂內容背景</string>
+    <string name="target_notification_remoteviews_background_none">透明</string>
+    <string name="target_notification_remoteviews_background_semi">半透明</string>
+    <string name="target_notification_remoteviews_background_opaque">不透明</string>
+    <string name="target_notification_remoteviews_click_title">取代自訂內容點擊操作</string>
+    <string name="target_notification_remoteviews_click_content">替換自訂內容的通知點擊操作。通知本身需具備可點擊功能。</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空目標</string>
     <string name="target_blank_content">超極簡模式，可用來完全不顯示任何內容，或只顯示複雜功能</string>
