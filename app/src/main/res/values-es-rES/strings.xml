@@ -70,7 +70,7 @@
     <string name="widget_configuration_mock_target_subtitle">Objetivo</string>
     <string name="widget_configuration_mock_complication_title">Complicación</string>
     <string name="widget_configuration_material_you_title"></string>
-    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
+    <string name="widget_configuration_material_you_description">.</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
     <string name="accessibility_service_description">Permite que el widget de Smartspacer mantenga actualizados los objetivos y las complicaciones, sin consumir batería al tenerlos siempre en funcionamiento.\n\nNota: Esto no es necesario si tienes el modo mejorado activado.</string>
@@ -344,10 +344,10 @@
     <string name="requirement_wifi_configuration_in_range_content">Cuando está activado, esta regla se cumplirá cuando la red especificada esté en el rango, pero aunque no esté conectado a internet.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
     <string name="requirement_wifi_configuration_background_location_title">Usar ubicación en segundo plano</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
+    <string name="requirement_wifi_configuration_background_location_content">.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Conceder permiso</string>
     <string name="requirement_wifi_configuration_pick_title">Seleccionar red</string>
-    <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
+    <string name="requirement_wifi_configuration_pick_content"></string>
     <string name="requirement_wifi_configuration_ssid_title">Nombre de la red</string>
     <string name="requirement_wifi_configuration_ssid_content_unset">Establecer el nombre de red (SSID) de la red</string>
     <string name="requirement_wifi_configuration_mac_title">Dirección MAC</string>
