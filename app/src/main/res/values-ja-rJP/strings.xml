@@ -278,10 +278,10 @@
     <string name="feedback_loop_relaunch_wait">%1s秒待機する</string>
     <string name="feedback_loop_relaunch">Smartspacerを再起動</string>
     <string name="configuration_notification_enable_title">通知へのアクセスを有効にする</string>
-    <string name="configuration_notification_enable_content"></string>
+    <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
     <string name="configuration_notification_enable_button">通知のアクセスを許可</string>
     <string name="configuration_accessibility_enable_title">ユーザー補助サービスを有効化</string>
-    <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
+    <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running。</string>
     <string name="configuration_accessibility_enable_button">ユーザー補助サービスを有効化</string>
     <string name="target_notification_configuration_title">通知の設定</string>
     <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
