@@ -69,8 +69,8 @@
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Objetivo</string>
     <string name="widget_configuration_mock_complication_title">Complicación</string>
-    <string name="widget_configuration_material_you_title">Material You style</string>
-    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
+    <string name="widget_configuration_material_you_title"></string>
+    <string name="widget_configuration_material_you_description">.</string>
     <string name="widget_options_configure">Configurar widget</string>
     <string name="accessibility_service_label">Servicio de widget de Smartspacer</string>
     <string name="accessibility_service_description">Permite que el widget de Smartspacer mantenga actualizados los objetivos y las complicaciones, sin consumir batería al tenerlos siempre en funcionamiento.\n\nNota: Esto no es necesario si tienes el modo mejorado activado.</string>
@@ -327,7 +327,7 @@
     <string name="requirement_geofence_configuration_loitering_delay_label_one">%1d minuto</string>
     <string name="requirement_geofence_configuration_loitering_delay_label_many">%1d minutos</string>
     <string name="requirement_geofence_configuration_notification_responsiveness_title">Responsive</string>
-    <string name="requirement_geofence_configuration_notification_responsiveness_content">Set how responsive this location requirement should be - higher durations save battery but may be slower in responding to location changes</string>
+    <string name="requirement_geofence_configuration_notification_responsiveness_content"></string>
     <string name="requirement_geofence_configuration_notification_responsiveness_label">%1d segundos</string>
     <string name="requirement_geofence_configuration_background_location_title">Habilitar ubicación de fondo</string>
     <string name="requirement_geofence_configuration_background_location_content">Las reglas de ubicación requieren el permiso de ubicación en segundo plano. En configuración, habilita este permiso para continuar, seleccionando en Permisos &gt; Ubicación &gt; Permitir todo el tiempo, y después regresa a esta app.</string>
@@ -344,10 +344,10 @@
     <string name="requirement_wifi_configuration_in_range_content">Cuando está activado, esta regla se cumplirá cuando la red especificada esté en el rango, pero aunque no esté conectado a internet.</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
     <string name="requirement_wifi_configuration_background_location_title">Usar ubicación en segundo plano</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
+    <string name="requirement_wifi_configuration_background_location_content">.</string>
     <string name="requirement_wifi_configuration_background_location_grant">Conceder permiso</string>
     <string name="requirement_wifi_configuration_pick_title">Seleccionar red</string>
-    <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
+    <string name="requirement_wifi_configuration_pick_content"></string>
     <string name="requirement_wifi_configuration_ssid_title">Nombre de la red</string>
     <string name="requirement_wifi_configuration_ssid_content_unset">Establecer el nombre de red (SSID) de la red</string>
     <string name="requirement_wifi_configuration_mac_title">Dirección MAC</string>
@@ -513,7 +513,7 @@
     <string name="setup_expanded_info_p1"><b>Smartspace extendido</b> es una versión a pantalla completa de Smartspace, que muestra todos los objetivos y complicaciones disponibles, así como información dinámica adicional como widgets y accesos directos especificados por los objetivos. También puedes añadir widgets personalizados a esta pantalla.</string>
     <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
     <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
+    <string name="setup_expanded_open_content"></string>
     <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Extensiones</string>

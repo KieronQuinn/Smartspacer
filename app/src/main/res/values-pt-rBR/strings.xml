@@ -63,13 +63,13 @@
     <string name="widget_configuration_animation_switch_title">Animar as Alterações</string>
     <string name="widget_configuration_animation_switch_content">Aplicar transições suaves entre as alterações no widget sempre que possível</string>
     <string name="widget_configuration_colour">Cor</string>
-    <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
+    <string name="widget_configuration_colour_disabled">Esta opção não está disponível quando Estilo Material You está em uso</string>
     <string name="widget_configuration_shadow_title">Sombra de Texto</string>
     <string name="widget_configuration_shadow_content">Exibe uma sombra no texto que pode não ser legível em seu papel de parede</string>
     <string name="widget_configuration_mock_target_title">Smartspacer</string>
     <string name="widget_configuration_mock_target_subtitle">Destaque</string>
     <string name="widget_configuration_mock_complication_title">Complemento</string>
-    <string name="widget_configuration_material_you_title">Material You style</string>
+    <string name="widget_configuration_material_you_title">Estilo Material You</string>
     <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
     <string name="widget_options_configure">Configurar Widget</string>
     <string name="accessibility_service_label">Serviço de Widget do Smartspacer</string>
