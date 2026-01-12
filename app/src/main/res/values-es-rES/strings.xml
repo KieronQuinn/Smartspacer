@@ -352,7 +352,7 @@
     <string name="requirement_wifi_configuration_ssid_content_unset">Establecer el nombre de red (SSID) de la red</string>
     <string name="requirement_wifi_configuration_mac_title">Dirección MAC</string>
     <string name="requirement_wifi_configuration_mac_content_unset">Establecer la dirección MAC de la red (opcional, puedes dejarlo en blanco para que coincida con cualquier nombre de red)</string>
-    <string name="requirement_wifi_configuration_mac_error">Enter a valid MAC address, or leave blank</string>
+    <string name="requirement_wifi_configuration_mac_error">Enter a válida MAC address, or leave blank</string>
     <string name="requirement_wifi_configuration_picker_available">Redes disponibles</string>
     <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
     <string name="requirement_wifi_configuration_picker_saved">Redes guardadas</string>
@@ -381,7 +381,7 @@
     <string name="requirement_music_playing_content">Mostrar solamente cuando se reproduce música</string>
     <string name="permission_dialog_widget_title_prefix">Permitir</string>
     <string name="permission_dialog_widget_title_suffix">para acceder a los widgets usando Smartspace?</string>
-    <string name="permission_dialog_widget_title_warning">You may be asked for system permission after this step</string>
+    <string name="permission_dialog_widget_title_warning"></string>
     <string name="permission_dialog_widget_title_unknown">Desconocido</string>
     <string name="permission_dialog_widget_allow_once">Permitir solo esta vez</string>
     <string name="permission_dialog_widget_allow_always">Permitir siempre</string>
