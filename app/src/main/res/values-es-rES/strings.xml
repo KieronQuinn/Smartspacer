@@ -354,7 +354,7 @@
     <string name="requirement_wifi_configuration_mac_content_unset">Establecer la dirección MAC de la red (opcional, puedes dejarlo en blanco para que coincida con cualquier nombre de red)</string>
     <string name="requirement_wifi_configuration_mac_error">Enter a válida MAC address, or leave blank</string>
     <string name="requirement_wifi_configuration_picker_available">Redes disponibles</string>
-    <string name="requirement_wifi_configuration_picker_available_empty">No networks found, make sure Wi-Fi is enabled and there are nearby networks available</string>
+    <string name="requirement_wifi_configuration_picker_available_empty"></string>
     <string name="requirement_wifi_configuration_picker_saved">Redes guardadas</string>
     <string name="requirement_wifi_configuration_picker_unknown_network">Red desconocida</string>
     <string name="requirement_bluetooth_title">Dispositivo Bluetooth conectado</string>
@@ -381,14 +381,14 @@
     <string name="requirement_music_playing_content">Mostrar solamente cuando se reproduce música</string>
     <string name="permission_dialog_widget_title_prefix">Permitir</string>
     <string name="permission_dialog_widget_title_suffix">para acceder a los widgets usando Smartspace?</string>
-    <string name="permission_dialog_widget_title_warning"></string>
+    <string name="permission_dialog_widget_title_warning">You más</string>
     <string name="permission_dialog_widget_title_unknown">Desconocido</string>
     <string name="permission_dialog_widget_allow_once">Permitir solo esta vez</string>
     <string name="permission_dialog_widget_allow_always">Permitir siempre</string>
     <string name="permission_dialog_widget_deny">Denegar</string>
     <string name="permission_dialog_notification_title_prefix">Permitir</string>
-    <string name="permission_dialog_notification_title_suffix">to access app notifications using Smartspacer?</string>
-    <string name="permission_dialog_notification_title_warning">You may be asked for system permission after this step</string>
+    <string name="permission_dialog_notification_title_suffix">\?</string>
+    <string name="permission_dialog_notification_title_warning"></string>
     <string name="permission_dialog_notification_title_unknown">Desconocido</string>
     <string name="permission_dialog_notification_allow_once">Solo esta vez</string>
     <string name="permission_dialog_notification_allow_always">Permitir siempre</string>
@@ -443,8 +443,8 @@
     <string name="compatibility_feature_loyalty_content">Permite mostrar un botón, además un título y un subtítulo</string>
     <string name="compatibility_feature_shopping_list_title">Lista</string>
     <string name="compatibility_feature_shopping_list_content">Permite mostrar una lista corta además del título &amp; subtítulo</string>
-    <string name="compatibility_feature_remoteviews_title">Custom Content</string>
-    <string name="compatibility_feature_remoteviews_content">Allows displaying custom content not conforming to a template (RemoteViews)</string>
+    <string name="compatibility_feature_remoteviews_title"></string>
+    <string name="compatibility_feature_remoteviews_content"></string>
     <string name="compatibility_feature_sports_title">Deportes</string>
     <string name="compatibility_feature_sports_content">Permite mostrar la puntuación de dos equipos, además un título y un subtítulo</string>
     <string name="compatibility_template_carousel_title">Carrusel</string>
@@ -512,9 +512,9 @@
     <string name="setup_expanded_switch">Usar Smartspace extendido</string>
     <string name="setup_expanded_info_p1"><b>Smartspace extendido</b> es una versión a pantalla completa de Smartspace, que muestra todos los objetivos y complicaciones disponibles, así como información dinámica adicional como widgets y accesos directos especificados por los objetivos. También puedes añadir widgets personalizados a esta pantalla.</string>
     <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
+    <string name="setup_expanded_open_title">Dinámica open Expande</string>
     <string name="setup_expanded_open_content"></string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_info_footer">Yo can acceso adicional opciones, incluye always opening Expande Smartspace when a Target is tapped (even if it does no have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">Extensiones</string>
     <string name="setup_plugins_info_p1">Puedes descargar <b>extensiones</b> adicionales que proporcionan objetivos, complicaciones y reglas en la pestaña Extensiones en la barra de navegación inferior.</string>
@@ -1059,7 +1059,7 @@
     <string name="target_widget_settings_rounded_title">Round Corners</string>
     <string name="target_widget_settings_rounded_content">Apply rounded corners to this widget. May not work with all widgets.</string>
     <string name="target_widget_padding_none">Minimum</string>
-    <string name="target_widget_padding_small">Small</string>
+    <string name="target_widget_padding_small"></string>
     <string name="target_widget_padding_medium">Medium</string>
     <string name="target_widget_padding_large">Large</string>
     <string name="target_widget_padding_disable">Disabled</string>
