@@ -17,9 +17,9 @@
     <string name="bottom_nav_plugins">扩展</string>
     <string name="bottom_nav_settings">设置</string>
     <string name="toast_restricted_mode">在弹出的菜单中允许受限制的设置</string>
-    <string name="restricted_mode_content_accessibility">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用使用无障碍服务。\n\n<b>如果你在启用无障碍服务时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
+    <string name="restricted_mode_content_accessibility">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许侧载应用使用无障碍服务。\n\n<b>如果你在启用无障碍服务时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
     <string name="restricted_mode_content_warning_accessibility"><![CDATA[从 Android 14 开始 Google 不再允许通过软件包安装程序安装的应用使用无障碍服务。<br><br><b>如果你看到一则受限制设置的信息，则需要先卸载 Smartspacer，再通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 重新安装。直接安装（而不先卸载）是不行的。<br><br></b>另外，如果启用了增强模式，Smartspacer 可以绕过这一限制（该模式需要 Shizuku 或 root）。]]></string>
-    <string name="restricted_mode_content_notification">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许旁加载应用读取通知。\n\n<b>如果你在允许通知读取时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
+    <string name="restricted_mode_content_notification">从 Android 13 开始 Google 添加了一项安全检查，默认不再允许侧载应用读取通知。\n\n<b>如果你在允许通知读取时看到一则受限制设置的信息，请前往应用信息设置中允许受限制的设置。</b></string>
     <string name="restricted_mode_content_warning_notification"><![CDATA[从 Android 14 开始 Google 不再允许通过软件包安装程序安装的应用使用读取通知。<br><br><b>如果你看到一则受限制设置的信息，则需要先卸载 Smartspacer，再通过基于会话安装模式的应用如 <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> 或 <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror</a> 重新安装。直接安装（而不先卸载）是不行的。<br><br></b>另外，如果启用了增强模式，Smartspacer 可以绕过这一限制（该模式需要 Shizuku 或 root）。]]></string>
     <string name="restricted_mode_button">打开应用信息</string>
     <string name="restricted_mode_warning_button">通过 Shizuku 授权</string>
@@ -54,7 +54,7 @@
     <string name="widget_configuration_page_single_content">将对象和附件展示区域锁定为一页（如果空间允许）。该操作也意味着你只能在小组件中看到优先级最高的对象/附件。</string>
     <string name="widget_configuration_customisation_title">自定义</string>
     <string name="widget_configuration_page_arrows_title">显示页面控制</string>
-    <string name="widget_configuration_page_arrows_content">启用箭头控制来轻松切换页面。如果禁用，点击圆点指示器也可以切换到下一页，并且在页面到达末尾时还会自动循环到第一页。</string>
+    <string name="widget_configuration_page_arrows_content">启用箭头控制来轻松切换页面。如果禁用，点击指示器也可以切换到下一页，并且在页面到达末尾时还会自动循环到第一页。</string>
     <string name="widget_configuration_page_controls_invisible_title">隐藏控件</string>
     <string name="widget_configuration_page_controls_invisible_content">使控制按钮不可见。只是视觉隐藏，它们依然在那里并且可以点击操作。</string>
     <string name="widget_configuration_padding_title">额外边距</string>
