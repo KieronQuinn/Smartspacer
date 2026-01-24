@@ -23,7 +23,7 @@ import com.kieronquinn.app.smartspacer.utils.room.GsonConverter
     Target::class,
     TargetData::class,
     Widget::class
-], version = 9, exportSchema = false)
+], version = 11, exportSchema = false)
 @TypeConverters(GsonConverter::class)
 abstract class SmartspacerDatabase: RoomDatabase() {
 
@@ -42,6 +42,8 @@ abstract class SmartspacerDatabase: RoomDatabase() {
                 MIGRATION_6_7,
                 MIGRATION_7_8,
                 MIGRATION_8_9,
+                MIGRATION_9_10,
+                MIGRATION_10_11,
             ).build()
         }
 
@@ -94,6 +96,20 @@ abstract class SmartspacerDatabase: RoomDatabase() {
         private val MIGRATION_8_9 = object: Migration(8, 9){
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE AppWidget ADD COLUMN materialyou_styled INTEGER NOT NULL DEFAULT '0'")
+            }
+        }
+
+        private val MIGRATION_9_10 = object: Migration(9, 10) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE AppWidget ADD COLUMN pinned_target_id TEXT DEFAULT NULL")
+                db.execSQL("ALTER TABLE AppWidget ADD COLUMN pinned_fallback_behavior TEXT NOT NULL DEFAULT 'SHOW_DATE'")
+            }
+        }
+
+        private val MIGRATION_10_11 = object: Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE AppWidget ADD COLUMN pin_mode TEXT NOT NULL DEFAULT 'NONE'")
+                db.execSQL("ALTER TABLE AppWidget ADD COLUMN pinned_page_index INTEGER NOT NULL DEFAULT 0")
             }
         }
     }

@@ -3,6 +3,8 @@ package com.kieronquinn.app.smartspacer.components.smartspace
 import android.content.Context
 import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSessionState.DotConfig
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
+import com.kieronquinn.app.smartspacer.model.database.PinMode
+import com.kieronquinn.app.smartspacer.model.database.PinnedFallbackBehavior
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
@@ -36,6 +38,10 @@ open class PagedWidgetSmartspacerSession(
     private val showControls = widget.showControls
     private val invisibleControls = widget.hideControls
     private val animate = widget.animate
+    private val pinMode = widget.pinMode
+    private val pinnedPageIndex = widget.pinnedPageIndex
+    private val pinnedTargetId = widget.pinnedTargetId
+    private val pinnedFallbackBehavior = widget.pinnedFallbackBehavior
 
     var state: PagedWidgetSmartspacerSessionState? = null
 
@@ -45,7 +51,13 @@ open class PagedWidgetSmartspacerSession(
     ): Flow<List<SmartspaceView>> {
         var id: String? = null
         var previousPageCount = -1
-        return combine(pages, index, uiSurface){ it, i, _ ->
+        return combine(pages, index, uiSurface){ allPages, i, _ ->
+            // Filter based on pin mode
+            val it = when (pinMode) {
+                PinMode.NONE -> allPages
+                PinMode.PAGE -> filterToPageIndex(allPages)
+                PinMode.TARGET -> filterToPinnedTarget(allPages)
+            }
             previousPageCount = pageCount
             pageCount = it.size
             var index = min(i, it.size)
@@ -122,6 +134,47 @@ open class PagedWidgetSmartspacerSession(
             }
         }
         return dots
+    }
+
+    private fun filterToPageIndex(
+        pages: List<SmartspaceRepository.SmartspacePageHolder>
+    ): List<SmartspaceRepository.SmartspacePageHolder> {
+        val page = pages.getOrNull(pinnedPageIndex)
+        return if (page != null) {
+            listOf(page)
+        } else {
+            applyFallback(pages)
+        }
+    }
+
+    private fun filterToPinnedTarget(
+        pages: List<SmartspaceRepository.SmartspacePageHolder>
+    ): List<SmartspaceRepository.SmartspacePageHolder> {
+        // Primary: match by target ID
+        // Secondary: match by action's parent ID (for blank targets where target is null)
+        val pinnedPage = pages.find { holder ->
+            holder.target?.id == pinnedTargetId
+        } ?: pages.find { holder ->
+            holder.actions.any { action -> action.id == pinnedTargetId }
+        }
+
+        return if (pinnedPage != null) {
+            listOf(pinnedPage)
+        } else {
+            applyFallback(pages)
+        }
+    }
+
+    private fun applyFallback(
+        pages: List<SmartspaceRepository.SmartspacePageHolder>
+    ): List<SmartspaceRepository.SmartspacePageHolder> {
+        return when (pinnedFallbackBehavior) {
+            PinnedFallbackBehavior.SHOW_DATE -> listOf(createDatePage().holder)
+            PinnedFallbackBehavior.SHOW_FIRST_TARGET -> pages.take(1).ifEmpty {
+                listOf(createDatePage().holder)
+            }
+            PinnedFallbackBehavior.HIDE_WIDGET -> emptyList()
+        }
     }
 
     private fun createDatePage(): WidgetSmartspacerPage {

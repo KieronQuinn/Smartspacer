@@ -528,7 +528,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<DateFormatCustomViewModel> { DateFormatCustomViewModelImpl() }
         viewModel<BluetoothRequirementConfigurationViewModel> { BluetoothRequirementConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<FlashlightTargetConfigurationViewModel> { FlashlightTargetConfigurationViewModelImpl(get(), get()) }
-        viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get()) }
+        viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get(), get()) }
         viewModel<SettingsLanguageViewModel> { SettingsLanguageViewModelImpl(get()) }
         viewModel<WidgetTargetSetupViewModel> { WidgetTargetSetupViewModelImpl(get(), it.get()) }
         viewModel<WidgetTargetConfigurationViewModel> { WidgetTargetConfigurationViewModelImpl(
