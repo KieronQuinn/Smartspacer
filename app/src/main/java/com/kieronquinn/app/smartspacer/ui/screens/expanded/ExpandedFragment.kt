@@ -69,6 +69,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.monetcompat.extensions.toArgb
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
 import com.skydoves.balloon.ArrowPositionRules
@@ -562,8 +563,9 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         return true
     }
 
-    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) =
+    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
         viewModel.onDeleteCustomWidget(widget.appWidgetId ?: return)
+    }
 
     override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
         lastSwipe?.let { if (System.currentTimeMillis() - it < MIN_SWIPE_DELAY) return false }
