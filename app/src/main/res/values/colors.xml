@@ -15,11 +15,6 @@
     <color name="colorPrimaryDark">#801472FF</color>
     <color name="search_box_background">#F5F5F5</color>
 
-    <color name="expanded_text_color_dark">@color/black</color>
-    <color name="expanded_text_color_light">@color/white</color>
-
-    <color name="expanded_search_box_background_color">@color/white</color>
-
     <color name="search_icon_tint_primary">#4285f4</color>
     <color name="search_icon_tint_quaternary">#ea4335</color>
     <color name="search_icon_tint_secondary">#34a853</color>

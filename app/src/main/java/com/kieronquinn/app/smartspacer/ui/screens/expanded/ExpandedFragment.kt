@@ -18,6 +18,8 @@ import android.os.Parcelable
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.ColorUtils
@@ -25,14 +27,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.google.android.flexbox.AlignItems
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
@@ -43,16 +39,21 @@ import com.kieronquinn.app.smartspacer.databinding.SmartspaceExpandedLongPressPo
 import com.kieronquinn.app.smartspacer.databinding.SmartspaceExpandedLongPressPopupWidgetBinding
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
 import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
+import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
+import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
+import com.kieronquinn.app.smartspacer.sdk.client.views.SmartspacerView
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_ABOUT_INTENT
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_FEEDBACK_INTENT
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
+import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_WEATHER
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcuts.Shortcut
 import com.kieronquinn.app.smartspacer.sdk.utils.getParcelableCompat
 import com.kieronquinn.app.smartspacer.sdk.utils.shouldExcludeFromSmartspacer
@@ -60,18 +61,13 @@ import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
-import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
-import com.kieronquinn.app.smartspacer.utils.extensions.WIDGET_MIN_COLUMNS
-import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
-import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnCount
 import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
-import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
@@ -79,7 +75,6 @@ import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
@@ -88,14 +83,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import com.kieronquinn.app.smartspacer.sdk.client.R as SDKR
 
-class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
+class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     FragmentExpandedBinding::inflate
-), SmartspaceTargetInteractionListener, View.OnScrollChangeListener, ExpandedAdapterListener {
+), SmartspaceTargetInteractionListener, ExpandedAdapterListener {
 
     companion object {
         private const val MIN_SWIPE_DELAY = 250L
         private const val EXTRA_OPEN_ACTION = "open_action"
-        private const val EXTRA_OPEN_TARGET = "open_target"
 
         private val COMPONENT_EXPANDED = ComponentName(
             BuildConfig.APPLICATION_ID,
@@ -111,7 +105,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
 
         fun createOpenTargetUriCompatibleIntent(launchIntent: Intent?): Intent? {
-            if(launchIntent?.component != COMPONENT_EXPANDED) return null
+            if (launchIntent?.component != COMPONENT_EXPANDED) return null
             val targetId = launchIntent.getParcelableExtraCompat(
                 EXTRA_OPEN_ACTION, OpenFromOverlayAction.OpenTarget::class.java
             )?.id ?: return null
@@ -120,7 +114,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                     BuildConfig.APPLICATION_ID,
                     "${BuildConfig.APPLICATION_ID}.ui.activities.ExportedExpandedActivity"
                 )
-                putExtra(EXTRA_OPEN_TARGET, targetId)
+                putExtra("open_target", targetId)
             }
         }
     }
@@ -128,53 +122,42 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     private val isOverlay by lazy {
         ExpandedActivity.isOverlay(requireActivity() as ExpandedActivity)
     }
-
     private val isMinusOne by lazy {
         ExpandedActivity.isMinusOne(requireActivity() as ExpandedActivity)
     }
-
     private val uid by lazy {
         ExpandedActivity.getUid(requireActivity() as ExpandedActivity)
     }
-
     private val sessionId by lazy {
         when {
-            isMinusOne -> {
-                "minusOne"
-            }
-            isOverlay -> {
-                "overlay"
-            }
-            else -> {
-                "expanded"
-            }
+            isMinusOne -> "minusOne"
+            isOverlay -> "overlay"
+            else -> "expanded"
         }
     }
 
     private val viewModel by viewModel<ExpandedViewModel> {
         parametersOf("${sessionId}_$uid")
     }
-
     private val wallpaperRepository by inject<WallpaperRepository>()
     private val blurProvider by inject<BlurProvider>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
-    private val adapterUpdateBus = MutableStateFlow<Long?>(null)
+    private val expandedRepository by inject<ExpandedRepository>()
+    private val tabRepository by inject<ExpandedTabRepository>()
+
     private var lastSwipe: Long? = null
     private var popup: Balloon? = null
     private var topInset = 0
-    private var multiColumnEnabled = true
+    private var currentTabIndex = 0
+    private val loadedTabIndices = mutableSetOf<Int>()
 
     override val applyTransitions = false
 
     private val widgetBindResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        viewModel.onWidgetBindResult(
-            widgetConfigureResult,
-            it.resultCode == Activity.RESULT_OK
-        )
+        viewModel.onWidgetBindResult(widgetConfigureResult, it.resultCode == Activity.RESULT_OK)
     }
-
     private val widgetConfigureResult = registerForActivityResult(
         ActivityResultContracts.StartIntentSenderForResult()
     ) {
@@ -184,36 +167,16 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     private val isDark = runBlocking {
         wallpaperRepository.homescreenWallpaperDarkTextColour.first()
     }
-
-    private val backgroundColour by lazy {
-        monet.getBackgroundColor(requireContext())
-    }
-
-    private val adapter by lazy {
-        ExpandedAdapter(
-            binding.expandedRecyclerView,
-            isDark,
-            sessionId,
-            this,
-            this,
-            ::getSpanPercent,
-            ::getAvailableWidth
-        )
-    }
-
+    private val backgroundColour by lazy { monet.getBackgroundColor(requireContext()) }
     private val keyguardManager by lazy {
         requireContext().getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
     }
 
     override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
         val inflater = super.onGetLayoutInflater(savedInstanceState)
-        val theme = if(isDark){
-            R.style.Theme_Smartspacer_Wallpaper_Dark
-        }else{
-            R.style.Theme_Smartspacer_Wallpaper_Light
-        }
-        val contextThemeWrapper = ContextThemeWrapper(requireContext(), theme)
-        return inflater.cloneInContext(contextThemeWrapper)
+        val theme = if (isDark) R.style.Theme_Smartspacer_Wallpaper_Dark
+        else R.style.Theme_Smartspacer_Wallpaper_Light
+        return inflater.cloneInContext(ContextThemeWrapper(requireContext(), theme))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -222,9 +185,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             isAppearanceLightNavigationBars = isDark
             isAppearanceLightStatusBars = isDark
         }
-        if(isMinusOne) {
-            setBlurEnabled(true)
-        }
+        if (isMinusOne) setBlurEnabled(true)
         setupLoading()
         setupState()
         setupMonet()
@@ -233,161 +194,221 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         setupOverlaySwipe()
         setupDisabledButton()
         setupClose()
-        handleLaunchActionIfNeeded()
+        setupMenuButton()
+        setupOpenAppButton()
+        setupTabs()
         viewModel.setup(isOverlay)
-        setupRecyclerView()
     }
 
-    override fun onDestroyView() {
-        binding.expandedRecyclerView.adapter = null
-        super.onDestroyView()
-    }
+    // ── Setup ─────────────────────────────────────────────────────────────
 
-    private fun setupLoading() = whenCreated {
-        with(binding.expandedLoading) {
-            (drawable as AnimatedVectorDrawable).start()
-        }
+    private fun setupLoading() {
+        (binding.expandedLoading.drawable as? AnimatedVectorDrawable)?.start()
     }
 
     private fun setupMonet() {
-        binding.expandedUnlockContainer.backgroundTintList = ColorStateList.valueOf(
-            monet.getBackgroundColor(requireContext())
-        )
+        binding.expandedUnlockContainer.backgroundTintList =
+            ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
         binding.expandedUnlock.overrideRippleColor(monet.getAccentColor(requireContext()))
-        binding.expandedUnlock.iconTint = ColorStateList.valueOf(
-            monet.getAccentColor(requireContext())
-        )
+        binding.expandedUnlock.iconTint =
+            ColorStateList.valueOf(monet.getAccentColor(requireContext()))
         binding.expandedDisabledButton.applyMonet()
-        binding.expandedPermission.backgroundTintList = ColorStateList.valueOf(
-            monet.getBackgroundColor(requireContext())
-        )
+        binding.expandedPermission.backgroundTintList =
+            ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
     }
 
-    private fun setupInsets() = with(binding) {
-        expandedUnlockContainer.onApplyInsets { view, insets ->
-            view.updatePadding(
-                bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            )
+    private fun setupInsets() {
+        binding.expandedUnlockContainer.onApplyInsets { view, insets ->
+            view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
         }
-        root.onApplyInsets { _, insets ->
+        binding.root.onApplyInsets { _, insets ->
             topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             viewModel.setTopInset(topInset)
         }
-        val lockedPadding = resources.getDimensionPixelSize(R.dimen.expanded_button_unlock_height)
-        expandedRecyclerView.onApplyInsets { view, insets ->
-            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                .bottom + lockedPadding
-            val cutoutInsets = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
-            val leftInset = cutoutInsets.left
-            val rightInset = cutoutInsets.right
-            view.updatePadding(
-                left = leftInset,
-                right = rightInset,
-                bottom = bottomInset
+    }
+
+    private fun setupMenuButton() = viewLifecycleOwner.whenResumed {
+        binding.expandedHeaderMenu.onClicked().collect {
+            if (!isOverlay && !isMinusOne) {
+                findNavController().navigate(R.id.action_expandedFragment_to_expandedTabSettingsFragment)
+            } else {
+                launchOverlayAction(OpenFromOverlayAction.AddWidget(0))
+            }
+        }
+    }
+
+    private fun setupOpenAppButton() {
+        binding.expandedTabOpenApp.setOnClickListener {
+            try {
+                startActivity(
+                    Intent(requireContext(), MainActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    }
+                )
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setupTabs() {
+        val tabs = tabRepository.getTabs()
+        if (tabs.isEmpty()) {
+            binding.expandedWidgetFlipper.isVisible = false
+            binding.expandedEmptyLabel.isVisible = true
+            binding.expandedTabScrollPill.isVisible = false
+            return
+        }
+        binding.expandedWidgetFlipper.isVisible = true
+        binding.expandedEmptyLabel.isVisible = false
+        binding.expandedTabScrollPill.isVisible = true
+
+        binding.expandedWidgetFlipper.removeAllViews()
+        tabs.forEach { _ ->
+            binding.expandedWidgetFlipper.addView(
+                FrameLayout(requireContext()).apply {
+                    layoutParams = FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                }
             )
         }
-    }
 
-    private fun setupRecyclerView() = with(binding.expandedRecyclerView) {
-        layoutManager = FlexboxLayoutManager(context).apply {
-            flexDirection = FlexDirection.ROW
-            alignItems = AlignItems.CENTER
-            justifyContent = JustifyContent.CENTER
-            flexWrap = FlexWrap.WRAP
-        }
-        adapter = this@ExpandedFragment.adapter
-        binding.expandedRecyclerView.itemAnimator = PulseControlledItemAnimator()
-        setOnScrollChangeListener(this@ExpandedFragment)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onResume()
-        if(!isMinusOne) {
-            setBlurEnabled(true)
-        }
-    }
-
-    override fun onPause() {
-        if(!isMinusOne) {
-            setBlurEnabled(false)
-        }
-        super.onPause()
-        viewModel.onPause()
-    }
-
-    private fun setBlurEnabled(enabled: Boolean) {
-        if(isOverlay) return //Handled progressively by overlay
-        when(settingsRepository.expandedBackground.getSync()) {
-            ExpandedBackground.BLUR -> {
-                val ratio = if(enabled) 1f else 0f
-                blurProvider.applyBlurToWindow(requireActivity().window, ratio)
+        binding.expandedTabButtons.removeAllViews()
+        tabs.forEachIndexed { index, tab ->
+            val btn = MaterialButton(
+                requireContext(), null,
+                com.google.android.material.R.attr.materialButtonOutlinedStyle
+            ).apply {
+                text = tab.label
+                cornerRadius = 100.dp
+                setPadding(20.dp, 8.dp, 20.dp, 8.dp)
+                textSize = 15f
+                isAllCaps = false
+                elevation = 0f
+                insetTop = 0
+                insetBottom = 0
+                strokeWidth = 0
+                layoutParams = android.widget.LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+                setOnClickListener { selectTab(index) }
             }
-            ExpandedBackground.SCRIM -> {
-                val alpha = if(enabled) 128 else 0
-                val backgroundColour = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
-                binding.root.setBackgroundColor(backgroundColour)
-            }
-            ExpandedBackground.SOLID -> {
-                val alpha = if(enabled) 255 else 0
-                val backgroundColour = ColorUtils.setAlphaComponent(backgroundColour, alpha)
-                binding.root.setBackgroundColor(backgroundColour)
+            binding.expandedTabButtons.addView(btn)
+        }
+        selectTab(0)
+    }
+
+    private fun selectTab(index: Int) {
+        val tabs = tabRepository.getTabs()
+        if (index < 0 || index >= tabs.size) return
+        currentTabIndex = index
+        binding.expandedWidgetFlipper.displayedChild = index
+
+        val selectedBg = monet.getMonetColors().accent1[600]?.toArgb()
+            ?: monet.getAccentColor(requireContext())
+        val selectedFg = monet.getMonetColors().accent1[50]?.toArgb() ?: Color.WHITE
+        val unselectedFg = monet.getBackgroundColor(requireContext()).getContrastColor()
+
+        for (i in 0 until binding.expandedTabButtons.childCount) {
+            val btn = binding.expandedTabButtons.getChildAt(i) as? MaterialButton ?: continue
+            if (i == index) {
+                btn.backgroundTintList = ColorStateList.valueOf(selectedBg)
+                btn.setTextColor(selectedFg)
+            } else {
+                btn.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+                btn.setTextColor(unselectedFg)
             }
         }
+
+        if (!loadedTabIndices.contains(index)) {
+            loadedTabIndices.add(index)
+            loadWidgetForTab(index, tabs[index].appWidgetId)
+        }
     }
+
+    private fun loadWidgetForTab(tabIndex: Int, appWidgetId: Int) {
+        val container = binding.expandedWidgetFlipper.getChildAt(tabIndex) as? FrameLayout ?: return
+        val state = viewModel.state.value as? State.Loaded ?: return
+        val widgetItem = state.items.filterIsInstance<Item.Widget>()
+            .firstOrNull { it.appWidgetId == appWidgetId } ?: return
+
+        val availableWidth = binding.expandedWidgetFlipper.measuredWidth
+            .takeIf { it > 0 } ?: resources.displayMetrics.widthPixels
+
+        val hostView = expandedRepository.createHost(requireContext(), availableWidth, widgetItem, sessionId, this)
+        container.removeAllViews()
+        container.addView(hostView, FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+        ))
+    }
+
+    // ── State ─────────────────────────────────────────────────────────────
 
     private fun setupState() {
         handleState(viewModel.state.value)
-        whenResumed {
-            viewModel.state.collect {
-                handleState(it)
-            }
-        }
+        whenResumed { viewModel.state.collect { handleState(it) } }
     }
 
     private fun handleState(state: State) {
-        when(state){
-            is State.Loading -> {
-                binding.expandedLoading.isVisible = true
-                binding.expandedRecyclerView.isVisible = false
-                binding.expandedUnlockContainer.isVisible = false
-                binding.expandedDisabled.isVisible = false
-                binding.expandedPermission.isVisible = false
-            }
-            is State.Disabled -> {
-                binding.expandedLoading.isVisible = false
-                binding.expandedRecyclerView.isVisible = false
-                binding.expandedUnlockContainer.isVisible = false
-                binding.expandedDisabled.isVisible = true
-                binding.expandedPermission.isVisible = false
-            }
-            is State.PermissionRequired -> {
-                binding.expandedLoading.isVisible = false
-                binding.expandedRecyclerView.isVisible = false
-                binding.expandedUnlockContainer.isVisible = false
-                binding.expandedDisabled.isVisible = false
-                binding.expandedPermission.isVisible = true
-            }
-            is State.Loaded -> {
-                multiColumnEnabled = state.multiColumnEnabled
-                binding.expandedLoading.isVisible = false
-                binding.expandedRecyclerView.isVisible = true
-                binding.expandedUnlockContainer.isVisible =
-                    state.isLocked && !isOverlay && !isMinusOne
-                binding.expandedDisabled.isVisible = false
-                binding.expandedPermission.isVisible = false
-                setStatusBarLight(state.lightStatusIcons)
-                adapter.submitList(state.items) {
-                    try {
-                        whenCreated {
-                            adapterUpdateBus.emit(System.currentTimeMillis())
-                        }
-                    }catch (e: IllegalStateException) {
-                        //Overlay has been killed
-                    }
+        val isLoaded = state is State.Loaded
+        binding.expandedLoading.isVisible = state is State.Loading
+        binding.expandedHeaderPill.isVisible = isLoaded
+        binding.expandedTabNavigation.isVisible = isLoaded
+        binding.expandedDisabled.isVisible = state is State.Disabled
+        binding.expandedPermission.isVisible = state is State.PermissionRequired
+        if (state is State.Loaded) {
+            binding.expandedUnlockContainer.isVisible = state.isLocked && !isOverlay && !isMinusOne
+            setStatusBarLight(state.lightStatusIcons)
+            updateHeaderTarget(state.items)
+            updateWeatherCookie(state.items)
+            // Retry widget load for current tab if container still empty
+            val tabs = tabRepository.getTabs()
+            if (tabs.isNotEmpty()) {
+                val container = binding.expandedWidgetFlipper.getChildAt(currentTabIndex) as? FrameLayout
+                if (container != null && container.childCount == 0) {
+                    loadedTabIndices.remove(currentTabIndex)
+                    loadWidgetForTab(currentTabIndex, tabs[currentTabIndex].appWidgetId)
                 }
             }
+        } else {
+            binding.expandedUnlockContainer.isVisible = false
         }
+    }
+
+    private fun updateHeaderTarget(items: List<Item>) {
+        val primary = items.filterIsInstance<Item.Target>()
+            .firstOrNull { it.target.featureType != FEATURE_WEATHER } ?: return
+        val existing = binding.expandedHeaderTarget.getChildAt(0)
+        if (existing?.tag == primary.target.smartspaceTargetId) return
+        binding.expandedHeaderTarget.removeAllViews()
+        val tintColour = if (isDark) Color.WHITE else Color.BLACK
+        val sv = SmartspacerView(requireContext()).apply { tag = primary.target.smartspaceTargetId }
+        sv.setTarget(primary.target, this, tintColour, primary.applyShadow)
+        binding.expandedHeaderTarget.addView(sv, FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        ))
+    }
+
+    private fun updateWeatherCookie(items: List<Item>) {
+        val weather = items.filterIsInstance<Item.Target>()
+            .firstOrNull { it.target.featureType == FEATURE_WEATHER }
+        if (weather == null) { binding.expandedHeaderWeather.isVisible = false; return }
+        val action = weather.target.headerAction
+        val icon = action?.icon
+        if (icon == null) { binding.expandedHeaderWeather.isVisible = false; return }
+        try {
+            binding.expandedHeaderWeatherIcon.setImageIcon(icon)
+            binding.expandedHeaderWeather.isVisible = true
+        } catch (e: Exception) {
+            binding.expandedHeaderWeather.isVisible = false
+            return
+        }
+        val temp = action.subtitle?.toString()
+        binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
+        binding.expandedHeaderWeatherTemp.text = temp ?: ""
     }
 
     private fun setStatusBarLight(enabled: Boolean) {
@@ -395,532 +416,246 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
             .isAppearanceLightStatusBars = enabled
     }
 
-    private fun setupUnlock() = with(binding.expandedUnlock) {
-        viewLifecycleOwner.whenResumed {
-            onClicked().collect {
-                unlockAndLaunch(null)
-            }
+    // ── Blur / background ─────────────────────────────────────────────────
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+        if (!isMinusOne) setBlurEnabled(true)
+    }
+
+    override fun onPause() {
+        if (!isMinusOne) setBlurEnabled(false)
+        super.onPause()
+        viewModel.onPause()
+    }
+
+    private fun setBlurEnabled(enabled: Boolean) {
+        if (isOverlay) return
+        when (settingsRepository.expandedBackground.getSync()) {
+            ExpandedBackground.BLUR ->
+                blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
+            ExpandedBackground.SCRIM ->
+                binding.root.setBackgroundColor(
+                    ColorUtils.setAlphaComponent(monet.getBackgroundColor(requireContext()), if (enabled) 128 else 0)
+                )
+            ExpandedBackground.SOLID ->
+                binding.root.setBackgroundColor(
+                    ColorUtils.setAlphaComponent(backgroundColour, if (enabled) 255 else 0)
+                )
         }
+    }
+
+    // ── Keyguard ──────────────────────────────────────────────────────────
+
+    private fun setupUnlock() = viewLifecycleOwner.whenResumed {
+        binding.expandedUnlock.onClicked().collect { unlockAndLaunch(null) }
     }
 
     private fun setupOverlaySwipe() = viewLifecycleOwner.whenResumed {
-        viewModel.overlayDrag.collect {
-            lastSwipe = System.currentTimeMillis()
-            popup?.dismiss()
-            popup = null
-        }
+        viewModel.overlayDrag.collect { lastSwipe = System.currentTimeMillis(); popup?.dismiss(); popup = null }
     }
 
-    private fun setupDisabledButton() = with(binding.expandedDisabledButton) {
-        viewLifecycleOwner.whenResumed {
-            onClicked().collect {
-                Intent(requireContext(), MainActivity::class.java).apply {
-                    action = Intent.ACTION_VIEW
-                    data = Uri.parse("smartspacer://expanded")
-                    putExtra(MainActivity.EXTRA_SKIP_SPLASH, true)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }.also { intent ->
-                    startActivity(intent)
-                }
-            }
+    private fun setupDisabledButton() = viewLifecycleOwner.whenResumed {
+        binding.expandedDisabledButton.onClicked().collect {
+            startActivity(Intent(requireContext(), MainActivity::class.java).apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse("smartspacer://expanded")
+                putExtra(MainActivity.EXTRA_SKIP_SPLASH, true)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            })
         }
     }
 
     private fun setupClose() = viewLifecycleOwner.whenResumed {
-        viewModel.exitBus.collect {
-            if(it && !isOverlay) {
-                requireActivity().finishAndRemoveTask()
-            }
-        }
+        viewModel.exitBus.collect { if (it && !isOverlay) requireActivity().finishAndRemoveTask() }
     }
 
-    private fun handleLaunchActionIfNeeded() = whenResumed {
-        val action = getAndClearOverlayAction()
-            ?: getAndClearOverlayTarget() ?: return@whenResumed
-        //Await an adapter update if needed
-        adapterUpdateBus.first {
-            adapter.currentList.isNotEmpty()
-        }
-        binding.expandedRecyclerView.awaitPost()
-        binding.expandedNestedScroll.scrollTo(0, action.scrollPosition)
-        when(action){
-            is OpenFromOverlayAction.ConfigureWidget -> {
-                onConfigureWidgetClicked(action.info, action.id, action.config)
-            }
-            is OpenFromOverlayAction.AddWidget -> {
-                onAddWidgetClicked()
-            }
-            is OpenFromOverlayAction.Rearrange -> {
-                viewModel.onRearrangeClicked()
-            }
-            is OpenFromOverlayAction.OpenTarget -> {
-                val itemPosition = adapter.currentList.indexOfFirst {
-                    it is Item.Target && it.target.smartspaceTargetId == action.id
-                }
-                if(itemPosition < 0) return@whenResumed
-                val itemView = binding.expandedRecyclerView
-                    .findViewHolderForAdapterPosition(itemPosition)?.itemView
-                    ?: return@whenResumed
-                val scrollTo = (itemView.top - topInset).coerceAtLeast(0)
-                binding.expandedNestedScroll.scrollTo(0, scrollTo)
-            }
-            is OpenFromOverlayAction.Options -> {
-                viewModel.onOptionsClicked(action.appWidgetId, action.canReconfigure)
-            }
-        }
-    }
-
-    override fun onSearchLensClicked(searchApp: SearchApp) {
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("google://lens")
-            component = ComponentName(
-                "com.google.android.googlequicksearchbox",
-                "com.google.android.apps.search.lens.LensExportedActivity"
-            )
-            putExtra("LensHomescreenShortcut", true)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        unlockAndLaunch(intent)
-    }
-
-    override fun onSearchMicClicked(searchApp: SearchApp) {
-        val block = {
-            startActivity(Intent(Intent.ACTION_VOICE_COMMAND).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            })
-        }
-        if(searchApp.requiresUnlock){
-            unlockAndInvoke(block)
-        }else{
-            block()
-        }
-    }
-
-    override fun onDoodleClicked(doodleImage: DoodleImage) {
-        unlockAndInvoke {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                data = Uri.parse(doodleImage.searchUrl ?: return@apply)
-            })
-        }
-    }
-
-    override fun onSearchBoxClicked(searchApp: SearchApp) {
-        unlockAndInvoke {
-            try {
-                startActivity(searchApp.launchIntent.apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
-            }catch (e: Exception) {
-                val fallback = requireContext().packageManager
-                    .getLaunchIntentForPackage(searchApp.packageName) ?: return@unlockAndInvoke
-                startActivity(fallback)
-            }
-        }
-    }
-
-    private fun unlockAndLaunch(intent: Intent?) {
-        unlockAndInvoke {
-            try {
-                startActivity(intent?.apply {
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                } ?: return@unlockAndInvoke)
-            }catch (e: Exception) {
-                Toast.makeText(
-                    requireContext(),
-                    SDKR.string.smartspace_long_press_popup_failed_to_launch,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+    private fun unlockAndLaunch(intent: Intent?) = unlockAndInvoke {
+        try {
+            startActivity(intent?.apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) } ?: return@unlockAndInvoke)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), SDKR.string.smartspace_long_press_popup_failed_to_launch, Toast.LENGTH_LONG).show()
         }
     }
 
     private fun unlockAndInvoke(block: () -> Unit) {
-        if(!isAdded) return
-        if(!keyguardManager.isKeyguardLocked){
-            block()
-            return
-        }
-        keyguardManager.requestDismissKeyguard(
-            requireActivity(),
-            object: KeyguardDismissCallback() {
-                override fun onDismissSucceeded() {
-                    super.onDismissSucceeded()
-                    block()
-                }
-            }
-        )
+        if (!isAdded) return
+        if (!keyguardManager.isKeyguardLocked) { block(); return }
+        keyguardManager.requestDismissKeyguard(requireActivity(), object : KeyguardDismissCallback() {
+            override fun onDismissSucceeded() { super.onDismissSucceeded(); block() }
+        })
     }
 
-    override fun onInteraction(target: SmartspaceTarget, actionId: String?) {
+    // ── SmartspaceTargetInteractionListener ───────────────────────────────
+
+    override fun onInteraction(target: SmartspaceTarget, actionId: String?) =
         viewModel.onTargetInteraction(target, actionId)
-    }
 
     override fun onLongPress(target: SmartspaceTarget): Boolean {
-        val canDismiss = target.canBeDismissed &&
-                target.featureType != SmartspaceTarget.FEATURE_WEATHER
-        val aboutIntent = target.baseAction?.extras
-            ?.getParcelableCompat(KEY_EXTRA_ABOUT_INTENT, Intent::class.java)
-            ?.takeIf { !it.shouldExcludeFromSmartspacer() }
-        val feedbackIntent = target.baseAction?.extras
-            ?.getParcelableCompat(KEY_EXTRA_FEEDBACK_INTENT, Intent::class.java)
-            ?.takeIf { !it.shouldExcludeFromSmartspacer() }
-        if(!canDismiss && aboutIntent == null && feedbackIntent == null) return false
-        val position = adapter.currentList.indexOfFirst { item ->
-            item is Item.Target && item.target == target
-        }
-        if(position == -1) return false
-        val holder = binding.expandedRecyclerView.findViewHolderForAdapterPosition(position)
-            ?: return false
-        return showPopup(holder.itemView, target, canDismiss, aboutIntent, feedbackIntent)
+        val canDismiss = target.canBeDismissed && target.featureType != SmartspaceTarget.FEATURE_WEATHER
+        val aboutIntent = target.baseAction?.extras?.getParcelableCompat(KEY_EXTRA_ABOUT_INTENT, Intent::class.java)?.takeIf { !it.shouldExcludeFromSmartspacer() }
+        val feedbackIntent = target.baseAction?.extras?.getParcelableCompat(KEY_EXTRA_FEEDBACK_INTENT, Intent::class.java)?.takeIf { !it.shouldExcludeFromSmartspacer() }
+        if (!canDismiss && aboutIntent == null && feedbackIntent == null) return false
+        return showTargetPopup(binding.expandedHeaderTarget, target, canDismiss, aboutIntent, feedbackIntent)
     }
 
-    override fun launch(unlock: Boolean, block: () -> Unit) {
-        if(unlock){
-            unlockAndInvoke(block)
-        }else block()
+    override fun launch(unlock: Boolean, block: () -> Unit) = if (unlock) unlockAndInvoke(block) else block()
+    override fun shouldTrampolineLaunches() = isOverlay
+    override fun trampolineLaunch(view: View, pendingIntent: PendingIntent) =
+        OverlayTrampolineActivity.trampoline(view, requireContext(), pendingIntent)
+
+    override fun onSearchLensClicked(searchApp: SearchApp) = unlockAndLaunch(
+        Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse("google://lens")
+            component = ComponentName("com.google.android.googlequicksearchbox", "com.google.android.apps.search.lens.LensExportedActivity")
+            putExtra("LensHomescreenShortcut", true)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    )
+
+    override fun onSearchMicClicked(searchApp: SearchApp) {
+        val block = { startActivity(Intent(Intent.ACTION_VOICE_COMMAND).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }) }
+        if (searchApp.requiresUnlock) unlockAndInvoke(block) else block()
     }
 
-    override fun onConfigureWidgetClicked(
-        info: AppWidgetProviderInfo,
-        id: String?,
-        config: CustomExpandedAppWidgetConfig?
-    ) {
-        if(isOverlay || isMinusOne){
-            launchOverlayAction(OpenFromOverlayAction.ConfigureWidget(info, id, config, getScroll()))
-        }else{
-            unlockAndInvoke {
-                viewModel.onConfigureWidgetClicked(
-                    widgetBindResult,
-                    widgetConfigureResult,
-                    info,
-                    id,
-                    config
-                )
-            }
-        }
+    override fun onDoodleClicked(doodleImage: DoodleImage) = unlockAndInvoke {
+        startActivity(Intent(Intent.ACTION_VIEW).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); data = Uri.parse(doodleImage.searchUrl ?: return@apply) })
+    }
+
+    override fun onSearchBoxClicked(searchApp: SearchApp) = unlockAndInvoke {
+        try { startActivity(searchApp.launchIntent.apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }) }
+        catch (e: Exception) { requireContext().packageManager.getLaunchIntentForPackage(searchApp.packageName)?.let { startActivity(it) } }
+    }
+
+    override fun onConfigureWidgetClicked(info: AppWidgetProviderInfo, id: String?, config: CustomExpandedAppWidgetConfig?) {
+        if (isOverlay || isMinusOne) launchOverlayAction(OpenFromOverlayAction.ConfigureWidget(info, id, config, 0))
+        else unlockAndInvoke { viewModel.onConfigureWidgetClicked(widgetBindResult, widgetConfigureResult, info, id, config) }
     }
 
     override fun onAddWidgetClicked() {
-        if(isOverlay || isMinusOne){
-            launchOverlayAction(OpenFromOverlayAction.AddWidget(getScroll()))
-        }else{
-            unlockAndInvoke {
-                viewModel.onAddWidgetClicked()
-            }
-        }
+        if (isOverlay || isMinusOne) launchOverlayAction(OpenFromOverlayAction.AddWidget(0))
+        else unlockAndInvoke { viewModel.onAddWidgetClicked() }
     }
 
     override fun onShortcutClicked(shortcut: Shortcut) {
-        if(shortcut.pendingIntent?.isActivityCompat() == true){
-            viewModel.onShortcutClicked(requireContext(), shortcut)
-        }else{
-            unlockAndInvoke {
-                viewModel.onShortcutClicked(requireContext(), shortcut)
-            }
-        }
+        if (shortcut.pendingIntent?.isActivityCompat() == true) viewModel.onShortcutClicked(requireContext(), shortcut)
+        else unlockAndInvoke { viewModel.onShortcutClicked(requireContext(), shortcut) }
     }
 
-    override fun onAppShortcutClicked(appShortcut: AppShortcut) {
-        unlockAndInvoke {
-            viewModel.onAppShortcutClicked(appShortcut)
-        }
-    }
+    override fun onAppShortcutClicked(appShortcut: AppShortcut) =
+        unlockAndInvoke { viewModel.onAppShortcutClicked(appShortcut) }
 
-    override fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?): Boolean {
-        if(appWidgetId == null) return false
-        val view = viewHolder.itemView
-        lastSwipe?.let {
-            if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return false //Likely a swipe
-            }
+    override fun onWidgetLongClicked(viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, appWidgetId: Int?): Boolean {
+        if (appWidgetId == null) return false
+        lastSwipe?.let { if (System.currentTimeMillis() - it < MIN_SWIPE_DELAY) return false }
+        val pv = SmartspaceExpandedLongPressPopupWidgetBinding.inflate(layoutInflater)
+        val bg = requireContext().getAttrColor(android.R.attr.colorBackground)
+        val fg = bg.getContrastColor()
+        buildBalloon(pv.root).also { b ->
+            b.showAlignBottom(binding.expandedHeaderPill)
+            pv.expandedLongPressPopupReset.setTextColor(fg)
+            pv.expandedLongPressPopupReset.iconTint = ColorStateList.valueOf(fg)
+            pv.expandedLongPressPopupReset.setOnClickListener { b.dismiss(); unlockAndInvoke { viewModel.onAppWidgetReset(appWidgetId) } }
+            popup = b
         }
-        val popupView = SmartspaceExpandedLongPressPopupWidgetBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.expandedLongPressPopupReset.setTextColor(textColour)
-        popupView.expandedLongPressPopupReset.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupReset.setOnClickListener {
-            popup.dismiss()
-            unlockAndInvoke {
-                viewModel.onAppWidgetReset(appWidgetId)
-            }
-        }
-        this.popup = popup
         return true
     }
 
-    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
+    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) =
         viewModel.onDeleteCustomWidget(widget.appWidgetId ?: return)
-    }
-
-    private fun showPopup(
-        view: View,
-        target: SmartspaceTarget,
-        canDismiss: Boolean,
-        aboutIntent: Intent?,
-        feedbackIntent: Intent?
-    ): Boolean {
-        lastSwipe?.let {
-            if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return false //Likely a swipe
-            }
-        }
-        val popupView = SmartspaceExpandedLongPressPopupBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.smartspaceLongPressPopupAbout.isVisible = aboutIntent != null
-        popupView.smartspaceLongPressPopupAbout.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupAbout.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupAbout.setOnClickListener {
-            popup.dismiss()
-            unlockAndLaunch(aboutIntent)
-        }
-        popupView.smartspaceLongPressPopupFeedback.isVisible = feedbackIntent != null
-        popupView.smartspaceLongPressPopupFeedback.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupFeedback.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupFeedback.setOnClickListener {
-            popup.dismiss()
-            unlockAndLaunch(feedbackIntent)
-        }
-        popupView.smartspaceLongPressPopupDismiss.isVisible = canDismiss
-        popupView.smartspaceLongPressPopupDismiss.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupDismiss.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupDismiss.setOnClickListener {
-            popup.dismiss()
-            viewModel.onTargetDismiss(target)
-        }
-        this.popup = popup
-        return true
-    }
 
     override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
-        lastSwipe?.let {
-            if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return false //Likely a swipe
+        lastSwipe?.let { if (System.currentTimeMillis() - it < MIN_SWIPE_DELAY) return false }
+        val pv = SmartspaceExpandedLongPressPopupCustomWidgetBinding.inflate(layoutInflater)
+        val bg = requireContext().getAttrColor(android.R.attr.colorBackground)
+        val fg = bg.getContrastColor()
+        buildBalloon(pv.root).also { b ->
+            b.showAlignBottom(view)
+            listOf(pv.expandedLongPressPopupDelete, pv.expandedLongPressPopupOptions, pv.expandedLongPressPopupRearrange).forEach {
+                it.setTextColor(fg); it.iconTint = ColorStateList.valueOf(fg)
             }
-        }
-        val popupView = SmartspaceExpandedLongPressPopupCustomWidgetBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.expandedLongPressPopupDelete.setTextColor(textColour)
-        popupView.expandedLongPressPopupDelete.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupDelete.setOnClickListener {
-            popup.dismiss()
-            unlockAndInvoke {
-                viewModel.onDeleteCustomWidget(
-                    widget.appWidgetId ?: return@unlockAndInvoke
-                )
+            pv.expandedLongPressPopupDelete.setOnClickListener { b.dismiss(); unlockAndInvoke { viewModel.onDeleteCustomWidget(widget.appWidgetId ?: return@unlockAndInvoke) } }
+            pv.expandedLongPressPopupOptions.setOnClickListener {
+                b.dismiss()
+                val id = widget.appWidgetId ?: return@setOnClickListener
+                val canRec = widget.provider.canReconfigure()
+                if (isOverlay) launchOverlayAction(OpenFromOverlayAction.Options(0, id, canRec))
+                else unlockAndInvoke { viewModel.onOptionsClicked(id, canRec) }
             }
-        }
-        popupView.expandedLongPressPopupOptions.setTextColor(textColour)
-        popupView.expandedLongPressPopupOptions.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupOptions.setOnClickListener {
-            popup.dismiss()
-            val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
-            val canReconfigure = widget.provider.canReconfigure()
-            if(isOverlay){
-                launchOverlayAction(
-                    OpenFromOverlayAction.Options(getScroll(), appWidgetId, canReconfigure)
-                )
-            }else{
-                unlockAndInvoke {
-                    viewModel.onOptionsClicked(appWidgetId, canReconfigure)
-                }
+            pv.expandedLongPressPopupRearrange.setOnClickListener {
+                b.dismiss()
+                if (isOverlay) launchOverlayAction(OpenFromOverlayAction.Rearrange(widget.appWidgetId ?: return@setOnClickListener))
+                else unlockAndInvoke { viewModel.onRearrangeClicked() }
             }
+            popup = b
         }
-        popupView.expandedLongPressPopupRearrange.setTextColor(textColour)
-        popupView.expandedLongPressPopupRearrange.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupRearrange.setOnClickListener {
-            popup.dismiss()
-            if(isOverlay){
-                val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
-                launchOverlayAction(OpenFromOverlayAction.Rearrange(appWidgetId))
-            }else {
-                unlockAndInvoke {
-                    viewModel.onRearrangeClicked()
-                }
-            }
-        }
-        this.popup = popup
         return true
     }
 
-    override fun onScrollChange(
-        view: View?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int
-    ) {
-        lastSwipe = System.currentTimeMillis()
-        popup?.dismiss()
-        popup = null
-    }
+    // ── Target popup ──────────────────────────────────────────────────────
 
-    override fun shouldTrampolineLaunches(): Boolean = isOverlay
-
-    override fun trampolineLaunch(view: View, pendingIntent: PendingIntent) {
-        OverlayTrampolineActivity.trampoline(view, requireContext(), pendingIntent)
-    }
-
-    private fun getAndClearOverlayAction(): OpenFromOverlayAction? {
-        return requireActivity().intent.run {
-            getParcelableExtraCompat(EXTRA_OPEN_ACTION, OpenFromOverlayAction::class.java).also {
-                removeExtra(EXTRA_OPEN_ACTION)
-            }
+    private fun showTargetPopup(anchor: View, target: SmartspaceTarget, canDismiss: Boolean, aboutIntent: Intent?, feedbackIntent: Intent?): Boolean {
+        lastSwipe?.let { if (System.currentTimeMillis() - it < MIN_SWIPE_DELAY) return false }
+        val pv = SmartspaceExpandedLongPressPopupBinding.inflate(layoutInflater)
+        val bg = requireContext().getAttrColor(android.R.attr.colorBackground)
+        val fg = bg.getContrastColor()
+        buildBalloon(pv.root).also { b ->
+            b.showAlignBottom(anchor)
+            pv.smartspaceLongPressPopupAbout.isVisible = aboutIntent != null
+            pv.smartspaceLongPressPopupAbout.setTextColor(fg); pv.smartspaceLongPressPopupAbout.iconTint = ColorStateList.valueOf(fg)
+            pv.smartspaceLongPressPopupAbout.setOnClickListener { b.dismiss(); unlockAndLaunch(aboutIntent) }
+            pv.smartspaceLongPressPopupFeedback.isVisible = feedbackIntent != null
+            pv.smartspaceLongPressPopupFeedback.setTextColor(fg); pv.smartspaceLongPressPopupFeedback.iconTint = ColorStateList.valueOf(fg)
+            pv.smartspaceLongPressPopupFeedback.setOnClickListener { b.dismiss(); unlockAndLaunch(feedbackIntent) }
+            pv.smartspaceLongPressPopupDismiss.isVisible = canDismiss
+            pv.smartspaceLongPressPopupDismiss.setTextColor(fg); pv.smartspaceLongPressPopupDismiss.iconTint = ColorStateList.valueOf(fg)
+            pv.smartspaceLongPressPopupDismiss.setOnClickListener { b.dismiss(); viewModel.onTargetDismiss(target) }
+            popup = b
         }
+        return true
     }
 
-    private fun getAndClearOverlayTarget(): OpenFromOverlayAction.OpenTarget? {
-        return requireActivity().intent.run {
-            getStringExtra(EXTRA_OPEN_TARGET).also {
-                removeExtra(EXTRA_OPEN_TARGET)
-            }?.let {
-                OpenFromOverlayAction.OpenTarget(it)
-            }
-        }
+    private fun buildBalloon(layout: View): Balloon {
+        val bg = requireContext().getAttrColor(android.R.attr.colorBackground)
+        return Balloon.Builder(requireContext())
+            .setLayout(layout).setHeight(BalloonSizeSpec.WRAP)
+            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
+            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+            .setBackgroundColor(bg).setArrowColor(bg)
+            .setArrowSize(10).setArrowPosition(0.5f).setCornerRadius(16f)
+            .setBalloonAnimation(BalloonAnimation.FADE).build()
     }
+
+    // ── Overlay ───────────────────────────────────────────────────────────
 
     private fun launchOverlayAction(action: OpenFromOverlayAction) {
-        val intent = ExpandedActivity.createExportedOverlayIntent(requireContext()).apply {
+        unlockAndLaunch(ExpandedActivity.createExportedOverlayIntent(requireContext()).apply {
             putExtra(EXTRA_OPEN_ACTION, action)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        }
-        unlockAndLaunch(intent)
+        })
     }
 
-    private fun getScroll() = with(binding.expandedNestedScroll) {
-        scrollY
-    }
+    private fun AppWidgetProviderInfo.canReconfigure() =
+        configure != null && widgetFeatures and WIDGET_FEATURE_RECONFIGURABLE != 0
 
-    private fun AppWidgetProviderInfo.canReconfigure(): Boolean {
-        return configure != null && widgetFeatures and WIDGET_FEATURE_RECONFIGURABLE != 0
-    }
+    // ── Parcelable overlay actions ─────────────────────────────────────────
 
-    sealed class OpenFromOverlayAction(open val scrollPosition: Int): Parcelable {
-        @Parcelize
-        data class OpenTarget(val id: String): OpenFromOverlayAction(0)
-        @Parcelize
-        data class ConfigureWidget(
+    sealed class OpenFromOverlayAction(open val scrollPosition: Int) : Parcelable {
+        @Parcelize data class OpenTarget(val id: String) : OpenFromOverlayAction(0)
+        @Parcelize data class ConfigureWidget(
             val info: AppWidgetProviderInfo,
             val id: String?,
             val config: CustomExpandedAppWidgetConfig?,
             override val scrollPosition: Int
-        ): OpenFromOverlayAction(scrollPosition)
-        @Parcelize
-        data class AddWidget(override val scrollPosition: Int):
-            OpenFromOverlayAction(scrollPosition)
-        @Parcelize
-        data class Rearrange(override val scrollPosition: Int):
-            OpenFromOverlayAction(scrollPosition)
-        @Parcelize
-        data class Options(
-            override val scrollPosition: Int, val appWidgetId: Int, val canReconfigure: Boolean
-        ): OpenFromOverlayAction(scrollPosition)
+        ) : OpenFromOverlayAction(scrollPosition)
+        @Parcelize data class AddWidget(override val scrollPosition: Int) : OpenFromOverlayAction(scrollPosition)
+        @Parcelize data class Rearrange(override val scrollPosition: Int) : OpenFromOverlayAction(scrollPosition)
+        @Parcelize data class Options(
+            override val scrollPosition: Int,
+            val appWidgetId: Int,
+            val canReconfigure: Boolean
+        ) : OpenFromOverlayAction(scrollPosition)
     }
-
-    private class PulseControlledItemAnimator: DefaultItemAnimator() {
-
-        override fun animateChange(
-            oldHolder: ViewHolder,
-            newHolder: ViewHolder,
-            fromX: Int,
-            fromY: Int,
-            toX: Int,
-            toY: Int
-        ): Boolean {
-            val isMove = fromX != toX || fromY != toY
-            if(!isMove && shouldOverride(oldHolder, newHolder)) {
-                dispatchChangeStarting(oldHolder, true)
-                dispatchChangeStarting(newHolder, false)
-                oldHolder.itemView.alpha = 0f
-                newHolder.itemView.alpha = 1f
-                dispatchChangeFinished(oldHolder, true)
-                dispatchChangeFinished(newHolder, false)
-                return true
-            }
-            return super.animateChange(oldHolder, newHolder, fromX, fromY, toX, toY)
-        }
-
-        private fun shouldOverride(oldHolder: ViewHolder, newHolder: ViewHolder): Boolean {
-            if(oldHolder !is BaseExpandedAdapter.ViewHolder.Target) return false
-            if(newHolder !is BaseExpandedAdapter.ViewHolder.Target) return false
-            return oldHolder.adapterPosition == newHolder.adapterPosition
-        }
-
-    }
-
-    private fun getAvailableWidth(): Int {
-        return binding.expandedRecyclerView.measuredWidth - 16.dp
-    }
-
-    private fun getSpanPercent(item: Item): Float {
-        var columnCount = requireContext().getWidgetColumnCount(getAvailableWidth())
-        if(!multiColumnEnabled) {
-            //Prevent widgets being displayed alongside each other when multi column is disabled
-            columnCount = columnCount.coerceAtMost(WIDGET_MIN_COLUMNS)
-        }
-        val targetBasedColumns = if(multiColumnEnabled) {
-            (columnCount / WIDGET_MIN_COLUMNS.toFloat()).coerceAtLeast(1f)
-        }else 1f
-        val targetBasedWidth = (1f / targetBasedColumns)
-        return when(item) {
-            is Item.StatusBarSpace -> 1f
-            is Item.Search -> 1f
-            is Item.Target -> targetBasedWidth
-            is Item.Complications -> 1f
-            is Item.Widget -> {
-                return when {
-                    item.fullWidth -> targetBasedWidth
-                    item.spanX != null -> {
-                        item.spanX / columnCount.toFloat()
-                    }
-                    else -> targetBasedWidth //Unlikely to expect being full width when wide
-                }
-            }
-            is Item.RemovedWidget -> targetBasedWidth
-            is Item.RemoteViews -> targetBasedWidth //Unlikely to expect being full width when wide
-            is Item.Shortcuts -> 1f
-            is Item.Footer -> 1f
-            is Item.Spacer -> 1f //Always full width to force new rows
-        }
-    }
-
 }

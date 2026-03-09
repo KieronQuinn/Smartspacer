@@ -34,7 +34,7 @@
         android:text="@string/expanded_widget_configure"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
         android:textColor="?android:textColorPrimary"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="?attr/colorSurfaceContainer"
         app:cornerRadius="@dimen/margin_16"
         app:layout_constraintTop_toTopOf="parent" />
 

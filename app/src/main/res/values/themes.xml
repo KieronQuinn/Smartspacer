@@ -61,23 +61,11 @@
         <item name="android:overScrollMode">@integer/overscroll_enabled</item>
     </style>
 
-    <style name="Theme.Smartspacer.Wallpaper.Light" parent="Theme.Smartspacer.Wallpaper">
-        <item name="android:textColorPrimary">@color/expanded_text_color_light</item>
-        <item name="materialThemeOverlay">@style/Theme.Smartspacer.Wallpaper.Light.Overlay</item>
-    </style>
+    <!-- Light/Dark wallpaper theme variants — text colors now come from MD3 dynamic color
+         (?attr/colorOnSurface) rather than being forced to white/black. -->
+    <style name="Theme.Smartspacer.Wallpaper.Light" parent="Theme.Smartspacer.Wallpaper" />
 
-    <style name="Theme.Smartspacer.Wallpaper.Light.Overlay" parent="Theme.Smartspacer.Wallpaper">
-        <item name="android:textColorPrimary">@color/expanded_text_color_light</item>
-    </style>
-
-    <style name="Theme.Smartspacer.Wallpaper.Dark" parent="Theme.Smartspacer.Wallpaper">
-        <item name="android:textColorPrimary">@color/expanded_text_color_dark</item>
-        <item name="materialThemeOverlay">@style/Theme.Smartspacer.Wallpaper.Dark.Overlay</item>
-    </style>
-
-    <style name="Theme.Smartspacer.Wallpaper.Dark.Overlay" parent="Theme.Smartspacer.Wallpaper">
-        <item name="android:textColorPrimary">@color/expanded_text_color_dark</item>
-    </style>
+    <style name="Theme.Smartspacer.Wallpaper.Dark" parent="Theme.Smartspacer.Wallpaper" />
 
     <style name="AppTheme.ThirdPartyLicences" parent="Theme.MaterialComponents.DayNight">
         <item name="actionBarStyle">@style/ThirdPartyLicencesToolbarTheme</item>

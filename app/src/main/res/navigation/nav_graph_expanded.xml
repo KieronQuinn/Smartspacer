@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_expandedFragment_to_expandedWidgetOptionsBottomSheetFragment"
             app:destination="@id/expandedWidgetOptionsBottomSheetFragment" />
+        <action
+            android:id="@+id/action_expandedFragment_to_expandedTabSettingsFragment"
+            app:destination="@id/expandedTabSettingsFragment" />
     </fragment>
     <dialog
         android:id="@+id/expandedAddWidgetBottomSheetFragment"
@@ -30,6 +33,12 @@
         android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.rearrange.ExpandedRearrangeFragment"
         android:label=" "
         tools:layout="@layout/fragment_expanded_rearrange"/>
+    <fragment
+        android:id="@+id/expandedTabSettingsFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.tabs.ExpandedTabSettingsFragment"
+        android:label="@string/expanded_tab_settings_title"
+        tools:layout="@layout/fragment_expanded_tab_settings" />
+
     <dialog
         android:id="@+id/expandedWidgetOptionsBottomSheetFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.options.ExpandedWidgetOptionsBottomSheetFragment"

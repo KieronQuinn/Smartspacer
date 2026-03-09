@@ -1243,4 +1243,15 @@
     <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
     <string name="others_widget_recommendation_category_label">Suggested for you</string>
 
+    <!-- Expanded view tab bar -->
+    <string name="expanded_tabs_empty">No widget tabs configured.\nTap ⋮ to set up your first tab.</string>
+    <string name="expanded_tab_settings_title">Widget Tabs</string>
+    <string name="expanded_tab_settings_add">Add Tab</string>
+    <string name="expanded_tab_settings_label_hint">Tab label</string>
+    <string name="expanded_tab_settings_pick_widget">Pick widget</string>
+    <string name="expanded_tab_settings_widget_assigned">Widget #%1$d</string>
+    <string name="expanded_tab_settings_no_widgets">No widgets added yet. Add widgets through the main expanded view first.</string>
+    <string name="expanded_tab_settings_delete">Delete</string>
+    <string name="expanded_tab_settings_saved">Tab configuration saved</string>
+
 </resources>

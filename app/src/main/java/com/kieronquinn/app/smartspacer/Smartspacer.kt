@@ -61,6 +61,8 @@ import com.kieronquinn.app.smartspacer.repositories.DownloadRepository
 import com.kieronquinn.app.smartspacer.repositories.DownloadRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
+import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.FlashlightRepository
 import com.kieronquinn.app.smartspacer.repositories.FlashlightRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.GeofenceRepository
@@ -348,6 +350,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single { SmartspaceManager(get()) }
         single<AppWidgetRepository>(createdAtStart = true) { AppWidgetRepositoryImpl(get(), get(), get(), get(), get()) }
         single<ExpandedRepository> { ExpandedRepositoryImpl(get(), get(), get(), get(), get()) }
+        single<ExpandedTabRepository> { ExpandedTabRepositoryImpl(get(), get()) }
         single<SmartspacerSettingsRepository> { SmartspacerSettingsRepositoryImpl(get()) }
         single<ShizukuServiceRepository> { ShizukuServiceRepositoryImpl(get(), get()) }
         single<SystemSmartspaceRepository>(createdAtStart = true) { SystemSmartspaceRepositoryImpl(get(), get(), get(), get(), get()) }
