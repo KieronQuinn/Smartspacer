@@ -100,7 +100,8 @@ class ExpandedTabSettingsFragment : Fragment() {
     private fun onPickWidget(position: Int) {
         // Collect already-bound custom widgets from ExpandedRepository, show a simple
         // AlertDialog picker so the user can assign one to this tab.
-        collectBoundWidgets { widgets ->
+        collectBoundWidgets { allWidgets ->
+            val widgets = allWidgets.filter { it.appWidgetId != null }
             if (widgets.isEmpty()) {
                 Toast.makeText(
                     requireContext(),
@@ -117,7 +118,7 @@ class ExpandedTabSettingsFragment : Fragment() {
                 .setTitle(R.string.expanded_tab_settings_pick_widget)
                 .setItems(labels) { _, which ->
                     val chosen = widgets[which]
-                    val updated = currentTabs[position].copy(appWidgetId = chosen.appWidgetId)
+                    val updated = currentTabs[position].copy(appWidgetId = chosen.appWidgetId!!)
                     currentTabs[position] = updated
                     adapter.notifyItemChanged(position)
                 }

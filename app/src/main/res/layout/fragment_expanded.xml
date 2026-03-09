@@ -252,7 +252,7 @@
             app:icon="@drawable/ic_expanded_mode"
             app:iconTint="?attr/colorOnSecondaryContainer"
             app:backgroundTint="?attr/colorSecondaryContainer"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.M3.Corner.Medium" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
     </LinearLayout>
 
