@@ -10,6 +10,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.net.Uri
@@ -61,6 +62,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
 import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
@@ -86,7 +88,7 @@ import com.kieronquinn.app.smartspacer.sdk.client.R as SDKR
 
 class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     FragmentExpandedBinding::inflate
-), SmartspaceTargetInteractionListener, ExpandedAdapterListener {
+), SmartspaceTargetInteractionListener, ExpandedAdapterListener, ProvidesBack {
 
     companion object {
         private const val MIN_SWIPE_DELAY = 250L
@@ -216,15 +218,25 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         binding.expandedDisabledButton.applyMonet()
         binding.expandedPermission.backgroundTintList =
             ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
+        // Set pill outline to a high-contrast color so it's visible in both light and dark mode.
+        val isSystemDark = (resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        val strokeColor = if (isSystemDark)
+            ColorUtils.setAlphaComponent(Color.WHITE, 120)
+        else
+            ColorUtils.setAlphaComponent(Color.BLACK, 90)
+        binding.expandedHeaderPill.strokeColor = strokeColor
     }
 
     private fun setupInsets() {
         binding.expandedUnlockContainer.onApplyInsets { view, insets ->
             view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
         }
-        binding.root.onApplyInsets { _, insets ->
+        binding.root.onApplyInsets { view, insets ->
             topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             viewModel.setTopInset(topInset)
+            // Push all content below the status bar so the glance pill is never hidden behind it.
+            view.updatePadding(top = topInset)
         }
     }
 
@@ -385,7 +397,11 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         val existing = binding.expandedHeaderTarget.getChildAt(0)
         if (existing?.tag == primary.target.smartspaceTargetId) return
         binding.expandedHeaderTarget.removeAllViews()
-        val tintColour = if (isDark) Color.WHITE else Color.BLACK
+        // Use system dark mode to determine text tint so it contrasts with the opaque
+        // Monet background rather than the wallpaper color.
+        val isSystemDark = (resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        val tintColour = if (isSystemDark) Color.WHITE else Color.BLACK
         val sv = SmartspacerView(requireContext()).apply { tag = primary.target.smartspaceTargetId }
         sv.setTarget(primary.target, this, tintColour, primary.applyShadow)
         binding.expandedHeaderTarget.addView(sv, FrameLayout.LayoutParams(
@@ -397,7 +413,8 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         val weather = items.filterIsInstance<Item.Target>()
             .firstOrNull { it.target.featureType == FEATURE_WEATHER }
         if (weather == null) { binding.expandedHeaderWeather.isVisible = false; return }
-        val action = weather.target.headerAction
+        // headerAction holds the weather icon/temp; fall back to baseAction if absent.
+        val action = weather.target.headerAction ?: weather.target.baseAction
         val icon = action?.icon
         if (icon == null) { binding.expandedHeaderWeather.isVisible = false; return }
         try {
@@ -407,7 +424,9 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             binding.expandedHeaderWeather.isVisible = false
             return
         }
-        val temp = action.subtitle?.toString()
+        // Temperature may live in subtitle or title.
+        val temp = action.subtitle?.toString()?.takeIf { it.isNotBlank() }
+            ?: action.title.takeIf { it.isNotBlank() }
         binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
         binding.expandedHeaderWeatherTemp.text = temp ?: ""
     }
@@ -436,10 +455,15 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         when (settingsRepository.expandedBackground.getSync()) {
             ExpandedBackground.BLUR ->
                 blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
-            ExpandedBackground.SCRIM ->
+            ExpandedBackground.SCRIM -> {
+                // For standalone expanded view, keep the background fully opaque so it doesn't
+                // bleed through to the wallpaper. Only use the semi-transparent scrim for
+                // minus-one (Google Discover-style) panels where seeing the wallpaper is desired.
+                val alpha = if (enabled) (if (isMinusOne) 128 else 255) else 0
                 binding.root.setBackgroundColor(
-                    ColorUtils.setAlphaComponent(monet.getBackgroundColor(requireContext()), if (enabled) 128 else 0)
+                    ColorUtils.setAlphaComponent(monet.getBackgroundColor(requireContext()), alpha)
                 )
+            }
             ExpandedBackground.SOLID ->
                 binding.root.setBackgroundColor(
                     ColorUtils.setAlphaComponent(backgroundColour, if (enabled) 255 else 0)
@@ -469,7 +493,27 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupClose() = viewLifecycleOwner.whenResumed {
-        viewModel.exitBus.collect { if (it && !isOverlay) requireActivity().finishAndRemoveTask() }
+        viewModel.exitBus.collect {
+            if (it && !isOverlay) finishExpanded()
+        }
+    }
+
+    /** Finishes the expanded activity without a slide-away animation to avoid the translucent
+     *  window "overlay on top of home" visual glitch. */
+    private fun finishExpanded() {
+        requireActivity().overridePendingTransition(0, 0)
+        requireActivity().finishAndRemoveTask()
+    }
+
+    // ── ProvidesBack ──────────────────────────────────────────────────────
+
+    /** Always intercept back so we control exactly how the activity is dismissed. */
+    override fun interceptBack() = !isOverlay
+
+    override fun onBackPressed(): Boolean {
+        if (isOverlay) return false
+        finishExpanded()
+        return true
     }
 
     private fun unlockAndLaunch(intent: Intent?) = unlockAndInvoke {
