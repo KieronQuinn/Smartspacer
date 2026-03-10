@@ -253,12 +253,10 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private fun setupOpenAppButton() {
         binding.expandedTabOpenApp.setOnClickListener {
             try {
-                startActivity(
-                    Intent(requireContext(), MainActivity::class.java).apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    }
-                )
+                val intent = requireContext().packageManager
+                    .getLaunchIntentForPackage("me.ash.reader")
+                    ?: throw IllegalStateException("ReadYou (me.ash.reader) is not installed")
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
             }
@@ -410,11 +408,27 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun updateWeatherCookie(items: List<Item>) {
-        val weather = items.filterIsInstance<Item.Target>()
+        // 1. Dedicated FEATURE_WEATHER target (e.g. Google At-a-Glance weather target).
+        val weatherTarget = items.filterIsInstance<Item.Target>()
             .firstOrNull { it.target.featureType == FEATURE_WEATHER }
-        if (weather == null) { binding.expandedHeaderWeather.isVisible = false; return }
-        // headerAction holds the weather icon/temp; fall back to baseAction if absent.
-        val action = weather.target.headerAction ?: weather.target.baseAction
+        val actionFromTarget = weatherTarget?.target?.run { headerAction ?: baseAction }
+
+        // 2. Fall back to the weather complication action — the GoogleWeatherComplication plugin
+        //    produces a SmartspaceAction (with a weather-condition icon bitmap) that surfaces in
+        //    the complications list rather than as a dedicated target.  The first action that
+        //    carries a non-null icon is treated as the weather action.
+        val actionFromComp = if (actionFromTarget == null) {
+            items.filterIsInstance<Item.Complications>()
+                .firstOrNull()
+                ?.complications
+                ?.complications
+                ?.filterIsInstance<ExpandedSession.Complications.Complication.Action>()
+                ?.firstOrNull { it.smartspaceAction.icon != null }
+                ?.smartspaceAction
+        } else null
+
+        val action = actionFromTarget ?: actionFromComp
+
         val icon = action?.icon
         if (icon == null) { binding.expandedHeaderWeather.isVisible = false; return }
         try {
@@ -424,7 +438,8 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             binding.expandedHeaderWeather.isVisible = false
             return
         }
-        // Temperature may live in subtitle or title.
+        // Temperature may live in subtitle or title — prefer subtitle as it is the
+        // supplemental text field used by the weather complication template.
         val temp = action.subtitle?.toString()?.takeIf { it.isNotBlank() }
             ?: action.title.takeIf { it.isNotBlank() }
         binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
@@ -452,22 +467,15 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
     private fun setBlurEnabled(enabled: Boolean) {
         if (isOverlay) return
-        when (settingsRepository.expandedBackground.getSync()) {
-            ExpandedBackground.BLUR ->
-                blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
-            ExpandedBackground.SCRIM -> {
-                // For standalone expanded view, keep the background fully opaque so it doesn't
-                // bleed through to the wallpaper. Only use the semi-transparent scrim for
-                // minus-one (Google Discover-style) panels where seeing the wallpaper is desired.
-                val alpha = if (enabled) (if (isMinusOne) 128 else 255) else 0
-                binding.root.setBackgroundColor(
-                    ColorUtils.setAlphaComponent(monet.getBackgroundColor(requireContext()), alpha)
-                )
-            }
-            ExpandedBackground.SOLID ->
-                binding.root.setBackgroundColor(
-                    ColorUtils.setAlphaComponent(backgroundColour, if (enabled) 255 else 0)
-                )
+        // Always use a fully opaque background for all non-overlay modes so the
+        // Monet surface colour is never transparent or semi-transparent.
+        val bg = monet.getBackgroundColor(requireContext())
+        binding.root.setBackgroundColor(
+            ColorUtils.setAlphaComponent(bg, if (enabled) 255 else 0)
+        )
+        // Additionally drive the window blur when BLUR mode is selected.
+        if (settingsRepository.expandedBackground.getSync() == ExpandedBackground.BLUR) {
+            blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
         }
     }
 

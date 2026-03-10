@@ -188,15 +188,29 @@
 
     <!-- ═══════════════════════════════════════════════════════════
          BOTTOM TAB NAVIGATION — Google Photos-style floating pill bar
-         Layout: [ scrollable pill of tab buttons ] [ rounded-square app button ]
+         Layout: [ scrollable pill of tab buttons ] … [ FAB corner ]
 
-         The scrollable pill (expanded_tab_scroll_pill) grows horizontally
-         and clips excess with a HorizontalScrollView so users can swipe
-         through more than 3 tabs.  Tab buttons are added programmatically.
-
-         The rounded-square button (expanded_tab_open_app) sits outside the
-         pill on the right and opens Smartspacer with a fresh start.
+         The FAB (expanded_tab_open_app) floats in the bottom-right corner of
+         the screen, independent of the pill, so it looks like a proper FAB.
+         The tab navigation LinearLayout (expanded_tab_navigation) fills the
+         remaining width to the left of the FAB.
          ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Rounded-square FAB — bottom-right corner, opens ReadYou -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expanded_tab_open_app"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:icon="@drawable/ic_expanded_mode"
+        app:iconTint="?attr/colorOnSecondaryContainer"
+        app:backgroundTint="?attr/colorSecondaryContainer"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/expanded_unlock_container" />
+
     <LinearLayout
         android:id="@+id/expanded_tab_navigation"
         android:layout_width="0dp"
@@ -204,10 +218,10 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="8dp"
         android:paddingBottom="12dp"
         app:layout_constraintBottom_toTopOf="@id/expanded_unlock_container"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/expanded_tab_open_app"
         app:layout_constraintStart_toStartOf="parent">
 
         <!-- Scrollable pill containing the tab buttons -->
@@ -241,18 +255,6 @@
             </HorizontalScrollView>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <!-- Rounded-square "Open Smartspacer" button — sits outside the pill -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/expanded_tab_open_app"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="8dp"
-            app:icon="@drawable/ic_expanded_mode"
-            app:iconTint="?attr/colorOnSecondaryContainer"
-            app:backgroundTint="?attr/colorSecondaryContainer"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
     </LinearLayout>
 
