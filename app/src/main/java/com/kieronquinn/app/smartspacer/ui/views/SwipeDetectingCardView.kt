@@ -11,25 +11,37 @@ import kotlin.math.abs
  * A [MaterialCardView] that detects horizontal-fling gestures and pages through Smartspace
  * targets while keeping every interactive child (targets, complications) fully clickable.
  *
- * Touch routing summary
- * ─────────────────────
- * Scenario A — no child consumed ACTION_DOWN (e.g. user touched empty space):
- *   onInterceptTouchEvent(DOWN) → feeds detector, returns false → no child target
- *   onTouchEvent(DOWN)          → feeds detector, returns true  → card becomes target
- *   onTouchEvent(MOVE/UP)       → feeds detector
- *   If fling: onFling fires inside onTouchEvent(UP) → onHorizontalSwipe called ✓
+ * ## Touch routing
  *
- * Scenario B — a child consumed ACTION_DOWN (e.g. user touched a clickable target/complication):
- *   onInterceptTouchEvent(DOWN)    → feeds detector, returns false → child handles DOWN
- *   onInterceptTouchEvent(MOVE/UP) → feeds detector
- *   If tap:   onFling does NOT fire → returns false → child gets ACTION_UP → click fires ✓
- *   If swipe: onFling fires inside onInterceptTouchEvent(UP) → sets [flingDetected] →
- *             onHorizontalSwipe called → onInterceptTouchEvent returns true to intercept UP →
- *             child receives ACTION_CANCEL (no click) ✓
+ * **Scenario A — no child consumed ACTION_DOWN** (e.g. empty space in the pill):
+ * - `onInterceptTouchEvent(DOWN)` → feeds detector, requests parent disallow, returns false
+ * - No child handles → `onTouchEvent(DOWN)` → feeds detector, returns true (card = target)
+ * - `onTouchEvent(MOVE/UP)` → feeds detector
+ * - If fling: `onFling` fires → `onHorizontalSwipe` ✓
+ *
+ * **Scenario B — a child consumed ACTION_DOWN** (e.g. a clickable target or complication):
+ * - `onInterceptTouchEvent(DOWN)` → feeds detector, requests parent disallow, returns false
+ * - Child handles DOWN; subsequent events come back via `onInterceptTouchEvent`
+ * - If **tap**:  `onFling` never fires → returns false → child gets ACTION_UP → click ✓
+ * - If **swipe**: `onFling` fires inside `onInterceptTouchEvent(UP)` → sets [flingDetected] →
+ *   `onHorizontalSwipe` called → returns true → child gets ACTION_CANCEL (no click) ✓
+ *
+ * ## Overlay / Smart Launcher interaction
+ *
+ * When Smartspacer is hosted as the Smart Launcher -1 feed page, user touches flow through
+ * [com.google.android.gsa.overlay.ui.panel.SlidingPanelLayout] before reaching this view.
+ * That layout's [OverlayControllerSlidingPanelLayout.determineScrollingStart] only suppresses
+ * drag detection for *rightward* swipes when the panel is open; leftward swipes (which we use
+ * for "next page") are still eligible to be stolen as "close overlay" gestures.
+ *
+ * Calling `parent?.requestDisallowInterceptTouchEvent(true)` on ACTION_DOWN tells every ancestor
+ * ViewGroup — including `SlidingPanelLayout` — not to intercept moves or ups for this gesture.
+ * This is done from [onInterceptTouchEvent], which runs *after* `SlidingPanelLayout` has already
+ * decided not to intercept the DOWN itself, so the flag is set in time for the MOVE events.
  *
  * Set [onHorizontalSwipe] to receive page-change callbacks:
- *   `true`  = swiped left  (advance to next target)
- *   `false` = swiped right (go to previous target)
+ * - `true`  = swiped left  (advance to next target)
+ * - `false` = swiped right (go to previous target)
  */
 class SwipeDetectingCardView @JvmOverloads constructor(
     context: Context,
@@ -41,9 +53,9 @@ class SwipeDetectingCardView @JvmOverloads constructor(
 
     /**
      * Set to true inside [onFling] (which fires during [gestureDetector].onTouchEvent called from
-     * [onInterceptTouchEvent] for ACTION_UP).  We then return true from [onInterceptTouchEvent] to
-     * intercept that ACTION_UP, causing the child to receive ACTION_CANCEL instead so its click
-     * listener is never triggered by what was intended as a swipe.
+     * [onInterceptTouchEvent] for ACTION_UP).  We then return true from [onInterceptTouchEvent]
+     * to intercept that ACTION_UP, so the child gets ACTION_CANCEL instead of ACTION_UP,
+     * preventing its click listener from firing on what was intended as a swipe.
      */
     private var flingDetected = false
 
@@ -69,13 +81,21 @@ class SwipeDetectingCardView @JvmOverloads constructor(
         })
 
     /**
-     * Called before children receive the event (and for all events when a child touch target
-     * exists).  We feed the gesture detector here and — if [onFling] fired on this same ACTION_UP
-     * — return true to intercept so the child gets ACTION_CANCEL instead of ACTION_UP, preventing
-     * an accidental click when the user meant to swipe.
+     * Called before children receive the event (and for all events once a child touch target
+     * exists).  On ACTION_DOWN we immediately ask all ancestor ViewGroups not to intercept,
+     * preventing [com.google.android.gsa.overlay.ui.panel.SlidingPanelLayout] from stealing
+     * leftward swipes as "close overlay" gestures.
+     *
+     * If [onFling] fired on this same ACTION_UP we return true to intercept, so the child that
+     * was tracking the touch gets ACTION_CANCEL instead of ACTION_UP (no click for a swipe).
      */
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
-        if (ev.actionMasked == MotionEvent.ACTION_DOWN) flingDetected = false
+        if (ev.actionMasked == MotionEvent.ACTION_DOWN) {
+            flingDetected = false
+            // Tell every ancestor (including SlidingPanelLayout in the overlay context) not to
+            // intercept moves/ups for gestures that start within this pill.
+            parent?.requestDisallowInterceptTouchEvent(true)
+        }
         gestureDetector.onTouchEvent(ev)
         if (flingDetected && ev.actionMasked == MotionEvent.ACTION_UP) {
             flingDetected = false
@@ -97,9 +117,13 @@ class SwipeDetectingCardView @JvmOverloads constructor(
     }
 
     /**
-     * Ignore children's requests to disallow interception — without this, an interactive child
-     * calling requestDisallowInterceptTouchEvent(true) would stop [onInterceptTouchEvent] from
-     * seeing subsequent MOVE/UP events, breaking swipe detection.
+     * Do NOT call super — that would set FLAG_DISALLOW_INTERCEPT on this view, preventing our
+     * own [onInterceptTouchEvent] from seeing swipe events.
+     *
+     * DO propagate upward: in the overlay context, ancestor ViewGroups like SlidingPanelLayout
+     * should be told not to intercept when a child inside the pill is handling a gesture.
      */
-    override fun requestDisallowInterceptTouchEvent(disallowIntercept: Boolean) = Unit
+    override fun requestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+        parent?.requestDisallowInterceptTouchEvent(disallowIntercept)
+    }
 }
