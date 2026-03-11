@@ -2,22 +2,24 @@ package com.kieronquinn.app.smartspacer.ui.views
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Path
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import kotlin.math.cos
-import kotlin.math.min
+import androidx.graphics.shapes.CornerRounding
+import androidx.graphics.shapes.RoundedPolygon
+import androidx.graphics.shapes.toPath
 
 /**
- * A [FrameLayout] that clips itself and all children to a "cookie" / scalloped-rosette shape —
- * the same style used by the Google Glance widget's weather badge.
+ * A [FrameLayout] that clips itself and all its children to the Material You "cookie" shape —
+ * a 10-lobe scalloped rosette matching the badge used by Google's Glance weather widget.
  *
- * The shape is defined by the polar equation:
- *   r(θ) = baseRadius + amplitude · cos(lobes · θ)
+ * Shape is created via [RoundedPolygon.star] from [androidx.graphics.shapes] (a transitive
+ * dependency of [com.google.android.material:material:1.13.0]), using the same parameters as
+ * [androidx.compose.material3.MaterialShapes.Cookie9Sided] but with 10 lobes.
  *
- * With [lobes] = 10 this produces the 10-lobe cookie used by Google's Glance weather badge.
- * Set [android:background] to fill the cookie shape; everything (background + children) is
- * clipped to the path before drawing.
+ * Set [android:background] for the fill color — the canvas is clipped before the background
+ * drawable and all children are drawn, so the background is automatically shaped.
  */
 class SquircleFrameLayout @JvmOverloads constructor(
     context: Context,
@@ -25,46 +27,30 @@ class SquircleFrameLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    /** Number of lobes. Google Glance uses 10. */
-    private val lobes = 10
+    // 10-lobe cookie: innerRadius=0.82 gives shallow-but-visible bumps (matching Material3
+    // Cookie12Sided params scaled to 10 lobes), corner rounding=0.16 smooths peaks and valleys.
+    // Polygon is unit-circle normalized (outerRadius=1, centered at 0,0).
+    private val polygon = RoundedPolygon.star(
+        numVerticesPerRadius = 10,
+        innerRadius = 0.82f,
+        rounding = CornerRounding(radius = 0.16f)
+    )
 
-    /** Fraction of the half-dimension used as the base (centre) radius. */
-    private val baseFraction = 0.82f
-
-    /** Fraction of the half-dimension used as the lobe amplitude. */
-    private val ampFraction = 0.18f
-
-    /** Sample count — 720 gives sub-0.5° steps, which is visually smooth on any display. */
-    private val steps = 720
-
-    private val cookiePath = Path()
+    private val scaledPath = Path()
+    private val matrix = Matrix()
 
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
         super.onSizeChanged(w, h, oldW, oldH)
-        buildPath(w.toFloat(), h.toFloat())
-    }
-
-    private fun buildPath(w: Float, h: Float) {
-        val cx = w / 2f
-        val cy = h / 2f
-        val halfMin = min(cx, cy)
-        val baseR = halfMin * baseFraction
-        val amp   = halfMin * ampFraction
-
-        cookiePath.reset()
-        for (i in 0..steps) {
-            val theta = (2.0 * Math.PI * i / steps)
-            val r = baseR + amp * cos((lobes * theta).toFloat())
-            val x = cx + r * cos(theta).toFloat()
-            val y = cy + r * sin(theta).toFloat()
-            if (i == 0) cookiePath.moveTo(x, y) else cookiePath.lineTo(x, y)
-        }
-        cookiePath.close()
+        // Polygon coords are in [-1, +1]; scale to fill the view and center it.
+        matrix.setScale(w / 2f, h / 2f)
+        matrix.postTranslate(w / 2f, h / 2f)
+        scaledPath.set(polygon.toPath())
+        scaledPath.transform(matrix)
     }
 
     override fun draw(canvas: Canvas) {
         canvas.save()
-        canvas.clipPath(cookiePath)
+        canvas.clipPath(scaledPath)
         super.draw(canvas)
         canvas.restore()
     }
