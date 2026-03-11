@@ -39,10 +39,12 @@
            - Outlined pill (stroke = colorOutline, fill = colorSurface)
            - Left: Smartspacer target (date / event) via a FrameLayout
              filled at runtime with the session's primary target view.
-           - Right (when weather plugin active): Tonal circular weather cookie.
+             Swiping left/right on the pill pages through target pages
+             (handled by SwipeDetectingCardView.onInterceptTouchEvent).
+           - Right (when weather plugin active): Tonal squircle weather cookie.
            - Far-right (no weather) / center-right (with weather): ⋮ menu button.
          ═══════════════════════════════════════════════════════════ -->
-    <com.google.android.material.card.MaterialCardView
+    <com.kieronquinn.app.smartspacer.ui.views.SwipeDetectingCardView
         android:id="@+id/expanded_header_pill"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -61,11 +63,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="60dp"
+            android:minHeight="120dp"
             android:paddingStart="20dp"
-            android:paddingTop="4dp"
+            android:paddingTop="8dp"
             android:paddingEnd="4dp"
-            android:paddingBottom="4dp">
+            android:paddingBottom="8dp">
 
             <!-- Primary Smartspacer target (date text / event name).
                  A SmartspacerBasePageView is attached here at runtime. -->
@@ -94,20 +96,19 @@
                 app:layout_constraintEnd_toStartOf="@id/expanded_header_weather"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Weather cookie — circular tonal badge.
-                 Visibility is GONE here; ExpandedFragment shows it only
-                 when a FEATURE_WEATHER Item.Target is present in the session.
-                 Icon + temp text are set programmatically from the weather target's
-                 headerAction.icon / headerAction.subtitle. -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Weather cookie — true Material You squircle badge.
+                 SquircleFrameLayout clips to a superellipse (n≈4) shape, matching the
+                 squircle "cookie" style used by Google's own Glance weather badge.
+                 Standard MaterialCardView corner radius only produces a rounded rectangle,
+                 not a squircle.
+                 Visibility is GONE here; ExpandedFragment shows it when weather data present. -->
+            <com.kieronquinn.app.smartspacer.ui.views.SquircleFrameLayout
                 android:id="@+id/expanded_header_weather"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginEnd="4dp"
+                android:background="?attr/colorTertiaryContainer"
                 android:visibility="gone"
-                app:cardBackgroundColor="?attr/colorTertiaryContainer"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -144,11 +145,11 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.kieronquinn.app.smartspacer.ui.views.SquircleFrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </com.kieronquinn.app.smartspacer.ui.views.SwipeDetectingCardView>
 
     <!-- ═══════════════════════════════════════════════════════════
          MAIN WIDGET AREA

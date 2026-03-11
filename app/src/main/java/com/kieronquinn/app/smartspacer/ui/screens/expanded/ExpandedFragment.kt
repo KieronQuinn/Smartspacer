@@ -17,9 +17,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.ContextThemeWrapper
-import android.view.GestureDetector
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -323,42 +321,28 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     /**
-     * Attaches a horizontal-fling gesture to the header pill so the user can swipe through
-     * the Glance widget's multiple Smartspace target pages (date, upcoming event, etc.)
-     * without needing the arrow buttons that the home-screen widget uses.
+     * Wires the header pill's [SwipeDetectingCardView.onHorizontalSwipe] callback so the user
+     * can swipe left/right through the Smartspace target pages (date, upcoming event, etc.)
+     *
+     * SwipeDetectingCardView uses [onInterceptTouchEvent] — which is called before any child
+     * receives events — and its GestureDetector overrides onDown() to return true, so the fling
+     * is reliably detected even when the pill contains interactive child views.
      */
     private fun setupHeaderSwipe() {
-        val detector = GestureDetector(requireContext(),
-            object : GestureDetector.SimpleOnGestureListener() {
-                override fun onFling(
-                    e1: MotionEvent?, e2: MotionEvent,
-                    velocityX: Float, velocityY: Float
-                ): Boolean {
-                    val dx = e2.x - (e1?.x ?: e2.x)
-                    val dy = e2.y - (e1?.y ?: e2.y)
-                    if (Math.abs(dx) < 80 || Math.abs(velocityX) < 100
-                        || Math.abs(dy) > Math.abs(dx)) return false
-                    if (dx < 0) {
-                        // Swipe left → next target page
-                        val next = currentHeaderIndex + 1
-                        if (next < headerTargets.size) {
-                            currentHeaderIndex = next
-                            showHeaderTarget(headerTargets[next])
-                        }
-                    } else {
-                        // Swipe right → previous target page
-                        val prev = currentHeaderIndex - 1
-                        if (prev >= 0) {
-                            currentHeaderIndex = prev
-                            showHeaderTarget(headerTargets[prev])
-                        }
-                    }
-                    return true
+        binding.expandedHeaderPill.onHorizontalSwipe = { isLeft ->
+            if (isLeft) {
+                val next = currentHeaderIndex + 1
+                if (next < headerTargets.size) {
+                    currentHeaderIndex = next
+                    showHeaderTarget(headerTargets[next])
                 }
-            })
-        binding.expandedHeaderPill.setOnTouchListener { _, event ->
-            detector.onTouchEvent(event)
-            false // don't consume — let children (menu button, weather cookie) still receive touches
+            } else {
+                val prev = currentHeaderIndex - 1
+                if (prev >= 0) {
+                    currentHeaderIndex = prev
+                    showHeaderTarget(headerTargets[prev])
+                }
+            }
         }
     }
 
