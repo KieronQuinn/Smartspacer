@@ -13,6 +13,8 @@ import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.GradientDrawable
+import android.widget.LinearLayout
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
@@ -328,14 +330,6 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         selectTab(0)
     }
 
-    /**
-     * Wires the header pill's [SwipeDetectingCardView.onHorizontalSwipe] callback so the user
-     * can swipe left/right through the Smartspace target pages (date, upcoming event, etc.)
-     *
-     * SwipeDetectingCardView uses [onInterceptTouchEvent] — which is called before any child
-     * receives events — and its GestureDetector overrides onDown() to return true, so the fling
-     * is reliably detected even when the pill contains interactive child views.
-     */
     private fun setupHeaderSwipe() {
         binding.expandedHeaderPill.onHorizontalSwipe = { isLeft ->
             if (isLeft) {
@@ -451,7 +445,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         showHeaderTarget(target)
     }
 
-    /** Renders [target] inside the header pill, no-op if already displayed. */
+    /** Renders [target] inside the header pill and refreshes page dots. */
     private fun showHeaderTarget(target: Item.Target) {
         val existing = binding.expandedHeaderTarget.getChildAt(0)
         if (existing?.tag == target.target.smartspaceTargetId) return
@@ -464,6 +458,33 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         binding.expandedHeaderTarget.addView(sv, FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         ))
+        updateHeaderDots()
+    }
+
+    /** Rebuilds the dot-indicator row to reflect the current page and total count. */
+    private fun updateHeaderDots() {
+        val dots = binding.expandedHeaderDots
+        dots.removeAllViews()
+        val count = headerTargets.size
+        if (count <= 1) return  // No dots needed for a single page.
+        val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
+        val gapPx  = resources.getDimensionPixelSize(R.dimen.header_dot_gap)
+        val isSystemDark = (resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        val dotColor = if (isSystemDark) Color.WHITE else Color.BLACK
+        repeat(count) { i ->
+            val dot = View(requireContext()).apply {
+                background = GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    setColor(dotColor)
+                }
+                alpha = if (i == currentHeaderIndex) 1f else 0.3f
+                layoutParams = LinearLayout.LayoutParams(sizePx, sizePx).apply {
+                    if (i > 0) marginStart = gapPx
+                }
+            }
+            dots.addView(dot)
+        }
     }
 
     private fun updateWeatherCookie(items: List<Item>) {

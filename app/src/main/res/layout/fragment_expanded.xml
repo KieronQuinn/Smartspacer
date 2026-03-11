@@ -74,10 +74,24 @@
                 android:id="@+id/expanded_header_target"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/expanded_header_dots"
+                app:layout_constraintEnd_toStartOf="@id/expanded_header_menu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <!-- Page indicator dots — shown only when there are multiple targets to swipe. -->
+            <LinearLayout
+                android:id="@+id/expanded_header_dots"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/expanded_header_menu"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/expanded_header_target" />
 
             <!-- ⋮ three-dot button — opens the tab-settings screen.
                  Constrained to the start of the weather cookie so it
