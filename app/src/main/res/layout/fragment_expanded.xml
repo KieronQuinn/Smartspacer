@@ -62,8 +62,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="240dp"
+            android:layout_height="88dp"
             android:paddingStart="20dp"
             android:paddingTop="8dp"
             android:paddingEnd="4dp"
@@ -104,11 +103,12 @@
                  Visibility is GONE here; ExpandedFragment shows it when weather data present. -->
             <com.kieronquinn.app.smartspacer.ui.views.SquircleFrameLayout
                 android:id="@+id/expanded_header_weather"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginEnd="4dp"
                 android:background="?attr/colorTertiaryContainer"
                 android:visibility="gone"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -116,7 +116,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/expanded_header_weather_icon"
