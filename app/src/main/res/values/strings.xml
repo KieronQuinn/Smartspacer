@@ -1251,6 +1251,7 @@
     <string name="expanded_tab_settings_pick_widget">Pick widget</string>
     <string name="expanded_tab_settings_widget_assigned">Widget #%1$d</string>
     <string name="expanded_tab_settings_no_widgets">No widgets added yet. Add widgets through the main expanded view first.</string>
+    <string name="expanded_tab_settings_add_new_widget">Add New Widget…</string>
     <string name="expanded_tab_settings_delete">Delete</string>
     <string name="expanded_tab_settings_saved">Tab configuration saved</string>
 

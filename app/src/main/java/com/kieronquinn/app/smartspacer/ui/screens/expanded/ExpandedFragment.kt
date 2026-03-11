@@ -17,11 +17,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.ContextThemeWrapper
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
@@ -147,6 +150,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val expandedRepository by inject<ExpandedRepository>()
     private val tabRepository by inject<ExpandedTabRepository>()
+    private val googleWeatherRepository by inject<GoogleWeatherRepository>()
 
     private var lastSwipe: Long? = null
     private var popup: Balloon? = null
@@ -200,6 +204,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         setupMenuButton()
         setupOpenAppButton()
         setupTabs()
+        setupTabSwipeGesture()
         viewModel.setup(isOverlay)
     }
 
@@ -312,6 +317,43 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         selectTab(0)
     }
 
+    private fun setupTabSwipeGesture() {
+        val tabCount get() = tabRepository.getTabs().size
+        val gestureDetector = GestureDetector(requireContext(),
+            object : GestureDetector.SimpleOnGestureListener() {
+                private val SWIPE_THRESHOLD = 80
+                private val SWIPE_VELOCITY_THRESHOLD = 100
+
+                override fun onFling(
+                    e1: MotionEvent?,
+                    e2: MotionEvent,
+                    velocityX: Float,
+                    velocityY: Float
+                ): Boolean {
+                    val diffX = (e2.x) - (e1?.x ?: e2.x)
+                    if (Math.abs(diffX) > SWIPE_THRESHOLD &&
+                        Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD &&
+                        Math.abs(diffX) > Math.abs(e2.y - (e1?.y ?: e2.y))
+                    ) {
+                        if (diffX < 0) {
+                            // Swipe left → next tab
+                            if (currentTabIndex < tabCount - 1) selectTab(currentTabIndex + 1)
+                        } else {
+                            // Swipe right → previous tab
+                            if (currentTabIndex > 0) selectTab(currentTabIndex - 1)
+                        }
+                        return true
+                    }
+                    return false
+                }
+            })
+        binding.expandedWidgetFlipper.setOnTouchListener { v, event ->
+            gestureDetector.onTouchEvent(event)
+            // Don't consume — let the child widget handle its own touches too.
+            false
+        }
+    }
+
     private fun selectTab(index: Int) {
         val tabs = tabRepository.getTabs()
         if (index < 0 || index >= tabs.size) return
@@ -354,6 +396,13 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         container.addView(hostView, FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
         ))
+        // After layout, tell the widget provider the full available size so it renders
+        // at the correct height instead of its minimum span height.
+        binding.expandedWidgetFlipper.post {
+            val fullHeight = binding.expandedWidgetFlipper.height.takeIf { it > 0 } ?: return@post
+            val fullWidth = binding.expandedWidgetFlipper.width.takeIf { it > 0 } ?: availableWidth
+            hostView.updateSizeIfNeeded(fullWidth.toFloat(), fullHeight.toFloat())
+        }
     }
 
     // ── State ─────────────────────────────────────────────────────────────
@@ -427,6 +476,26 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
                 ?.smartspaceAction
         } else null
 
+        // 3. Last resort: read the TodayState from GoogleWeatherRepository directly.
+        //    This fires even when no GoogleWeatherComplication is configured, as long as
+        //    the Google Weather widget (GoogleWeatherWidget provider) is bound somewhere.
+        val todayState = if (actionFromTarget == null && actionFromComp == null) {
+            googleWeatherRepository.getTodayState()
+        } else null
+
+        if (todayState != null) {
+            try {
+                val bitmapIcon = android.graphics.drawable.Icon.createWithBitmap(todayState.icon)
+                binding.expandedHeaderWeatherIcon.setImageIcon(bitmapIcon)
+                binding.expandedHeaderWeather.isVisible = true
+                binding.expandedHeaderWeatherTemp.isVisible = todayState.temperature.isNotBlank()
+                binding.expandedHeaderWeatherTemp.text = todayState.temperature
+            } catch (e: Exception) {
+                binding.expandedHeaderWeather.isVisible = false
+            }
+            return
+        }
+
         val action = actionFromTarget ?: actionFromComp
 
         val icon = action?.icon
@@ -486,6 +555,9 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupOverlaySwipe() = viewLifecycleOwner.whenResumed {
+        // Only track overlay drag events when running as the overlay; in the standalone
+        // expanded activity these events must not pollute the long-press swipe guard.
+        if (!isOverlay) return@whenResumed
         viewModel.overlayDrag.collect { lastSwipe = System.currentTimeMillis(); popup?.dismiss(); popup = null }
     }
 

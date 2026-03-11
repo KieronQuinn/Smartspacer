@@ -37,7 +37,11 @@
         android:id="@+id/expandedTabSettingsFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.expanded.tabs.ExpandedTabSettingsFragment"
         android:label="@string/expanded_tab_settings_title"
-        tools:layout="@layout/fragment_expanded_tab_settings" />
+        tools:layout="@layout/fragment_expanded_tab_settings">
+        <action
+            android:id="@+id/action_expandedTabSettingsFragment_to_expandedAddWidgetBottomSheetFragment"
+            app:destination="@id/expandedAddWidgetBottomSheetFragment" />
+    </fragment>
 
     <dialog
         android:id="@+id/expandedWidgetOptionsBottomSheetFragment"

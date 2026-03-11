@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedTabSettingsBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemTabSettingsRowBinding
+import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
 import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
@@ -30,13 +31,11 @@ import java.util.UUID
  * Allows users to:
  *  - Add new tabs (each mapped to one AppWidget instance by appWidgetId)
  *  - Edit each tab's label
- *  - Assign a specific AppWidget instance (picked from those already bound
- *    in the expanded view via ExpandedRepository.expandedCustomAppWidgets)
+ *  - Assign a specific AppWidget instance:
+ *      a) Pick from widgets already bound in the expanded view, OR
+ *      b) Open the Add Widget sheet directly from this screen to bind a new widget
  *  - Delete tabs
  *  - Save the updated tab list (auto-saved when leaving via the back button)
- *
- * Uses Material You Expressive design: large headline, tonal card rows,
- * filled FAB, tonal delete buttons.
  */
 class ExpandedTabSettingsFragment : Fragment() {
 
@@ -50,6 +49,16 @@ class ExpandedTabSettingsFragment : Fragment() {
     private val currentTabs = mutableListOf<ExpandedTabConfig>()
 
     private lateinit var adapter: TabSettingsAdapter
+
+    /**
+     * Index of the tab row currently waiting for a widget assignment (set when the user
+     * navigates to the Add Widget sheet so the new widget can be auto-assigned on return).
+     * -1 when no pick is pending.
+     */
+    private var pendingPickPosition = -1
+
+    /** Widget IDs known before navigating to the Add Widget sheet. */
+    private val knownWidgetIds = mutableSetOf<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,6 +79,7 @@ class ExpandedTabSettingsFragment : Fragment() {
         setupToolbar()
         setupRecyclerView()
         setupAddFab()
+        observeNewWidgets()
     }
 
     private fun setupToolbar() {
@@ -97,30 +107,58 @@ class ExpandedTabSettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * Observes [ExpandedRepository.expandedCustomAppWidgets] continuously. When a new widget ID
+     * appears that wasn't there when the user tapped "Add Widget", it is automatically assigned
+     * to the pending tab row.
+     */
+    private fun observeNewWidgets() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            expandedRepository.expandedCustomAppWidgets.collect { widgets ->
+                val pos = pendingPickPosition
+                if (pos == -1) return@collect
+                val newWidget = widgets.firstOrNull {
+                    it.appWidgetId != null && it.appWidgetId !in knownWidgetIds
+                } ?: return@collect
+                // Assign the newly added widget to the waiting tab
+                pendingPickPosition = -1
+                knownWidgetIds.clear()
+                val updated = currentTabs[pos].copy(appWidgetId = newWidget.appWidgetId!!)
+                currentTabs[pos] = updated
+                adapter.notifyItemChanged(pos)
+            }
+        }
+    }
+
     private fun onPickWidget(position: Int) {
-        // Collect already-bound custom widgets from ExpandedRepository, show a simple
-        // AlertDialog picker so the user can assign one to this tab.
         collectBoundWidgets { allWidgets ->
             val widgets = allWidgets.filter { it.appWidgetId != null }
-            if (widgets.isEmpty()) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.expanded_tab_settings_no_widgets),
-                    Toast.LENGTH_LONG
-                ).show()
-                return@collectBoundWidgets
-            }
-            val labels = widgets.map { widget ->
+
+            // Build the option labels: bound widgets first, then "Add New Widget…"
+            val boundLabels = widgets.map { widget ->
                 getString(R.string.expanded_tab_settings_widget_assigned, widget.appWidgetId)
-            }.toTypedArray()
+            }
+            val allLabels = (boundLabels + getString(R.string.expanded_tab_settings_add_new_widget)).toTypedArray()
 
             com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.expanded_tab_settings_pick_widget)
-                .setItems(labels) { _, which ->
-                    val chosen = widgets[which]
-                    val updated = currentTabs[position].copy(appWidgetId = chosen.appWidgetId!!)
-                    currentTabs[position] = updated
-                    adapter.notifyItemChanged(position)
+                .setItems(allLabels) { _, which ->
+                    if (which < widgets.size) {
+                        // Pick an already-bound widget
+                        val chosen = widgets[which]
+                        val updated = currentTabs[position].copy(appWidgetId = chosen.appWidgetId!!)
+                        currentTabs[position] = updated
+                        adapter.notifyItemChanged(position)
+                    } else {
+                        // User wants to add a brand-new widget — navigate to the add-widget sheet.
+                        // Record which tab is waiting and what IDs are already known.
+                        pendingPickPosition = position
+                        knownWidgetIds.clear()
+                        knownWidgetIds.addAll(allWidgets.mapNotNull { it.appWidgetId })
+                        findNavController().navigate(
+                            R.id.action_expandedTabSettingsFragment_to_expandedAddWidgetBottomSheetFragment
+                        )
+                    }
                 }
                 .show()
         }
@@ -130,11 +168,10 @@ class ExpandedTabSettingsFragment : Fragment() {
         if (position < 0 || position >= currentTabs.size) return
         currentTabs.removeAt(position)
         adapter.notifyItemRemoved(position)
-        // Re-number remaining tabs' labels if they still have the default pattern
         adapter.notifyItemRangeChanged(position, currentTabs.size - position)
     }
 
-    private fun collectBoundWidgets(block: (List<com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget>) -> Unit) {
+    private fun collectBoundWidgets(block: (List<ExpandedCustomAppWidget>) -> Unit) {
         viewLifecycleOwner.lifecycleScope.launch {
             val widgets = expandedRepository.expandedCustomAppWidgets.first()
             block(widgets)
@@ -215,5 +252,4 @@ class ExpandedTabSettingsFragment : Fragment() {
             }
         }
     }
-
 }
