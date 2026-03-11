@@ -158,6 +158,11 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private var currentTabIndex = 0
     private val loadedTabIndices = mutableSetOf<Int>()
 
+    /** All non-weather Smartspace targets available to page through in the header pill. */
+    private var headerTargets: List<Item.Target> = emptyList()
+    /** Index into [headerTargets] of the target currently shown in the header pill. */
+    private var currentHeaderIndex = 0
+
     override val applyTransitions = false
 
     private val widgetBindResult = registerForActivityResult(
@@ -204,7 +209,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         setupMenuButton()
         setupOpenAppButton()
         setupTabs()
-        setupTabSwipeGesture()
+        setupHeaderSwipe()
         viewModel.setup(isOverlay)
     }
 
@@ -317,40 +322,43 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         selectTab(0)
     }
 
-    private fun setupTabSwipeGesture() {
-        val tabCount get() = tabRepository.getTabs().size
-        val gestureDetector = GestureDetector(requireContext(),
+    /**
+     * Attaches a horizontal-fling gesture to the header pill so the user can swipe through
+     * the Glance widget's multiple Smartspace target pages (date, upcoming event, etc.)
+     * without needing the arrow buttons that the home-screen widget uses.
+     */
+    private fun setupHeaderSwipe() {
+        val detector = GestureDetector(requireContext(),
             object : GestureDetector.SimpleOnGestureListener() {
-                private val SWIPE_THRESHOLD = 80
-                private val SWIPE_VELOCITY_THRESHOLD = 100
-
                 override fun onFling(
-                    e1: MotionEvent?,
-                    e2: MotionEvent,
-                    velocityX: Float,
-                    velocityY: Float
+                    e1: MotionEvent?, e2: MotionEvent,
+                    velocityX: Float, velocityY: Float
                 ): Boolean {
-                    val diffX = (e2.x) - (e1?.x ?: e2.x)
-                    if (Math.abs(diffX) > SWIPE_THRESHOLD &&
-                        Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD &&
-                        Math.abs(diffX) > Math.abs(e2.y - (e1?.y ?: e2.y))
-                    ) {
-                        if (diffX < 0) {
-                            // Swipe left → next tab
-                            if (currentTabIndex < tabCount - 1) selectTab(currentTabIndex + 1)
-                        } else {
-                            // Swipe right → previous tab
-                            if (currentTabIndex > 0) selectTab(currentTabIndex - 1)
+                    val dx = e2.x - (e1?.x ?: e2.x)
+                    val dy = e2.y - (e1?.y ?: e2.y)
+                    if (Math.abs(dx) < 80 || Math.abs(velocityX) < 100
+                        || Math.abs(dy) > Math.abs(dx)) return false
+                    if (dx < 0) {
+                        // Swipe left → next target page
+                        val next = currentHeaderIndex + 1
+                        if (next < headerTargets.size) {
+                            currentHeaderIndex = next
+                            showHeaderTarget(headerTargets[next])
                         }
-                        return true
+                    } else {
+                        // Swipe right → previous target page
+                        val prev = currentHeaderIndex - 1
+                        if (prev >= 0) {
+                            currentHeaderIndex = prev
+                            showHeaderTarget(headerTargets[prev])
+                        }
                     }
-                    return false
+                    return true
                 }
             })
-        binding.expandedWidgetFlipper.setOnTouchListener { v, event ->
-            gestureDetector.onTouchEvent(event)
-            // Don't consume — let the child widget handle its own touches too.
-            false
+        binding.expandedHeaderPill.setOnTouchListener { _, event ->
+            detector.onTouchEvent(event)
+            false // don't consume — let children (menu button, weather cookie) still receive touches
         }
     }
 
@@ -439,18 +447,25 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun updateHeaderTarget(items: List<Item>) {
-        val primary = items.filterIsInstance<Item.Target>()
-            .firstOrNull { it.target.featureType != FEATURE_WEATHER } ?: return
+        val targets = items.filterIsInstance<Item.Target>()
+            .filter { it.target.featureType != FEATURE_WEATHER }
+        headerTargets = targets
+        // Keep the current index valid; fall back to 0 if the list shrank.
+        if (currentHeaderIndex >= targets.size) currentHeaderIndex = 0
+        val target = targets.getOrNull(currentHeaderIndex) ?: return
+        showHeaderTarget(target)
+    }
+
+    /** Renders [target] inside the header pill, no-op if already displayed. */
+    private fun showHeaderTarget(target: Item.Target) {
         val existing = binding.expandedHeaderTarget.getChildAt(0)
-        if (existing?.tag == primary.target.smartspaceTargetId) return
+        if (existing?.tag == target.target.smartspaceTargetId) return
         binding.expandedHeaderTarget.removeAllViews()
-        // Use system dark mode to determine text tint so it contrasts with the opaque
-        // Monet background rather than the wallpaper color.
         val isSystemDark = (resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
         val tintColour = if (isSystemDark) Color.WHITE else Color.BLACK
-        val sv = SmartspacerView(requireContext()).apply { tag = primary.target.smartspaceTargetId }
-        sv.setTarget(primary.target, this, tintColour, primary.applyShadow)
+        val sv = SmartspacerView(requireContext()).apply { tag = target.target.smartspaceTargetId }
+        sv.setTarget(target.target, this, tintColour, target.applyShadow)
         binding.expandedHeaderTarget.addView(sv, FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         ))
