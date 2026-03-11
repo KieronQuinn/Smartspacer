@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.graphics.shapes.CornerRounding
 import androidx.graphics.shapes.RoundedPolygon
+import androidx.graphics.shapes.star
 import androidx.graphics.shapes.toPath
 
 /**
