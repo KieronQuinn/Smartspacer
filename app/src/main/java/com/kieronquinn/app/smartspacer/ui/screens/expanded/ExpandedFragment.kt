@@ -43,6 +43,7 @@ import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
 import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
+import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
@@ -272,7 +273,14 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupTabs() {
-        val tabs = tabRepository.getTabs()
+        whenResumed {
+            tabRepository.tabs.collect { tabs -> buildTabUI(tabs) }
+        }
+    }
+
+    private fun buildTabUI(tabs: List<ExpandedTabConfig>) {
+        loadedTabIndices.clear()
+        currentTabIndex = 0
         if (tabs.isEmpty()) {
             binding.expandedWidgetFlipper.isVisible = false
             binding.expandedEmptyLabel.isVisible = true
