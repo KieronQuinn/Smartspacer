@@ -27,13 +27,14 @@ class SquircleFrameLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    // 10-lobe cookie: innerRadius=0.82 gives shallow-but-visible bumps (matching Material3
-    // Cookie12Sided params scaled to 10 lobes), corner rounding=0.16 smooths peaks and valleys.
+    // 9-lobe cookie matching Material3's Cookie9Sided shape from MaterialShapes.
+    // innerRadius=0.84f gives the shallow scalloped bumps characteristic of the Material You
+    // cookie badge; corner rounding=0.15f smooths peaks and valleys.
     // Polygon is unit-circle normalized (outerRadius=1, centered at 0,0).
     private val polygon = RoundedPolygon.star(
-        numVerticesPerRadius = 10,
-        innerRadius = 0.82f,
-        rounding = CornerRounding(radius = 0.16f)
+        numVerticesPerRadius = 9,
+        innerRadius = 0.84f,
+        rounding = CornerRounding(radius = 0.15f)
     )
 
     private val scaledPath = Path()

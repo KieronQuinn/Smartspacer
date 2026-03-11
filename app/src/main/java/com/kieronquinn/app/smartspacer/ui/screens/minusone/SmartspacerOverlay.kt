@@ -105,9 +105,7 @@ class SmartspacerOverlay(
     override fun onDragProgress(progress: Float) {
         super.onDragProgress(progress)
         updateProgressViews(progress)
-        whenResumed {
-            expandedRepository.onOverlayDragProgressChanged()
-        }
+        expandedRepository.onOverlayDragProgressChanged()
     }
 
     override fun onSaveInstanceState(bundle: Bundle) {

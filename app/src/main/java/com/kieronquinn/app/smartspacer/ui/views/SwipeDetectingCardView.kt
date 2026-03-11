@@ -55,4 +55,11 @@ class SwipeDetectingCardView @JvmOverloads constructor(
         gestureDetector.onTouchEvent(ev)
         return false
     }
+
+    /**
+     * Ignore children's requests to disallow interception — without this, an interactive child
+     * (e.g. the Smartspacer target view) calling requestDisallowInterceptTouchEvent(true) would
+     * stop onInterceptTouchEvent from seeing subsequent move/up events, breaking swipe detection.
+     */
+    override fun requestDisallowInterceptTouchEvent(disallowIntercept: Boolean) = Unit
 }

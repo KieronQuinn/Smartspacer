@@ -141,7 +141,7 @@ interface ExpandedRepository {
     fun destroyHosts(sessionId: String?)
 
     suspend fun onOverlayBackPressed()
-    suspend fun onOverlayDragProgressChanged()
+    fun onOverlayDragProgressChanged()
 
     suspend fun getExpandedCustomWidgetBackups(): List<ExpandedCustomWidgetBackup>
     suspend fun restoreExpandedCustomWidgetBackups(backups: List<ExpandedCustomWidgetBackup>)
@@ -197,7 +197,7 @@ class ExpandedRepositoryImpl(
 ): ExpandedRepository {
 
     override val overlayBackPressedBus = MutableSharedFlow<Unit>()
-    override val overlayDragProgressChanged = MutableSharedFlow<Unit>()
+    override val overlayDragProgressChanged = MutableSharedFlow<Unit>(extraBufferCapacity = 1, onBufferOverflow = kotlinx.coroutines.channels.BufferOverflow.DROP_OLDEST)
     override val expandedCustomAppWidgets = databaseRepository.getExpandedCustomAppWidgets()
 
     private val appWidgetManager = AppWidgetManager.getInstance(context)
@@ -250,8 +250,8 @@ class ExpandedRepositoryImpl(
         overlayBackPressedBus.emit(Unit)
     }
 
-    override suspend fun onOverlayDragProgressChanged() {
-        overlayDragProgressChanged.emit(Unit)
+    override fun onOverlayDragProgressChanged() {
+        overlayDragProgressChanged.tryEmit(Unit)
     }
 
     override suspend fun getExpandedCustomWidgetBackups(): List<ExpandedCustomWidgetBackup> {
