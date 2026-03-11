@@ -392,6 +392,9 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             .takeIf { it > 0 } ?: resources.displayMetrics.widthPixels
 
         val hostView = expandedRepository.createHost(requireContext(), availableWidth, widgetItem, sessionId, this)
+        // If the cached view is still attached to a stale container (left over after
+        // buildTabUI replaced all FrameLayouts), detach it before re-parenting.
+        (hostView.parent as? android.view.ViewGroup)?.removeView(hostView)
         container.removeAllViews()
         container.addView(hostView, FrameLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
