@@ -58,13 +58,16 @@ class SwipeDetectingCardView @JvmOverloads constructor(
 
     /**
      * Also feed events to the gesture detector here.  When no child consumes ACTION_DOWN,
-     * MaterialCardView's own onTouchEvent returns true (clickable + ripple), making the card
-     * itself the touch target.  Subsequent MOVE/UP events then arrive here directly and bypass
-     * onInterceptTouchEvent, so without this override the fling is never detected.
+     * subsequent MOVE/UP events arrive here directly and bypass onInterceptTouchEvent — so without
+     * this override the fling is never detected.
+     *
+     * We return true only for ACTION_DOWN (to keep receiving the rest of the gesture), but
+     * intentionally skip super so the card never fires a ripple or performClick on a bare tap.
+     * Page navigation is swipe-only; a click should do nothing at the pill level.
      */
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         gestureDetector.onTouchEvent(ev)
-        return super.onTouchEvent(ev)
+        return ev.actionMasked == MotionEvent.ACTION_DOWN
     }
 
     /**
