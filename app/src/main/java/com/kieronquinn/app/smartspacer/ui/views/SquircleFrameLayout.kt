@@ -11,12 +11,11 @@ import androidx.graphics.shapes.RoundedPolygon
 import androidx.graphics.shapes.toPath
 
 /**
- * A [FrameLayout] that clips itself and all its children to the Material You "cookie" shape —
- * a 10-lobe scalloped rosette matching the badge used by Google's Glance weather widget.
+ * A [FrameLayout] that clips itself and all its children to a 10-lobe Material You cookie shape.
  *
- * Shape is created via [RoundedPolygon.star] from [androidx.graphics.shapes] (a transitive
- * dependency of [com.google.android.material:material:1.13.0]), using the same parameters as
- * [androidx.compose.material3.MaterialShapes.Cookie9Sided] but with 10 lobes.
+ * Material3's MaterialShapes only ships Cookie9Sided and Cookie12Sided; there is no Cookie10Sided.
+ * We construct the 10-lobe variant directly via [RoundedPolygon.star] from
+ * [androidx.graphics.shapes], which is a transitive dependency of material:1.13.0+.
  *
  * Set [android:background] for the fill color — the canvas is clipped before the background
  * drawable and all children are drawn, so the background is automatically shaped.
@@ -27,12 +26,11 @@ class SquircleFrameLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    // 9-lobe cookie matching Material3's Cookie9Sided shape from MaterialShapes.
-    // innerRadius=0.84f gives the shallow scalloped bumps characteristic of the Material You
-    // cookie badge; corner rounding=0.15f smooths peaks and valleys.
+    // 10-lobe cookie — same aesthetic as Material3's Cookie9Sided/Cookie12Sided but with 10 bumps.
+    // innerRadius=0.84f gives shallow scalloped bumps; corner rounding=0.15f smooths peaks/valleys.
     // Polygon is unit-circle normalized (outerRadius=1, centered at 0,0).
     private val polygon = RoundedPolygon.star(
-        numVerticesPerRadius = 9,
+        numVerticesPerRadius = 10,
         innerRadius = 0.84f,
         rounding = CornerRounding(radius = 0.15f)
     )
