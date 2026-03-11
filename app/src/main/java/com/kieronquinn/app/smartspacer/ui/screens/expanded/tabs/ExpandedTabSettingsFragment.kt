@@ -8,12 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
+import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import com.kieronquinn.app.smartspacer.R
@@ -81,6 +86,7 @@ class ExpandedTabSettingsFragment : Fragment() {
         setupRecyclerView()
         setupAddFab()
         observeNewWidgets()
+        setupInsets()
         // Intercept the system back gesture/button so it saves just like the toolbar back arrow.
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             saveAndPop()
@@ -109,6 +115,21 @@ class ExpandedTabSettingsFragment : Fragment() {
             currentTabs.add(newTab)
             adapter.notifyItemInserted(currentTabs.lastIndex)
             binding.tabSettingsRecycler.scrollToPosition(currentTabs.lastIndex)
+        }
+    }
+
+    private fun setupInsets() {
+        // Push the FAB above the navigation bar.
+        binding.tabSettingsAddFab.onApplyInsets { view, insets ->
+            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            view.updateLayoutParams<android.view.ViewGroup.MarginLayoutParams> {
+                bottomMargin = bottomInset + 24.dp
+            }
+        }
+        // Keep the recycler's bottom padding in sync so the last item is never hidden.
+        binding.tabSettingsRecycler.onApplyInsets { view, insets ->
+            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            view.updatePadding(bottom = bottomInset + 96.dp)
         }
     }
 
