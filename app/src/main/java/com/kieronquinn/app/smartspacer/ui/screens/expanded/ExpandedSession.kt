@@ -33,6 +33,8 @@ interface ExpandedSession {
 
     val state: StateFlow<State>
     val exitBus: Flow<Boolean>
+    /** All Smartspace page targets in session order, including blank complication targets. */
+    val rawPageTargets: StateFlow<List<SmartspaceTarget>>
 
     fun setup(isOverlay: Boolean)
     fun onResume()
@@ -140,6 +142,8 @@ class ExpandedSessionImpl(
         SmartspaceSessionId(UUID.randomUUID().toString(), Process.myUserHandle()),
         ::onItemsChanged
     )
+
+    override val rawPageTargets = session.rawPageTargets
 
     override val exitBus = isLocked.drop(1).mapLatest {
         it && settingsRepository.expandedCloseWhenLocked.get()

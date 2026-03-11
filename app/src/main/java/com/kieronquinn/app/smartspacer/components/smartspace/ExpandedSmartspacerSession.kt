@@ -73,6 +73,9 @@ class ExpandedSmartspacerSession(
         private const val MAX_SHORTCUTS = 10
     }
 
+    /** Raw page targets in session order, updated before any blank-target splitting. */
+    val rawPageTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
+
     private val expandedRepository by inject<ExpandedRepository>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val databaseRepository by inject<DatabaseRepository>()
@@ -286,6 +289,9 @@ class ExpandedSmartspacerSession(
         settings: ExpandedSettings,
         viewState: ExpandedViewState
     ): List<Item> {
+        // Capture the full ordered page list before blank-target splitting so the header pill
+        // can page through exactly the same targets as the regular Smartspacer widget.
+        rawPageTargets.value = map { it.page }
         val isDark = settings.isDark
         val applyShadow = settings.applyShadow
         val list = ArrayList<Item>()

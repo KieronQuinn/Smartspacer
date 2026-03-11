@@ -407,6 +407,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private fun setupState() {
         handleState(viewModel.state.value)
         whenResumed { viewModel.state.collect { handleState(it) } }
+        whenResumed { viewModel.rawPageTargets.collect { updateHeaderTargets(it) } }
     }
 
     private fun handleState(state: State) {
@@ -436,10 +437,22 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun updateHeaderTarget(items: List<Item>) {
-        val targets = items.filterIsInstance<Item.Target>()
-            .filter { it.target.featureType != FEATURE_WEATHER }
+        // No-op: header paging is driven by updateHeaderTargets(rawPageTargets).
+    }
+
+    /**
+     * Rebuilds [headerTargets] from the raw session page list (all targets in session order,
+     * including blank complication targets, excluding weather).  This mirrors exactly what the
+     * regular Smartspacer widget pages through.
+     */
+    private fun updateHeaderTargets(rawTargets: List<SmartspaceTarget>) {
+        val targets = rawTargets
+            .filter { it.featureType != FEATURE_WEATHER }
+            .map { target ->
+                // The pill has its own background, so shadows are never needed.
+                Item.Target(target, null, false, applyShadow = false, isDark = isDark)
+            }
         headerTargets = targets
-        // Keep the current index valid; fall back to 0 if the list shrank.
         if (currentHeaderIndex >= targets.size) currentHeaderIndex = 0
         val target = targets.getOrNull(currentHeaderIndex) ?: return
         showHeaderTarget(target)
