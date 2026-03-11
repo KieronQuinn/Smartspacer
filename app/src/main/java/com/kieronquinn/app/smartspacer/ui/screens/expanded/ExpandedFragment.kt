@@ -15,6 +15,8 @@ import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
@@ -163,6 +165,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private var headerTargets: List<Item.Target> = emptyList()
     /** Index into [headerTargets] of the target currently shown in the header pill. */
     private var currentHeaderIndex = 0
+    private val headerPagerAdapter by lazy { HeaderTargetAdapter() }
 
     override val applyTransitions = false
 
@@ -331,21 +334,20 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupHeaderSwipe() {
-        binding.expandedHeaderPill.onHorizontalSwipe = { isLeft ->
-            if (isLeft) {
-                val next = currentHeaderIndex + 1
-                if (next < headerTargets.size) {
-                    currentHeaderIndex = next
-                    showHeaderTarget(headerTargets[next])
-                }
-            } else {
-                val prev = currentHeaderIndex - 1
-                if (prev >= 0) {
-                    currentHeaderIndex = prev
-                    showHeaderTarget(headerTargets[prev])
+        // ViewPager2 handles finger-tracking and page snapping directly.
+        // The pill's SwipeDetectingCardView still fires requestDisallowInterceptTouchEvent on
+        // ACTION_DOWN to guard against SlidingPanelLayout in the overlay context, but its own
+        // fling-intercept is disabled (onHorizontalSwipe = null) so it never cancels the pager.
+        binding.expandedHeaderPill.onHorizontalSwipe = null
+        binding.expandedHeaderTarget.adapter = headerPagerAdapter
+        binding.expandedHeaderTarget.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    currentHeaderIndex = position
+                    updateHeaderDots()
                 }
             }
-        }
+        )
     }
 
     private fun selectTab(index: Int) {
@@ -448,38 +450,21 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private fun updateHeaderTargets(rawTargets: List<SmartspaceTarget>) {
         val targets = rawTargets
             .filter { it.featureType != FEATURE_WEATHER }
-            .map { target ->
-                // The pill has its own background, so shadows are never needed.
-                Item.Target(target, null, false, applyShadow = false, isDark = isDark)
-            }
+            .map { target -> Item.Target(target, null, false, applyShadow = false, isDark = isDark) }
         headerTargets = targets
         if (currentHeaderIndex >= targets.size) currentHeaderIndex = 0
-        val target = targets.getOrNull(currentHeaderIndex) ?: return
-        showHeaderTarget(target)
-    }
-
-    /** Renders [target] inside the header pill and refreshes page dots. */
-    private fun showHeaderTarget(target: Item.Target) {
-        val existing = binding.expandedHeaderTarget.getChildAt(0)
-        if (existing?.tag == target.target.smartspaceTargetId) return
-        binding.expandedHeaderTarget.removeAllViews()
-        val isSystemDark = (resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        val tintColour = if (isSystemDark) Color.WHITE else Color.BLACK
-        val sv = SmartspacerView(requireContext()).apply { tag = target.target.smartspaceTargetId }
-        sv.setTarget(target.target, this, tintColour, target.applyShadow)
-        binding.expandedHeaderTarget.addView(sv, FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        ))
+        headerPagerAdapter.submitTargets(targets)
+        binding.expandedHeaderTarget.setCurrentItem(currentHeaderIndex, false)
         updateHeaderDots()
     }
 
     /** Rebuilds the dot-indicator row to reflect the current page and total count. */
     private fun updateHeaderDots() {
         val dots = binding.expandedHeaderDots
-        dots.removeAllViews()
         val count = headerTargets.size
-        if (count <= 1) return  // No dots needed for a single page.
+        dots.isVisible = count > 1
+        dots.removeAllViews()
+        if (!dots.isVisible) return
         val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
         val gapPx  = resources.getDimensionPixelSize(R.dimen.header_dot_gap)
         val isSystemDark = (resources.configuration.uiMode and
@@ -809,6 +794,43 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
     private fun AppWidgetProviderInfo.canReconfigure() =
         configure != null && widgetFeatures and WIDGET_FEATURE_RECONFIGURABLE != 0
+
+    // ── Header pill pager adapter ──────────────────────────────────────────
+
+    /**
+     * Minimal RecyclerView.Adapter for the header pill [ViewPager2].
+     * Each page is a [SmartspacerView] bound to one [Item.Target].
+     */
+    private inner class HeaderTargetAdapter
+        : RecyclerView.Adapter<HeaderTargetAdapter.ViewHolder>() {
+
+        private var targets: List<Item.Target> = emptyList()
+
+        fun submitTargets(newTargets: List<Item.Target>) {
+            targets = newTargets
+            notifyDataSetChanged()
+        }
+
+        inner class ViewHolder(val sv: SmartspacerView) : RecyclerView.ViewHolder(sv)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            ViewHolder(SmartspacerView(requireContext()).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            })
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val target = targets[position]
+            val isSystemDark = (resources.configuration.uiMode and
+                    Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+            val tintColour = if (isSystemDark) Color.WHITE else Color.BLACK
+            holder.sv.setTarget(target.target, this@ExpandedFragment, tintColour, false)
+        }
+
+        override fun getItemCount() = targets.size
+    }
 
     // ── Parcelable overlay actions ─────────────────────────────────────────
 

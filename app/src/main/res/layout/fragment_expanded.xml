@@ -68,17 +68,18 @@
             android:paddingEnd="4dp"
             android:paddingBottom="8dp">
 
-            <!-- Primary Smartspacer target (date text / event name).
-                 A SmartspacerBasePageView is attached here at runtime. -->
-            <FrameLayout
+            <!-- Swipeable pager for Smartspacer target pages.
+                 ViewPager2 tracks the finger and snaps to pages on release,
+                 exactly like the regular Smartspacer widget. -->
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/expanded_header_target"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@id/expanded_header_dots"
                 app:layout_constraintEnd_toStartOf="@id/expanded_header_menu"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Page indicator dots — shown only when there are multiple targets to swipe. -->
             <LinearLayout

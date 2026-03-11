@@ -97,7 +97,7 @@ class SwipeDetectingCardView @JvmOverloads constructor(
             parent?.requestDisallowInterceptTouchEvent(true)
         }
         gestureDetector.onTouchEvent(ev)
-        if (flingDetected && ev.actionMasked == MotionEvent.ACTION_UP) {
+        if (onHorizontalSwipe != null && flingDetected && ev.actionMasked == MotionEvent.ACTION_UP) {
             flingDetected = false
             return true
         }
