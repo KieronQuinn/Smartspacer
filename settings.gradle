@@ -17,8 +17,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Smartspacer"
-include ':app'
 include ':systemstubs'
+include ':app'
 include ':sdk-core'
 include ':sdk-sample'
 include ':sdk-plugin'

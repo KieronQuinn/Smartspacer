@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
+import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
@@ -238,6 +239,14 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 ),
                 onChanged = viewModel::onMultiColumnChanged
             ),
+            GenericSettingsItem.Dropdown(
+                getString(R.string.expanded_settings_nav_bar_style_title),
+                getString(R.string.expanded_settings_nav_bar_style_content, getString(navItemDisplayMode.label)),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
+                navItemDisplayMode,
+                viewModel::onNavItemDisplayModeChanged,
+                NavItemDisplayMode.entries
+            ) { it.label },
             footer
         )
     }

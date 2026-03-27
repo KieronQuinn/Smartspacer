@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Content page for a single tab inside the Plugin Repository ViewPager2. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
+        android:id="@+id/plugin_page_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/margin_8" />
+
+    <LinearLayout
+        android:id="@+id/plugin_page_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/plugin_page_empty_icon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_plugins"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/plugin_page_empty_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+            android:textColor="?android:textColorPrimary"
+            tools:text="No installed plugins" />
+
+        <TextView
+            android:id="@+id/plugin_page_empty_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="@dimen/margin_16"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingEnd="@dimen/margin_16"
+            android:paddingBottom="@dimen/margin_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+            tools:text="Browse available plugins to install one." />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/plugin_page_empty_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_8"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="Browse" />
+
+    </LinearLayout>
+
+</FrameLayout>

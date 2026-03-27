@@ -20,6 +20,7 @@ abstract class PluginRepositoryViewModel(scope: CoroutineScope?): BaseViewModel(
     abstract val state: StateFlow<State>
     abstract val showSearchClear: StateFlow<Boolean>
 
+    /** No longer drives filtering — tab position is managed by ViewPager2. */
     abstract fun setSelectedTab(index: Int)
     abstract fun setSearchTerm(term: String)
     abstract fun getSearchTerm(): String
@@ -30,11 +31,9 @@ abstract class PluginRepositoryViewModel(scope: CoroutineScope?): BaseViewModel(
     sealed class State {
         object Loading: State()
         data class Loaded(
-            val items: List<Plugin>,
-            val isEmpty: Boolean,
-            val shouldOfferBrowse: Boolean,
-            val isSearchEmpty: Boolean,
-            val isAvailableTab: Boolean
+            val installedItems: List<Plugin>,
+            val availableItems: List<Plugin>,
+            val isSearchEmpty: Boolean
         ): State()
     }
 
@@ -46,7 +45,6 @@ class PluginRepositoryViewModelImpl(
     scope: CoroutineScope? = null
 ): PluginRepositoryViewModel(scope) {
 
-    private val isAvailableTab = MutableStateFlow(false)
     private val isReloading = MutableStateFlow(false)
 
     @VisibleForTesting
@@ -63,61 +61,42 @@ class PluginRepositoryViewModelImpl(
     override val state = combine(
         plugins,
         searchTerm,
-        isAvailableTab,
         isReloading
-    ) { plugins, term, available, reloading ->
-        if(reloading) return@combine State.Loading
-        val filteredPlugins = plugins.filter {
+    ) { plugins, term, reloading ->
+        if (reloading) return@combine State.Loading
+        val filtered = plugins.filter {
             it.name.toString().contains(term, true) ||
                     it.packageName.contains(term, true)
         }
-        val items = ArrayList<Plugin>()
-        if(!available){
-            val installedPlugins = filteredPlugins.filter {
-                it.isInstalled
-            }
-            val pluginsWithUpdates = installedPlugins.filter {
-                it is Plugin.Remote && it.updateAvailable
-            }.sortedBy {
-                it.name.toString().lowercase()
-            }
-            val pluginsWithoutUpdates = installedPlugins.filterNot {
-                it is Plugin.Remote && it.updateAvailable
-            }.sortedBy {
-                it.name.toString().lowercase()
-            }
-            items.addAll(pluginsWithUpdates)
-            items.addAll(pluginsWithoutUpdates)
-        }else{
-            val notInstalledPlugins = filteredPlugins.filterNot {
-                it.isInstalled
-            }
-            val recommendedPlugins = notInstalledPlugins.filter {
-                it is Plugin.Remote && it.recommendedApps.isNotEmpty()
-            }.sortedBy {
-                it.name.toString().lowercase()
-            }
-            val allPlugins = notInstalledPlugins.filterNot {
-                it is Plugin.Remote && it.recommendedApps.isNotEmpty()
-            }.sortedBy {
-                it.name.toString().lowercase()
-            }
-            items.addAll(recommendedPlugins)
-            items.addAll(allPlugins)
-        }
-        val shouldOfferBrowse = !available && term.isBlank() && items.isEmpty()
-        State.Loaded(items, items.isEmpty(), shouldOfferBrowse, term.isBlank(), available)
+        State.Loaded(
+            installedItems = buildInstalledList(filtered),
+            availableItems = buildAvailableList(filtered),
+            isSearchEmpty = term.isBlank()
+        )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
-    override fun setSelectedTab(index: Int) {
-        vmScope.launch {
-            isAvailableTab.emit(index == 1)
-        }
+    private fun buildInstalledList(filtered: List<Plugin>): List<Plugin> {
+        val installed = filtered.filter { it.isInstalled }
+        val withUpdates = installed.filter { it is Plugin.Remote && it.updateAvailable }
+            .sortedBy { it.name.toString().lowercase() }
+        val withoutUpdates = installed.filterNot { it is Plugin.Remote && it.updateAvailable }
+            .sortedBy { it.name.toString().lowercase() }
+        return withUpdates + withoutUpdates
     }
 
-    override fun getSearchTerm(): String {
-        return searchTerm.value
+    private fun buildAvailableList(filtered: List<Plugin>): List<Plugin> {
+        val notInstalled = filtered.filterNot { it.isInstalled }
+        val recommended = notInstalled.filter { it is Plugin.Remote && it.recommendedApps.isNotEmpty() }
+            .sortedBy { it.name.toString().lowercase() }
+        val rest = notInstalled.filterNot { it is Plugin.Remote && it.recommendedApps.isNotEmpty() }
+            .sortedBy { it.name.toString().lowercase() }
+        return recommended + rest
     }
+
+    /** Tab position is now driven by ViewPager2; this is a no-op. */
+    override fun setSelectedTab(index: Int) {}
+
+    override fun getSearchTerm(): String = searchTerm.value
 
     override fun setSearchTerm(term: String) {
         vmScope.launch {
@@ -127,19 +106,20 @@ class PluginRepositoryViewModelImpl(
 
     override fun onPluginClicked(plugin: Plugin) {
         vmScope.launch {
-            if(plugin is Plugin.Local){
+            if (plugin is Plugin.Local) {
                 navigation.navigate(plugin.launchIntent)
-            }else{
-                navigation.navigate(PluginRepositoryFragmentDirections.actionPluginRepositoryFragmentToPluginDetailsFragment(plugin))
+            } else {
+                navigation.navigate(
+                    PluginRepositoryFragmentDirections
+                        .actionPluginRepositoryFragmentToPluginDetailsFragment(plugin)
+                )
             }
         }
     }
 
     override fun reload(force: Boolean) {
         vmScope.launch {
-            if(force){
-                isReloading.emit(true)
-            }
+            if (force) isReloading.emit(true)
             pluginRepository.reload(force)
         }
     }

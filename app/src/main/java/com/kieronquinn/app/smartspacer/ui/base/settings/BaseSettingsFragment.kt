@@ -8,7 +8,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentSettingsBaseBinding
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 
 abstract class BaseSettingsFragment: BoundFragment<FragmentSettingsBaseBinding>(FragmentSettingsBaseBinding::inflate) {
 

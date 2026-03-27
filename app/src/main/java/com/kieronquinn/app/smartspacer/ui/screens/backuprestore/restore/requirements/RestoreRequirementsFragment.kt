@@ -25,7 +25,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import kotlinx.coroutines.flow.drop
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

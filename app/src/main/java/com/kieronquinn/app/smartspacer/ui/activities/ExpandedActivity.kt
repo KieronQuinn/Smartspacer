@@ -14,11 +14,12 @@ import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
-import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import kotlinx.coroutines.flow.drop
 import org.koin.android.ext.android.inject
 
-class ExpandedActivity: MonetCompatActivity() {
+class ExpandedActivity: AppCompatActivity() {
 
     companion object {
         private const val KEY_IS_OVERLAY = "is_overlay"
@@ -55,6 +56,7 @@ class ExpandedActivity: MonetCompatActivity() {
         }
     }
 
+    private val monet = DynamicMonet.getInstance()
     private val settings by inject<SmartspacerSettingsRepository>()
     private val expandedRepository by inject<ExpandedRepository>()
 

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -26,12 +25,6 @@ fun NavController.onDestinationChanged() = callbackFlow {
         removeOnDestinationChangedListener(listener)
     }
 }.debounce(TAP_DEBOUNCE)
-
-fun NavController.setOnBackPressedCallback(callback: OnBackPressedCallback) {
-    NavController::class.java.getDeclaredField("onBackPressedCallback").apply {
-        isAccessible = true
-    }.set(this, callback)
-}
 
 /**
  *  Copy of [NavigationUI.onNavDestinationSelected] but without the force unwrap on the animation

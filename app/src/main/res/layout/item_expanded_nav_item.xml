@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Single destination item inside the expanded-view floating nav bar.
+  Icon is rendered as a TextView using the Material Symbols font so glyph
+  bounds are always correct (ImageView requires a full layout pass after
+  setImageDrawable on a previously-GONE view, causing a blank first frame).
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_item_container"
+    android:layout_width="wrap_content"
+    android:layout_height="41dp"
+    android:layout_marginEnd="5dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <!-- Material Symbols glyph rendered as text. Typeface, color, and text
+         are set at runtime. GONE when unselected or no codepoint assigned. -->
+    <TextView
+        android:id="@+id/nav_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:textSize="18dp"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:visibility="gone"
+        android:importantForAccessibility="no" />
+
+    <!-- Label: always visible except in ICON_ONLY mode. -->
+    <TextView
+        android:id="@+id/nav_item_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
+        android:textSize="14sp"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+</LinearLayout>

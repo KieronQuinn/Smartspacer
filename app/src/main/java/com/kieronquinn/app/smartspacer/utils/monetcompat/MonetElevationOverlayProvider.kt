@@ -23,10 +23,10 @@ import androidx.annotation.ColorInt
 import androidx.core.graphics.ColorUtils
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.internal.ViewUtils
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import com.kieronquinn.app.smartspacer.utils.extensions.getColorOnSurface
 import com.kieronquinn.app.smartspacer.utils.extensions.getColorOnSurfaceVariant
 import com.kieronquinn.app.smartspacer.utils.extensions.getColorSurface
-import com.kieronquinn.monetcompat.core.MonetCompat
 
 @SuppressLint("RestrictedApi")
 /** Utility for calculating elevation overlay alpha values and colors.  */
@@ -43,7 +43,7 @@ class MonetElevationOverlayProvider private constructor(
     private val displayDensity: Float
 ) {
 
-    constructor(context: Context, monet: MonetCompat = MonetCompat.getInstance()) : this(
+    constructor(context: Context, monet: DynamicMonet = DynamicMonet.getInstance()) : this(
         true,
         monet.getColorOnSurface(context),
         monet.getColorOnSurfaceVariant(context),

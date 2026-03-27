@@ -45,9 +45,8 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.remoteviews.WidgetContextWrapper
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import org.koin.core.component.inject
-import com.kieronquinn.monetcompat.R as MonetcompatR
 
 class ExpandedAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -110,7 +109,7 @@ class ExpandedAdapter(
     private val layoutInflater = LayoutInflater.from(context)
     private val layoutInflaterMaterialComponents = LayoutInflater.from(contextMaterialComponents)
     private val widgetContext = WidgetContextWrapper(context)
-    private val monet = MonetCompat.getInstance()
+    private val monet = DynamicMonet.getInstance()
     private val glide = Glide.with(context)
 
     override val isRearrange = false

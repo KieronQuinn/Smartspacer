@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="shared_axis_x_slide_distance">96dp</dimen>
+
+    <!-- MonetSwitch dimensions (previously provided by MonetCompat AAR) -->
+    <dimen name="monet_switch_corners">24dp</dimen>
+    <dimen name="monet_switch_height">72dp</dimen>
+    <dimen name="monet_switch_padding">12dp</dimen>
+    <dimen name="monet_switch_padding_end">16dp</dimen>
+    <dimen name="monet_switch_padding_start">24dp</dimen>
     <dimen name="bottom_nav_elevation">1dp</dimen>
     <dimen name="bottom_nav_height">80dp</dimen>
     <dimen name="bottom_nav_height_margins">104dp</dimen>
@@ -69,8 +76,8 @@
     <dimen name="setup_image_size">160dp</dimen>
 
     <!-- Expanded view header pill page dots -->
-    <dimen name="header_dot_size">6dp</dimen>
-    <dimen name="header_dot_gap">4dp</dimen>
+    <dimen name="header_dot_size">5dp</dimen>
+    <dimen name="header_dot_gap">5dp</dimen>
 
     <!-- Expanded Smartspace -->
     <dimen name="expanded_smartspace_remoteviews_max_height">300dp</dimen>

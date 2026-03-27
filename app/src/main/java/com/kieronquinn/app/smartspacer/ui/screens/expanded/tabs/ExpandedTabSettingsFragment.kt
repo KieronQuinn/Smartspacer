@@ -1,5 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.tabs
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,14 +15,12 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kieronquinn.app.smartspacer.utils.extensions.dp
-import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
+import com.google.android.material.button.MaterialButton
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedTabSettingsBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemTabSettingsRowBinding
@@ -28,6 +28,14 @@ import com.kieronquinn.app.smartspacer.model.database.ExpandedCustomAppWidget
 import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
+import com.kieronquinn.app.smartspacer.ui.views.MaterialSymbolDrawable
+import com.kieronquinn.app.smartspacer.utils.extensions.MaterialSymbolsHelper
+import com.kieronquinn.app.smartspacer.utils.extensions.dp
+import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.util.UUID
 
@@ -87,6 +95,7 @@ class ExpandedTabSettingsFragment : Fragment() {
         setupAddFab()
         observeNewWidgets()
         setupInsets()
+        setupIconPickerResult()
         // Intercept the system back gesture/button so it saves just like the toolbar back arrow.
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             saveAndPop()
@@ -100,9 +109,22 @@ class ExpandedTabSettingsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = TabSettingsAdapter(currentTabs, ::onPickWidget, ::onDeleteTab)
+        adapter = TabSettingsAdapter(currentTabs, ::onPickWidget, ::onPickIcon, ::onDeleteTab)
         binding.tabSettingsRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.tabSettingsRecycler.adapter = adapter
+    }
+
+    private fun setupIconPickerResult() {
+        childFragmentManager.setFragmentResultListener(
+            ExpandedTabIconPickerBottomSheetFragment.RESULT_KEY,
+            viewLifecycleOwner
+        ) { _, bundle ->
+            val pos = bundle.getInt(ExpandedTabIconPickerBottomSheetFragment.KEY_POSITION)
+            val cp = bundle.getInt(ExpandedTabIconPickerBottomSheetFragment.KEY_CODEPOINT, -1)
+            if (pos < 0 || pos >= currentTabs.size) return@setFragmentResultListener
+            currentTabs[pos] = currentTabs[pos].copy(iconCodepoint = if (cp == -1) null else cp)
+            adapter.notifyItemChanged(pos)
+        }
     }
 
     private fun setupAddFab() {
@@ -190,6 +212,13 @@ class ExpandedTabSettingsFragment : Fragment() {
         }
     }
 
+    private fun onPickIcon(position: Int) {
+        val current = currentTabs.getOrNull(position) ?: return
+        ExpandedTabIconPickerBottomSheetFragment
+            .newInstance(position, current.iconCodepoint)
+            .show(childFragmentManager, "icon_picker")
+    }
+
     private fun onDeleteTab(position: Int) {
         if (position < 0 || position >= currentTabs.size) return
         currentTabs.removeAt(position)
@@ -228,6 +257,7 @@ class ExpandedTabSettingsFragment : Fragment() {
     private inner class TabSettingsAdapter(
         private val tabs: MutableList<ExpandedTabConfig>,
         private val onPickWidget: (Int) -> Unit,
+        private val onPickIcon: (Int) -> Unit,
         private val onDelete: (Int) -> Unit
     ) : RecyclerView.Adapter<TabSettingsAdapter.VH>() {
 
@@ -275,6 +305,25 @@ class ExpandedTabSettingsFragment : Fragment() {
 
                 tabRowPickWidget.setOnClickListener { onPickWidget(holder.bindingAdapterPosition) }
                 tabRowDelete.setOnClickListener { onDelete(holder.bindingAdapterPosition) }
+
+                // Icon picker button — show current icon preview when one is set
+                tabRowPickIcon.setOnClickListener { onPickIcon(holder.bindingAdapterPosition) }
+                val cp = tab.iconCodepoint
+                if (cp != null) {
+                    tabRowIconLabel.isVisible = true
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        val tf = withContext(Dispatchers.IO) {
+                            MaterialSymbolsHelper.getTypeface(requireContext())
+                        }
+                        // Draw in Color.WHITE — the button's TonalButton iconTint tints it
+                        tabRowPickIcon.icon = MaterialSymbolDrawable(cp, tf, 20.dp, Color.WHITE)
+                        tabRowIconLabel.text = MaterialSymbolsHelper.getSymbols(requireContext())
+                            .find { it.codepoint == cp }?.displayName
+                    }
+                } else {
+                    tabRowPickIcon.icon = null
+                    tabRowIconLabel.isVisible = false
+                }
             }
         }
     }

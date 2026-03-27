@@ -29,7 +29,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.or
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import org.koin.android.ext.android.inject
 
 abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T): BottomSheetDialogFragment() {
@@ -44,7 +44,7 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     }
 
     internal val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     internal val binding: T

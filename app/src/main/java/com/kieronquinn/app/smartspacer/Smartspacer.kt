@@ -299,7 +299,6 @@ import com.kieronquinn.app.smartspacer.ui.screens.update.UpdateViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.update.UpdateViewModelImpl
 import com.kieronquinn.app.smartspacer.utils.extensions.gsonExclusionStrategy
 import com.kieronquinn.app.smartspacer.utils.gson.LocalTimeAdapter
-import com.kieronquinn.monetcompat.core.MonetCompat
 import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
 import io.noties.markwon.core.MarkwonTheme
@@ -465,7 +464,7 @@ class Smartspacer: Application(), Configuration.Provider {
                 get()
             )
         }
-        viewModel<ExpandedSettingsViewModel> { ExpandedSettingsViewModelImpl(get(), get(), get(), get()) }
+        viewModel<ExpandedSettingsViewModel> { ExpandedSettingsViewModelImpl(get(), get(), get(), get(), get()) }
         viewModel<ExpandedSettingsSearchProviderViewModel> { ExpandedSettingsSearchProviderViewModelImpl(get(), get()) }
         viewModel { ExpandedHomeOpenModeSettingsViewModel(get()) }
         viewModel { ExpandedLockOpenModeSettingsViewModel(get()) }
@@ -555,7 +554,6 @@ class Smartspacer: Application(), Configuration.Provider {
         super.onCreate()
         if(isSafeMode()) return
         DynamicColors.applyToActivitiesIfAvailable(this)
-        setupMonet()
     }
 
     private fun createGson(): Gson {
@@ -583,15 +581,6 @@ class Smartspacer: Application(), Configuration.Provider {
                     }
                 }
             )).build()
-    }
-
-    private fun setupMonet(){
-        val settings = get<SmartspacerSettingsRepository>()
-        MonetCompat.wallpaperColorPicker = {
-            val selectedColor = settings.monetColor.getSync()
-            if(selectedColor != Integer.MAX_VALUE && it?.contains(selectedColor) == true) selectedColor
-            else it?.firstOrNull()
-        }
     }
 
     private fun isSafeMode(): Boolean {

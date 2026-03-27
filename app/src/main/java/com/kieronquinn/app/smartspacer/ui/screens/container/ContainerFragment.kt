@@ -16,7 +16,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.getTopFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.onSwipeDismissed
 import com.kieronquinn.app.smartspacer.utils.extensions.setTypeface
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

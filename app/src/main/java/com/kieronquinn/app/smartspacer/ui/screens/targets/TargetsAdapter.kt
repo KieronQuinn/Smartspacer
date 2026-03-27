@@ -20,7 +20,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onLongClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class TargetsAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -44,7 +44,7 @@ class TargetsAdapter(
     }
 
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
-    private val monet = MonetCompat.getInstance()
+    private val monet = DynamicMonet.getInstance()
     private val glide = Glide.with(recyclerView.context)
 
     override fun getItemCount() = items.size

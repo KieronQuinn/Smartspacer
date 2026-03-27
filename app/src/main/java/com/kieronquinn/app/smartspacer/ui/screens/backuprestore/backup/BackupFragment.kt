@@ -12,8 +12,8 @@ import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
-import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.overrideRippleColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BackupFragment: BoundFragment<FragmentBackupBinding>(FragmentBackupBinding::inflate), BackAvailable, HideBottomNavigation {

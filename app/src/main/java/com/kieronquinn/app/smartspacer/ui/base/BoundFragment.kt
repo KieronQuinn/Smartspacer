@@ -11,10 +11,13 @@ import com.google.android.material.transition.FadeThroughProvider
 import com.google.android.material.transition.MaterialSharedAxis
 import com.google.android.material.transition.SlideDistanceProvider
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.monetcompat.app.MonetFragment
+import androidx.fragment.app.Fragment
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import kotlin.math.roundToInt
 
-abstract class BoundFragment<V: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): MonetFragment() {
+abstract class BoundFragment<V: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): Fragment() {
+
+    protected val monet: DynamicMonet get() = DynamicMonet.getInstance()
 
     private var _binding: V? = null
 

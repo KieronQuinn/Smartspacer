@@ -11,9 +11,12 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
-import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
-class ConfigurationActivity: MonetCompatActivity() {
+class ConfigurationActivity: AppCompatActivity() {
+
+    private val monet = DynamicMonet.getInstance()
 
     companion object {
         fun createIntent(context: Context, mapping: NavGraphMapping): Intent {

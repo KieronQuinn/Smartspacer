@@ -43,7 +43,7 @@
             android:paddingStart="24dp"
             android:paddingTop="8dp"
             android:paddingEnd="24dp"
-            android:paddingBottom="16dp"
+            android:paddingBottom="8dp"
             android:text="@string/expanded_tab_settings_title"
             android:textAppearance="?attr/textAppearanceHeadlineMedium"
             android:textColor="?attr/colorOnSurface" />

@@ -10,7 +10,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
+import com.kieronquinn.app.smartspacer.utils.extensions.overrideRippleColor
 
 class RestoreCompleteFragment: BoundFragment<FragmentRestoreCompleteBinding>(FragmentRestoreCompleteBinding::inflate), BackAvailable, HideBottomNavigation {
 

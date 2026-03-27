@@ -17,13 +17,13 @@ import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import org.koin.android.ext.android.inject
 
 abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T): DialogFragment() {
 
     internal val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     internal val navigation by inject<ContainerNavigation>()

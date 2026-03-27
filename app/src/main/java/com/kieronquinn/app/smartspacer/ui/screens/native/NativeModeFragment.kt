@@ -30,7 +30,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationIns
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NativeModeFragment: BoundFragment<FragmentNativeBinding>(FragmentNativeBinding::inflate), BackAvailable, LockCollapsed, ProvidesOverflow, HideBottomNavigation, ProvidesBack {

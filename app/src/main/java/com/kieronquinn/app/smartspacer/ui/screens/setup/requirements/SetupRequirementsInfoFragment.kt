@@ -12,7 +12,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SetupRequirementsInfoFragment: BoundFragment<FragmentSetupRequirementsInfoBinding>(FragmentSetupRequirementsInfoBinding::inflate), BackAvailable {
@@ -44,8 +44,7 @@ class SetupRequirementsInfoFragment: BoundFragment<FragmentSetupRequirementsInfo
     }
 
     private fun setupMonet() {
-        val tabBackground = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext(), false)
+        val tabBackground = requireContext().getAttrColor(androidx.appcompat.R.attr.colorPrimary)
         val accent = monet.getAccentColor(requireContext())
         binding.setupRequirementsInfoAny.backgroundTintList = ColorStateList.valueOf(tabBackground)
         binding.setupRequirementsInfoAny.setSelectedTabIndicatorColor(accent)

@@ -16,8 +16,8 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationIns
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationMargin
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
-import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.overrideRippleColor
 import io.noties.markwon.Markwon
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -46,6 +46,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.utils.ComplicationTemplate
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
@@ -61,8 +62,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.selectTab
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.roundToInt
 import android.graphics.drawable.Icon as AndroidIcon
@@ -168,8 +168,7 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
     }
 
     private fun setupMonet() {
-        val tabBackground = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext(), false)
+        val tabBackground = requireContext().getAttrColor(androidx.appcompat.R.attr.colorPrimary)
         binding.widgetConfigurationTabs.backgroundTintList = ColorStateList.valueOf(tabBackground)
         binding.widgetConfigurationTabs.setSelectedTabIndicatorColor(monet.getAccentColor(requireContext()))
         binding.widgetConfigurationBackground.setBackgroundColor(monet.getBackgroundColor(requireContext()))

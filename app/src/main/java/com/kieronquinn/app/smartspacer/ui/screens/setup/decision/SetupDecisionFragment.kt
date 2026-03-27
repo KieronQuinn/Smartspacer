@@ -7,7 +7,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.setup.decision.SetupDecisionViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SetupDecisionFragment: BoundFragment<FragmentSetupDecisionBinding>(FragmentSetupDecisionBinding::inflate), BackAvailable {

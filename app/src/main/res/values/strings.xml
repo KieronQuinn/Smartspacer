@@ -772,6 +772,8 @@
     <string name="expanded_settings_hide_add_button_overlay_only">When replacing Google Discover</string>
     <string name="expanded_settings_hide_add_button_when_locked">When locked</string>
     <string name="expanded_settings_hide_add_button_always">Always</string>
+    <string name="expanded_settings_nav_bar_style_title">Nav bar button style</string>
+    <string name="expanded_settings_nav_bar_style_content">%1$s</string>
     <string name="expanded_settings_enable_columns_title">Enable Multi-Column</string>
     <string name="expanded_settings_enable_columns_content">On larger width devices, display Smartspacer Targets, extra content and custom widgets horizontally as well as vertically, where space is available</string>
     <string name="expanded_complications_first_title">Complications First</string>
@@ -1246,6 +1248,10 @@
     <!-- Expanded view tab bar -->
     <string name="expanded_tabs_empty">No widget tabs configured.\nTap ⋮ to set up your first tab.</string>
     <string name="expanded_tab_settings_title">Widget Tabs</string>
+    <string name="expanded_tab_settings_display_mode_title">Tab button style</string>
+    <string name="expanded_tab_settings_mode_label">Label</string>
+    <string name="expanded_tab_settings_mode_icon">Icon</string>
+    <string name="expanded_tab_settings_mode_icon_label">Icon + Label</string>
     <string name="expanded_tab_settings_add">Add Tab</string>
     <string name="expanded_tab_settings_label_hint">Tab label</string>
     <string name="expanded_tab_settings_pick_widget">Pick widget</string>
@@ -1254,5 +1260,12 @@
     <string name="expanded_tab_settings_add_new_widget">Add New Widget…</string>
     <string name="expanded_tab_settings_delete">Delete</string>
     <string name="expanded_tab_settings_saved">Tab configuration saved</string>
+    <string name="expanded_tab_settings_pick_icon">Pick icon</string>
+
+    <!-- Icon picker bottom sheet -->
+    <string name="expanded_tab_icon_picker_title">Pick Icon</string>
+    <string name="expanded_tab_icon_picker_search">Search icons</string>
+    <string name="expanded_tab_icon_picker_clear">Clear</string>
+    <string name="expanded_tab_icon_picker_no_results">No icons found</string>
 
 </resources>

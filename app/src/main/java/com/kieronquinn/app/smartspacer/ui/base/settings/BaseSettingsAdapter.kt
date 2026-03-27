@@ -28,8 +28,8 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 
 abstract class BaseSettingsAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -40,7 +40,7 @@ abstract class BaseSettingsAdapter(
     private val glide = Glide.with(recyclerView.context)
 
     protected val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     init {

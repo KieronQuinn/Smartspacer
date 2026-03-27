@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
-abstract class BoundActivity<V: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): MonetCompatActivity() {
+abstract class BoundActivity<V: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): AppCompatActivity() {
+
+    protected val monet: DynamicMonet get() = DynamicMonet.getInstance()
 
     private var _binding: V? = null
 

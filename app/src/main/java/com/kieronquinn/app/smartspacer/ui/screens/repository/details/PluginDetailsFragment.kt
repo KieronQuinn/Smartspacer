@@ -31,7 +31,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.updateDisplayedChild
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.glide.SystemIconShapeTransformation
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import io.noties.markwon.Markwon
 import me.saket.bettermovementmethod.BetterLinkMovementMethod
 import org.koin.android.ext.android.inject

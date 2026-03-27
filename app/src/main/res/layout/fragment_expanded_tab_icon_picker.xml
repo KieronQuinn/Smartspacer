@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Bottom sheet for picking a Material Symbols icon for a nav tab.
+  Structure:
+    ┌────────────────────────────────┐
+    │           ▬▬▬▬ handle          │
+    │  Pick Icon            [Clear]  │
+    │  [ 🔍 Search icons           ] │
+    │  ┌──────────────────────────┐  │
+    │  │  ★  ♥  ⚙  …  (grid)    │  │
+    │  └──────────────────────────┘  │
+    └────────────────────────────────┘
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/background_tabs"
+        android:backgroundTint="?attr/colorOnSurfaceVariant" />
+
+    <!-- Title row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/expanded_tab_icon_picker_title"
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textColor="?attr/colorOnSurface" />
+
+        <!-- Clear selection button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/icon_picker_clear"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/expanded_tab_icon_picker_clear"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Search field -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/icon_picker_search_layout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/expanded_tab_icon_picker_search"
+        app:startIconDrawable="@drawable/ic_search_google"
+        app:startIconTint="?attr/colorOnSurfaceVariant">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/icon_picker_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Loading indicator (shown while symbols are loading on first open) -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/icon_picker_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorSize="48dp" />
+
+    <!-- No results label -->
+    <TextView
+        android:id="@+id/icon_picker_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="32dp"
+        android:text="@string/expanded_tab_icon_picker_no_results"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+
+    <!-- Icon grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/icon_picker_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp"
+        android:overScrollMode="never" />
+
+</LinearLayout>

@@ -13,7 +13,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

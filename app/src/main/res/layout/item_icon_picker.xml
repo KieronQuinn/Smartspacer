@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Single icon grid cell in the Material Symbols icon picker.
+  Contains the icon character (rendered via Material Symbols font) + its name.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Icon character displayed in Material Symbols Outlined font -->
+    <TextView
+        android:id="@+id/icon_picker_symbol"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textColor="?attr/colorOnSurface"
+        android:includeFontPadding="false" />
+
+    <!-- Short icon name -->
+    <TextView
+        android:id="@+id/icon_picker_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:textSize="9sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+</LinearLayout>

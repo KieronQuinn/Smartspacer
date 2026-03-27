@@ -1,16 +1,22 @@
 package com.kieronquinn.app.smartspacer.ui.screens.repository
 
-import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentPluginRepositoryBinding
+import com.kieronquinn.app.smartspacer.databinding.FragmentPluginRepositoryPageBinding
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Plugin
@@ -23,31 +29,25 @@ import com.kieronquinn.app.smartspacer.ui.screens.repository.PluginRepositoryVie
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
-import com.kieronquinn.app.smartspacer.utils.extensions.onSelected
-import com.kieronquinn.app.smartspacer.utils.extensions.selectTab
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PluginRepositoryFragment: BoundFragment<FragmentPluginRepositoryBinding>(FragmentPluginRepositoryBinding::inflate), Root, LockCollapsed, CanShowSnackbar {
+class PluginRepositoryFragment :
+    BoundFragment<FragmentPluginRepositoryBinding>(FragmentPluginRepositoryBinding::inflate),
+    Root, LockCollapsed, CanShowSnackbar {
 
     private val viewModel by viewModel<PluginRepositoryViewModel>()
-
-    private val adapter by lazy {
-        Adapter()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupMonet()
-        setupTabs()
-        setupEmpty()
-        setupRecyclerView()
-        setupState()
+        setupPager()
         setupSearch()
         setupSearchClear()
+        setupState()
     }
 
     override fun onResume() {
@@ -56,42 +56,30 @@ class PluginRepositoryFragment: BoundFragment<FragmentPluginRepositoryBinding>(F
     }
 
     private fun setupMonet() {
-        val tabBackground = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext(), false)
-        binding.pluginRepositoryTabs.backgroundTintList = ColorStateList.valueOf(tabBackground)
-        binding.pluginRepositoryTabs.setSelectedTabIndicatorColor(monet.getAccentColor(requireContext()))
-        binding.pluginRepositoryLoadingProgress.applyMonet()
-        binding.pluginRepositoryEmptyButton.applyMonet()
         val secondaryBackground = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
-        binding.pluginRepositoryAppbar.backgroundTintList =
-            ColorStateList.valueOf(secondaryBackground)
-        binding.pluginRepositorySearch.searchBox.applyMonet()
-        binding.pluginRepositorySearch.searchBox.backgroundTintList = ColorStateList.valueOf(
-            monet.getBackgroundColorSecondary(requireContext()) ?: monet.getBackgroundColor(
-                requireContext()
+        binding.pluginRepositoryAppbar.setBackgroundColor(secondaryBackground)
+        binding.pluginRepositorySearch.searchBox.backgroundTintList =
+            android.content.res.ColorStateList.valueOf(secondaryBackground)
+    }
+
+    private fun setupPager() {
+        binding.pluginRepositoryPager.adapter = PluginPagerAdapter(this)
+        binding.pluginRepositoryPager.offscreenPageLimit = 1
+        TabLayoutMediator(
+            binding.pluginRepositoryTabs,
+            binding.pluginRepositoryPager
+        ) { tab, position ->
+            tab.text = getString(
+                if (position == 0) R.string.plugin_repository_tab_installed
+                else R.string.plugin_repository_tab_available
             )
-        )
+        }.attach()
     }
 
-    private fun setupTabs() = with(binding.pluginRepositoryTabs) {
-        val index = if(viewModel.state.value.isAvailableTab()) 1 else 0
-        selectTab(index)
-        whenResumed {
-            onSelected().collect {
-                viewModel.setSelectedTab(it)
-            }
-        }
-    }
-
-    private fun setupRecyclerView() = with(binding.pluginRepositoryRecyclerview) {
-        layoutManager = LinearLayoutManager(context)
-        adapter = this@PluginRepositoryFragment.adapter
-        applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
-    }
-
-    private fun setupEmpty() = with(binding.pluginRepositoryEmpty) {
-        applyBottomNavigationInset()
+    /** Switches the ViewPager2 to the given page position. Used by page Fragments. */
+    fun switchToPage(position: Int) {
+        binding.pluginRepositoryPager.currentItem = position
     }
 
     private fun setupSearch() {
@@ -128,88 +116,134 @@ class PluginRepositoryFragment: BoundFragment<FragmentPluginRepositoryBinding>(F
     private fun setupState() {
         handleState(viewModel.state.value)
         whenResumed {
-            viewModel.state.collect {
-                handleState(it)
-            }
+            viewModel.state.collect { handleState(it) }
         }
     }
 
     private fun handleState(state: State) {
-        when(state){
+        binding.pluginRepositoryLoading.isVisible = state is State.Loading
+    }
+
+    // ── ViewPager2 adapter ─────────────────────────────────────────────────
+
+    private inner class PluginPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+        override fun getItemCount() = 2
+        override fun createFragment(position: Int): Fragment =
+            PluginListPage.newInstance(isAvailable = position == 1)
+    }
+}
+
+// ── Per-tab page Fragment ──────────────────────────────────────────────────
+
+/**
+ * A single tab page inside the Plugin Repository ViewPager2.
+ * Shares the parent Fragment's ViewModel via Koin's ownerProducer.
+ */
+class PluginListPage : Fragment() {
+
+    companion object {
+        private const val ARG_IS_AVAILABLE = "is_available"
+
+        fun newInstance(isAvailable: Boolean) = PluginListPage().also {
+            it.arguments = Bundle().apply { putBoolean(ARG_IS_AVAILABLE, isAvailable) }
+        }
+    }
+
+    private val isAvailable get() = requireArguments().getBoolean(ARG_IS_AVAILABLE)
+
+    private val viewModel: PluginRepositoryViewModel by viewModel(
+        ownerProducer = { requireParentFragment() }
+    )
+
+    private val adapter by lazy {
+        PageAdapter()
+    }
+
+    private var _binding: FragmentPluginRepositoryPageBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentPluginRepositoryPageBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        setupState()
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    private fun setupRecyclerView() = with(binding.pluginPageRecyclerview) {
+        layoutManager = LinearLayoutManager(context)
+        adapter = this@PluginListPage.adapter
+        applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
+    }
+
+    private fun setupState() {
+        handleState(viewModel.state.value)
+        whenResumed {
+            viewModel.state.collect { handleState(it) }
+        }
+    }
+
+    private fun handleState(state: State) {
+        when (state) {
             is State.Loading -> {
-                binding.pluginRepositoryLoading.isVisible = true
-                binding.pluginRepositoryLoaded.isVisible = false
-                binding.pluginRepositoryEmpty.isVisible = false
+                binding.pluginPageEmpty.isVisible = false
             }
             is State.Loaded -> {
-                binding.pluginRepositoryLoading.isVisible = false
-                binding.pluginRepositoryLoaded.isVisible = true
-                binding.pluginRepositoryEmpty.isVisible = state.isEmpty
-                if(state.isEmpty){
-                    val title = when {
-                        state.shouldOfferBrowse -> {
+                val items = if (isAvailable) state.availableItems else state.installedItems
+                val empty = items.isEmpty()
+                binding.pluginPageEmpty.isVisible = empty
+                if (empty) {
+                    val titleRes = when {
+                        !isAvailable && state.isSearchEmpty ->
                             R.string.plugin_repository_empty_title_browse
-                        }
-                        state.isSearchEmpty -> {
+                        state.isSearchEmpty ->
                             R.string.plugin_repository_empty_title_empty
-                        }
-                        else -> {
+                        else ->
                             R.string.plugin_repository_empty_title_not_found
-                        }
                     }
-                    val subtitle = when {
-                        state.shouldOfferBrowse -> {
+                    val subtitleRes = when {
+                        !isAvailable && state.isSearchEmpty ->
                             R.string.plugin_repository_empty_subtitle_browse
-                        }
-                        state.isSearchEmpty -> {
+                        state.isSearchEmpty ->
                             R.string.plugin_repository_empty_subtitle_empty
-                        }
-                        else -> {
+                        else ->
                             R.string.plugin_repository_empty_subtitle_not_found
-                        }
                     }
-                    val button = when {
-                        state.isSearchEmpty -> {
-                            R.string.plugin_repository_empty_button_empty
-                        }
-                        else -> {
-                            R.string.plugin_repository_empty_button_browse
-                        }
-                    }
-                    binding.pluginRepositoryEmptyTitle.setText(title)
-                    binding.pluginRepositoryEmptySubtitle.setText(subtitle)
-                    binding.pluginRepositoryEmptyButton.setText(button)
-                    binding.pluginRepositoryEmptyButton.isVisible =
-                        state.shouldOfferBrowse || state.isSearchEmpty
-                    whenResumed {
-                        binding.pluginRepositoryEmptyButton.onClicked().collect {
-                            if(state.isSearchEmpty){
-                                viewModel.reload(true)
-                            }else{
-                                binding.pluginRepositoryTabs.selectTab(1)
-                            }
+                    binding.pluginPageEmptyTitle.setText(titleRes)
+                    binding.pluginPageEmptySubtitle.setText(subtitleRes)
+                    val showBrowse = !isAvailable && state.isSearchEmpty
+                    binding.pluginPageEmptyButton.isVisible = showBrowse
+                    if (showBrowse) {
+                        binding.pluginPageEmptyButton.setText(R.string.plugin_repository_empty_button_browse)
+                        binding.pluginPageEmptyButton.setOnClickListener {
+                            (requireParentFragment() as PluginRepositoryFragment).switchToPage(1)
                         }
                     }
                 }
-                adapter.update(state.loadItems(), binding.pluginRepositoryRecyclerview)
+                adapter.update(
+                    items.map { it.toSettingsItem() },
+                    binding.pluginPageRecyclerview
+                )
             }
         }
     }
 
-    private fun State.isAvailableTab(): Boolean {
-        return (this as? State.Loaded)?.isAvailableTab ?: false
-    }
-
-    private fun State.Loaded.loadItems(): List<BaseSettingsItem> {
-        return items.map {
-            it.toSettingsItem(isAvailableTab)
-        }
-    }
-
-    private fun Plugin.toSettingsItem(isAvailable: Boolean): BaseSettingsItem {
+    private fun Plugin.toSettingsItem(): BaseSettingsItem {
         val content = SpannableStringBuilder().apply {
-            if(this@toSettingsItem is Plugin.Remote){
-                if(updateAvailable) {
+            if (this@toSettingsItem is Plugin.Remote) {
+                if (updateAvailable) {
                     append(
                         getString(R.string.plugin_repository_update_available),
                         StyleSpan(Typeface.BOLD),
@@ -219,7 +253,7 @@ class PluginRepositoryFragment: BoundFragment<FragmentPluginRepositoryBinding>(F
                 }
                 append(author, StyleSpan(Typeface.ITALIC), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 appendLine()
-                if(recommendedApps.isNotEmpty() && isAvailable){
+                if (recommendedApps.isNotEmpty() && isAvailable) {
                     val recommended = recommendedApps.joinToString(", ")
                     append(
                         getString(R.string.plugin_repository_recommended),
@@ -231,15 +265,14 @@ class PluginRepositoryFragment: BoundFragment<FragmentPluginRepositoryBinding>(F
                     appendLine()
                 }
                 append(description)
-            }else{
+            } else {
                 append(packageName)
             }
         }
-        return GenericSettingsItem.Setting(name, content, null){
+        return GenericSettingsItem.Setting(name, content, null) {
             viewModel.onPluginClicked(this)
         }
     }
 
-    inner class Adapter: BaseSettingsAdapter(binding.pluginRepositoryRecyclerview, emptyList())
-
+    private inner class PageAdapter : BaseSettingsAdapter(binding.pluginPageRecyclerview, emptyList())
 }

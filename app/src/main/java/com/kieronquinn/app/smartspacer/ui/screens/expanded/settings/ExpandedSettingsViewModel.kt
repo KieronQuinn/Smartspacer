@@ -5,6 +5,8 @@ import android.os.Build
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedSettingsProvider
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedStateProvider
+import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
+import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
@@ -44,6 +46,7 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
     abstract fun onMultiColumnChanged(enabled: Boolean)
     abstract fun onComplicationsFirstChanged(enabled: Boolean)
     abstract fun onShowShadowChanged(enabled: Boolean)
+    abstract fun onNavItemDisplayModeChanged(mode: NavItemDisplayMode)
 
     abstract fun isBackgroundBlurCompatible(): Boolean
 
@@ -65,7 +68,8 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
             val hideAdd: ExpandedHideAddButton,
             val multiColumn: Boolean,
             val complicationsFirst: Boolean,
-            val showShadow: Boolean
+            val showShadow: Boolean,
+            val navItemDisplayMode: NavItemDisplayMode
         ): State()
     }
 
@@ -76,6 +80,7 @@ class ExpandedSettingsViewModelImpl(
     settings: SmartspacerSettingsRepository,
     searchRepository: SearchRepository,
     context: Context,
+    private val tabRepository: ExpandedTabRepository,
     scope: CoroutineScope? = null
 ): ExpandedSettingsViewModel(scope) {
 
@@ -131,8 +136,9 @@ class ExpandedSettingsViewModelImpl(
         booleanOptions,
         tintColour.asFlow(),
         backgroundMode.asFlow(),
-        hideAddButton.asFlow()
-    ) { booleanOptions, tint, background, hideAdd ->
+        hideAddButton.asFlow(),
+        tabRepository.navItemDisplayMode
+    ) { booleanOptions, tint, background, hideAdd, displayMode ->
         Options(
             tint,
             booleanOptions[0],
@@ -141,7 +147,8 @@ class ExpandedSettingsViewModelImpl(
             hideAdd,
             booleanOptions[2],
             booleanOptions[3],
-            booleanOptions[4]
+            booleanOptions[4],
+            displayMode
         )
     }
 
@@ -168,7 +175,8 @@ class ExpandedSettingsViewModelImpl(
             options.hideAddButton,
             options.multiColumn,
             options.complicationsFirst,
-            options.showShadow
+            options.showShadow,
+            options.navItemDisplayMode
         )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
@@ -269,6 +277,10 @@ class ExpandedSettingsViewModelImpl(
         }
     }
 
+    override fun onNavItemDisplayModeChanged(mode: NavItemDisplayMode) {
+        tabRepository.setNavItemDisplayMode(mode)
+    }
+
     override fun isBackgroundBlurCompatible(): Boolean {
         return Build.VERSION.SDK_INT >= 30
     }
@@ -281,7 +293,8 @@ class ExpandedSettingsViewModelImpl(
         val hideAddButton: ExpandedHideAddButton,
         val multiColumn: Boolean,
         val complicationsFirst: Boolean,
-        val showShadow: Boolean
+        val showShadow: Boolean,
+        val navItemDisplayMode: NavItemDisplayMode
     )
 
 }

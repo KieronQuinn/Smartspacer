@@ -6,7 +6,7 @@ import android.provider.Settings
 import com.kieronquinn.app.smartspacer.databinding.ActivityDummyHomeBinding
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 
 class DummyHomeActivity: BoundActivity<ActivityDummyHomeBinding>(ActivityDummyHomeBinding::inflate) {
 

@@ -29,8 +29,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onPageChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.viewpager.ViewPager2ViewHeightAnimator
-import com.kieronquinn.monetcompat.core.MonetCompat
-import com.kieronquinn.monetcompat.R as MonetcompatR
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class ExpandedAddWidgetBottomSheetAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -67,9 +66,9 @@ class ExpandedAddWidgetBottomSheetAdapter(
     }
 
     private val theme = if(recyclerView.context.isDarkMode) {
-        MonetcompatR.style.Theme_MaterialComponents
+        com.google.android.material.R.style.Theme_MaterialComponents
     } else {
-        MonetcompatR.style.Theme_MaterialComponents_Light
+        com.google.android.material.R.style.Theme_MaterialComponents_Light
     }
 
     private val context = recyclerView.context
@@ -80,7 +79,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
     private val glide = Glide.with(recyclerView.context)
 
     private val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     private val cornerRadius by lazy {

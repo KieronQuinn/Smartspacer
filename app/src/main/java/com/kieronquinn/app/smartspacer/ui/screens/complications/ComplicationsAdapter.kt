@@ -19,7 +19,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onLongClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class ComplicationsAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -35,7 +35,7 @@ class ComplicationsAdapter(
     }
 
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
-    private val monet = MonetCompat.getInstance()
+    private val monet = DynamicMonet.getInstance()
     private val glide = Glide.with(recyclerView.context)
 
     override fun isSelected(item: ComplicationHolder): Boolean {

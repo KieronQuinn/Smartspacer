@@ -15,7 +15,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.app.smartspacer.utils.input.MACAddressTextWatcher
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WiFiRequirementConfigurationMACBottomSheetFragment: BaseBottomSheetFragment<FragmentConfigurationRequirementWifiMacBottomSheetBinding>(FragmentConfigurationRequirementWifiMacBottomSheetBinding::inflate) {

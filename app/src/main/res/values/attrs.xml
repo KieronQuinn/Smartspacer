@@ -6,4 +6,9 @@
     <declare-styleable name="WidgetShadow">
         <attr name="widgetShadowColour" format="color"/>
     </declare-styleable>
+    <declare-styleable name="MonetSwitch">
+        <attr name="android:text" />
+        <attr name="android:textAppearance" />
+        <attr name="android:textColor" />
+    </declare-styleable>
 </resources>

@@ -13,7 +13,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.oemsmartspace.SettingsOemSmart
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 
 class SettingsOemSmartspaceAdapter(
     recyclerView: LifecycleAwareRecyclerView,

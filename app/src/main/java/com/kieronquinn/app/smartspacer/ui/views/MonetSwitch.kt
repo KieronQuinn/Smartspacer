@@ -3,34 +3,32 @@ package com.kieronquinn.app.smartspacer.ui.views
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.Switch
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.google.android.material.materialswitch.MaterialSwitch
-import com.kieronquinn.monetcompat.R
-import com.kieronquinn.monetcompat.core.MonetCompat
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
-import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
-import com.kieronquinn.monetcompat.interfaces.MonetColorsChangedListener
-import dev.kdrag0n.monet.theme.ColorScheme
+import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.overrideRippleColor
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 
 /**
  *  A full-width Switch designed to look like the primary ones in Android 12's Settings app. It has
- *  its own background, tinted to Monet's colors, with the [Switch] thumb set to the same color,
- *  and the track a darker color. The background/track color changes depending on the switch state.
+ *  its own background, tinted to Monet's colors, with the [android.widget.Switch] thumb set to the
+ *  same color, and the track a darker color. The background/track color changes depending on the
+ *  switch state.
  */
-open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
+open class MonetSwitch: FrameLayout {
 
     constructor(context: Context): super(context, null)
 
-    constructor(context: Context, attributeSet: AttributeSet?) : super(context, attributeSet, R.attr.switchStyle) {
+    constructor(context: Context, attributeSet: AttributeSet?) : super(context, attributeSet, 0) {
         readAttributes(attributeSet)
     }
 
@@ -42,19 +40,19 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
     private var suppressCheckChange = false
 
     private val layout by lazy {
-        layoutInflater.inflate(com.kieronquinn.app.smartspacer.R.layout.view_monet_switch, this, false)
+        layoutInflater.inflate(R.layout.view_monet_switch, this, false)
     }
 
     private val label by lazy {
-        layout.findViewById<TextView>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_text)
+        layout.findViewById<TextView>(R.id.view_monet_switch_text)
     }
 
     private val switch by lazy {
-        layout.findViewById<MaterialSwitch>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_switch)
+        layout.findViewById<MaterialSwitch>(R.id.view_monet_switch_switch)
     }
 
     private val root by lazy {
-        layout.findViewById<LinearLayout>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_root)
+        layout.findViewById<LinearLayout>(R.id.view_monet_switch_root)
     }
 
     var isChecked: Boolean
@@ -76,9 +74,9 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
         if(attributeSet == null || isInEditMode) return
         addView(layout)
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.MonetSwitch)
-        var textAppearance = typedArray.getResourceId(R.styleable.MonetSwitch_android_textAppearance, R.style.TextAppearance_AppCompat_Medium)
+        var textAppearance = typedArray.getResourceId(R.styleable.MonetSwitch_android_textAppearance, androidx.appcompat.R.style.TextAppearance_AppCompat_Medium)
         //Sometimes the field will default to TextAppearance.Material so we need to counter that
-        if(textAppearance == android.R.style.TextAppearance_Material) textAppearance = R.style.TextAppearance_AppCompat_Medium
+        if(textAppearance == android.R.style.TextAppearance_Material) textAppearance = androidx.appcompat.R.style.TextAppearance_AppCompat_Medium
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             label.setTextAppearance(textAppearance)
         }else{
@@ -97,7 +95,10 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
         if(thumbTintMode != 0){
             switch.thumbIconTintMode = PorterDuff.Mode.values()[thumbTintMode]
         }
-        val textColor = typedArray.getColor(R.styleable.MonetSwitch_android_textColor, Color.BLACK)
+        val textColor = typedArray.getColor(
+            R.styleable.MonetSwitch_android_textColor,
+            context.getAttrColor(android.R.attr.textColorPrimary)
+        )
         label.setTextColor(textColor)
         val switchText = typedArray.getText(R.styleable.MonetSwitch_android_text) ?: ""
         label.text = switchText
@@ -106,7 +107,7 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
     }
 
     private val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     init {
@@ -117,26 +118,13 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         if(!isInEditMode) {
-            monet.addMonetColorsChangedListener(this, true)
+            applyMonet()
         }
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        monet.removeMonetColorsChangedListener(this)
-    }
-
-    override fun onMonetColorsChanged(
-        monet: MonetCompat,
-        monetColors: ColorScheme,
-        isInitialChange: Boolean
-    ) {
-        applyMonet()
-    }
-
-    private fun applyMonet() = with(monet) {
-        val checkedThumbColor = monet.getPrimaryColor(context, false)
-        val uncheckedThumbColor = monet.getSecondaryColor(context, false)
+    private fun applyMonet() {
+        val checkedThumbColor = context.getAttrColor(com.google.android.material.R.attr.colorSecondaryContainer)
+        val uncheckedThumbColor = context.getAttrColor(com.google.android.material.R.attr.colorSurfaceVariant)
         setTint(uncheckedThumbColor, checkedThumbColor)
     }
 

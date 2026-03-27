@@ -3,9 +3,12 @@ package com.kieronquinn.app.smartspacer.ui.activities.safemode
 import android.os.Bundle
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
-import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
-class SafeModeActivity: MonetCompatActivity() {
+class SafeModeActivity: AppCompatActivity() {
+
+    private val monet = DynamicMonet.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

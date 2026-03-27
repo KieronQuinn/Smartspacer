@@ -19,7 +19,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationIns
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 
 abstract class BatteryOptimisationFragment: BoundFragment<FragmentBatteryOptimisationBinding>(FragmentBatteryOptimisationBinding::inflate) {
 

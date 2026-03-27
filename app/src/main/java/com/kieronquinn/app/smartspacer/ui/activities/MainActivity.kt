@@ -14,23 +14,22 @@ import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
 import com.kieronquinn.app.smartspacer.service.SmartspacerBackgroundService
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.workers.SmartspacerUpdateWorker
-import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import org.koin.android.ext.android.inject
 
-class MainActivity : MonetCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val wiFiRepository by inject<WiFiRepository>()
     private val bluetoothRepository by inject<BluetoothRepository>()
     private val calendarRepository by inject<CalendarRepository>()
     private val appWidgetRepository by inject<AppWidgetRepository>()
 
-    override val applyBackgroundColorToMenu = true
-
     companion object {
         const val EXTRA_SKIP_SPLASH = "SKIP_SPLASH"
     }
 
-    override val applyBackgroundColorToWindow = true
+    private val monet = DynamicMonet.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()

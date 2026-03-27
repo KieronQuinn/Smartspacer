@@ -10,7 +10,7 @@ import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class SetupTargetsAdapter(
     recyclerView: RecyclerView,
@@ -25,7 +25,7 @@ class SetupTargetsAdapter(
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
 
     private val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     override fun getItemCount() = items.size

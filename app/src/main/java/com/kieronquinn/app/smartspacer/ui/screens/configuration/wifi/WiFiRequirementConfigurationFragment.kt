@@ -24,7 +24,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.WiFiRequire
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WiFiRequirementConfigurationFragment: BoundFragment<FragmentConfigurationRequirementWifiBinding>(FragmentConfigurationRequirementWifiBinding::inflate), BackAvailable {

@@ -20,7 +20,7 @@ import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class TargetsRequirementsAddAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -32,7 +32,7 @@ class TargetsRequirementsAddAdapter(
 
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
     private val glide = Glide.with(recyclerView.context)
-    private val monet = MonetCompat.getInstance()
+    private val monet = DynamicMonet.getInstance()
 
     private val cornerRadius by lazy {
         recyclerView.context.resources.getDimension(R.dimen.margin_16)

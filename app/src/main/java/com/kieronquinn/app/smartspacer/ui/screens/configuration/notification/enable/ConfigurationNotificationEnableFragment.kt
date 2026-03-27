@@ -23,7 +23,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.shouldShowRequireSideloa
 import com.kieronquinn.app.smartspacer.utils.extensions.showAppInfo
 import com.kieronquinn.app.smartspacer.utils.extensions.wasInstalledWithSession
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.android.ext.android.inject
 
 class ConfigurationNotificationEnableFragment: BoundFragment<FragmentConfigurationNotificationEnableBinding>(FragmentConfigurationNotificationEnableBinding::inflate) {

@@ -8,7 +8,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RestoreWidgetsFragment: BoundFragment<FragmentRestoreWidgetsBinding>(FragmentRestoreWidgetsBinding::inflate), BackAvailable, LockCollapsed, HideBottomNavigation {

@@ -14,7 +14,7 @@ import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 
 class RestoreRequirementsAdapter(
     recyclerView: LifecycleAwareRecyclerView,
@@ -24,7 +24,7 @@ class RestoreRequirementsAdapter(
 
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
     private val glide = Glide.with(recyclerView.context)
-    private val monet = MonetCompat.getInstance()
+    private val monet = DynamicMonet.getInstance()
     private val invertedLabel = recyclerView.context
         .getString(R.string.restore_restore_requirements_description_inverted)
 

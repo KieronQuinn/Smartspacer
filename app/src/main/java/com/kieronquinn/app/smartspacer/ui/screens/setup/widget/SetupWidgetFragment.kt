@@ -26,7 +26,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.registerReceiverCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.unregisterReceiverCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import me.saket.bettermovementmethod.BetterLinkMovementMethod
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

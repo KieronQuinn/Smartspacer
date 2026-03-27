@@ -10,13 +10,18 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.content.res.Configuration
-import android.graphics.Color
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.GradientDrawable
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
@@ -26,12 +31,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
@@ -48,6 +56,7 @@ import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
 import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
+import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
@@ -70,6 +79,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
+import com.kieronquinn.app.smartspacer.utils.extensions.MaterialSymbolsHelper
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
 import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
@@ -77,13 +87,12 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
-import com.kieronquinn.monetcompat.extensions.views.applyMonet
-import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
+import com.kieronquinn.app.smartspacer.utils.extensions.overrideRippleColor
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
@@ -153,6 +162,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val expandedRepository by inject<ExpandedRepository>()
     private val tabRepository by inject<ExpandedTabRepository>()
+    private val atAGlanceRepository by inject<AtAGlanceRepository>()
     private val googleWeatherRepository by inject<GoogleWeatherRepository>()
 
     private var lastSwipe: Long? = null
@@ -224,27 +234,79 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupMonet() {
+        reapplyColors()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
+    private fun reapplyColors() {
+        val ctx = requireContext()
+
+        // Unlock / permission UI
         binding.expandedUnlockContainer.backgroundTintList =
-            ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
-        binding.expandedUnlock.overrideRippleColor(monet.getAccentColor(requireContext()))
+            ColorStateList.valueOf(monet.getBackgroundColor(ctx))
+        binding.expandedUnlock.overrideRippleColor(monet.getAccentColor(ctx))
         binding.expandedUnlock.iconTint =
-            ColorStateList.valueOf(monet.getAccentColor(requireContext()))
-        binding.expandedDisabledButton.applyMonet()
+            ColorStateList.valueOf(monet.getAccentColor(ctx))
+        binding.expandedDisabledButton.backgroundTintList = ColorStateList.valueOf(
+            ctx.getAttrColor(androidx.appcompat.R.attr.colorPrimary)
+        )
         binding.expandedPermission.backgroundTintList =
-            ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
-        // Set pill outline to a high-contrast color so it's visible in both light and dark mode.
-        val isSystemDark = (resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        val strokeColor = if (isSystemDark)
-            ColorUtils.setAlphaComponent(Color.WHITE, 120)
-        else
-            ColorUtils.setAlphaComponent(Color.BLACK, 90)
-        binding.expandedHeaderPill.strokeColor = strokeColor
+            ColorStateList.valueOf(monet.getBackgroundColor(ctx))
+
+        // Pill
+        val primaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorPrimaryContainer)
+        val onPrimaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
+        binding.expandedHeaderPill.setCardBackgroundColor(primaryContainer)
+        binding.expandedHeaderPill.strokeColor =
+            ctx.getAttrColor(com.google.android.material.R.attr.colorOutline)
+
+        // Menu button inside pill
+        binding.expandedHeaderMenu.iconTint = ColorStateList.valueOf(onPrimaryContainer)
+
+        // Weather cookie (SquircleFrameLayout uses android:background ColorDrawable — set directly)
+        binding.expandedHeaderWeather.setBackgroundColor(primaryContainer)
+        binding.expandedHeaderWeatherTemp.setTextColor(onPrimaryContainer)
+
+        // Nav pill (tab scroll container)
+        val surfaceContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorSurfaceContainer)
+        binding.expandedTabScrollPill.setCardBackgroundColor(surfaceContainer)
+
+        // FAB — P-90 (primary-fixed) background, P-10 (on-primary-fixed) icon.
+        // On API 31+ use the system Monet palette directly (always correct).
+        // Below API 31 fall back to MonetCompat's shade lookup.
+        val primaryFixed = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            ctx.getColor(android.R.color.system_accent1_100)
+        } else {
+            ctx.getAttrColor(com.google.android.material.R.attr.colorPrimaryContainer)
+        }
+        val onPrimaryFixed = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            ctx.getColor(android.R.color.system_accent1_900)
+        } else {
+            ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
+        }
+        binding.expandedTabOpenApp.backgroundTintList = ColorStateList.valueOf(primaryFixed)
+        binding.expandedTabOpenApp.iconTint = ColorStateList.valueOf(onPrimaryFixed)
+
+        // Empty-state label
+        val onSurfaceVariant = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSurfaceVariant)
+        binding.expandedEmptyLabel.setTextColor(onSurfaceVariant)
+
+        // Tab buttons — re-select current tab so selected/unselected colours refresh
+        selectTab(currentTabIndex, animate = false)
     }
 
     private fun setupInsets() {
         binding.expandedUnlockContainer.onApplyInsets { view, insets ->
             view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom)
+        }
+        binding.expandedTabNavigation.onApplyInsets { view, insets ->
+            val navBarBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            view.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                bottomMargin = navBarBottom + (9.16f * resources.displayMetrics.density).toInt()
+            }
         }
         binding.root.onApplyInsets { view, insets ->
             topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
@@ -281,6 +343,11 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         whenResumed {
             tabRepository.tabs.collect { tabs -> buildTabUI(tabs) }
         }
+        // Re-apply button icons/text whenever the display mode changes, even if the tab list
+        // itself hasn't changed (StateFlow wouldn't re-emit an identical tab list).
+        whenResumed {
+            tabRepository.navItemDisplayMode.drop(1).collect { selectTab(currentTabIndex, animate = false) }
+        }
     }
 
     private fun buildTabUI(tabs: List<ExpandedTabConfig>) {
@@ -308,29 +375,22 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             )
         }
 
+        val inflater = LayoutInflater.from(requireContext())
         binding.expandedTabButtons.removeAllViews()
-        tabs.forEachIndexed { index, tab ->
-            val btn = MaterialButton(
-                requireContext(), null,
-                com.google.android.material.R.attr.materialButtonOutlinedStyle
-            ).apply {
-                text = tab.label
-                cornerRadius = 100.dp
-                setPadding(20.dp, 8.dp, 20.dp, 8.dp)
-                textSize = 15f
-                isAllCaps = false
-                elevation = 0f
-                insetTop = 0
-                insetBottom = 0
-                strokeWidth = 0
-                layoutParams = android.widget.LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-                setOnClickListener { selectTab(index) }
-            }
-            binding.expandedTabButtons.addView(btn)
+        tabs.forEachIndexed { index, _ ->
+            val itemView = inflater.inflate(
+                R.layout.item_expanded_nav_item,
+                binding.expandedTabButtons,
+                false
+            )
+            itemView.setOnClickListener { selectTab(index) }
+            binding.expandedTabButtons.addView(itemView)
         }
-        selectTab(0)
+        // Remove trailing gap from last item so the pill wraps content tightly (CSS gap
+        // only adds space between items, marginEnd adds it after the last one too).
+        (binding.expandedTabButtons.getChildAt(tabs.size - 1)?.layoutParams
+                as? LinearLayout.LayoutParams)?.marginEnd = 0
+        selectTab(0, animate = false)
     }
 
     private fun setupHeaderSwipe() {
@@ -339,6 +399,35 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         // ACTION_DOWN to guard against SlidingPanelLayout in the overlay context, but its own
         // fling-intercept is disabled (onHorizontalSwipe = null) so it never cancels the pager.
         binding.expandedHeaderPill.onHorizontalSwipe = null
+
+        // The ViewPager2 now spans the full pill width (constrained to parent end) so the pill's
+        // rounded corners clip content naturally.  The menu button and weather cookie float on top
+        // in z-order (they appear later in the ConstraintLayout XML), so content slides under them.
+        // clipToPadding=false + small right padding lets the edge of the next page peek into view
+        // during a swipe, matching the Figma "peek" design (Pages Container = 240dp, page = 232dp
+        // → 8dp visible peek).
+        binding.expandedHeaderTarget.apply {
+            clipToPadding = false
+            offscreenPageLimit = 1
+            // 8dp right padding → shows a sliver of the next page while swiping
+            setPadding(0, 0, 8.dp, 0)
+        }
+        // Allow pages to draw into the padding area so the peek effect works
+        (binding.expandedHeaderTarget.parent as? android.view.ViewGroup)?.clipChildren = false
+
+        // Composite transformer:
+        //  1. 8dp gap between pages so they don't butt against each other while peeking
+        //  2. Scale + fade pages as they move off-centre (Figma "feel" — subtle depth)
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(8.dp))
+        transformer.addTransformer { page, position ->
+            val absPos = Math.abs(position)
+            page.alpha = 1f - (absPos * 0.25f)
+            page.scaleX = 1f - (absPos * 0.05f)
+            page.scaleY = 1f - (absPos * 0.05f)
+        }
+        binding.expandedHeaderTarget.setPageTransformer(transformer)
+
         binding.expandedHeaderTarget.adapter = headerPagerAdapter
         binding.expandedHeaderTarget.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
@@ -350,31 +439,236 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         )
     }
 
-    private fun selectTab(index: Int) {
+    private fun selectTab(index: Int, animate: Boolean = true) {
         val tabs = tabRepository.getTabs()
         if (index < 0 || index >= tabs.size) return
+        val previousIndex = currentTabIndex
         currentTabIndex = index
         binding.expandedWidgetFlipper.displayedChild = index
 
-        val selectedBg = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext())
-        val selectedFg = monet.getMonetColors().accent1[50]?.toArgb() ?: Color.WHITE
-        val unselectedFg = monet.getBackgroundColor(requireContext()).getContrastColor()
+        val ctx = requireContext()
+        // M3 nav-bar tokens
+        val secondaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorSecondaryContainer)
+        val onSecondaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
+        val primaryColor = ctx.getAttrColor(androidx.appcompat.R.attr.colorPrimary)
+        val onPrimary = ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimary)
+        val onSurfaceVariant = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSurfaceVariant)
+        val displayMode = tabRepository.getNavItemDisplayMode()
+        val symbolTypeface = MaterialSymbolsHelper.getTypeface(ctx)
+
+        // Active indicator pill — 41 dp tall, 20 dp corner radius (Figma node 212:809).
+        fun pillBg(color: Int): GradientDrawable = GradientDrawable().apply {
+            cornerRadius = 20.dp.toFloat()
+            setColor(color)
+        }
 
         for (i in 0 until binding.expandedTabButtons.childCount) {
-            val btn = binding.expandedTabButtons.getChildAt(i) as? MaterialButton ?: continue
-            if (i == index) {
-                btn.backgroundTintList = ColorStateList.valueOf(selectedBg)
-                btn.setTextColor(selectedFg)
-            } else {
-                btn.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
-                btn.setTextColor(unselectedFg)
+            val itemView = binding.expandedTabButtons.getChildAt(i) ?: continue
+            // Icon is a TextView so the Material Symbols font glyph renders immediately
+            // without waiting for a layout pass (ImageView.configureBounds requires one).
+            val iconView = itemView.findViewById<TextView>(R.id.nav_item_icon) ?: continue
+            val label = itemView.findViewById<TextView>(R.id.nav_item_label) ?: continue
+            val tab = tabs.getOrNull(i) ?: continue
+            val isSelected = i == index
+            val wasSelected = i == previousIndex && !isSelected
+
+            fun setIcon(cp: Int, color: Int) {
+                iconView.typeface = symbolTypeface
+                iconView.setTextColor(color)
+                iconView.text = String(Character.toChars(cp))
+            }
+
+            // Helpers for animated background alpha fade
+            fun fadeBgIn(color: Int, cornerRadius: Float) {
+                val bg = GradientDrawable().apply { this.cornerRadius = cornerRadius; setColor(color); alpha = 0 }
+                itemView.background = bg
+                ValueAnimator.ofInt(0, 255).apply {
+                    duration = 150
+                    interpolator = DecelerateInterpolator(1.5f)
+                    addUpdateListener { bg.alpha = animatedValue as Int }
+                    start()
+                }
+            }
+            fun fadeBgOut(color: Int, cornerRadius: Float) {
+                val bg = GradientDrawable().apply { this.cornerRadius = cornerRadius; setColor(color); alpha = 255 }
+                itemView.background = bg
+                ValueAnimator.ofInt(255, 0).apply {
+                    duration = 150
+                    interpolator = DecelerateInterpolator(1.5f)
+                    addUpdateListener { bg.alpha = animatedValue as Int }
+                    addListener(object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(a: android.animation.Animator) { itemView.background = null }
+                    })
+                    start()
+                }
+            }
+
+            when (displayMode) {
+                NavItemDisplayMode.LABEL_ONLY -> {
+                    // Reset any ICON_ONLY square sizing back to wrap_content
+                    if (itemView.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT) {
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = ViewGroup.LayoutParams.WRAP_CONTENT }
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
+                        (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER_VERTICAL
+                    }
+                    iconView.visibility = View.GONE
+                    label.visibility = View.VISIBLE
+                    label.text = tab.label
+                    val pillRadius = 20.dp.toFloat()
+                    if (isSelected) {
+                        label.setTextColor(onPrimary)
+                        if (animate && wasSelected.not() && itemView.background == null) {
+                            fadeBgIn(primaryColor, pillRadius)
+                        } else {
+                            itemView.background = pillBg(primaryColor)
+                        }
+                    } else {
+                        label.setTextColor(onSurfaceVariant)
+                        if (animate && wasSelected && itemView.background != null) {
+                            fadeBgOut(primaryColor, pillRadius)
+                        } else {
+                            itemView.background = null
+                        }
+                    }
+                }
+
+                NavItemDisplayMode.ICON_ONLY -> {
+                    // Force a perfect circle: item is always 41×41 dp, no padding, icon centred
+                    val size = 41.dp
+                    if (itemView.layoutParams.width != size) {
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = size }
+                        itemView.setPadding(0, 0, 0, 0)
+                        (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER
+                        (iconView.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 0
+                    }
+                    label.visibility = View.GONE
+                    val cp = tab.iconCodepoint
+                    if (cp != null) {
+                        setIcon(cp, if (isSelected) onSecondaryContainer else onSurfaceVariant)
+                        iconView.visibility = View.VISIBLE
+                    } else {
+                        iconView.visibility = View.GONE
+                    }
+                    val circleRadius = 100.dp.toFloat()
+                    if (isSelected) {
+                        if (animate && wasSelected.not() && itemView.background == null) {
+                            fadeBgIn(secondaryContainer, circleRadius)
+                        } else {
+                            itemView.background = GradientDrawable().apply { cornerRadius = circleRadius; setColor(secondaryContainer) }
+                        }
+                    } else {
+                        if (animate && wasSelected && itemView.background != null) {
+                            fadeBgOut(secondaryContainer, circleRadius)
+                        } else {
+                            itemView.background = null
+                        }
+                    }
+                }
+
+                NavItemDisplayMode.ICON_AND_LABEL -> {
+                    // Reset any ICON_ONLY square sizing back to wrap_content
+                    if (itemView.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT) {
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = ViewGroup.LayoutParams.WRAP_CONTENT }
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
+                        (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER_VERTICAL
+                        (iconView.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 4.dp
+                    }
+                    label.visibility = View.VISIBLE
+                    label.text = tab.label
+                    val cp = tab.iconCodepoint
+
+                    if (isSelected) {
+                        itemView.background = pillBg(primaryColor)
+                        label.setTextColor(onPrimary)
+
+                        if (animate && cp != null && itemView.width > 0) {
+                            // Set glyph before measuring — TextView renders immediately.
+                            setIcon(cp, onPrimary)
+                            iconView.alpha = 0f
+                            iconView.visibility = View.VISIBLE
+                            itemView.measure(
+                                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                                View.MeasureSpec.makeMeasureSpec(41.dp, View.MeasureSpec.EXACTLY)
+                            )
+                            val expandedWidth = itemView.measuredWidth
+                            // Bounce-grow the width; fade icon in simultaneously so it
+                            // appears to emerge as the pill expands.
+                            animateItemWidth(itemView, itemView.width, expandedWidth, overshoot = true)
+                            iconView.animate().cancel()
+                            iconView.animate().alpha(1f).setDuration(200).setListener(null).start()
+                        } else {
+                            if (cp != null) {
+                                setIcon(cp, onPrimary)
+                                iconView.alpha = 1f
+                                iconView.visibility = View.VISIBLE
+                            } else {
+                                iconView.visibility = View.GONE
+                            }
+                        }
+                    } else {
+                        itemView.background = null
+                        label.setTextColor(onSurfaceVariant)
+
+                        if (animate && wasSelected && itemView.width > 0) {
+                            iconView.animate().cancel()
+                            if (iconView.visibility == View.VISIBLE) {
+                                iconView.animate().alpha(0f).setDuration(80)
+                                    .setListener(object : AnimatorListenerAdapter() {
+                                        override fun onAnimationEnd(a: android.animation.Animator) {
+                                            iconView.visibility = View.GONE
+                                            iconView.alpha = 1f
+                                            collapseItemWidth(itemView)
+                                        }
+                                        override fun onAnimationCancel(a: android.animation.Animator) {
+                                            iconView.visibility = View.GONE
+                                            iconView.alpha = 1f
+                                        }
+                                    }).start()
+                            } else {
+                                collapseItemWidth(itemView)
+                            }
+                        } else {
+                            iconView.visibility = View.GONE
+                            iconView.alpha = 1f
+                        }
+                    }
+                }
             }
         }
 
         if (!loadedTabIndices.contains(index)) {
             loadedTabIndices.add(index)
             loadWidgetForTab(index, tabs[index].appWidgetId)
+        }
+    }
+
+    private fun collapseItemWidth(item: View) {
+        item.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(41.dp, View.MeasureSpec.EXACTLY)
+        )
+        animateItemWidth(item, item.width, item.measuredWidth, overshoot = false)
+    }
+
+    /**
+     * Animates [view] width from [from] → [to] px.
+     * overshoot=true → OvershootInterpolator (spring-bounce expand, 260 ms).
+     * overshoot=false → DecelerateInterpolator (smooth collapse, 160 ms).
+     * [onEnd] fires once the animation settles at [to].
+     */
+    private fun animateItemWidth(view: View, from: Int, to: Int, overshoot: Boolean, onEnd: (() -> Unit)? = null) {
+        if (from == to) { onEnd?.invoke(); return }
+        view.layoutParams = view.layoutParams.also { it.width = from }
+        ValueAnimator.ofInt(from, to).apply {
+            duration = if (overshoot) 260L else 160L
+            interpolator = if (overshoot) OvershootInterpolator(1.5f) else DecelerateInterpolator(1.5f)
+            addUpdateListener { view.layoutParams = view.layoutParams.also { lp -> lp.width = animatedValue as Int } }
+            if (onEnd != null) {
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(a: android.animation.Animator) { onEnd() }
+                })
+            }
+            start()
         }
     }
 
@@ -467,9 +761,9 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         if (!dots.isVisible) return
         val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
         val gapPx  = resources.getDimensionPixelSize(R.dimen.header_dot_gap)
-        val isSystemDark = (resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        val dotColor = if (isSystemDark) Color.WHITE else Color.BLACK
+        // Figma: dots use sys/dark/on-primary-container (they sit on the primary-container pill)
+        val dotColor = requireContext()
+            .getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
         repeat(count) { i ->
             val dot = View(requireContext()).apply {
                 background = GradientDrawable().apply {
@@ -486,6 +780,27 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun updateWeatherCookie(items: List<Item>) {
+        // 0. Highest priority: At-a-Glance weather state (available when Shizuku is active and
+        //    the AtAGlanceTarget is configured). Weather icons are the only ones that carry a
+        //    non-null contentDescription in the At-a-Glance widget view hierarchy, so that flag
+        //    is used to identify the weather state among all parsed At-a-Glance states.
+        val atAGlanceWeather = atAGlanceRepository.getStates()
+            .firstOrNull { !it.iconContentDescription.isNullOrEmpty() }
+        if (atAGlanceWeather != null) {
+            try {
+                val bitmapIcon = android.graphics.drawable.Icon.createWithBitmap(atAGlanceWeather.icon)
+                binding.expandedHeaderWeatherIcon.setImageIcon(bitmapIcon)
+                binding.expandedHeaderWeather.isVisible = true
+                val temp = atAGlanceWeather.subtitle.toString().takeIf { it.isNotBlank() }
+                    ?: atAGlanceWeather.title.toString().takeIf { it.isNotBlank() }
+                binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
+                binding.expandedHeaderWeatherTemp.text = temp ?: ""
+            } catch (e: Exception) {
+                binding.expandedHeaderWeather.isVisible = false
+            }
+            return
+        }
+
         // 1. Dedicated FEATURE_WEATHER target (e.g. Google At-a-Glance weather target).
         val weatherTarget = items.filterIsInstance<Item.Target>()
             .firstOrNull { it.target.featureType == FEATURE_WEATHER }
@@ -819,13 +1134,14 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
                 )
+                setPadding(0, 0, 0, 0)
             })
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val target = targets[position]
-            val isSystemDark = (resources.configuration.uiMode and
-                    Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-            val tintColour = if (isSystemDark) Color.WHITE else Color.BLACK
+            // Figma: target text uses sys/dark/on-primary-container on the primary-container pill
+            val tintColour = requireContext()
+                .getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
             holder.sv.setTarget(target.target, this@ExpandedFragment, tintColour, false)
         }
 

@@ -49,10 +49,9 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onNavDestinationSelected
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.or
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
-import com.kieronquinn.app.smartspacer.utils.extensions.setOnBackPressedCallback
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 
 
 abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): BoundFragment<V>(inflate) {
@@ -131,21 +130,12 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
             }
             view.updatePadding(bottom = bottomInsets, left = leftInsets, right = rightInsets)
         }
-        setBackgroundColor(monet.getBackgroundColor(context))
-        val color = if(requireContext().isDarkMode){
-            monet.getMonetColors().neutral2[800]?.toArgb()
-        }else{
-            monet.getMonetColors().neutral2[100]?.toArgb()
-        } ?: monet.getBackgroundColor(requireContext())
-        val indicatorColor = if(requireContext().isDarkMode){
-            monet.getMonetColors().accent2[700]?.toArgb()
-        }else{
-            monet.getMonetColors().accent2[200]?.toArgb()
-        }
-        setBackgroundColor(ColorUtils.setAlphaComponent(color, 235))
+        val color = context.getAttrColor(com.google.android.material.R.attr.colorSurfaceContainer)
+        val indicatorColor = context.getAttrColor(com.google.android.material.R.attr.colorSecondaryContainer)
+        setBackgroundColor(color)
         itemActiveIndicatorColor = ColorStateList(
             arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf()),
-            intArrayOf(indicatorColor ?: Color.TRANSPARENT, Color.TRANSPARENT)
+            intArrayOf(indicatorColor, Color.TRANSPARENT)
         )
     }
 
@@ -196,49 +186,39 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         }
     }
 
-    @SuppressLint("RestrictedApi")
     private fun setupBack() {
-        if(!isUsingGestureNavigation()) {
-            setupBackLegacy()
+        val handleBack: () -> Unit = {
+            val topFragment = navHostFragment.getTopFragment()
+            val handledByFragment = (topFragment as? ProvidesBack)?.let {
+                if (!it.interceptBack()) return@let false
+                it.onBackPressed()
+            } ?: false
+            if (!handledByFragment) {
+                if (!navController.popBackStack()) requireActivity().finish()
+            }
+        }
+        if (!isUsingGestureNavigation()) {
+            // 3-button nav: always intercept so we can route through ProvidesBack.
+            requireActivity().onBackPressedDispatcher.addCallback(
+                viewLifecycleOwner,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() = handleBack()
+                }
+            )
             return
         }
-        val callback = object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
-                    if(!it.interceptBack()) return@let
-                    if(it.onBackPressed()) return
-                }
-                if(!navController.popBackStack()) {
-                    requireActivity().finish()
-                }
-            }
+        // Gesture nav: only intercept when a ProvidesBack fragment wants it.
+        // When disabled, NavController's own callback runs, giving predictive back.
+        val callback = object : OnBackPressedCallback(false) {
+            override fun handleOnBackPressed() = handleBack()
         }
-        navController.setOnBackPressedCallback(callback)
-        navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
-        navController.setOnBackPressedDispatcher(requireActivity().onBackPressedDispatcher)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        callback.isEnabled = shouldBackDispatcherBeEnabled()
         whenResumed {
             navController.onDestinationChanged().collect {
-                navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
+                callback.isEnabled = shouldBackDispatcherBeEnabled()
             }
         }
-    }
-
-    @SuppressLint("RestrictedApi")
-    private fun setupBackLegacy() {
-        val callback = object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                (navHostFragment.getTopFragment() as? ProvidesBack)?.let {
-                    if(!it.interceptBack()) return@let
-                    if(it.onBackPressed()) return
-                }
-                if(!navController.popBackStack()) {
-                    requireActivity().finish()
-                }
-            }
-        }
-        navController.setOnBackPressedCallback(callback)
-        navController.enableOnBackPressed(true)
-        navController.setOnBackPressedDispatcher(requireActivity().onBackPressedDispatcher)
     }
 
     @Suppress("DEPRECATION")

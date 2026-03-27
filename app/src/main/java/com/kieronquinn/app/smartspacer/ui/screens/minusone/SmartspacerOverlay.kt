@@ -17,7 +17,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
 import com.kieronquinn.app.smartspacer.ui.screens.base.BaseOverlay
 import com.kieronquinn.app.smartspacer.utils.extensions.removeStatusNavBackgroundOnPreDraw
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.core.MonetCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.DynamicMonet
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
@@ -44,7 +44,7 @@ class SmartspacerOverlay(
     private var isResumed = false
 
     private val monet by lazy {
-        MonetCompat.getInstance()
+        DynamicMonet.getInstance()
     }
 
     private val backgroundMode = settingsRepository.expandedBackground.asFlow()
@@ -59,7 +59,7 @@ class SmartspacerOverlay(
     }
 
     private val backgroundColour by lazy {
-        monet.getBackgroundColor(context, !isDarkText)
+        monet.getBackgroundColor(context)
     }
 
     override fun onCreate(bundle: Bundle?) {
