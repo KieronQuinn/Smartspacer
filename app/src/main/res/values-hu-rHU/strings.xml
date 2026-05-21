@@ -116,7 +116,7 @@
     <string name="target_greeting_configuration_title">Beállítások</string>
     <string name="target_greeting_configuration_description">Set your name, dynamically hide the Target and hide the title on the AoD</string>
     <string name="target_greeting_configuration_open_expanded_title">Kibővített Smartspace megnyitása</string>
-    <string name="target_greeting_configuration_open_expanded_content">Open Expanded Smartspace on click, rather than doing nothing</string>
+    <string name="target_greeting_configuration_open_expanded_content">Kibővített Smartspace megnyitása koppintásra, </string>
     <string name="target_at_a_glance_label">Gyorsnézet (modul)</string>
     <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
     <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
