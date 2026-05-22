@@ -30,6 +30,8 @@ import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspa
 import com.kieronquinn.app.smartspacer.components.smartspace.WidgetSmartspacerPage
 import com.kieronquinn.app.smartspacer.databinding.FragmentWidgetConfigurationBinding
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
+import com.kieronquinn.app.smartspacer.model.database.PinMode
+import com.kieronquinn.app.smartspacer.model.database.PinnedFallbackBehavior
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Card
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Dropdown
@@ -385,6 +387,65 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_multi_column),
                 onChanged = viewModel::onSinglePageChanged
             ).takeIf { !widget.listMode },
+            // ===== PIN MODE SECTION =====
+            Header(getString(R.string.widget_configuration_pin_title)).takeIf { !widget.listMode },
+            // About Pinning info card
+            Card(
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
+                getText(R.string.widget_configuration_pin_description)
+            ).takeIf { !widget.listMode },
+            // Pin Mode dropdown
+            Dropdown(
+                getString(R.string.widget_configuration_pin_mode_label),
+                getString(widget.pinMode.labelRes),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_targets),
+                widget.pinMode,
+                viewModel::onPinModeChanged,
+                PinMode.entries
+            ) {
+                it.labelRes
+            }.takeIf { !widget.listMode },
+            // ===== PAGE MODE OPTIONS =====
+            // Page index picker (only when PAGE mode)
+            Setting(
+                getString(R.string.widget_configuration_pin_page_label),
+                getString(R.string.widget_configuration_pin_page_value, widget.pinnedPageIndex + 1),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_multi_column)
+            ) {
+                showPinnedPagePicker()
+            }.takeIf { !widget.listMode && widget.pinMode == PinMode.PAGE },
+            // Warning for PAGE mode
+            Card(
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
+                getText(R.string.widget_configuration_pin_page_warning)
+            ).takeIf { !widget.listMode && widget.pinMode == PinMode.PAGE },
+            // ===== TARGET MODE OPTIONS =====
+            // Target picker (only when TARGET mode)
+            Setting(
+                getString(R.string.widget_configuration_pin_target_label),
+                widget.pinnedTargetId?.let { id ->
+                    viewModel.availableTargets.value.find { it.id == id }?.label?.toString()
+                } ?: getString(R.string.widget_configuration_pin_target_none),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_targets)
+            ) {
+                showPinnedTargetPicker()
+            }.takeIf { !widget.listMode && widget.pinMode == PinMode.TARGET },
+            // Warning for TARGET mode
+            Card(
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
+                getText(R.string.widget_configuration_pin_target_warning)
+            ).takeIf { !widget.listMode && widget.pinMode == PinMode.TARGET },
+            // ===== FALLBACK (shared by both PAGE and TARGET modes) =====
+            Dropdown(
+                getString(R.string.widget_configuration_pin_fallback_label),
+                getString(widget.pinnedFallbackBehavior.labelRes),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_widget_configuration_controls_invisible),
+                widget.pinnedFallbackBehavior,
+                viewModel::onPinnedFallbackChanged,
+                PinnedFallbackBehavior.entries
+            ) {
+                it.labelRes
+            }.takeIf { !widget.listMode && widget.pinMode != PinMode.NONE },
             Header(getString(R.string.widget_configuration_customisation_title)),
             SwitchSetting(
                 widget.showControls,
@@ -460,6 +521,42 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 widget.tintColour == TintColour.AUTOMATIC || widget.tintColour == TintColour.WHITE
             }
         )
+    }
+
+    private fun showPinnedTargetPicker() {
+        val targets = viewModel.availableTargets.value
+        val items = arrayOf(getString(R.string.widget_configuration_pin_target_none)) +
+            targets.map { it.label.toString() }.toTypedArray()
+        val currentWidget = (viewModel.state.value as? State.Loaded)?.widget
+        val currentIndex = currentWidget?.pinnedTargetId?.let { id ->
+            targets.indexOfFirst { it.id == id }.takeIf { it >= 0 }?.plus(1)
+        } ?: 0
+
+        android.app.AlertDialog.Builder(requireContext())
+            .setTitle(R.string.widget_configuration_pin_target_label)
+            .setSingleChoiceItems(items, currentIndex) { dialog, which ->
+                val selectedId = if (which == 0) null else targets.getOrNull(which - 1)?.id
+                viewModel.onPinnedTargetChanged(selectedId)
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun showPinnedPagePicker() {
+        val currentWidget = (viewModel.state.value as? State.Loaded)?.widget
+        val currentIndex = currentWidget?.pinnedPageIndex ?: 0
+        val items = (1..10).map { getString(R.string.widget_configuration_pin_page_value, it) }
+            .toTypedArray()
+
+        android.app.AlertDialog.Builder(requireContext())
+            .setTitle(R.string.widget_configuration_pin_page_label)
+            .setSingleChoiceItems(items, currentIndex) { dialog, which ->
+                viewModel.onPinnedPageIndexChanged(which)
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     inner class Adapter: BaseSettingsAdapter(

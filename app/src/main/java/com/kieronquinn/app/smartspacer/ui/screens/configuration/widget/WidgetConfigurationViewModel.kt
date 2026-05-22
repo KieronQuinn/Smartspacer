@@ -9,8 +9,11 @@ import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNaviga
 import com.kieronquinn.app.smartspacer.components.navigation.RootNavigation
 import com.kieronquinn.app.smartspacer.components.smartspace.PagedWidgetSmartspacerSessionState
 import com.kieronquinn.app.smartspacer.model.database.AppWidget
+import com.kieronquinn.app.smartspacer.model.database.PinMode
+import com.kieronquinn.app.smartspacer.model.database.PinnedFallbackBehavior
 import com.kieronquinn.app.smartspacer.repositories.AppWidgetRepository
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
+import com.kieronquinn.app.smartspacer.repositories.TargetsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
@@ -31,6 +34,13 @@ import kotlinx.coroutines.launch
 abstract class WidgetConfigurationViewModel: ViewModel() {
 
     abstract val state: StateFlow<State>
+    abstract val availableTargets: StateFlow<List<PinnableTarget>>
+
+    data class PinnableTarget(
+        val id: String,
+        val label: CharSequence,
+        val icon: android.graphics.drawable.Icon?
+    )
 
     abstract fun setup(appWidgetId: Int, owner: String)
     abstract fun onResume()
@@ -46,6 +56,10 @@ abstract class WidgetConfigurationViewModel: ViewModel() {
     abstract fun onShadowChanged(enabled: Boolean)
     abstract fun onPaddingChanged(padding: Int)
     abstract fun onMaterialYouChanged(enabled: Boolean)
+    abstract fun onPinModeChanged(mode: PinMode)
+    abstract fun onPinnedPageIndexChanged(index: Int)
+    abstract fun onPinnedTargetChanged(targetId: String?)
+    abstract fun onPinnedFallbackChanged(behavior: PinnedFallbackBehavior)
 
     abstract fun Context.getPagedWidget(
         appWidgetId: Int,
@@ -92,6 +106,7 @@ class WidgetConfigurationViewModelImpl(
     context: Context,
     private val databaseRepository: DatabaseRepository,
     private val appWidgetRepository: AppWidgetRepository,
+    private val targetsRepository: TargetsRepository,
     private val navigation: ConfigurationNavigation,
     private val rootNavigation: RootNavigation
 ): WidgetConfigurationViewModel() {
@@ -129,6 +144,18 @@ class WidgetConfigurationViewModelImpl(
             isLockScreenAvailable
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
+
+    override val availableTargets = targetsRepository.getAvailableTargets()
+        .mapLatest { targets ->
+            targets.mapNotNull { target ->
+                val config = target.getPluginConfig().value ?: return@mapNotNull null
+                PinnableTarget(
+                    id = target.id ?: return@mapNotNull null,
+                    label = config.label,
+                    icon = config.icon
+                )
+            }
+        }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     override fun setup(appWidgetId: Int, owner: String) {
         viewModelScope.launch {
@@ -214,6 +241,30 @@ class WidgetConfigurationViewModelImpl(
     override fun onMaterialYouChanged(enabled: Boolean){
         updateAppWidget {
             copy(materialYouStyled=enabled)
+        }
+    }
+
+    override fun onPinModeChanged(mode: PinMode) {
+        updateAppWidget {
+            copy(pinMode = mode)
+        }
+    }
+
+    override fun onPinnedPageIndexChanged(index: Int) {
+        updateAppWidget {
+            copy(pinnedPageIndex = index)
+        }
+    }
+
+    override fun onPinnedTargetChanged(targetId: String?) {
+        updateAppWidget {
+            copy(pinnedTargetId = targetId)
+        }
+    }
+
+    override fun onPinnedFallbackChanged(behavior: PinnedFallbackBehavior) {
+        updateAppWidget {
+            copy(pinnedFallbackBehavior = behavior)
         }
     }
 

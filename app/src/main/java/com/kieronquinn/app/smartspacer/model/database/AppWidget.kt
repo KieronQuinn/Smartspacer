@@ -4,9 +4,28 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import kotlinx.parcelize.Parcelize
+
+/**
+ * The type of pinning applied to this widget
+ */
+enum class PinMode(val labelRes: Int) {
+    NONE(R.string.widget_configuration_pin_mode_none),
+    PAGE(R.string.widget_configuration_pin_mode_page),
+    TARGET(R.string.widget_configuration_pin_mode_target)
+}
+
+/**
+ * Fallback behavior when a pinned target/page is unavailable
+ */
+enum class PinnedFallbackBehavior(val labelRes: Int) {
+    SHOW_DATE(R.string.widget_configuration_pin_fallback_show_date),
+    SHOW_FIRST_TARGET(R.string.widget_configuration_pin_fallback_show_first),
+    HIDE_WIDGET(R.string.widget_configuration_pin_fallback_hide)
+}
 
 @Entity
 @Parcelize
@@ -78,6 +97,26 @@ data class AppWidget(
      */
     @ColumnInfo("materialyou_styled")
     val materialYouStyled: Boolean = false,
+    /**
+     * The type of pinning applied to this widget
+     */
+    @ColumnInfo("pin_mode")
+    val pinMode: PinMode = PinMode.NONE,
+    /**
+     * The page index this widget is pinned to (used when pinMode = PAGE)
+     */
+    @ColumnInfo("pinned_page_index")
+    val pinnedPageIndex: Int = 0,
+    /**
+     * The ID of the target this widget is pinned to (used when pinMode = TARGET)
+     */
+    @ColumnInfo("pinned_target_id")
+    val pinnedTargetId: String? = null,
+    /**
+     * Fallback behavior when the pinned target/page is unavailable
+     */
+    @ColumnInfo("pinned_fallback_behavior")
+    val pinnedFallbackBehavior: PinnedFallbackBehavior = PinnedFallbackBehavior.SHOW_DATE,
 ): Parcelable {
 
     fun cloneWithId(newAppWidgetId: Int): AppWidget {
@@ -96,6 +135,10 @@ data class AppWidget(
         if(other.animate != animate) return false
         if(other.showShadow != showShadow) return false
         if(other.materialYouStyled != materialYouStyled) return false
+        if(other.pinMode != pinMode) return false
+        if(other.pinnedPageIndex != pinnedPageIndex) return false
+        if(other.pinnedTargetId != pinnedTargetId) return false
+        if(other.pinnedFallbackBehavior != pinnedFallbackBehavior) return false
         return true
     }
 
