@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xposed_desc">.</string>
-    <string name="dummy_home_content">Rzoom@icloud. com.</string>
-    <string name="dummy_home_open_settings">Dummy_home_open_settings</string>
-    <string name="notification_service">Português</string>
+    <string name="xposed_desc"><b>Opsiyonel</b>: Google Discover\'in Expanded Smarspace ile değiştirilmesine izin vermek için başlatıcınızda veya başlatıcının Google Feed eklentisinde bu ayarı etkinleştirin. Ayrıca Smartspacer\'daki Expanded Smartspace ayarlarında da bu seçeneği etkinleştirmeniz gerekir.</string>
+    <string name="dummy_home_content">Bu ekran Smartspacer Eklentileri tarafından kullanılan kötü uygulanmış Widget\'larla çalışmak için vardır.\n\nSmartspacer bir başlatıcı olarak hareket edemez, lütfen farklı bir başlatıcı seçin.</string>
+    <string name="dummy_home_open_settings">Ayarları aç</string>
+    <string name="notification_service">Smartspace Bildirim Servisi</string>
     <string name="loading">Yükleniyor…</string>
     <string name="saving">Kaydediliyor…</string>
     <string name="search">Ara</string>

@@ -16,11 +16,11 @@
     <string name="bottom_nav_complications">コンプリケーション</string>
     <string name="bottom_nav_plugins">拡張機能</string>
     <string name="bottom_nav_settings">設定</string>
-    <string name="toast_restricted_mode">オーバーフローメニューで制限された設定を許可する</string>
+    <string name="toast_restricted_mode">Allow restricted settings in the overflow menu</string>
     <string name="restricted_mode_content_accessibility">Android 13 から、Google はセキュリティ強化のため、サイドローディングされたアプリがアクセシビリティサービスを最初から使用できないように設定を変更しました。\n\n<b>アクセシビリティサービスを有効にしようとしたときに「制限付き設定」または「アプリはアクセスを拒否されました」というメッセージが表示された場合、アプリ情報の3点リーダーを開いて「制限付き設定を許可」または「制限付きの権限の許可」をオンにする必要があります。</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Android 14 以降、Google はパッケージ インストーラーを使用してサイドロードされたアプリがアクセシビリティサービスを使用できないようにしています。<br><br><b>制限付き設定に関するメッセージが表示された場合は、Smartspacer をアンインストールし、<a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> や <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror アプリ</a> などのセッション インストーラー ベースのアプリを使用して再インストールする必要があります。再インストールせずに上書きインストールするだけでは不十分です。<br><br></b>または、拡張モードを有効にすると、Smartspacer はこの要件を回避します (Shizuku またはルートなしでは実行できません)。]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from using Accessibility Services.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root)。]]></string>
     <string name="restricted_mode_content_notification">Android 13 から、Google はセキュリティ強化のため、サイドローディングされたアプリが通知へのアクセスを最初から使用できないように設定を変更しました。\n\n<b>通知へのアクセスを有効にしようとしたときに「制限付き設定」または「アプリはアクセスを拒否されました」というメッセージが表示された場合、アプリ情報の3点リーダーを開いて「制限付き設定を許可」または「制限付きの権限の許可」をオンにする必要があります。</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Android 14 以降、Google はパッケージ インストーラーを使用してサイドロードされたアプリが通知へのアクセスを使用できないようにしています。<br><br><b>制限付き設定に関するメッセージが表示された場合は、Smartspacer をアンインストールし、<a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> や <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror アプリ</a> などのセッション インストーラー ベースのアプリを使用して再インストールする必要があります。再インストールせずに上書きインストールするだけでは不十分です。<br><br></b>または、拡張モードを有効にすると、Smartspacer はこの要件を回避します (Shizuku またはルートなしでは実行できません)。]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Since Android 14, Google have prevented apps sideloaded using the Package Installer from being allowed to use Notification Access.<br><br><b>If you see a message about restricted settings, you must uninstall Smartspacer and reinstall it using a session installer-based app like <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> or the <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">APKMirror app</a>. Installing on top (without reinstalling) is NOT sufficient.<br><br></b>Alternatively, with Enhanced Mode enabled, Smartspacer will bypass this requirement (it cannot be done without Shizuku or root).]]></string>
     <string name="restricted_mode_button">アプリ情報を開く</string>
     <string name="restricted_mode_warning_button">Shizukuを使用し、権限を付与する</string>
     <string name="target_sensitive_title">コンテンツは非表示になりました</string>
@@ -51,17 +51,17 @@
     <string name="widget_configuration_is_lock_screen_content">このウィジェットがロック画面に追加される場合に<b>のみ</b>有効にします。\nこれによりウィジェットがロック画面に自動的に追加されることは<b>ありません</b>。追加するには、Google Play から「Lockscreen Widgets」などのアプリをダウンロードしてください。</string>
     <string name="widget_configuration_is_lock_screen_content_disabled">このウィジェットでは使用できません。Smartspacer ではウィジェットをロック画面に表示できないため、Google Play から「Lockscreen Widgets」などのアプリをダウンロードしてください。</string>
     <string name="widget_configuration_page_single_title">単一ページ</string>
-    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget.</string>
+    <string name="widget_configuration_page_single_content">Lock the widget to displaying only one page of Target and Complication (if space allows). This will mean you will only see your top Target/Complication in the widget。</string>
     <string name="widget_configuration_customisation_title">カスタマイズ</string>
     <string name="widget_configuration_page_arrows_title">ページコントロールを表示</string>
     <string name="widget_configuration_page_arrows_content">Enable arrow controls to easily switch between pages. If disabled, tap the dot indicators to move to the next page, looping back to the first page once the end is reached.</string>
     <string name="widget_configuration_page_controls_invisible_title">Invisible Controls</string>
     <string name="widget_configuration_page_controls_invisible_content">コントロールボタンを非表示にします。タップは可能ですが見えません。</string>
     <string name="widget_configuration_padding_title">Extra Padding</string>
-    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
+    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add。</string>
     <string name="widget_configuration_animation">アニメーション</string>
     <string name="widget_configuration_animation_switch_title">アニメーションを変更する</string>
-    <string name="widget_configuration_animation_switch_content">Fade between changes to the widget where possible</string>
+    <string name="widget_configuration_animation_switch_content">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_colour">色</string>
     <string name="widget_configuration_colour_disabled">This option is not available when Material You style is in use</string>
     <string name="widget_configuration_shadow_title">テキストの影</string>
@@ -70,10 +70,10 @@
     <string name="widget_configuration_mock_target_subtitle">ターゲット</string>
     <string name="widget_configuration_mock_complication_title">コンプリケーション</string>
     <string name="widget_configuration_material_you_title">Material You style</string>
-    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
+    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets。</string>
     <string name="widget_options_configure">ウィジェットの設定</string>
     <string name="accessibility_service_label">Smartspacer ウィジェットサービス</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled。</string>
     <string name="target_notification_label">通知</string>
     <string name="target_notification_description">Shows notifications from an app</string>
     <string name="target_notification_description_selected">Shows notifications from %1s</string>
@@ -111,8 +111,8 @@
     <string name="target_greeting_configuration_hide_title_on_aod_title">AoDでのタイトルを隠す</string>
     <string name="target_greeting_configuration_hide_title_on_aod_content">Hides the Target\'s title on the Always on Display (Native Smartspace only)</string>
     <string name="target_greeting_configuration_name_title">挨拶に使用する名前</string>
-    <string name="target_greeting_configuration_name_content">挨拶(Greeting)で表示するあなたの名前: %1s</string>
-    <string name="target_greeting_configuration_name_content_empty">挨拶(Greeting)で表示するあなたの名前</string>
+    <string name="target_greeting_configuration_name_content">Your name to show in the greeting: %1s</string>
+    <string name="target_greeting_configuration_name_content_empty">Your name to show in the greeting</string>
     <string name="target_greeting_configuration_title">設定</string>
     <string name="target_greeting_configuration_description">Set your name, dynamically hide the Target and hide the title on the AoD</string>
     <string name="target_greeting_configuration_open_expanded_title">Expanded Smartspace を開く</string>
@@ -121,7 +121,7 @@
     <string name="target_at_a_glance_description">Googleのウィジェットを使用して読み込まれるスナップショット（At a Glance）からの制限されたターゲット</string>
     <string name="target_at_a_glance_description_unsupported">このターゲットにはGoogleアプリが必要です</string>
     <string name="target_google_weather_forecast_title">Google天気予報</string>
-    <string name="target_google_weather_forecast_content">天気(Google Weather)から現在の天気と今後4時間の天気を表示します</string>
+    <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
     <string name="target_google_weather_forecast_incompatible">このターゲットにはGoogleがインストールされたPixelデバイスまたはPixelベースのROMが必要です。</string>
     <string name="target_notification_warning_title">通知リスナーは無効です</string>
     <string name="target_notification_warning_description">タップして有効にする</string>
@@ -165,7 +165,7 @@
     <string name="notification_channel_plugin_updates_title">拡張機能の更新</string>
     <string name="notification_channel_plugin_updates_content">Notifications shown when there is an update for Smartspacer Plugins</string>
     <string name="notification_channel_widget_title">Smartspacer as a Notification</string>
-    <string name="notification_channel_widget_content">Displays Smartspacer as a notification on the lock screen</string>
+    <string name="notification_channel_widget_content">Smartspacer as a Notification</string>
     <string name="notification_plugin_updates_title">拡張機能の更新が利用可能です</string>
     <string name="notification_plugin_updates_content_one">%1d Smartspacer plugin update is available, tap to view</string>
     <string name="notification_plugin_updates_content_other">%1d Smartspacer plugin updates are available, tap to view</string>
@@ -271,22 +271,22 @@
     <string name="requirement_edit_external_error">Failed to launch settings for this Requirement</string>
     <string name="requirement_edit_invert">Invert this requirement</string>
     <string name="safe_mode_title">セーフモード</string>
-    <string name="safe_mode_content">Smartspacer entered safe mode due to an app crashing, to prevent a crash-loop. These crashes are usually caused by a misbehaving target or complication, so if they persist check for updates to your plugins.</string>
+    <string name="safe_mode_content">Smartspacer entered safe mode due to an app crashing, to prevent a crash-loop. These crashes are usually caused by a misbehaving target or complication, so if they persist check for updates to your plugins。</string>
     <string name="safe_mode_relaunch">Smartspacer を再起動</string>
     <string name="feedback_loop_title">フィードバックのループ</string>
-    <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again.</string>
+    <string name="feedback_loop_content">Smartspacer has encountered a feedback loop between Native Smartspace and the system, so At a Glance targets will not currently work.\n\nThis can happen when Smartspacer is force stopped too quickly after Native Smartspace is enabled.\n\nWait 30 seconds, restart Smartspacer and re-enable Native Smartspace for it to work properly again。</string>
     <string name="feedback_loop_relaunch_wait">%1s秒待機する</string>
     <string name="feedback_loop_relaunch">Smartspacerを再起動</string>
     <string name="configuration_notification_enable_title">通知へのアクセスを有効にする</string>
     <string name="configuration_notification_enable_content">Allow Smartspacer access to Device &amp; app notifications in the system settings</string>
     <string name="configuration_notification_enable_button">通知のアクセスを許可</string>
     <string name="configuration_accessibility_enable_title">ユーザー補助サービスを有効化</string>
-    <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running.</string>
+    <string name="configuration_accessibility_enable_content">Enable Smartspacer\'s Accessibility Service in the system settings.\n\n<b>Note:</b> Despite the system warning, Smartspacer does not read data from or interact with your device, the service is solely used to know which app is currently running。</string>
     <string name="configuration_accessibility_enable_button">ユーザー補助サービスを有効化</string>
     <string name="target_notification_configuration_title">通知の設定</string>
     <string name="target_notification_configuration_content">Choose which app and channels to show notifications for</string>
     <string name="configuration_notification_association_title">権限の許可</string>
-    <string name="configuration_notification_association_content">In order to allow Smartspacer to access a list of other apps\' notification channels so you can pick which to show, you must set a companion device or network for this app. This is a (rather odd) Android system requirement, and is the only way to get a list of channels without root. This only needs to be done once.</string>
+    <string name="configuration_notification_association_content">In order to allow Smartspacer to access a list of other apps\' notification channels so you can pick which to show, you must set a companion device or network for this app. This is a (rather odd) Android system requirement, and is the only way to get a list of channels without root. This only needs to be done once。</string>
     <string name="configuration_notification_association_subcontent">Tap the \"Set Companion\" button below, and select any device or connection from the list that appears.\n\n<b>It does not matter if the device/connection is yours, or whether you will be in range of it while using Smartspacer. Smartspacer does not pair or connect to the device you pick</b>. You may also need to have GPS enabled for devices and connections to appear in the dialog.</string>
     <string name="configuration_notification_association_button">Set Companion</string>
     <string name="configuration_notification_association_read_more">Read more about this requirement</string>
@@ -333,7 +333,7 @@
     <string name="requirement_geofence_configuration_background_location_content">Location requirements require Background Location access for Geofencing. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
     <string name="requirement_geofence_configuration_background_location_grant">権限を付与</string>
     <string name="requirement_geofence_configuration_limit_reached_title">上限に達しました</string>
-    <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one.</string>
+    <string name="requirement_geofence_configuration_limit_reached_content">The limit of Geofence locations has been reached, please remove a Location requirement before adding a new one。</string>
     <string name="requirement_wifi_title">Wi-Fi ネットワーク</string>
     <string name="requirement_wifi_content">Only show when in range of or connected to a Wi-Fi network</string>
     <string name="requirement_wifi_content_base">Only show when %1s to %1s</string>
@@ -341,10 +341,10 @@
     <string name="requirement_wifi_content_in_range_or_connected_to">in range or connected</string>
     <string name="requirement_wifi_content_ssid_mac">%1s with MAC %1s</string>
     <string name="requirement_wifi_configuration_in_range_title">Allow Unconnected (In Range) Network</string>
-    <string name="requirement_wifi_configuration_in_range_content">When enabled, this Requirement will be met when the specified network is in range, but not connected.</string>
+    <string name="requirement_wifi_configuration_in_range_content">When enabled, this Requirement will be met when the specified network is in range, but not connected。</string>
     <string name="requirement_wifi_configuration_in_range_warning"><b>Important:</b> Smartspacer does <b>not</b> scan for networks itself, you must either have the \"Notify for public networks\" system setting enabled for background scanning, or manually scan for networks yourself for the Allow Unconnected option to work</string>
     <string name="requirement_wifi_configuration_background_location_title">Enable Background Location</string>
-    <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app.</string>
+    <string name="requirement_wifi_configuration_background_location_content">Android requires apps monitoring Wi-Fi scans to have the background location permission. Please grant this in the settings to continue, by selecting Permissions &gt; Location &gt; Allow all the time, and then return to this app。</string>
     <string name="requirement_wifi_configuration_background_location_grant">権限の許可</string>
     <string name="requirement_wifi_configuration_pick_title">ネットワークを選択</string>
     <string name="requirement_wifi_configuration_pick_content">Fill in settings from an existing network</string>
@@ -486,8 +486,8 @@
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">コンプリケーション</string>
     <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
-    <string name="setup_complications_info_p2">Complications will be shown alongside Targets wherever space is available, or if no remaining Targets are available will be shown in additional pages alongside the date.</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI).</string>
+    <string name="setup_complications_info_p2">。</string>
+    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI)。</string>
     <string name="setup_complications_example_gmail">8</string>
     <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
     <string name="setup_complications_example_weather">20°</string>
@@ -500,29 +500,29 @@
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">ウィジェットを追加</string>
     <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget.]]></string>
+    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget。]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">条件の設定</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace.</string>
+    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace。</string>
     <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores.</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym.</string>
+    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores。</string>
+    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym。</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Expanded</string>
     <string name="setup_expanded_switch">Expanded Smartspace を有効化</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen.</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button.</string>
+    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen。</string>
+    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button。</string>
     <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
     <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup.</string>
+    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup。</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">拡張機能</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation.</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications.</string>
+    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation。</string>
+    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications。</string>
     <string name="setup_plugins_info_finish">終了</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">セットアップ完了</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required.</string>
+    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required。</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
     <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
@@ -541,7 +541,7 @@
     <string name="enhanced_mode_enable_subtitle">Shizuku または Sui が必要です</string>
     <string name="enhanced_mode_enable_content_header"><b>Enhanced Mode allows Smartspacer to:</b></string>
     <string name="enhanced_mode_enable_content_native_systemui">• Integrate into the Smartspace on the Lock Screen</string>
-    <string name="enhanced_mode_enable_content_native_launcher">• Integrate into the Smartspace on compatible launchers</string>
+    <string name="enhanced_mode_enable_content_native_launcher"></string>
     <string name="enhanced_mode_enable_content_oem_smartspace">• Integrate into the OEM Smartspace (if available)</string>
     <string name="enhanced_mode_enable_content_system">• Show System Smartspace Targets and Complications in Smartspacer</string>
     <string name="enhanced_mode_enable_content_app_prediction">• Use system App Predictions as a Requirement</string>
@@ -552,8 +552,8 @@
     <!-- Native Mode -->
     <string name="native_title">Native Smartspace</string>
     <string name="native_switch">Enable Native Smartspace</string>
-    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
-    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations.</string>
+    <string name="native_switch_info"><b>Important:</b> When enabling Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue。</string>
+    <string name="native_switch_content">Native Smartspace integrates Smartspacer into your %1s, showing Smartspacer Targets and Complications within them.\nYou will need to re-enable Native Smartspace after every reboot. This is due to system limitations。</string>
     <string name="native_switch_content_many">%1s と %1s</string>
     <string name="native_switch_content_joiner">,</string>
     <string name="native_switch_compatibility">互換性</string>
@@ -562,9 +562,9 @@
     <string name="native_switch_compatibility_not_available"><b>Not Available</b></string>
     <!-- Native Mode Restart -->
     <string name="native_restart_title">Native Smartspace</string>
-    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect.</string>
-    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue.</string>
+    <string name="native_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect。</string>
+    <string name="native_restart_disconnect_content">Smartspacer has become disconnected from At a Glance. To make sure all Targets &amp; Complications work properly, Native Smartspace must be stopped and started again in order to reconnect。</string>
+    <string name="native_restart_info"><b>Important:</b> When reconnecting Native Smartspace, Smartspacer will restart SystemUI. <b>You may see a message saying SystemUI has stopped, and then your lock screen.</b> This is normal, dismiss the message and unlock your device to continue。</string>
     <string name="native_restart_button">Reconnect now</string>
     <!-- Native Mode boot notification -->
     <string name="notification_native_mode_enable_title">Re-enable Native Smartspace</string>
@@ -573,8 +573,8 @@
     <string name="notification_native_mode_enable_now">Enable Now</string>
     <!-- Native Mode restart notification -->
     <string name="notification_native_mode_restart_title">Re-connect Native Smartspace</string>
-    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again.</string>
-    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect.</string>
+    <string name="notification_native_mode_restart_feedback_loop_content">Smartspacer encountered a feedback loop when starting Native Smartspace. Tap to reconnect and try again。</string>
+    <string name="notification_native_mode_restart_disconnect_content">Smartspacer has become disconnected from At a Glance, tap to reconnect。</string>
     <string name="notification_native_mode_restart_just_reconnect">今すぐ再接続</string>
     <!-- Shizuku Start Notifications -->
     <string name="notification_shizuku_title">Shizukuが必要です</string>
@@ -671,7 +671,7 @@
     <string name="expanded_settings_widgets_use_google_sans_title">ウィジェットに Google Sans を使用する</string>
     <string name="expanded_settings_widgets_use_google_sans_content">Force widgets to use Google Sans Text where possible, this may cause layout issues with some widgets</string>
     <string name="expanded_settings_xposed_enabled_title">Google Discover を置き換え</string>
-    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work.</string>
+    <string name="expanded_settings_xposed_enabled_content">Replace the Google Discover feed with Expanded Smartspace.\n<b>Note:</b> You must enable the Xposed module for your launcher or Google Feed plugin and then reboot for this to work。</string>
     <string name="expanded_settings_xposed_enabled_content_disabled">このオプションは Xposed が必要です</string>
     <string name="expanded_settings_hide_add_button_title">追加ボタンを隠す</string>
     <string name="expanded_settings_hide_add_button_content">Hide the button to add custom widgets: %1s</string>
@@ -688,26 +688,26 @@
     <string name="expanded_settings_open_mode_never_title">今後はしない</string>
     <string name="expanded_settings_open_mode_never_content">Runs the Target\'s click actions, rather than opening Expanded Smartspace</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">If the Target has expanded options</string>
-    <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_if_has_extras_content">Opens Expanded Smartspace if the Target has extra options, available in Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action。</string>
     <string name="expanded_settings_open_mode_always_title">常時</string>
-    <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action.</string>
+    <string name="expanded_settings_open_mode_always_content">Always opens Expanded Smartspace. Tapping the Target again in Expanded Smartspace will run the Target\'s original action。</string>
     <string name="expanded_settings_tint_colour">Tint Colour</string>
     <string name="expanded_settings_tint_colour_content">The colour to use for text and icons on Expanded Smartspace: %1s</string>
     <!-- OEM Smartspace settings -->
     <string name="oem_smartspace_title">OEM Smartspace</string>
     <string name="oem_smartspace_content">Options for Smartspacer showing in legacy Launchers and on the Lock Screen on some devices</string>
     <string name="oem_smartspace_content_enhanced">This option requires Enhanced Mode</string>
-    <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root.</string>
-    <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info.</string>
+    <string name="oem_smartspace_incompatible">Sorry, this option requires root on your device due to system limitations. If you are rooted, install the Sui Magisk module or start Shizuku as root。</string>
+    <string name="oem_smartspace_info">OEM Smartspace shows Smartspacer Targets &amp; Complications in compatible launchers and lock screens.\n\n<b>Please note that it is much more limited than Smartspacer\'s other modes:</b>\n- Only a Target\'s title and subtitle can be shown, no images or extra options\n- Only one Target &amp; Complication can be shown at once\n- Some OEMs do not show Complications when there is not also a Target available\n- The layout of Targets &amp; Complications may differ on your device, due to OEM modifications.\n- Targets with multiple Complications may not have all their options clickable\n- Some OEMs disable Smartspace unless a command is run or a setting is changed, check the Wiki page linked below for more info。</string>
     <string name="oem_smartspace_more_info">その他の情報</string>
-    <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device.</string>
+    <string name="oem_smartspace_no_apps">No apps which use OEM Smartspace are installed on your device。</string>
     <string name="oem_smartspace_switch">OEM Smartspace を有効化</string>
     <string name="oem_smartspace_apps">Compatible Apps</string>
     <string name="oem_smartspace_warning">This app may require additional setup, check the Wiki page linked below for more info</string>
     <string name="oem_smartspace_settings">設定</string>
     <string name="oem_smartspace_label_systemui">ロック画面</string>
     <string name="oem_smartspace_hide_incompatible_title">Hide Incompatible Targets</string>
-    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle</string>
+    <string name="oem_smartspace_hide_incompatible_content">Hide Targets incompatible with OEM Smartspace, rather than showing just their title and subtitle5</string>
     <string name="expanded_search_box_search">検索…</string>
     <string name="expanded_footer">ウィジェットを追加</string>
     <string name="expanded_custom_widget_delete">削除</string>
@@ -733,7 +733,7 @@
     <string name="expanded_custom_widget_options_round_corners_title">Force Round Corners</string>
     <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
     <string name="expanded_custom_widget_full_width_title">Fill Width</string>
-    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
+    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width。</string>
     <string name="add_widget_empty_label">ウィジェットが見つかりません</string>
     <string name="battery_optimisation_title">バッテリーの最適化</string>
     <string name="battery_optimisation_content">Smartspacerの安定性向上のためにバッテリー最適化を無効にする</string>
@@ -753,10 +753,10 @@
     <string name="plugin_repository_empty_subtitle_empty">Check your network connection</string>
     <string name="plugin_repository_empty_button_empty">更新</string>
     <string name="plugin_repository_empty_title_browse">拡張機能がインストールされていません</string>
-    <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet.</string>
+    <string name="plugin_repository_empty_subtitle_browse">You don\'t have any plugins installed yet。</string>
     <string name="plugin_repository_empty_button_browse">プラグインを探す</string>
     <string name="plugin_repository_update_available">アップデートが利用可能です！</string>
-    <string name="plugin_repository_recommended">Recommended for:</string>
+    <string name="plugin_repository_recommended">Recommended for：</string>
     <string name="plugin_repository_changelog"><b>新機能</b></string>
     <string name="plugin_details_install">インストール</string>
     <string name="plugin_details_start_install">インストール開始</string>
@@ -765,7 +765,7 @@
     <string name="plugin_details_uninstall">アンインストール</string>
     <string name="plugin_details_install_companion">必要なアプリを入手</string>
     <string name="plugin_details_error_title">エラー</string>
-    <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer.</string>
+    <string name="plugin_details_error_content">Error loading plugin details. Check your connection, and if the problem persists contact the plugin developer。</string>
     <string name="plugin_details_incompatible_incompatible_sdk">This plugin is not compatible with your device as it requires a newer version of Android (API %1d)</string>
     <string name="plugin_details_incompatible_missing_feature">This plugin is not compatible with your device as it requires a feature that is not available (%1s)</string>
     <string name="plugin_details_incompatible_missing_app">This plugin requires you to have a companion app installed, tap to download</string>
@@ -810,7 +810,7 @@
     <string name="permissions_allow">許可する</string>
     <string name="permissions_deny">許可しない</string>
     <string name="permissions_ask_every_time">毎回確認</string>
-    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications.</string>
+    <string name="permissions_header">Access permissions are only applied when adding a Target or Complication. To fully revoke a Plugin\'s ability to access notifications or widgets, you must also remove its Targets and Complications。</string>
     <string name="permissions_title">権限</string>
     <string name="permissions_content">Manage permissions granted to Plugins &amp; apps integrating Smartspacer</string>
     <string name="permissions_widgets">Access widgets via Smartspacer</string>
@@ -937,9 +937,9 @@
     <string name="target_calendar_settings_show_location_title">場所を表示</string>
     <string name="target_calendar_settings_show_location_content">Show event locations, where available</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Show Unconfirmed</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events。</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Use Alternative Event IDs</string>
-    <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change.</string>
+    <string name="target_calendar_settings_use_alternative_event_id_content">Create IDs for each event based on their title, start and end times rather than the system-provided IDs, when dismissing events. This is useful if you use an app or service which \'syncs\' Calendars between accounts, and re-creates new events when things change。</string>
     <string name="target_calendar_settings_pre_event_time_title">Show event for time before start</string>
     <string name="target_calendar_settings_post_event_time_title">Show event for time after start</string>
     <string name="target_calendar_settings_clear_dismissed_events_title">Clear Dismissed Events</string>
@@ -956,7 +956,7 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">スナップショット（At a Glance）の設定</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
-    <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
+    <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices。</string>
     <string name="target_default_settings_hide_title">ターゲットを隠す</string>
     <string name="target_default_settings_hide_doorbell">ドアホン</string>
     <string name="target_default_settings_hide_package">荷物の配達</string>
@@ -984,9 +984,9 @@
     <string name="target_notification_channels_empty">This app does not use Notification Channels, so all notifications from it will be shown</string>
     <string name="target_notification_configuration_options">オプション</string>
     <string name="target_notification_configuration_trim_new_lines_title">Remove New Lines</string>
-    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification。</string>
     <string name="target_notification_remoteviews_source_title">Custom Content</string>
-    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
+    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from：</string>
     <string name="target_notification_remoteviews_source_none">Disabled</string>
     <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
     <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
@@ -998,12 +998,12 @@
     <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
     <string name="target_notification_remoteviews_background_opaque">Opaque</string>
     <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
-    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
+    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable。</string>
     <!-- Blank Target -->
     <string name="target_blank_title">空のターゲット</string>
     <string name="target_blank_content">Ultra minimal, can be used to show nothing at all or only Complications</string>
     <string name="target_blank_settings_show_complications_title">コンプリケーションを表示</string>
-    <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications.</string>
+    <string name="target_blank_settings_show_complications_content">Allow up to two Complications to be shown below the empty Target title. This is useful if you want to not have a date, but keep showing Complications。</string>
     <string name="target_blank_settings_hide_if_no_complications_title">Hide if no Complications</string>
     <string name="target_blank_settings_hide_if_no_complications_content">If there\'s no Complications to show, hide this Target entirely</string>
     <string name="target_blank_settings_title">設定</string>
