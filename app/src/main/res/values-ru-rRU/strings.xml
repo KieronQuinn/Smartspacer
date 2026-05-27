@@ -58,7 +58,7 @@
     <string name="widget_configuration_page_controls_invisible_title">Невидимые элементы управления</string>
     <string name="widget_configuration_page_controls_invisible_content">Сделать элементы управления невидимыми. Они все еще есть и действительны, но не видны.</string>
     <string name="widget_configuration_padding_title">Дополнительный отступ</string>
-    <string name="widget_configuration_padding_content">Add extra padding to the left &amp; right of the widget. Please note that this is <b>in addition</b> to any padding your launcher may add.</string>
+    <string name="widget_configuration_padding_content">Добавить доп. отступ слева &amp; справа от виджета. <b>Прибавляется</b> к отступу, который нативно добавляет ваш системный интерфейс.</string>
     <string name="widget_configuration_animation">Анимация</string>
     <string name="widget_configuration_animation_switch_title">Анимировать изменения</string>
     <string name="widget_configuration_animation_switch_content">Плавные переходы между изменениями в виджете - где это возможно</string>
@@ -70,31 +70,31 @@
     <string name="widget_configuration_mock_target_subtitle">Цель</string>
     <string name="widget_configuration_mock_complication_title">Дополнение</string>
     <string name="widget_configuration_material_you_title">Стиль Material You</string>
-    <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
+    <string name="widget_configuration_material_you_description">Использовать динамические цвета Material You для виджета\n\n<b>Примечание:</b> Включение этой опции может вызвать проблемы с размерами.</string>
     <!-- Widget Pinning Section -->
-    <string name="widget_configuration_pin_title">Widget Pinning</string>
-    <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
+    <string name="widget_configuration_pin_title">Закрепление виджета</string>
+    <string name="widget_configuration_pin_description">Закрепить этот виджет, чтобы показать конкретное содержимое. Полезно при складывании нескольких Smartspacer виджетов для имитации прокрутки Smartspace.</string>
     <!-- Pin Mode -->
-    <string name="widget_configuration_pin_mode_label">Pin Mode</string>
-    <string name="widget_configuration_pin_mode_none">None (cycle through all)</string>
-    <string name="widget_configuration_pin_mode_page">Pin to Page Position</string>
-    <string name="widget_configuration_pin_mode_target">Pin to Specific Target</string>
+    <string name="widget_configuration_pin_mode_label">Режим Закрепления</string>
+    <string name="widget_configuration_pin_mode_none">Нет (цикл сквозь все)</string>
+    <string name="widget_configuration_pin_mode_page">Закрепить к Позиции Страницы</string>
+    <string name="widget_configuration_pin_mode_target">Прикрепить к Конкретной Цели</string>
     <!-- Page Mode -->
-    <string name="widget_configuration_pin_page_label">Page Position</string>
-    <string name="widget_configuration_pin_page_value">Page %1$d</string>
-    <string name="widget_configuration_pin_page_warning"><b>How Page Pinning Works:</b> This widget will always show whatever target is at the selected page position. Page content changes dynamically - the target shown may vary based on which targets are currently active and their priorities.</string>
+    <string name="widget_configuration_pin_page_label">Позиция Страницы</string>
+    <string name="widget_configuration_pin_page_value">Страница %1$d</string>
+    <string name="widget_configuration_pin_page_warning"><b>Как работает Закрепление Страницы:</b> Этот виджет всегда будет показывать любую цель на выбранной странице. Содержание страницы изменяется динамически: показываемая цель может отличаться в зависимости от того, какие цели активны и их приоритетов.</string>
     <!-- Target Mode -->
-    <string name="widget_configuration_pin_target_label">Select Target</string>
-    <string name="widget_configuration_pin_target_none">Tap to select…</string>
-    <string name="widget_configuration_pin_target_warning"><b>How Target Pinning Works:</b> This widget will always try to show the selected target. If the target becomes unavailable (e.g., no music playing for a music target, or requirements not met), the fallback behavior below determines what to show instead.</string>
+    <string name="widget_configuration_pin_target_label">Выбрать Цель</string>
+    <string name="widget_configuration_pin_target_none">Нажмите для выбора…</string>
+    <string name="widget_configuration_pin_target_warning"><b>Как работает Закрепление Цели:</b> Этот виджет всегда будет стараться показать выбранную цель. Если цель недоступна (т.е. не играет музыка, необходимая для неё или не выполнены требования), то поведение запасного варианта ниже определяет, что показать вместо этого.</string>
     <!-- Fallback (shared) -->
-    <string name="widget_configuration_pin_fallback_label">When Unavailable</string>
-    <string name="widget_configuration_pin_fallback_show_date">Show date</string>
-    <string name="widget_configuration_pin_fallback_show_first">Show first available target</string>
-    <string name="widget_configuration_pin_fallback_hide">Hide widget content</string>
+    <string name="widget_configuration_pin_fallback_label">Когда недоступно</string>
+    <string name="widget_configuration_pin_fallback_show_date">Показать дату</string>
+    <string name="widget_configuration_pin_fallback_show_first">Показать первую доступную цель</string>
+    <string name="widget_configuration_pin_fallback_hide">Скрыть содержимое виджета</string>
     <string name="widget_options_configure">Настроить виджет</string>
     <string name="accessibility_service_label">Служба виджетов Smartspacer</string>
-    <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
+    <string name="accessibility_service_description">Включить виджет Smartspacer для поддержания Целей и Условий актуальными, не расходуя заряд батареи в фоне.\n\nПримечание: не требуется, если включен расширенный режим.</string>
     <string name="target_notification_label">Уведомления</string>
     <string name="target_notification_description">Показывает уведомления от одного приложения</string>
     <string name="target_notification_description_selected">Показывает уведомления от %1s</string>
@@ -383,14 +383,14 @@
     <string name="requirement_bluetooth_description_set">Показывать только при подключении к Bluetooth-устройству под названием %1s</string>
     <string name="requirement_bluetooth_incompatible">Это требование требует Bluetooth</string>
     <string name="requirement_bluetooth_configuration_pick_title">Выберите устройство</string>
-    <string name="requirement_bluetooth_configuration_pick_permission">Bluetooth &amp; Location permissions required, tap to grant.\n<b>Note:</b> Location is required by Android to get currently connected Bluetooth devices</string>
-    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer needs to monitor Bluetooth connections in the background, which requires the location permission to be set to \"All the Time\", tap to grant</string>
+    <string name="requirement_bluetooth_configuration_pick_permission">Необходимо разрешение Bluetooth &amp; Геолокации, нажмите для предоставления.\n<b>Примечание:</b> Геолокация необходима Android для получения списка подключённых Bluetooth-устройств</string>
+    <string name="requirement_bluetooth_configuration_pick_background_permission">Smartspacer необходим мониторинг Bluetooth-подключений в фоне, что требует установки разрешения на Геолокацию в \"Все время\", нажмите для предоставления</string>
     <string name="requirement_bluetooth_configuration_pick_disabled">Bluetooth отключен, нажмите для включения</string>
     <string name="requirement_bluetooth_configuration_pick_info">Можно выбрать только устройства, которые ранее были или в настоящее время сопряжены</string>
     <string name="requirement_bluetooth_configuration_pick_empty">Не найдено сопряженных устройств</string>
     <string name="requirement_bluetooth_configuration_pick_selected">%1s (выбрано)</string>
     <string name="requirement_bluetooth_notification_title">Требуется разрешение Bluetooth</string>
-    <string name="requirement_bluetooth_notification_content">Smartspacer requires the Bluetooth &amp; Location \"All the Time\" permissions for the Bluetooth requirement, tap to grant</string>
+    <string name="requirement_bluetooth_notification_content">Для Smartspacer требуется разрешение Bluetooth &amp; Геолокации на \"Всё время\", нажмите для предоставления</string>
     <string name="requirement_app_prediction">Подсказка приложений</string>
     <string name="requirement_app_prediction_content_generic">Показывать только если определённое приложение находится в топ-5 Подсказках Приложений (обычно отображаются в меню приложений)</string>
     <string name="requirement_app_prediction_content">Показывать только если %1s находится в топ-5 Подсказках приложений</string>
@@ -638,7 +638,7 @@
     <string name="native_mode_settings_use_split_smartspace">Использовать Разделённое Пространство</string>
     <string name="native_mode_settings_use_split_smartspace_content">Android 14 добавил Разделённое Пространство на экран блокировки, отображающее дату и погоду над обычными Целями и Дополнениями. Smartspacer может заменить Погоду вашим первым Дополнением, но это может работать не со всеми стилями часов, и ваше первое Дополнение может исчезать. Если это происходит, выключите это.</string>
     <string name="native_mode_immediate_start_title">Автоматически включить Smartspace</string>
-    <string name="native_mode_immediate_start_content">When enabled, Smartspacer will attempt to automatically enable Native Smartspace where possible, for example after a reboot or the service becoming disconnected.\n\n<b>WARNING:</b> ENABLING THIS OPTION WILL CAUSE UNPROMPTED SYSTEMUI RESTARTS, WHICH MAY INTERRUPT NORMAL USE OF YOUR DEVICE, TO START THE SERVICE. THIS IS NOT A BUG.</string>
+    <string name="native_mode_immediate_start_content">Если включено, Smartspacer будет пытаться автоматически включать Native Smartspace, например, после перезагрузки или отключения службы.\n\n<b>ПРЕДУПРЕЖДЕНИЕ:</b> ВКЛЮЧЕНИЕ ЭТОЙ ОПЦИИ МОЖЕТ ПРИВЕСТИ К ПЕРЕЗАГРУЗКАМ ВСЕГО ИНТЕРФЕЙСА СИСТЕМЫ БЕЗ ПРЕДУПРЕЖДЕНИЯ. ЭТО НЕ БАГ.</string>
     <!-- Permission Request target -->
     <string name="target_permission_request_title">Требуется разрешение Smartspacer</string>
     <string name="target_permission_request_content">Нажмите, чтобы предоставить</string>
@@ -685,7 +685,7 @@
     <string name="expanded_settings_close_when_locked_content">Выйти из Расширенного Пространства при блокировке экрана</string>
     <string name="expanded_settings_header_style">Стиль</string>
     <string name="expanded_settings_background_mode_title">Фон</string>
-    <string name="expanded_settings_background_mode_content">The background to show behind Expanded Smartspace: %1s</string>
+    <string name="expanded_settings_background_mode_content">Какой фон показывать за расширенным Smartspace: %1s</string>
     <string name="expanded_settings_background_mode_blur">Размытые обои</string>
     <string name="expanded_settings_background_mode_scrim">Затемненные обои</string>
     <string name="expanded_settings_background_mode_solid">Сплошной цвет</string>
@@ -704,8 +704,8 @@
     <string name="expanded_settings_enable_columns_content">На широких устройствах отображайте цели Smartspacer, дополнительное содержимое и пользовательские виджеты как горизонтально, так и вертикально, где доступно пространство</string>
     <string name="expanded_complications_first_title">Сначала дополнения</string>
     <string name="expanded_complications_first_content">Поставьте ваши дополнения в сетку выше всех целей, а не заполняйте пробелы вместе с целями &amp; показывающие оставшиеся ниже</string>
-    <string name="expanded_show_shadow_title">Text &amp; Icon Shadows</string>
-    <string name="expanded_show_shadow_content">Show a shadow on text &amp; icons which may not be legible on your wallpaper</string>
+    <string name="expanded_show_shadow_title">Тень от текста &amp; иконок</string>
+    <string name="expanded_show_shadow_content">Показать тень от текста &amp; иконок, если они неразличимы на ваших обоях</string>
     <string name="expanded_settings_open_mode_never_title">Никогда</string>
     <string name="expanded_settings_open_mode_never_content">Запускает действия по нажатию на Цель вместо открытия Расширенного Пространства</string>
     <string name="expanded_settings_open_mode_if_has_extras_title">Если у Цели есть, что показать</string>
@@ -740,7 +740,7 @@
     <string name="expanded_add_widget_widgets_one">%1d виджет</string>
     <string name="expanded_add_widget_widgets_other">%1d виджетов</string>
     <string name="expanded_add_widget_category_battery">Батарея</string>
-    <string name="expanded_add_widget_category_conversations">Conversations</string>
+    <string name="expanded_add_widget_category_conversations">Цепочки писем</string>
     <string name="expanded_add_widget_category_note_taking">Создание заметки</string>
     <string name="expanded_add_widget_category_weather">Погода</string>
     <string name="expanded_custom_widget_options_span_x_title">Ширина</string>
@@ -752,9 +752,9 @@
     <string name="expanded_custom_widget_options_show_when_locked_title">Показывать на заблокированном экране</string>
     <string name="expanded_custom_widget_options_show_when_locked_content">Показывать этот виджет в Расширенном Пространстве при заблокированном экране</string>
     <string name="expanded_custom_widget_options_round_corners_title">Скругленные углы</string>
-    <string name="expanded_custom_widget_options_round_corners_content">Apply rounded corners to this widget, even if it is not designed to have them</string>
+    <string name="expanded_custom_widget_options_round_corners_content">Закруглить углы этого виджета, даже если он на это не рассчитан</string>
     <string name="expanded_custom_widget_full_width_title">В ширину</string>
-    <string name="expanded_custom_widget_full_width_content">Forces this widget to take up the width of a full row in Expanded Smartspace, without increasing its width.\n\n<b>Note:</b> On larger devices with multiple columns, this will take up one column of width.</string>
+    <string name="expanded_custom_widget_full_width_content">Заставляет этот виджет занять ширину полного ряда в расширенном Smartspace, не увеличивая его ширину.\n\n<b>Примечание:</b> на больших устройствах с несколькими столбцами, это займет один столбец ширины.</string>
     <string name="add_widget_empty_label">Виджеты не найдены</string>
     <string name="battery_optimisation_title">Оптимизация батареи</string>
     <string name="battery_optimisation_content">Опции для выключения оптимизации батареи, чтобы увеличить надёжность Smartspacer</string>
@@ -958,7 +958,7 @@
     <string name="target_calendar_settings_show_location_title">Показать место</string>
     <string name="target_calendar_settings_show_location_content">Показать места проведения событий, где это возможно</string>
     <string name="target_calendar_settings_show_unconfirmed_title">Показать непосещённые</string>
-    <string name="target_calendar_settings_show_unconfirmed_content">Show events which you have not marked as confirmed attendance.\n<b>Important:</b> Some calendars do not support this function and disabling this will hide all events.</string>
+    <string name="target_calendar_settings_show_unconfirmed_content">Показать события, которые вы не отметили как подтвержденную посещаемость.\n<b>Важно:</b> Некоторые календари не поддерживают эту функцию и отключение этого скроет все события.</string>
     <string name="target_calendar_settings_use_alternative_event_id_title">Использовать альтернативные ID события</string>
     <string name="target_calendar_settings_use_alternative_event_id_content">Создавать идентификаторы для каждого события на основе их названия, времени начала и окончания, вместо использования системных, при отклонении событий. Это полезно, если вы используете приложение или службу, которые синхронизируют календари между аккаунтами, и пересоздают новые события при изменениях.</string>
     <string name="target_calendar_settings_pre_event_time_title">Показать событие за время до начала</string>
@@ -1005,21 +1005,21 @@
     <string name="target_notification_channels_empty">Это приложение не использует каналы уведомлений, поэтому будут показаны все уведомления</string>
     <string name="target_notification_configuration_options">Опции</string>
     <string name="target_notification_configuration_trim_new_lines_title">Удалить новые строки</string>
-    <string name="target_notification_configuration_trim_new_lines_content">Remove new lines from the notification\'s content, attempting to fit as much of it into the Target as possible. This may remove some formatting of the notification.</string>
-    <string name="target_notification_remoteviews_source_title">Custom Content</string>
-    <string name="target_notification_remoteviews_source_subtitle">If available, use notification custom content from:</string>
-    <string name="target_notification_remoteviews_source_none">Disabled</string>
-    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
-    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
-    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
-    <string name="target_notification_remoteviews_source_large_info"><b>Note:</b> May cause scaling issues</string>
-    <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
-    <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
-    <string name="target_notification_remoteviews_background_none">Transparent</string>
-    <string name="target_notification_remoteviews_background_semi">Semi-Transparent</string>
-    <string name="target_notification_remoteviews_background_opaque">Opaque</string>
-    <string name="target_notification_remoteviews_click_title">Replace Custom Content Click</string>
-    <string name="target_notification_remoteviews_click_content">Replace the click action for the Custom Content with that of the notification. Required for some notifications to be clickable.</string>
+    <string name="target_notification_configuration_trim_new_lines_content">Удалять новые строки из содержимого уведомления, пытаясь максимально вместить их в Цель. Это может удалить часть форматирования уведомления.</string>
+    <string name="target_notification_remoteviews_source_title">Кастомное содержание</string>
+    <string name="target_notification_remoteviews_source_subtitle">Если доступно, используйте кастомный контент уведомления из:</string>
+    <string name="target_notification_remoteviews_source_none">Отключено</string>
+    <string name="target_notification_remoteviews_source_small">Свернутое уведомление</string>
+    <string name="target_notification_remoteviews_source_large">Раскрытое уведомление</string>
+    <string name="target_notification_remoteviews_source_heads_up">Всплывающие уведомления</string>
+    <string name="target_notification_remoteviews_source_large_info"><b>Примечание:</b> может вызвать проблемы масштабирования</string>
+    <string name="target_notification_remoteviews_padding_title">Кастомный отступ</string>
+    <string name="target_notification_remoteviews_background_title">Кастомный фон</string>
+    <string name="target_notification_remoteviews_background_none">Прозрачный</string>
+    <string name="target_notification_remoteviews_background_semi">Полупрозрачный</string>
+    <string name="target_notification_remoteviews_background_opaque">Непрозрачный</string>
+    <string name="target_notification_remoteviews_click_title">Заменить пользовательский контент кликом</string>
+    <string name="target_notification_remoteviews_click_content">Замените действие клика для кастомного содержания с действием уведомления. Необходимо, чтобы некоторые уведомления были интерактивными.</string>
     <!-- Blank Target -->
     <string name="target_blank_title">Пустая Цель</string>
     <string name="target_blank_content">Минималистично. Может быть использована для показа только Дополнений или вообще ничего</string>
@@ -1055,7 +1055,7 @@
     <!-- Widget Target -->
     <string name="target_widget_title">Виджет</string>
     <string name="target_widget_description"><b>Экспериментально:</b> Показать виджет 4x1</string>
-    <string name="target_widget_description_set">Shows %1s from %1s</string>
+    <string name="target_widget_description_set">Показывает %1s от %1s</string>
     <string name="target_widget_not_supported_title">Виджет не поддерживается</string>
     <string name="target_widget_not_supported_content">Виджеты здесь не поддерживаются</string>
     <string name="target_widget_not_compatible_title">Виджет несовместим</string>
@@ -1074,18 +1074,18 @@
     <string name="target_widget_settings_limitations_bull8">Некоторые виджеты могут не работать вообще, и покажут \"Нельзя добавить виджет\", или вообще ничего.</string>
     <string name="target_widget_settings_limitations_footer"><b>Эти ограничения не могут быть устранены, пожалуйста, не сообщайте о них как об ошибках.</b></string>
     <string name="target_widget_settings_widget_title">Виджет</string>
-    <string name="target_widget_settings_widget_content">%1s from %1s\n\nSelected widget cannot be changed after adding, remove this Target and re-add to change widget</string>
+    <string name="target_widget_settings_widget_content">%1s от %1s\n\nВыбранный виджет не может быть изменен после добавления, удалите эту цель и добавьте повторно чтобы изменить виджет</string>
     <string name="target_widget_settings_padding_title">Отступ</string>
-    <string name="target_widget_settings_padding_content">The amount of padding above &amp; below the widget: %1s</string>
+    <string name="target_widget_settings_padding_content">Размер отступа выше &amp; ниже виджета: %1s</string>
     <string name="target_widget_settings_rounded_title">Скруглённый угол</string>
-    <string name="target_widget_settings_rounded_content">Apply rounded corners to this widget. May not work with all widgets.</string>
+    <string name="target_widget_settings_rounded_content">Закруглить углы этого виджета. Может не работать со всеми виджетами.</string>
     <string name="target_widget_padding_none">Минимум</string>
     <string name="target_widget_padding_small">Маленький</string>
     <string name="target_widget_padding_medium">Средний</string>
     <string name="target_widget_padding_large">Большой</string>
     <string name="target_widget_padding_disable">Отключено</string>
     <string name="target_widget_alt_sizing_title">Использовать альтернативный размер</string>
-    <string name="target_widget_alt_sizing_content">Use different vertical sizing, which may improve the layout of some widgets.\n\n<b>Note:</b> A reboot may be required for this change to take effect.</string>
+    <string name="target_widget_alt_sizing_content">Использовать различные вертикальные размеры, которые могут улучшить расположение некоторых виджетов.\n\n<b>Примечание:</b> для изменения может потребоваться перезагрузка.</string>
     <!-- Gmail Complication -->
     <string name="complication_gmail_label">Непрочитанное из Gmail</string>
     <string name="complication_gmail_description">Показывать количество непрочитанных сообщений Gmail в указанных метках</string>
@@ -1124,15 +1124,15 @@
     <string name="requirement_recent_apps_configuration_limit_content_bs">Количество недавних приложений, среди которых нужно искать выбранное</string>
     <string name="requirement_recent_apps_configuration_limit_content_unlimited">Неограниченно</string>
     <!-- Widget Categories (for recommendations), copied from the Pixel Launcher -->
-    <string name="productivity_widget_recommendation_category_label">Essentials</string>
+    <string name="productivity_widget_recommendation_category_label">Основное</string>
     <string name="battery_widget_recommendation_category_label">Батарея</string>
-    <string name="conversations_widget_recommendation_category_label">Conversations</string>
+    <string name="conversations_widget_recommendation_category_label">Цепочки писем</string>
     <string name="note_taking_widget_recommendation_category_label">Создание заметки</string>
-    <string name="snapshot_widget_recommendation_category_label">Snapshot</string>
-    <string name="social_widget_recommendation_category_label">Social</string>
+    <string name="snapshot_widget_recommendation_category_label">Снапшот</string>
+    <string name="social_widget_recommendation_category_label">Общение</string>
     <string name="weather_widget_recommendation_category_label">Погода</string>
     <string name="entertainment_widget_recommendation_category_label">Развлечения</string>
-    <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
-    <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
+    <string name="fitness_widget_recommendation_category_label">Здоровье &amp; фитнес</string>
+    <string name="news_widget_recommendation_category_label">Новости &amp; журналы</string>
     <string name="others_widget_recommendation_category_label">Предложения для вас</string>
 </resources>
