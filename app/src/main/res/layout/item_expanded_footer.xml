@@ -10,7 +10,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/expanded_footer_button"
-        style="@style/Widget.Material3.Button.IconButton"
+        style="@style/Widget.Material3Expressive.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -20,6 +20,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/expanded_footer_button_wide"
+        style="@style/Widget.Material3Expressive.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

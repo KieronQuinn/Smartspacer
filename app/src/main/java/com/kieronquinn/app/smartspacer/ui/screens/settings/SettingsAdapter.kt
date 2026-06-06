@@ -69,7 +69,7 @@ class SettingsAdapter(
             itemUpdatesAboutGithub to about.onGitHubClicked,
             itemUpdatesAboutCrowdin to about.onCrowdinClicked,
             itemUpdatesAboutLibraries to about.onLibrariesClicked,
-            itemUpdatesAboutTwitter to about.onTwitterClicked,
+            itemUpdatesAboutBluesky to about.onBlueskyClicked,
             itemUpdatesAboutXda to about.onXdaClicked
         ).forEach { chip ->
             with(chip.key){
@@ -82,6 +82,10 @@ class SettingsAdapter(
                 }
             }
         }
+    }
+
+    override fun shouldRound(item: BaseSettingsItemType): Boolean {
+        return super.shouldRound(item) || item == ItemType.ABOUT
     }
 
     sealed class SettingsViewHolder(override val binding: ViewBinding): ViewHolder(binding) {

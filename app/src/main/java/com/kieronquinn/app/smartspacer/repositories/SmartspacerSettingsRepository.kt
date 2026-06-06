@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ComplicationOnPrimary
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
@@ -220,6 +221,18 @@ interface SmartspacerSettingsRepository {
     val pluginRepositoryUrl: SmartspacerSetting<String>
 
     /**
+     *  App-level setting for whether to use blurs
+     */
+    val blurEnabled: SmartspacerSetting<Boolean>
+
+    /**
+     *  List of package names that have been seen by the user. This is used to know when a plugin
+     *  is new.
+     */
+    @IgnoreInBackup
+    val seenPlugins: SmartspacerSetting<Set<String>>
+
+    /**
      *  The wallpaper colour to use (< Android 12)
      */
     @IgnoreInBackup
@@ -258,6 +271,13 @@ interface SmartspacerSettingsRepository {
     val requiresDisplayOverOtherAppsPermission: SmartspacerSetting<Boolean>
 
     /**
+     *  Version code of Shizuku when the user clicks "Ignore" in the Shizuku outdated bottom sheet.
+     *  The sheet should not appear again while this version is installed.
+     */
+    @IgnoreInBackup
+    val shizukuIgnoredVersion: SmartspacerSetting<Long>
+
+    /**
      *  Whether the Lock Screen Notification "Widget" is enabled
      */
     val notificationWidgetServiceEnabled: SmartspacerSetting<Boolean>
@@ -266,6 +286,11 @@ interface SmartspacerSettingsRepository {
      *  The mode of tinting for the Lock Screen Notification "Widget"
      */
     val notificationWidgetTintColour: SmartspacerSetting<TintColour>
+
+    /**
+     *  Whether to show a Complication next to the primary (date) text where available
+     */
+    val complicationOnPrimary: SmartspacerSetting<ComplicationOnPrimary>
 
     enum class TargetCountLimit(val count: Int, @StringRes val label: Int, @StringRes val content: Int) {
         ONE(
@@ -338,6 +363,24 @@ interface SmartspacerSettingsRepository {
         OVERLAY_ONLY(R.string.expanded_settings_hide_add_button_overlay_only),
         WHEN_LOCKED(R.string.expanded_settings_hide_add_button_when_locked),
         ALWAYS(R.string.expanded_settings_hide_add_button_always),
+    }
+
+    enum class ComplicationOnPrimary(
+        @StringRes val label: Int,
+        @StringRes val content: Int
+    ) {
+        ALWAYS(
+            R.string.settings_complication_on_primary_always,
+            content = R.string.settings_complication_on_primary_always_content,
+        ),
+        WEATHER_ONLY(
+            R.string.settings_complication_on_primary_weather_only,
+            R.string.settings_complication_on_primary_weather_only_content,
+        ),
+        NEVER(
+            R.string.settings_complication_on_primary_never,
+            content = R.string.settings_complication_on_primary_never_content,
+        )
     }
 
     suspend fun setRestrictedModeKnownDisabledIfNeeded()
@@ -459,6 +502,12 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_PLUGIN_REPOSITORY_URL = "plugin_repository_url"
         private const val DEFAULT_PLUGIN_REPOSITORY_URL = "https://raw.githubusercontent.com/KieronQuinn/SmartspacerPluginRepository/main/plugins.json"
 
+        private const val KEY_BLUR_ENABLED = "blur_enabled"
+        private const val DEFAULT_BLUR_ENABLED = true
+
+        private const val KEY_SEEN_PLUGINS = "seen_plugins"
+        private val DEFAULT_SEEN_PLUGINS = emptySet<String>()
+
         private const val KEY_MONET_COLOR = "monet_color"
         private const val DEFAULT_MONET_COLOR = Integer.MAX_VALUE
 
@@ -477,11 +526,17 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS = "requires_display_over_other_apps"
         private const val DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS = false
 
+        private const val KEY_SHIZUKU_IGNORED_VERSION = "shizuku_ignored_version"
+        private const val DEFAULT_SHIZUKU_IGNORED_VERSION = -1L
+
         private const val KEY_NOTIFICATION_WIDGET_SERVICE_ENABLED = "notification_widget_service_enabled"
         private const val DEFAULT_NOTIFICATION_WIDGET_SERVICE_ENABLED = false
 
         private const val KEY_NOTIFICATION_WIDGET_TINT = "notification_widget_tint"
         private val DEFAULT_NOTIFICATION_WIDGET_TINT = TintColour.AUTOMATIC
+
+        private const val KEY_COMPLICATION_ON_PRIMARY = "complication_on_primary"
+        private val DEFAULT_COMPLICATION_ON_PRIMARY = ComplicationOnPrimary.WEATHER_ONLY
 
         @Suppress("DEPRECATION")
         private fun SmartspacerSettingsRepositoryImpl.getDefaultExpandedBackground(): ExpandedBackground {
@@ -533,14 +588,18 @@ class SmartspacerSettingsRepositoryImpl(
     override val pluginRepositoryEnabled = boolean(KEY_PLUGIN_REPOSITORY_ENABLED, DEFAULT_PLUGIN_REPOSITORY_ENABLED)
     override val pluginRepositoryUpdateCheckEnabled = boolean(KEY_PLUGIN_REPOSITORY_UPDATE_CHECK_ENABLED, DEFAULT_PLUGIN_REPOSITORY_UPDATE_CHECK_ENABLED)
     override val pluginRepositoryUrl = string(KEY_PLUGIN_REPOSITORY_URL, DEFAULT_PLUGIN_REPOSITORY_URL)
+    override val blurEnabled = boolean(KEY_BLUR_ENABLED, DEFAULT_BLUR_ENABLED)
+    override val seenPlugins = stringSet(KEY_SEEN_PLUGINS, DEFAULT_SEEN_PLUGINS)
     override val monetColor = color(KEY_MONET_COLOR, DEFAULT_MONET_COLOR)
     override val installTime = long(KEY_INSTALL_TIME, DEFAULT_INSTALL_TIME)
     override val donatePromptEnabled = boolean(KEY_DONATE_PROMPT_ENABLED, DEFAULT_DONATE_PROMPT_ENABLED)
     override val donatePromptDismissedAt = long(KEY_DONATE_PROMPT_DISMISSED_AT, DEFAULT_DONATE_PROMPT_DISMISSED_AT)
     override val analyticsEnabled = boolean(KEY_ANALYTICS_ENABLED, DEFAULT_ANALYTICS_ENABLED)
     override val requiresDisplayOverOtherAppsPermission = boolean(KEY_REQUIRES_DISPLAY_OVER_OTHER_APPS, DEFAULT_REQUIRES_DISPLAY_OVER_OTHER_APPS)
+    override val shizukuIgnoredVersion = long(KEY_SHIZUKU_IGNORED_VERSION, DEFAULT_SHIZUKU_IGNORED_VERSION)
     override val notificationWidgetServiceEnabled = boolean(KEY_NOTIFICATION_WIDGET_SERVICE_ENABLED, DEFAULT_NOTIFICATION_WIDGET_SERVICE_ENABLED)
     override val notificationWidgetTintColour = enum(KEY_NOTIFICATION_WIDGET_TINT, DEFAULT_NOTIFICATION_WIDGET_TINT)
+    override val complicationOnPrimary = enum(KEY_COMPLICATION_ON_PRIMARY, DEFAULT_COMPLICATION_ON_PRIMARY)
 
     private fun getDefaultSharedPrefsVersion(): Int {
         /*

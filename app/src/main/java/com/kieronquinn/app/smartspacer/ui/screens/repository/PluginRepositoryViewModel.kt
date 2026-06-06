@@ -26,6 +26,7 @@ abstract class PluginRepositoryViewModel(scope: CoroutineScope?): BaseViewModel(
 
     abstract fun reload(force: Boolean)
     abstract fun onPluginClicked(plugin: Plugin)
+    abstract fun clearSeenPlugins()
 
     sealed class State {
         object Loading: State()
@@ -56,7 +57,7 @@ class PluginRepositoryViewModelImpl(
         it.isNotBlank()
     }.stateIn(vmScope, SharingStarted.Eagerly, false)
 
-    private val plugins = pluginRepository.getPlugins().onEach {
+    private val plugins = pluginRepository.getPlugins(true).onEach {
         isReloading.emit(false)
     }
 
@@ -107,6 +108,11 @@ class PluginRepositoryViewModelImpl(
         }
         val shouldOfferBrowse = !available && term.isBlank() && items.isEmpty()
         State.Loaded(items, items.isEmpty(), shouldOfferBrowse, term.isBlank(), available)
+    }.onEach {
+        val packages = (it as? State.Loaded)?.items?.filterIsInstance<Plugin.Remote>()?.map { p ->
+            p.packageName
+        } ?: return@onEach
+        pluginRepository.onPluginsViewed(packages)
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
     override fun setSelectedTab(index: Int) {
@@ -133,6 +139,10 @@ class PluginRepositoryViewModelImpl(
                 navigation.navigate(PluginRepositoryFragmentDirections.actionPluginRepositoryFragmentToPluginDetailsFragment(plugin))
             }
         }
+    }
+
+    override fun clearSeenPlugins() {
+        pluginRepository.clearSeenPlugins()
     }
 
     override fun reload(force: Boolean) {

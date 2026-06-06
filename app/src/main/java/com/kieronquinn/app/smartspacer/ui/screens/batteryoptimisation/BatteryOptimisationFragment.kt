@@ -108,8 +108,7 @@ abstract class BatteryOptimisationFragment: BoundFragment<FragmentBatteryOptimis
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.batteryOptimisationControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.batteryOptimisationControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.batteryOptimisationControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.batteryOptimisationControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

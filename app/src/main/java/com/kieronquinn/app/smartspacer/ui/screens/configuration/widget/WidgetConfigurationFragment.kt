@@ -5,18 +5,19 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
 import android.text.style.StyleSpan
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.RemoteViews
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -51,9 +52,11 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesScrimColour
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.widget.WidgetConfigurationViewModel.State
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
 import com.kieronquinn.app.smartspacer.utils.extensions.expandProgress
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
@@ -63,13 +66,13 @@ import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.selectTab
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import kotlinx.coroutines.flow.flowOf
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.roundToInt
 import android.graphics.drawable.Icon as AndroidIcon
 
-class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBinding>(FragmentWidgetConfigurationBinding::inflate), BackAvailable, ProvidesBack, LockCollapsed {
+class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBinding>(FragmentWidgetConfigurationBinding::inflate), BackAvailable, ProvidesBack, LockCollapsed, ProvidesScrimColour {
 
     companion object {
         const val EXTRA_CALLING_PACKAGE = "calling_package"
@@ -86,6 +89,10 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
 
     private val backgroundColour by lazy {
         monet.getBackgroundColor(requireContext())
+    }
+
+    override val scrimOverride by lazy {
+        flowOf(ProvidesScrimColour.ScrimOverride(toolbarColour, backgroundColour))
     }
 
     private val enableAccessibilityLabel by lazy {
@@ -170,11 +177,8 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
     }
 
     private fun setupMonet() {
-        val tabBackground = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext(), false)
-        binding.widgetConfigurationTabs.backgroundTintList = ColorStateList.valueOf(tabBackground)
-        binding.widgetConfigurationTabs.setSelectedTabIndicatorColor(monet.getAccentColor(requireContext()))
-        binding.widgetConfigurationBackground.setBackgroundColor(monet.getBackgroundColor(requireContext()))
+        binding.widgetConfigurationTabs.applyMonet(backgroundColour)
+        binding.widgetConfigurationBackground.setBackgroundColor(backgroundColour)
     }
 
     private fun setupCard() = with(binding.widgetConfigurationTabsContainer) {
@@ -354,7 +358,8 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                     enableAccessibilityLabel,
                     onClick = {
                         viewModel.onAccessibilityClicked(requireContext())
-                    }
+                    },
+                    topPadding = 0
                 )
             )
         }
@@ -410,14 +415,17 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
             Setting(
                 getString(R.string.widget_configuration_pin_page_label),
                 getString(R.string.widget_configuration_pin_page_value, widget.pinnedPageIndex + 1),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_multi_column)
-            ) {
-                showPinnedPagePicker()
-            }.takeIf { !widget.listMode && widget.pinMode == PinMode.PAGE },
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_multi_column),
+                onClick = {},
+                onClickWithView = {
+                    showPinnedPagePicker(it)
+                }
+            ).takeIf { !widget.listMode && widget.pinMode == PinMode.PAGE },
             // Warning for PAGE mode
             Card(
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
-                getText(R.string.widget_configuration_pin_page_warning)
+                getText(R.string.widget_configuration_pin_page_warning),
+                topPadding = 0
             ).takeIf { !widget.listMode && widget.pinMode == PinMode.PAGE },
             // ===== TARGET MODE OPTIONS =====
             // Target picker (only when TARGET mode)
@@ -426,14 +434,17 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
                 widget.pinnedTargetId?.let { id ->
                     viewModel.availableTargets.value.find { it.id == id }?.label?.toString()
                 } ?: getString(R.string.widget_configuration_pin_target_none),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_targets)
-            ) {
-                showPinnedTargetPicker()
-            }.takeIf { !widget.listMode && widget.pinMode == PinMode.TARGET },
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_targets),
+                onClick = {},
+                onClickWithView = {
+                    showPinnedTargetPicker(it)
+                }
+            ).takeIf { !widget.listMode && widget.pinMode == PinMode.TARGET },
             // Warning for TARGET mode
             Card(
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
-                getText(R.string.widget_configuration_pin_target_warning)
+                getText(R.string.widget_configuration_pin_target_warning),
+                topPadding = 0
             ).takeIf { !widget.listMode && widget.pinMode == PinMode.TARGET },
             // ===== FALLBACK (shared by both PAGE and TARGET modes) =====
             Dropdown(
@@ -523,40 +534,38 @@ class WidgetConfigurationFragment: BoundFragment<FragmentWidgetConfigurationBind
         )
     }
 
-    private fun showPinnedTargetPicker() {
+    private fun showPinnedTargetPicker(view: View) {
         val targets = viewModel.availableTargets.value
         val items = arrayOf(getString(R.string.widget_configuration_pin_target_none)) +
             targets.map { it.label.toString() }.toTypedArray()
-        val currentWidget = (viewModel.state.value as? State.Loaded)?.widget
-        val currentIndex = currentWidget?.pinnedTargetId?.let { id ->
-            targets.indexOfFirst { it.id == id }.takeIf { it >= 0 }?.plus(1)
-        } ?: 0
-
-        android.app.AlertDialog.Builder(requireContext())
-            .setTitle(R.string.widget_configuration_pin_target_label)
-            .setSingleChoiceItems(items, currentIndex) { dialog, which ->
-                val selectedId = if (which == 0) null else targets.getOrNull(which - 1)?.id
-                viewModel.onPinnedTargetChanged(selectedId)
-                dialog.dismiss()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+        val popup = PopupMenu(requireContext(), view)
+        items.forEachIndexed { index, option ->
+            popup.menu.add(Menu.NONE, index, Menu.NONE, option)
+        }
+        popup.setOnMenuItemClickListener {
+            val which = it.itemId
+            val selectedId = if (which == 0) null else targets.getOrNull(which - 1)?.id
+            viewModel.onPinnedTargetChanged(selectedId)
+            popup.dismiss()
+            true
+        }
+        popup.show()
     }
 
-    private fun showPinnedPagePicker() {
-        val currentWidget = (viewModel.state.value as? State.Loaded)?.widget
-        val currentIndex = currentWidget?.pinnedPageIndex ?: 0
-        val items = (1..10).map { getString(R.string.widget_configuration_pin_page_value, it) }
-            .toTypedArray()
-
-        android.app.AlertDialog.Builder(requireContext())
-            .setTitle(R.string.widget_configuration_pin_page_label)
-            .setSingleChoiceItems(items, currentIndex) { dialog, which ->
-                viewModel.onPinnedPageIndexChanged(which)
-                dialog.dismiss()
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+    private fun showPinnedPagePicker(view: View) {
+        val items = (1..10).map {
+            getString(R.string.widget_configuration_pin_page_value, it)
+        }
+        val popup = PopupMenu(requireContext(), view)
+        items.forEachIndexed { index, option ->
+            popup.menu.add(Menu.NONE, index, Menu.NONE, option)
+        }
+        popup.setOnMenuItemClickListener {
+            viewModel.onPinnedPageIndexChanged(it.itemId)
+            popup.dismiss()
+            true
+        }
+        popup.show()
     }
 
     inner class Adapter: BaseSettingsAdapter(

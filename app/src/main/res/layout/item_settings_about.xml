@@ -101,15 +101,15 @@
                 app:chipSpacing="0dp" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/item_updates_about_twitter"
+                android:id="@+id/item_updates_about_bluesky"
                 style="@style/Widget.Material3.Chip.Icon.Smartspacer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_8"
                 android:layout_marginEnd="@dimen/margin_8"
                 android:minHeight="0dp"
-                android:text="@string/twitter"
-                app:chipIcon="@drawable/ic_twitter"
+                android:text="@string/bluesky"
+                app:chipIcon="@drawable/ic_bluesky"
                 app:chipSpacing="0dp" />
 
             <com.google.android.material.chip.Chip

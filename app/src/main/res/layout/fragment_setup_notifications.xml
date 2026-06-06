@@ -45,15 +45,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/setup_notifications_request"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.Material3Expressive.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:minWidth="160dp"
             android:text="@string/setup_notifications_request"
             android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-            app:cornerRadius="@dimen/margin_32" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
 
     </LinearLayout>
 

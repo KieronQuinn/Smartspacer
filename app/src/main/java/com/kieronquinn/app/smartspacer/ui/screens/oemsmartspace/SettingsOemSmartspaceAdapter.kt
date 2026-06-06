@@ -39,16 +39,18 @@ class SettingsOemSmartspaceAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseSettingsAdapter.ViewHolder, position: Int) {
+        val root = holder.binding.root
         when(holder){
             is ViewHolder -> {
                 val item = items[position] as App
-                holder.setup(item)
+                holder.setup(item, position)
+                root.applyShape(position)
             }
             else -> super.onBindViewHolder(holder, position)
         }
     }
 
-    private fun ViewHolder.setup(app: App) = with(binding) {
+    private fun ViewHolder.setup(app: App, index: Int) = with(binding) {
         val showSubtitle = app.app.duplicateAppName || app.subtitle != null
         itemSettingsSwitchTitle.text = app.app.appName
         itemSettingsSwitchContent.text = app.subtitle ?: app.app.packageName

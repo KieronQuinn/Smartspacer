@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.views.appwidget
 
 import android.appwidget.AppWidgetProviderInfo
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -13,6 +14,7 @@ import androidx.annotation.RequiresApi
 import com.kieronquinn.app.smartspacer.sdk.utils.findViewByIdentifier
 import com.kieronquinn.app.smartspacer.ui.views.RoundedCornersEnforcingAppWidgetHostView
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.HeadlessWidgetEvent
+import com.kieronquinn.app.smartspacer.ui.views.appwidget.HeadlessAppWidgetHostView.RemoteIntent.Companion.toRemoteIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.createPackageContextOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.extractAdapterIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionIntent
@@ -20,6 +22,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionI
 import com.kieronquinn.app.smartspacer.utils.extensions.getActionsIncludingNested
 import com.kieronquinn.app.smartspacer.utils.extensions.getCollectionCache
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
+import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastCinnamonBun
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteCollectionItemListAdapter
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteViewsAdapterIntent
 import com.kieronquinn.app.smartspacer.utils.remoteviews.RemoteViewsFactoryWrapper
@@ -136,18 +139,28 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
         } ?: run {
             val remoteViews = lastRemoteViews?.remoteViews
             val packageName = info?.provider?.packageName ?: return null
-            val intent = remoteViews?.findRemoteViewsAdapters()?.firstOrNull {
-                it.first == viewId
-            }?.second
-            if(intent != null) {
-                return wrapRemoteViewsAdapterIntent(packageName, viewId, intent)?.let {
-                    RemoteViewsAdapter.RemoteWrapper(it)
+            if (!isAtLeastCinnamonBun()) {
+                val intent = remoteViews?.findRemoteViewsAdapters()?.firstOrNull {
+                    it.first == viewId
+                }?.second
+                if (intent != null) {
+                    return wrapRemoteViewsAdapterIntent(packageName, viewId, intent)?.let {
+                        RemoteViewsAdapter.RemoteWrapper(it)
+                    }
                 }
             }
             if(isAtLeastBaklava()) {
-                val collectionIntent = remoteViews?.findRemoteViewsCollectionListIntents()
-                    ?.firstOrNull { it.first == viewId }?.second?.toUri(0)
-                val items = remoteViews?.getCollectionCache()?.get(collectionIntent)
+                val widgetId = remoteViews?.findRemoteViewsCollectionListIntents()
+                    ?.firstOrNull { it.first == viewId }
+                    ?.second
+                    ?.toRemoteIntent()
+                    ?: return null
+                val items = remoteViews.getCollectionCache().mapNotNull {
+                    val key = Intent.parseUri(it.key, 0)
+                        ?.toRemoteIntent()
+                        ?: return@mapNotNull null
+                    key to it.value
+                }.toMap()[widgetId]
                 if(items != null) {
                     remoteViews.getCollectionCache().let {
                         return RemoteViewsAdapter.CollectionItems(items)
@@ -247,6 +260,22 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
             return result
         }
 
+    }
+
+    /**
+     *  Widgets can have multiple remote collection intents, if they have multiple lists. This
+     *  provides a static comparison that doesn't care about order of intent data.
+     */
+    private data class RemoteIntent(val appWidgetId: Int, val component: ComponentName) {
+        companion object {
+            private const val EXTRA_WIDGET_ID = "extra_widget_id"
+
+            fun Intent.toRemoteIntent(): RemoteIntent? {
+                val widgetId = getIntExtra(EXTRA_WIDGET_ID, -1)
+                    .takeIf { it >= 0 } ?: return null
+                return RemoteIntent(widgetId, component ?: return null)
+            }
+        }
     }
 
 }

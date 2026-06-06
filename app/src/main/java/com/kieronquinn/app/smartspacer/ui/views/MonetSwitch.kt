@@ -1,19 +1,23 @@
 package com.kieronquinn.app.smartspacer.ui.views
 
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.Switch
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.kieronquinn.monetcompat.R
 import com.kieronquinn.monetcompat.core.MonetCompat
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
@@ -27,6 +31,10 @@ import dev.kdrag0n.monet.theme.ColorScheme
  *  and the track a darker color. The background/track color changes depending on the switch state.
  */
 open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
+
+    companion object {
+        private const val ATTACH_MIN_ANIMATION_TIME = 500L
+    }
 
     constructor(context: Context): super(context, null)
 
@@ -53,9 +61,17 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
         layout.findViewById<MaterialSwitch>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_switch)
     }
 
-    private val root by lazy {
-        layout.findViewById<LinearLayout>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_root)
+    private val card by lazy {
+        layout.findViewById<MaterialCardView>(com.kieronquinn.app.smartspacer.R.id.view_monet_switch_card)
     }
+
+    private val cornersNormal by lazy {
+        context.resources.getDimension(com.kieronquinn.app.smartspacer.R.dimen.margin_16)
+    }
+
+    private var lastRoundedness: Boolean? = null
+    private var attachTime: Long? = null
+    private var cornerRadius = cornersNormal
 
     var isChecked: Boolean
         get() = switch.isChecked
@@ -63,6 +79,7 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
             suppressCheckChange = true
             switch.isChecked = value
             suppressCheckChange = false
+            updateRoundedness()
         }
 
     var text: CharSequence
@@ -103,6 +120,9 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
         label.text = switchText
         typedArray.recycle()
         materialTypedArray.recycle()
+        card.setOnClickListener {
+            performClick()
+        }
     }
 
     private val monet by lazy {
@@ -116,9 +136,15 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        attachTime = System.currentTimeMillis()
         if(!isInEditMode) {
             monet.addMonetColorsChangedListener(this, true)
         }
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        updateRoundedness()
     }
 
     override fun onDetachedFromWindow() {
@@ -148,11 +174,11 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
             arrayOf(intArrayOf(android.R.attr.state_activated), intArrayOf()),
             intArrayOf(checkedThumbColor, uncheckedThumbColor)
         )
-        root.backgroundTintList = bgTintList
-        root.backgroundTintMode = PorterDuff.Mode.SRC_ATOP
-        root.isActivated = switch.isChecked
+        card.backgroundTintList = bgTintList
+        card.backgroundTintMode = PorterDuff.Mode.SRC_ATOP
+        card.isActivated = switch.isChecked
         switch.setOnCheckedChangeListener { _, _ ->
-            root.isActivated = switch.isChecked
+            card.isActivated = switch.isChecked
             if(!suppressCheckChange){
                 performClick()
             }
@@ -160,6 +186,40 @@ open class MonetSwitch: FrameLayout, MonetColorsChangedListener {
         switch.applyMonet()
         switch.thumbTintMode = PorterDuff.Mode.SRC_ATOP
         overrideRippleColor(colorStateList = bgTintList)
+        updateRoundedness()
+    }
+
+    @Synchronized
+    private fun updateRoundedness() {
+        val roundedness = card.isActivated
+        if (lastRoundedness == roundedness || height == 0) return
+        lastRoundedness = roundedness
+        (card.tag as? ValueAnimator)?.cancel()
+        val to = if (roundedness) cornersNormal else height / 2f
+        val startRadius = cornerRadius
+        if (shouldAnimate()) {
+            card.tag = ValueAnimator.ofFloat(startRadius, to).apply {
+                addUpdateListener {
+                    cornerRadius = animatedValue as Float
+                    card.shapeAppearanceModel = cornerRadiusOf(animatedValue as Float)
+                }
+                start()
+            }
+        } else {
+            cornerRadius = to
+            card.shapeAppearanceModel = cornerRadiusOf(to)
+        }
+    }
+
+    private fun cornerRadiusOf(radius: Float): ShapeAppearanceModel {
+        return ShapeAppearanceModel.builder()
+            .setAllCorners(CornerFamily.ROUNDED, radius)
+            .build()
+    }
+
+    private fun shouldAnimate(): Boolean {
+        val attachTime = attachTime ?: return false
+        return System.currentTimeMillis() - attachTime > ATTACH_MIN_ANIMATION_TIME
     }
 
 }

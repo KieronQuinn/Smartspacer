@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.targets.edit
 
 import android.app.Activity
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -23,13 +24,17 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesOverflow
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesScrimColour
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesScrimColour.ScrimOverride
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
 import com.kieronquinn.app.smartspacer.ui.screens.targets.edit.TargetEditViewModel.State
 import com.kieronquinn.app.smartspacer.ui.screens.targets.edit.TargetEditViewModel.TargetHolder
 import com.kieronquinn.app.smartspacer.utils.appbar.DragOptionalAppBarLayoutBehaviour.Companion.setDraggable
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
+import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
 import com.kieronquinn.app.smartspacer.utils.extensions.expandProgress
+import com.kieronquinn.app.smartspacer.utils.extensions.firstVisibleItemPosition
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
@@ -37,9 +42,15 @@ import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.map
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding::inflate), LockCollapsed, BackAvailable, ProvidesOverflow {
+class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding::inflate), LockCollapsed, BackAvailable, ProvidesOverflow, ProvidesScrimColour {
+
+    companion object {
+        private const val FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED = "inner_app_bar_collapsed"
+    }
 
     private val viewModel by viewModel<TargetEditViewModel>()
     private val args by navArgs<TargetEditFragmentArgs>()
@@ -54,6 +65,8 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
         if(it.resultCode != Activity.RESULT_OK) return@registerForActivityResult
         viewModel.notifyChangeAfterDelay()
     }
+
+    override val scrimOverride = MutableSharedFlow<ScrimOverride?>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -75,7 +88,7 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
 
     private fun setupCollapsedState() = whenResumed {
         binding.editAppBar.collapsedState().collect {
-            rememberAppBarCollapsed(it)
+            rememberAppBarCollapsed(it, FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED)
         }
     }
 
@@ -95,6 +108,17 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
         layoutManager = LinearLayoutManager(context)
         adapter = contentAdapter
         applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
+        whenResumed {
+            binding.editContentRecyclerview.awaitPost()
+            val background = (binding.root.background as ColorDrawable).color
+            val override = ScrimOverride(
+                background,
+                monet.getBackgroundColor(context)
+            )
+            firstVisibleItemPosition().map { it > 0 }.collect {
+                scrimOverride.emit((if (it) null else override))
+            }
+        }
     }
 
     private fun setupCard() = with(binding.editCardView) {
@@ -130,7 +154,7 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
             }
             is State.Loaded -> {
                 binding.editAppBar.setDraggable(true)
-                binding.editAppBar.setExpanded(!getRememberedAppBarCollapsed())
+                binding.editAppBar.setExpanded(!getRememberedAppBarCollapsed(FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED))
                 binding.editPreview.root.isVisible = true
                 binding.editContentRecyclerview.isVisible = true
                 binding.editContentLoading.root.isVisible = false
@@ -197,7 +221,8 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
         val musicAvailable = (nativeLockAvailable && nativeMusicAvailable) || oemLockAvailable
         return mutableListOf(
             GenericSettingsItem.Header(
-                getString(R.string.target_edit_target_header)
+                getString(R.string.target_edit_target_header),
+                shortTopPadding = true
             ),
             GenericSettingsItem.SwitchSetting(
                 target.showOnHomeScreen,

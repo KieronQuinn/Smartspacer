@@ -29,4 +29,12 @@
         android:id="@+id/action_global_displayOverOtherAppsPermissionBottomSheetFragment"
         app:destination="@id/displayOverOtherAppsPermissionBottomSheetFragment"
         app:launchSingleTop="true" />
+    <dialog
+        android:id="@+id/shizukuOutdatedBottomSheetFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.shizuku.ShizukuOutdatedBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_shizuku_outdated"/>
+    <action
+        android:id="@+id/action_global_shizukuOutdatedBottomSheetFragment"
+        app:destination="@id/shizukuOutdatedBottomSheetFragment" />
 </navigation>

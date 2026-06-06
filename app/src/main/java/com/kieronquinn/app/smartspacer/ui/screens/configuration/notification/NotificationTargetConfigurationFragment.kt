@@ -189,7 +189,8 @@ class NotificationTargetConfigurationFragment: BoundFragment<FragmentConfigurati
             listOf(
                 GenericSettingsItem.Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
-                    getString(R.string.target_notification_channels_empty)
+                    getString(R.string.target_notification_channels_empty),
+                    topPadding = 0
                 )
             )
         }else emptyList()

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionGroup="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:transitionGroup="true">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/margin_16">
+            android:paddingHorizontal="@dimen/margin_16"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingBottom="@dimen/margin_16">
 
             <TextView
                 android:layout_width="match_parent"
@@ -33,27 +35,27 @@
                 android:text="@string/setup_requirements_info_p2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
 
-            <com.google.android.material.tabs.TabLayout
+            <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/setup_requirements_info_any"
+                style="@style/Widget.Material3.MaterialButtonToggleGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/margin_8"
-                android:background="@drawable/background_tabs"
                 android:minWidth="150dp"
-                app:tabIndicator="@drawable/indicator_tabs"
-                app:tabIndicatorFullWidth="true"
-                app:tabIndicatorHeight="56dp"
-                app:tabSelectedTextColor="?android:textColorPrimaryInverse"
-                app:tabTextAppearance="@style/TextAppearance.Tabs"
-                app:tabTextColor="@android:color/white">
+                app:selectionRequired="true"
+                app:singleSelection="true">>
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/requirements_tab_any" />
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:text="@string/requirements_tab_any"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer" />
 
-            </com.google.android.material.tabs.TabLayout>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,27 +65,27 @@
                 android:text="@string/setup_requirements_info_p3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
 
-            <com.google.android.material.tabs.TabLayout
+            <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/setup_requirements_info_all"
+                style="@style/Widget.Material3.MaterialButtonToggleGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/margin_8"
-                android:background="@drawable/background_tabs"
                 android:minWidth="150dp"
-                app:tabIndicator="@drawable/indicator_tabs"
-                app:tabIndicatorFullWidth="true"
-                app:tabIndicatorHeight="56dp"
-                app:tabSelectedTextColor="?android:textColorPrimaryInverse"
-                app:tabTextAppearance="@style/TextAppearance.Tabs"
-                app:tabTextColor="@android:color/white">
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/requirements_tab_all" />
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:text="@string/requirements_tab_all"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer" />
 
-            </com.google.android.material.tabs.TabLayout>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <TextView
                 android:layout_width="match_parent"
@@ -105,7 +107,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:backgroundTint="@android:color/darker_gray">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/setup_requirements_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -114,7 +116,8 @@
             android:text="@string/setup_targets_controls_next"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
             app:icon="@drawable/ic_arrow_right"
-            app:iconGravity="textEnd" />
+            app:iconGravity="textEnd"
+            app:iconSize="16dp" />
 
     </FrameLayout>
 

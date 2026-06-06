@@ -1,7 +1,11 @@
 package com.kieronquinn.app.smartspacer.ui.activities
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
+import androidx.appcompat.view.menu.ListMenuItemView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.google.android.material.color.DynamicColors
@@ -12,6 +16,7 @@ import com.kieronquinn.app.smartspacer.repositories.BluetoothRepository
 import com.kieronquinn.app.smartspacer.repositories.CalendarRepository
 import com.kieronquinn.app.smartspacer.repositories.WiFiRepository
 import com.kieronquinn.app.smartspacer.service.SmartspacerBackgroundService
+import com.kieronquinn.app.smartspacer.ui.views.SmartspacerListMenuItemView
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.workers.SmartspacerUpdateWorker
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
@@ -57,6 +62,15 @@ class MainActivity : MonetCompatActivity() {
         //Alarm permission may have been granted
         calendarRepository.reloadEvents()
         appWidgetRepository.trimWidgets()
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return when (name) {
+            ListMenuItemView::class.java.name -> {
+                SmartspacerListMenuItemView(context, attrs)
+            }
+            else -> super.onCreateView(name, context, attrs)
+        }
     }
 
 }

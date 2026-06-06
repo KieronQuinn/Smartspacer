@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.complications.edit
 
 import android.app.Activity
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.Menu
@@ -24,6 +25,8 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesOverflow
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesScrimColour
+import com.kieronquinn.app.smartspacer.ui.base.ProvidesScrimColour.ScrimOverride
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
 import com.kieronquinn.app.smartspacer.ui.screens.complications.edit.ComplicationEditViewModel.ComplicationHolder
 import com.kieronquinn.app.smartspacer.ui.screens.complications.edit.ComplicationEditViewModel.State
@@ -31,6 +34,7 @@ import com.kieronquinn.app.smartspacer.utils.appbar.DragOptionalAppBarLayoutBeha
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
 import com.kieronquinn.app.smartspacer.utils.extensions.expandProgress
+import com.kieronquinn.app.smartspacer.utils.extensions.firstVisibleItemPosition
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
@@ -38,12 +42,14 @@ import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
 import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.map
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding::inflate), LockCollapsed, BackAvailable, ProvidesOverflow {
+class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding::inflate), LockCollapsed, BackAvailable, ProvidesOverflow, ProvidesScrimColour {
 
     private val viewModel by viewModel<ComplicationEditViewModel>()
     private val args by navArgs<ComplicationEditFragmentArgs>()
@@ -58,6 +64,8 @@ class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditB
         if(it.resultCode != Activity.RESULT_OK) return@registerForActivityResult
         viewModel.notifyChangeAfterDelay()
     }
+
+    override val scrimOverride = MutableSharedFlow<ScrimOverride?>()
 
     private val dateFormat = DateFormat.getBestDateTimePattern(Locale.getDefault(), "EEE, MMM d")
 
@@ -101,6 +109,16 @@ class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditB
         layoutManager = LinearLayoutManager(context)
         adapter = contentAdapter
         applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
+        whenResumed {
+            val background = (binding.root.background as ColorDrawable).color
+            val override = ScrimOverride(
+                background,
+                monet.getBackgroundColor(context)
+            )
+            firstVisibleItemPosition().map { it > 0 }.collect {
+                scrimOverride.emit((if (it) null else override))
+            }
+        }
     }
 
     private fun setupCard() = with(binding.editCardView) {
@@ -170,7 +188,8 @@ class ComplicationEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditB
         val musicAvailable = (nativeLockAvailable && nativeMusicAvailable) || oemLockAvailable
         return mutableListOf(
             GenericSettingsItem.Header(
-                getString(R.string.complication_edit_target_header)
+                getString(R.string.complication_edit_target_header),
+                shortTopPadding = true
             ),
             GenericSettingsItem.SwitchSetting(
                 complication.showOnHomeScreen,

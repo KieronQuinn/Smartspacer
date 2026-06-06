@@ -334,6 +334,11 @@ data class SmartspaceAction(
         return true
     }
 
+    fun subContentEquals(other: Any?): Boolean {
+        if(other !is SmartspaceAction) return false
+        return other.subItemInfo?.text == subItemInfo?.text
+    }
+
     override fun hashCode(): Int {
         var result = id.hashCode()
         result = 31 * result + title.hashCode()

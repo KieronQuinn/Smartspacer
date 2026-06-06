@@ -39,7 +39,7 @@
                 android:ellipsize="end"
                 android:maxWidth="@dimen/smartspace_page_template_list_max_width"
                 android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
-                android:textSize="14sp"
+                android:textSize="@dimen/smartspace_page_subtitle_size"
                 tools:text="Bread"
                 tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
 
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="@dimen/smartspace_page_template_list_max_width"
                 android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
-                android:textSize="14sp"
+                android:textSize="@dimen/smartspace_page_subtitle_size"
                 tools:text="Milk"
                 tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
 
@@ -62,7 +62,7 @@
                 android:layout_marginBottom="8dp"
                 android:maxWidth="@dimen/smartspace_page_template_list_max_width"
                 android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle"
-                android:textSize="14sp"
+                android:textSize="@dimen/smartspace_page_subtitle_size"
                 tools:text="Cheese"
                 tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Subtitle.Preview" />
 

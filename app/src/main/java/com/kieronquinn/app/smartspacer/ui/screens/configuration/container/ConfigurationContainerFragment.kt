@@ -3,7 +3,6 @@ package com.kieronquinn.app.smartspacer.ui.screens.configuration.container
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationBinding
@@ -14,7 +13,6 @@ import org.koin.android.ext.android.inject
 class ConfigurationContainerFragment: BaseContainerFragment<FragmentConfigurationBinding>(FragmentConfigurationBinding::inflate) {
 
     override val navigation by inject<ConfigurationNavigation>()
-    override val bottomNavigation: BottomNavigationView? = null
 
     override val appBar by lazy {
         binding.configurationContainerAppBar

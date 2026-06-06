@@ -11,7 +11,7 @@ import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository.Shi
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository.ShizukuServiceResponse.FailureReason
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
-import com.kieronquinn.app.smartspacer.utils.extensions.getPlayStoreIntentForPackage
+import com.kieronquinn.app.smartspacer.utils.extensions.getShizukuInstallIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.isPackageInstalled
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -86,13 +86,11 @@ class EnhancedModeRequestViewModelImpl(
 
     override fun onGetShizukuClicked(context: Context, isSetup: Boolean) {
         vmScope.launch {
-            val shizukuIntent = context.getPlayStoreIntentForPackage(
-                ShizukuProvider.MANAGER_APPLICATION_ID, "https://shizuku.rikka.app/download/"
-            )
+            val shizukuIntent = getShizukuInstallIntent()
             if(isSetup) {
-                setupNavigation.navigate(shizukuIntent ?: return@launch)
+                setupNavigation.navigate(shizukuIntent)
             }else{
-                containerNavigation.navigate(shizukuIntent ?: return@launch)
+                containerNavigation.navigate(shizukuIntent)
             }
         }
     }

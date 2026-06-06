@@ -155,7 +155,8 @@ class WiFiRequirementConfigurationFragment: BoundFragment<FragmentConfigurationR
                 Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
                     getText(R.string.requirement_wifi_configuration_in_range_warning),
-                    viewModel::onNetworkSettingsClicked
+                    viewModel::onNetworkSettingsClicked,
+                    topPadding = 0
                 )
             }else null
         )

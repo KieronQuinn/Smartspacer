@@ -4,6 +4,8 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import com.bumptech.glide.Glide
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.ItemRestoreComplicationBinding
@@ -25,6 +27,7 @@ class RestoreComplicationsAdapter(
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
     private val glide = Glide.with(recyclerView.context)
     private val monet = MonetCompat.getInstance()
+    private val padding = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_8)
 
     override fun getItemCount(): Int {
         return items.size
@@ -41,6 +44,9 @@ class RestoreComplicationsAdapter(
         val isCompatible = item.compatibilityState !is CompatibilityState.Incompatible
         binding.root.isEnabled = isCompatible
         binding.complicationName.text = item.label
+        binding.root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            updateMargins(top = if (position == 0) 0 else padding)
+        }
         val description = if(isCompatible){
             item.description
         }else{

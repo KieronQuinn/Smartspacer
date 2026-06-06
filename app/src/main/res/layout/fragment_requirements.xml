@@ -10,35 +10,36 @@
         android:id="@+id/requirements_tabs_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_4"
-        android:background="@drawable/requirements_tab_background">
+        android:paddingBottom="@dimen/margin_4">
 
-        <com.google.android.material.tabs.TabLayout
+        <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/requirements_tabs"
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/margin_8"
-            android:background="@drawable/background_tabs"
+            android:layout_height="wrap_content"
             android:minWidth="@dimen/tab_min_width"
-            app:tabIndicator="@drawable/indicator_tabs"
-            app:tabIndicatorFullWidth="true"
-            app:tabIndicatorHeight="56dp"
-            app:tabSelectedTextColor="?android:textColorPrimaryInverse"
-            app:tabTextAppearance="@style/TextAppearance.Tabs"
-            app:tabTextColor="@android:color/white">
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:layout_gravity="center_horizontal"
+            android:spacing="@dimen/margin_4"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:layout_marginHorizontal="@dimen/margin_16"
+            style="@style/Widget.Material3.MaterialButtonToggleGroup">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
                 android:text="@string/requirements_tab_any" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
                 android:text="@string/requirements_tab_all" />
 
-        </com.google.android.material.tabs.TabLayout>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
     </FrameLayout>
 

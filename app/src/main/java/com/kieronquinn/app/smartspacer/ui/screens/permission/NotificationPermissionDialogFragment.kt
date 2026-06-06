@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.ui.screens.permission
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
@@ -8,6 +9,7 @@ import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
@@ -16,6 +18,8 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentPermissionNotificationBinding
 import com.kieronquinn.app.smartspacer.repositories.GrantRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseDialogFragment
+import com.kieronquinn.app.smartspacer.utils.extensions.addDimming
+import com.kieronquinn.app.smartspacer.utils.extensions.clearDimming
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
@@ -39,6 +43,10 @@ class NotificationPermissionDialogFragment: BaseDialogFragment<FragmentPermissio
         resources.getDimension(R.dimen.margin_8)
     }
 
+    override val blurView by lazy {
+        binding.blur
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupMonet()
@@ -48,10 +56,19 @@ class NotificationPermissionDialogFragment: BaseDialogFragment<FragmentPermissio
         setupDeny()
     }
 
+    override fun onBlurApplied(applied: Boolean) {
+        if (applied) {
+            requireDialog().window?.clearDimming()
+        } else {
+            requireDialog().window?.addDimming()
+        }
+    }
+
     private fun setupMonet(){
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
-        dialog?.window?.setBackgroundDrawable(
+        dialog?.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        binding.blur.background = (
             ContextCompat.getDrawable(requireContext(), R.drawable.background_permission_dialog
         )?.apply {
             setTint(background)

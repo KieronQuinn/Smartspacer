@@ -11,7 +11,9 @@
         android:id="@+id/item_settings_switch_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_16"
+        android:layout_marginHorizontal="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_8"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
         tools:text="Switch"
         app:thumbIconTint="?android:textColorTertiaryInverse" />

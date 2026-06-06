@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.sdksample.plugin.targets
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Intent
 import android.widget.RemoteViews
@@ -23,7 +24,20 @@ class RemoteViewsTarget : SmartspacerTargetProvider() {
     private val targets by lazy {
         listOf(
             TargetTemplate.RemoteViews(
-                RemoteViews(provideContext().packageName, R.layout.remoteviews),
+                RemoteViews(provideContext().packageName, R.layout.remoteviews).apply {
+                    setOnClickPendingIntent(
+                        R.id.clickable,
+                        PendingIntent.getActivity(
+                            provideContext(),
+                            1001,
+                            Intent(Intent.ACTION_MAIN).apply {
+                                addCategory(Intent.CATEGORY_LAUNCHER)
+                                `package` = "com.google.android.calculator"
+                            },
+                            PendingIntent.FLAG_IMMUTABLE
+                        )
+                    )
+                },
                 TargetTemplate.Basic(
                     id = "remoteviews_target",
                     componentName = ComponentName(BuildConfig.APPLICATION_ID, "remoteviews_target"),

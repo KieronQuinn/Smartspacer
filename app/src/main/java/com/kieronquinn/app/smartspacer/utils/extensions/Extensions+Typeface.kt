@@ -12,9 +12,9 @@ private val googleSansText by lazy {
     ResourcesCompat.getFont(context, R.font.google_sans_text)
 }
 
-private val googleSansTextBold by lazy {
+private val googleSansTextMedium by lazy {
     val context by inject<Context>(Context::class.java)
-    ResourcesCompat.getFont(context, R.font.google_sans_text_bold)
+    ResourcesCompat.getFont(context, R.font.google_sans_text_medium)
 }
 
 private val googleSansTextMono by lazy {
@@ -31,9 +31,18 @@ private val shouldInjectGoogleSans: Boolean
 fun Typeface.convertToGoogleSans(): Typeface {
     if(!shouldInjectGoogleSans) return this
     return when(this) {
+        Typeface.DEFAULT if(weight == 500) -> googleSansTextMedium
         Typeface.DEFAULT -> googleSansText
-        Typeface.DEFAULT_BOLD -> googleSansTextBold
+        Typeface.DEFAULT_BOLD -> googleSansTextMedium
         Typeface.MONOSPACE -> googleSansTextMono
         else -> null
     } ?: this
+}
+
+private fun supportsFont(name: String): Boolean {
+    return Typeface.create(name, Typeface.NORMAL) != Typeface.DEFAULT
+}
+
+val supportsNativeGoogleSansFlex by lazy {
+    supportsFont("variable-title-medium-emphasized") && supportsFont("variable-title-medium")
 }

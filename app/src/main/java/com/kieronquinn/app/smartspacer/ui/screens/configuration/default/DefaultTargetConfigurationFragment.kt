@@ -34,6 +34,11 @@ class DefaultTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable 
         viewModel.setupWithId(id ?: return)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     private fun setupState() {
         handleState(viewModel.state.value)
         whenResumed {
@@ -58,13 +63,22 @@ class DefaultTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable 
     }
 
     private fun State.Loaded.loadItems(): List<BaseSettingsItem> {
-        return listOf(
+        return listOfNotNull(
             GenericSettingsItem.Setting(
                 getString(R.string.target_default_settings_more_title),
                 getString(R.string.target_default_settings_more_content),
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_target_at_a_glance),
                 onClick = viewModel::onAtAGlanceClicked
             ),
+            if (showRemoteViewsWarning) {
+                GenericSettingsItem.Header(null, true)
+            } else null,
+            if (showRemoteViewsWarning) {
+                GenericSettingsItem.Card(
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
+                    getString(R.string.target_default_settings_remote_views_warning)
+                )
+            } else null,
             GenericSettingsItem.Header(getString(R.string.target_default_settings_hide_title)),
             GenericSettingsItem.Card(
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
@@ -74,7 +88,7 @@ class DefaultTargetConfigurationFragment: BaseSettingsFragment(), BackAvailable 
                 GenericSettingsItem.SwitchSetting(
                     it.isEnabled,
                     getString(it.type.title),
-                    "",
+                    getString(it.type.description),
                     null
                 ) { enabled ->
                     viewModel.onHiddenTargetChanged(it, enabled)

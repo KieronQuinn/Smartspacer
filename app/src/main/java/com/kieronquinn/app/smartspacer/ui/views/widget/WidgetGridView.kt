@@ -1,44 +1,30 @@
 package com.kieronquinn.app.smartspacer.ui.views.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.AbsListView
+import android.view.MotionEvent
+import android.view.View
 import android.widget.GridView
 import androidx.core.view.NestedScrollingChild
 import androidx.core.view.NestedScrollingChildHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.view.ViewCompat
+import com.kieronquinn.app.smartspacer.R
 
-/**
- *  A [GridView] with [NestedScrollingChild] support, for seamless vertical scrolling
- */
-class WidgetGridView constructor(context: Context, attributeSet: AttributeSet?) :
-    GridView(context, attributeSet, 0, 0), NestedScrollingChild, AbsListView.OnScrollListener {
+class WidgetGridView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : GridView(context, attrs, defStyleAttr), NestedScrollingChild {
 
     private val mScrollingChildHelper = NestedScrollingChildHelper(this)
-    private var externalOnScrollListener: OnScrollListener? = null
-
-    private val scrollingParent by lazy {
-        var scrollingView: RecyclerView? = null
-        var parentView = parent
-        while(parentView.parent != null){
-            if(parentView is RecyclerView){
-                scrollingView = parentView as RecyclerView
-            }
-            parentView = parentView.parent
-        }
-        scrollingView
-    }
-
-    private var isAtTop = true
-    private var isAtBottom = false
+    private val mScrollOffset = IntArray(2)
+    private val mScrollConsumed = IntArray(2)
+    private var mLastY: Int = 0
+    private var mNestedYOffset: Int = 0
 
     init {
         isNestedScrollingEnabled = true
-        super.setOnScrollListener(this)
-    }
-
-    override fun setOnScrollListener(l: OnScrollListener) {
-        externalOnScrollListener = l
     }
 
     override fun setNestedScrollingEnabled(enabled: Boolean) {
@@ -62,58 +48,97 @@ class WidgetGridView constructor(context: Context, attributeSet: AttributeSet?) 
     }
 
     override fun dispatchNestedScroll(
-        dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int,
-        dyUnconsumed: Int, offsetInWindow: IntArray?
+        dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, offsetInWindow: IntArray?
     ): Boolean {
-        return mScrollingChildHelper.dispatchNestedScroll(
-            dxConsumed, dyConsumed,
-            dxUnconsumed, dyUnconsumed, offsetInWindow
-        )
+        return mScrollingChildHelper.dispatchNestedScroll(dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, offsetInWindow)
     }
 
     override fun dispatchNestedPreScroll(
-        dx: Int,
-        dy: Int,
-        consumed: IntArray?,
-        offsetInWindow: IntArray?
+        dx: Int, dy: Int, consumed: IntArray?, offsetInWindow: IntArray?
     ): Boolean {
-        if(isAtTop && dy < 0){
-            scrollingParent?.scrollBy(dx, dy)
-            return true
-        } else if(isAtBottom && dy > 0){
-            scrollingParent?.scrollBy(dx, dy)
-            return true
-        }
         return mScrollingChildHelper.dispatchNestedPreScroll(dx, dy, consumed, offsetInWindow)
     }
 
-    override fun dispatchNestedFling(
-        velocityX: Float,
-        velocityY: Float,
-        consumed: Boolean
-    ): Boolean {
+    override fun dispatchNestedFling(velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
         return mScrollingChildHelper.dispatchNestedFling(velocityX, velocityY, consumed)
     }
 
     override fun dispatchNestedPreFling(velocityX: Float, velocityY: Float): Boolean {
-        if(isAtTop && velocityY < 0){
-            scrollingParent?.fling((velocityX / 3f).toInt(), (velocityY / 3f).toInt())
-            return true
-        } else if(isAtBottom && velocityY > 0){
-            scrollingParent?.fling((velocityX / 3f).toInt(), (velocityY / 3f).toInt())
-            return true
-        }
         return mScrollingChildHelper.dispatchNestedPreFling(velocityX, velocityY)
     }
 
-    override fun onScrollStateChanged(view: AbsListView, state: Int) {
-        externalOnScrollListener?.onScrollStateChanged(view, state)
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(ev: MotionEvent): Boolean {
+        val event = MotionEvent.obtain(ev)
+        val action = ev.actionMasked
+        val y = ev.y.toInt()
+
+        if (action == MotionEvent.ACTION_DOWN) {
+            mNestedYOffset = 0
+        }
+        event.offsetLocation(0f, mNestedYOffset.toFloat())
+
+        when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                mLastY = y
+                startNestedScroll(ViewCompat.SCROLL_AXIS_VERTICAL)
+            }
+            MotionEvent.ACTION_MOVE -> {
+                var deltaY = mLastY - y
+
+                // Allow parent to consume pre-scroll
+                if (dispatchNestedPreScroll(0, deltaY, mScrollConsumed, mScrollOffset)) {
+                    deltaY -= mScrollConsumed[1]
+                    event.offsetLocation(0f, (-mScrollOffset[1]).toFloat())
+                    mNestedYOffset += mScrollOffset[1]
+                }
+
+                mLastY = y - mScrollOffset[1]
+
+                // Determine direction: > 0 means scrolling down the grid (finger moving up)
+                val direction = if (deltaY > 0) 1 else -1
+                val canScroll = canScrollVertically(direction)
+
+                // Split the consumption accurately without using `scrollY`
+                val dyConsumed = if (canScroll) deltaY else 0
+                val dyUnconsumed = if (canScroll) 0 else deltaY
+
+                // Pass unconsumed scroll back to the parent RecyclerView smoothly
+                if (dispatchNestedScroll(0, dyConsumed, 0, dyUnconsumed, mScrollOffset)) {
+                    mLastY -= mScrollOffset[1]
+                    event.offsetLocation(0f, mScrollOffset[1].toFloat())
+                    mNestedYOffset += mScrollOffset[1]
+                }
+            }
+        }
+
+        val result = super.onTouchEvent(event)
+
+        // Stop nested scrolling AFTER the view processes the UP event to prevent stealing flings
+        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            stopNestedScroll()
+        }
+
+        event.recycle()
+        return result
     }
 
-    override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
-        isAtTop = computeVerticalScrollOffset() == 0
-        isAtBottom = firstVisibleItem + visibleItemCount >= totalItemCount
-        externalOnScrollListener?.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount)
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        setLongClickListenerFromParent()
+    }
+
+    private fun setLongClickListenerFromParent() {
+        val parent = findContainerParent() ?: return
+        setOnItemLongClickListener { _, _, _, _ ->
+            parent.performLongClick(0f, 0f)
+            true
+        }
+    }
+
+    private fun View.findContainerParent(): View? {
+        if (this.id == R.id.item_expanded_widget_container) return this
+        return (parent as? View)?.findContainerParent()
     }
 
 }

@@ -3,8 +3,19 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import com.kieronquinn.app.smartspacer.R
+
+val SYSTEM_INSETS = setOf(
+    WindowInsetsCompat.Type.systemBars(),
+    WindowInsetsCompat.Type.ime(),
+    WindowInsetsCompat.Type.statusBars(),
+    WindowInsetsCompat.Type.displayCutout()
+).or()
 
 fun View.onApplyInsets(block: (view: View, insets: WindowInsetsCompat) -> Unit) {
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->

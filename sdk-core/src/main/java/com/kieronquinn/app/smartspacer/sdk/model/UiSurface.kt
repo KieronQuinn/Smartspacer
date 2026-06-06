@@ -6,13 +6,17 @@ enum class UiSurface(val surface: String) {
     HOMESCREEN("home"),
     LOCKSCREEN("lockscreen"),
     @RestrictTo(RestrictTo.Scope.LIBRARY)
+    DREAM("dream"),
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     MEDIA_DATA_MANAGER("media_data_manager"),
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    GLANCEABLE_HUB("glanceable_hub");
+    GLANCEABLE_HUB("glanceable_hub"),
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    AMBIENT_CUE("ambientcue");
 
     companion object {
         fun from(surface: String): UiSurface {
-            return values().firstOrNull { it.surface == surface } ?: HOMESCREEN
+            return entries.firstOrNull { it.surface == surface } ?: HOMESCREEN
         }
     }
 }

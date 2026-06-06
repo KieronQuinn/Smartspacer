@@ -16,36 +16,23 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_settings_text_item" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
         android:id="@+id/permissions_loading_progress"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:indeterminate="true"
-        app:layout_constraintBottom_toTopOf="@id/permissions_loading_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:trackCornerRadius="4dp"
-        app:trackThickness="8dp" />
-
-    <TextView
-        android:id="@+id/permissions_loading_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_16"
-        android:text="@string/loading"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/permissions_loading_progress" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/permissions_loading"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:constraint_referenced_ids="permissions_loading_label,permissions_loading_progress" />
+        app:constraint_referenced_ids="permissions_loading_progress" />
 
     <ImageView
         android:id="@+id/permissions_empty_icon"

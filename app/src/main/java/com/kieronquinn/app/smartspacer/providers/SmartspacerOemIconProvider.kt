@@ -19,6 +19,7 @@ import com.kieronquinn.app.smartspacer.sdk.provider.BaseProvider
 import com.kieronquinn.app.smartspacer.sdk.utils.ComplicationTemplate
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.setTint
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayInputStream
@@ -110,9 +111,12 @@ class SmartspacerOemIconProvider: BaseProvider() {
         val surface = getSurface(uri) ?: return@runBlocking null
         val darkText = when(surface) {
             UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour
-            UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour
+            UiSurface.MEDIA_DATA_MANAGER, UiSurface.AMBIENT_CUE -> {
+                wallpaperRepository.homescreenWallpaperDarkTextColour
+            }
             UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour
             UiSurface.GLANCEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
+            UiSurface.DREAM -> flowOf(false) // Screensaver, so always light text
         }.firstNotNull()
         if(darkText) Color.BLACK else Color.WHITE
     }

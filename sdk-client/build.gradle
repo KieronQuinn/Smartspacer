@@ -7,20 +7,20 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdk.client'
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         minSdk 29
-        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField "int", "SDK_VERSION", "2"
+        buildConfigField "int", "SDK_VERSION", "3"
     }
 
     buildFeatures {
         viewBinding true
         aidl true
+        buildConfig true
     }
 
     buildTypes {
@@ -36,21 +36,27 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    lint {
+        targetSdk 34
+    }
+    testOptions {
+        targetSdk 34
+    }
 }
 
 dependencies {
-    api('com.kieronquinn.smartspacer:sdk-core:1.1.1')
-    implementation('androidx.core:core-ktx:1.17.0')
+    api('com.kieronquinn.smartspacer:sdk-core:1.1.2')
+    implementation('androidx.core:core-ktx:1.19.0')
     implementation('androidx.fragment:fragment-ktx:1.8.9')
     implementation('androidx.constraintlayout:constraintlayout:2.2.1')
-    implementation('androidx.lifecycle:lifecycle-service:2.9.4')
-    implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.9.4')
-    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2')
-    implementation('com.github.skydoves:balloon:1.6.13')
+    implementation('androidx.lifecycle:lifecycle-service:2.10.0')
+    implementation('androidx.lifecycle:lifecycle-runtime-ktx:2.10.0')
+    implementation('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0')
+    implementation('com.github.skydoves:balloon:1.7.6')
 }
 
 mavenPublishing {
-    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.1.2")
+    coordinates("com.kieronquinn.smartspacer", "sdk-client", "1.2")
 
     pom {
         name = "Smartspacer Client SDK"

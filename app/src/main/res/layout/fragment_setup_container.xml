@@ -35,12 +35,14 @@
             app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
             app:expandedTitleMarginStart="@dimen/expanded_title_margin"
             app:expandedTitleMarginEnd="@dimen/expanded_title_margin"
+            app:expandedTitleMarginBottom="@dimen/expanded_title_margin"
             tools:title="@string/app_name">
 
-            <com.google.android.material.appbar.MaterialToolbar
+            <com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
                 android:id="@+id/setup_container_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:actionBarSize"
+                android:layout_marginHorizontal="@dimen/margin_8"
                 app:layout_collapseMode="pin"
                 tools:title="@string/app_name" />
 

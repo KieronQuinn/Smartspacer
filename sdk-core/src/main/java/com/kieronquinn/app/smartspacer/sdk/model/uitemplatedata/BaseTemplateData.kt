@@ -41,7 +41,7 @@ open class BaseTemplateData constructor(
         bundle.getBundle(KEY_SUPPLEMENTAL_LINE_ITEM)?.let { SubItemInfo(it) }
     )
 
-    fun copy(
+    open fun copy(
         templateType: Int = this.templateType,
         layoutWeight: Int = this.layoutWeight,
         primaryItem: SubItemInfo? = this.primaryItem,
@@ -50,15 +50,26 @@ open class BaseTemplateData constructor(
         supplementalAlarmItem: SubItemInfo? = this.supplementalAlarmItem,
         supplementalLineItem: SubItemInfo? = this.supplementalLineItem
     ): BaseTemplateData {
-        return BaseTemplateData(
-            templateType,
-            layoutWeight,
-            primaryItem,
-            subtitleItem,
-            subtitleSupplementalItem,
-            supplementalAlarmItem,
-            supplementalLineItem
-        )
+        return if (this is BasicTemplateData) {
+            BasicTemplateData(
+                layoutWeight,
+                primaryItem,
+                subtitleItem,
+                subtitleSupplementalItem,
+                supplementalAlarmItem,
+                supplementalLineItem
+            )
+        } else {
+            BaseTemplateData(
+                templateType,
+                layoutWeight,
+                primaryItem,
+                subtitleItem,
+                subtitleSupplementalItem,
+                supplementalAlarmItem,
+                supplementalLineItem
+            )
+        }
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -120,28 +131,18 @@ open class BaseTemplateData constructor(
             parent: SmartspaceTarget,
             isHeader: Boolean
         ): SmartspaceAction {
-            //Only header SmartspaceActions can take an icon in legacy, otherwise skip
-            val canGenerateLegacy = icon == null || isHeader
             val idSuffix = if(isHeader){
                 "header"
             }else{
                 "base"
             }
-            return if(canGenerateLegacy){
-                SmartspaceAction(
-                    id = "${parent.smartspaceTargetId}_$idSuffix",
-                    title = text?.text?.toString() ?: "",
-                    intent = tapAction?.intent,
-                    pendingIntent = tapAction?.pendingIntent,
-                    subItemInfo = this
-                )
-            }else{
-                SmartspaceAction(
-                    id = "${parent.smartspaceTargetId}_$idSuffix",
-                    title = "",
-                    subItemInfo = this
-                )
-            }
+            return SmartspaceAction(
+                id = "${parent.smartspaceTargetId}_$idSuffix",
+                title = text?.text?.toString() ?: "",
+                intent = tapAction?.intent,
+                pendingIntent = tapAction?.pendingIntent,
+                subItemInfo = this
+            )
         }
 
         override fun equals(other: Any?): Boolean {
@@ -214,7 +215,7 @@ open class BaseTemplateData constructor(
                 append(" primaryItem=($primaryItem) ")
             }
             subtitleItem?.let {
-                append(" primaryItem=($subtitleItem) ")
+                append(" subtitleItem=($subtitleItem) ")
             }
             subtitleSupplementalItem?.let {
                 append(" subtitleSupplementalItem=($subtitleSupplementalItem) ")

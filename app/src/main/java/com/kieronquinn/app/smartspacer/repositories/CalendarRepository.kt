@@ -335,13 +335,22 @@ class CalendarRepositoryImpl(
                 if(endTime == null) return@map null
                 //All day flag isn't always accurate, so we need to check the times too
                 val isAllDay = event.getInt(6) == 1 || isAllDay(startTime, endTime)
+                // All-day events are stored as midnight UTC, but should be midnight local
+                val finalStartTime = if (isAllDay) {
+                    startTime.atZone(ZoneOffset.UTC).toLocalDate()
+                        .atStartOfDay(ZoneId.systemDefault()).toInstant()
+                } else startTime
+                val finalEndTime = if (isAllDay) {
+                    endTime.atZone(ZoneOffset.UTC).toLocalDate()
+                        .atStartOfDay(ZoneId.systemDefault()).toInstant()
+                } else endTime
                 CalendarEvent(
                     this,
                     event.getString(0),
                     event.getStringOrNull(1)
                         ?: context.getString(R.string.target_calendar_title_default),
-                    startTime,
-                    endTime,
+                    finalStartTime,
+                    finalEndTime,
                     event.getString(5),
                     isAllDay,
                     event.getInt(7)
@@ -353,15 +362,12 @@ class CalendarRepositoryImpl(
     }
 
     private fun isAllDay(startTime: Instant, endTime: Instant): Boolean {
-        val localStartTime = startTime.atZone(ZoneOffset.systemDefault())
-        val localEndTime = endTime.atZone(ZoneOffset.systemDefault())
-        val midnightToday = LocalDate.now().atStartOfDay().atZone(ZoneOffset.systemDefault())
-        //If start not at or before midnight today, not all day
-        if(localStartTime != midnightToday && !localStartTime.isBefore(midnightToday)) return false
-        val midnightTomorrow = LocalDate.now().plusDays(1).atStartOfDay()
-            .atZone(ZoneOffset.systemDefault())
-        //If end not at or after midnight tomorrow, not all day
-        return !(localEndTime != midnightTomorrow && !localEndTime.isAfter(midnightTomorrow))
+        val utcStartTime = startTime.atZone(ZoneOffset.UTC)
+        val utcEndTime = endTime.atZone(ZoneOffset.UTC)
+        val isMidnight = utcStartTime.hour == 0 && utcStartTime.minute == 0 && utcStartTime.second == 0 &&
+                utcEndTime.hour == 0 && utcEndTime.minute == 0 && utcEndTime.second == 0
+        val isFullDay = Duration.between(startTime, endTime).toHours() % 24 == 0L
+        return isMidnight && isFullDay && !startTime.isAfter(endTime) && startTime != endTime
     }
 
     private fun ZonedDateTime.toEpochMilli(): Long {

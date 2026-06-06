@@ -1,12 +1,12 @@
 package com.kieronquinn.app.smartspacer.ui.screens.configuration.default
 
 import android.content.Context
-import androidx.annotation.StringRes
-import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget.TargetData
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget.TargetType
 import com.kieronquinn.app.smartspacer.model.database.TargetDataType
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
 import com.kieronquinn.app.smartspacer.repositories.DataRepository
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
 import com.kieronquinn.app.smartspacer.ui.activities.TrampolineActivity
@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
@@ -26,48 +27,34 @@ abstract class DefaultTargetConfigurationViewModel(scope: CoroutineScope?): Base
 
     abstract val state: StateFlow<State>
 
+    abstract fun onResume()
     abstract fun setupWithId(smartspacerId: String)
     abstract fun onAtAGlanceClicked()
     abstract fun onHiddenTargetChanged(target: HiddenTarget, enabled: Boolean)
 
     sealed class State {
         object Loading: State()
-        data class Loaded(val settings: List<HiddenTarget>): State()
+        data class Loaded(
+            val showRemoteViewsWarning: Boolean,
+            val settings: List<HiddenTarget>
+        ): State()
     }
 
     data class HiddenTarget(val type: TargetType, val isEnabled: Boolean)
-
-    enum class TargetType(@StringRes val title: Int, val type: String) {
-        DOORBELL(R.string.target_default_settings_hide_doorbell, "DOORBELL"),
-        PACKAGE(R.string.target_default_settings_hide_package, "PACKAGE_DELIVERY"),
-        TIMER(R.string.target_default_settings_hide_timer, "TIMER_STOPWATCH"),
-        BEDTIME(R.string.target_default_settings_hide_bedtime, "BEDTIME"),
-        FITNESS(R.string.target_default_settings_hide_fitness, "FITNESS"),
-        CONNECTED_DEVICES(R.string.target_default_settings_hide_connected_devices, "CONNECTED_DEVICES"),
-        FLASHLIGHT(R.string.target_default_settings_hide_flashlight, "FLASHLIGHT"),
-        SAFETY_CHECK(R.string.target_default_settings_hide_safety_check, "SAFETY_CHECK"),
-        EARTHQUAKE_ALERT(R.string.target_default_settings_hide_earthquake_alert, "EARTHQUAKE"),
-        COMMUTE(R.string.target_default_settings_hide_commute, "COMMUTE"),
-        TIME_TO_LEAVE(R.string.target_default_settings_hide_time_to_leave, "TIME_TO_LEAVE"),
-        WEATHER_ALERTS(R.string.target_default_settings_hide_weather_alerts, "WEATHER_ALERT"),
-        TRAVEL(R.string.target_default_settings_hide_travel, "FLIGHT"),
-        CALENDAR(R.string.target_default_settings_hide_calendar, "CALENDAR"),
-        WORK_PROFILE(R.string.target_default_settings_hide_work_profile, "WORK_PROFILE"),
-        FOOD(R.string.target_default_settings_hide_food, "FOOD_DELIVERY_ETA"),
-        CROSS_DEVICE_TIMER(R.string.target_default_settings_cross_device_timer, "CROSS_DEVICE_TIMER")
-    }
 
 }
 
 class DefaultTargetConfigurationViewModelImpl(
     private val navigation: ConfigurationNavigation,
     private val dataRepository: DataRepository,
+    compatibilityRepository: CompatibilityRepository,
     context: Context,
     scope: CoroutineScope? = null
 ): DefaultTargetConfigurationViewModel(scope) {
 
     private val id = MutableStateFlow<String?>(null)
     private val configurationIntent = TrampolineActivity.createAsiTrampolineIntent(context)
+    private val resumeBus = MutableStateFlow(System.currentTimeMillis())
 
     private val data = id.filterNotNull().flatMapLatest {
         dataRepository.getTargetDataFlow(it, TargetData::class.java).map { data ->
@@ -75,13 +62,25 @@ class DefaultTargetConfigurationViewModelImpl(
         }
     }
 
-    override val state = data.mapLatest {
-        State.Loaded(it.getHiddenTargets())
+    private val showRemoteViewsWarning = resumeBus.mapLatest {
+        compatibilityRepository.areGlanceRemoteViewsEnabledButDisabled()
+    }
+
+    override val state = combine(
+        data, showRemoteViewsWarning
+    ) { data, showRemoteViewsWarning ->
+        State.Loaded(showRemoteViewsWarning, data.getHiddenTargets())
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
     private fun TargetData.getHiddenTargets(): List<HiddenTarget> {
-        return TargetType.values().map {
+        return TargetType.entries.map {
             HiddenTarget(it, hiddenTargetTypes.contains(it.type))
+        }
+    }
+
+    override fun onResume() {
+        vmScope.launch {
+            resumeBus.emit(System.currentTimeMillis())
         }
     }
 

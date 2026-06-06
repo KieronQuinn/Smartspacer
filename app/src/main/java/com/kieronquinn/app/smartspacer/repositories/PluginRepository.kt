@@ -10,6 +10,8 @@ import android.provider.Settings
 import com.google.gson.annotations.SerializedName
 import com.google.gson.stream.MalformedJsonException
 import com.kieronquinn.app.smartspacer.BuildConfig
+import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting.Companion.clear
 import com.kieronquinn.app.smartspacer.repositories.PluginApi.RemotePluginInfo
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Companion.ACTION_COMPLICATION
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Companion.ACTION_REQUIREMENT
@@ -18,6 +20,7 @@ import com.kieronquinn.app.smartspacer.repositories.PluginRepository.Plugin
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageInfoCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.getPackageLabel
 import com.kieronquinn.app.smartspacer.utils.extensions.isPackageInstalled
+import com.kieronquinn.app.smartspacer.utils.extensions.orNullIfZero
 import com.kieronquinn.app.smartspacer.utils.extensions.queryContentProviders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +37,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
@@ -55,9 +59,11 @@ interface PluginRepository {
         const val ACTION_REQUIREMENT = "com.kieronquinn.app.smartspacer.REQUIREMENT"
     }
 
-    fun getPlugins(): Flow<List<Plugin>>
-    fun getUpdateCount(): Flow<Int>
+    fun getPlugins(seenOneshot: Boolean = false): Flow<List<Plugin>>
+    fun getTabLabel(): Flow<String?>
     fun reload(force: Boolean)
+    fun onPluginsViewed(packages: List<String>)
+    fun clearSeenPlugins()
 
     suspend fun getPluginInfo(plugin: Plugin.Remote): RemotePluginInfo?
 
@@ -83,6 +89,7 @@ interface PluginRepository {
             val author: String,
             val supportedPackages: List<String>,
             val updateAvailable: Boolean,
+            val new: Boolean,
             val recommendedApps: List<CharSequence>
         ): Plugin(isInstalled, packageName, name)
     }
@@ -93,7 +100,7 @@ class PluginRepositoryImpl(
     context: Context,
     packageRepository: PackageRepository,
     okHttpClient: OkHttpClient,
-    settingsRepository: SmartspacerSettingsRepository,
+    private val settingsRepository: SmartspacerSettingsRepository,
     private val scope: CoroutineScope = MainScope(),
     private val packageManager: PackageManager = context.packageManager
 ): PluginRepository {
@@ -118,6 +125,8 @@ class PluginRepositoryImpl(
         .build()
         .create(PluginApi::class.java)
 
+    private val newLabel = context.getString(R.string.plugin_repository_new)
+    private val seenPlugins = settingsRepository.seenPlugins
     private val packageChanged = packageRepository.onPackageChanged
         .stateIn(scope, SharingStarted.Eagerly, null)
 
@@ -125,19 +134,28 @@ class PluginRepositoryImpl(
         getInstalledPlugins()
     }.flowOn(Dispatchers.IO)
 
-    private val remotePlugins = combine(
+    private fun getSeenPlugins(oneshot: Boolean): Flow<Set<String>> {
+        return if (oneshot) {
+            seenPlugins.asFlow().take(1)
+        } else {
+            seenPlugins.asFlow()
+        }
+    }
+
+    private fun getRemotePlugins(seenOneshot: Boolean) = combine(
         settingsRepository.pluginRepositoryUrl.asFlow(),
         settingsRepository.pluginRepositoryEnabled.asFlow(),
+        getSeenPlugins(seenOneshot),
         refreshBus
-    ) { url, enabled, _ ->
-        if(!enabled) return@combine emptyList()
+    ) { url, enabled, seenPlugins, _ ->
+        if (!enabled) return@combine emptyList()
         val plugins = try {
             pluginApi.withTimeout {
                 it.getPlugins(url).execute().body()
             } ?: run {
                 emptyList()
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             emptyList()
         }
         plugins.map { plugin ->
@@ -150,19 +168,21 @@ class PluginRepositoryImpl(
                 plugin.author,
                 plugin.packages?.parseCommaSeparated() ?: emptyList(),
                 updateAvailable = false,
+                // We only mark plugins as new once the list has been loaded for the first time
+                new = seenPlugins.isNotEmpty() && !seenPlugins.contains(plugin.packageName),
                 recommendedApps = emptyList()
             )
         }
     }.flatMapLatest { plugins ->
-        if(plugins.isEmpty()) return@flatMapLatest flowOf(plugins)
-        combine(*plugins.map { it.withRemoteInfo() }.toTypedArray()){
+        if (plugins.isEmpty()) return@flatMapLatest flowOf(plugins)
+        combine(*plugins.map { it.withRemoteInfo() }.toTypedArray()) {
             it.toList()
         }
     }
 
-    override fun getPlugins(): Flow<List<Plugin>> {
+    override fun getPlugins(seenOneshot: Boolean): Flow<List<Plugin>> {
         return combine(
-            remotePlugins,
+            getRemotePlugins(seenOneshot),
             installedPlugins
         ) { remote, installed ->
             val combined = ArrayList<Plugin>(remote)
@@ -192,14 +212,14 @@ class PluginRepositoryImpl(
         }
     }
 
-    override fun getUpdateCount(): Flow<Int> {
-        return getPlugins().flatMapLatest {
-            val remote = it.filterIsInstance<Plugin.Remote>().map {
+    override fun getTabLabel(): Flow<String?> {
+        return getPlugins().flatMapLatest { plugin ->
+            val remote = plugin.filterIsInstance<Plugin.Remote>().map {
                 flow {
                     emit(Pair(it, getPluginInfo(it)))
                 }
             }.toTypedArray()
-            if(remote.isEmpty()) return@flatMapLatest flowOf(0)
+            if(remote.isEmpty()) return@flatMapLatest flowOf(null)
             combine(*remote) { plugins ->
                 plugins.count { plugin ->
                     val remoteVersion = (plugin.second as? RemotePluginInfo.UpdateJson)?.versionCode
@@ -207,6 +227,8 @@ class PluginRepositoryImpl(
                     val currentVersion = getPackageVersion(plugin.first.packageName)
                         ?: return@count false
                     currentVersion < remoteVersion
+                }.orNullIfZero()?.toString() ?: run {
+                    if (plugins.any { it.first.new }) newLabel else null
                 }
             }
         }.flowOn(Dispatchers.IO)
@@ -218,6 +240,18 @@ class PluginRepositoryImpl(
             val elapsedTime = System.currentTimeMillis() - refreshBus.value
             if(elapsedTime < MIN_RELOAD_TIME && !force) return@launch
             refreshBus.emit(System.currentTimeMillis())
+        }
+    }
+
+    override fun onPluginsViewed(packages: List<String>) {
+        scope.launch {
+            seenPlugins.set(seenPlugins.get() + packages.toSet())
+        }
+    }
+
+    override fun clearSeenPlugins() {
+        scope.launch {
+            seenPlugins.clear()
         }
     }
 

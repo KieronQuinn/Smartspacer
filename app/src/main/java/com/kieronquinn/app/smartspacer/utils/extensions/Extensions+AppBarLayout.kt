@@ -41,12 +41,12 @@ fun AppBarLayout.expandProgress() = callbackFlow {
 
 private const val FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED = "app_bar_collapsed"
 
-fun Fragment.rememberAppBarCollapsed(collapsed: Boolean) {
+fun Fragment.rememberAppBarCollapsed(collapsed: Boolean, key: String = FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED) {
     val arguments = this.arguments ?: Bundle()
-    arguments.putBoolean(FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED, collapsed)
+    arguments.putBoolean(key, collapsed)
     this.arguments = arguments
 }
 
-fun Fragment.getRememberedAppBarCollapsed(): Boolean {
-    return arguments?.getBoolean(FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED, false) ?: false
+fun Fragment.getRememberedAppBarCollapsed(key: String = FRAGMENT_ARGUMENTS_APP_BAR_COLLAPSED): Boolean {
+    return arguments?.getBoolean(key, false) ?: false
 }

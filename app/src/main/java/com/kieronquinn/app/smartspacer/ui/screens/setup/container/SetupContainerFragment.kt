@@ -1,7 +1,6 @@
 package com.kieronquinn.app.smartspacer.ui.screens.setup.container
 
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.SetupNavigation
 import com.kieronquinn.app.smartspacer.databinding.FragmentSetupContainerBinding
@@ -29,8 +28,6 @@ class SetupContainerFragment: BaseContainerFragment<FragmentSetupContainerBindin
     override val navHostFragment by lazy {
         childFragmentManager.findFragmentById(R.id.nav_host_fragment_setup) as NavHostFragment
     }
-
-    override val bottomNavigation: BottomNavigationView? = null
 
     override val navigation by inject<SetupNavigation>()
 

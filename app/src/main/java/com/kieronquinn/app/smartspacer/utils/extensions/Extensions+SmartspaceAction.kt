@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.components.smartspace.complications.Defau
 import com.kieronquinn.app.smartspacer.model.smartspace.Action
 import com.kieronquinn.app.smartspacer.receivers.DummyReceiver
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
+import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData.SubItemInfo
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
@@ -125,7 +126,8 @@ private fun SmartspaceAction.createDummyPendingIntent(context: Context): Pending
  *  equality
  */
 fun SystemSmartspaceAction?.equalsCompat(other: Any?): Boolean {
-    if(this == null) return false
+    if(this == null && other == null) return true
+    if(this == null || other == null) return false
     if(other !is SystemSmartspaceAction) return false
     if(other.id != id) return false
     if(other.title != title) return false
@@ -158,4 +160,12 @@ fun SmartspaceAction.stripData(): SmartspaceAction {
         extras = Bundle.EMPTY,
         subItemInfo = null
     )
+}
+
+fun SmartspaceAction.isWeather(): Boolean {
+    return when {
+        subItemInfo?.loggingInfo?.featureType == SmartspaceTarget.FEATURE_WEATHER -> true
+        extras.containsKey("use_celsius") -> true
+        else -> false
+    }
 }

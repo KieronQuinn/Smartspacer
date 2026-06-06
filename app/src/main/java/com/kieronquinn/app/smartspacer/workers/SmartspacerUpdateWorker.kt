@@ -89,8 +89,7 @@ class SmartspacerUpdateWorker(
     }
 
     private fun checkPluginUpdates() = scope.launch {
-        val updateCount = pluginRepository.getUpdateCount().first()
-        if(updateCount == 0) return@launch
+        val updateCount = pluginRepository.getTabLabel().first()?.toIntOrNull() ?: return@launch
         val notificationIntent = Intent(applicationContext, MainActivity::class.java).apply {
             action = Intent.ACTION_VIEW
             data = Uri.parse("smartspacer://plugins")

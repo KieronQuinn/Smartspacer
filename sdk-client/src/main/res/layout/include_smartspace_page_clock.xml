@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextClock xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/smartspace_view_title"
-    style="@style/SmartspacerPageTitle"
-    tools:text="Mon, 1 Jan"
+    android:id="@+id/smartspace_page_clock"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.Smartspacer.Page.Title"
-    tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Title.Preview" />
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <TextClock
+        android:id="@+id/smartspace_view_title"
+        style="@style/SmartspacerPageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/smartspace_page_action_margin"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:textAppearance="@style/TextAppearance.Smartspacer.Page.Title"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/smartspace_page_primary_action_container"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mon, 1 Jan"
+        tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Title.Preview" />
+
+    <LinearLayout
+        android:id="@+id/smartspace_page_primary_action_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBaseline_toBaselineOf="@id/smartspace_view_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/smartspace_view_title"
+        app:layout_constraintWidth_min="wrap">
+
+        <com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
+            android:id="@+id/smartspace_page_primary_action_icon"
+            android:layout_width="@dimen/smartspace_page_icon_size"
+            android:layout_height="@dimen/smartspace_page_icon_size"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginEnd="@dimen/smartspace_page_icon_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/smartspace_page_action_text"
+            app:layout_constraintStart_toEndOf="@id/smartspace_page_subtitle_text"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@android:drawable/btn_star" />
+
+        <TextView
+            android:id="@+id/smartspace_page_primary_action_text"
+            style="@style/SmartspacerPageSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Smartspacer.Page.Title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/smartspace_page_action_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Action"
+            tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Title.Preview" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

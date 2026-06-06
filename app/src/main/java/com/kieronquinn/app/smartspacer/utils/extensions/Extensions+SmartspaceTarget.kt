@@ -51,9 +51,12 @@ fun SmartspaceTarget.toSystemSmartspaceTarget(
     val wallpaperRepository by KoinJavaComponent.inject<WallpaperRepository>(WallpaperRepository::class.java)
     val dark = when(uiSurface){
         UiSurface.HOMESCREEN -> wallpaperRepository.homescreenWallpaperDarkTextColour.value
-        UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour.value
+        UiSurface.MEDIA_DATA_MANAGER, UiSurface.AMBIENT_CUE -> {
+            wallpaperRepository.homescreenWallpaperDarkTextColour.value
+        }
         UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour.value
         UiSurface.GLANCEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour.value
+        UiSurface.DREAM -> false // Screensaver so always white
     }
     val tintColour =  if(dark) Color.BLACK else Color.WHITE
     return SystemSmartspaceTarget.Builder(smartspaceTargetId, componentName, userHandle).apply {
@@ -172,13 +175,13 @@ fun SmartspaceTarget.fixActionsIfNeeded(context: Context): SmartspaceTarget {
 fun SystemSmartspaceTarget.equalsCompat(other: Any?): Boolean {
     if(other !is SystemSmartspaceTarget) return false
     if(other.smartspaceTargetId != smartspaceTargetId) return false
-    if(other.headerAction.equalsCompat(headerAction)) return false
-    if(other.baseAction.equalsCompat(baseAction)) return false
+    if(!other.headerAction.equalsCompat(headerAction)) return false
+    if(!other.baseAction.equalsCompat(baseAction)) return false
     if(other.creationTimeMillis != creationTimeMillis) return false
     if(other.expiryTimeMillis != expiryTimeMillis) return false
     if(other.score != score) return false
-    if(other.actionChips.equalsCompat(actionChips)) return false
-    if(other.iconGrid.equalsCompat(iconGrid)) return false
+    if(!other.actionChips.equalsCompat(actionChips)) return false
+    if(!other.iconGrid.equalsCompat(iconGrid)) return false
     if(other.featureType != featureType) return false
     if(other.isSensitive != isSensitive) return false
     if(other.sourceNotificationKey != sourceNotificationKey) return false

@@ -1,5 +1,6 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.KeyguardManager
 import android.app.KeyguardManager.KeyguardDismissCallback
@@ -9,6 +10,7 @@ import android.appwidget.AppWidgetProviderInfo.WIDGET_FEATURE_RECONFIGURABLE
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -18,16 +20,21 @@ import android.os.Parcelable
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.viewbinding.ViewBinding
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -35,7 +42,8 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedBinding
 import com.kieronquinn.app.smartspacer.databinding.SmartspaceExpandedLongPressPopupBinding
@@ -48,12 +56,15 @@ import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
+import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants.EXTRA_SMARTSPACER_ID
 import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
+import com.kieronquinn.app.smartspacer.sdk.client.views.BcSmartspaceView.Companion.ACTION_TARGET_KEBAB_CLICKED
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_ABOUT_INTENT
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_FEEDBACK_INTENT
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcuts.Shortcut
+import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
 import com.kieronquinn.app.smartspacer.sdk.utils.getParcelableCompat
 import com.kieronquinn.app.smartspacer.sdk.utils.shouldExcludeFromSmartspacer
 import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
@@ -64,28 +75,30 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.E
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.WIDGET_MIN_COLUMNS
 import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
+import com.kieronquinn.app.smartspacer.utils.extensions.broadcastReceiverAsFlow
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
-import com.kieronquinn.app.smartspacer.utils.extensions.getContrastColor
+import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnCount
 import com.kieronquinn.app.smartspacer.utils.extensions.isActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
-import com.skydoves.balloon.ArrowPositionRules
-import com.skydoves.balloon.Balloon
-import com.skydoves.balloon.BalloonAnimation
-import com.skydoves.balloon.BalloonSizeSpec
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.math.max
 import com.kieronquinn.app.smartspacer.sdk.client.R as SDKR
 
 class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
@@ -123,6 +136,14 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
                 putExtra(EXTRA_OPEN_TARGET, targetId)
             }
         }
+
+        fun getKebabMenuIntent(context: Context, targetId: String): Intent {
+            return Intent(ACTION_TARGET_KEBAB_CLICKED).apply {
+                setPackage(context.packageName)
+                putExtra(EXTRA_SMARTSPACER_ID, targetId)
+                applySecurity(context)
+            }
+        }
     }
 
     private val isOverlay by lazy {
@@ -156,13 +177,19 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     }
 
     private val wallpaperRepository by inject<WallpaperRepository>()
-    private val blurProvider by inject<BlurProvider>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val adapterUpdateBus = MutableStateFlow<Long?>(null)
     private var lastSwipe: Long? = null
-    private var popup: Balloon? = null
+    private var popup: PopupWindow? = null
     private var topInset = 0
     private var multiColumnEnabled = true
+    
+    private val blur by lazy {
+        BlurDelegate.get(
+            BlurMode.Window(requireContext(), requireActivity().window),
+            lifecycleScope
+        )
+    }
 
     override val applyTransitions = false
 
@@ -181,12 +208,25 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         viewModel.onWidgetConfigureResult(it.resultCode == Activity.RESULT_OK)
     }
 
+    private val onTargetKebabClicked by lazy {
+        requireContext().broadcastReceiverAsFlow(IntentFilter(ACTION_TARGET_KEBAB_CLICKED)).map {
+            it.verifySecurity()
+            it.getStringExtra(EXTRA_SMARTSPACER_ID)
+        }.filterNotNull()
+    }
+
     private val isDark = runBlocking {
         wallpaperRepository.homescreenWallpaperDarkTextColour.first()
     }
 
     private val backgroundColour by lazy {
         monet.getBackgroundColor(requireContext())
+    }
+
+    private val popupWidth by lazy {
+        resources.getDimensionPixelSize(
+            SDKR.dimen.smartspace_long_press_popup_width
+        )
     }
 
     private val adapter by lazy {
@@ -236,6 +276,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         handleLaunchActionIfNeeded()
         viewModel.setup(isOverlay)
         setupRecyclerView()
+        setupKebabReceiver()
     }
 
     override fun onDestroyView() {
@@ -300,6 +341,16 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         setOnScrollChangeListener(this@ExpandedFragment)
     }
 
+    private fun setupKebabReceiver() = whenResumed {
+        onTargetKebabClicked.collect { id ->
+            val target = (viewModel.state.value as? State.Loaded)?.items
+                ?.filterIsInstance<Item.Target>()
+                ?.firstOrNull { it.target.smartspaceTargetId == id }
+                ?.target ?: return@collect
+            onLongPress(target)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         viewModel.onResume()
@@ -321,7 +372,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         when(settingsRepository.expandedBackground.getSync()) {
             ExpandedBackground.BLUR -> {
                 val ratio = if(enabled) 1f else 0f
-                blurProvider.applyBlurToWindow(requireActivity().window, ratio)
+                blur.setBlur(ratio)
             }
             ExpandedBackground.SCRIM -> {
                 val alpha = if(enabled) 128 else 0
@@ -396,7 +447,7 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupUnlock() = with(binding.expandedUnlock) {
-        viewLifecycleOwner.whenResumed {
+        whenResumed {
             onClicked().collect {
                 unlockAndLaunch(null)
             }
@@ -627,44 +678,72 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         }
     }
 
-    override fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?): Boolean {
-        if(appWidgetId == null) return false
-        val view = viewHolder.itemView
+    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
+        viewModel.onDeleteCustomWidget(widget.appWidgetId ?: return)
+    }
+
+    @SuppressLint("NewApi")
+    private fun <V: ViewBinding> showPopup(
+        view: View,
+        inflate: (LayoutInflater, ViewGroup?, Boolean) -> V,
+        bind: V.(blurColour: Int, disabledColour: Int) -> List<BlurDelegate>
+    ): Boolean {
         lastSwipe?.let {
             if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
                 return false //Likely a swipe
             }
         }
-        val popupView = SmartspaceExpandedLongPressPopupWidgetBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.expandedLongPressPopupReset.setTextColor(textColour)
-        popupView.expandedLongPressPopupReset.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupReset.setOnClickListener {
-            popup.dismiss()
-            unlockAndInvoke {
-                viewModel.onAppWidgetReset(appWidgetId)
+        val popupView = inflate(layoutInflater, null, false)
+        val blurColour = monet.getBackgroundForBlur(requireContext())
+        val disabledColour = requireContext().getAttrColor(android.R.attr.colorBackground)
+        val blurs = bind(popupView, blurColour, disabledColour)
+        val width = max(view.measuredWidth, popupWidth)
+        val size = popupView.root.run {
+            measure(width, 0)
+            width to measuredHeight
+        }
+        var blurJob: Job? = null
+        val popup = PopupWindow(popupView.root, size.first, size.second)
+        popup.setOnDismissListener {
+            blurJob?.cancel()
+        }
+        popup.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        popup.isFocusable = true
+        popup.isAttachedInDecor = false
+        popup.showAsDropDown(view)
+        blurJob = whenResumed {
+            popupView.root.awaitPost()
+            blurs.firstOrNull()?.blurAvailable?.collect { available ->
+                blurs.forEach {
+                    (it.getMode() as BlurMode.Background).setBlurEnabled(available)
+                    if (available) {
+                        it.setBlur(1f)
+                    }
+                }
             }
         }
         this.popup = popup
         return true
     }
 
-    override fun onWidgetDeleteClicked(widget: Item.RemovedWidget) {
-        viewModel.onDeleteCustomWidget(widget.appWidgetId ?: return)
+    override fun onWidgetLongClicked(viewHolder: RecyclerView.ViewHolder, appWidgetId: Int?): Boolean {
+        if(appWidgetId == null) return false
+        val view = viewHolder.itemView
+        return showPopup(
+            view,
+            SmartspaceExpandedLongPressPopupWidgetBinding::inflate
+        ) { blurColour, disabledColour ->
+            expandedLongPressPopupReset.run {
+                setOnClickListener {
+                    popup?.dismiss()
+                    unlockAndInvoke {
+                        viewModel.onAppWidgetReset(appWidgetId)
+                    }
+                }
+                val blurMode = BlurMode.Background(this, blurColour, disabledColour)
+                listOf(BlurDelegate.get(blurMode, lifecycleScope))
+            }
+        }
     }
 
     private fun showPopup(
@@ -674,115 +753,85 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         aboutIntent: Intent?,
         feedbackIntent: Intent?
     ): Boolean {
-        lastSwipe?.let {
-            if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return false //Likely a swipe
+        return showPopup(
+            view,
+            SmartspaceExpandedLongPressPopupBinding::inflate
+        ) { blurColour, disabledColour ->
+            val views = ArrayList<View>()
+            smartspaceLongPressPopupAbout.run {
+                isVisible = aboutIntent != null
+                setOnClickListener {
+                    popup?.dismiss()
+                    unlockAndLaunch(aboutIntent)
+                }
+                views.add(this)
+            }
+            smartspaceLongPressPopupFeedback.run {
+                isVisible = feedbackIntent != null
+                setOnClickListener {
+                    popup?.dismiss()
+                    unlockAndLaunch(feedbackIntent)
+                }
+                views.add(this)
+            }
+            smartspaceLongPressPopupDismiss.run {
+                isVisible = canDismiss
+                setOnClickListener {
+                    popup?.dismiss()
+                    viewModel.onTargetDismiss(target)
+                }
+                views.add(this)
+            }
+            views.filter { it.isVisible }.map {
+                val blurMode = BlurMode.Background(it, blurColour, disabledColour)
+                BlurDelegate.get(blurMode, lifecycleScope)
             }
         }
-        val popupView = SmartspaceExpandedLongPressPopupBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.smartspaceLongPressPopupAbout.isVisible = aboutIntent != null
-        popupView.smartspaceLongPressPopupAbout.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupAbout.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupAbout.setOnClickListener {
-            popup.dismiss()
-            unlockAndLaunch(aboutIntent)
-        }
-        popupView.smartspaceLongPressPopupFeedback.isVisible = feedbackIntent != null
-        popupView.smartspaceLongPressPopupFeedback.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupFeedback.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupFeedback.setOnClickListener {
-            popup.dismiss()
-            unlockAndLaunch(feedbackIntent)
-        }
-        popupView.smartspaceLongPressPopupDismiss.isVisible = canDismiss
-        popupView.smartspaceLongPressPopupDismiss.setTextColor(textColour)
-        popupView.smartspaceLongPressPopupDismiss.iconTint = ColorStateList.valueOf(textColour)
-        popupView.smartspaceLongPressPopupDismiss.setOnClickListener {
-            popup.dismiss()
-            viewModel.onTargetDismiss(target)
-        }
-        this.popup = popup
-        return true
     }
 
     override fun onCustomWidgetLongClicked(view: View, widget: Item.Widget): Boolean {
-        lastSwipe?.let {
-            if(System.currentTimeMillis() - it < MIN_SWIPE_DELAY){
-                return false //Likely a swipe
-            }
-        }
-        val popupView = SmartspaceExpandedLongPressPopupCustomWidgetBinding.inflate(layoutInflater)
-        val background = requireContext().getAttrColor(android.R.attr.colorBackground)
-        val textColour = background.getContrastColor()
-        val popup = Balloon.Builder(requireContext())
-            .setLayout(popupView)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setWidthResource(SDKR.dimen.smartspace_long_press_popup_width)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setBackgroundColor(background)
-            .setArrowColor(background)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setCornerRadius(16f)
-            .setBalloonAnimation(BalloonAnimation.FADE)
-            .build()
-        popup.showAlignBottom(view)
-        popupView.expandedLongPressPopupDelete.setTextColor(textColour)
-        popupView.expandedLongPressPopupDelete.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupDelete.setOnClickListener {
-            popup.dismiss()
-            unlockAndInvoke {
-                viewModel.onDeleteCustomWidget(
-                    widget.appWidgetId ?: return@unlockAndInvoke
-                )
-            }
-        }
-        popupView.expandedLongPressPopupOptions.setTextColor(textColour)
-        popupView.expandedLongPressPopupOptions.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupOptions.setOnClickListener {
-            popup.dismiss()
-            val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
-            val canReconfigure = widget.provider.canReconfigure()
-            if(isOverlay){
-                launchOverlayAction(
-                    OpenFromOverlayAction.Options(getScroll(), appWidgetId, canReconfigure)
-                )
-            }else{
+        return showPopup(
+            view,
+            SmartspaceExpandedLongPressPopupCustomWidgetBinding::inflate
+        ) { blurColour, disabledColour ->
+            expandedLongPressPopupDelete.setOnClickListener {
+                popup?.dismiss()
                 unlockAndInvoke {
-                    viewModel.onOptionsClicked(appWidgetId, canReconfigure)
+                    viewModel.onDeleteCustomWidget(
+                        widget.appWidgetId ?: return@unlockAndInvoke
+                    )
                 }
             }
-        }
-        popupView.expandedLongPressPopupRearrange.setTextColor(textColour)
-        popupView.expandedLongPressPopupRearrange.iconTint = ColorStateList.valueOf(textColour)
-        popupView.expandedLongPressPopupRearrange.setOnClickListener {
-            popup.dismiss()
-            if(isOverlay){
+            expandedLongPressPopupOptions.setOnClickListener {
+                popup?.dismiss()
                 val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
-                launchOverlayAction(OpenFromOverlayAction.Rearrange(appWidgetId))
-            }else {
-                unlockAndInvoke {
-                    viewModel.onRearrangeClicked()
+                val canReconfigure = widget.provider.canReconfigure()
+                if(isOverlay){
+                    launchOverlayAction(
+                        OpenFromOverlayAction.Options(getScroll(), appWidgetId, canReconfigure)
+                    )
+                }else{
+                    unlockAndInvoke {
+                        viewModel.onOptionsClicked(appWidgetId, canReconfigure)
+                    }
                 }
             }
+            expandedLongPressPopupRearrange.setOnClickListener {
+                popup?.dismiss()
+                if(isOverlay){
+                    val appWidgetId = widget.appWidgetId ?: return@setOnClickListener
+                    launchOverlayAction(OpenFromOverlayAction.Rearrange(appWidgetId))
+                }else {
+                    unlockAndInvoke {
+                        viewModel.onRearrangeClicked()
+                    }
+                }
+            }
+            listOf(expandedLongPressPopupOptions, expandedLongPressPopupRearrange, expandedLongPressPopupDelete).map {
+                val blurMode = BlurMode.Background(it, blurColour, disabledColour)
+                BlurDelegate.get(blurMode, lifecycleScope)
+            }
         }
-        this.popup = popup
-        return true
     }
 
     override fun onScrollChange(

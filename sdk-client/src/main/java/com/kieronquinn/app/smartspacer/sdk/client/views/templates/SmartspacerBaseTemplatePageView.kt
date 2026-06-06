@@ -37,8 +37,24 @@ abstract class SmartspacerBaseTemplatePageView<V : ViewBinding>(
         applyShadow: Boolean
     ) {
         with(target.templateData!!) {
-            primaryItem?.let {
-                it.text?.let { text -> title?.smartspaceViewTitle?.setText(text, tintColour) }
+            primaryItem?.takeIf {
+                it.loggingInfo?.featureType == SmartspaceTarget.FEATURE_WEATHER
+            }?.let {
+                title?.smartspaceViewPrimaryActionContainer?.isVisible = true
+                title?.smartspaceViewPrimaryActionText?.setText(it.text?.text, tintColour)
+                title?.smartspaceViewPrimaryActionIcon?.setIcon(it.icon, tintColour)
+                it.tapAction?.let { action ->
+                    title?.smartspaceViewPrimaryActionContainer
+                        ?.setOnClick(target, action, interactionListener)
+                }
+                supplementalAlarmItem?.let { stored ->
+                    stored.text?.let { text -> title?.smartspaceViewTitle?.setText(text, tintColour) }
+                }
+            } ?: run {
+                primaryItem?.let {
+                    it.text?.let { text -> title?.smartspaceViewTitle?.setText(text, tintColour) }
+                }
+                title?.smartspaceViewPrimaryActionContainer?.isVisible = false
             }
             binding.root.setOnClick(target, primaryItem?.tapAction, interactionListener)
             title?.smartspaceViewTitle?.isVisible = primaryItem != null
@@ -81,11 +97,17 @@ abstract class SmartspacerBaseTemplatePageView<V : ViewBinding>(
                 supplementalLineItem?.icon != null
 
             title?.smartspaceViewTitle?.setShadowEnabled(applyShadow)
+            title?.smartspaceViewTitle?.setExpressiveTitleFontIfAvailable()
+            title?.smartspaceViewPrimaryActionText?.setShadowEnabled(applyShadow)
+            title?.smartspaceViewPrimaryActionText?.setExpressiveTitleFontIfAvailable()
+            title?.smartspaceViewPrimaryActionIcon?.setShadowEnabled(applyShadow)
             subtitle.subtitle.setShadowEnabled(applyShadow)
+            subtitle.subtitle.setExpressiveSubtitleFontIfAvailable()
             subtitle.subtitleIcon.setShadowEnabled(applyShadow)
             supplemental.smartspacePageSupplementalText.setShadowEnabled(applyShadow)
             supplemental.smartspacePageSupplementalIcon.setShadowEnabled(applyShadow)
             subtitle.action?.setShadowEnabled(applyShadow)
+            subtitle.action?.setExpressiveSubtitleFontIfAvailable()
             subtitle.actionIcon?.setShadowEnabled(applyShadow)
         }
     }

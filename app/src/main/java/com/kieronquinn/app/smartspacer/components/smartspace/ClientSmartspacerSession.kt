@@ -1,15 +1,19 @@
 package com.kieronquinn.app.smartspacer.components.smartspace
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetHostView
 import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.model.database.Grant
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
+import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants.EXTRA_SMARTSPACER_ID
+import com.kieronquinn.app.smartspacer.sdk.client.views.BcSmartspaceView.Companion.ACTION_TARGET_KEBAB_CLICKED
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -21,6 +25,7 @@ import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate
 import com.kieronquinn.app.smartspacer.ui.activities.permission.client.SmartspacerClientPermissionActivity
 import com.kieronquinn.app.smartspacer.utils.extensions.copyAsRoot
 import com.kieronquinn.app.smartspacer.utils.extensions.createFakeWidgetProviderInfo
+import com.kieronquinn.app.smartspacer.utils.extensions.replaceClickWithProxyIntent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -32,6 +37,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.koin.core.component.inject
+import java.util.UUID
 import android.graphics.drawable.Icon as AndroidIcon
 
 class ClientSmartspacerSession(
@@ -40,6 +46,11 @@ class ClientSmartspacerSession(
     override val sessionId: SmartspaceSessionId,
     private val collectIntoExt: suspend (SmartspaceSessionId, List<SmartspaceTarget>) -> Unit
 ): BaseSmartspacerSession<SmartspaceTarget, SmartspaceSessionId>(context, config, sessionId) {
+
+    companion object {
+        private const val MIN_SDK_REMOTE_VIEWS = 2
+        private const val MIN_SDK_WEATHER_ON_PRIMARY = 3
+    }
 
     private val databaseRepository by inject<DatabaseRepository>()
 
@@ -84,17 +95,38 @@ class ClientSmartspacerSession(
      *  create a fake one, but reflection is required so the client SDK may not be able to. As a
      *  result, we pass one in the Target, using the already existing (but unused) widget field.
      *
+     *  For AaG Targets, fixes the kebab menu and replaces click actions with the proxy so the
+     *  dropdown action can be intercepted and ignored.
+     *
      *  If RemoteViews are not supported by this client, don't send them at all in case it
      *  encounters problems.
      */
     private suspend fun SmartspaceTarget.prepareRemoteViews(): SmartspaceTarget {
-        val remoteViews = remoteViews?.takeIf { supportsRemoteViews() }?.copyAsRoot()
+        val remoteViews = remoteViews?.takeIf { supportsRemoteViews() }
+            ?.copyAsRoot()
+            ?.replaceClickWithProxyIntent(context)
+            ?.fixKebabMenuIfNeeded(context, this)
         return copy(
             remoteViews = remoteViews,
             widget = widget ?: if(remoteViews != null) {
                 context.createFakeWidgetProviderInfo()
             }else null
         )
+    }
+
+    override fun getKebabMenuBehaviour(target: SmartspaceTarget): KebabMenuBehaviour {
+        val intent = Intent(ACTION_TARGET_KEBAB_CLICKED).apply {
+            putExtra(EXTRA_SMARTSPACER_ID, target.smartspaceTargetId)
+            setPackage(owner)
+        }.let {
+            PendingIntent.getBroadcast(
+                context,
+                UUID.randomUUID().hashCode(),
+                it,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+        return KebabMenuBehaviour.Replace(intent)
     }
 
     private fun createPermissionTarget(grant: Grant): SmartspaceTarget = TargetTemplate.Basic(
@@ -111,7 +143,11 @@ class ClientSmartspacerSession(
     override fun toSmartspacerSessionId(id: SmartspaceSessionId) = id
 
     override suspend fun supportsRemoteViews(): Boolean {
-        return sdkVersion >= 2
+        return sdkVersion >= MIN_SDK_REMOTE_VIEWS
+    }
+
+    override suspend fun supportsComplicationOnPrimary(): Boolean {
+        return sdkVersion >= MIN_SDK_WEATHER_ON_PRIMARY
     }
 
     init {

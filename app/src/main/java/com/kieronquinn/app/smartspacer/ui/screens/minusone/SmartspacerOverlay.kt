@@ -7,7 +7,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.lifecycleScope
-import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.databinding.OverlaySmartspacerBinding
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
@@ -37,11 +38,17 @@ class SmartspacerOverlay(
 
     private val activityManager = LocalActivityManagerCompat(context, true)
     private var backgroundBlurProgress = 0f
-    private val blurProvider by inject<BlurProvider>()
     private val expandedRepository by inject<ExpandedRepository>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val wallpaperRepository by inject<WallpaperRepository>()
     private var isResumed = false
+
+    private val blur by lazy {
+        BlurDelegate.get(
+            BlurMode.Window(context, window!!),
+            lifecycleScope
+        )
+    }
 
     private val monet by lazy {
         MonetCompat.getInstance()
@@ -90,7 +97,7 @@ class SmartspacerOverlay(
 
     override fun onStop() {
         onPause()
-        blurProvider.applyBlurToWindow(window!!, 0f)
+        blur.setBlur(0f)
         super.onStop()
     }
 
@@ -122,21 +129,21 @@ class SmartspacerOverlay(
         when(backgroundMode.value) {
             ExpandedBackground.BLUR -> {
                 binding.root.background = null
-                blurProvider.applyBlurToWindow(window!!, progress)
+                blur.setBlur(progress)
             }
             ExpandedBackground.SCRIM -> {
                 val backgroundColour = ColorUtils.setAlphaComponent(
                     Color.BLACK, (127.5 * progress).roundToInt()
                 )
                 binding.root.background = ColorDrawable(backgroundColour)
-                blurProvider.applyBlurToWindow(window!!, 0f)
+                blur.setBlur(0f)
             }
             ExpandedBackground.SOLID -> {
                 val backgroundColour = ColorUtils.setAlphaComponent(
                     backgroundColour, (255 * progress).roundToInt()
                 )
                 binding.root.background = ColorDrawable(backgroundColour)
-                blurProvider.applyBlurToWindow(window!!, 0f)
+                blur.setBlur(0f)
             }
         }
     }

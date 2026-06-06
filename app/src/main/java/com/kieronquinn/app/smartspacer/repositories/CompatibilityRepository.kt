@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.Context
 import android.os.Build
+import android.provider.Settings
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD
 import com.kieronquinn.app.smartspacer.components.smartspace.complications.DefaultComplication
@@ -9,9 +10,11 @@ import com.kieronquinn.app.smartspacer.components.smartspace.requirements.AppPre
 import com.kieronquinn.app.smartspacer.components.smartspace.requirements.RecentTaskRequirement
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.DefaultTarget
 import com.kieronquinn.app.smartspacer.components.smartspace.targets.FlashlightTarget
+import com.kieronquinn.app.smartspacer.components.smartspace.widgets.GlanceWidget
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Compatibility
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.PACKAGE_PIXEL_LAUNCHER
+import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.areRemoteViewsSupported
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityState
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Feature
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.Template
@@ -83,6 +86,13 @@ interface CompatibilityRepository {
      */
     fun doesSystemUISupportSplitSmartspace(): Boolean
 
+    /**
+     *  Checks whether RemoteViews are available to the system, but At a Glance won't show them
+     *  because the Google app is not the default search engine (the user has changed the Pixel
+     *  Launcher search box)
+     */
+    suspend fun areGlanceRemoteViewsEnabledButDisabled(): Boolean
+
     data class CompatibilityState(
         val systemSupported: Boolean,
         val anyLauncherSupported: Boolean,
@@ -98,7 +108,7 @@ interface CompatibilityRepository {
     ) {
 
         companion object {
-            internal const val PACKAGE_PIXEL_LAUNCHER = "com.google.android.apps.nexuslauncher"
+            const val PACKAGE_PIXEL_LAUNCHER = "com.google.android.apps.nexuslauncher"
 
             fun List<CompatibilityReport>.isNativeModeAvailable(): Boolean {
                 //No compatible apps found
@@ -293,6 +303,8 @@ class CompatibilityRepositoryImpl(
 
         private const val CLASS_NAME_SPLIT_WEATHER =
             "com.google.android.systemui.smartspace.WeatherSmartspaceView"
+
+        private const val SETTING_SELECTED_SEARCH_ENGINE = "selected_search_engine"
     }
 
     private val enhancedMode = settings.enhancedMode.asFlow()
@@ -409,6 +421,21 @@ class CompatibilityRepositoryImpl(
         if(!isAtLeastU()) return false
         val classLoader = context.getClassLoaderForPackage(PACKAGE_KEYGUARD) ?: return false
         return classLoader.exists(CLASS_NAME_SPLIT_WEATHER)
+    }
+
+    override suspend fun areGlanceRemoteViewsEnabledButDisabled(): Boolean {
+        return getCompatibilityReports().areRemoteViewsSupported() && !isGoogleAppDefaultSearch()
+    }
+
+    private fun isGoogleAppDefaultSearch(): Boolean {
+        return try {
+            Settings.Secure.getString(
+                context.contentResolver,
+                SETTING_SELECTED_SEARCH_ENGINE
+            ) == GlanceWidget.PACKAGE_NAME
+        } catch (e: Exception) {
+            true // Defaults to GSA
+        }
     }
 
     private fun ClassLoader.exists(className: String): Boolean {

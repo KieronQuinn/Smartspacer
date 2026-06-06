@@ -2,5 +2,7 @@
 <resources>
     <dimen name="app_bar_height">88dp</dimen>
     <dimen name="app_bar_scrim_height">80dp</dimen>
-    <dimen name="tab_min_width">0dp</dimen>
+    <dimen name="tab_min_width">350dp</dimen>
+    <dimen name="bottom_nav_height">56dp</dimen>
+    <dimen name="bottom_nav_height_margins">80dp</dimen>
 </resources>

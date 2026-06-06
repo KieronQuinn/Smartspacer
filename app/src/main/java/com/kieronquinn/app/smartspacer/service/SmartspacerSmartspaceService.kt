@@ -13,6 +13,8 @@ import com.kieronquinn.app.smartspacer.ISmartspacerCrashListener
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationChannel
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
+import com.kieronquinn.app.smartspacer.components.smartspace.AmbientCueSmartspacerSession
+import com.kieronquinn.app.smartspacer.components.smartspace.DreamSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.GlanceableHubSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.MediaDataSmartspacerSession
 import com.kieronquinn.app.smartspacer.components.smartspace.SystemSmartspacerSession
@@ -56,7 +58,7 @@ import android.app.smartspace.SmartspaceTarget as SystemSmartspaceTarget
 import android.app.smartspace.SmartspaceTargetEvent as SystemSmartspaceTargetEvent
 
 @SuppressLint("NewApi")
-class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
+class SmartspacerSmartspaceService : LifecycleSmartspaceService() {
 
     companion object {
         val COMPONENT = ComponentName(
@@ -74,8 +76,14 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
     }
 
     private val sessions = HashMap<SystemSmartspaceSessionId, SystemSmartspacerSession>()
-    private val mediaDataSessions = HashMap<SystemSmartspaceSessionId, MediaDataSmartspacerSession>()
-    private val glanceableHubSessions = HashMap<SystemSmartspaceSessionId, GlanceableHubSmartspacerSession>()
+    private val mediaDataSessions =
+        HashMap<SystemSmartspaceSessionId, MediaDataSmartspacerSession>()
+    private val glanceableHubSessions =
+        HashMap<SystemSmartspaceSessionId, GlanceableHubSmartspacerSession>()
+    private val ambientCueSessions =
+        HashMap<SystemSmartspaceSessionId, AmbientCueSmartspacerSession>()
+    private val dreamSessions =
+        HashMap<SystemSmartspaceSessionId, DreamSmartspacerSession>()
     private val shizuku by inject<ShizukuServiceRepository>()
     private val notifications by inject<NotificationRepository>()
     private val systemSmartspace by inject<SystemSmartspaceRepository>()
@@ -87,7 +95,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     private val packageCrashes = callbackFlow {
         shizuku.runWithService {
-            it.setCrashListener(object: ISmartspacerCrashListener.Stub() {
+            it.setCrashListener(object : ISmartspacerCrashListener.Stub() {
                 override fun onPackageCrashed(packageName: String) {
                     trySend(packageName)
                 }
@@ -106,9 +114,9 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
 
     private fun SystemSmartspaceSessionId.getPackageName(): String? {
         val id = id ?: return null
-        return if(id.contains(":")){
+        return if (id.contains(":")) {
             id.split(":")[0]
-        }else id
+        } else id
     }
 
     private suspend fun pruneSessions() {
@@ -117,6 +125,8 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                 pruneSessionsLocked()
                 pruneMediaSessionsLocked()
                 pruneGlanceableHubSessionsLocked()
+                pruneAmbientCueSessionsLocked()
+                pruneDreamSessionsLocked()
             }
         }
     }
@@ -128,10 +138,12 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             }
             .filter { it.value.size > 1 }
         duplicateSessions.forEach {
-            //Destroy all but the newest session
-            it.value.sortedByDescending { session ->
-                session.createdAt
-            }.drop(1).forEach { session ->
+            // If none of the sessions have been used yet, we don't know which to prune to don't yet
+            if (it.value.all { s -> s.lastVisibleTime == -1L }) return@forEach
+            //Destroy any sessions that have never been used
+            it.value.filter { session ->
+                session.lastVisibleTime == -1L
+            }.forEach { session ->
                 session.onDestroy()
                 systemSmartspace.destroySmartspaceSession(session.sessionId)
                 sessions.remove(session.sessionId)
@@ -175,15 +187,51 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         }
     }
 
+    private suspend fun pruneAmbientCueSessionsLocked() = runCatching {
+        val duplicateSessions = ambientCueSessions.entries
+            .groupBy({ it.key.getPackageName() }) {
+                it.value
+            }
+            .filter { it.value.size > 1 }
+        duplicateSessions.forEach {
+            //Destroy all but the newest session
+            it.value.sortedByDescending { session ->
+                session.createdAt
+            }.drop(1).forEach { session ->
+                session.onDestroy()
+                systemSmartspace.destroySmartspaceSession(session.sessionId)
+                ambientCueSessions.remove(session.sessionId)
+            }
+        }
+    }
+
+    private suspend fun pruneDreamSessionsLocked() = runCatching {
+        val duplicateSessions = dreamSessions.entries
+            .groupBy({ it.key.getPackageName() }) {
+                it.value
+            }
+            .filter { it.value.size > 1 }
+        duplicateSessions.forEach {
+            //Destroy all but the newest session
+            it.value.sortedByDescending { session ->
+                session.createdAt
+            }.drop(1).forEach { session ->
+                session.onDestroy()
+                systemSmartspace.destroySmartspaceSession(session.sessionId)
+                dreamSessions.remove(session.sessionId)
+            }
+        }
+    }
+
     override fun onCreateSmartspaceSession(
         config: SystemSmartspaceConfig,
         sessionId: SystemSmartspaceSessionId
     ) {
-        if(config.packageName == BuildConfig.APPLICATION_ID){
+        if (config.packageName == BuildConfig.APPLICATION_ID) {
             //Feedback loop! Service has been force stopped & restarted too fast, reject
             onDestroySmartspaceSession(sessionId)
             //Only trigger the feedback loop notification if there's an actual service to connect to
-            if(getDefaultSmartspaceComponent() != null) {
+            if (getDefaultSmartspaceComponent() != null) {
                 systemSmartspace.onFeedbackLoopDetected()
             }
             return
@@ -207,9 +255,10 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                     sessionId,
                     ::onMediaUpdate
                 ).also {
-                    if(init) it.onResume()
+                    if (init) it.onResume()
                 }
             }
+
             UiSurface.GLANCEABLE_HUB -> {
                 glanceableHubSessions[sessionId] = GlanceableHubSmartspacerSession(
                     this@SmartspacerSmartspaceService,
@@ -217,9 +266,32 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                     sessionId,
                     ::onHubUpdate
                 ).also {
-                    if(init) it.onResume()
+                    if (init) it.onResume()
                 }
             }
+
+            UiSurface.DREAM -> {
+                dreamSessions[sessionId] = DreamSmartspacerSession(
+                    this@SmartspacerSmartspaceService,
+                    config,
+                    sessionId,
+                    ::onDreamUpdate
+                ).also {
+                    if (init) it.onResume()
+                }
+            }
+
+            UiSurface.AMBIENT_CUE -> {
+                ambientCueSessions[sessionId] = AmbientCueSmartspacerSession(
+                    this@SmartspacerSmartspaceService,
+                    config,
+                    sessionId,
+                    ::onAmbientCueUpdate
+                ).also {
+                    if (init) it.onResume()
+                }
+            }
+
             else -> {
                 sessions[sessionId] = SystemSmartspacerSession(
                     this@SmartspacerSmartspaceService,
@@ -227,7 +299,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
                     sessionId,
                     ::onUpdate
                 ).also {
-                    if(init) it.onResume()
+                    if (init) it.onResume()
                 }
             }
         }
@@ -237,25 +309,52 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         setHasUsedSetting()
     }
 
-    private suspend fun onUpdate(sessionId: SystemSmartspaceSessionId, targets: List<SystemSmartspaceTarget>) {
-        if(!sessions.contains(sessionId)) return
+    private suspend fun onUpdate(
+        sessionId: SystemSmartspaceSessionId,
+        targets: List<SystemSmartspaceTarget>
+    ) {
+        if (!sessions.contains(sessionId)) return
         pruneSessions()
         updateSmartspaceTargets(sessionId, targets).also {
             val id = sessionId.id
-            if(BuildConfig.DEBUG && id != null) {
+            if (BuildConfig.DEBUG && id != null) {
                 lastTargets[id] = targets
             }
         }
     }
 
-    private suspend fun onMediaUpdate(sessionId: SystemSmartspaceSessionId, targets: List<SystemSmartspaceTarget>) {
-        if(!mediaDataSessions.contains(sessionId)) return
+    private suspend fun onMediaUpdate(
+        sessionId: SystemSmartspaceSessionId,
+        targets: List<SystemSmartspaceTarget>
+    ) {
+        if (!mediaDataSessions.contains(sessionId)) return
         pruneSessions()
         updateSmartspaceTargets(sessionId, targets)
     }
 
-    private suspend fun onHubUpdate(sessionId: SystemSmartspaceSessionId, targets: List<SystemSmartspaceTarget>) {
-        if(!glanceableHubSessions.contains(sessionId)) return
+    private suspend fun onHubUpdate(
+        sessionId: SystemSmartspaceSessionId,
+        targets: List<SystemSmartspaceTarget>
+    ) {
+        if (!glanceableHubSessions.contains(sessionId)) return
+        pruneSessions()
+        updateSmartspaceTargets(sessionId, targets)
+    }
+
+    private suspend fun onDreamUpdate(
+        sessionId: SystemSmartspaceSessionId,
+        targets: List<SystemSmartspaceTarget>
+    ) {
+        if (!dreamSessions.contains(sessionId)) return
+        pruneSessions()
+        updateSmartspaceTargets(sessionId, targets)
+    }
+
+    private suspend fun onAmbientCueUpdate(
+        sessionId: SystemSmartspaceSessionId,
+        targets: List<SystemSmartspaceTarget>
+    ) {
+        if (!ambientCueSessions.contains(sessionId)) return
         pruneSessions()
         updateSmartspaceTargets(sessionId, targets)
     }
@@ -278,27 +377,53 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
         sessionId: SystemSmartspaceSessionId,
         event: SystemSmartspaceTargetEvent
     ) {
-        val session = sessions[sessionId] ?: mediaDataSessions[sessionId]
-            ?: glanceableHubSessions[sessionId] ?: return
+        val session = sessions[sessionId]
+            ?: mediaDataSessions[sessionId]
+            ?: glanceableHubSessions[sessionId]
+            ?: ambientCueSessions[sessionId]
+            ?: dreamSessions[sessionId] ?: return
         session.notifySmartspaceEvent(event.toSystemSmartspaceTargetEvent())
     }
 
     override fun onRequestSmartspaceUpdate(sessionId: SystemSmartspaceSessionId) {
-        val session = sessions[sessionId] ?: mediaDataSessions[sessionId]
-            ?: glanceableHubSessions[sessionId] ?: return
+        val session = sessions[sessionId]
+            ?: mediaDataSessions[sessionId]
+            ?: glanceableHubSessions[sessionId]
+            ?: ambientCueSessions[sessionId]
+            ?: dreamSessions[sessionId] ?: return
         session.requestSmartspaceUpdate()
     }
 
     override fun dump(fd: FileDescriptor, writer: PrintWriter, args: Array<out String>) {
         super.dump(fd, writer, args)
-        if(!BuildConfig.DEBUG) return
-        with(writer){
+        if (!BuildConfig.DEBUG) return
+        with(writer) {
             write("=== SMARTSPACE ===")
             write("\n")
             write("${sessions.size} sessions: ${sessions.keys.joinToString(", ") { it.id ?: "" }}")
             write("\n")
             write("${mediaDataSessions.size} media sessions: ${mediaDataSessions.keys.joinToString(", ") { it.id ?: "" }}")
-            write("${glanceableHubSessions.size} hub sessions: ${glanceableHubSessions.keys.joinToString(", ") { it.id ?: "" }}")
+            write(
+                "${glanceableHubSessions.size} hub sessions: ${
+                    glanceableHubSessions.keys.joinToString(
+                        ", "
+                    ) { it.id ?: "" }
+                }"
+            )
+            write(
+                "${ambientCueSessions.size} cue sessions: ${
+                    ambientCueSessions.keys.joinToString(
+                        ", "
+                    ) { it.id ?: "" }
+                }"
+            )
+            write(
+                "${dreamSessions.size} dream sessions: ${
+                    dreamSessions.keys.joinToString(
+                        ", "
+                    ) { it.id ?: "" }
+                }"
+            )
             write("\n")
             lastTargets.forEach {
                 write("Session: ${it.key}")
@@ -338,7 +463,7 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
             }
         }.stateIn(this, SharingStarted.Eagerly, emptyList())
         combine(packagesToListenFor, packageCrashes) { listenFor, crashed ->
-            if(listenFor.contains(crashed)){
+            if (listenFor.contains(crashed)) {
                 triggerSafeMode(crashed)
             }
         }.collect()
@@ -358,12 +483,13 @@ class SmartspacerSmartspaceService: LifecycleSmartspaceService() {
      */
     private fun triggerSafeMode(crashedPackage: String) = whenCreated {
         systemSmartspace.resetService(true)
-        sendBroadcast(Intent(
-            this@SmartspacerSmartspaceService, SafeModeReceiver::class.java
-        ).apply {
-            applySecurity(this@SmartspacerSmartspaceService)
-            putExtra(SafeModeReceiver.KEY_CRASHED_PACKAGE, crashedPackage)
-        })
+        sendBroadcast(
+            Intent(
+                this@SmartspacerSmartspaceService, SafeModeReceiver::class.java
+            ).apply {
+                applySecurity(this@SmartspacerSmartspaceService)
+                putExtra(SafeModeReceiver.KEY_CRASHED_PACKAGE, crashedPackage)
+            })
         exitProcess(0)
     }
 

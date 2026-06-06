@@ -38,6 +38,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.isLockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.isServiceRunning
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.startForeground
+import com.kieronquinn.app.smartspacer.utils.extensions.supportsNativeGoogleSansFlex
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.widgets.SmartspacerAppWidgetProvider
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -239,6 +240,7 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         }
         it.priority = Notification.PRIORITY_MAX
         it.setGroup("widget")
+        it.setGroupSummary(true)
         it.setOngoing(true)
         it.setWhen(System.currentTimeMillis())
         it.setOnlyAlertOnce(true)
@@ -315,7 +317,11 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
         container.setOnClickPendingIntent(
             R.id.widget_smartspacer_dots, getPendingIntentForDirection(appWidgetId, WidgetPageChangeReceiver.Direction.NEXT)
         )
-        val shadowContainer = RemoteViews(packageName, R.layout.widget_shadow_disabled)
+        val shadowContainer = if (supportsNativeGoogleSansFlex) {
+            RemoteViews(packageName, R.layout.widget_shadow_disabled_expressive)
+        } else {
+            RemoteViews(packageName, R.layout.widget_shadow_disabled)
+        }
         shadowContainer.removeAllViews(R.id.root)
         shadowContainer.addView(R.id.root, container)
         return shadowContainer

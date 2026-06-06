@@ -2,10 +2,10 @@
 <resources>
 
     <dimen name="smartspace_page_margin_16">16dp</dimen>
-    <dimen name="smartspace_page_title_size">20sp</dimen>
-    <dimen name="smartspace_page_subtitle_size">16sp</dimen>
+    <dimen name="smartspace_page_title_size">18sp</dimen>
+    <dimen name="smartspace_page_subtitle_size">14sp</dimen>
     <dimen name="smartspace_page_max_height">112dp</dimen>
-    <dimen name="smartspace_page_icon_size">20sp</dimen>
+    <dimen name="smartspace_page_icon_size">18sp</dimen>
     <dimen name="smartspace_page_icon_margin">4dp</dimen>
     <dimen name="smartspace_page_action_margin">8dp</dimen>
     <dimen name="smartspace_page_margin">8dp</dimen>

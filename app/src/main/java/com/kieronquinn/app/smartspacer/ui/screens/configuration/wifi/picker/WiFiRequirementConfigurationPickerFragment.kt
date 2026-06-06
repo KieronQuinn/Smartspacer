@@ -1,12 +1,16 @@
 package com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.picker
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationRequirementWifiPickerBinding
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Card
@@ -19,7 +23,9 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.wifi.picker.WiFi
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,6 +41,7 @@ class WiFiRequirementConfigurationPickerFragment: BoundFragment<FragmentConfigur
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         setupState()
         setupRecyclerView()
         setupLoading()
@@ -47,6 +54,10 @@ class WiFiRequirementConfigurationPickerFragment: BoundFragment<FragmentConfigur
     private fun setupRecyclerView() = with(binding.configurationRequirementWifiPickerRecyclerView) {
         layoutManager = LinearLayoutManager(context)
         adapter = this@WiFiRequirementConfigurationPickerFragment.adapter
+        val margin = resources.getDimension(R.dimen.margin_16)
+        val corners = resources.getDimension(R.dimen.margin_24)
+        setRoundedOutline(corners, margin.toInt(), false)
+        clipToOutline = true
         applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
     }
 
@@ -79,10 +90,30 @@ class WiFiRequirementConfigurationPickerFragment: BoundFragment<FragmentConfigur
         }
     }
 
-    private fun setupSearch() {
+    private fun setupSearch() = with(binding.configurationRequirementWifiPickerSearch) {
         setSearchText(viewModel.getSearchTerm())
+        val blurBackground = requireView().background
+        val searchBackground = monet.getBackgroundColorSecondary(requireContext())
+            ?: monet.getBackgroundColor(requireContext())
+        searchBox.backgroundTintList = ColorStateList.valueOf(searchBackground)
+        searchBoxBlur.setRoundedOutline(resources.getDimension(R.dimen.margin_24))
+        searchBoxBlur.clipToOutline = true
+        val blur = BlurDelegate.get(
+            BlurMode.View(searchBoxBlur, binding.configurationRequirementWifiPickerBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            binding.configurationRequirementWifiPickerSearch.searchBox.onChanged().collect {
+            blur.blurAvailable.collect { available ->
+                searchBox.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(searchBackground.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(searchBackground)
+                }
+            }
+        }
+        whenResumed {
+            searchBox.onChanged().collect {
                 viewModel.setSearchTerm(it?.toString() ?: "")
             }
         }
@@ -140,7 +171,8 @@ class WiFiRequirementConfigurationPickerFragment: BoundFragment<FragmentConfigur
             if(availableNetworks.isEmpty() && !isSearching){
                 Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
-                    getString(R.string.requirement_wifi_configuration_picker_available_empty)
+                    getString(R.string.requirement_wifi_configuration_picker_available_empty),
+                    topPadding = 0
                 )
             }else null
         )

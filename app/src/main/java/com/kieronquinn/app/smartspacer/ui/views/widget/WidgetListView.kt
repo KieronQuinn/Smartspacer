@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ListView
-import androidx.core.view.NestedScrollingChild
 import androidx.core.view.NestedScrollingChildHelper
 import androidx.core.view.ViewCompat
 import com.kieronquinn.app.smartspacer.R
@@ -15,7 +14,7 @@ class WidgetListView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ListView(context, attrs, defStyleAttr), NestedScrollingChild {
+) : ListView(context, attrs, defStyleAttr) {
 
     private val mScrollingChildHelper = NestedScrollingChildHelper(this)
     private val mScrollOffset = IntArray(2)
@@ -48,35 +47,18 @@ class WidgetListView @JvmOverloads constructor(
     }
 
     override fun dispatchNestedScroll(
-        dxConsumed: Int,
-        dyConsumed: Int,
-        dxUnconsumed: Int,
-        dyUnconsumed: Int,
-        offsetInWindow: IntArray?
+        dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, offsetInWindow: IntArray?
     ): Boolean {
-        return mScrollingChildHelper.dispatchNestedScroll(
-            dxConsumed,
-            dyConsumed,
-            dxUnconsumed,
-            dyUnconsumed,
-            offsetInWindow
-        )
+        return mScrollingChildHelper.dispatchNestedScroll(dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, offsetInWindow)
     }
 
     override fun dispatchNestedPreScroll(
-        dx: Int,
-        dy: Int,
-        consumed: IntArray?,
-        offsetInWindow: IntArray?
+        dx: Int, dy: Int, consumed: IntArray?, offsetInWindow: IntArray?
     ): Boolean {
         return mScrollingChildHelper.dispatchNestedPreScroll(dx, dy, consumed, offsetInWindow)
     }
 
-    override fun dispatchNestedFling(
-        velocityX: Float,
-        velocityY: Float,
-        consumed: Boolean
-    ): Boolean {
+    override fun dispatchNestedFling(velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
         return mScrollingChildHelper.dispatchNestedFling(velocityX, velocityY, consumed)
     }
 
@@ -102,30 +84,40 @@ class WidgetListView @JvmOverloads constructor(
             }
             MotionEvent.ACTION_MOVE -> {
                 var deltaY = mLastY - y
-                mLastY = y
 
+                // Allow parent to consume pre-scroll
                 if (dispatchNestedPreScroll(0, deltaY, mScrollConsumed, mScrollOffset)) {
                     deltaY -= mScrollConsumed[1]
                     event.offsetLocation(0f, (-mScrollOffset[1]).toFloat())
                     mNestedYOffset += mScrollOffset[1]
                 }
 
-                val oldScrollY = scrollY
-                val newScrollY = 0.coerceAtLeast(oldScrollY + deltaY)
-                val dyConsumed = newScrollY - oldScrollY
-                val dyUnconsumed = deltaY - dyConsumed
+                mLastY = y - mScrollOffset[1]
 
+                // Determine direction: > 0 means scrolling down the grid (finger moving up)
+                val direction = if (deltaY > 0) 1 else -1
+                val canScroll = canScrollVertically(direction)
+
+                // Split the consumption accurately without using `scrollY`
+                val dyConsumed = if (canScroll) deltaY else 0
+                val dyUnconsumed = if (canScroll) 0 else deltaY
+
+                // Pass unconsumed scroll back to the parent RecyclerView smoothly
                 if (dispatchNestedScroll(0, dyConsumed, 0, dyUnconsumed, mScrollOffset)) {
                     mLastY -= mScrollOffset[1]
                     event.offsetLocation(0f, mScrollOffset[1].toFloat())
                     mNestedYOffset += mScrollOffset[1]
                 }
             }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                stopNestedScroll()
-            }
         }
+
         val result = super.onTouchEvent(event)
+
+        // Stop nested scrolling AFTER the view processes the UP event to prevent stealing flings
+        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            stopNestedScroll()
+        }
+
         event.recycle()
         return result
     }
@@ -139,11 +131,12 @@ class WidgetListView @JvmOverloads constructor(
         val parent = findContainerParent() ?: return
         setOnItemLongClickListener { _, _, _, _ ->
             parent.performLongClick(0f, 0f)
+            true
         }
     }
 
     private fun View.findContainerParent(): View? {
-        if(this.id == R.id.item_expanded_widget_container) return this
+        if (this.id == R.id.item_expanded_widget_container) return this
         return (parent as? View)?.findContainerParent()
     }
 

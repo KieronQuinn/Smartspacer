@@ -57,8 +57,7 @@ class SetupComplicationsFragment: BaseAddComplicationsFragment<FragmentSetupComp
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupComplicationsControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupComplicationsControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupComplicationsControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupComplicationsControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

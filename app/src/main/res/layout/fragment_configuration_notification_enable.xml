@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
         android:id="@+id/configuration_notification_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?android:actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_close"
         app:title="@string/configuration_notification_enable_title"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
         app:titleTextColor="?android:textColorPrimary"

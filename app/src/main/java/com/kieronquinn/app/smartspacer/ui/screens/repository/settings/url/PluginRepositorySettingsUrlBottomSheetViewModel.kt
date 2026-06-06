@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.repository.settings.url
 
 import android.webkit.URLUtil
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
+import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting.Companion.clear
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope

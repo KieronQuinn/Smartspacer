@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/smartspace_long_press_popup_width"
-    android:layout_height="wrap_content"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:layout_gravity="center">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_gravity="center_vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/expanded_long_press_popup_reset"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButtonGroup
+        style="@style/SmartspacerExpandedPopupButtonGroup"
+        android:layout_width="@dimen/smartspace_long_press_popup_width"
         android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackground"
-        app:icon="@drawable/ic_reset"
-        app:iconTint="?android:textColorPrimary"
-        app:iconPadding="@dimen/margin_16"
-        android:gravity="start|center_vertical"
-        android:paddingLeft="@dimen/margin_16"
-        android:minHeight="@dimen/smartspace_long_press_popup_item_height"
-        android:paddingStart="@dimen/smartspace_dismiss_margin"
-        android:paddingEnd="@dimen/smartspace_dismiss_margin"
-        android:textColor="?android:textColorPrimary"
-        android:text="@string/expanded_widget_reset_title"
-        android:textAllCaps="false"
-        android:textAppearance="@style/TextAppearance.Smartspacer.Page.Popup"
-        tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Popup.Preview" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:spacing="@dimen/margin_4"
+        android:theme="@style/Theme.Smartspacer"
+        tools:layout_width="wrap_content">
 
-</LinearLayout>
+        <com.kieronquinn.app.smartspacer.ui.views.SmartspacerMaterialButton
+            android:id="@+id/expanded_long_press_popup_reset"
+            style="@style/SmartspacerExpandedPopupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:gravity="start|center_vertical"
+            android:minHeight="@dimen/smartspace_long_press_popup_item_height"
+            android:paddingStart="@dimen/smartspace_dismiss_margin"
+            android:paddingLeft="@dimen/margin_16"
+            android:paddingEnd="@dimen/smartspace_dismiss_margin"
+            android:text="@string/expanded_widget_reset_title"
+            android:textAllCaps="false"
+            android:textColor="?android:textColorPrimary"
+            app:icon="@drawable/ic_reset"
+            app:iconPadding="@dimen/margin_16"
+            app:iconTint="?android:textColorPrimary" />
+
+    </com.google.android.material.button.MaterialButtonGroup>
+</FrameLayout>

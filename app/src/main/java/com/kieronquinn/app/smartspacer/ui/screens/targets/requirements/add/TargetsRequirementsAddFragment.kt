@@ -10,9 +10,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.databinding.FragmentRequirementsAddBinding
 import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
@@ -24,7 +27,9 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.resolveActivityCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,6 +69,7 @@ class TargetsRequirementsAddFragment: BoundFragment<FragmentRequirementsAddBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         setupRecyclerView()
         setupState()
         setupMonet()
@@ -86,6 +92,10 @@ class TargetsRequirementsAddFragment: BoundFragment<FragmentRequirementsAddBindi
     private fun setupRecyclerView() = with(binding.requirementsAddRecyclerview) {
         layoutManager = LinearLayoutManager(context)
         adapter = this@TargetsRequirementsAddFragment.adapter
+        val margin = resources.getDimension(R.dimen.margin_16)
+        val corners = resources.getDimension(R.dimen.margin_24)
+        setRoundedOutline(corners, margin.toInt(), false)
+        clipToOutline = true
         applyBottomNavigationInset(resources.getDimension(R.dimen.margin_16))
     }
 
@@ -118,10 +128,30 @@ class TargetsRequirementsAddFragment: BoundFragment<FragmentRequirementsAddBindi
         applyBottomNavigationMarginShort()
     }
 
-    private fun setupSearch() {
+    private fun setupSearch() = with(binding.includeSearch) {
         setSearchText(viewModel.getSearchTerm())
+        val blurBackground = requireView().background
+        val searchBackground = monet.getBackgroundColorSecondary(requireContext())
+            ?: monet.getBackgroundColor(requireContext())
+        searchBox.backgroundTintList = ColorStateList.valueOf(searchBackground)
+        searchBoxBlur.setRoundedOutline(resources.getDimension(R.dimen.margin_24))
+        searchBoxBlur.clipToOutline = true
+        val blur = BlurDelegate.get(
+            BlurMode.View(searchBoxBlur, binding.requirementsAddBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            binding.includeSearch.searchBox.onChanged().collect {
+            blur.blurAvailable.collect { available ->
+                searchBox.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(searchBackground.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(searchBackground)
+                }
+            }
+        }
+        whenResumed {
+            searchBox.onChanged().collect {
                 viewModel.setSearchTerm(it?.toString() ?: "")
             }
         }

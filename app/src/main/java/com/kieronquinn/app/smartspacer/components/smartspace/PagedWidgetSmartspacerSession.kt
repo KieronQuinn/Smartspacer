@@ -102,6 +102,8 @@ open class PagedWidgetSmartspacerSession(
         return visibleTargetId == targetId
     }
 
+    override suspend fun supportsComplicationOnPrimary() = true
+
     fun nextPage() = whenCreated {
         pageChangeLock.withLock {
             val currentIndex = normaliseIndex(index.value)

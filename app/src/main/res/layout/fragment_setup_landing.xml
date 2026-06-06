@@ -30,7 +30,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/setup_landing_get_started"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.Material3Expressive.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
@@ -38,7 +38,6 @@
         android:text="@string/landing_button_get_started"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-        app:cornerRadius="@dimen/margin_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/setup_landing_title" />

@@ -11,9 +11,9 @@
         android:id="@+id/container_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:fitsSystemWindows="true"
         app:elevation="0dp"
-        android:background="@android:color/transparent"
         app:layout_behavior="com.kieronquinn.app.smartspacer.utils.appbar.DragOptionalAppBarLayoutBehaviour"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,25 +22,27 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
             android:clipToPadding="false"
-            app:forceApplySystemWindowInsetTop="true"
+            app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitle.Collapsed"
+            app:contentScrim="@android:color/transparent"
+            app:expandedTitleMarginBottom="@dimen/expanded_title_margin"
+            app:expandedTitleMarginEnd="@dimen/expanded_title_margin"
+            app:expandedTitleMarginStart="@dimen/expanded_title_margin"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
             app:extraMultilineHeightEnabled="true"
-            app:contentScrim="?attr/colorPrimaryVariant"
-            app:maxLines="3"
+            app:forceApplySystemWindowInsetTop="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:maxLines="3"
             app:scrimAnimationDuration="250"
             app:scrimVisibleHeightTrigger="@dimen/app_bar_scrim_height"
             app:statusBarScrim="@null"
             app:titleCollapseMode="fade"
-            app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitle.Collapsed"
-            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
-            app:expandedTitleMarginStart="@dimen/expanded_title_margin"
-            app:expandedTitleMarginEnd="@dimen/expanded_title_margin"
             tools:title="@string/app_name">
 
-            <com.google.android.material.appbar.MaterialToolbar
+            <com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
                 android:id="@+id/container_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:actionBarSize"
+                android:layout_marginHorizontal="@dimen/margin_8"
                 app:layout_collapseMode="pin"
                 tools:title="@string/app_name" />
 
@@ -48,25 +50,41 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <eightbitlab.com.blurview.BlurTarget
+        android:id="@+id/container_bottom_navigation_blur_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:navGraph="@navigation/nav_graph_main" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/container_bottom_navigation"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_main" />
+
+    </eightbitlab.com.blurview.BlurTarget>
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/container_bottom_navigation_blur_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_nav_height"
-        android:layout_gravity="bottom"
-        android:elevation="8dp"
-        app:labelVisibilityMode="labeled"
-        app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-        app:itemTextAppearanceInactive="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-        app:menu="@menu/menu_bottom_nav" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/container_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_nav_height"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:elevation="8dp"
+            app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+            app:itemTextAppearanceInactive="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_bottom_nav" />
+
+    </eightbitlab.com.blurview.BlurView>
 
     <LinearLayout
         android:id="@+id/container_loading"
@@ -74,37 +92,15 @@
         android:layout_height="match_parent"
         android:elevation="100dp"
         android:gravity="center"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
+        <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/container_loading_progress"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:trackCornerRadius="4dp"
-            app:trackThickness="8dp" />
-
-        <TextView
-            android:id="@+id/container_loading_label"
+            style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
-            android:textColor="?android:textColorPrimary"
-            tools:text="Loading Text" />
-
-        <TextView
-            android:id="@+id/container_loading_content"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:layout_marginStart="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
-            android:textColor="?android:textColorPrimary"
-            tools:text="Loading Text Content" />
+            android:indeterminate="true" />
 
     </LinearLayout>
 

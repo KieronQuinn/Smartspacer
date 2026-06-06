@@ -1,15 +1,12 @@
 package com.kieronquinn.app.smartspacer.ui.base
 
-import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.DialogInterface
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.animation.addListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,18 +16,21 @@ import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kieronquinn.app.smartspacer.R
-import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
-import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
+import com.kieronquinn.app.smartspacer.utils.extensions.addDimming
+import com.kieronquinn.app.smartspacer.utils.extensions.clearDimming
+import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.or
-import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.monetcompat.core.MonetCompat
-import org.koin.android.ext.android.inject
 
 abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T): BottomSheetDialogFragment() {
 
@@ -52,15 +52,13 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
 
     internal var _binding: T? = null
 
-    private val blurProvider by inject<BlurProvider>()
-    private var isBlurShowing = false
     private val bottomSheetCallback = object: BottomSheetBehavior.BottomSheetCallback() {
 
         override fun onStateChanged(bottomSheet: View, newState: Int) {}
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            showBlurAnimation?.cancel()
-            applyBlur(1f + slideOffset)
+            _binding?.root?.alpha = 1f + slideOffset
+            blur.setBlur(1f + slideOffset)
         }
 
     }
@@ -68,6 +66,13 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     open val cancelable: Boolean = true
     open val fullScreen: Boolean = false
     private var behavior: BottomSheetBehavior<*>? = null
+
+    private val blur by lazy {
+        BlurDelegate.get(
+            BlurMode.Window(requireContext(), requireDialog().window!!),
+            lifecycleScope
+        )
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = object : BottomSheetDialog(requireContext(), theme) {
@@ -111,7 +116,6 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
         dialog.setOnShowListener {
             if(view == null) return@setOnShowListener
             val parent = binding.root.parent as View
-            parent.backgroundTintList = ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
             if(fullScreen){
                 parent.updateLayoutParams<ViewGroup.LayoutParams> {
                     height = resources.displayMetrics.heightPixels
@@ -132,12 +136,6 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     }
 
     override fun onDestroyView() {
-        if(isBlurShowing){
-            val dialogWindow = dialog?.window ?: return
-            val appWindow = activity?.window ?: return
-            blurProvider.applyDialogBlur(dialogWindow, appWindow, 0f)
-            isBlurShowing = false
-        }
         super.onDestroyView()
         behavior?.removeBottomSheetCallback(bottomSheetCallback)
         behavior = null
@@ -153,48 +151,28 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
         return binding.root
     }
 
-    private var showBlurAnimation: ValueAnimator? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showBlurAnimation = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 250L
-            addUpdateListener {
-                applyBlur(it.animatedValue as Float)
+        blur.animateBlurTo(1f)
+        whenCreated {
+            val parent = binding.root.parent as View
+            parent.background.setTint(monet.getBackgroundColor(requireContext()))
+            blur.blurAvailable.collect { available ->
+                val parent = binding.root.parent as View
+                if (available) {
+                    requireDialog().window?.clearDimming()
+                    parent.background.setTint(monet.getBackgroundForBlur(requireContext()))
+                } else {
+                    requireDialog().window?.addDimming()
+                    parent.background.setTint(monet.getBackgroundColor(requireContext()))
+                }
             }
-            addListener(onEnd = {
-                isBlurShowing = true
-            })
-            start()
         }
     }
 
     override fun onCancel(dialog: DialogInterface) {
-        applyBlur(0f)
+        blur.animateBlurTo(0f)
         super.onCancel(dialog)
-    }
-
-    override fun dismiss() {
-        applyBlur(0f)
-        super.dismiss()
-    }
-
-    private fun applyBlur(ratio: Float){
-        val dialogWindow = dialog?.window ?: return
-        val appWindow = activity?.window ?: return
-        whenResumed {
-            dialogWindow.decorView.awaitPost()
-            blurProvider.applyDialogBlur(dialogWindow, appWindow, ratio)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if(isBlurShowing){
-            whenResumed {
-                view?.awaitPost()
-                applyBlur(1f)
-            }
-        }
     }
 
     override fun getTheme(): Int {

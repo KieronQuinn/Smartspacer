@@ -1,6 +1,7 @@
 package com.kieronquinn.app.smartspacer.components.smartspace
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
 import androidx.lifecycle.lifecycleScope
@@ -14,9 +15,13 @@ import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Companion.FEATUR
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Doorbell.Companion.KEY_FRAME_DURATION_MS
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.DoorbellState
 import com.kieronquinn.app.smartspacer.sdk.utils.TargetTemplate.Images.Companion.GIF_FRAME_DURATION_MS
+import com.kieronquinn.app.smartspacer.sdk.utils.copy
+import com.kieronquinn.app.smartspacer.ui.activities.WidgetOptionsMenuActivity
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.features.DoorbellFeatureSmartspaceView
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.templates.ImagesTemplateSmartspaceView
+import com.kieronquinn.app.smartspacer.utils.extensions.PendingIntent_MUTABLE_FLAGS
+import com.kieronquinn.app.smartspacer.utils.extensions.replaceClickWithProxyIntent
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -31,7 +36,7 @@ import kotlinx.coroutines.launch
 import java.util.UUID
 
 abstract class WidgetSmartspacerSession(
-    context: Context,
+    private val context: Context,
     private val widget: AppWidget,
     private val config: SmartspaceConfig = widget.getConfig(),
     private val collectInto: suspend (AppWidget) -> Unit
@@ -61,6 +66,8 @@ abstract class WidgetSmartspacerSession(
         flowOf(1)
     }
 
+    override suspend fun supportsComplicationOnPrimary() = true
+
     override suspend fun collectInto(id: AppWidget, targets: List<SmartspaceView>) {
         collectInto.invoke(id)
     }
@@ -75,6 +82,23 @@ abstract class WidgetSmartspacerSession(
         )
     }
 
+    override fun getKebabMenuBehaviour(target: SmartspaceTarget): KebabMenuBehaviour {
+        val intent = WidgetOptionsMenuActivity.getIntent(
+            context,
+            target,
+            widget.appWidgetId,
+            widget.ownerPackage
+        ).let {
+            PendingIntent.getActivity(
+                context,
+                target.hashCode(),
+                it,
+                PendingIntent_MUTABLE_FLAGS
+            )
+        }
+        return KebabMenuBehaviour.Replace(intent)
+    }
+
     protected fun SmartspacePageHolder.toSmartspaceViewFlow(): Flow<Pair<SmartspacerViewState, WidgetSmartspacerPage>> {
         setVisibleTarget(page.smartspaceTargetId)
         val state = toSmartspaceViewState()
@@ -86,7 +110,6 @@ abstract class WidgetSmartspacerSession(
 
     private fun SmartspacePageHolder.toSmartspaceViewState(): Flow<SmartspacerViewState> {
         val template = page.templateData
-        val isList = widget.listMode
         val basic = if(includeBasic) {
             SmartspaceView.fromTarget(page, config.uiSurface, true)
         }else null
@@ -102,12 +125,29 @@ abstract class WidgetSmartspacerSession(
                 }
             }
             else -> {
-                val page = SmartspaceView.fromTarget(page, config.uiSurface, false)
+                val page = SmartspaceView.fromTarget(
+                    page.prepareRemoteViews(),
+                    config.uiSurface,
+                    false
+                )
                 flowOf(page).map {
                     SmartspacerViewState(it, this.page, basic)
                 }
             }
         }
+    }
+
+    /**
+     *  Prepares Target for displaying in a widget.
+     *
+     *  For AaG Targets, fixes the kebab menu and replaces click actions with the proxy so the
+     *  dropdown action can be intercepted and ignored.
+     */
+    private fun SmartspaceTarget.prepareRemoteViews(): SmartspaceTarget {
+        val remoteViews = remoteViews?.copy()
+            ?.replaceClickWithProxyIntent(context)
+            ?.fixKebabMenuIfNeeded(context, this)
+        return copy(remoteViews = remoteViews)
     }
 
     private fun SmartspaceTarget.startLoopImages(

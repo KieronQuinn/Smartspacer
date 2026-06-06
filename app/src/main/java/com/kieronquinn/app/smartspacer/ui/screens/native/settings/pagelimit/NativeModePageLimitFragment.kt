@@ -16,6 +16,10 @@ class NativeModePageLimitFragment: BaseRadioSettingsFragment<TargetCountLimit>()
 
     override val viewModel by viewModel<NativeModePageLimitViewModel>()
 
+    override val additionalPadding by lazy {
+        resources.getDimension(R.dimen.margin_2)
+    }
+
     override val header by lazy {
         listOf(getHeader())
     }

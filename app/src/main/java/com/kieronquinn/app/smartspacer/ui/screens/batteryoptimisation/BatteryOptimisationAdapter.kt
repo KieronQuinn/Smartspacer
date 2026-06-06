@@ -43,6 +43,10 @@ class BatteryOptimisationAdapter(
         }
     }
 
+    override fun shouldRound(item: BaseSettingsItemType): Boolean {
+        return super.shouldRound(item) || item == BatteryOptimisationSettingsItem.ItemType.FOOTER
+    }
+
     private fun BatteryOptimisationViewHolder.Footer.setup(
         item: BatteryOptimisationSettingsItem.Footer
     ) = with(binding.batteryOptimisationFooterLink) {

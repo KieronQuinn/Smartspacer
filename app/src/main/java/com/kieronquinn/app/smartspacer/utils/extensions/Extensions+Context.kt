@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.ActivityManager
 import android.app.ActivityOptions
 import android.app.IApplicationThread
@@ -14,6 +15,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Context.RECEIVER_EXPORTED
 import android.content.ContextHidden
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.ServiceConnection
@@ -321,18 +323,6 @@ fun Context.isServiceRunning(serviceClass: Class<out Service>): Boolean {
     }
 }
 
-fun Context.getPlayStoreIntentForPackage(packageName: String, fallbackUrl: String): Intent? {
-    val playIntent = Intent(Intent.ACTION_VIEW).apply {
-        data = Uri.parse("market://details?id=$packageName")
-    }
-    if (packageManager.resolveActivityCompat(playIntent) != null) return playIntent
-    val fallbackIntent = Intent(Intent.ACTION_VIEW).apply {
-        data = Uri.parse(fallbackUrl)
-    }
-    if (packageManager.resolveActivityCompat(fallbackIntent, 0) != null) return fallbackIntent
-    return null
-}
-
 fun Context.shouldShowRequireSideload(): Boolean {
     return false //This is currently disabled as Google bottled it and reverted the change on 14
     return isAtLeastU() && !wasInstalledWithSession()
@@ -544,4 +534,12 @@ fun Context.getSupportedLocales(): List<Locale> {
 fun Context.getSelectedLanguage(supportedLocales: List<String>): Locale? {
     return LocaleManagerCompat.getApplicationLocales(this)
         .getFirstMatch(supportedLocales.toTypedArray())
+}
+
+fun Context.findActivity(): Activity? {
+    return when (this) {
+        is Activity -> this
+        is ContextWrapper -> baseContext.findActivity()
+        else -> null
+    }
 }

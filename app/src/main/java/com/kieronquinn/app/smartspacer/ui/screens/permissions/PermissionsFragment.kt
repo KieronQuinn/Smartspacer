@@ -72,9 +72,12 @@ class PermissionsFragment: BoundFragment<FragmentPermissionsBinding>(FragmentPer
     }
 
     private fun State.Loaded.loadItems(): List<BaseSettingsItem> {
-        return items.map {
+        return items.mapIndexed { index, it ->
             when(it){
-                is PermissionItem.Header ->  GenericSettingsItem.Header(getString(it.title))
+                is PermissionItem.Header -> GenericSettingsItem.Header(
+                    getString(it.title),
+                    shortTopPadding = index == 0
+                )
                 is PermissionItem.Card -> {
                     GenericSettingsItem.Card(
                         ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),

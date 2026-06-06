@@ -22,7 +22,7 @@ abstract class BoundView<V: ViewBinding>(
     attrs: AttributeSet? = null,
 ): FrameLayout(context, attrs), LifecycleOwner {
 
-    private val layoutInflater = LayoutInflater.from(context)
+    protected val layoutInflater = LayoutInflater.from(context)
     private var _binding: V? = null
     private var isResumed = false
 
@@ -82,7 +82,7 @@ abstract class BoundView<V: ViewBinding>(
     private fun pause() {
         if(!isResumed) return
         isResumed = false
-        pause()
+        onPause()
     }
 
     @CallSuper

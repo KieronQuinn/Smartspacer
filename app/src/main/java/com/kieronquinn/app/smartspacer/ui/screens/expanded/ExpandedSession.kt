@@ -85,6 +85,10 @@ interface ExpandedSession {
                     return smartspaceAction.icon != null || smartspaceAction.title.isNotBlank()
                 }
 
+                override fun getTitle(): String {
+                    return smartspaceAction.title
+                }
+
             }
 
             data class SubItemInfo(
@@ -107,9 +111,14 @@ interface ExpandedSession {
                     return info.icon != null || info.text?.text?.isNotBlank() == true
                 }
 
+                override fun getTitle(): String {
+                    return info.text?.text?.toString() ?: ""
+                }
+
             }
 
             abstract fun isValid(): Boolean
+            abstract fun getTitle(): String
 
             enum class Type {
                 ACTION,

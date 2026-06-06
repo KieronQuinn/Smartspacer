@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.AdaptiveIconDrawable
 import android.graphics.drawable.Drawable
+import android.provider.Settings
 import androidx.core.content.ContextCompat
 import com.google.android.libraries.assistant.oemsmartspace.shared.OEMSmartspaceSharedConstants.GSA_PACKAGE
 import com.google.gson.Gson
@@ -14,11 +15,20 @@ import com.kieronquinn.app.smartspacer.model.doodle.Doodle
 import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.utils.doodle.DoodleInterceptor
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.utils.extensions.getApplicationInfo
+import com.kieronquinn.app.smartspacer.utils.extensions.getSearchIntent
+import com.kieronquinn.app.smartspacer.utils.extensions.invoke
+import com.kieronquinn.app.smartspacer.utils.extensions.isValidIntent
+import com.kieronquinn.app.smartspacer.utils.extensions.monochromeOrNull
+import com.kieronquinn.app.smartspacer.utils.extensions.observerAsFlow
+import com.kieronquinn.app.smartspacer.utils.extensions.queryIntentActivitiesCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import org.jetbrains.annotations.VisibleForTesting
@@ -66,11 +76,12 @@ class SearchRepositoryImpl(
         var BASE_URL = "https://www.google.com"
 
         private const val FILENAME_DOODLE_CACHE = "doodle.json"
+        private const val SELECTED_SEARCH_ENGINE = "selected_search_engine"
     }
 
     private val interceptedClient by lazy {
         okHttpClient.newBuilder().apply {
-            addInterceptor(DoodleInterceptor())
+            addInterceptor(DoodleInterceptor(context))
         }.build()
     }
 
@@ -85,11 +96,28 @@ class SearchRepositoryImpl(
     private val cacheFile = File(context.cacheDir, FILENAME_DOODLE_CACHE)
     private val setting = settingsRepository.expandedSearchPackage
 
+    private val selectedSearchEngine = context.contentResolver.observerAsFlow(
+        Settings.Secure.getUriFor(SELECTED_SEARCH_ENGINE)
+    ).map {
+        try {
+            Settings.Secure.getString(context.contentResolver, SELECTED_SEARCH_ENGINE)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
     private val doodleApi by lazy {
         retrofit.create(DoodleApi::class.java)
     }
 
-    override val expandedSearchApp = setting.asFlow().flatMapLatest { packageName ->
+    private val searchApp = combine(
+        setting.asFlow(),
+        selectedSearchEngine
+    ) { setting, system ->
+        setting.ifBlank { system } ?: ""
+    }
+
+    override val expandedSearchApp = searchApp.flatMapLatest { packageName ->
         packageRepository.onPackageChanged(scope, packageName).map {
             if(packageManager.isValidIntent(getSearchIntent(packageName))) {
                 packageName
@@ -153,7 +181,8 @@ class SearchRepositoryImpl(
 
     private suspend fun loadDoodle(): Doodle? = withContext(Dispatchers.IO) {
         try {
-            doodleApi.getDoodle().invoke()?.fillDarkImage(doodleApi)?.also {
+            doodleApi.getDoodle().invoke().also {
+            }?.fillDarkImage(doodleApi)?.also {
                 val cachedDoodle = CachedDoodle(it, it.getExpiryTime())
                 cacheFile.writeText(gson.toJson(cachedDoodle))
             }

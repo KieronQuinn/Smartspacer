@@ -44,7 +44,6 @@ import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
-import java.util.concurrent.Executors
 
 
 /**
@@ -89,9 +88,19 @@ interface SystemSmartspaceRepository {
     val mediaTargets: StateFlow<List<SmartspaceTarget>>
 
     /**
+     *  Ambient cue targets, only from the system
+     */
+    val ambientCueTargets: StateFlow<List<SmartspaceTarget>>
+
+    /**
      *  Glanceable Hub targets, only from the system
      */
     val hubTargets: StateFlow<List<SmartspaceTarget>>
+
+    /**
+     *  Dream targets, only from the system
+     */
+    val dreamTargets: StateFlow<List<SmartspaceTarget>>
 
     /**
      *  Dismisses the given Target **locally**. We cannot persist dismissals into the default
@@ -130,7 +139,7 @@ interface SystemSmartspaceRepository {
 
 }
 
-@SuppressLint("newApi")
+@SuppressLint("newApi", "WrongConstant")
 class SystemSmartspaceRepositoryImpl(
     private val context: Context,
     private val shizuku: ShizukuServiceRepository,
@@ -155,10 +164,15 @@ class SystemSmartspaceRepositoryImpl(
     val _mediaTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
     @VisibleForTesting
+    val _ambientCueTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
+
+    @VisibleForTesting
     val _hubTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
 
+    @VisibleForTesting
+    val _dreamTargets = MutableStateFlow<List<SmartspaceTarget>>(emptyList())
+
     private val user = Process.myUserHandle().getIdentifier()
-    private val executor = Executors.newSingleThreadExecutor()
     private var lastShowedNativeReminderAt = 0L
     private var lastShowedReconnectAt = 0L
 
@@ -190,12 +204,26 @@ class SystemSmartspaceRepositoryImpl(
         if(native && enabled) targets else emptyList()
     }.stateIn(scope, SharingStarted.Eagerly, _mediaTargets.value)
 
+    override val ambientCueTargets = combine(
+        _ambientCueTargets.asStateFlow(),
+        settings.enhancedMode.asFlow()
+    ) { targets, enabled ->
+        if(enabled) targets else emptyList()
+    }.stateIn(scope, SharingStarted.Eagerly, _ambientCueTargets.value)
+
     override val hubTargets = combine(
         _hubTargets.asStateFlow(),
         settings.enhancedMode.asFlow()
     ) { targets, enabled ->
         if(enabled) targets else emptyList()
     }.stateIn(scope, SharingStarted.Eagerly, _hubTargets.value)
+
+    override val dreamTargets = combine(
+        _dreamTargets.asStateFlow(),
+        settings.enhancedMode.asFlow()
+    ) { targets, enabled ->
+        if(enabled) targets else emptyList()
+    }.stateIn(scope, SharingStarted.Eagerly, _dreamTargets.value)
 
     /**
      *  Whether the system targets should be monitored, which requires Shizuku ready and enhanced
@@ -220,12 +248,18 @@ class SystemSmartspaceRepositoryImpl(
         if(smartspaceManager.isAvailable) {
             smartspaceManager.createSmartspaceSessions { surface, targets ->
                 scope.launch(Dispatchers.IO) {
-                    val converted = targets.map { target -> target.toSmartspaceTarget() }
+                    val converted = if (surface == UiSurface.HOMESCREEN) {
+                        targets.map { target -> target.toSmartspaceTarget() }
+                    } else {
+                        targets.map { target -> target.toSmartspaceTarget() }
+                    }
                     when(surface) {
                         UiSurface.HOMESCREEN -> _homeTargets.emit(converted)
                         UiSurface.LOCKSCREEN -> _lockTargets.emit(converted)
                         UiSurface.MEDIA_DATA_MANAGER -> _mediaTargets.emit(converted)
                         UiSurface.GLANCEABLE_HUB -> _hubTargets.emit(converted)
+                        UiSurface.AMBIENT_CUE -> _ambientCueTargets.emit(converted)
+                        UiSurface.DREAM -> _dreamTargets.emit(converted)
                     }
                 }
             }

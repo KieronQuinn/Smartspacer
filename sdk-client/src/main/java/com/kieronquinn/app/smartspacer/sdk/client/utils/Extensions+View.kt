@@ -103,7 +103,7 @@ fun View.setOnClick(
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }, (viewForAnimation ?: this).createActivityOptions())
                     } catch (e: Exception) {
-                        Log.e("Smartspacer", "Error firing intent", e)
+                        Log.e("Smartspacer", "Error firing Intent", e)
                         interactionListener?.onInteraction(target, action.id)
                     }
                 }
@@ -119,6 +119,7 @@ fun View.setOnClick(
                             action.pendingIntent?.sendSafely()
                         }
                     } catch (e: Exception) {
+                        Log.e("Smartspacer", "Error firing PendingIntent", e)
                         interactionListener?.onInteraction(target, action.id)
                     }
                 }

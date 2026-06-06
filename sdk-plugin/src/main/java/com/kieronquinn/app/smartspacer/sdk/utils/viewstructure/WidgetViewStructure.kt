@@ -82,11 +82,11 @@ abstract class ViewGroup(private val clazz: Class<out AndroidViewGroup>): View(c
         addChild(AdapterViewFlipper().also(block))
     }
     
-    fun frameLayout(block: RelativeLayout.() -> Unit = {}) {
+    fun relativeLayout(block: RelativeLayout.() -> Unit = {}) {
         addChild(RelativeLayout().also(block))
     }
 
-    fun relativeLayout(block: FrameLayout.() -> Unit = {}) {
+    fun frameLayout(block: FrameLayout.() -> Unit = {}) {
         addChild(FrameLayout().also(block))
     }
     
@@ -178,6 +178,13 @@ abstract class ViewGroup(private val clazz: Class<out AndroidViewGroup>): View(c
         }
         //Verify all expected children have been visited
         return children.values.all { it.visited }
+    }
+
+    private fun Class<*>.isClassOrSuperclass(clazz: Class<*>): Boolean {
+        return when {
+            this == clazz -> true
+            else -> superclass?.isClassOrSuperclass(clazz) ?: false
+        }
     }
 
     class MixedIndexesException: IllegalStateException(

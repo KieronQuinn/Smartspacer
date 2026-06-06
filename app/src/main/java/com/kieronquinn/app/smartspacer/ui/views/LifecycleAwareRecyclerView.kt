@@ -1,7 +1,9 @@
 package com.kieronquinn.app.smartspacer.ui.views
 
 import android.content.Context
+import android.graphics.Point
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -12,8 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.Adapter
-import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView.ViewHolder
 import com.kieronquinn.app.smartspacer.utils.extensions.handleLifecycleEventSafely
 
 /**

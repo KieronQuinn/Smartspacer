@@ -51,5 +51,13 @@
             android:id="@+id/action_setupAnalyticsFragment_to_setupContainerFragment"
             app:destination="@id/setupContainerFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/shizukuOutdatedBottomSheetFragment2"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.shizuku.ShizukuOutdatedBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_shizuku_outdated"/>
+    <action
+        android:id="@+id/action_global_shizukuOutdatedBottomSheetFragment2"
+        app:destination="@id/shizukuOutdatedBottomSheetFragment2" />
 
 </navigation>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/margin_8"
     android:transitionGroup="true">
 
     <include
@@ -20,6 +19,8 @@
         android:id="@+id/battery_optimisation_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingTop="@dimen/margin_8"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toTopOf="@id/battery_optimisation_controls"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_settings_switch" />
@@ -35,7 +36,8 @@
         tools:backgroundTint="@android:color/darker_gray"
         tools:visibility="visible">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
+            app:iconSize="16dp"
             android:id="@+id/battery_optimisation_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

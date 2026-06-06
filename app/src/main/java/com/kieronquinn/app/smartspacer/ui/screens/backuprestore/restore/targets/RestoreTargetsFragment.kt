@@ -55,8 +55,7 @@ class RestoreTargetsFragment: BaseAddTargetsFragment<FragmentRestoreTargetsBindi
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.restoreTargetsControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.restoreTargetsControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.restoreTargetsControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.restoreTargetsControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

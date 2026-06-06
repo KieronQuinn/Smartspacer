@@ -22,16 +22,17 @@ import android.window.SplashScreen
 import androidx.annotation.RequiresApi
 import androidx.core.widget.RemoteViewsCompat.setImageViewColorFilter
 import androidx.core.widget.RemoteViewsCompat.setImageViewImageTintList
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.AsNowPlayingTarget
 import com.kieronquinn.app.smartspacer.providers.SmartspacerWidgetProxyContentProvider.Companion.createSmartspacerWidgetProxyUri
 import com.kieronquinn.app.smartspacer.receivers.WidgetListClickReceiver
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.model.RemoteOnClickResponse.RemoteResponse.Companion.INTERACTION_TYPE_CHECKED_CHANGE
 import com.kieronquinn.app.smartspacer.sdk.utils.copy
+import com.kieronquinn.app.smartspacer.ui.activities.ExportedSmartspaceTrampolineProxyActivity
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import dev.rikka.tools.refine.Refine
 import java.lang.reflect.Field
 import java.util.concurrent.CompletableFuture
-import kotlin.Pair
 import android.util.Pair as AndroidPair
 
 @SuppressLint("DiscouragedPrivateApi")
@@ -363,8 +364,24 @@ fun RemoteViews.replaceClickWithFillIntent(): RemoteViews {
     actions = actions?.map {
         when(it.javaClass.simpleName) {
             "ViewGroupActionAdd" -> it.replaceClickWithFillIntent()
-            "SetOnClickResponse" -> it.convertOnClickResponse()
+            "SetOnClickResponse" -> it.convertOnClickResponseForList()
             "SetOnCheckedChangeResponse" -> it.convertOnCheckedChangeResponse()
+            else -> it
+        }
+    } as ArrayList<Any>?
+    return this
+}
+
+/**
+ *  Replaces click actions with proxy actions, running via [ExportedSmartspaceTrampolineProxyActivity]
+ */
+fun RemoteViews.replaceClickWithProxyIntent(context: Context): RemoteViews {
+    // Only applies to AAG Targets
+    if (`package` != AsNowPlayingTarget.PACKAGE_NAME) return this
+    actions = actions?.map {
+        when(it.javaClass.simpleName) {
+            "ViewGroupActionAdd" -> it.replaceClickWithProxyIntent(context)
+            "SetOnClickResponse" -> it.convertOnClickResponseForProxy(context)
             else -> it
         }
     } as ArrayList<Any>?
@@ -382,6 +399,16 @@ private fun Any.replaceClickWithFillIntent() = apply {
 }
 
 @SuppressLint("PrivateApi", "SoonBlockedPrivateApi")
+private fun Any.replaceClickWithProxyIntent(context: Context) = apply {
+    val action = Class.forName("android.widget.RemoteViews\$ViewGroupActionAdd")
+    val mNestedViews = action.getDeclaredField("mNestedViews").apply {
+        isAccessible = true
+    }
+    val nestedViews = mNestedViews.get(this) as RemoteViews
+    mNestedViews.set(this, nestedViews.replaceClickWithProxyIntent(context))
+}
+
+@SuppressLint("PrivateApi", "SoonBlockedPrivateApi")
 private fun Any.getViewGroupActionAddRemoteViews(): RemoteViews {
     val action = Class.forName("android.widget.RemoteViews\$ViewGroupActionAdd")
     val mNestedViews = action.getDeclaredField("mNestedViews").apply {
@@ -391,7 +418,7 @@ private fun Any.getViewGroupActionAddRemoteViews(): RemoteViews {
 }
 
 @SuppressLint("PrivateApi")
-private fun Any.convertOnClickResponse() = apply {
+private fun Any.convertOnClickResponseForList() = apply {
     val action = Class.forName("android.widget.RemoteViews\$SetOnClickResponse")
     val mResponse = action.getDeclaredField("mResponse").apply {
         isAccessible = true
@@ -399,6 +426,18 @@ private fun Any.convertOnClickResponse() = apply {
     val remoteResponse = mResponse.get(this) as RemoteResponse
     val newResponse = RemoteResponse
         .fromFillInIntent(WidgetListClickReceiver.getIntent(remoteResponse))
+    mResponse.set(this, newResponse)
+}
+
+@SuppressLint("PrivateApi")
+private fun Any.convertOnClickResponseForProxy(context: Context) = apply {
+    val action = Class.forName("android.widget.RemoteViews\$SetOnClickResponse")
+    val mResponse = action.getDeclaredField("mResponse").apply {
+        isAccessible = true
+    }
+    val remoteResponse = mResponse.get(this) as RemoteResponse
+    val newResponse = RemoteResponse
+        .fromPendingIntent(ExportedSmartspaceTrampolineProxyActivity.getPendingIntent(context, remoteResponse))
     mResponse.set(this, newResponse)
 }
 

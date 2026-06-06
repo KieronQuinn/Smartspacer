@@ -11,25 +11,34 @@ interface GoogleWeatherRepository {
     fun setTodayState(todayState: TodayState)
 
     fun getForecastState(): ForecastState?
-    fun setForecastState(forecastState: ForecastState)
+    fun setForecastState(forecastState: ForecastState?)
 
     data class TodayState(
         val icon: Bitmap,
         val temperature: String
     )
 
-    data class ForecastState(
-        val location: String,
-        val condition: String,
-        val now: ForecastItem,
-        val forecast: List<ForecastItem>,
-        val clickIntent: PendingIntent?
-    ) {
-        data class ForecastItem(
-            val time: String?,
-            val temperature: String,
-            val icon: Bitmap
-        )
+    sealed class ForecastState {
+        data class Loaded(
+            val location: String,
+            val condition: String,
+            val now: ForecastItem,
+            val forecast: List<ForecastItem>,
+            val clickIntent: PendingIntent?
+        ): ForecastState() {
+            data class ForecastItem(
+                val time: String?,
+                val temperature: String,
+                val icon: Bitmap
+            )
+        }
+
+        data class Error(
+            val title: String,
+            val subtitle: String,
+            val icon: Bitmap,
+            val clickIntent: PendingIntent
+        ): ForecastState()
     }
 
 }
@@ -51,7 +60,7 @@ class GoogleWeatherRepositoryImpl: GoogleWeatherRepository {
         return forecastState
     }
 
-    override fun setForecastState(forecastState: ForecastState) {
+    override fun setForecastState(forecastState: ForecastState?) {
         this.forecastState = forecastState
     }
 

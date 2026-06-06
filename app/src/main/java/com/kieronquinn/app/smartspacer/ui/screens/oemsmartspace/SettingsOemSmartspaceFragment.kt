@@ -65,7 +65,8 @@ class SettingsOemSmartspaceFragment: BaseSettingsFragment(), BackAvailable {
             Card(
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_warning),
                 getString(R.string.oem_smartspace_incompatible),
-                viewModel::onIncompatibleClicked
+                viewModel::onIncompatibleClicked,
+                topPadding = resources.getDimensionPixelSize(R.dimen.margin_16)
             )
         }
         val apps = when {

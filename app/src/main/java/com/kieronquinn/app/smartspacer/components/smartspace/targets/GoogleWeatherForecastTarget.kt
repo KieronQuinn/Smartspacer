@@ -7,7 +7,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.widgets.GoogleWeatherForecastWidget.Companion.getProviderInfo
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.ForecastState
-import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.ForecastState.ForecastItem
+import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.ForecastState.Loaded.ForecastItem
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -28,11 +28,15 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
     private val widgetRepository by inject<WidgetRepository>()
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
-        val state = googleWeatherRepository.getForecastState() ?: return emptyList()
-        return listOf(state.toTarget(smartspacerId))
+        val target = when (val state = googleWeatherRepository.getForecastState()) {
+            is ForecastState.Loaded -> state.toTarget(smartspacerId)
+            is ForecastState.Error -> state.toTarget(smartspacerId)
+            else -> return emptyList()
+        }
+        return listOf(target)
     }
 
-    private fun ForecastState.toTarget(smartpacerId: String): SmartspaceTarget {
+    private fun ForecastState.Loaded.toTarget(smartpacerId: String): SmartspaceTarget {
         val tapAction = clickIntent?.let { TapAction(pendingIntent = it) } ?: getTapAction()
         return TargetTemplate.Carousel(
             id = "google_weather_forecast_$smartpacerId",
@@ -42,7 +46,21 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
             icon = Icon(AndroidIcon.createWithBitmap(now.icon), shouldTint = false),
             items = forecast.toCarouselItems(tapAction),
             onClick = tapAction,
-            onCarouselClick = tapAction,
+            onCarouselClick = tapAction
+        ).create().apply {
+            canBeDismissed = false
+        }
+    }
+
+    private fun ForecastState.Error.toTarget(smartpacerId: String): SmartspaceTarget {
+        val tapAction = TapAction(pendingIntent = clickIntent)
+        return TargetTemplate.Basic(
+            id = "google_weather_forecast_error_$smartpacerId",
+            componentName = ComponentName(provideContext(), this::class.java),
+            title = Text(title),
+            subtitle = Text(subtitle),
+            icon = Icon(AndroidIcon.createWithBitmap(icon)),
+            onClick = tapAction,
             subComplication = ComplicationTemplate.blank().create()
         ).create().apply {
             canBeDismissed = false
@@ -68,8 +86,8 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
 
     override fun getConfig(smartspacerId: String?): Config {
         return Config(
-            resources.getString(R.string.target_google_weather_forecast_title),
-            resources.getString(R.string.target_google_weather_forecast_content),
+            resources.getString(R.string.target_pixel_weather_forecast_title),
+            resources.getString(R.string.target_pixel_weather_forecast_content),
             AndroidIcon.createWithResource(
                 provideContext(), R.drawable.ic_complication_google_weather
             ),
@@ -87,7 +105,7 @@ class GoogleWeatherForecastTarget: SmartspacerTargetProvider() {
         return if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S
             || getProviderInfo(widgetRepository) == null){
             CompatibilityState.Incompatible(
-                resources.getString(R.string.target_google_weather_forecast_incompatible)
+                resources.getString(R.string.target_pixel_weather_forecast_incompatible)
             )
         }else CompatibilityState.Compatible
     }

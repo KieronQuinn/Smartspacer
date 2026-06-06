@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_8"
         android:layout_marginEnd="@dimen/margin_16"
         android:elevation="8dp"
         android:outlineProvider="none"
@@ -70,7 +70,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_16"
                         android:text="@string/native_switch_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                        android:textColor="?android:textColorPrimary" />
 
                 </LinearLayout>
 
@@ -102,7 +103,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_16"
                         android:text="@string/native_switch_info"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                        android:textColor="?android:textColorPrimary" />
 
                 </LinearLayout>
 
@@ -156,7 +158,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:backgroundTint="@android:color/darker_gray">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
+            app:iconSize="16dp"
             android:id="@+id/native_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -225,8 +228,8 @@
         android:id="@+id/native_shizuku_error_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enhanced_mode_request_shizuku_error_open"
         android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/enhanced_mode_request_shizuku_error_open"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

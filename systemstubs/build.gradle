@@ -3,11 +3,10 @@ plugins {
 }
 
 android {
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         minSdk 29
-        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -27,10 +26,16 @@ android {
     buildFeatures {
         aidl true
     }
+    lint {
+        targetSdk 34
+    }
+    testOptions {
+        targetSdk 34
+    }
 }
 
 dependencies {
-    implementation "androidx.annotation:annotation:1.9.1"
+    implementation "androidx.annotation:annotation:1.10.0"
     annotationProcessor "dev.rikka.tools.refine:annotation-processor:$refine_version"
     compileOnly "dev.rikka.tools.refine:annotation:$refine_version"
 }

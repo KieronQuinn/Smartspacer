@@ -5,10 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.NavigationRes
+import androidx.appcompat.view.menu.ListMenuItemView
 import androidx.core.view.WindowCompat
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.sdk.utils.applySecurity
+import com.kieronquinn.app.smartspacer.ui.views.SmartspacerListMenuItemView
 import com.kieronquinn.app.smartspacer.utils.extensions.verifySecurity
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
@@ -135,6 +139,15 @@ class ConfigurationActivity: MonetCompatActivity() {
             ".ui.activities.NativeReconnectActivity",
             R.navigation.nav_graph_native_reconnect
         ),
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return when (name) {
+            ListMenuItemView::class.java.name -> {
+                SmartspacerListMenuItemView(context, attrs)
+            }
+            else -> super.onCreateView(name, context, attrs)
+        }
     }
 
 }

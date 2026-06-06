@@ -63,9 +63,12 @@ abstract class SmartspacerBaseFeaturePageView<V : ViewBinding>(
         }
 
         title?.smartspaceViewTitle?.setShadowEnabled(applyShadow)
+        title?.smartspaceViewTitle?.setExpressiveTitleFontIfAvailable()
         subtitle.subtitle.setShadowEnabled(applyShadow)
+        subtitle.subtitle.setExpressiveSubtitleFontIfAvailable()
         subtitle.subtitleIcon.setShadowEnabled(applyShadow)
         subtitle.action?.setShadowEnabled(applyShadow)
+        subtitle.action?.setExpressiveSubtitleFontIfAvailable()
         subtitle.actionIcon?.setShadowEnabled(applyShadow)
     }
 

@@ -10,7 +10,7 @@ import androidx.work.Configuration
 import com.google.android.material.color.DynamicColors
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
+import com.kieronquinn.app.smartspacer.Smartspacer.Companion.PACKAGE_KEYGUARD_DEFAULT
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigation
 import com.kieronquinn.app.smartspacer.components.navigation.ConfigurationNavigationImpl
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
@@ -248,6 +248,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.batteryoptimisation.SettingsBatteryOptimisationViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.settings.complicationonprimary.SettingsComplicationOnPrimaryViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.settings.dump.DumpSmartspacerViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.settings.language.SettingsLanguageViewModel
@@ -281,6 +282,8 @@ import com.kieronquinn.app.smartspacer.ui.screens.setup.targets.SetupTargetsView
 import com.kieronquinn.app.smartspacer.ui.screens.setup.targets.SetupTargetsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.setup.widget.SetupWidgetViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.setup.widget.SetupWidgetViewModelImpl
+import com.kieronquinn.app.smartspacer.ui.screens.shizuku.ShizukuOutdatedBottomSheetViewModel
+import com.kieronquinn.app.smartspacer.ui.screens.shizuku.ShizukuOutdatedBottomSheetViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.targets.TargetsViewModel
 import com.kieronquinn.app.smartspacer.ui.screens.targets.TargetsViewModelImpl
 import com.kieronquinn.app.smartspacer.ui.screens.targets.add.TargetsAddViewModel
@@ -306,8 +309,8 @@ import me.saket.bettermovementmethod.BetterLinkMovementMethod
 import okhttp3.OkHttpClient
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import rikka.sui.Sui
@@ -341,7 +344,6 @@ class Smartspacer: Application(), Configuration.Provider {
     }
 
     private val singles = module {
-        single { BlurProvider.getBlurProvider(resources) }
         single { createGson() }
         single { createOkHttpClient() }
         single { createMarkwon() }
@@ -406,7 +408,7 @@ class Smartspacer: Application(), Configuration.Provider {
 
     private val viewModels = module {
         viewModel<MainActivityViewModel> { MainActivityViewModelImpl(get(), get(), it.get()) }
-        viewModel<ContainerViewModel> { ContainerViewModelImpl(get(), get(), get(), get()) }
+        viewModel<ContainerViewModel> { ContainerViewModelImpl(get(), get(), get(), get(), get()) }
         viewModel<TargetsViewModel> { TargetsViewModelImpl(get(), get(), get(), get(), get(), get()) }
         viewModel<ComplicationsViewModel> { ComplicationsViewModelImpl(get(), get(), get(), get(), get(), get()) }
         viewModel<TargetsAddViewModel> { TargetsAddViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
@@ -425,7 +427,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<AppPredictionRequirementConfigurationViewModel> { AppPredictionRequirementConfigurationViewModelImpl(get(), get()) }
         viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get()) }
         viewModel { SettingsHideSensitiveViewModel(get()) }
-        viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get()) }
+        viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get(), get()) }
         viewModel<SetupAnalyticsViewModel> { SetupAnalyticsViewModelImpl(get(), get()) }
         viewModel<SetupDecisionViewModel> { SetupDecisionViewModelImpl(get(), get(), get(), get()) }
         viewModel<SetupNotificationsViewModel> { SetupNotificationsViewModelImpl(get(), get(), get()) }
@@ -503,7 +505,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<RestoreWidgetsViewModel> { RestoreWidgetsViewModelImpl(get(), get()) }
         viewModel<RestoreSettingsViewModel> { RestoreSettingsViewModelImpl(get(), get()) }
         viewModel<CalendarTargetConfigurationViewModel> { CalendarTargetConfigurationViewModelImpl(get(), get(), get()) }
-        viewModel<DefaultTargetConfigurationViewModel> { DefaultTargetConfigurationViewModelImpl(get(), get(), get()) }
+        viewModel<DefaultTargetConfigurationViewModel> { DefaultTargetConfigurationViewModelImpl(get(), get(), get(), get()) }
         viewModel<GmailComplicationConfigurationViewModel> { GmailComplicationConfigurationViewModelImpl(get(), get(), get()) }
         viewModel<RecentTaskRequirementConfigurationViewModel> { RecentTaskRequirementConfigurationViewModelImpl(get(), get(), get()) }
         viewModel<RecentTaskRequirementConfigurationAppPickerViewModel> { RecentTaskRequirementConfigurationAppPickerViewModelImpl(get(), get(), get()) }
@@ -531,10 +533,9 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<WidgetConfigurationViewModel> { WidgetConfigurationViewModelImpl(get(), get(), get(), get(), get(), get()) }
         viewModel<SettingsLanguageViewModel> { SettingsLanguageViewModelImpl(get()) }
         viewModel<WidgetTargetSetupViewModel> { WidgetTargetSetupViewModelImpl(get(), it.get()) }
-        viewModel<WidgetTargetConfigurationViewModel> { WidgetTargetConfigurationViewModelImpl(
-            get(),
-            it.get()
-        ) }
+        viewModel<WidgetTargetConfigurationViewModel> { WidgetTargetConfigurationViewModelImpl(get(), it.get()) }
+        viewModel<ShizukuOutdatedBottomSheetViewModel> { ShizukuOutdatedBottomSheetViewModelImpl(get()) }
+        viewModel<SettingsComplicationOnPrimaryViewModel> { SettingsComplicationOnPrimaryViewModel(get()) }
     }
 
     override fun attachBaseContext(base: Context) {

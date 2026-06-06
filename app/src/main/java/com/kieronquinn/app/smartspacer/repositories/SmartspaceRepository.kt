@@ -11,6 +11,7 @@ import com.kieronquinn.app.smartspacer.model.smartspace.ActionHolder
 import com.kieronquinn.app.smartspacer.model.smartspace.Target
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ComplicationOnPrimary
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
@@ -71,7 +72,8 @@ interface SmartspaceRepository {
         doesHaveSplitSmartspace: Boolean,
         isNative: Boolean,
         actionsFirst: Boolean,
-        supportsRemoteViews: Boolean
+        supportsRemoteViews: Boolean,
+        complicationOnPrimary: ComplicationOnPrimary
     ): List<SmartspacePageHolder>
 
     /**
@@ -418,7 +420,8 @@ class SmartspaceRepositoryImpl(
         doesHaveSplitSmartspace: Boolean,
         isNative: Boolean,
         actionsFirst: Boolean,
-        supportsRemoteViews: Boolean
+        supportsRemoteViews: Boolean,
+        complicationOnPrimary: ComplicationOnPrimary
     ): List<SmartspacePageHolder> {
         return when {
             doesHaveSplitSmartspace && surface == UiSurface.LOCKSCREEN -> {
@@ -427,7 +430,8 @@ class SmartspaceRepositoryImpl(
                     actions,
                     openMode,
                     actionsFirst,
-                    supportsRemoteViews
+                    supportsRemoteViews,
+                    complicationOnPrimary
                 )
             }
             else -> {
@@ -436,7 +440,8 @@ class SmartspaceRepositoryImpl(
                     actions,
                     openMode,
                     actionsFirst,
-                    supportsRemoteViews
+                    supportsRemoteViews,
+                    complicationOnPrimary
                 )
             }
         }
@@ -486,7 +491,6 @@ class SmartspaceRepositoryImpl(
         if (isAtLeastBaklava()) {
             context.startActivity(Intent(context, FlashlightToggleActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             })
         } else {
             shizukuServiceRepository.runWithService { it.toggleTorch() }
@@ -514,23 +518,33 @@ class SmartspaceRepositoryImpl(
         }.map { target ->
             target.fixActionsIfNeeded(context)
         }.map { target ->
-            val subtitle = target.templateData?.subtitleItem
-            val supplementalSubtitle = target.templateData?.subtitleSupplementalItem
-            val header = when {
+            val subtitleItem = target.templateData?.subtitleItem
+            val supplementalSubtitleItem = target.templateData?.subtitleSupplementalItem
+            var isSubtitleUsed = false
+            val subtitle = when {
                 target.headerAction?.subtitle?.isNotBlank() == true -> target.headerAction
-                subtitle?.text?.text?.isNotEmpty() == true -> {
-                    subtitle.generateSmartspaceAction(target, true)
+                subtitleItem?.text?.text?.isNotEmpty() == true -> {
+                    isSubtitleUsed = true
+                    subtitleItem.generateSmartspaceAction(target, true)
                 }
                 else -> null
             }
-            val base = when {
+            val supplemental = when {
                 target.baseAction?.subtitle?.isNotBlank() == true -> target.baseAction
-                supplementalSubtitle?.text?.text?.isNotEmpty() == true -> {
-                    supplementalSubtitle.generateSmartspaceAction(target, false)
+                supplementalSubtitleItem?.text?.text?.isNotEmpty() == true -> {
+                    supplementalSubtitleItem.generateSmartspaceAction(target, false)
+                }
+                supplementalSubtitleItem?.text?.text?.isNotEmpty() == true -> {
+                    supplementalSubtitleItem.generateSmartspaceAction(target, false)
+                }
+                // Sometimes the subtitle is provided separately for some reason
+                !isSubtitleUsed && subtitleItem?.text?.text?.isNotEmpty() == true -> {
+                    subtitleItem.generateSmartspaceAction(target, true)
+                        .takeUnless { it.subContentEquals(subtitle) }
                 }
                 else -> null
             }
-            listOfNotNull(header, base)
+            listOfNotNull(subtitle, supplemental)
         }.flatten()
     }
 

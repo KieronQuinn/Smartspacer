@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacer
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
@@ -34,9 +35,13 @@ abstract class ExpandedRearrangeViewModel(scope: CoroutineScope?): BaseViewModel
     abstract fun onResume()
     abstract fun moveItem(from: Int, to: Int)
 
-    sealed class State {
-        object Loading: State()
-        data class Loaded(val items: List<Item>, val multiColumnEnabled: Boolean): State()
+    sealed class State (open val background: ExpandedBackground) {
+        data class Loading(override val background: ExpandedBackground): State(background)
+        data class Loaded(
+            val items: List<Item>,
+            val multiColumnEnabled: Boolean,
+            override val background: ExpandedBackground
+        ): State(background)
     }
 
 }
@@ -54,6 +59,7 @@ class ExpandedRearrangeViewModelImpl(
         .stateIn(vmScope, SharingStarted.Eagerly, null)
 
     private val items = MutableSharedFlow<List<Item>>()
+    private val background = settingsRepository.expandedBackground
 
     private val session = ExpandedSmartspacerSession(
         context,
@@ -66,13 +72,14 @@ class ExpandedRearrangeViewModelImpl(
 
     override val state = combine(
         items,
-        settingsRepository.expandedMultiColumnEnabled.asFlow()
-    ) { items, multiColumn ->
+        settingsRepository.expandedMultiColumnEnabled.asFlow(),
+        background.asFlow()
+    ) { items, multiColumn, background ->
         val widgets = items.filter { item ->
             (item is Item.Widget && item.isCustom) || item is Item.RemovedWidget
         }
-        State.Loaded(widgets, multiColumn)
-    }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
+        State.Loaded(widgets, multiColumn, background)
+    }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading(background.getSync()))
 
     override val exitBus = context.lockscreenShowing()
         .drop(1)

@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetHostView
 import android.content.Context
 import android.graphics.Color
 import com.kieronquinn.app.smartspacer.sdk.client.databinding.SmartspacePageRemoteviewsBinding
+import com.kieronquinn.app.smartspacer.sdk.client.utils.setOnClick
 import com.kieronquinn.app.smartspacer.sdk.client.utils.wrap
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -30,6 +31,9 @@ class SmartspacerRemoteViewsPageView(
                 target.remoteViews?.wrap(widgetContext, tintColour == Color.BLACK)?.copy()
             )
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            isClickable = true
+            isFocusable = true
+            setOnClick(target, target.headerAction, interactionListener)
         }
         addView(host)
     }

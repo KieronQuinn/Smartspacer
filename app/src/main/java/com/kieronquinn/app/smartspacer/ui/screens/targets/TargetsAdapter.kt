@@ -3,6 +3,8 @@ package com.kieronquinn.app.smartspacer.ui.screens.targets
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
@@ -46,6 +48,7 @@ class TargetsAdapter(
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
     private val monet = MonetCompat.getInstance()
     private val glide = Glide.with(recyclerView.context)
+    private val padding = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_8)
 
     override fun getItemCount() = items.size
 
@@ -79,7 +82,7 @@ class TargetsAdapter(
         when(holder){
             is ViewHolder.ItemTarget -> {
                 val item = items[position] as ItemHolder.Item
-                holder.setup(item.item, holder)
+                holder.setup(item.item, holder, position)
             }
             is ViewHolder.NativeStartReminder -> {
                 val item = items[position] as ItemHolder.NativeStartReminder
@@ -94,12 +97,16 @@ class TargetsAdapter(
 
     private fun ViewHolder.ItemTarget.setup(
         item: TargetHolder,
-        viewHolder: ViewHolder
+        viewHolder: ViewHolder,
+        position: Int
     ) = with(binding) {
         glide.load(item.info.icon)
             .placeholder(targetIcon.drawable)
             .into(targetIcon)
         targetName.text = item.info.label
+        root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            updateMargins(top = if (position == 0) 0 else padding)
+        }
         targetDescription.text = if(item.info.compatibilityState == CompatibilityState.Compatible){
             item.info.description
         }else{

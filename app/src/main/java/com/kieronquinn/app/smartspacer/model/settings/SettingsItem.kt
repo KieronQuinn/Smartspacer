@@ -1,8 +1,10 @@
 package com.kieronquinn.app.smartspacer.model.settings
 
 import android.graphics.drawable.Drawable
+import android.view.View
 import com.google.android.material.slider.LabelFormatter
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.GenericSettingsItemType
+import java.util.UUID
 
 abstract class BaseSettingsItem(val itemType: BaseSettingsItemType) {
 
@@ -43,7 +45,8 @@ sealed class GenericSettingsItem(val type: GenericSettingsItemType): BaseSetting
         val subtitle: CharSequence,
         val icon: Drawable?,
         val isEnabled: Boolean = true,
-        val onClick: () -> Unit
+        val onClickWithView: ((View) -> Unit)? = null,
+        val onClick: () -> Unit,
     ): GenericSettingsItem(GenericSettingsItemType.SETTING) {
         override fun getItemId() = title.hashCode().toLong()
     }
@@ -84,16 +87,18 @@ sealed class GenericSettingsItem(val type: GenericSettingsItemType): BaseSetting
     }
 
     data class Header(
-        val text: CharSequence
+        val text: CharSequence? = null,
+        val shortTopPadding: Boolean = false
     ): GenericSettingsItem(GenericSettingsItemType.HEADER) {
-        override fun getItemId() = text.hashCode().toLong()
+        override fun getItemId() = (text ?: UUID.randomUUID().toString()).hashCode().toLong()
     }
 
     data class Card(
         val icon: Drawable?,
         val content: CharSequence,
         val onClick: (() -> Unit)? = null,
-        val contentHash: Long? = null
+        val contentHash: Long? = null,
+        val topPadding: Int? = null
     ): GenericSettingsItem(GenericSettingsItemType.CARD) {
         override fun getItemId() = contentHash ?: content.hashCode().toLong()
     }

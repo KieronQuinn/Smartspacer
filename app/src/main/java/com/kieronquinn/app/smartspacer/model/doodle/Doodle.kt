@@ -9,8 +9,8 @@ data class Doodle(
     private val ddlJson: DDLJson
 ) {
 
-    fun getDoodleImage(baseUrl: String): DoodleImage {
-        return ddlJson.image.toDoodleImage(
+    fun getDoodleImage(baseUrl: String): DoodleImage? {
+        return ddlJson.image?.toDoodleImage(
             baseUrl,
             ddlJson.altText,
             ddlJson.searchUrl,
@@ -22,8 +22,9 @@ data class Doodle(
         return ddlJson.timeToLiveMs + System.currentTimeMillis()
     }
 
-    fun fillDarkImage(doodleApi: DoodleApi): Doodle = apply {
-        val darkGif = doodleApi.getEquivalentDarkGif(ddlJson.image.url) ?: return@apply
+    fun fillDarkImage(doodleApi: DoodleApi): Doodle? = apply {
+        val image = ddlJson.image ?: return null
+        val darkGif = doodleApi.getEquivalentDarkGif(image.url) ?: return@apply
         ddlJson.darkImage = ddlJson.image.copy(url = darkGif)
     }
 
@@ -49,7 +50,7 @@ data class DDLJson(
     @SerializedName("alt_text")
     val altText: String,
     @SerializedName("large_image")
-    val image: Image,
+    val image: Image?,
     @SerializedName("dark_image")
     var darkImage: Image? = null,
     @SerializedName("search_url")
