@@ -71,6 +71,27 @@
     <string name="widget_configuration_mock_complication_title">Complication</string>
     <string name="widget_configuration_material_you_title">Material You style</string>
     <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets.</string>
+    <!-- Widget Pinning Section -->
+    <string name="widget_configuration_pin_title">Widget Pinning</string>
+    <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
+    <!-- Pin Mode -->
+    <string name="widget_configuration_pin_mode_label">Pin Mode</string>
+    <string name="widget_configuration_pin_mode_none">None (cycle through all)</string>
+    <string name="widget_configuration_pin_mode_page">Pin to Page Position</string>
+    <string name="widget_configuration_pin_mode_target">Pin to Specific Target</string>
+    <!-- Page Mode -->
+    <string name="widget_configuration_pin_page_label">Page Position</string>
+    <string name="widget_configuration_pin_page_value">Page %1$d</string>
+    <string name="widget_configuration_pin_page_warning"><b>How Page Pinning Works:</b> This widget will always show whatever target is at the selected page position. Page content changes dynamically - the target shown may vary based on which targets are currently active and their priorities.</string>
+    <!-- Target Mode -->
+    <string name="widget_configuration_pin_target_label">Select Target</string>
+    <string name="widget_configuration_pin_target_none">Tap to select…</string>
+    <string name="widget_configuration_pin_target_warning"><b>How Target Pinning Works:</b> This widget will always try to show the selected target. If the target becomes unavailable (e.g., no music playing for a music target, or requirements not met), the fallback behavior below determines what to show instead.</string>
+    <!-- Fallback (shared) -->
+    <string name="widget_configuration_pin_fallback_label">When Unavailable</string>
+    <string name="widget_configuration_pin_fallback_show_date">Show date</string>
+    <string name="widget_configuration_pin_fallback_show_first">Show first available target</string>
+    <string name="widget_configuration_pin_fallback_hide">Hide widget content</string>
     <string name="widget_options_configure">Configure Widget</string>
     <string name="accessibility_service_label">Smartspacer Widget Service</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled.</string>
