@@ -9,10 +9,11 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentSetupRequirementsInfoBinding
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
+import com.kieronquinn.app.smartspacer.utils.extensions.applyMonet
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
+import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SetupRequirementsInfoFragment: BoundFragment<FragmentSetupRequirementsInfoBinding>(FragmentSetupRequirementsInfoBinding::inflate), BackAvailable {
@@ -29,8 +30,7 @@ class SetupRequirementsInfoFragment: BoundFragment<FragmentSetupRequirementsInfo
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupRequirementsControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupRequirementsControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupRequirementsControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupRequirementsControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
@@ -44,12 +44,7 @@ class SetupRequirementsInfoFragment: BoundFragment<FragmentSetupRequirementsInfo
     }
 
     private fun setupMonet() {
-        val tabBackground = monet.getMonetColors().accent1[600]?.toArgb()
-            ?: monet.getAccentColor(requireContext(), false)
-        val accent = monet.getAccentColor(requireContext())
-        binding.setupRequirementsInfoAny.backgroundTintList = ColorStateList.valueOf(tabBackground)
-        binding.setupRequirementsInfoAny.setSelectedTabIndicatorColor(accent)
-        binding.setupRequirementsInfoAll.backgroundTintList = ColorStateList.valueOf(tabBackground)
-        binding.setupRequirementsInfoAll.setSelectedTabIndicatorColor(accent)
+        binding.setupRequirementsInfoAny.applyMonet()
+        binding.setupRequirementsInfoAll.applyMonet()
     }
 }

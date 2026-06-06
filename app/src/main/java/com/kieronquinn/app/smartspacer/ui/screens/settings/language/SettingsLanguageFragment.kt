@@ -73,7 +73,8 @@ class SettingsLanguageFragment: BaseSettingsFragment(), BackAvailable {
                     getString(R.string.settings_language_info),
                     Html.FROM_HTML_MODE_COMPACT
                 ),
-                contentHash = -1L
+                contentHash = -1L,
+                topPadding = 0
             ),
             RadioCard(
                 selectedLocale == null,

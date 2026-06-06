@@ -1,9 +1,11 @@
 package com.kieronquinn.app.smartspacer.ui.base
 
+import android.graphics.Color
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.kieronquinn.app.smartspacer.R
+import kotlinx.coroutines.flow.Flow
 
 interface BackAvailable {
     val backIcon: Int
@@ -23,6 +25,15 @@ interface CanShowSnackbar {
 interface ProvidesBack {
     fun onBackPressed(): Boolean
     fun interceptBack() = true
+}
+
+interface ProvidesScrimColour {
+    val scrimOverride: Flow<ScrimOverride?>
+
+    data class ScrimOverride(
+        val scrimColour: Int,
+        val backButtonBackgroundColour: Int = Color.TRANSPARENT
+    )
 }
 
 interface ProvidesTitle {

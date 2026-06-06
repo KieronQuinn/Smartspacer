@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextClock xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/smartspace_view_title"
-    style="@style/WidgetTitle"
-    tools:text="Mon, 1 Jan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title"
-    tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title.Preview" />
+    android:orientation="horizontal">
+
+    <TextClock
+        android:id="@+id/smartspace_view_title"
+        style="@style/WidgetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title"
+        tools:text="Mon, 1 Jan"
+        tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title.Preview" />
+
+    <ImageView
+        android:id="@+id/smartspace_view_primary_action_icon"
+        android:layout_width="@dimen/smartspace_view_icon_size"
+        android:layout_height="@dimen/smartspace_view_icon_size"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/smartspace_view_action_margin"
+        android:visibility="gone"
+        tools:src="@android:drawable/btn_star"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/smartspace_view_primary_action_text"
+        style="@style/WidgetSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="@dimen/smartspace_view_icon_margin"
+        android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title"
+        android:visibility="gone"
+        tools:text="Action but it's really really long"
+        tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title.Preview"
+        tools:visibility="visible" />
+
+</LinearLayout>

@@ -13,11 +13,18 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.graphics.ColorUtils
-import androidx.core.view.*
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.Circle
+import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -31,7 +38,12 @@ import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.screens.configuration.geofence.GeofenceRequirementConfigurationViewModel.State
-import com.kieronquinn.app.smartspacer.utils.extensions.*
+import com.kieronquinn.app.smartspacer.utils.extensions.awaitPost
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
+import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
+import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.slideOffset
+import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
@@ -183,6 +195,7 @@ class GeofenceRequirementConfigurationFragment: BoundFragment<FragmentGeofenceRe
             is State.Loading -> {
                 binding.geofenceRequirementLoading.root.isVisible = true
                 binding.geofenceRequirementLoading.loadingLabel.setText(R.string.loading)
+                binding.geofenceRequirementLoading.loadingLabel.isVisible = true
                 binding.requirementGeofenceConfigurationBackgroundLocationPermission.isVisible = false
                 binding.requirementGeofenceConfigurationLimitReached.isVisible = false
                 binding.geofenceRequirementConfiguration.isVisible = false
@@ -190,6 +203,7 @@ class GeofenceRequirementConfigurationFragment: BoundFragment<FragmentGeofenceRe
             is State.RequestPermission -> {
                 binding.geofenceRequirementLoading.root.isVisible = false
                 binding.geofenceRequirementLoading.loadingLabel.setText(R.string.loading)
+                binding.geofenceRequirementLoading.loadingLabel.isVisible = true
                 binding.requirementGeofenceConfigurationBackgroundLocationPermission.isVisible = true
                 binding.requirementGeofenceConfigurationLimitReached.isVisible = false
                 binding.geofenceRequirementConfiguration.isVisible = false
@@ -222,6 +236,7 @@ class GeofenceRequirementConfigurationFragment: BoundFragment<FragmentGeofenceRe
             is State.Saving -> {
                 binding.geofenceRequirementLoading.root.isVisible = true
                 binding.geofenceRequirementLoading.loadingLabel.setText(R.string.saving)
+                binding.geofenceRequirementLoading.loadingLabel.isVisible = true
                 binding.requirementGeofenceConfigurationBackgroundLocationPermission.isVisible = false
                 binding.requirementGeofenceConfigurationLimitReached.isVisible = false
                 binding.geofenceRequirementConfiguration.isVisible = false

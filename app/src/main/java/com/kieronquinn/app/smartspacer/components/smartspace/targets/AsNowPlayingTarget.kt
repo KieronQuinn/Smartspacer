@@ -8,6 +8,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.smartspace.notifications.AsNowPlayingTargetNotification
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.ui.activities.permission.notification.NotificationPermissionActivity
+import com.kieronquinn.app.smartspacer.utils.extensions.isPackageInstalled
 import com.kieronquinn.app.smartspacer.utils.extensions.resolveService
 
 /**
@@ -51,13 +52,33 @@ class AsNowPlayingTarget: NowPlayingTarget() {
         return provideContext().packageManager.resolveService(serviceIntent) != null
     }
 
+    /**
+     *  Checks for the existence of new Now Playing, which if there is a good indicator that
+     *  notifications will not be shown and the Target will not work.
+     */
+    private fun isNewNowPlayingInstalled(): Boolean {
+        return provideContext().packageManager
+            .isPackageInstalled("com.google.android.apps.pixel.nowplaying")
+    }
+
+    /**
+     *  Checks for the existence of Public Compute Services, which is able to hook and re-enable
+     *  the notification, making the Target work again
+     */
+    private fun isPCSInstalled(): Boolean {
+        return provideContext().packageManager
+            .isPackageInstalled("com.google.android.apps.pixel.nowplaying")
+    }
+
     private fun getCompatibilityState(): CompatibilityState {
-        return if(isNowPlayingInstalled()){
-            CompatibilityState.Compatible
-        }else{
-            CompatibilityState.Incompatible(
+        return when {
+            !isNowPlayingInstalled() -> CompatibilityState.Incompatible(
                 resources.getString(R.string.target_now_playing_description_unavailable)
             )
+            isNewNowPlayingInstalled() && !isPCSInstalled() -> CompatibilityState.Incompatible(
+                resources.getString(R.string.target_now_playing_description_unavailable_pixel)
+            )
+            else -> CompatibilityState.Compatible
         }
     }
 

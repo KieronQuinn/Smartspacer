@@ -14,7 +14,7 @@ inline fun <reified T> mockSmartspacerSetting(initialValue: T): MockSmartspacerS
 class MockSmartspacerSetting<T>(
     type: Class<T>,
     private val flow: MutableStateFlow<T>
-): FakeSmartspacerSetting<T>(type, flow, { flow.emit(it) }), MutableStateFlow<T> {
+): FakeSmartspacerSetting<T>(flow, { flow.emit(it) }), MutableStateFlow<T> {
 
     override val replayCache: List<T>
         get() = flow.replayCache

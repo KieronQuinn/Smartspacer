@@ -2,7 +2,10 @@ package com.kieronquinn.app.smartspacer.utils.extensions
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
+import androidx.core.graphics.ColorUtils
 import com.google.android.material.card.MaterialCardView
+import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import com.kieronquinn.monetcompat.core.MonetCompat
 import com.kieronquinn.monetcompat.extensions.toArgb
 
@@ -38,4 +41,21 @@ fun MaterialCardView.applyBackgroundTint(monet: MonetCompat) = with(monet) {
 fun MaterialCardView.applyBackgroundSecondary(monet: MonetCompat) = with(monet) {
     val background = monet.getSecondaryColor(context, !context.isDarkMode)
     backgroundTintList = ColorStateList.valueOf(background)
+}
+
+fun MonetCompat.getBackgroundForBlur(context: Context, darkMode: Boolean? = null): Int {
+    return if(darkMode ?: context.isDarkMode){
+        getMonetColors().accent2[900]?.toArgb() ?: getBackgroundColor(context)
+    }else{
+        getMonetColors().accent2[200]?.toArgb() ?: getBackgroundColor(context)
+    }.withAlpha(0.75f)
+}
+
+fun MonetCompat.getForegroundForBlur(context: Context): Int {
+    val windowBackground = getBackgroundColor(context)
+    val primary = getPrimaryColor(context, !context.isDarkMode)
+    val highlight = context.getAttrColor(android.R.attr.colorControlHighlight)
+    val highlightAlpha = Color.alpha(highlight)
+    val tintedHighlight = ColorUtils.setAlphaComponent(primary, highlightAlpha)
+    return ColorUtils.compositeColors(tintedHighlight, windowBackground)
 }

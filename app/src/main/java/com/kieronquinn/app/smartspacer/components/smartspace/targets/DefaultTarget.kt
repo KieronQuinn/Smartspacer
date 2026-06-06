@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.components.smartspace.targets
 
 import android.content.Context
 import android.graphics.drawable.Icon
+import androidx.annotation.StringRes
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -18,7 +19,6 @@ import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerTargetProvider
-import com.kieronquinn.app.smartspacer.ui.activities.TrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping.TARGET_DEFAULT
 import com.kieronquinn.app.smartspacer.utils.extensions.getDefaultSmartspaceComponent
@@ -56,8 +56,13 @@ class DefaultTarget: SmartspacerTargetProvider() {
         return home + lock
     }
 
-    private fun List<SmartspaceTarget>.filter(settings: TargetData) = filterNot {
-        settings.hiddenTargetTypes.contains(it.getTargetType())
+    private fun List<SmartspaceTarget>.filter(settings: TargetData): List<SmartspaceTarget> {
+        val hiddenTargetTypes = settings.hiddenTargetTypes.mapNotNull { type ->
+            TargetType.entries.firstOrNull { it.type == type }
+        }.flatMap { it.additionalTypes.toList() + it.type }
+        return filterNot {
+            hiddenTargetTypes.contains(it.getTargetType())
+        }
     }
 
     private fun showShizukuNotificationIfNeeded(): Boolean {
@@ -111,9 +116,7 @@ class DefaultTarget: SmartspacerTargetProvider() {
             description = resources.getText(description),
             icon = Icon.createWithResource(provideContext(), R.drawable.ic_target_default),
             compatibilityState = getCompatibilityState(),
-            configActivity = TrampolineActivity.createAsiTrampolineIntent(provideContext())?.let {
-                ConfigurationActivity.createIntent(provideContext(), TARGET_DEFAULT)
-            },
+            configActivity = ConfigurationActivity.createIntent(provideContext(), TARGET_DEFAULT),
             allowAddingMoreThanOnce = true
         )
     }
@@ -150,5 +153,49 @@ class DefaultTarget: SmartspacerTargetProvider() {
         @SerializedName("hidden_target_types")
         val hiddenTargetTypes: Set<String> = emptySet()
     )
+
+    enum class TargetType(
+        @StringRes val title: Int,
+        @StringRes val description: Int,
+        val type: String,
+        vararg val additionalTypes: String
+    ) {
+        DOORBELL(R.string.target_default_settings_hide_doorbell, R.string.target_default_settings_hide_doorbell_desc, "DOORBELL", "RING"),
+        PACKAGE(R.string.target_default_settings_hide_package, R.string.target_default_settings_hide_package_desc, "PACKAGE_DELIVERY"),
+        TIMER(R.string.target_default_settings_hide_timer, R.string.target_default_settings_hide_timer_desc, "TIMER_STOPWATCH", "TIMER", "STOPWATCH"),
+        BEDTIME(R.string.target_default_settings_hide_bedtime, R.string.target_default_settings_hide_bedtime_desc, "BEDTIME", "BEDTIME_ROUTINE", "WELLBEING_BEDTIME", "SLEEP_SUMMARY"),
+        FITNESS(R.string.target_default_settings_hide_fitness, R.string.target_default_settings_hide_fitness_desc, "FITNESS", "FITNESS_TRACKING", "STEP_COUNTING"),
+        CONNECTED_DEVICES(R.string.target_default_settings_hide_connected_devices, R.string.target_default_settings_hide_connected_devices_desc, "CONNECTED_DEVICES", "PAIRED_DEVICE_STATUS", "PAIRED_DEVICE_LOW_BATTERY", "HEADPHONE_CONTEXT"),
+        FLASHLIGHT(R.string.target_default_settings_hide_flashlight, R.string.target_default_settings_hide_flashlight_desc, "FLASHLIGHT"),
+        SAFETY_CHECK(R.string.target_default_settings_hide_safety_check, R.string.target_default_settings_hide_safety_check_desc, "SAFETY_CHECK"),
+        EARTHQUAKE_ALERT(R.string.target_default_settings_hide_earthquake_alert, R.string.target_default_settings_hide_earthquake_alert_desc, "EARTHQUAKE", "EARTHQUAKE_OCCURRED"),
+        COMMUTE(R.string.target_default_settings_hide_commute, R.string.target_default_settings_hide_commute_desc, "COMMUTE", "COMMUTE_TIME", "COMMUTE_TIME_AMBIENT", "SEMANTIC_LOCATION"),
+        TIME_TO_LEAVE(R.string.target_default_settings_hide_time_to_leave, R.string.target_default_settings_hide_time_to_leave_desc, "TIME_TO_LEAVE"),
+        WEATHER_ALERTS(R.string.target_default_settings_hide_weather_alerts, R.string.target_default_settings_hide_weather_alerts_desc, "WEATHER_ALERT", "SEVERE_WEATHER_ALERT", "ALERTS"),
+        TRAVEL(R.string.target_default_settings_hide_travel, R.string.target_default_settings_hide_travel_desc, "FLIGHT", "FLIGHT_LANDING", "AIRPORT", "TRAVEL"),
+        CALENDAR(R.string.target_default_settings_hide_calendar, R.string.target_default_settings_hide_calendar_desc, "CALENDAR", "CALENDAR_NOTIFICATION", "UPCOMING"),
+        WORK_PROFILE(R.string.target_default_settings_hide_work_profile, R.string.target_default_settings_hide_work_profile_desc, "WORK_PROFILE"),
+        FOOD(R.string.target_default_settings_hide_food, R.string.target_default_settings_hide_food_desc, "FOOD_DELIVERY_ETA", "GROCERY", "GROCERY_DELIVERY", "GROCERY_PICKUP", "RESTAURANT"),
+        CROSS_DEVICE_TIMER(R.string.target_default_settings_hide_cross_device_timer, R.string.target_default_settings_cross_device_timer_desc, "CROSS_DEVICE_TIMER"),
+        // Weather is intentionally excluded as it wouldn't work with the complication extraction
+        AIR_QUALITY(R.string.target_default_settings_hide_air_quality, R.string.target_default_settings_hide_air_quality_desc, "AIR_QUALITY"),
+        ALARMS(R.string.target_default_settings_hide_alarms, R.string.target_default_settings_hide_alarms_desc, "ALARM", "UPCOMING_ALARM", "HOLIDAY_ALARMS"),
+        CROSS_DEVICE_ALARM(R.string.target_default_settings_hide_cross_device_alarm, R.string.target_default_settings_hide_cross_device_alarm_desc, "CROSS_DEVICE_ALARM"),
+        REMINDERS(R.string.target_default_settings_hide_reminders, R.string.target_default_settings_hide_reminders_desc, "REMINDER"),
+        SPORTS(R.string.target_default_settings_hide_sports, R.string.target_default_settings_hide_sports_desc, "SPORTS", "SPORTS_SCORES"),
+        FINANCE(R.string.target_default_settings_hide_finance, R.string.target_default_settings_hide_finance_desc, "FINANCE_RECAP", "STOCK_PRICE_CHANGE", "STOCK_EARNINGS_CALL"),
+        SHOPPING_LIST(R.string.target_default_settings_hide_shopping_list, R.string.target_default_settings_hide_shopping_list_desc, "SHOPPING_LIST", "SHOPPING_LIST_ONBOARDING"),
+        WALLET(R.string.target_default_settings_hide_wallet, R.string.target_default_settings_hide_wallet_desc, "WALLET_SUGGESTIONS", "LOYALTY_CARD", "LOYALTY_CARD_ONBOARDING", "WALLET_BOARDING_PASS"),
+        MEDIA(R.string.target_default_settings_hide_media, R.string.target_default_settings_hide_media_desc, "MEDIA", "AMBIENT_MUSIC", "MEDIA_RECOMMENDATION", "MEDIA_HEADS_UP", "MEDIA_RECS_DRIVING", "MEDIA_RESUME", "MEDIA_CURRENT_PLAYING", "MEDIA_RESUME_SS_ACTIVATED"),
+        IN_STORE(R.string.target_default_settings_hide_in_store, R.string.target_default_settings_hide_in_store_desc, "AT_A_STORE", "AT_STORE_COMBINED_CARD", "SHOPPING_MALL"),
+        HOTELS_EVENTS(R.string.target_default_settings_hide_events, R.string.target_default_settings_hide_events_desc, "EVENT_RESERVATION", "HOTEL_CHECK_IN", "HOTEL_CHECK_OUT"),
+        TRANSIT(R.string.target_default_settings_hide_transit, R.string.target_default_settings_hide_transit_desc, "TRANSIT_STATION", "TRANSIT_STATION_INFO", "TRAIN_SEAT", "TRAIN_STATUS", "TRAIN_DESTINATION_ALERT", "INTERCITY_TRAIN"),
+        RIDESHARING(R.string.target_default_settings_hide_ridesharing, R.string.target_default_settings_hide_ridesharing_desc, "RIDESHARING_ETA", "ETA_MONITORING"),
+        DRIVING(R.string.target_default_settings_hide_driving, R.string.target_default_settings_hide_driving_desc, "DRIVING_MODE", "GAS_STATION_PAYMENT"),
+        LOUD_SOUND_ALERT(R.string.target_default_settings_hide_loud_sound, R.string.target_default_settings_hide_loud_sound_desc, "LOUD_SOUND_ALERT"),
+        PERSONAL(R.string.target_default_settings_hide_personal, R.string.target_default_settings_hide_personal_desc, "BIRTHDAY", "DATE"),
+        COMMUNICATION(R.string.target_default_settings_hide_communication, R.string.target_default_settings_hide_communication_desc, "MISSED_CALL"),
+        TIPS(R.string.target_default_settings_hide_tips, R.string.target_default_settings_hide_tips_desc, "TIPS", "MY_PIXEL", "ASSISTANT")
+    }
 
 }

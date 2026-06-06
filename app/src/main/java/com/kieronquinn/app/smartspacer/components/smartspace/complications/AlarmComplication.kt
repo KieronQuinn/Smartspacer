@@ -41,20 +41,17 @@ class AlarmComplication: SmartspacerComplicationProvider() {
         provideContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
-    private val timeFormat by lazy {
-        DateFormat.getTimeFormat(provideContext())
-    }
-
     override fun getSmartspaceActions(smartspacerId: String): List<SmartspaceAction> {
         return listOfNotNull(getNextAlarm()?.toTarget())
     }
 
     private fun AlarmClockInfo.toTarget(): SmartspaceAction {
         val date = Date.from(Instant.ofEpochMilli(triggerTime))
+        val formattedTime = DateFormat.getTimeFormat(provideContext()).format(date)
         return ComplicationTemplate.Basic(
             "alarm",
             Icon(AndroidIcon.createWithResource(provideContext(), R.drawable.ic_alarm)),
-            Text(timeFormat.format(date)),
+            Text(formattedTime),
             TapAction(pendingIntent = showIntent)
         ).create()
     }

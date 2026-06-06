@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RestrictTo
 import androidx.viewbinding.ViewBinding
+import com.kieronquinn.app.smartspacer.sdk.client.utils.expressiveSubtitleTypeface
+import com.kieronquinn.app.smartspacer.sdk.client.utils.expressiveTitleTypeface
 import com.kieronquinn.app.smartspacer.sdk.client.utils.whenResumed
 import com.kieronquinn.app.smartspacer.sdk.client.views.DoubleShadowImageView
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
@@ -37,8 +39,6 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
         }
     }
 
-    private var target: SmartspaceTarget? = null
-
     abstract suspend fun setTarget(
         target: SmartspaceTarget,
         interactionListener: SmartspaceTargetInteractionListener?,
@@ -59,6 +59,18 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
             shadowDy,
             if(enabled) Color.BLACK else Color.TRANSPARENT
         )
+    }
+
+    protected fun TextView.setExpressiveTitleFontIfAvailable() {
+        expressiveTitleTypeface?.let {
+            typeface = it
+        }
+    }
+
+    protected fun TextView.setExpressiveSubtitleFontIfAvailable() {
+        expressiveSubtitleTypeface?.let {
+            typeface = it
+        }
     }
 
     interface SmartspaceTargetInteractionListener {

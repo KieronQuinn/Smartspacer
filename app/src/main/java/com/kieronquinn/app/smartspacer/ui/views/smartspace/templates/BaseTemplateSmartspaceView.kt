@@ -11,7 +11,14 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_WEATHER
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
-import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.*
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.CarouselTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.HeadToHeadTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubCardTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubImageTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.SubListTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.ui.views.smartspace.SmartspaceView
 import com.kieronquinn.app.smartspacer.utils.extensions.takeEllipsised
 import android.graphics.drawable.Icon as AndroidIcon
@@ -65,7 +72,6 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         }
     }
 
-    private var textColour: Int? = null
     open val supportsSubAction = false
 
     @CallSuper
@@ -93,21 +99,54 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 subtitle
             )
         }
-        template.primaryItem?.text?.let {
-            //Don't update the text on a weather target as it clears the date
-            if(target.featureType != FEATURE_WEATHER){
-                remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
+        template.primaryItem?.takeIf {
+            it.loggingInfo?.featureType == FEATURE_WEATHER
+        }?.let {
+            remoteViews.setTextViewText(R.id.smartspace_view_primary_action_text, it.text?.text)
+            remoteViews.setImageViewIcon(
+                context, R.id.smartspace_view_primary_action_icon, it.icon?.tintIfNeeded(textColour)
+            )
+            remoteViews.setViewVisibility(R.id.smartspace_view_primary_action_icon, View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.smartspace_view_primary_action_text, View.VISIBLE)
+            remoteViews.setTextColor(R.id.smartspace_view_primary_action_text, textColour)
+            remoteViews.setTextViewTextSize(R.id.smartspace_view_primary_action_text, COMPLEX_UNIT_PX, titleSize)
+            remoteViews.setOnClickAction(
+                context, R.id.smartspace_view_primary_action_icon, isList, template.primaryItem?.tapAction
+            )
+            remoteViews.setOnClickAction(
+                context, R.id.smartspace_view_primary_action_text, isList, template.primaryItem?.tapAction
+            )
+            template.supplementalAlarmItem?.text?.let {
+                //Don't update the text on a weather target as it clears the date
+                if (target.featureType != FEATURE_WEATHER) {
+                    remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
+                }
+                remoteViews.setOnClickAction(
+                    context, R.id.smartspace_view_root, isList, template.supplementalAlarmItem?.tapAction
+                )
+                remoteViews.setOnClickAction(
+                    context, R.id.smartspace_view_title, isList, template.supplementalAlarmItem?.tapAction
+                )
+            }
+        } ?: run {
+            remoteViews.setViewVisibility(R.id.smartspace_view_primary_action_icon, View.GONE)
+            remoteViews.setViewVisibility(R.id.smartspace_view_primary_action_text, View.GONE)
+            remoteViews.setOnClickAction(
+                context, R.id.smartspace_view_root, isList, template.primaryItem?.tapAction
+            )
+            remoteViews.setOnClickAction(
+                context, R.id.smartspace_view_title, isList, template.primaryItem?.tapAction
+            )
+            template.primaryItem?.text?.let {
+                //Don't update the text on a weather target as it clears the date
+                if (target.featureType != FEATURE_WEATHER) {
+                    remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
+                }
             }
         }
         remoteViews.setupOverflow(context, isList, textColour, overflowIntent)
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
         remoteViews.setTextViewTextSize(R.id.smartspace_view_title, COMPLEX_UNIT_PX, titleSize)
-        remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_root, isList, template.primaryItem?.tapAction
-        )
-        remoteViews.setOnClickAction(
-            context, R.id.smartspace_view_title, isList, template.primaryItem?.tapAction
-        )
         val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
         remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
         template.subtitleItem?.text?.let {

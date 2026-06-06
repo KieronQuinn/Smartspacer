@@ -11,6 +11,7 @@ import com.kieronquinn.app.smartspacer.databinding.FragmentSetupExpandedBinding
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.setup.expanded.SetupExpandedSmartspaceViewModel.State
+import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
@@ -58,6 +59,7 @@ class SetupExpandedSmartspaceFragment: BoundFragment<FragmentSetupExpandedBindin
     }
 
     private fun setupSetting() = with(binding.setupExpandedOpenEnabled) {
+        card.setCardBackgroundColor(monet.getBackgroundForBlur(requireContext()))
         itemSettingsSwitchTitle.setText(R.string.setup_expanded_open_title)
         itemSettingsSwitchContent.setText(R.string.setup_expanded_open_content)
         itemSettingsSwitchContent.isVisible = true
@@ -83,8 +85,7 @@ class SetupExpandedSmartspaceFragment: BoundFragment<FragmentSetupExpandedBindin
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupExpandedControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupExpandedControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupExpandedControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupExpandedControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

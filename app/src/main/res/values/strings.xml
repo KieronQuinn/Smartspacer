@@ -117,6 +117,7 @@
     <string name="target_now_playing_label">Pixel Now Playing</string>
     <string name="target_now_playing_description">Shows the currently playing song from Pixel Now Playing</string>
     <string name="target_now_playing_description_unavailable">This target requires Now Playing on a Pixel</string>
+    <string name="target_now_playing_description_unavailable_pixel">Due to it no longer showing a notification for recognised music, this Target no longer works on unrooted Pixel devices. If you are rooted, install the Public Compute Services Xposed module and enable the option to fix this.</string>
     <string name="target_now_playing_shortcut_history">History</string>
     <string name="target_ambient_music_mod_label">Now Playing (Ambient Music Mod)</string>
     <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>
@@ -154,9 +155,9 @@
     <string name="target_at_a_glance_label">At a Glance (Widget)</string>
     <string name="target_at_a_glance_description">Limited targets from Google At a Glance, loaded using the Google widget</string>
     <string name="target_at_a_glance_description_unsupported">This Target requires the Google App</string>
-    <string name="target_google_weather_forecast_title">Google Weather Forecast</string>
-    <string name="target_google_weather_forecast_content">Displays the current weather and forecast for the next four hours from Google Weather</string>
-    <string name="target_google_weather_forecast_incompatible">This Target requires a Pixel device or Pixel-based ROM, with the Google app installed</string>
+    <string name="target_pixel_weather_forecast_title">Pixel Weather Forecast</string>
+    <string name="target_pixel_weather_forecast_content">Displays the current weather and forecast for the next four hours from Pixel Weather</string>
+    <string name="target_pixel_weather_forecast_incompatible">This Target requires the Pixel Weather app</string>
 
     <string name="target_notification_warning_title">Notification Listener Disabled</string>
     <string name="target_notification_warning_description">Tap to enable</string>
@@ -480,6 +481,9 @@
     <string name="settings_enable_update_check_content">Automatically check for Smartspacer updates and show a notification if one is available</string>
     <string name="settings_enable_analytics_title">Enable Analytics &amp; Crash Reporting</string>
     <string name="settings_enable_analytics_content">Allow sending anonymous crash reports and basic analytics to Firebase, to help fix bugs</string>
+    <string name="settings_enable_blur_title">Enable Expressive Blurs</string>
+    <string name="settings_enable_blur_content">Use expressive-style blurs across Smartspacer</string>
+    <string name="settings_enable_blur_content_disabled">Not available on this device</string>
     <string name="settings_language_title">Language</string>
     <string name="settings_language_default">System Default</string>
     <string name="settings_language_info"><b>Note:</b> Not all languages are complete, you can contribute translations on the Smartspacer Crowdin</string>
@@ -493,6 +497,16 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Show the Target, but hide its content</string>
     <string name="settings_hide_sensitive_contents_hide">Hide target</string>
     <string name="settings_hide_sensitive_contents_hide_content">Hide the Target entirely</string>
+    <string name="settings_complication_on_primary_title">Show Complication on Date</string>
+    <string name="settings_complication_on_primary_title_short">Show Complication</string>
+    <string name="settings_complication_on_primary_content">Whether to show a Complication next to the date (where supported): %1s</string>
+    <string name="settings_complication_on_primary_info"><b>Note:</b> This option is not supported in all Smartspace implementations, and requires any Date Targets to be using the \"Automatic\" date format. To verify it\'s available where you want it, try setting the option to \"Always\" and adding a Date Target to the top of your Target list.</string>
+    <string name="settings_complication_on_primary_always">Always</string>
+    <string name="settings_complication_on_primary_always_content">Any Complication will be displayed next to the date.\n\n<b>Note:</b> This may cause layout issues for longer complications.</string>
+    <string name="settings_complication_on_primary_weather_only">Weather only</string>
+    <string name="settings_complication_on_primary_weather_only_content">Only weather Complications will be displayed next to the date (recommended, matches Pixel stock behaviour)</string>
+    <string name="settings_complication_on_primary_never">Never</string>
+    <string name="settings_complication_on_primary_never_content">Complications will never be displayed next to the date</string>
 
     <string name="settings_debug_header">Debug</string>
     <string name="settings_dump_title">Dump Targets &amp; Actions</string>
@@ -879,6 +893,8 @@
     <string name="plugin_repository_update_available">Update Available!</string>
     <string name="plugin_repository_recommended">Recommended for:</string>
     <string name="plugin_repository_changelog"><b>What\'s New</b></string>
+    <string name="plugin_repository_new">New!</string>
+    <string name="plugin_repository_menu_clear_seen">Clear seen plugins</string>
 
     <string name="plugin_details_install">Install</string>
     <string name="plugin_details_start_install">Start Install</string>
@@ -1015,7 +1031,7 @@
     <string name="github">GitHub</string>
     <string name="libraries">Third party libraries</string>
     <string name="donate">Donate</string>
-    <string name="twitter">Follow me on Twitter</string>
+    <string name="bluesky">Follow me on Bluesky</string>
     <string name="about_version">Version %1s\nCreated by Kieron Quinn</string>
     <string name="about_contributors">Contributors</string>
     <string name="about_crowdin">Crowdin</string>
@@ -1092,7 +1108,10 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">At a Glance settings</string>
     <string name="target_default_settings_more_content">Configure more settings in the Google App</string>
+
+    <string name="target_default_settings_remote_views_warning">Your device has a different search app selected than the Google App, which disables some At a Glance functionality. Options such as sports scores and financial updates may not be available. You can change the search app by long pressing the search box in the Pixel Launcher.</string>
     <string name="target_default_settings_hide_infobox"><b>Please note:</b> Not all Targets may be available on your device. Disabling them here does not sync on your Google Account so they will still be visible on other devices.</string>
+
     <string name="target_default_settings_hide_title">Hide Targets</string>
     <string name="target_default_settings_hide_doorbell">Doorbell</string>
     <string name="target_default_settings_hide_package">Package Delivery</string>
@@ -1103,7 +1122,6 @@
     <string name="target_default_settings_hide_flashlight">Flashlight</string>
     <string name="target_default_settings_hide_safety_check">Safety Check</string>
     <string name="target_default_settings_hide_earthquake_alert">Earthquake Alert</string>
-
     <string name="target_default_settings_hide_commute">Commute</string>
     <string name="target_default_settings_hide_time_to_leave">Time to Leave</string>
     <string name="target_default_settings_hide_weather_alerts">Weather Alerts</string>
@@ -1111,7 +1129,61 @@
     <string name="target_default_settings_hide_calendar">Calendar</string>
     <string name="target_default_settings_hide_work_profile">Work Profile</string>
     <string name="target_default_settings_hide_food">Food &amp; Household Orders</string>
-    <string name="target_default_settings_cross_device_timer">Cross-device Timer</string>
+    <string name="target_default_settings_hide_cross_device_timer">Cross-device Timer</string>
+    <string name="target_default_settings_hide_air_quality">Air Quality</string>
+    <string name="target_default_settings_hide_alarms">Alarms</string>
+    <string name="target_default_settings_hide_cross_device_alarm">Cross-device Alarm</string>
+    <string name="target_default_settings_hide_reminders">Reminders</string>
+    <string name="target_default_settings_hide_sports">Sports</string>
+    <string name="target_default_settings_hide_finance">Finance</string>
+    <string name="target_default_settings_hide_shopping_list">Shopping List</string>
+    <string name="target_default_settings_hide_wallet">Wallet &amp; Loyalty Cards</string>
+    <string name="target_default_settings_hide_media">Media &amp; Music</string>
+    <string name="target_default_settings_hide_in_store">In-Store Features</string>
+    <string name="target_default_settings_hide_events">Events &amp; Hotels</string>
+    <string name="target_default_settings_hide_transit">Transit</string>
+    <string name="target_default_settings_hide_ridesharing">Ridesharing</string>
+    <string name="target_default_settings_hide_driving">Driving</string>
+    <string name="target_default_settings_hide_loud_sound">Loud Sound Alert</string>
+    <string name="target_default_settings_hide_personal">Birthdays &amp; Dates</string>
+    <string name="target_default_settings_hide_communication">Missed Calls</string>
+    <string name="target_default_settings_hide_tips">Tips &amp; Suggestions</string>
+
+    <string name="target_default_settings_hide_doorbell_desc">Hide doorbell video feeds, chimes, and motion alerts.</string>
+    <string name="target_default_settings_hide_package_desc">Hide delivery tracking status and parcel arrival updates.</string>
+    <string name="target_default_settings_hide_timer_desc">Hide active countdown timers and stopwatch intervals.</string>
+    <string name="target_default_settings_hide_bedtime_desc">Hide sleep summaries, bedtime schedule reminders, and routines.</string>
+    <string name="target_default_settings_hide_fitness_desc">Hide daily tracking metrics like step counts and active minutes.</string>
+    <string name="target_default_settings_hide_connected_devices_desc">Hide battery stats and status for paired headphones and devices.</string>
+    <string name="target_default_settings_hide_flashlight_desc">Hide quick toggle controls when your flashlight is active.</string>
+    <string name="target_default_settings_hide_safety_check_desc">Hide personal safety timers and emergency status check-ins.</string>
+    <string name="target_default_settings_hide_earthquake_alert_desc">Hide early earthquake warnings and seismic event updates.</string>
+    <string name="target_default_settings_hide_commute_desc">Hide traffic trends, estimated travel times, and ambient transit updates.</string>
+    <string name="target_default_settings_hide_time_to_leave_desc">Hide alerts showing precisely when to leave for calendar events.</string>
+    <string name="target_default_settings_hide_weather_alerts_desc">Hide severe storm, flood, and extreme weather hazard updates.</string>
+    <string name="target_default_settings_hide_travel_desc">Hide flight schedules, airport terminal info, and landing times.</string>
+    <string name="target_default_settings_hide_calendar_desc">Hide day schedule events, agenda items, and schedule updates.</string>
+    <string name="target_default_settings_hide_work_profile_desc">Hide agenda items and work notifications from your corporate profile.</string>
+    <string name="target_default_settings_hide_food_desc">Hide restaurant tracking, meal delivery ETAs, and grocery pickup statuses.</string>
+    <string name="target_default_settings_cross_device_timer_desc">Hide timers that are running on your other smart displays or speakers.</string>
+    <string name="target_default_settings_hide_air_quality_desc">Hide current Air Quality Index (AQI) readings and health warnings.</string>
+    <string name="target_default_settings_hide_alarms_desc">Hide morning alarms, holiday alert updates, and upcoming wake-up reminders.</string>
+    <string name="target_default_settings_hide_cross_device_alarm_desc">Hide or silence alarms triggering on your other shared home devices.</string>
+    <string name="target_default_settings_hide_reminders_desc">Hide custom personal reminders and time-sensitive task flags.</string>
+    <string name="target_default_settings_hide_sports_desc">Hide real-time match updates, league rankings, and live sports scores.</string>
+    <string name="target_default_settings_hide_finance_desc">Hide stock changes, earnings notifications, and financial summaries.</string>
+    <string name="target_default_settings_hide_shopping_list_desc">Hide active shopping cart lists and onboarding reminders.</string>
+    <string name="target_default_settings_hide_wallet_desc">Hide digital loyalty cards, boarding passes, and payment suggestions.</string>
+    <string name="target_default_settings_hide_media_desc">Hide currently playing music, audio playback updates, and media controls.</string>
+    <string name="target_default_settings_hide_in_store_desc">Hide store rewards cards, custom mall offers, and local retail items.</string>
+    <string name="target_default_settings_hide_events_desc">Hide hotel check-ins, room reservations, and booked ticket details.</string>
+    <string name="target_default_settings_hide_transit_desc">Hide commuter train times, rail seats, and public transit destination alerts.</string>
+    <string name="target_default_settings_hide_ridesharing_desc">Hide car journey updates, driver arrivals, and rideshare ETAs.</string>
+    <string name="target_default_settings_hide_driving_desc">Hide hands-free driving shortcuts and gas station proximity payments.</string>
+    <string name="target_default_settings_hide_loud_sound_desc">Hide safety warnings regarding sudden loud environmental sounds.</string>
+    <string name="target_default_settings_hide_personal_desc">Hide upcoming birthday trackers and generic date countdown widgets.</string>
+    <string name="target_default_settings_hide_communication_desc">Hide alert notifications regarding missed phone calls.</string>
+    <string name="target_default_settings_hide_tips_desc">Hide setup hints, helpful tips, and Assistant walkthrough cards.</string>
 
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Select App</string>
@@ -1263,5 +1335,12 @@
     <string name="fitness_widget_recommendation_category_label">Health &amp; fitness</string>
     <string name="news_widget_recommendation_category_label">News &amp; magazines</string>
     <string name="others_widget_recommendation_category_label">Suggested for you</string>
+
+    <!-- Shizuku outdated warning -->
+    <string name="shizuku_outdated_title">Shizuku Outdated</string>
+    <string name="shizuku_outdated_content">The version of Shizuku you have installed is no longer supported and may cause issues, such as crashes and restarts. For the best experience, consider switching to a newer fork.\n\n<b>Note:</b> You may have to uninstall the currently installed version to install the fork.</string>
+    <string name="shizuku_outdated_positive">Update</string>
+    <string name="shizuku_outdated_negative">Not now</string>
+    <string name="shizuku_outdated_neutral">Ignore</string>
 
 </resources>

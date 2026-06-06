@@ -23,10 +23,11 @@
         android:id="@+id/add_widget_search"
         layout="@layout/include_search" />
 
-    <FrameLayout
+    <eightbitlab.com.blurview.BlurTarget
+        android:id="@+id/add_widget_blur_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="-56dp"
         android:clipToPadding="false">
 
         <include
@@ -73,11 +74,11 @@
             android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:paddingTop="32dp"
+            android:paddingTop="48dp"
             android:paddingBottom="@dimen/margin_16"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/item_widget_add_app" />
 
-    </FrameLayout>
+    </eightbitlab.com.blurview.BlurTarget>
 
 </LinearLayout>

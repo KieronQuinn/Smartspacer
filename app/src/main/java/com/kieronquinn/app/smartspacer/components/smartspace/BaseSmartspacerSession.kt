@@ -1,12 +1,16 @@
 package com.kieronquinn.app.smartspacer.components.smartspace
 
+import android.app.PendingIntent
 import android.content.Context
+import android.view.View
+import android.widget.RemoteViews
 import androidx.annotation.CallSuper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.smartspace.targets.AsNowPlayingTarget
 import com.kieronquinn.app.smartspacer.model.smartspace.ActionHolder
 import com.kieronquinn.app.smartspacer.model.smartspace.Target
 import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
@@ -16,6 +20,7 @@ import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ComplicationOnPrimary
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.HideSensitive
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
@@ -63,6 +68,7 @@ abstract class BaseSmartspacerSession<T, I>(
 ): KoinComponent, LifecycleOwner {
 
     val createdAt: Long = System.currentTimeMillis()
+    var lastVisibleTime: Long = -1L
 
     protected val settings by inject<SmartspacerSettingsRepository>()
 
@@ -71,7 +77,6 @@ abstract class BaseSmartspacerSession<T, I>(
     private val smartspaceRepository by inject<SmartspaceRepository>()
     private val compatibilityRepository by inject<CompatibilityRepository>()
 
-    private val lastUpdateTime = HashMap<String, Long>()
     private val isVisible = MutableStateFlow(false)
     private val forceReloadBus = MutableStateFlow(System.currentTimeMillis())
     private val contentHiddenString = context.getString(R.string.target_sensitive_title)
@@ -121,7 +126,9 @@ abstract class BaseSmartspacerSession<T, I>(
                 surface == UiSurface.HOMESCREEN -> home
                 surface == UiSurface.LOCKSCREEN -> lock
                 surface == UiSurface.MEDIA_DATA_MANAGER -> ExpandedOpenMode.NEVER
+                surface == UiSurface.AMBIENT_CUE -> ExpandedOpenMode.NEVER
                 surface == UiSurface.GLANCEABLE_HUB -> ExpandedOpenMode.NEVER
+                surface == UiSurface.DREAM -> ExpandedOpenMode.NEVER
                 else -> throw RuntimeException("Invalid expanded open mode")
             }
         }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
@@ -133,17 +140,32 @@ abstract class BaseSmartspacerSession<T, I>(
 
     open val actionsFirst = flowOf(false)
 
-    private val sessionSettings by lazy {
+    private val settingsSettings by lazy {
         combine(
             settings.hideSensitive.asFlow(),
             settings.nativeUseSplitSmartspace.asFlow(),
+            settings.complicationOnPrimary.asFlow()
+        ) { sensitive, split, complicationOnPrimary ->
+            Triple(
+                sensitive,
+                split,
+                complicationOnPrimary.takeIf { supportsComplicationOnPrimary() }
+                    ?: ComplicationOnPrimary.NEVER
+            )
+        }
+    }
+
+    private val sessionSettings by lazy {
+        combine(
+            settingsSettings,
             supportsSplitSmartspace,
             forceReloadBus,
             actionsFirst
-        ) { sensitive, split, splitSupported, forceReloadTime, actionsFirst ->
+        ) { (sensitive, split, complicationOnPrimary), splitSupported, forceReloadTime, actionsFirst ->
             SessionSettings(
                 sensitive,
                 splitSupported && split,
+                complicationOnPrimary,
                 actionsFirst,
                 forceReloadTime
             )
@@ -180,6 +202,7 @@ abstract class BaseSmartspacerSession<T, I>(
         dispatcher.handleLifecycleEventSafely(Lifecycle.Event.ON_RESUME)
         smartspaceRepository.setSmartspaceVisible(smartspaceSessionId, true)
         whenResumed {
+            lastVisibleTime = System.currentTimeMillis()
             isVisible.emit(true)
         }
     }
@@ -289,7 +312,8 @@ abstract class BaseSmartspacerSession<T, I>(
                 doesHaveSplitSmartspace() && settings.useSplitSmartspace,
                 this is SystemSmartspacerSession,
                 settings.actionsFirst,
-                supportsRemoteViews()
+                supportsRemoteViews(),
+                settings.complicationOnPrimary
             )
         }
     }
@@ -304,6 +328,8 @@ abstract class BaseSmartspacerSession<T, I>(
     }
 
     open suspend fun supportsRemoteViews() = false
+    open suspend fun supportsComplicationOnPrimary() = false
+    protected open fun getKebabMenuBehaviour(target: SmartspaceTarget): KebabMenuBehaviour = KebabMenuBehaviour.Hidden
 
     open fun applyActionOverrides(targets: Flow<List<TargetHolder>>): Flow<List<TargetHolder>> {
         return combine(
@@ -368,7 +394,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB, UiSurface.AMBIENT_CUE, UiSurface.DREAM -> {
                         false
                     }
                 }
@@ -384,7 +410,7 @@ abstract class BaseSmartspacerSession<T, I>(
                             it.parent.config.showOnLockScreen
                         }
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB, UiSurface.AMBIENT_CUE, UiSurface.DREAM -> {
                         false
                     }
                 }
@@ -512,7 +538,7 @@ abstract class BaseSmartspacerSession<T, I>(
                     UiSurface.LOCKSCREEN -> {
                         it.parent.config.showOnExpanded && it.parent.config.expandedShowWhenLocked
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB, UiSurface.AMBIENT_CUE, UiSurface.DREAM -> {
                         false
                     }
                 }
@@ -528,11 +554,38 @@ abstract class BaseSmartspacerSession<T, I>(
                             it.parent.config.showOnLockScreen
                         }
                     }
-                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB -> {
+                    UiSurface.MEDIA_DATA_MANAGER, UiSurface.GLANCEABLE_HUB, UiSurface.AMBIENT_CUE, UiSurface.DREAM -> {
                         false
                     }
                 }
             }
+        }
+    }
+
+    /**
+     *  Fixes the overflow ("kebab") menu from AAG Targets, with behaviour defined in
+     *  [KebabMenuBehaviour]
+     */
+    protected fun RemoteViews.fixKebabMenuIfNeeded(
+        context: Context,
+        target: SmartspaceTarget
+    ) = apply {
+        if (`package` != AsNowPlayingTarget.PACKAGE_NAME) return@apply
+        val packageContext = context.createPackageContext(
+            AsNowPlayingTarget.PACKAGE_NAME,
+            Context.CONTEXT_IGNORE_SECURITY
+        )
+        val viewId = packageContext.resources.getIdentifier(
+            "image_more", "id", packageContext.packageName
+        ).takeIf { it > 0 } ?: return@apply
+        when (val behaviour = getKebabMenuBehaviour(target)) {
+            is KebabMenuBehaviour.Hidden -> {
+                setViewVisibility(viewId, View.GONE)
+            }
+            is KebabMenuBehaviour.Replace -> {
+                setOnClickPendingIntent(viewId, behaviour.pendingIntent)
+            }
+            is KebabMenuBehaviour.Nothing -> return@apply
         }
     }
 
@@ -557,8 +610,26 @@ abstract class BaseSmartspacerSession<T, I>(
     data class SessionSettings(
         val hideSensitive: HideSensitive,
         val useSplitSmartspace: Boolean,
+        val complicationOnPrimary: ComplicationOnPrimary,
         val actionsFirst: Boolean,
         val forceReloadAt: Long
     )
+
+    protected sealed class KebabMenuBehaviour {
+        /**
+         *  The kebab menu will remain untouched (eg. for Pixel Launcher)
+         */
+        data object Nothing: KebabMenuBehaviour()
+
+        /**
+         *  The kebab menu will be hidden entirely (eg. for notifications or unsupported widgets)
+         */
+        data object Hidden: KebabMenuBehaviour()
+
+        /**
+         *  The click action for the kebab menu will be replaced with our own PendingIntent
+         */
+        data class Replace(val pendingIntent: PendingIntent): KebabMenuBehaviour()
+    }
 
 }

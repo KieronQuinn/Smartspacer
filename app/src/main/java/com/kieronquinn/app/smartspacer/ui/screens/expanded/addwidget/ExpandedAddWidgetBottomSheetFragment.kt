@@ -13,8 +13,11 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedBottomSheetAddWidgetBinding
 import com.kieronquinn.app.smartspacer.ui.base.BaseBottomSheetFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.AddState
@@ -25,7 +28,9 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
@@ -93,6 +98,10 @@ open class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<Fragmen
 
     private fun setupRecyclerView() = with(binding.addWidgetRecyclerView) {
         layoutManager = LinearLayoutManager(context)
+        val margin = resources.getDimension(R.dimen.margin_16)
+        val corners = resources.getDimension(R.dimen.margin_24)
+        setRoundedOutline(corners, margin.toInt(), false)
+        clipToOutline = true
         adapter = this@ExpandedAddWidgetBottomSheetFragment.adapter
     }
 
@@ -141,10 +150,30 @@ open class ExpandedAddWidgetBottomSheetFragment: BaseBottomSheetFragment<Fragmen
         viewModel.onWidgetClicked(item, spanX, spanY)
     }
 
-    private fun setupSearch() {
+    private fun setupSearch() = with(binding.addWidgetSearch) {
         setSearchText(viewModel.getSearchTerm())
+        val blurBackground = (requireView().parent as View).background
+        val searchBackground = monet.getBackgroundColorSecondary(requireContext())
+            ?: monet.getBackgroundColor(requireContext())
+        searchBox.backgroundTintList = ColorStateList.valueOf(searchBackground)
+        searchBoxBlur.setRoundedOutline(resources.getDimension(R.dimen.margin_24))
+        searchBoxBlur.clipToOutline = true
+        val blur = BlurDelegate.get(
+            BlurMode.View(searchBoxBlur, binding.addWidgetBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            binding.addWidgetSearch.searchBox.onChanged().collect {
+            blur.blurAvailable.collect { available ->
+                searchBox.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(searchBackground.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(searchBackground)
+                }
+            }
+        }
+        whenResumed {
+            searchBox.onChanged().collect {
                 viewModel.setSearchTerm(it?.toString() ?: "")
             }
         }

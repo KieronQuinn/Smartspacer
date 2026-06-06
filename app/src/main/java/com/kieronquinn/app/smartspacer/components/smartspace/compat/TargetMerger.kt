@@ -15,6 +15,7 @@ import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspaceActionHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ComplicationOnPrimary
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_ABOUT_INTENT
@@ -30,6 +31,7 @@ import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Text
 import com.kieronquinn.app.smartspacer.sdk.model.weather.WeatherData
 import com.kieronquinn.app.smartspacer.utils.extensions.cloneWithUniqneness
+import com.kieronquinn.app.smartspacer.utils.extensions.isWeather
 import com.kieronquinn.app.smartspacer.utils.extensions.popOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.reformatBullet
 import java.util.Calendar
@@ -76,7 +78,8 @@ abstract class TargetMerger {
         actions: List<ActionHolder>,
         openMode: ExpandedOpenMode,
         actionsFirst: Boolean,
-        supportsRemoteViews: Boolean
+        supportsRemoteViews: Boolean,
+        complicationOnPrimary: ComplicationOnPrimary
     ): List<SmartspacePageHolder> {
         val uniqueTargets = makeTargetsUnique(targets)
         val uniqueActions = makeActionsUnique(actions)
@@ -84,20 +87,43 @@ abstract class TargetMerger {
         val actionQueue = LinkedList(uniqueActions)
         val prefixedTargets = mutableListOf<SmartspacePageHolder>()
         if(actionsFirst) {
-            prefixedTargets.addRemainingActions(actionQueue, openMode)
+            prefixedTargets.addRemainingActions(actionQueue, openMode, complicationOnPrimary)
         }
         return prefixedTargets + getSplitTargets(actionQueue) + uniqueTargets.mapNotNull {
             val pageActions = ArrayList<Action>()
             var target = it.target
+            val canTakePrimaryItem = target.canTakePrimaryItem(
+                actionQueue.peek(), supportsRemoteViews, complicationOnPrimary
+            )
+            val primaryAction = if (canTakePrimaryItem) {
+                actionQueue.pop()
+            } else null
+            if (primaryAction != null) {
+                target = convertIfNeeded(target, primaryAction.action)
+                // Move the existing primary item to the unused supplemental alarm item for storage
+                target.templateData?.supplementalAlarmItem = target.templateData?.primaryItem
+                target.templateData?.primaryItem = primaryAction.action.subItemInfo?.copy(
+                    loggingInfo = BaseTemplateData.SubItemLoggingInfo(
+                        SmartspaceTarget.FEATURE_WEATHER,
+                        0,
+                        ""
+                    )
+                )
+            }
             val canTakeHeader = target.canTakeHeaderAction(actionQueue.peek(), supportsRemoteViews)
             val headerAction = if(canTakeHeader){
                 actionQueue.pop()
             }else null
             if(headerAction != null){
                 target = convertIfNeeded(target, headerAction.action)
-                //Retain the title - which is only set if forcing two complications
+                //Retain the title - which is only set if forcing two complications.
+                //If not set, use the complication's title or subtitle.
+                val title = target.headerAction?.title?.takeIf { it.isNotBlank() }
+                    ?: headerAction.action.title.takeIf { it.isNotBlank() }
+                    ?: headerAction.action.subtitle?.toString()
+                    ?: ""
                 target.headerAction = headerAction.action.copy(
-                    title = target.headerAction?.title ?: ""
+                    title = title
                 )
                 target.templateData?.subtitleItem = headerAction.action.subItemInfo
                 pageActions.add(headerAction.parent)
@@ -126,7 +152,7 @@ abstract class TargetMerger {
             )
         }.toMutableList().also {
             //...and add padding targets with the remaining ones
-            it.addRemainingActions(actionQueue, openMode)
+            it.addRemainingActions(actionQueue, openMode, complicationOnPrimary)
         }.map {
             it.convert()
         }
@@ -195,13 +221,31 @@ abstract class TargetMerger {
     ): Boolean {
         if(holder == null) return false //End of list
         if(supportsRemoteViews && remoteViews != null) return false //Never add with RemoteViews
-        //Override specified by target
+        // Override specified by target
         if(canTakeTwoComplications && featureType == SmartspaceTarget.FEATURE_UNDEFINED) return true
-        //Weather target
+        // Weather target
         if(featureType == SmartspaceTarget.FEATURE_WEATHER){
             return headerAction?.subtitle.isNullOrEmpty() && templateData?.subtitleItem == null
         }
         return false
+    }
+
+    private fun SmartspaceTarget.canTakePrimaryItem(
+        holder: SmartspaceActionHolder?,
+        supportsRemoteViews: Boolean,
+        complicationOnPrimary: ComplicationOnPrimary
+    ): Boolean {
+        if(holder == null) return false // End of list
+        if(supportsRemoteViews && remoteViews != null) return false // Never add with RemoteViews
+        // Action must be marked as weather
+        if (!holder.action.showOnPrimary(complicationOnPrimary)) {
+            return false
+        }
+        // Target must be marked as weather or undefined
+        return when (templateData?.primaryItem?.loggingInfo?.featureType) {
+            SmartspaceTarget.FEATURE_UNDEFINED, SmartspaceTarget.FEATURE_WEATHER -> true
+            else -> false
+        }
     }
 
     private fun SmartspaceTarget.canTakeBaseAction(
@@ -235,21 +279,46 @@ abstract class TargetMerger {
     }
 
     private fun MutableList<SmartspacePageHolder>.addRemainingActions(
-        actionQueue: LinkedList<SmartspaceActionHolder>, openMode: ExpandedOpenMode
+        actionQueue: LinkedList<SmartspaceActionHolder>,
+        openMode: ExpandedOpenMode,
+        complicationOnPrimary: ComplicationOnPrimary
     ) {
-        while(true){
-            val action = actionQueue.popOrNull() ?: break
+        while (actionQueue.isNotEmpty()) {
+            val showOnPrimary = actionQueue.peek()?.action?.showOnPrimary(complicationOnPrimary)
+            var primaryAction = if (showOnPrimary == true) {
+                actionQueue.pop()
+            } else null
+            var action = actionQueue.popOrNull()
+            if (primaryAction == null && action == null) break
+            if (action == null) {
+                action = primaryAction
+                primaryAction = null
+            }
             val secondAction = actionQueue.popOrNull()
             val page = SmartspacePageHolder(
                 createBlankTarget(
-                    action.action,
-                    secondAction?.action,
+                    primary = primaryAction?.action,
+                    header = action?.action,
+                    base = secondAction?.action,
                     useExpandedIntent = openMode == ExpandedOpenMode.ALWAYS
                 ),
                 null,
-                listOfNotNull(action.parent, secondAction?.parent)
+                listOfNotNull(
+                    primaryAction?.parent,
+                    action?.parent,
+                    secondAction?.parent
+                )
             )
             add(page)
+        }
+    }
+
+    private fun SmartspaceAction.showOnPrimary(complicationOnPrimary: ComplicationOnPrimary): Boolean {
+        return when (complicationOnPrimary) {
+            ComplicationOnPrimary.NEVER -> false
+            ComplicationOnPrimary.WEATHER_ONLY if (isWeather()) -> true
+            ComplicationOnPrimary.ALWAYS -> true
+            else -> false
         }
     }
 
@@ -294,26 +363,42 @@ abstract class TargetMerger {
      *  date text.
      */
     protected fun createBlankTarget(
-        header: SmartspaceAction,
+        primary: SmartspaceAction?,
+        header: SmartspaceAction?,
         base: SmartspaceAction?,
         templateData: BasicTemplateData? = null,
         useExpandedIntent: Boolean = false
     ): SmartspaceTarget {
         //Strip undocumented extras from the complication so it can't inject them into the target
         base?.extras?.stripUndocumentedExtras()
+        header?.extras?.stripUndocumentedExtras()
+        val headerWithTitle = header?.let {
+            if (it.title.isBlank()) {
+                it.copy(title = it.subtitle?.toString() ?: "")
+            } else it
+        }
         return SmartspaceTarget(
             smartspaceTargetId = "${BLANK_TARGET_PREFIX}_${UUID.randomUUID()}",
-            headerAction = header.reformatBullet(base == null),
+            headerAction = headerWithTitle?.reformatBullet(base == null),
             baseAction = base ?: createBlankHeader(useExpandedIntent),
             featureType = SmartspaceTarget.FEATURE_UNDEFINED,
             componentName = ComponentName("package_name", "class_name"),
             templateData = BasicTemplateData(
-                primaryItem = createBlankTitle(useExpandedIntent),
-                subtitleItem = header.subItemInfo ?: templateData?.subtitleItem
-                    ?: header.generateSubItemInfo().reformatBullet(base == null),
+                primaryItem = primary?.subItemInfo?.copy(
+                    loggingInfo = BaseTemplateData.SubItemLoggingInfo(
+                        SmartspaceTarget.FEATURE_WEATHER,
+                        0,
+                        ""
+                    )
+                ) ?: createBlankTitle(useExpandedIntent),
+                subtitleItem = header?.subItemInfo ?: templateData?.subtitleItem
+                    ?: header?.generateSubItemInfo()?.reformatBullet(base == null),
                 subtitleSupplementalItem = base?.subItemInfo
                     ?: templateData?.subtitleSupplementalItem
-                    ?: base?.generateSubItemInfo()
+                    ?: base?.generateSubItemInfo(),
+                supplementalAlarmItem = if (primary?.subItemInfo != null) {
+                    createBlankTitle(useExpandedIntent)
+                } else null
             ),
             canBeDismissed = false
         )

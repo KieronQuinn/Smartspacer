@@ -35,10 +35,12 @@ class ContributorsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val root = holder.binding.root
         when(holder){
             is ContributorsViewHolder.LinkedSetting -> {
                 val item = items[position] as ContributorsSettingsItem.LinkedSetting
                 holder.setup(item)
+                root.applyShape(position)
             }
             else -> super.onBindViewHolder(holder, position)
         }

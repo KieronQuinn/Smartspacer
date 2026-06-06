@@ -141,9 +141,6 @@
     <string name="target_at_a_glance_label">Auf einen Blick (Widget)</string>
     <string name="target_at_a_glance_description">Eingeschränkte Ziele von Google Auf einen Blick, geladen über das Google-Widget</string>
     <string name="target_at_a_glance_description_unsupported">Dieses Ziel erfordert die Google-App</string>
-    <string name="target_google_weather_forecast_title">Google Wettervorhersage</string>
-    <string name="target_google_weather_forecast_content">Zeigt das aktuelle Wetter und die Vorhersage für die nächsten vier Stunden von Google Wetter an</string>
-    <string name="target_google_weather_forecast_incompatible">Dieses Ziel erfordert ein Pixel-Gerät oder ein Pixel-basiertes ROM, auf dem die Google-App installiert ist</string>
     <string name="target_notification_warning_title">Benachrichtigungs-Listener deaktiviert</string>
     <string name="target_notification_warning_description">Zum Aktivieren tippen</string>
     <string name="complication_default_label">Auf einen Blick Komplikationen</string>
@@ -910,7 +907,6 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="github">GitHub</string>
     <string name="libraries">Fremd-Bibliotheken</string>
     <string name="donate">Spenden</string>
-    <string name="twitter">Folge mir auf Twitter</string>
     <string name="about_version">Version %1s\nErstellt von Kieron Quinn</string>
     <string name="about_contributors">Mitwirkende</string>
     <string name="about_crowdin">Crowdin</string>
@@ -997,7 +993,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_default_settings_hide_calendar">Kalender</string>
     <string name="target_default_settings_hide_work_profile">Arbeitsprofil</string>
     <string name="target_default_settings_hide_food">Lebensmittel- &amp; Haushaltswarenbestellungen</string>
-    <string name="target_default_settings_cross_device_timer">Geräteübergreifender Timer</string>
+    <string name="target_default_settings_hide_cross_device_timer">Geräteübergreifender Timer</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">App auswählen</string>
     <string name="target_notification_configuration_app_content">Wähle App von der Benachrichtigungen angezeigt werden sollen</string>

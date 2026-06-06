@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<eightbitlab.com.blurview.BlurTarget xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:id="@+id/blur_target"
     android:orientation="vertical"
     tools:context=".ui.activities.MainActivity">
 
@@ -16,4 +17,4 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph_configuration" />
 
-</FrameLayout>
+</eightbitlab.com.blurview.BlurTarget>

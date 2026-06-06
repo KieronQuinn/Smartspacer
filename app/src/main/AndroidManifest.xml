@@ -304,10 +304,10 @@
 
         <activity-alias
             android:name=".ui.activities.configuration.target.default.AsiSettingsTrampolineActivity"
-            android:description="@string/target_default_configuration_description"
+            android:description="@string/complication_default_configuration_description"
             android:exported="true"
             android:icon="@drawable/ic_target_at_a_glance"
-            android:label="@string/target_default_configuration_title"
+            android:label="@string/complication_default_configuration_title"
             android:targetActivity=".ui.activities.TrampolineActivity" />
 
         <activity-alias
@@ -397,8 +397,12 @@
         </receiver>
 
         <receiver android:name=".receivers.NativeDismissReceiver" />
-        <receiver android:name=".receivers.StartShizukuReceiver" />
         <receiver android:name=".receivers.AtAGlanceClickReceiver" />
+
+        <activity android:name=".receivers.StartShizukuActivity"
+            android:theme="@style/Theme.Smartspacer.Transparent"
+            android:excludeFromRecents="true"
+            android:noHistory="true" />
 
         <receiver
             android:name=".widgets.SmartspacerAppWidgetProvider"
@@ -880,11 +884,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="android.intent.action.TIME_SET" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
@@ -906,7 +906,6 @@
             android:exported="true"
             android:launchMode="singleInstance"
             android:noHistory="true"
-            android:process=":trampoline"
             android:theme="@style/Theme.Smartspacer.Transparent" />
 
         <activity android:name=".ui.activities.ExportedSmartspaceTrampolineProxyActivity"
@@ -1003,14 +1002,6 @@
                 android:value="true" />
         </service>
 
-        <activity
-            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
-            android:theme="@style/AppTheme.ThirdPartyLicences" />
-
-        <activity
-            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
-            android:theme="@style/AppTheme.ThirdPartyLicences" />
-
         <!-- Google Maps SDK -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -1041,6 +1032,10 @@
         <meta-data
             android:name="xposedscope"
             android:resource="@array/xposed_scope"/>
+
+        <activity android:name=".ui.activities.TestActivity"
+            android:theme="@style/Theme.Smartspacer"
+            android:exported="true"/>
 
     </application>
 

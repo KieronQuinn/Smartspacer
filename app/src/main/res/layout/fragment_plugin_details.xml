@@ -180,6 +180,7 @@
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/plugin_details_download_progress"
+                    style="@style/Widget.Material3Expressive.LinearProgressIndicator.Wavy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"

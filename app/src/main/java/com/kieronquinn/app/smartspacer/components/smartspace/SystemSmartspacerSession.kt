@@ -62,6 +62,9 @@ class SystemSmartspacerSession(
     @OptIn(BuildCompat.PrereleaseSdkCheck::class)
     override val supportsAodAudio = !BuildCompat.isAtLeastV()
 
+    // Feature was added at the same time as RemoteViews, so we can use that to check
+    override suspend fun supportsComplicationOnPrimary() = supportsRemoteViews()
+
     override val targetCount = settingsTargetCount.map {
         when(it){
             TargetCountLimit.AUTOMATIC -> configTargetCount

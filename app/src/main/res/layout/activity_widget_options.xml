@@ -11,10 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical"
         android:clipToOutline="true"
+        android:orientation="vertical"
         android:outlineProvider="background"
-        android:background="@drawable/background_permission_dialog_no_colour"
         tools:background="@drawable/background_permission_dialog"
         tools:backgroundTint="@android:color/system_neutral2_100">
 
@@ -22,14 +21,15 @@
             android:id="@+id/widget_options_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_settings_text_item"
+            android:clipToPadding="false"
+            android:minWidth="300dp"
+            android:paddingTop="@dimen/margin_16"
             tools:itemCount="3"
-            android:minWidth="300dp"/>
+            tools:listitem="@layout/item_settings_text_item" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/widget_options_close"
-            style="@style/PermissionDialogButton"
-            app:cornerRadius="@dimen/margin_16"
+            style="@style/SmartspacerDialogButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_16"

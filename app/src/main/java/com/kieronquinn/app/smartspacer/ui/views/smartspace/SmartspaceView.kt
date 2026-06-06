@@ -169,7 +169,7 @@ abstract class SmartspaceView(
             return
         }
         setViewVisibility(R.id.widget_smartspacer_list_item_overflow, View.VISIBLE)
-        val icon = Icon.createWithResource(context, R.drawable.ic_widget_kebab).apply {
+        val icon = Icon.createWithResource(context, R.drawable.ic_options).apply {
             setTint(iconTint)
         }
         setImageViewIcon(R.id.widget_smartspacer_list_item_overflow, icon)

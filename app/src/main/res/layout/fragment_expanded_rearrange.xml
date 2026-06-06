@@ -7,13 +7,14 @@
     android:transitionGroup="true"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
         android:id="@+id/expanded_rearrange_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?android:actionBarSize"
+        tools:background="?android:colorPrimary"
+        tools:navigationIcon="@drawable/ic_back"
         app:titleTextColor="?android:textColorPrimary"
-        app:navigationIcon="@drawable/ic_back"
         app:title="@string/expanded_custom_widget_rearrange_title"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer" />
 

@@ -106,7 +106,8 @@ class BluetoothRequirementConfigurationFragment: BaseSettingsFragment(), BackAva
                 Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_bluetooth),
                     getText(R.string.requirement_bluetooth_configuration_pick_permission),
-                    ::onPermissionClicked
+                    ::onPermissionClicked,
+                    topPadding = 0
                 )
             )
         }
@@ -115,7 +116,8 @@ class BluetoothRequirementConfigurationFragment: BaseSettingsFragment(), BackAva
                 Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_target_calendar_settings_location),
                     getString(R.string.requirement_bluetooth_configuration_pick_background_permission),
-                    ::onBackgroundPermissionClicked
+                    ::onBackgroundPermissionClicked,
+                    topPadding = 0
                 )
             )
         }
@@ -124,7 +126,8 @@ class BluetoothRequirementConfigurationFragment: BaseSettingsFragment(), BackAva
                 Card(
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_bluetooth),
                     getString(R.string.requirement_bluetooth_configuration_pick_disabled),
-                    viewModel::onEnableClicked
+                    viewModel::onEnableClicked,
+                    topPadding = 0
                 )
             )
         }
@@ -148,7 +151,8 @@ class BluetoothRequirementConfigurationFragment: BaseSettingsFragment(), BackAva
         }
         return listOf(Card(
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_info),
-            getString(R.string.requirement_bluetooth_configuration_pick_info)
+            getString(R.string.requirement_bluetooth_configuration_pick_info),
+            topPadding = 0
         )) + options
     }
 

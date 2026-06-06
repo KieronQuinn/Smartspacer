@@ -1,23 +1,26 @@
 package com.kieronquinn.app.smartspacer.ui.base
 
-import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.activity.addCallback
-import androidx.core.animation.addListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.kieronquinn.app.smartspacer.components.blur.BlurProvider
+import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
+import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.core.MonetCompat
+import eightbitlab.com.blurview.BlurView
 import org.koin.android.ext.android.inject
 
 abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T): DialogFragment() {
@@ -33,9 +36,14 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
 
     internal var _binding: T? = null
 
-    private val blurProvider by inject<BlurProvider>()
+    abstract val blurView: BlurView
 
-    private var isBlurShowing = false
+    private val blur by lazy {
+        BlurDelegate.get(
+            BlurMode.Window(requireContext(), requireDialog().window!!),
+            lifecycleScope
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +57,6 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window?.let {
-            it.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
             ViewCompat.setOnApplyWindowInsetsListener(it.decorView) { view, insets ->
                 val navigationInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 view.updatePadding(left = navigationInsets.left, right = navigationInsets.right)
@@ -62,62 +69,50 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
         return dialog
     }
 
-    private var showBlurAnimation: ValueAnimator? = null
+    override fun onStart() {
+        super.onStart()
+        requireDialog().window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.post {
-            showBlurAnimation = ValueAnimator.ofFloat(0f, 1f).apply {
-                duration = 250L
-                addUpdateListener {
-                    val progress = it.animatedValue as Float
-                    dialog?.window?.decorView?.alpha = progress
-                    applyBlur(progress)
-                }
-                addListener(onEnd = {
-                    isBlurShowing = true
-                })
-                start()
+        blur.animateBlurTo(1f)
+        whenResumed {
+            blur.blurAvailable.collect {
+                onBlurApplied(it)
             }
         }
     }
 
     override fun onCancel(dialog: DialogInterface) {
-        applyBlur(0f)
+        blur.setBlur(0f)
         super.onCancel(dialog)
     }
 
     override fun dismiss() {
-        applyBlur(0f)
+        blur.setBlur(0f)
         super.dismiss()
     }
 
-    protected fun dismissWithAnimation(){
-        showBlurAnimation?.cancel()
-        ValueAnimator.ofFloat(1f, 0f).apply {
-            duration = 250L
-            addUpdateListener {
-                val progress = it.animatedValue as Float
-                dialog?.window?.decorView?.alpha = progress
-                applyBlur(progress)
-            }
-            addListener(onEnd = {
-                dismiss()
-            })
-        }.start()
-    }
+    abstract fun onBlurApplied(applied: Boolean)
 
-    private fun applyBlur(ratio: Float){
-        val dialogWindow = dialog?.window ?: return
-        val appWindow = activity?.window ?: return
-        blurProvider.applyDialogBlur(dialogWindow, appWindow, ratio)
+    protected fun dismissWithAnimation() = blur.animateBlurTo(0f) {
+        dismiss()
     }
 
     override fun onResume() {
         super.onResume()
-        if(isBlurShowing){
-            view?.post {
-                applyBlur(1f)
-            }
+        blur.setBlur(1f)
+    }
+
+    override fun getTheme(): Int {
+        return if(requireContext().isDarkMode){
+            R.style.BaseDialog_Dark
+        }else{
+            R.style.BaseDialog
         }
     }
 

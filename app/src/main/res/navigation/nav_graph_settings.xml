@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_settingsLanguageFragment"
             app:destination="@id/settingsLanguageFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsComplicationOnPrimaryFragment"
+            app:destination="@id/settingsComplicationOnPrimaryFragment" />
     </fragment>
     <fragment
         android:id="@+id/nativeModeFragment2"
@@ -207,7 +210,7 @@
 
     <activity
         android:id="@+id/ossLicensesMenuActivity"
-        android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+        android:name="com.google.android.gms.oss.licenses.v2.OssLicensesMenuActivity"
         tools:layout="@layout/libraries_social_licenses_license_menu_activity" />
     <fragment
         android:id="@+id/contributorsFragment"
@@ -229,6 +232,11 @@
         android:id="@+id/settingsLanguageFragment"
         android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.language.SettingsLanguageFragment"
         android:label="@string/settings_language_title"
+        tools:layout="@layout/fragment_settings_base" />
+    <fragment
+        android:id="@+id/settingsComplicationOnPrimaryFragment"
+        android:name="com.kieronquinn.app.smartspacer.ui.screens.settings.complicationonprimary.SettingsComplicationOnPrimaryFragment"
+        android:label="@string/settings_complication_on_primary_title_short"
         tools:layout="@layout/fragment_settings_base" />
 
 </navigation>

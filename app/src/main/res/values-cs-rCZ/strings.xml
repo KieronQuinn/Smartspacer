@@ -141,9 +141,6 @@
     <string name="target_at_a_glance_label">Na první pohled (Widget)</string>
     <string name="target_at_a_glance_description">Omezené cíle z Google Stručně, načte se pomocí widgetu Google</string>
     <string name="target_at_a_glance_description_unsupported">Tento cíl vyžaduje aplikaci Google</string>
-    <string name="target_google_weather_forecast_title">Google předpověď počasí</string>
-    <string name="target_google_weather_forecast_content">Zobrazuje aktuální počasí a předpověď na další čtyři hodiny z Google Weather</string>
-    <string name="target_google_weather_forecast_incompatible">Tento cíl vyžaduje zařízení Pixel nebo ROM na bázi Pixel s nainstalovanou aplikací Google</string>
     <string name="target_notification_warning_title">Notification Listener deaktivován</string>
     <string name="target_notification_warning_description">Klepnutím povolíte</string>
     <string name="complication_default_label">Na první pohled Komplikace</string>
@@ -908,7 +905,6 @@
     <string name="github">GitHub</string>
     <string name="libraries">Knihovny třetích stran</string>
     <string name="donate">Darovat</string>
-    <string name="twitter">Sledujte mě na Twitteru</string>
     <string name="about_version">Verze %1s\nVytvořil Kieron Quinn</string>
     <string name="about_contributors">Přispěvatelé</string>
     <string name="about_crowdin">Crowdin</string>
@@ -995,7 +991,7 @@
     <string name="target_default_settings_hide_calendar">Kalendář</string>
     <string name="target_default_settings_hide_work_profile">Pracovní profil</string>
     <string name="target_default_settings_hide_food">Jídlo &amp; Objednávky domácnosti</string>
-    <string name="target_default_settings_cross_device_timer">Časovač pro více zařízení</string>
+    <string name="target_default_settings_hide_cross_device_timer">Časovač pro více zařízení</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Vyberte aplikaci</string>
     <string name="target_notification_configuration_app_content">Vyberte aplikaci, ze které se mají zobrazovat oznámení</string>

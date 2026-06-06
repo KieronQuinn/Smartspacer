@@ -6,8 +6,10 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.appwidget.AppWidgetHostView
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
@@ -16,8 +18,10 @@ import android.view.View.MeasureSpec.makeMeasureSpec
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.allViews
 import androidx.viewpager.widget.ViewPager
+import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants.EXTRA_SMARTSPACER_ID
 import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants.SMARTSPACER_PACKAGE_NAME
 import com.kieronquinn.app.smartspacer.sdk.client.BuildConfig
 import com.kieronquinn.app.smartspacer.sdk.client.R
@@ -43,6 +47,10 @@ open class BcSmartspaceView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs), SmartspaceTargetInteractionListener {
 
+    companion object {
+        const val ACTION_TARGET_KEBAB_CLICKED = "target_kebab_clicked"
+    }
+
     open val config = SmartspaceConfig(
         5, UiSurface.HOMESCREEN, context.packageName
     )
@@ -61,6 +69,15 @@ open class BcSmartspaceView @JvmOverloads constructor(
     private var runningAnimation: Animator? = null
     private var isResumed = false
     private var popup: Popup? = null
+
+    private val kebabReceiver = object: BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val id = intent.getStringExtra(EXTRA_SMARTSPACER_ID) ?: return
+            val currentTarget = adapter.getTargetAtPosition(viewPager.currentItem)
+            if (id != currentTarget?.smartspaceTargetId) return
+            onLongPress(currentTarget)
+        }
+    }
 
     //Defaults to Balloon factory, can be replaced if required
     var popupFactory: PopupFactory = BalloonPopupFactory
@@ -136,12 +153,19 @@ open class BcSmartspaceView @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        ContextCompat.registerReceiver(
+            context,
+            kebabReceiver,
+            IntentFilter(ACTION_TARGET_KEBAB_CLICKED),
+            ContextCompat.RECEIVER_EXPORTED
+        )
         provider.onCreate()
     }
 
     override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
+        context.unregisterReceiver(kebabReceiver)
         provider.onDestroy()
+        super.onDetachedFromWindow()
     }
 
     private fun onPause() {

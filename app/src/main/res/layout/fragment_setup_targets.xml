@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/margin_8"
     android:transitionGroup="true">
 
     <include
@@ -45,7 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
+            app:iconSize="16dp"
             android:id="@+id/setup_targets_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

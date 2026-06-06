@@ -13,3 +13,9 @@ fun isAtLeastBaklava(): Boolean =
     Build.VERSION.SDK_INT >= 36 ||
             (Build.VERSION.SDK_INT >= 35 &&
                     isAtLeastPreReleaseCodename("Baklava", Build.VERSION.CODENAME))
+
+@SuppressLint("RestrictedApi")
+fun isAtLeastCinnamonBun(): Boolean =
+    Build.VERSION.SDK_INT >= 37 ||
+            (Build.VERSION.SDK_INT >= 36 &&
+                    isAtLeastPreReleaseCodename("CinnamonBun", Build.VERSION.CODENAME))

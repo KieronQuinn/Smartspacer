@@ -30,6 +30,7 @@ import kotlinx.coroutines.withTimeout
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import rikka.shizuku.Shizuku
+import rikka.shizuku.ShizukuProvider.MANAGER_APPLICATION_ID
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -75,6 +76,9 @@ interface ShizukuServiceRepository {
     fun <T> runWithSuiServiceIfAvailable(block: (ISmartspacerSuiService) -> T): ShizukuServiceResponse<T>
     fun disconnect()
 
+    suspend fun shouldShowVersionOutdatedDialog(): Boolean
+    fun onIgnoreVersion()
+
 }
 
 class ShizukuServiceRepositoryImpl(
@@ -85,6 +89,7 @@ class ShizukuServiceRepositoryImpl(
     companion object {
         private const val SHIZUKU_PERMISSION_REQUEST_CODE = 1001
         private const val SHIZUKU_TIMEOUT = 60_000L
+        private const val SHIZUKU_MINIMUM_VERSION = 1100
     }
 
     private val shizukuComponent by lazy {
@@ -122,6 +127,7 @@ class ShizukuServiceRepositoryImpl(
     private val shizukuRunLock = Mutex()
     private val suiRunLock = Mutex()
     private val scope = MainScope()
+    private val packageManager = context.packageManager
 
     override val shizukuService = MutableStateFlow<ISmartspacerShizukuService?>(null)
     override val suiService = MutableStateFlow<ISmartspacerSuiService?>(null)
@@ -282,6 +288,27 @@ class ShizukuServiceRepositoryImpl(
         }
         suiServiceConnection?.let {
             Shizuku.unbindUserService(suiUserServiceArgs, it, true)
+        }
+    }
+
+    override suspend fun shouldShowVersionOutdatedDialog(): Boolean {
+        val version = try {
+            packageManager.getPackageInfo(MANAGER_APPLICATION_ID, 0).longVersionCode
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
+        }
+        if (version == settingsRepository.shizukuIgnoredVersion.get()) return false
+        return version < SHIZUKU_MINIMUM_VERSION
+    }
+
+    override fun onIgnoreVersion() {
+        scope.launch {
+            val version = try {
+                packageManager.getPackageInfo(MANAGER_APPLICATION_ID, 0).longVersionCode
+            } catch (e: PackageManager.NameNotFoundException) {
+                -1
+            }
+            settingsRepository.shizukuIgnoredVersion.set(version)
         }
     }
 

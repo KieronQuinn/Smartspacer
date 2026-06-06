@@ -1,16 +1,19 @@
 package com.kieronquinn.app.smartspacer.utils.extensions
 
-import android.appwidget.AppWidgetHostView
+import android.graphics.Outline
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewHidden
+import android.view.ViewOutlineProvider
 import android.view.ViewRootImpl
+import android.view.Window
 import androidx.core.view.children
 import androidx.core.view.doOnPreDraw
 import dev.rikka.tools.refine.Refine
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
@@ -79,16 +82,35 @@ fun View.setRecursiveLongClickListener(listener: View.OnLongClickListener?) {
     }
 }
 
-fun <T: AppWidgetHostView> View.findAppWidgetHostView(): T? {
-    if(this is AppWidgetHostView){
-        return this as? T
-    }
-    var parent = parent
-    while(parent != null){
-        if(parent is AppWidgetHostView){
-            return parent as? T
+fun View.isAttached() = callbackFlow {
+    val listener = object : View.OnAttachStateChangeListener {
+        override fun onViewAttachedToWindow(v: View) {
+            trySend(true)
         }
-        parent = parent.parent
+
+        override fun onViewDetachedFromWindow(v: View) {
+            trySend(false)
+        }
     }
-    return null
+    addOnAttachStateChangeListener(listener)
+    if (isAttachedToWindow) {
+        trySend(true)
+    }
+    awaitClose {
+        removeOnAttachStateChangeListener(listener)
+    }
+}.distinctUntilChanged()
+
+fun View.setRoundedOutline(corners: Float, horizontalInset: Int = 0, roundBottom: Boolean = true) {
+    outlineProvider = object: ViewOutlineProvider() {
+        override fun getOutline(view: View, outline: Outline) {
+            outline.setRoundRect(
+                horizontalInset,
+                0,
+                view.width - horizontalInset,
+                view.height + if (roundBottom) 0 else corners.toInt(),
+                corners
+            )
+        }
+    }
 }

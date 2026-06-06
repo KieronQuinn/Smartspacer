@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -31,13 +32,13 @@ fun Fragment.getBackFragment(): Fragment? {
 /**
  *  Helper for [LifecycleOwner].[whenResumed]
  */
-fun Fragment.whenResumed(block: suspend CoroutineScope.() -> Unit) {
-    viewLifecycleOwner.whenResumed(block)
+fun Fragment.whenResumed(block: suspend CoroutineScope.() -> Unit): Job {
+    return viewLifecycleOwner.whenResumed(block)
 }
 
 /**
  *  Helper for [LifecycleOwner].[whenCreated]
  */
-fun Fragment.whenCreated(block: suspend CoroutineScope.() -> Unit) {
-    viewLifecycleOwner.whenCreated(block)
+fun Fragment.whenCreated(block: suspend CoroutineScope.() -> Unit): Job {
+    return viewLifecycleOwner.whenCreated(block)
 }

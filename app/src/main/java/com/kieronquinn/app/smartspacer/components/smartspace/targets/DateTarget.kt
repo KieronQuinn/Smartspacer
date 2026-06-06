@@ -16,6 +16,7 @@ import com.kieronquinn.app.smartspacer.repositories.DataRepository
 import com.kieronquinn.app.smartspacer.sdk.model.Backup
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData.SubItemInfo
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BasicTemplateData
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.TapAction
@@ -37,7 +38,8 @@ class DateTarget: SmartspacerTargetProvider() {
     private val gson by inject<Gson>()
 
     override fun getSmartspaceTargets(smartspacerId: String): List<SmartspaceTarget> {
-        val dateFormat = getDateFormat(smartspacerId) ?: getDefaultDateFormat()
+        val config = getTargetConfig(smartspacerId)
+        val dateFormat = config?.getDateFormat() ?: getDefaultDateFormat()
         val featureType = SmartspaceTarget.FEATURE_UNDEFINED
         val header = SmartspaceAction(
             id = "",
@@ -48,7 +50,12 @@ class DateTarget: SmartspacerTargetProvider() {
         val templateData = BasicTemplateData(
             primaryItem = SubItemInfo(
                 text = Text(dateFormat.format(ZonedDateTime.now())),
-                tapAction = TapAction(intent = getCalendarIntent())
+                tapAction = TapAction(intent = getCalendarIntent()),
+                loggingInfo = BaseTemplateData.SubItemLoggingInfo(
+                    SmartspaceTarget.FEATURE_UNDEFINED,
+                    0,
+                    ""
+                ).takeIf { config?.dateFormat == null } // Only supported with default format
             )
         )
         return listOf(
@@ -117,8 +124,12 @@ class DateTarget: SmartspacerTargetProvider() {
         notifyChange(smartspacerId)
     }
 
-    private fun getDateFormat(smartspacerId: String): Formatter? {
-        return dataRepository.getTargetData(smartspacerId, TargetData::class.java)?.dateFormat?.let {
+    private fun getTargetConfig(smartspacerId: String): TargetData? {
+        return dataRepository.getTargetData(smartspacerId, TargetData::class.java)
+    }
+
+    private fun TargetData.getDateFormat(): Formatter? {
+        return dateFormat?.let {
             try {
                 DateTimeFormatter.ofPattern(it)
             }catch (e: IllegalArgumentException) {

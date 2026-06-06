@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Header
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.Setting
@@ -15,12 +18,21 @@ import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsFragment
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel.SettingsSettingsItem
 import com.kieronquinn.app.smartspacer.ui.screens.settings.SettingsViewModel.State
 import com.kieronquinn.app.smartspacer.utils.extensions.getSelectedLanguage
+import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
 
     private val viewModel by viewModel<SettingsViewModel>()
+
+    private val blur by lazy {
+        BlurDelegate.get(BlurMode.None(
+            requireView(),
+            requireActivity().window,
+            requireContext()
+        ), lifecycleScope)
+    }
 
     override val additionalPadding by lazy {
         resources.getDimension(R.dimen.margin_8)
@@ -33,6 +45,7 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupState()
+        setupBlur()
     }
 
     private fun setupState() {
@@ -58,8 +71,13 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
         }
     }
 
-    private fun State.Loaded.getItems(): List<BaseSettingsItem> = listOf(
-        Header(getString(R.string.settings_integrations)),
+    private fun setupBlur() = whenCreated {
+        blur.isBlurAvailable(requireContext()).collect {
+            viewModel.onBlurAvailableChanged(it)
+        }
+    }
+
+    private fun State.Loaded.getItems(): List<BaseSettingsItem> = listOfNotNull(
         Setting(
             getString(R.string.settings_enhanced_title),
             if(enhancedCompatible){
@@ -118,6 +136,12 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_hide_sensitive_content),
             onClick = viewModel::onHideSensitiveContentClicked,
         ),
+        Setting(
+            getString(R.string.settings_complication_on_primary_title),
+            getString(R.string.settings_complication_on_primary_content, getString(complicationOnPrimary.label)),
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
+            onClick =viewModel::onComplicationOnPrimaryClicked
+        ),
         Header(getString(R.string.settings_plugins)),
         Setting(
             getString(R.string.plugin_settings_title),
@@ -158,6 +182,20 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_analytics),
             onChanged = viewModel::onEnableAnalyticsChanged
         ),
+        if (blurAvailable != null) {
+            SwitchSetting(
+                blurEnabled && blurAvailable,
+                getString(R.string.settings_enable_blur_title),
+                if (blurAvailable) {
+                    getString(R.string.settings_enable_blur_content)
+                } else {
+                    getString(R.string.settings_enable_blur_content_disabled)
+                },
+                icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings_expanded_blur_background),
+                onChanged = viewModel::onEnableBlurChanged,
+                enabled = blurAvailable
+            )
+        } else null,
         Setting(
             getString(R.string.settings_language_title),
             requireContext().getSelectedLanguage(supportedLocales)?.displayName
@@ -177,7 +215,7 @@ class SettingsFragment: BaseSettingsFragment(), Root, CanShowSnackbar {
             viewModel::onDonateClicked,
             viewModel::onGitHubClicked,
             viewModel::onCrowdinClicked,
-            viewModel::onTwitterClicked,
+            viewModel::onBlueskyClicked,
             viewModel::onXdaClicked,
             viewModel::onLibrariesClicked
         )

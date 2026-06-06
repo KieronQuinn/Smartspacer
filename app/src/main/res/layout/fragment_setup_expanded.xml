@@ -22,7 +22,9 @@
                 android:id="@+id/setup_expanded_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_16"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_16"
                 android:text="@string/setup_expanded_switch"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
                 app:thumbIconTint="?android:textColorTertiaryInverse" />
@@ -45,9 +47,16 @@
                 android:text="@string/setup_expanded_info_p2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer" />
 
-            <include
-                android:id="@+id/setup_expanded_open_enabled"
-                layout="@layout/item_settings_switch_item" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16">
+
+                <include
+                    android:id="@+id/setup_expanded_open_enabled"
+                    layout="@layout/item_settings_switch_item" />
+
+            </FrameLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,7 +80,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:backgroundTint="@android:color/darker_gray">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
+            app:iconSize="16dp"
             android:id="@+id/setup_expanded_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

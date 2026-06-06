@@ -10,7 +10,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Parcelable
 import android.provider.Settings
+import android.util.Log
 import androidx.annotation.RestrictTo
+import androidx.core.net.toUri
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.sdk.utils.EXTRA_EXCLUDE_FROM_SMARTSPACER
 import com.kieronquinn.app.smartspacer.sdk.utils.INTENT_KEY_SECURITY_TAG
@@ -40,6 +42,7 @@ val EXPORTED_WEATHER_COMPONENT = ComponentName(
 )
 
 private const val PACKAGE_GOOGLE_WEATHER = "com.google.android.apps.weather"
+private const val LINK_REDIRECT_SHIZUKU = "https://kieronquinn.co.uk/redirect/Smartspacer/shizuku"
 
 private const val EXTRA_FEEDBACK_FEATURE_TYPE = "com.google.android.apps.search.assistant.verticals.ambient.shared.constants.SMARTSPACE_EXTRA_CONTEXTUAL_FEEDBACK_FEATURE_TYPE"
 
@@ -130,5 +133,11 @@ fun Intent.setClassLoaderToPackage(context: Context, packageName: String) {
 fun Context.getGoogleWeatherIntent(): Intent {
     return packageManager.getLaunchIntentForPackage(PACKAGE_GOOGLE_WEATHER) ?: Intent().apply {
         component = EXPORTED_WEATHER_COMPONENT
+    }
+}
+
+fun getShizukuInstallIntent(): Intent {
+    return Intent(Intent.ACTION_VIEW).apply {
+        data = LINK_REDIRECT_SHIZUKU.toUri()
     }
 }

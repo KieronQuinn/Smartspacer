@@ -166,8 +166,7 @@ class NativeModeFragment: BoundFragment<FragmentNativeBinding>(FragmentNativeBin
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.nativeControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.nativeControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.nativeControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

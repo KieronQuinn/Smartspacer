@@ -15,6 +15,6 @@
         android:background="@drawable/rounded_ripple_32"
         android:padding="4dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_widget_kebab" />
+        android:src="@drawable/ic_options" />
 
 </FrameLayout>

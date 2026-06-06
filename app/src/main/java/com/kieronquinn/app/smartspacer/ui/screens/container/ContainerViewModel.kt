@@ -4,6 +4,7 @@ import androidx.core.os.bundleOf
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.repositories.PluginRepository
+import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.UpdateRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 
 abstract class ContainerViewModel(scope: CoroutineScope?): BaseViewModel(scope) {
 
-    abstract val pluginUpdateCount: StateFlow<Int>
+    abstract val tabLabel: StateFlow<String?>
     abstract val pluginRepositoryEnabled: StateFlow<Boolean>
     abstract val showUpdateSnackbar: StateFlow<Boolean>
 
@@ -26,11 +27,13 @@ abstract class ContainerViewModel(scope: CoroutineScope?): BaseViewModel(scope) 
     abstract fun onUpdateClicked()
     abstract fun onUpdateDismissed()
     abstract fun showDisplayOverOtherAppsDialogIfNeeded()
+    abstract fun showShizukuDialogIfNeeded()
 
 }
 
 class ContainerViewModelImpl(
     private val navigation: ContainerNavigation,
+    private val shizukuServiceRepository: ShizukuServiceRepository,
     settingsRepository: SmartspacerSettingsRepository,
     pluginRepository: PluginRepository,
     updateRepository: UpdateRepository,
@@ -56,8 +59,8 @@ class ContainerViewModelImpl(
 
     private val pluginRepositoryEnabledSetting = settingsRepository.pluginRepositoryEnabled
 
-    override val pluginUpdateCount = pluginRepository.getUpdateCount()
-        .stateIn(vmScope, SharingStarted.Eagerly, 0)
+    override val tabLabel = pluginRepository.getTabLabel()
+        .stateIn(vmScope, SharingStarted.Eagerly, null)
 
     override val pluginRepositoryEnabled = pluginRepositoryEnabledSetting.asFlow()
         .stateIn(vmScope, SharingStarted.Eagerly, pluginRepositoryEnabledSetting.getSync())
@@ -85,9 +88,18 @@ class ContainerViewModelImpl(
 
     override fun showDisplayOverOtherAppsDialogIfNeeded() {
         vmScope.launch {
-            if(!requiresDisplayOverOtherAppsPermission.get()) return@launch
-            requiresDisplayOverOtherAppsPermission.set(false)
-            navigation.navigate(R.id.action_global_displayOverOtherAppsPermissionBottomSheetFragment)
+            if (requiresDisplayOverOtherAppsPermission.get()) {
+                requiresDisplayOverOtherAppsPermission.set(false)
+                navigation.navigate(R.id.action_global_displayOverOtherAppsPermissionBottomSheetFragment)
+            }
+        }
+    }
+
+    override fun showShizukuDialogIfNeeded() {
+        vmScope.launch {
+            if (shizukuServiceRepository.shouldShowVersionOutdatedDialog()) {
+                navigation.navigate(R.id.action_global_shizukuOutdatedBottomSheetFragment)
+            }
         }
     }
 

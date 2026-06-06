@@ -6,11 +6,10 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.oemsmartspace'
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,6 +27,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
+    }
+    lint {
+        targetSdk 34
+    }
+    testOptions {
+        targetSdk 34
     }
 }
 
@@ -52,5 +57,5 @@ protobuf {
 }
 
 dependencies {
-    api "com.google.protobuf:protobuf-javalite:3.25.2"
+    api "com.google.protobuf:protobuf-javalite:4.35.0"
 }

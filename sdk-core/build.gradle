@@ -8,11 +8,10 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdk'
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         minSdk 29
-        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -35,15 +34,22 @@ android {
     }
     buildFeatures {
         aidl true
+        buildConfig true
+    }
+    lint {
+        targetSdk 34
+    }
+    testOptions {
+        targetSdk 34
     }
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.17.0"
+    implementation "androidx.core:core-ktx:1.19.0"
 }
 
 mavenPublishing {
-    coordinates("com.kieronquinn.smartspacer", "sdk-core", "1.1.1")
+    coordinates("com.kieronquinn.smartspacer", "sdk-core", "1.1.2")
 
     pom {
         name = "Smartspacer Core SDK"
@@ -69,5 +75,12 @@ mavenPublishing {
             connection = "scm:git:git://github.com/KieronQuinn/Smartspacer.git"
             developerConnection = "scm:git:ssh://git@github.com/KieronQuinn/Smartspacer.git"
         }
+    }
+}
+
+tasks.withType(Jar).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude { details ->
+        details.file.absolutePath.contains("generated") && details.name == "ParceledListSlice.java"
     }
 }

@@ -77,8 +77,7 @@ class EnhancedModeFragment: BoundFragment<FragmentEnhancedModeBinding>(FragmentE
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupEnhancedControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupEnhancedControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupEnhancedControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupEnhancedControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

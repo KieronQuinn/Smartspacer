@@ -1,60 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kieronquinn.app.smartspacer.ui.views.SmartspacerCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Filled.Smartspacer"
+    app:cardBackgroundColor="?android:colorControlHighlight"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
-    android:gravity="center_vertical"
-    android:minHeight="72dp"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/item_settings_text_icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:padding="20dp"
-        app:tint="?android:colorControlNormal"
-        tools:src="@drawable/ic_configure" />
-
-    <Space
-        android:id="@+id/item_settings_text_space"
-        android:visibility="gone"
-        android:layout_width="@dimen/margin_16"
-        android:layout_height="match_parent"/>
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_16"
-        android:layout_weight="1"
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin_8"
-        android:paddingBottom="@dimen/margin_8">
+        android:minHeight="72dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/item_settings_text_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
-            android:textColor="?android:textColorPrimary"
-            tools:text="Setting Title" />
+        <ImageView
+            android:id="@+id/item_settings_text_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            app:tint="?android:textColorPrimary"
+            tools:src="@drawable/ic_configure" />
 
-        <TextView
-            android:id="@+id/item_settings_text_content"
-            android:layout_width="match_parent"
+        <Space
+            android:id="@+id/item_settings_text_space"
+            android:layout_width="@dimen/margin_16"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
-            android:textColor="?android:textColorPrimary"
-            android:visibility="gone"
-            tools:text="Setting Content"
-            tools:visibility="visible" />
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_12"
+            android:paddingBottom="@dimen/margin_12">
+
+            <TextView
+                android:id="@+id/item_settings_text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                tools:text="Setting Title" />
+
+            <TextView
+                android:id="@+id/item_settings_text_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                android:visibility="gone"
+                tools:text="Setting Content"
+                tools:visibility="visible" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</com.kieronquinn.app.smartspacer.ui.views.SmartspacerCardView>

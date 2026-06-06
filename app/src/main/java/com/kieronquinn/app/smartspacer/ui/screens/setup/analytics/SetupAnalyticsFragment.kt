@@ -5,6 +5,7 @@ import android.text.Html
 import android.text.util.Linkify
 import android.view.View
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
@@ -36,6 +37,7 @@ class SetupAnalyticsFragment: BoundFragment<FragmentSetupAnalyticsBinding>(Fragm
     }
 
     private fun setupToolbar() = with(binding.setupAnalyticsToolbar) {
+        navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
         onApplyInsets { view, insets ->
             view.updateLayoutParams<LinearLayout.LayoutParams> {
                 updateMargins(top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top)

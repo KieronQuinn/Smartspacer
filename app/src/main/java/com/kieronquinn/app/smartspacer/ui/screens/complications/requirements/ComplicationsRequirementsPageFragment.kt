@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
 import com.kieronquinn.app.smartspacer.databinding.FragmentRequirementsPageBinding
 import com.kieronquinn.app.smartspacer.sdk.SmartspacerConstants
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
@@ -20,7 +22,9 @@ import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationMar
 import com.kieronquinn.app.smartspacer.utils.extensions.getSerializableCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.setClassLoaderToPackage
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -61,6 +65,7 @@ class ComplicationsRequirementsPageFragment: BoundFragment<FragmentRequirementsP
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         viewModel.setup(requirementId, pageType)
         setupMonet()
         setupRecyclerView()
@@ -100,11 +105,29 @@ class ComplicationsRequirementsPageFragment: BoundFragment<FragmentRequirementsP
         applyBottomNavigationMarginShort(fabMargin)
     }
 
-    private fun setupFab() = with(binding.requirementsFabAdd) {
-        applyBottomNavigationMarginShort(resources.getDimension(R.dimen.margin_16))
-        backgroundTintList = ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+    private fun setupFab() = with(binding) {
+        requirementsFabAddContainer.applyBottomNavigationMarginShort()
+        requirementsBlurView.clipToOutline = true
+        requirementsBlurView.setRoundedOutline(resources.getDimension(R.dimen.margin_16))
+        val fabColour = monet.getPrimaryColor(requireContext())
+        requirementsFabAdd.backgroundTintList = ColorStateList.valueOf(fabColour)
+        val blurBackground = requireView().background
+        val blur = BlurDelegate.get(
+            BlurDelegate.BlurMode.View(requirementsBlurView, requirementsBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            onClicked().collect {
+            blur.blurAvailable.collect { available ->
+                requirementsFabAdd.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(fabColour.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(fabColour)
+                }
+            }
+        }
+        whenResumed {
+            requirementsFabAdd.onClicked().collect {
                 viewModel.onAddClicked()
             }
         }

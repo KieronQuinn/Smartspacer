@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="@dimen/smartspace_page_template_list_max_width"
             android:layout_marginTop="8dp"
-            android:textSize="14sp"
+            android:textSize="@dimen/smartspace_page_subtitle_size"
             android:ellipsize="end"
             android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
             tools:text="Bread"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="@dimen/smartspace_page_template_list_max_width"
-            android:textSize="14sp"
+            android:textSize="@dimen/smartspace_page_subtitle_size"
             android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
             tools:text="Milk"
             tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="@dimen/smartspace_page_template_list_max_width"
             android:layout_marginBottom="8dp"
-            android:textSize="14sp"
+            android:textSize="@dimen/smartspace_page_subtitle_size"
             android:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle"
             tools:text="Cheese"
             tools:textAppearance="@style/TextAppearance.Smartspacer.Page.Subtitle.Preview" />

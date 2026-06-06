@@ -14,6 +14,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.setShadowEnabled
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfoBinding>(FragmentSetupComplicationInfoBinding::inflate), BackAvailable {
@@ -48,8 +49,7 @@ class SetupComplicationInfoFragment: BoundFragment<FragmentSetupComplicationInfo
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupComplicationsControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupComplicationsControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupComplicationsControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupComplicationsControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

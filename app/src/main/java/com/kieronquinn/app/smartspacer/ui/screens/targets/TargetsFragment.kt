@@ -9,9 +9,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
 import com.kieronquinn.app.smartspacer.databinding.FragmentTargetsBinding
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.CanShowSnackbar
@@ -32,7 +34,9 @@ import com.kieronquinn.app.smartspacer.ui.screens.targets.add.TargetsAddFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationInset
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBottomNavigationMarginShort
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -56,6 +60,7 @@ class TargetsFragment: BoundFragment<FragmentTargetsBinding>(FragmentTargetsBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         setupRecyclerView()
         setupState()
         setupMonet()
@@ -114,11 +119,29 @@ class TargetsFragment: BoundFragment<FragmentTargetsBinding>(FragmentTargetsBind
         }
     }
 
-    private fun setupFab() = with(binding.targetsFabAdd){
-        binding.targetsFabAddContainer.applyBottomNavigationMarginShort()
-        backgroundTintList = ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+    private fun setupFab() = with(binding) {
+        targetsFabAddContainer.applyBottomNavigationMarginShort()
+        targetsBlurView.clipToOutline = true
+        targetsBlurView.setRoundedOutline(resources.getDimension(R.dimen.margin_16))
+        val fabColour = monet.getPrimaryColor(requireContext())
+        targetsFabAdd.backgroundTintList = ColorStateList.valueOf(fabColour)
+        val blurBackground = requireView().background
+        val blur = BlurDelegate.get(
+            BlurDelegate.BlurMode.View(targetsBlurView, targetsBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            onClicked().collect {
+            blur.blurAvailable.collect { available ->
+                targetsFabAdd.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(fabColour.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(fabColour)
+                }
+            }
+        }
+        whenResumed {
+            targetsFabAdd.onClicked().collect {
                 viewModel.onAddClicked()
             }
         }

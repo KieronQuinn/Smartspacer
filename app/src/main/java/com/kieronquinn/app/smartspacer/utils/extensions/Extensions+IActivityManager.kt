@@ -63,7 +63,8 @@ fun IActivityManager.broadcastIntentWithFeatureCompat(
     val options = arrayOf(
         IActivityManager::broadcastIntentOptionA,
         IActivityManager::broadcastIntentOptionB,
-        IActivityManager::broadcastIntentOptionC
+        IActivityManager::broadcastIntentOptionC,
+        IActivityManager::broadcastIntentOptionD,
     )
     options.firstOrNull {
         it.invoke(this, thread, attributionTag, intent, intentType, identifier) == null
@@ -144,6 +145,35 @@ private fun IActivityManager.broadcastIntentOptionC(
         broadcastIntentWithFeature(
             thread,
             attributionTag,
+            intent,
+            intentType,
+            null,
+            Activity.RESULT_OK,
+            null,
+            null,
+            null,
+            -1,
+            null,
+            false,
+            false,
+            identifier
+        )
+        null
+    }catch (e: NoSuchMethodError){
+        e
+    }
+}
+
+private fun IActivityManager.broadcastIntentOptionD(
+    thread: IApplicationThread,
+    attributionTag: String?,
+    intent: Intent,
+    intentType: String?,
+    identifier: Int
+): Throwable? {
+    return try {
+        broadcastIntent(
+            thread,
             intent,
             intentType,
             null,

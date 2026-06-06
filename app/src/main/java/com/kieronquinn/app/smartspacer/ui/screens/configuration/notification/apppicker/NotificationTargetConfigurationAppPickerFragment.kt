@@ -6,9 +6,12 @@ import android.view.View
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationTargetNotificationAppPickerBinding
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
@@ -16,7 +19,9 @@ import com.kieronquinn.app.smartspacer.ui.screens.configuration.notification.app
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
+import com.kieronquinn.app.smartspacer.utils.extensions.setRoundedOutline
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.app.smartspacer.utils.extensions.withAlpha
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,6 +42,7 @@ class NotificationTargetConfigurationAppPickerFragment: BoundFragment<FragmentCo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         setupSearch()
         setupSearchClear()
         setupState()
@@ -48,6 +54,10 @@ class NotificationTargetConfigurationAppPickerFragment: BoundFragment<FragmentCo
         adapter = this@NotificationTargetConfigurationAppPickerFragment.adapter
         layoutManager = LinearLayoutManager(context)
         val bottomPadding = resources.getDimension(R.dimen.margin_16).toInt()
+        val margin = resources.getDimension(R.dimen.margin_16)
+        val corners = resources.getDimension(R.dimen.margin_24)
+        setRoundedOutline(corners, margin.toInt(), false)
+        clipToOutline = true
         onApplyInsets { view, insets ->
             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
             view.updatePadding(bottom = bottomPadding + bottomInset)
@@ -62,10 +72,30 @@ class NotificationTargetConfigurationAppPickerFragment: BoundFragment<FragmentCo
                 ?: monet.getBackgroundColor(requireContext()))
     }
 
-    private fun setupSearch() {
+    private fun setupSearch() = with(binding.notificationTargetConfigurationAppPickerSearch) {
         setSearchText(viewModel.getSearchTerm())
+        val blurBackground = requireView().background
+        val searchBackground = monet.getBackgroundColorSecondary(requireContext())
+            ?: monet.getBackgroundColor(requireContext())
+        searchBox.backgroundTintList = ColorStateList.valueOf(searchBackground)
+        searchBoxBlur.setRoundedOutline(resources.getDimension(R.dimen.margin_24))
+        searchBoxBlur.clipToOutline = true
+        val blur = BlurDelegate.get(
+            BlurMode.View(searchBoxBlur, binding.notificationTargetConfigurationAppPickerBlurTarget, blurBackground),
+            lifecycleScope
+        )
+        blur.setBlur(1f)
         whenResumed {
-            binding.notificationTargetConfigurationAppPickerSearch.searchBox.onChanged().collect {
+            blur.blurAvailable.collect { available ->
+                searchBox.backgroundTintList = if (available) {
+                    ColorStateList.valueOf(searchBackground.withAlpha(0.75f))
+                } else {
+                    ColorStateList.valueOf(searchBackground)
+                }
+            }
+        }
+        whenResumed {
+            searchBox.onChanged().collect {
                 viewModel.setSearchTerm(it?.toString() ?: "")
             }
         }

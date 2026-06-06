@@ -15,6 +15,22 @@ public interface IActivityManager extends android.os.IInterface {
         }
     }
 
+    // Android 10
+    int broadcastIntent(
+            IApplicationThread caller,
+            Intent intent,
+            String resolvedType,
+            IIntentReceiver resultTo,
+            int resultCode,
+            String resultData,
+            Bundle map,
+            String[] requiredPermissions,
+            int appOp,
+            Bundle options,
+            boolean serialized,
+            boolean sticky,
+            int userId);
+
     //Android 11
     int broadcastIntentWithFeature(
             IApplicationThread caller,

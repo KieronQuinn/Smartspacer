@@ -9,15 +9,21 @@ import android.text.Html
 import android.text.util.Linkify
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentConfigurationAccessibilityEnableBinding
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.service.SmartspacerAccessibiltyService
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
+import com.kieronquinn.app.smartspacer.utils.extensions.SYSTEM_INSETS
 import com.kieronquinn.app.smartspacer.utils.extensions.applyBackgroundTint
 import com.kieronquinn.app.smartspacer.utils.extensions.getAccessibilityIntent
+import com.kieronquinn.app.smartspacer.utils.extensions.getAttr
+import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.shouldShowRequireSideload
@@ -35,10 +41,27 @@ class ConfigurationAccessibilityEnableFragment: BoundFragment<FragmentConfigurat
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupInsets()
         setupToolbar()
         setupRestrictedCard()
         setupAccessibilityAccessCard()
         setupWarningCard()
+    }
+
+    private fun setupInsets() {
+        val height = requireContext().getAttr(android.R.attr.actionBarSize)
+        binding.configurationAccessibilityToolbar.onApplyInsets { view, insets ->
+            val topInset = insets.getInsets(SYSTEM_INSETS).top
+            view.updateLayoutParams {
+                this.height = height + topInset
+            }
+            view.updatePadding(top = topInset)
+        }
+        binding.configurationAccessibilityScrollable.onApplyInsets { view, insets ->
+            val insets = insets.getInsets(SYSTEM_INSETS)
+            view.updatePadding(bottom = insets.bottom)
+            requireView().updatePadding(left = insets.left, right = insets.right)
+        }
     }
 
     private fun setupToolbar() = with(binding.configurationAccessibilityToolbar){
@@ -48,7 +71,10 @@ class ConfigurationAccessibilityEnableFragment: BoundFragment<FragmentConfigurat
         val toolbar = monet.getBackgroundColorSecondary(requireContext()) ?: primary
         requireActivity().window.statusBarColor = toolbar
         requireActivity().window.navigationBarColor = background
+        navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_close)
         setBackgroundColor(toolbar)
+        animateActionIconsColourTo(background)
+        insetNavigationIcon()
         whenResumed {
             onNavigationIconClicked().collect {
                 requireActivity().run {

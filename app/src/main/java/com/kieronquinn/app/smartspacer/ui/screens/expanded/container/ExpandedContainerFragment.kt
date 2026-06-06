@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.DummyNavigation
 import com.kieronquinn.app.smartspacer.components.navigation.ExpandedNavigation
@@ -20,7 +19,6 @@ import org.koin.android.ext.android.inject
 class ExpandedContainerFragment: BaseContainerFragment<FragmentContainerExpandedBinding>(FragmentContainerExpandedBinding::inflate) {
 
     override val appBar: AppBarLayout? = null
-    override val bottomNavigation: BottomNavigationView? = null
     override val collapsingToolbar: CollapsingToolbarLayout? = null
     override val toolbar: Toolbar? = null
     override val handleInsets = false

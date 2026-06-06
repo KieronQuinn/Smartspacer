@@ -12,7 +12,7 @@ import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SystemSmartspaceRepository
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
-import com.kieronquinn.app.smartspacer.utils.extensions.getPlayStoreIntentForPackage
+import com.kieronquinn.app.smartspacer.utils.extensions.getShizukuInstallIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.isPackageInstalled
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -97,10 +97,7 @@ class NativeModeViewModelImpl(
                     ShizukuProvider.MANAGER_APPLICATION_ID
                 )
             }else{
-                context.getPlayStoreIntentForPackage(
-                    ShizukuProvider.MANAGER_APPLICATION_ID,
-                    "https://shizuku.rikka.app/download/"
-                )
+                getShizukuInstallIntent()
             } ?: return@launch
             if(isSetup){
                 setupNavigation.navigate(intent)

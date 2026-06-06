@@ -1,6 +1,5 @@
 package com.kieronquinn.app.smartspacer.ui.base.settings
 
-import android.content.res.ColorStateList
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,8 +8,15 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.ItemSettingsCardBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemSettingsFooterBinding
 import com.kieronquinn.app.smartspacer.databinding.ItemSettingsHeaderBinding
@@ -24,7 +30,7 @@ import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItemType
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem.GenericSettingsItemType
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
-import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
+import com.kieronquinn.app.smartspacer.utils.extensions.getForegroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
@@ -39,8 +45,19 @@ abstract class BaseSettingsAdapter(
     protected val layoutInflater: LayoutInflater = LayoutInflater.from(recyclerView.context)
     private val glide = Glide.with(recyclerView.context)
 
+    private val roundedFull = recyclerView.context.resources.getDimension(R.dimen.margin_16)
+    private val roundedPart = recyclerView.context.resources.getDimension(R.dimen.margin_4)
+    private val padding = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_16)
+    private val paddingShort = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_2)
+    private val paddingMedium = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_8)
+    private val paddingLarge = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_20)
+
     protected val monet by lazy {
         MonetCompat.getInstance()
+    }
+
+    private val settingBackground by lazy {
+        monet.getForegroundForBlur(recyclerView.context)
     }
 
     init {
@@ -120,6 +137,34 @@ abstract class BaseSettingsAdapter(
             is GenericViewHolder.Footer -> holder.setup(item as GenericSettingsItem.Footer)
             is GenericViewHolder.RadioCard -> holder.setup(item as GenericSettingsItem.RadioCard)
         }
+        holder.binding.root.applyShape(position)
+    }
+
+    protected fun View.applyShape(index: Int) {
+        if (this !is MaterialCardView) return
+        val next = items.getOrNull(index + 1)?.itemType
+        val previous = items.getOrNull(index - 1)?.itemType
+        val shouldRound: (BaseSettingsItemType?) -> Boolean = {
+            it == null || shouldRound(it)
+        }
+        setCardBackgroundColor(settingBackground)
+        val roundTop = shouldRound(previous)
+        val roundBottom = shouldRound(next)
+        val shape = ShapeAppearanceModel.builder()
+            .setTopLeftCorner(CornerFamily.ROUNDED, if (roundTop) roundedFull else roundedPart)
+            .setTopRightCorner(CornerFamily.ROUNDED, if (roundTop) roundedFull else roundedPart)
+            .setBottomLeftCorner(CornerFamily.ROUNDED, if (roundBottom) roundedFull else roundedPart)
+            .setBottomRightCorner(CornerFamily.ROUNDED, if (roundBottom) roundedFull else roundedPart)
+            .build()
+        shapeAppearanceModel = shape
+        updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            updateMargins(bottom = paddingShort, left = padding, right = padding)
+        }
+    }
+
+    @CallSuper
+    open fun shouldRound(item: BaseSettingsItemType): Boolean {
+        return item == GenericSettingsItemType.HEADER || item == GenericSettingsItemType.FOOTER || item == GenericSettingsItemType.SWITCH
     }
 
     /**
@@ -130,7 +175,7 @@ abstract class BaseSettingsAdapter(
         recyclerView: LifecycleAwareRecyclerView? = null,
         forceScroll: Boolean = false
     ) {
-        val hasChangedSize = items.size != newList.size
+        val hasChangedSize = items.isNotEmpty() && items.size != newList.size
         notifyDataSetChanged()
         items = newList
         if(hasChangedSize || forceScroll) {
@@ -141,6 +186,13 @@ abstract class BaseSettingsAdapter(
     private fun GenericViewHolder.Header.setup(item: GenericSettingsItem.Header) = with(binding) {
         itemSettingsHeaderTitle.text = item.text
         itemSettingsHeaderTitle.setTextColor(monet.getAccentColor(root.context))
+        val topPadding = when {
+            item.text == null -> 0
+            item.shortTopPadding -> paddingMedium
+            else -> paddingLarge
+        }
+        val bottomPadding = if (item.text == null) 0 else paddingMedium
+        itemSettingsHeaderTitle.updatePadding(top = topPadding, bottom = bottomPadding)
     }
 
     private fun GenericViewHolder.Switch.setup(item: GenericSettingsItem.Switch) = with(binding) {
@@ -169,7 +221,7 @@ abstract class BaseSettingsAdapter(
         itemSettingsTextIcon.isVisible = item.icon != null
         whenResumed {
             root.onClicked().collect {
-                item.onClick()
+                item.onClickWithView?.invoke(root) ?: item.onClick()
             }
         }
     }
@@ -244,9 +296,10 @@ abstract class BaseSettingsAdapter(
         glide.load(item.icon)
             .placeholder(itemSettingsCardIcon.drawable)
             .into(itemSettingsCardIcon)
-        val background = monet.getPrimaryColor(root.context, !root.context.isDarkMode)
-        root.backgroundTintList = ColorStateList.valueOf(background)
         root.isEnabled = item.onClick != null
+        root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            updateMargins(top = item.topPadding ?: paddingMedium)
+        }
         whenResumed {
             root.onClicked().collect {
                 item.onClick?.invoke()
@@ -279,8 +332,6 @@ abstract class BaseSettingsAdapter(
         settingsRadioCardContent.isVisible = item.content != null
         settingsRadioCardRadio.isChecked = item.isChecked
         settingsRadioCardRadio.applyMonet()
-        val background = monet.getPrimaryColor(root.context, !root.context.isDarkMode)
-        root.backgroundTintList = ColorStateList.valueOf(background)
         whenResumed {
             settingsRadioCardRadio.onClicked().collect {
                 item.onClick()

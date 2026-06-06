@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kieronquinn.app.smartspacer.ui.views.SmartspacerCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Filled.Smartspacer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:minHeight="72dp"
-    android:gravity="center_vertical"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        tools:src="@drawable/ic_launcher_foreground"
-        app:tint="?android:colorControlNormal"
-        android:padding="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:id="@+id/item_settings_slider_icon"/>
+    app:cardBackgroundColor="?android:colorControlHighlight">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_8"
-        android:paddingBottom="@dimen/margin_8"
-        android:layout_marginEnd="@dimen/margin_16"
-        android:layout_weight="1"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:minHeight="72dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_settings_slider_title"
-            tools:text="Setting Title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
-            android:textColor="?android:textColorPrimary" />
+        <ImageView
+            android:id="@+id/item_settings_slider_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            app:tint="?android:textColorPrimary"
+            tools:src="@drawable/ic_configure" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:visibility="visible"
-            tools:text="Setting Content"
-            android:id="@+id/item_settings_slider_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
-            android:textColor="?android:textColorPrimary" />
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_12"
+            android:paddingBottom="@dimen/margin_12">
 
-        <com.google.android.material.slider.Slider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:labelStyle="@style/Widget.MaterialComponents.Tooltip.Smartspacer"
-            android:id="@+id/item_settings_slider_slider" />
+            <TextView
+                android:id="@+id/item_settings_slider_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                tools:text="Setting Title" />
+
+            <TextView
+                android:id="@+id/item_settings_slider_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer"
+                android:textColor="?android:textColorPrimary"
+                android:visibility="gone"
+                tools:text="Setting Content"
+                tools:visibility="visible" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/item_settings_slider_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:labelStyle="@style/Widget.MaterialComponents.Tooltip.Smartspacer" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</com.kieronquinn.app.smartspacer.ui.views.SmartspacerCardView>

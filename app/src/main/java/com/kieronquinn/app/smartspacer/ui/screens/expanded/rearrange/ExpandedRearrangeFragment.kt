@@ -1,12 +1,16 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.rearrange
 
 import android.appwidget.AppWidgetProviderInfo
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.flexbox.AlignItems
@@ -15,12 +19,15 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.databinding.FragmentExpandedRearrangeBinding
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
 import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcuts.Shortcut
@@ -41,6 +48,7 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
 
     private val viewModel by viewModel<ExpandedRearrangeViewModel>()
     private var multiColumnEnabled = true
+    private var lastBlurEnabled = false
 
     private val adapter by lazy {
         ExpandedRearrangeAdapter(
@@ -56,6 +64,17 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         ItemTouchHelper(ExpandedRearrangeItemTouchHelperCallback(viewModel, adapter))
     }
 
+    private val backgroundColour by lazy {
+        monet.getBackgroundColor(requireContext())
+    }
+
+    private val blur by lazy {
+        BlurDelegate.get(
+            BlurMode.Window(requireContext(), requireActivity().window),
+            lifecycleScope
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
@@ -64,15 +83,39 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         setupClose()
         WindowCompat.getInsetsController(requireActivity().window, requireView())
             .isAppearanceLightStatusBars = !requireContext().isDarkMode
-        view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
+        binding.root.setBackgroundColor(backgroundColour)
+    }
+
+    private fun setBlurEnabled(enabled: Boolean = lastBlurEnabled) {
+        lastBlurEnabled = enabled
+        val background = viewModel.state.value.background
+        when (background) {
+            ExpandedBackground.BLUR -> {
+                val ratio = if(enabled) 1f else 0f
+                blur.setBlur(ratio)
+                binding.root.setBackgroundColor(Color.TRANSPARENT)
+            }
+            ExpandedBackground.SCRIM -> {
+                val alpha = if(enabled) 128 else 0
+                val backgroundColour = ColorUtils.setAlphaComponent(Color.BLACK, alpha)
+                binding.root.setBackgroundColor(backgroundColour)
+            }
+            ExpandedBackground.SOLID -> {
+                val alpha = if(enabled) 255 else 0
+                val backgroundColour = ColorUtils.setAlphaComponent(backgroundColour, alpha)
+                binding.root.setBackgroundColor(backgroundColour)
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        setBlurEnabled(true)
         viewModel.onResume()
     }
 
     override fun onPause() {
+        setBlurEnabled(false)
         super.onPause()
         viewModel.onPause()
     }
@@ -85,7 +128,11 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
         }
         val background = monet.getBackgroundColorSecondary(context)
             ?: monet.getBackgroundColor(requireContext())
+        val backBackground = monet.getBackgroundColor(context)
         setBackgroundColor(background)
+        navigationIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_back)
+        animateActionIconsColourTo(backBackground)
+        insetNavigationIcon()
         onApplyInsets { view, insets ->
             view.updatePadding(top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top)
         }
@@ -130,6 +177,7 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
     }
 
     private fun handleState(state: State) {
+        setBlurEnabled()
         when(state){
             is State.Loading -> {
                 binding.expandedRearrangeLoading.root.isVisible = true

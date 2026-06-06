@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:padding="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_20"
+        android:paddingBottom="@dimen/margin_8"
+        android:paddingHorizontal="@dimen/margin_24"
         android:textColor="?android:textColorPrimary"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
         tools:text="Header" />

@@ -7,18 +7,17 @@
     android:transitionGroup="true"
     android:animateLayoutChanges="true">
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
         android:id="@+id/backup_restore_backup_progress"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:indeterminate="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:trackCornerRadius="4dp"
-        app:trackThickness="8dp" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/backup_restore_backup_icon"
@@ -66,7 +65,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/backup_restore_backup_close"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.Material3Expressive.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
@@ -75,7 +74,6 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
         android:visibility="gone"
-        app:cornerRadius="@dimen/margin_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backup_restore_backup_desc"

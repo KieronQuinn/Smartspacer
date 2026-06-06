@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.DeadObjectException
 import android.os.Handler
 import android.os.Looper
-import android.provider.Settings
 import com.kieronquinn.app.smartspacer.utils.test.TestUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
@@ -109,7 +108,7 @@ fun ContentResolver.querySafely(
         client.query(uri, projection, selection, selectionArgs, sortOrder).also {
             client.close()
         }
-    }catch (e: DeadObjectException){
+    }catch (e: Exception){
         null
     }
 }

@@ -141,9 +141,6 @@
     <string name="target_at_a_glance_label">資訊一覽（小工具）</string>
     <string name="target_at_a_glance_description">來自 Google 資訊一覽的有限目標，透過 Google 小工具載入</string>
     <string name="target_at_a_glance_description_unsupported">此目標需要 Google 應用程式</string>
-    <string name="target_google_weather_forecast_title">Google 天氣預報</string>
-    <string name="target_google_weather_forecast_content">顯示來自 Google 天氣的當前天氣狀況及接下來四小時的預報</string>
-    <string name="target_google_weather_forecast_incompatible">此目標需要 Pixel 裝置或基於 Pixel 的 ROM，並安裝了 Google 應用程式</string>
     <string name="target_notification_warning_title">通知監聽器已停用</string>
     <string name="target_notification_warning_description">點擊以啟用</string>
     <string name="complication_default_label">資訊一覽的複雜功能</string>
@@ -909,7 +906,6 @@
     <string name="github">GitHub</string>
     <string name="libraries">第三方庫</string>
     <string name="donate">捐贈</string>
-    <string name="twitter">在 Twitter 上追蹤我</string>
     <string name="about_version">版本 %1s\n由 Kieron Quinn 創建</string>
     <string name="about_contributors">貢獻者</string>
     <string name="about_crowdin">Crowdin</string>
@@ -996,7 +992,7 @@
     <string name="target_default_settings_hide_calendar">日曆</string>
     <string name="target_default_settings_hide_work_profile">工作配置檔</string>
     <string name="target_default_settings_hide_food">食品 &amp; 家庭訂單</string>
-    <string name="target_default_settings_cross_device_timer">跨裝置計時器</string>
+    <string name="target_default_settings_hide_cross_device_timer">跨裝置計時器</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">選擇應用程式</string>
     <string name="target_notification_configuration_app_content">選擇要顯示通知的應用程式</string>

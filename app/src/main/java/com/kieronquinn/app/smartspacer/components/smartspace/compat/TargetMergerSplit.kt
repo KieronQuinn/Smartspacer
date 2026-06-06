@@ -4,7 +4,6 @@ import android.content.ComponentName
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspaceActionHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
-import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BasicTemplateData
 import java.util.LinkedList
@@ -52,8 +51,9 @@ object TargetMergerSplit: TargetMerger() {
     override fun SmartspacePageHolder.convert(): SmartspacePageHolder {
         return if(page.featureType == SmartspaceTarget.FEATURE_WEATHER){
             val page = createBlankTarget(
-                page.headerAction ?: SmartspaceAction(id = "", title = ""),
-                page.baseAction ?: SmartspaceAction(id = "", title = ""),
+                primary = null,
+                page.headerAction,
+                page.baseAction,
                 page.templateData as? BasicTemplateData
             )
             copy(page = page)

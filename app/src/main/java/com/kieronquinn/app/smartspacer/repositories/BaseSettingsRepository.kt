@@ -2,6 +2,8 @@ package com.kieronquinn.app.smartspacer.repositories
 
 import android.content.SharedPreferences
 import android.graphics.Color
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_BOOLEAN
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_COLOR
@@ -10,6 +12,7 @@ import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.S
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_INT
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_LONG
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_STRING
+import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.DESERIALIZE_STRING_SET
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_BOOLEAN
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_COLOR
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_DOUBLE
@@ -17,6 +20,7 @@ import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.S
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_INT
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_LONG
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_STRING
+import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepositoryImpl.SettingsConverters.SHARED_STRING_SET
 import com.kieronquinn.app.smartspacer.utils.extensions.toColorOrNull
 import com.kieronquinn.app.smartspacer.utils.extensions.toHexString
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +37,8 @@ import kotlinx.coroutines.flow.onSubscription
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -44,14 +50,12 @@ interface BaseSettingsRepository {
     suspend fun restoreBackup(settings: Map<String, String>)
 
     abstract class SmartspacerSetting<T> {
-        abstract val type: Class<T>
-
         abstract suspend fun exists(): Boolean
         abstract fun existsSync(): Boolean
         abstract suspend fun set(value: T)
         abstract suspend fun get(): T
         abstract suspend fun getOrNull(): T?
-        abstract suspend fun clear()
+        abstract suspend fun clear(type: Class<T>)
         abstract fun setSync(value: T)
         abstract fun getSync(): T
         abstract fun asFlow(): Flow<T>
@@ -60,6 +64,12 @@ interface BaseSettingsRepository {
 
         abstract suspend fun serialize(): String?
         abstract suspend fun deserialize(serialized: String)
+
+        companion object {
+            suspend inline fun <reified T> SmartspacerSetting<T>.clear() {
+                clear(T::class.java)
+            }
+        }
     }
 
     /**
@@ -68,7 +78,6 @@ interface BaseSettingsRepository {
      *  items. [clear] is not implemented, [exists] and [existsSync] will always return true.
      */
     open class FakeSmartspacerSetting<T>(
-        override val type: Class<T>,
         private val flow: StateFlow<T>,
         private val onSet: suspend (value: T) -> Unit
     ): SmartspacerSetting<T>() {
@@ -115,7 +124,7 @@ interface BaseSettingsRepository {
             return true
         }
 
-        override suspend fun clear() {
+        override suspend fun clear(type: Class<T>) {
             if(type == String::class.java) {
                 (this as FakeSmartspacerSetting<String>).set("")
             }else{
@@ -155,7 +164,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun boolean(key: String, default: Boolean, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Boolean::class.java,
             key,
             default,
             SHARED_BOOLEAN,
@@ -166,7 +174,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun string(key: String, default: String, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            String::class.java,
             key,
             default,
             SHARED_STRING,
@@ -177,7 +184,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun long(key: String, default: Long, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Long::class.java,
             key,
             default,
             SHARED_LONG,
@@ -186,9 +192,18 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
             DESERIALIZE_LONG
         )
 
+    fun stringSet(key: String, default: Set<String>, onChanged: MutableSharedFlow<String>? = null) =
+        SmartspacerSettingImpl(
+            key,
+            default,
+            SHARED_STRING_SET,
+            onChanged,
+            SettingsConverters::serializeJson,
+            DESERIALIZE_STRING_SET
+        )
+
     fun double(key: String, default: Double, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Double::class.java,
             key,
             default,
             SHARED_DOUBLE,
@@ -199,7 +214,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun float(key: String, default: Float, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Float::class.java,
             key,
             default,
             SHARED_FLOAT,
@@ -210,7 +224,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun int(key: String, default: Int, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Integer.TYPE,
             key,
             default,
             SHARED_INT,
@@ -221,7 +234,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
 
     fun color(key: String, default: Int, onChanged: MutableSharedFlow<String>? = null) =
         SmartspacerSettingImpl(
-            Integer.TYPE,
             key,
             default,
             SHARED_COLOR,
@@ -235,7 +247,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         default: T,
         onChanged: MutableSharedFlow<String>? = null
     ) = SmartspacerSettingImpl(
-        T::class.java,
         key,
         default,
         { _, enumKey, enumDefault -> sharedEnum(enumKey, enumDefault) },
@@ -286,6 +297,12 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         sharedPreferences.edit().putString(key, it.toString()).commit()
     })
 
+    private fun shared(key: String, default: Set<String>) = ReadWriteProperty({
+        sharedPreferences.getStringSet(key, default)!!
+    }, {
+        sharedPreferences.edit().putStringSet(key, it).commit()
+    })
+
     private fun sharedColor(key: String, unusedDefault: Int) = ReadWriteProperty({
         val rawColor = sharedPreferences.getString(key, "") ?: ""
         if(rawColor.isEmpty()) Integer.MAX_VALUE
@@ -294,10 +311,14 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         sharedPreferences.edit().putString(key, it.toHexString()).commit()
     })
 
-    object SettingsConverters {
+    object SettingsConverters: KoinComponent {
+        private val gson by inject<Gson>()
+
         internal val SHARED_INT: (BaseSettingsRepositoryImpl, String, Int) -> ReadWriteProperty<Any?, Int> =
             BaseSettingsRepositoryImpl::shared
         internal val SHARED_STRING: (BaseSettingsRepositoryImpl, String, String) -> ReadWriteProperty<Any?, String> =
+            BaseSettingsRepositoryImpl::shared
+        internal val SHARED_STRING_SET: (BaseSettingsRepositoryImpl, String, Set<String>) -> ReadWriteProperty<Any?, Set<String>> =
             BaseSettingsRepositoryImpl::shared
         internal val SHARED_BOOLEAN: (BaseSettingsRepositoryImpl, String, Boolean) -> ReadWriteProperty<Any?, Boolean> =
             BaseSettingsRepositoryImpl::shared
@@ -317,9 +338,17 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
         internal val DESERIALIZE_LONG = { input: String -> input.toLongOrNull() }
         internal val DESERIALIZE_DOUBLE = { input: String -> input.toDoubleOrNull() }
         internal val DESERIALIZE_COLOR = { input: String -> input.toColorOrNull() }
+        internal val DESERIALIZE_STRING_SET = { input: String ->
+            val typeToken = object: TypeToken<Set<String>>(){}.type
+            gson.fromJson<Set<String>>(input, typeToken)
+        }
 
         internal fun <T> serializeDefault(value: T?): String? {
             return value?.toString()
+        }
+
+        internal fun <T> serializeJson(value: T?): String? {
+            return gson.toJson(value)
         }
 
         internal fun <T> serializeColor(value: T?): String? {
@@ -341,7 +370,6 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
     }
 
     inner class SmartspacerSettingImpl<T>(
-        override val type: Class<T>,
         private val key: String,
         private val default: T,
         shared: (BaseSettingsRepositoryImpl, String, T) -> ReadWriteProperty<Any?, T>,
@@ -403,7 +431,7 @@ abstract class BaseSettingsRepositoryImpl: BaseSettingsRepository {
             }
         }
 
-        override suspend fun clear() {
+        override suspend fun clear(type: Class<T>) {
             withContext(Dispatchers.IO) {
                 sharedPreferences.edit().remove(key).commit()
             }

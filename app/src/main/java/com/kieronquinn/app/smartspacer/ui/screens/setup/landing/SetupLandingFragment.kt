@@ -17,6 +17,7 @@ class SetupLandingFragment: BoundFragment<FragmentSetupLandingBinding>(FragmentS
         super.onViewCreated(view, savedInstanceState)
         applyMonet()
         setupGetStarted()
+        viewModel.showDialogsIfNeeded()
     }
 
     private fun applyMonet() {

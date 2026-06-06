@@ -3,7 +3,9 @@
     <declare-styleable name="MaxHeightNestedScrollView">
         <attr name="maxHeightDp" format="dimension" />
     </declare-styleable>
-    <declare-styleable name="WidgetShadow">
+    <declare-styleable name="WidgetStyle">
         <attr name="widgetShadowColour" format="color"/>
+        <attr name="widgetTitleTypeface" format="string"/>
+        <attr name="widgetSubtitleTypeface" format="string"/>
     </declare-styleable>
 </resources>

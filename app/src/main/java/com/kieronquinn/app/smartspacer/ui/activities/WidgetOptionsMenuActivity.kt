@@ -6,11 +6,15 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Parcelable
+import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.smartspacer.R
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate
+import com.kieronquinn.app.smartspacer.components.blur.BlurDelegate.BlurMode
 import com.kieronquinn.app.smartspacer.components.navigation.NavigationEvent
 import com.kieronquinn.app.smartspacer.components.navigation.WidgetOptionsNavigation
 import com.kieronquinn.app.smartspacer.databinding.ActivityWidgetOptionsBinding
@@ -20,6 +24,8 @@ import com.kieronquinn.app.smartspacer.sdk.annotations.LimitedNativeSupport
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.utils.shouldExcludeFromSmartspacer
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
+import com.kieronquinn.app.smartspacer.utils.extensions.addDimming
+import com.kieronquinn.app.smartspacer.utils.extensions.clearDimming
 import com.kieronquinn.app.smartspacer.utils.extensions.getParcelableExtraCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
@@ -27,6 +33,7 @@ import kotlinx.parcelize.Parcelize
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.kieronquinn.app.smartspacer.sdk.client.R as ClientR
+
 
 class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(ActivityWidgetOptionsBinding::inflate) {
 
@@ -69,6 +76,14 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
         Adapter(loadItems())
     }
 
+    private val blur by lazy {
+        BlurDelegate.get(BlurMode.Window(this, window), lifecycleScope)
+    }
+
+    private val background by lazy {
+        ContextCompat.getDrawable(this, R.drawable.background_permission_dialog)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
@@ -98,6 +113,29 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
                 }
             }
         }
+        whenCreated {
+            blur.animateBlurTo(1f)
+            blur.blurAvailable.collect {
+                if (it) {
+                    window?.clearDimming()
+                    background?.setTint(monet.getPrimaryColor(this@WidgetOptionsMenuActivity))
+                    // We don't know if the blurred background will be light or dark so use more alpha
+                    background?.alpha = 191
+                } else {
+                    window?.addDimming()
+                    background?.setTint(monet.getBackgroundColor(this@WidgetOptionsMenuActivity))
+                    background?.alpha = 255
+                }
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
     }
 
     private fun loadItems(): List<BaseSettingsItem> {
@@ -175,13 +213,10 @@ class WidgetOptionsMenuActivity: BoundActivity<ActivityWidgetOptionsBinding>(Act
     }
 
     private fun setupMonet(){
-        val background = monet.getBackgroundColorSecondary(this)
+        val backgroundTint = monet.getBackgroundColorSecondary(this)
             ?: monet.getBackgroundColor(this)
-        window?.setBackgroundDrawable(
-            ContextCompat.getDrawable(this, R.drawable.background_permission_dialog
-            )?.apply {
-                setTint(background)
-            })
+        background?.setTint(backgroundTint)
+        binding.widgetOptions.background = background
         val accent = monet.getAccentColor(this)
         val accentTint = ColorStateList.valueOf(accent)
         binding.widgetOptionsClose.backgroundTintList = accentTint

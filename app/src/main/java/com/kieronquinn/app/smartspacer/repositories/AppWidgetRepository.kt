@@ -53,6 +53,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.launch
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.screenOff
 import com.kieronquinn.app.smartspacer.utils.extensions.setImageViewImageTintListCompat
+import com.kieronquinn.app.smartspacer.utils.extensions.supportsNativeGoogleSansFlex
 import com.kieronquinn.app.smartspacer.utils.extensions.takeEllipsised
 import com.kieronquinn.app.smartspacer.utils.remoteviews.FlagDisabledRemoteViews
 import com.kieronquinn.app.smartspacer.widgets.SmartspacerAppWidgetProvider
@@ -529,10 +530,20 @@ class AppWidgetRepositoryImpl(
         container: () -> RemoteViews
     ): RemoteViews {
         val textColour = widget.getTextColour(true)
-        val shadowContainer = if(widget.showShadow && textColour == Color.WHITE) {
-            RemoteViews(context.packageName, R.layout.widget_shadow_enabled)
-        }else{
-            RemoteViews(context.packageName, R.layout.widget_shadow_disabled)
+        val shadowEnabled = widget.showShadow && textColour == Color.WHITE
+        val shadowContainer = when {
+            shadowEnabled && supportsNativeGoogleSansFlex -> {
+                RemoteViews(context.packageName, R.layout.widget_shadow_enabled_expressive)
+            }
+            shadowEnabled -> {
+                RemoteViews(context.packageName, R.layout.widget_shadow_enabled)
+            }
+            supportsNativeGoogleSansFlex -> {
+                RemoteViews(context.packageName, R.layout.widget_shadow_disabled_expressive)
+            }
+            else -> {
+                RemoteViews(context.packageName, R.layout.widget_shadow_disabled)
+            }
         }
         shadowContainer.removeAllViews(R.id.root)
         shadowContainer.addView(R.id.root, container())
@@ -738,10 +749,19 @@ class AppWidgetRepositoryImpl(
         container.setOnClickPendingIntent(
             R.id.widget_smartspacer_dots, getPendingIntentForDirection(appWidgetId, WidgetPageChangeReceiver.Direction.NEXT)
         )
-        val shadowContainer = if(shadowEnabled) {
-            RemoteViews(packageName, R.layout.widget_shadow_enabled)
-        }else{
-            RemoteViews(packageName, R.layout.widget_shadow_disabled)
+        val shadowContainer = when {
+            shadowEnabled && supportsNativeGoogleSansFlex -> {
+                RemoteViews(packageName, R.layout.widget_shadow_enabled_expressive)
+            }
+            shadowEnabled -> {
+                RemoteViews(packageName, R.layout.widget_shadow_enabled)
+            }
+            supportsNativeGoogleSansFlex -> {
+                RemoteViews(packageName, R.layout.widget_shadow_disabled_expressive)
+            }
+            else -> {
+                RemoteViews(packageName, R.layout.widget_shadow_disabled)
+            }
         }
         shadowContainer.removeAllViews(R.id.root)
         shadowContainer.addView(R.id.root, container)

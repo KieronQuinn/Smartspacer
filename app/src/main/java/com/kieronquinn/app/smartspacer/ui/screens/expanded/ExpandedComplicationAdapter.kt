@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.expanded
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.kieronquinn.app.smartspacer.databinding.ItemExpandedComplicationBinding
 import com.kieronquinn.app.smartspacer.sdk.client.utils.setIcon
@@ -48,6 +49,7 @@ class ExpandedComplicationAdapter(
             Icon(icon, shouldTint = shouldTint)
         }
         expandedComplicationIcon.setIcon(icon, tintColour)
+        expandedComplicationIcon.isVisible = icon != null
         root.setOnClick(complication.parent, complication.smartspaceAction, interactionListener)
     }
 
@@ -55,6 +57,7 @@ class ExpandedComplicationAdapter(
         expandedComplicationText.setShadowEnabled(showShadow)
         expandedComplicationIcon.setShadowEnabled(showShadow)
         expandedComplicationIcon.setIcon(complication.info.icon, tintColour)
+        expandedComplicationIcon.isVisible = complication.info.icon != null
         complication.info.text?.let { text -> expandedComplicationText.setText(text, tintColour) }
         root.setOnClick(complication.parent, complication.info.tapAction, interactionListener)
     }

@@ -1,7 +1,6 @@
 package com.kieronquinn.app.smartspacer.ui.base
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -15,10 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.ColorUtils
 import androidx.core.os.BuildCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
@@ -26,48 +22,37 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.navigation.BaseNavigation
 import com.kieronquinn.app.smartspacer.components.navigation.setupWithNavigation
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity
 import com.kieronquinn.app.smartspacer.ui.activities.configuration.ConfigurationActivity.NavGraphMapping
+import com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
+import com.kieronquinn.app.smartspacer.utils.extensions.SYSTEM_INSETS
+import com.kieronquinn.app.smartspacer.utils.extensions.animateScrimColourTo
 import com.kieronquinn.app.smartspacer.utils.extensions.collapsedState
-import com.kieronquinn.app.smartspacer.utils.extensions.dp
+import com.kieronquinn.app.smartspacer.utils.extensions.getForegroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.getRememberedAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.getTopFragment
-import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.isLandscape
 import com.kieronquinn.app.smartspacer.utils.extensions.isRtl
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onDestinationChanged
-import com.kieronquinn.app.smartspacer.utils.extensions.onNavDestinationSelected
 import com.kieronquinn.app.smartspacer.utils.extensions.onNavigationIconClicked
-import com.kieronquinn.app.smartspacer.utils.extensions.or
 import com.kieronquinn.app.smartspacer.utils.extensions.rememberAppBarCollapsed
 import com.kieronquinn.app.smartspacer.utils.extensions.setOnBackPressedCallback
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.monetcompat.extensions.toArgb
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.flowOf
 
 
 abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, ViewGroup?, Boolean) -> V): BoundFragment<V>(inflate) {
 
-    companion object {
-        private val SYSTEM_INSETS = setOf(
-            WindowInsetsCompat.Type.systemBars(),
-            WindowInsetsCompat.Type.ime(),
-            WindowInsetsCompat.Type.statusBars(),
-            WindowInsetsCompat.Type.displayCutout()
-        ).or()
-    }
-
     abstract val navigation: BaseNavigation
-    abstract val bottomNavigation: BottomNavigationView?
     abstract val collapsingToolbar: CollapsingToolbarLayout?
     abstract val appBar: AppBarLayout?
     abstract val toolbar: Toolbar?
@@ -85,9 +70,11 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         ResourcesCompat.getFont(requireContext(), R.font.google_sans_text_medium)
     }
 
-    private val navController by lazy {
+    protected val navController by lazy {
         navHostFragment.navController
     }
+
+    private var scrimJob: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -99,15 +86,6 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         setupBack()
         setupAppBar()
         setupInsets()
-        bottomNavigation?.let {
-            it.setupBottomNavigation()
-            NavigationUI.setupWithNavController(it, navController)
-            it.setOnItemSelectedListener {  item ->
-                //Clear the back stack back to the root if set, to prevent going back between tabs
-                rootDestinationId?.let { id -> navController.popBackStack(id, false) }
-                navController.onNavDestinationSelected(item)
-            }
-        }
         if(shouldHaveBackground()) {
             view.setBackgroundColor(monet.getBackgroundColor(requireContext()))
         }
@@ -119,40 +97,10 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
         return mapping != NavGraphMapping.WIDGET_SMARTSPACER
     }
 
-    private fun BottomNavigationView.setupBottomNavigation() {
-        onApplyInsets { view, insets ->
-            val bottomNavHeight = resources.getDimension(R.dimen.bottom_nav_height).toInt()
-            val systemInsets = insets.getInsets(SYSTEM_INSETS)
-            val bottomInsets = systemInsets.bottom
-            val leftInsets = systemInsets.left
-            val rightInsets = systemInsets.right
-            view.updateLayoutParams<CoordinatorLayout.LayoutParams> {
-                height = bottomNavHeight + bottomInsets + 2.dp
-            }
-            view.updatePadding(bottom = bottomInsets, left = leftInsets, right = rightInsets)
-        }
-        setBackgroundColor(monet.getBackgroundColor(context))
-        val color = if(requireContext().isDarkMode){
-            monet.getMonetColors().neutral2[800]?.toArgb()
-        }else{
-            monet.getMonetColors().neutral2[100]?.toArgb()
-        } ?: monet.getBackgroundColor(requireContext())
-        val indicatorColor = if(requireContext().isDarkMode){
-            monet.getMonetColors().accent2[700]?.toArgb()
-        }else{
-            monet.getMonetColors().accent2[200]?.toArgb()
-        }
-        setBackgroundColor(ColorUtils.setAlphaComponent(color, 235))
-        itemActiveIndicatorColor = ColorStateList(
-            arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf()),
-            intArrayOf(indicatorColor ?: Color.TRANSPARENT, Color.TRANSPARENT)
-        )
-    }
-
     @SuppressLint("RestrictedApi")
     private fun setupCollapsingToolbar() = collapsingToolbar?.run {
         setBackgroundColor(monet.getBackgroundColor(requireContext()))
-        setContentScrimColor(monet.getBackgroundColorSecondary(requireContext()) ?: monet.getBackgroundColor(requireContext()))
+        setContentScrimColor(monet.getBackgroundColor(requireContext()))
         setExpandedTitleTypeface(googleSansMedium)
         setCollapsedTitleTypeface(googleSansMedium)
         lineSpacingMultiplier = 1.1f
@@ -286,11 +234,21 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
                 CoordinatorLayout.LayoutParams.WRAP_CONTENT
             }else 0
         }
-        bottomNavigation?.let {
-            it.isVisible = !(topFragment is HideBottomNavigation && topFragment.shouldHideBottomNavigation())
-        }
+        setBottomNavigationVisibility(
+            !(topFragment is HideBottomNavigation && topFragment.shouldHideBottomNavigation())
+        )
         updateTitle(topFragment, currentDestination)
         toolbar?.navigationIcon = backIcon
+        val scrim = (topFragment as? ProvidesScrimColour)?.scrimOverride ?: flowOf(null)
+        scrimJob?.cancel()
+        scrimJob = whenCreated {
+            scrim.collect {
+                collapsingToolbar?.animateScrimColourTo(it?.scrimColour ?: Color.TRANSPARENT)
+                (toolbar as? SmartspacerToolbar)?.animateActionIconsColourTo(
+                    it?.backButtonBackgroundColour ?: monet.getForegroundForBlur(requireContext())
+                )
+            }
+        }
     }
 
     private fun updateTitle(fragment: Fragment, destination: NavDestination) {
@@ -305,6 +263,8 @@ abstract class BaseContainerFragment<V: ViewBinding>(inflate: (LayoutInflater, V
             toolbar?.title = label
         }
     }
+
+    open fun setBottomNavigationVisibility(visible: Boolean) = Unit
 
     private fun setupNavigation() = whenCreated {
         navHostFragment.setupWithNavigation(navigation)

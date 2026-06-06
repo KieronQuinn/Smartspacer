@@ -3,6 +3,8 @@ package com.kieronquinn.app.smartspacer.ui.screens.complications
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
@@ -37,6 +39,7 @@ class ComplicationsAdapter(
     private val layoutInflater = LayoutInflater.from(recyclerView.context)
     private val monet = MonetCompat.getInstance()
     private val glide = Glide.with(recyclerView.context)
+    private val padding = recyclerView.context.resources.getDimensionPixelSize(R.dimen.margin_8)
 
     override fun isSelected(item: ComplicationHolder): Boolean {
         return item.isSelected
@@ -80,7 +83,7 @@ class ComplicationsAdapter(
         when(holder){
             is ViewHolder.ItemComplication -> {
                 val item = items[position] as ItemHolder.Item
-                holder.setup(item.item, holder)
+                holder.setup(item.item, holder, position)
             }
             is ViewHolder.NativeStartReminder -> {
                 val item = items[position] as ItemHolder.NativeStartReminder
@@ -95,12 +98,16 @@ class ComplicationsAdapter(
 
     private fun ViewHolder.ItemComplication.setup(
         item: ComplicationHolder,
-        viewHolder: ViewHolder
+        viewHolder: ViewHolder,
+        position: Int
     ) = with(binding) {
         glide.load(item.info.icon)
             .placeholder(complicationIcon.drawable)
             .into(complicationIcon)
         complicationName.text = item.info.label
+        root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            updateMargins(top = if (position == 0) 0 else padding)
+        }
         complicationDescription.text = if(item.info.compatibilityState == com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState.Compatible) {
             item.info.description
         }else{

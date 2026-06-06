@@ -15,17 +15,7 @@
         app:fontWeight="500"
         android:fontWeight="500" />
     <font
-        android:font="@font/google_sans_text_medium_italic"
-        android:fontStyle="italic"
-        app:fontWeight="500"
-        android:fontWeight="500" />
-    <font
         android:font="@font/google_sans_text_bold"
-        app:fontWeight="700"
-        android:fontWeight="700" />
-    <font
-        android:font="@font/google_sans_text_bold_italic"
-        android:fontStyle="italic"
         app:fontWeight="700"
         android:fontWeight="700" />
 </font-family>

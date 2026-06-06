@@ -17,7 +17,7 @@ import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.components.notifications.NotificationId
 import com.kieronquinn.app.smartspacer.components.notifications.createNotification
 import com.kieronquinn.app.smartspacer.model.smartspace.NotificationListener
-import com.kieronquinn.app.smartspacer.receivers.StartShizukuReceiver
+import com.kieronquinn.app.smartspacer.receivers.StartShizukuActivity
 import com.kieronquinn.app.smartspacer.sdk.callbacks.IResolveIntentCallback
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationListenerService
 import com.kieronquinn.app.smartspacer.service.SmartspacerNotificationWidgetService
@@ -242,10 +242,10 @@ class NotificationRepositoryImpl(
             it.setOngoing(false)
             it.setAutoCancel(true)
             it.setContentIntent(
-                PendingIntent.getBroadcast(
+                PendingIntent.getActivity(
                     context,
                     NotificationId.SHIZUKU.ordinal,
-                    Intent(context, StartShizukuReceiver::class.java),
+                    Intent(context, StartShizukuActivity::class.java),
                     PendingIntent.FLAG_IMMUTABLE
                 )
             )

@@ -12,6 +12,7 @@ import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
+import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SetupPluginsFragment: BoundFragment<FragmentSetupPluginsInfoBinding>(FragmentSetupPluginsInfoBinding::inflate), BackAvailable {
@@ -27,8 +28,7 @@ class SetupPluginsFragment: BoundFragment<FragmentSetupPluginsInfoBinding>(Fragm
         val background = monet.getBackgroundColorSecondary(requireContext())
             ?: monet.getBackgroundColor(requireContext())
         binding.setupPluginsControls.backgroundTintList = ColorStateList.valueOf(background)
-        binding.setupPluginsControlsNext.backgroundTintList =
-            ColorStateList.valueOf(monet.getPrimaryColor(requireContext()))
+        binding.setupPluginsControlsNext.applyMonet()
         val normalPadding = resources.getDimension(R.dimen.margin_16).toInt()
         binding.setupPluginsControls.onApplyInsets { view, insets ->
             val bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom

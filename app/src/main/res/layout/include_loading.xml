@@ -5,18 +5,17 @@
     android:layout_marginTop="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading_progress"
-        android:layout_width="200dp"
+        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         app:layout_constraintBottom_toTopOf="@id/loading_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:trackCornerRadius="4dp"
-        app:trackThickness="8dp" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/loading_label"
@@ -24,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
         android:text="@string/loading"
+        android:visibility="gone"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

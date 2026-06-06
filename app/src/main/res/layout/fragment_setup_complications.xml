@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/margin_8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:transitionGroup="true">
@@ -28,9 +27,9 @@
         android:id="@+id/setup_complications_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_setup_controls"
         android:padding="@dimen/margin_16"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/background_setup_controls"
         tools:backgroundTint="@android:color/darker_gray">
 
         <TextView
@@ -45,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/setup_complications_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -54,6 +53,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium.Smartspacer"
             app:icon="@drawable/ic_arrow_right"
             app:iconGravity="textEnd"
+            app:iconSize="16dp"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

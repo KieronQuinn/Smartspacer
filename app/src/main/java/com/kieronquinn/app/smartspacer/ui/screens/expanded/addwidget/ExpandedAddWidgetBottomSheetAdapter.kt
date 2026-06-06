@@ -20,6 +20,7 @@ import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAdd
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.addwidget.ExpandedAddWidgetBottomSheetViewModel.Item
 import com.kieronquinn.app.smartspacer.ui.views.LifecycleAwareRecyclerView
 import com.kieronquinn.app.smartspacer.utils.extensions.getColorSurface
+import com.kieronquinn.app.smartspacer.utils.extensions.getForegroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.getHeightSpan
 import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetColumnWidth
 import com.kieronquinn.app.smartspacer.utils.extensions.getWidgetRowHeight
@@ -81,6 +82,10 @@ class ExpandedAddWidgetBottomSheetAdapter(
 
     private val monet by lazy {
         MonetCompat.getInstance()
+    }
+
+    private val background by lazy {
+        monet.getForegroundForBlur(context)
     }
 
     private val cornerRadius by lazy {
@@ -154,6 +159,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
             .placeholder(widgetAddAppIcon.drawable)
             .into(widgetAddAppIcon)
         widgetAddAppName.text = item.label
+        root.setCardBackgroundColor(background)
         val content = root.resources.getQuantityString(
             R.plurals.expanded_add_widget_widgets, item.count, item.count
         )
@@ -178,6 +184,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
         root.shapeAppearanceModel = if(isLast){
             bottomRoundedShapeAppearance
         }else noneRoundedShapeAppearance
+        root.setCardBackgroundColor(background)
         val context = root.context
         val availableWidth = getAvailableWidth()
         val columnWidth = context.getWidgetColumnWidth(availableWidth)
@@ -221,6 +228,7 @@ class ExpandedAddWidgetBottomSheetAdapter(
             getAvailableWidth,
             item.widgets
         )
+        root.setCardBackgroundColor(background)
         widgetAddPredictedViewPager.adapter = adapter
         val cycleListener = OnClickListener {
             widgetAddPredictedViewPager.cyclePage(item.widgets.size)

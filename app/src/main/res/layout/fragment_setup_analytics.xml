@@ -7,11 +7,11 @@
     android:orientation="vertical"
     android:transitionGroup="true">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <com.kieronquinn.app.smartspacer.ui.views.SmartspacerToolbar
         android:id="@+id/setup_analytics_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        app:navigationIcon="@drawable/ic_back" />
+        android:layout_marginHorizontal="@dimen/margin_8" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -57,27 +57,25 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/setup_analytics_allow"
-                style="@style/Widget.MaterialComponents.Button"
+                style="@style/Widget.Material3Expressive.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_16"
                 android:minWidth="160dp"
                 android:text="@string/setup_analytics_allow"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-                app:cornerRadius="@dimen/margin_32" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/setup_analytics_deny"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.Material3Expressive.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
                 android:minWidth="160dp"
                 android:text="@string/setup_analytics_deny"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
-                app:cornerRadius="@dimen/margin_32" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium" />
 
         </LinearLayout>
 

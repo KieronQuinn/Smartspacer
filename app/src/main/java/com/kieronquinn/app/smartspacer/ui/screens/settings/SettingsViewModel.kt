@@ -11,6 +11,7 @@ import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItemType
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository
 import com.kieronquinn.app.smartspacer.repositories.CompatibilityRepository.CompatibilityReport.Companion.isNativeModeAvailable
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ComplicationOnPrimary
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.HideSensitive
 import com.kieronquinn.app.smartspacer.utils.extensions.getSupportedLocales
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,10 +27,12 @@ abstract class SettingsViewModel: ViewModel() {
     abstract val state: StateFlow<State>
 
     abstract fun onResume()
+    abstract fun onBlurAvailableChanged(available: Boolean)
     abstract fun onEnhancedClicked()
     abstract fun onNativeClicked()
     abstract fun onExpandedModeClicked()
     abstract fun onHideSensitiveContentClicked()
+    abstract fun onComplicationOnPrimaryClicked()
     abstract fun onOemSmartspaceClicked()
     abstract fun onNotificationWidgetClicked()
     abstract fun onBackupRestoreClicked()
@@ -38,6 +41,7 @@ abstract class SettingsViewModel: ViewModel() {
     abstract fun onPluginRepositoryClicked()
     abstract fun onCheckForUpdatesChanged(enabled: Boolean)
     abstract fun onEnableAnalyticsChanged(enabled: Boolean)
+    abstract fun onEnableBlurChanged(enabled: Boolean)
     abstract fun onLanguageClicked()
     abstract fun onDebugClicked()
 
@@ -46,7 +50,7 @@ abstract class SettingsViewModel: ViewModel() {
     abstract fun onGitHubClicked()
     abstract fun onCrowdinClicked()
     abstract fun onLibrariesClicked()
-    abstract fun onTwitterClicked()
+    abstract fun onBlueskyClicked()
     abstract fun onXdaClicked()
 
     sealed class State {
@@ -58,6 +62,9 @@ abstract class SettingsViewModel: ViewModel() {
             val hideSensitive: HideSensitive,
             val checkForUpdates: Boolean,
             val enableAnalytics: Boolean,
+            val complicationOnPrimary: ComplicationOnPrimary,
+            val blurAvailable: Boolean?,
+            val blurEnabled: Boolean,
             val supportedLocales: List<String>
         ): State() {
             override fun equals(other: Any?): Boolean {
@@ -73,7 +80,7 @@ abstract class SettingsViewModel: ViewModel() {
             val onDonateClicked: () -> Unit,
             val onGitHubClicked: () -> Unit,
             val onCrowdinClicked: () -> Unit,
-            val onTwitterClicked: () -> Unit,
+            val onBlueskyClicked: () -> Unit,
             val onXdaClicked: () -> Unit,
             val onLibrariesClicked: () -> Unit
         ): SettingsSettingsItem(ItemType.ABOUT)
@@ -93,7 +100,7 @@ class SettingsViewModelImpl(
 ): SettingsViewModel() {
 
     companion object {
-        private const val LINK_TWITTER = "https://kieronquinn.co.uk/redirect/Smartspacer/twitter"
+        private const val LINK_BLUESKY = "https://kieronquinn.co.uk/redirect/Smartspacer/bluesky"
         private const val LINK_GITHUB = "https://kieronquinn.co.uk/redirect/Smartspacer/github"
         private const val LINK_CROWDIN = "https://kieronquinn.co.uk/redirect/Smartspacer/crowdin"
         private const val LINK_XDA = "https://kieronquinn.co.uk/redirect/Smartspacer/xda"
@@ -108,6 +115,8 @@ class SettingsViewModelImpl(
     private val enhancedEnabled = settingsRepository.enhancedMode
     private val checkForUpdates = settingsRepository.updateCheckEnabled
     private val analyticsEnabled = settingsRepository.analyticsEnabled
+    private val blurEnabled = settingsRepository.blurEnabled
+    private val blurAvailable = MutableStateFlow<Boolean?>(null)
 
     private val supportedLocales = flow {
         emit(context.getSupportedLocales().map { it.toLanguageTag() })
@@ -120,13 +129,28 @@ class SettingsViewModelImpl(
         Pair(compatible, enabled)
     }
 
-    private val options = combine(
+    private val blur = combine(
+        blurAvailable,
+        blurEnabled.asFlow()
+    ) { available, enabled ->
+        available to enabled
+    }
+
+    private val targets = combine(
         settingsRepository.hideSensitive.asFlow(),
+        settingsRepository.complicationOnPrimary.asFlow()
+    ) { hideSensitive, complicationOnPrimary ->
+        hideSensitive to complicationOnPrimary
+    }
+
+    private val options = combine(
+        targets,
         checkForUpdates.asFlow(),
         analyticsEnabled.asFlow(),
-        supportedLocales
-    ) { hideSensitive, checkForUpdates, analyticsEnabled, supportedLocales ->
-        Options(hideSensitive, checkForUpdates, analyticsEnabled, supportedLocales)
+        supportedLocales,
+        blur
+    ) { (hideSensitive, complicationOnPrimary), checkForUpdates, analyticsEnabled, supportedLocales, blur ->
+        Options(hideSensitive, complicationOnPrimary, checkForUpdates, analyticsEnabled, supportedLocales, blur.first, blur.second)
     }
 
     override val state = combine(
@@ -144,6 +168,9 @@ class SettingsViewModelImpl(
             options.hideSensitive,
             options.checkForUpdates,
             options.analyticsEnabled,
+            options.complicationOnPrimary,
+            options.blurAvailable,
+            options.blurEnabled,
             options.supportedLocales
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, State.Loading)
@@ -151,6 +178,12 @@ class SettingsViewModelImpl(
     override fun onResume() {
         viewModelScope.launch {
             onResume.emit(System.currentTimeMillis())
+        }
+    }
+
+    override fun onBlurAvailableChanged(available: Boolean) {
+        viewModelScope.launch {
+            blurAvailable.emit(available)
         }
     }
 
@@ -178,6 +211,12 @@ class SettingsViewModelImpl(
     override fun onHideSensitiveContentClicked() {
         viewModelScope.launch {
             navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToSettingsHideSensitiveFragment())
+        }
+    }
+
+    override fun onComplicationOnPrimaryClicked() {
+        viewModelScope.launch {
+            navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToSettingsComplicationOnPrimaryFragment())
         }
     }
 
@@ -229,6 +268,12 @@ class SettingsViewModelImpl(
         }
     }
 
+    override fun onEnableBlurChanged(enabled: Boolean) {
+        viewModelScope.launch {
+            blurEnabled.set(enabled)
+        }
+    }
+
     override fun onLanguageClicked() {
         viewModelScope.launch {
             navigation.navigate(SettingsFragmentDirections.actionSettingsFragmentToSettingsLanguageFragment())
@@ -271,9 +316,9 @@ class SettingsViewModelImpl(
         }
     }
 
-    override fun onTwitterClicked() {
+    override fun onBlueskyClicked() {
         viewModelScope.launch {
-            navigation.navigate(LINK_TWITTER.toIntent())
+            navigation.navigate(LINK_BLUESKY.toIntent())
         }
     }
 
@@ -291,9 +336,12 @@ class SettingsViewModelImpl(
 
     private data class Options(
         val hideSensitive: HideSensitive,
+        val complicationOnPrimary: ComplicationOnPrimary,
         val checkForUpdates: Boolean,
         val analyticsEnabled: Boolean,
-        val supportedLocales: List<String>
+        val supportedLocales: List<String>,
+        val blurAvailable: Boolean?,
+        val blurEnabled: Boolean
     )
 
 }

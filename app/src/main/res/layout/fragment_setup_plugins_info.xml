@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/margin_16">
+            android:paddingHorizontal="@dimen/margin_16"
+            android:paddingTop="@dimen/margin_8"
+            android:paddingBottom="@dimen/margin_16">
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,7 +62,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:backgroundTint="@android:color/darker_gray">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        <com.google.android.material.button.MaterialButton
+            app:iconSize="16dp"
             android:id="@+id/setup_plugins_controls_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

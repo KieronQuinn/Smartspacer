@@ -5,16 +5,20 @@ plugins {
 
 android {
     namespace 'com.kieronquinn.app.smartspacer.sdksample'
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         applicationId "com.kieronquinn.app.smartspacer.sdksample"
         minSdk 29
-        targetSdk 34
+        targetSdk 37
         versionCode 2
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
@@ -35,9 +39,9 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation "androidx.fragment:fragment-ktx:1.8.9"
-    implementation "androidx.lifecycle:lifecycle-service:2.9.4"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
+    implementation "androidx.lifecycle:lifecycle-service:2.10.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.10.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0"
     implementation project(path: ':sdk-plugin')
     implementation project(path: ':sdk-client')
 }

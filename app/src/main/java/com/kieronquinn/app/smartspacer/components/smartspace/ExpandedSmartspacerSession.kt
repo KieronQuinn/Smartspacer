@@ -1,5 +1,7 @@
 package com.kieronquinn.app.smartspacer.components.smartspace
 
+import android.app.PendingIntent
+import android.appwidget.AppWidgetHostView
 import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
 import android.content.Context
@@ -9,8 +11,10 @@ import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
 import android.graphics.Bitmap
 import android.os.DeadObjectException
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Companion.MAX_SHORTCUTS
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMerger.Companion.BLANK_TARGET_PREFIX
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
@@ -36,12 +40,15 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.UiSurface
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.BaseShortcut
+import com.kieronquinn.app.smartspacer.sdk.utils.copy
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedFragment
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
 import com.kieronquinn.app.smartspacer.utils.extensions.createFakeWidgetProviderInfo
 import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundColour
 import com.kieronquinn.app.smartspacer.utils.extensions.isColorDark
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
+import com.kieronquinn.app.smartspacer.utils.extensions.replaceClickWithProxyIntent
 import com.kieronquinn.app.smartspacer.utils.extensions.split
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
 import kotlinx.coroutines.Dispatchers
@@ -58,6 +65,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import org.koin.core.component.inject
 import java.util.LinkedList
+import java.util.UUID
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications as ExpandedComplications
 
 @Suppress("CloseTarget")
@@ -97,6 +105,8 @@ class ExpandedSmartspacerSession(
             UiSurface.LOCKSCREEN -> wallpaperRepository.lockscreenWallpaperDarkTextColour
             UiSurface.MEDIA_DATA_MANAGER -> wallpaperRepository.homescreenWallpaperDarkTextColour
             UiSurface.GLANCEABLE_HUB -> wallpaperRepository.lockscreenWallpaperDarkTextColour
+            UiSurface.AMBIENT_CUE -> wallpaperRepository.homescreenWallpaperDarkTextColour
+            UiSurface.DREAM -> flowOf(false) // Screensaver, so always black background
         }
     }
 
@@ -252,15 +262,42 @@ class ExpandedSmartspacerSession(
         }.flowOn(Dispatchers.IO)
     }
 
-    private fun SmartspaceTarget.addFakeWidgetIfNeeded() = apply {
-        remoteViews?.let {
-            if(widget != null) return@let
-            widget = context.createFakeWidgetProviderInfo()
-        }
+    /**
+     *  Prepares Target for displaying in Expanded Smartspacer.
+     *
+     *  [AppWidgetHostView] (used in the adapter) requires an [AppWidgetProviderInfo] to get the
+     *  content description, since this isn't actually a widget we don't have one, so inject a fake
+     *  one.
+     *
+     *  For AaG Targets, fixes the kebab menu and replaces click actions with the proxy so the
+     *  dropdown action can be intercepted and ignored.
+     */
+    private fun SmartspaceTarget.prepareRemoteViews(): SmartspaceTarget {
+        val remoteViews = remoteViews?.copy()
+            ?.replaceClickWithProxyIntent(context)
+            ?.fixKebabMenuIfNeeded(context, this)
+        return copy(
+            remoteViews = remoteViews,
+            widget = widget ?: if(remoteViews != null) {
+                context.createFakeWidgetProviderInfo()
+            }else null
+        )
     }
 
     override fun applyActionOverrides(targets: Flow<List<TargetHolder>>): Flow<List<TargetHolder>> {
         return targets //Don't override actions in expanded mode
+    }
+
+    override fun getKebabMenuBehaviour(target: SmartspaceTarget): KebabMenuBehaviour {
+        val intent = ExpandedFragment.getKebabMenuIntent(context, target.smartspaceTargetId).let {
+            PendingIntent.getBroadcast(
+                context,
+                UUID.randomUUID().hashCode(),
+                it,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        }
+        return KebabMenuBehaviour.Replace(intent)
     }
 
     fun setTopInset(inset: Int) = whenCreated {
@@ -313,7 +350,7 @@ class ExpandedSmartspacerSession(
                 settings.useGoogleSans
             )
             list.add(Item.Target(
-                it.page.addFakeWidgetIfNeeded(),
+                it.page.prepareRemoteViews(),
                 it.target?.id, extras.isNotEmpty(),
                 applyShadow,
                 isDark
@@ -337,7 +374,12 @@ class ExpandedSmartspacerSession(
     }
 
     private fun List<SmartspaceTarget>.extractComplications(): ExpandedComplications {
-        return map { target ->
+        return flatMap { target ->
+            val primary = target.templateData?.primaryItem?.takeIf {
+                it.loggingInfo?.featureType == SmartspaceTarget.FEATURE_WEATHER
+            }?.let {
+                Complication.SubItemInfo(target, it)
+            }
             val header = target.templateData?.subtitleItem?.let {
                 Complication.SubItemInfo(target, it)
             } ?: target.headerAction?.let {
@@ -350,8 +392,9 @@ class ExpandedSmartspacerSession(
             }?.let {
                 Complication.Action(target, it)
             }
-            listOfNotNull(header, base)
-        }.flatten().filter {
+            Log.d("ESS", "Got ${primary?.getTitle()}, ${header?.getTitle()}, ${base?.getTitle()}")
+            listOfNotNull(primary, header, base)
+        }.filter {
             it.isValid()
         }.let {
             ExpandedComplications(it)
@@ -488,6 +531,7 @@ class ExpandedSmartspacerSession(
     }
 
     override suspend fun supportsRemoteViews() = true
+    override suspend fun supportsComplicationOnPrimary() = true
 
     sealed class Item(val type: Type, open val isDark: Boolean) {
         data class StatusBarSpace(

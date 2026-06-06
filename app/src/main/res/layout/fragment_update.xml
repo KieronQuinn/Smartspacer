@@ -17,7 +17,8 @@
             style="@style/Widget.Material3.CardView.Filled.Smartspacer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_16"
+            android:layout_marginHorizontal="@dimen/margin_16"
+            android:layout_marginVertical="@dimen/margin_8"
             app:cardBackgroundColor="?android:colorControlHighlight">
 
             <LinearLayout
@@ -82,30 +83,28 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
         android:id="@+id/update_progress"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:trackCornerRadius="4dp"
-        app:trackThickness="8dp" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        style="@style/Widget.Material3Expressive.CircularProgressIndicator.Wavy"
         android:id="@+id/update_progress_indeterminate"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:indeterminate="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:trackCornerRadius="4dp"
-        app:trackThickness="8dp" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/update_icon"
@@ -139,7 +138,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/update_start_install"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="@style/Widget.Material3Expressive.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
@@ -148,7 +147,6 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.Smartspacer.Medium"
         android:visibility="gone"
-        app:cornerRadius="@dimen/margin_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/update_title"
