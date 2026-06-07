@@ -19,7 +19,7 @@ Smartspacer is a customisable widget for Android, but with a difference: It can 
 
 ## Screenshots
 
-[![Screenshots](https://i.imgur.com/pqT1Vufl.png)](https://i.imgur.com/pqT1Vuf.png)
+[![Screenshots](https://i.imgur.com/g026zJ5l.jpeg)](https://i.imgur.com/g026zJ5.jpeg)
 
 ## Download
 
