@@ -49,7 +49,9 @@
     <string name="widget_configuration_behaviour_title">Поведение</string>
     <string name="widget_configuration_is_lock_screen_title">Виджеты экрана блокировки</string>
     <string name="widget_configuration_is_lock_screen_content">Включите <b>только в том случае</b>, если этот виджет добавляется на экран блокировки.\nЕсли это <b>не позволяет</b> добавить виджет на экран блокировки самостоятельно, загрузите приложение из Google Play, например \"Виджеты экрана блокировки\", чтобы сделать это.</string>
+    <string name="widget_configuration_is_lock_screen_content_disabled">.</string>
     <string name="widget_configuration_page_single_title">Одна страница</string>
+    <string name="widget_configuration_page_single_content">.</string>
     <string name="widget_configuration_customisation_title">Кастомизация</string>
     <string name="widget_configuration_page_arrows_title">Показывать управление страницами</string>
     <string name="widget_configuration_page_arrows_content">Включите управление стрелками для легкого переключения страниц. Если отключено, используйте точки-индикаторы для перехода на следующую страницу, зацикливая обратно на первую по достижению конца.</string>
@@ -139,6 +141,9 @@
     <string name="target_at_a_glance_label">Самое главное (Виджет)</string>
     <string name="target_at_a_glance_description">Некоторые Цели из \"Самое главное\" Google, загруженные с помощью виджета</string>
     <string name="target_at_a_glance_description_unsupported">Для этой цели нужно приложение Google</string>
+    <string name="target_google_weather_forecast_title">Прогноз погоды Google</string>
+    <string name="target_google_weather_forecast_content">Отображает текущую погоду и прогноз на ближайшие четыре часа на основе данных Google</string>
+    <string name="target_google_weather_forecast_incompatible">Для этого требуется устройство Pixel или Pixel-based ROM, с установленным приложением Google</string>
     <string name="target_notification_warning_title">Сервис доступа к уведомлениям отключён</string>
     <string name="target_notification_warning_description">Нажмите, чтобы включить</string>
     <string name="complication_default_label">Дополнения \"Самое главное\"</string>
@@ -903,6 +908,7 @@
     <string name="github">GitHub</string>
     <string name="libraries">Сторонние библиотеки</string>
     <string name="donate">Пожертвовать</string>
+    <string name="twitter">Twitter</string>
     <string name="about_version">Версия %1s\nСоздано Kieron Quinn</string>
     <string name="about_contributors">Участники</string>
     <string name="about_crowdin">Crowdin</string>
@@ -989,7 +995,7 @@
     <string name="target_default_settings_hide_calendar">Календарь</string>
     <string name="target_default_settings_hide_work_profile">Рабочий профиль</string>
     <string name="target_default_settings_hide_food">Еда и заказы на дом</string>
-    <string name="target_default_settings_hide_cross_device_timer">Таймер на нескольких устройствах</string>
+    <string name="target_default_settings_cross_device_timer">Таймер на нескольких устройствах</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Выберите приложение</string>
     <string name="target_notification_configuration_app_content">Выберите приложение, от которого нужно отображать уведомления</string>

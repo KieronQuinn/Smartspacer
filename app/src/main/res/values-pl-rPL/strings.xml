@@ -141,6 +141,9 @@
     <string name="target_at_a_glance_label">At a Glance (Widżet)</string>
     <string name="target_at_a_glance_description">Ograniczone Cele z Google At a Glance, dodane za pomocą widżetu Google</string>
     <string name="target_at_a_glance_description_unsupported">Ten Cel wymaga aplikacji Google</string>
+    <string name="target_google_weather_forecast_title">Prognoza pogody Google</string>
+    <string name="target_google_weather_forecast_content">Wyświetla bieżącą pogodę i prognozę na następne cztery godziny z Google Weather</string>
+    <string name="target_google_weather_forecast_incompatible">Ten cel wymaga urządzenia Pixel lub ROM-u bazowanego na urządzeniach Pixel z zainstalowaną aplikacją Google</string>
     <string name="target_notification_warning_title">Słuchacz powiadomień jest wyłączony</string>
     <string name="target_notification_warning_description">Dotknij, by włączyć</string>
     <string name="complication_default_label">Komplikacje At a Glance</string>
@@ -905,6 +908,7 @@
     <string name="github">GitHub</string>
     <string name="libraries">Biblioteki firm trzecich</string>
     <string name="donate">Przekaż darowiznę</string>
+    <string name="twitter">Śledź mnie na Twitterze</string>
     <string name="about_version">Wersja %1s\nstworzona przez Kieron Quinn</string>
     <string name="about_contributors">Współtwórcy</string>
     <string name="about_crowdin">Crowdin</string>
@@ -991,7 +995,7 @@
     <string name="target_default_settings_hide_calendar">Kalendarz</string>
     <string name="target_default_settings_hide_work_profile">Work Profile</string>
     <string name="target_default_settings_hide_food">Food &amp; Household Orders</string>
-    <string name="target_default_settings_hide_cross_device_timer">Cross-device Timer</string>
+    <string name="target_default_settings_cross_device_timer">Cross-device Timer</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Wybierz aplikację</string>
     <string name="target_notification_configuration_app_content">Select app to show notifications from</string>
