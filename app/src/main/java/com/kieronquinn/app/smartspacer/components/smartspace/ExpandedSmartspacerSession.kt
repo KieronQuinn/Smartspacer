@@ -11,7 +11,6 @@ import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
 import android.graphics.Bitmap
 import android.os.DeadObjectException
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Companion.MAX_SHORTCUTS
@@ -392,7 +391,6 @@ class ExpandedSmartspacerSession(
             }?.let {
                 Complication.Action(target, it)
             }
-            Log.d("ESS", "Got ${primary?.getTitle()}, ${header?.getTitle()}, ${base?.getTitle()}")
             listOfNotNull(primary, header, base)
         }.filter {
             it.isValid()

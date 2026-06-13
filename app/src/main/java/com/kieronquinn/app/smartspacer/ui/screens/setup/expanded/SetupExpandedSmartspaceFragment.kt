@@ -11,7 +11,7 @@ import com.kieronquinn.app.smartspacer.databinding.FragmentSetupExpandedBinding
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.screens.setup.expanded.SetupExpandedSmartspaceViewModel.State
-import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundForBlur
+import com.kieronquinn.app.smartspacer.utils.extensions.getForegroundForBlur
 import com.kieronquinn.app.smartspacer.utils.extensions.onApplyInsets
 import com.kieronquinn.app.smartspacer.utils.extensions.onChanged
 import com.kieronquinn.app.smartspacer.utils.extensions.onClicked
@@ -59,7 +59,7 @@ class SetupExpandedSmartspaceFragment: BoundFragment<FragmentSetupExpandedBindin
     }
 
     private fun setupSetting() = with(binding.setupExpandedOpenEnabled) {
-        card.setCardBackgroundColor(monet.getBackgroundForBlur(requireContext()))
+        card.setCardBackgroundColor(monet.getForegroundForBlur(requireContext()))
         itemSettingsSwitchTitle.setText(R.string.setup_expanded_open_title)
         itemSettingsSwitchContent.setText(R.string.setup_expanded_open_content)
         itemSettingsSwitchContent.isVisible = true

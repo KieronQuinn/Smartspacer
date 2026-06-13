@@ -44,11 +44,13 @@ fun MaterialCardView.applyBackgroundSecondary(monet: MonetCompat) = with(monet) 
 }
 
 fun MonetCompat.getBackgroundForBlur(context: Context, darkMode: Boolean? = null): Int {
-    return if(darkMode ?: context.isDarkMode){
-        getMonetColors().accent2[900]?.toArgb() ?: getBackgroundColor(context)
-    }else{
-        getMonetColors().accent2[200]?.toArgb() ?: getBackgroundColor(context)
-    }.withAlpha(0.75f)
+    val isDarkMode = darkMode ?: context.isDarkMode
+    val light = getMonetColors().accent1[100]?.toArgb()
+    val dark = getMonetColors().accent1[800]?.toArgb()
+    if (light == null || dark == null) return getBackgroundColor(context)
+    val base = (if (isDarkMode) dark else light).withAlpha(0.5f)
+    val overlay = if (isDarkMode) light.withAlpha(0.15f) else Color.WHITE.withAlpha(0.32f)
+    return ColorUtils.compositeColors(base, overlay)
 }
 
 fun MonetCompat.getForegroundForBlur(context: Context): Int {

@@ -92,9 +92,12 @@ abstract class TargetMerger {
         return prefixedTargets + getSplitTargets(actionQueue) + uniqueTargets.mapNotNull {
             val pageActions = ArrayList<Action>()
             var target = it.target
-            val canTakePrimaryItem = target.canTakePrimaryItem(
-                actionQueue.peek(), supportsRemoteViews, complicationOnPrimary
-            )
+            // Never place a primary item if there's only one complication available
+            val canTakePrimaryItem = if (actionQueue.size > 1) {
+                target.canTakePrimaryItem(
+                    actionQueue.peek(), supportsRemoteViews, complicationOnPrimary
+                )
+            } else false
             val primaryAction = if (canTakePrimaryItem) {
                 actionQueue.pop()
             } else null
@@ -284,16 +287,14 @@ abstract class TargetMerger {
         complicationOnPrimary: ComplicationOnPrimary
     ) {
         while (actionQueue.isNotEmpty()) {
-            val showOnPrimary = actionQueue.peek()?.action?.showOnPrimary(complicationOnPrimary)
-            var primaryAction = if (showOnPrimary == true) {
+            // Never place primary item if there's only one complication
+            val showOnPrimary = actionQueue.size > 1 &&
+                    (actionQueue.peek()?.action?.showOnPrimary(complicationOnPrimary) ?: false)
+            val primaryAction = if (showOnPrimary) {
                 actionQueue.pop()
             } else null
-            var action = actionQueue.popOrNull()
+            val action = actionQueue.popOrNull()
             if (primaryAction == null && action == null) break
-            if (action == null) {
-                action = primaryAction
-                primaryAction = null
-            }
             val secondAction = actionQueue.popOrNull()
             val page = SmartspacePageHolder(
                 createBlankTarget(
