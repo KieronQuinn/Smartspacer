@@ -10,7 +10,9 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceSessionId
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTargetEvent
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
+import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.Icon
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
+import com.kieronquinn.app.smartspacer.utils.extensions.getBitmap
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -28,6 +30,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.util.UUID
+import android.graphics.drawable.Icon as AndroidIcon
 
 interface ExpandedSession {
 
@@ -82,7 +85,7 @@ interface ExpandedSession {
                 }
 
                 override fun isValid(): Boolean {
-                    return smartspaceAction.icon != null || smartspaceAction.title.isNotBlank()
+                    return !smartspaceAction.icon.isNullOrBlank() || smartspaceAction.title.isNotBlank()
                 }
 
                 override fun getTitle(): String {
@@ -108,7 +111,7 @@ interface ExpandedSession {
                 }
 
                 override fun isValid(): Boolean {
-                    return info.icon != null || info.text?.text?.isNotBlank() == true
+                    return !info.icon.isNullOrBlank() || info.text?.text?.isNotBlank() == true
                 }
 
                 override fun getTitle(): String {
@@ -119,6 +122,14 @@ interface ExpandedSession {
 
             abstract fun isValid(): Boolean
             abstract fun getTitle(): String
+
+            protected fun Icon?.isNullOrBlank(): Boolean {
+                return this == null || icon.isNullOrBlank()
+            }
+
+            protected fun AndroidIcon?.isNullOrBlank(): Boolean {
+                return this == null || getBitmap()?.let { it.width <= 1 && it.height <= 1 } == true
+            }
 
             enum class Type {
                 ACTION,

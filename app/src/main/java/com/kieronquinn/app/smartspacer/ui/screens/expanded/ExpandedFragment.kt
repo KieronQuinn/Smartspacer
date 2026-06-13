@@ -711,6 +711,9 @@ class ExpandedFragment: BoundFragment<FragmentExpandedBinding>(
         popup.isFocusable = true
         popup.isAttachedInDecor = false
         popup.showAsDropDown(view)
+        popupView.root.setOnClickListener {
+            popup.dismiss()
+        }
         blurJob = whenResumed {
             popupView.root.awaitPost()
             blurs.firstOrNull()?.blurAvailable?.collect { available ->
