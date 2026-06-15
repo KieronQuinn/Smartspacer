@@ -72,7 +72,7 @@
     <string name="widget_configuration_material_you_title">Stile Material You</string>
     <string name="widget_configuration_material_you_description">Usa lo stile Material You dinamico per il widget\n\n<b>Nota:</b> Abilitare questa opzione potrebbe causare problemi di dimensionamento con alcuni Target.</string>
     <!-- Widget Pinning Section -->
-    <string name="widget_configuration_pin_title">Widget Pinning</string>
+    <string name="widget_configuration_pin_title">Fissare widget</string>
     <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
     <!-- Pin Mode -->
     <string name="widget_configuration_pin_mode_label">Pin Mode</string>
