@@ -1,7 +1,13 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package com.kieronquinn.app.smartspacer.ui.screens.expanded
 
 import android.app.Activity
 import android.app.KeyguardManager
+import androidx.compose.foundation.layout.size
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import android.app.KeyguardManager.KeyguardDismissCallback
 import android.app.PendingIntent
 import android.appwidget.AppWidgetProviderInfo
@@ -12,16 +18,18 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
+import android.graphics.Color
+import android.graphics.Outline
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.view.MotionEvent
+import android.view.ViewOutlineProvider
 import android.graphics.drawable.GradientDrawable
-import android.view.animation.DecelerateInterpolator
-import android.view.animation.OvershootInterpolator
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
@@ -31,12 +39,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
-import com.kieronquinn.app.smartspacer.repositories.AtAGlanceRepository
-import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.ColorUtils
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.doOnAttach
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnDetach
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -55,11 +65,15 @@ import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
 import com.kieronquinn.app.smartspacer.model.doodle.DoodleImage
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
+import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
 import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.BaseExpandedAdapter.ExpandedAdapterListener
+import com.bumptech.glide.Glide
+import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
+import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
@@ -68,6 +82,11 @@ import com.kieronquinn.app.smartspacer.sdk.client.views.SmartspacerView
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_ABOUT_INTENT
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction.Companion.KEY_EXTRA_FEEDBACK_INTENT
+import com.kieronquinn.app.smartspacer.sdk.utils.sendSafely
+import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMerger.Companion.BLANK_TARGET_PREFIX
+import com.kieronquinn.app.smartspacer.components.smartspace.complications.AlarmComplication
+import com.kieronquinn.app.smartspacer.repositories.ReadYouRepository
+import com.kieronquinn.app.smartspacer.sdk.provider.SmartspacerComplicationProvider
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget.Companion.FEATURE_WEATHER
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcuts.Shortcut
@@ -78,6 +97,7 @@ import com.kieronquinn.app.smartspacer.ui.activities.MainActivity
 import com.kieronquinn.app.smartspacer.ui.activities.OverlayTrampolineActivity
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
 import com.kieronquinn.app.smartspacer.ui.base.ProvidesBack
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.MaterialSymbolsHelper
 import com.kieronquinn.app.smartspacer.utils.extensions.dp
@@ -92,6 +112,8 @@ import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -108,6 +130,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     companion object {
         private const val MIN_SWIPE_DELAY = 250L
         private const val EXTRA_OPEN_ACTION = "open_action"
+        private const val EXTRA_NAVIGATE_TAB_SETTINGS = "nav_tab_settings"
 
         private val COMPONENT_EXPANDED = ComponentName(
             BuildConfig.APPLICATION_ID,
@@ -160,21 +183,30 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private val wallpaperRepository by inject<WallpaperRepository>()
     private val blurProvider by inject<BlurProvider>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
+    private val searchRepository by inject<SearchRepository>()
     private val expandedRepository by inject<ExpandedRepository>()
     private val tabRepository by inject<ExpandedTabRepository>()
-    private val atAGlanceRepository by inject<AtAGlanceRepository>()
-    private val googleWeatherRepository by inject<GoogleWeatherRepository>()
+    private val readYouRepository by inject<ReadYouRepository>()
+    private val smartspaceRepository by inject<SmartspaceRepository>()
+
 
     private var lastSwipe: Long? = null
     private var popup: Balloon? = null
     private var topInset = 0
     private var currentTabIndex = 0
+    private var isDoodleEnabled = false
     private val loadedTabIndices = mutableSetOf<Int>()
+    /** Tabs from the last full rebuild — used to skip redundant rebuilds on resume. */
+    private var lastBuiltTabs: List<ExpandedTabConfig> = emptyList()
+
+    /** Whether to show weather as the circular cookie badge (true) or as a regular page (false). */
+    private var showWeatherCookie = true
 
     /** All non-weather Smartspace targets available to page through in the header pill. */
     private var headerTargets: List<Item.Target> = emptyList()
     /** Index into [headerTargets] of the target currently shown in the header pill. */
     private var currentHeaderIndex = 0
+    private var dotViews: List<View> = emptyList()
     private val headerPagerAdapter by lazy { HeaderTargetAdapter() }
 
     override val applyTransitions = false
@@ -190,9 +222,8 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         viewModel.onWidgetConfigureResult(it.resultCode == Activity.RESULT_OK)
     }
 
-    private val isDark = runBlocking {
-        wallpaperRepository.homescreenWallpaperDarkTextColour.first()
-    }
+    // StateFlow already has a value — read it directly instead of blocking the main thread.
+    private val isDark get() = wallpaperRepository.homescreenWallpaperDarkTextColour.value
     private val backgroundColour by lazy { monet.getBackgroundColor(requireContext()) }
     private val keyguardManager by lazy {
         requireContext().getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
@@ -211,7 +242,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             isAppearanceLightNavigationBars = isDark
             isAppearanceLightStatusBars = isDark
         }
-        if (isMinusOne) setBlurEnabled(true)
+        setBlurEnabled(true)
         setupLoading()
         setupState()
         setupMonet()
@@ -221,10 +252,12 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         setupDisabledButton()
         setupClose()
         setupMenuButton()
+        setupDoodleHeader()
         setupOpenAppButton()
         setupTabs()
         setupHeaderSwipe()
         viewModel.setup(isOverlay)
+        handleLaunchNavigation()
     }
 
     // ── Setup ─────────────────────────────────────────────────────────────
@@ -235,10 +268,19 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
     private fun setupMonet() {
         reapplyColors()
+        // Reactively reapply when the background mode changes (e.g. switched from
+        // the Settings tab while the expanded view is still visible).
+        viewLifecycleOwner.whenResumed {
+            settingsRepository.expandedBackground.asFlow().drop(1).collect {
+                reapplyColors()
+                setBlurEnabled(true)
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        lastBuiltTabs = emptyList()
     }
 
     private fun reapplyColors() {
@@ -256,46 +298,86 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         binding.expandedPermission.backgroundTintList =
             ColorStateList.valueOf(monet.getBackgroundColor(ctx))
 
-        // Pill
+        // Pill + menu container use colorSecondaryContainer (50% in BLUR mode)
+        val secondaryContainer = blurAlpha(ctx.getAttrColor(com.google.android.material.R.attr.colorSecondaryContainer))
+        val onSecondaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
+        binding.expandedHeaderPill.setCardBackgroundColor(secondaryContainer)
+        // In BLUR/SCRIM modes the pill itself provides the frosted surface; the
+        // floating containers should be fully transparent so they don't add a
+        // second opaque layer on top of the blur.
+        val floatingContainerColor = if (isBlurBackground) Color.TRANSPARENT else secondaryContainer
+        binding.expandedHeaderMenuContainer.setCardBackgroundColor(floatingContainerColor)
+        binding.expandedHeaderWeatherContainer.setCardBackgroundColor(floatingContainerColor)
+
         val primaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorPrimaryContainer)
         val onPrimaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
-        binding.expandedHeaderPill.setCardBackgroundColor(primaryContainer)
-        binding.expandedHeaderPill.strokeColor =
-            ctx.getAttrColor(com.google.android.material.R.attr.colorOutline)
 
-        // Menu button inside pill
-        binding.expandedHeaderMenu.iconTint = ColorStateList.valueOf(onPrimaryContainer)
+        // Rebuild the three menu dots (5×5dp, 2dp gap, colorOnSecondaryContainer)
+        binding.expandedHeaderMenu.removeAllViews()
+        val dotPx = 5.dp
+        val gapPx = 2.dp
+        repeat(3) { i ->
+            binding.expandedHeaderMenu.addView(View(ctx).apply {
+                background = GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    setColor(onSecondaryContainer)
+                }
+                layoutParams = LinearLayout.LayoutParams(dotPx, dotPx).apply {
+                    if (i > 0) topMargin = gapPx
+                }
+            })
+        }
 
-        // Weather cookie (SquircleFrameLayout uses android:background ColorDrawable — set directly)
+        // Squircle uses colorPrimaryContainer
         binding.expandedHeaderWeather.setBackgroundColor(primaryContainer)
         binding.expandedHeaderWeatherTemp.setTextColor(onPrimaryContainer)
 
-        // Nav pill (tab scroll container)
-        val surfaceContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorSurfaceContainer)
-        binding.expandedTabScrollPill.setCardBackgroundColor(surfaceContainer)
+        // Nav pill (tab scroll container) — always fully opaque
+        val surfaceContainerHigh = ctx.getAttrColor(com.google.android.material.R.attr.colorSurfaceContainerHigh)
+        binding.expandedTabScrollPill.setCardBackgroundColor(surfaceContainerHigh)
+        val elevationOverlay = com.google.android.material.elevation.ElevationOverlayProvider(ctx)
+        val tintedPillColor = elevationOverlay.compositeOverlayIfNeeded(
+            surfaceContainerHigh, binding.expandedTabScrollPill.cardElevation
+        )
+        binding.expandedTabScrollPill.strokeColor = tintedPillColor
 
-        // FAB — P-90 (primary-fixed) background, P-10 (on-primary-fixed) icon.
+        // FAB — secondary-fixed-dim background, on-secondary-fixed icon (same in both modes).
         // On API 31+ use the system Monet palette directly (always correct).
         // Below API 31 fall back to MonetCompat's shade lookup.
-        val primaryFixed = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            ctx.getColor(android.R.color.system_accent1_100)
+        val secondaryFixedDim = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            ctx.getColor(android.R.color.system_accent2_200)
         } else {
-            ctx.getAttrColor(com.google.android.material.R.attr.colorPrimaryContainer)
+            ctx.getAttrColor(com.google.android.material.R.attr.colorSecondaryFixedDim)
         }
-        val onPrimaryFixed = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            ctx.getColor(android.R.color.system_accent1_900)
+        val onSecondaryFixed = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            ctx.getColor(android.R.color.system_accent2_900)
         } else {
-            ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
+            ctx.getAttrColor(com.google.android.material.R.attr.colorOnSecondaryFixed)
         }
-        binding.expandedTabOpenApp.backgroundTintList = ColorStateList.valueOf(primaryFixed)
-        binding.expandedTabOpenApp.iconTint = ColorStateList.valueOf(onPrimaryFixed)
+        binding.expandedTabOpenApp.backgroundTintList = ColorStateList.valueOf(secondaryFixedDim)
+        binding.expandedTabOpenApp.iconTint = ColorStateList.valueOf(onSecondaryFixed)
+
+        // Doodle header menu — same 5×5dp dots, colored for the window background
+        val onBackground = ctx.getAttrColor(com.google.android.material.R.attr.colorOnBackground)
+        binding.expandedDoodleMenu.removeAllViews()
+        repeat(3) { i ->
+            binding.expandedDoodleMenu.addView(View(ctx).apply {
+                background = GradientDrawable().apply {
+                    shape = GradientDrawable.OVAL
+                    setColor(onBackground)
+                }
+                layoutParams = LinearLayout.LayoutParams(dotPx, dotPx).apply {
+                    if (i > 0) topMargin = gapPx
+                }
+            })
+        }
 
         // Empty-state label
         val onSurfaceVariant = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSurfaceVariant)
         binding.expandedEmptyLabel.setTextColor(onSurfaceVariant)
 
         // Tab buttons — re-select current tab so selected/unselected colours refresh
-        selectTab(currentTabIndex, animate = false)
+        selectTab(currentTabIndex)
     }
 
     private fun setupInsets() {
@@ -305,7 +387,7 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         binding.expandedTabNavigation.onApplyInsets { view, insets ->
             val navBarBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
             view.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                bottomMargin = navBarBottom + (9.16f * resources.displayMetrics.density).toInt()
+                bottomMargin = navBarBottom + 16.dp
             }
         }
         binding.root.onApplyInsets { view, insets ->
@@ -317,11 +399,95 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupMenuButton() = viewLifecycleOwner.whenResumed {
-        binding.expandedHeaderMenu.onClicked().collect {
-            if (!isOverlay && !isMinusOne) {
+        binding.expandedHeaderMenu.onClicked().collect { navigateToTabSettings() }
+    }
+
+    private fun navigateToTabSettings() {
+        if (isOverlay || isMinusOne) {
+            launchOverlayAction(OpenFromOverlayAction.AddWidget(0), navigateToTabSettings = true)
+        } else {
+            findNavController().navigate(R.id.action_expandedFragment_to_expandedTabSettingsFragment)
+        }
+    }
+
+    /**
+     * Observes [SmartspacerSettingsRepository.expandedShowDoodle] and toggles the doodle header
+     * row above the pill.  When enabled:
+     *  - The doodle header (image + ⋮ button) becomes visible.
+     *  - The pill's own ⋮ menu container is hidden (INVISIBLE to preserve VP2 constraints).
+     *  - The doodle image is loaded via Glide, respecting dark mode.
+     */
+    private fun setupDoodleHeader() {
+        binding.expandedDoodleMenu.setOnClickListener { navigateToTabSettings() }
+        binding.expandedDoodleImage.setOnClickListener { openDoodleTarget() }
+        whenResumed {
+            settingsRepository.expandedShowDoodle.asFlow().collect { enabled ->
+                isDoodleEnabled = enabled
+                syncDoodleHeaderVisibility()
+                if (enabled) loadDoodleImage()
+            }
+        }
+    }
+
+    private fun openDoodleTarget() {
+        val openGoogleApp = settingsRepository.expandedDoodleOpenGoogleApp.getSync()
+        if (openGoogleApp) {
+            val googleAppIntent = requireContext().packageManager
+                .getLaunchIntentForPackage("com.google.android.googlequicksearchbox")
+            if (googleAppIntent != null) {
+                startActivity(googleAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                return
+            }
+        }
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"))
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        )
+    }
+
+    private fun syncDoodleHeaderVisibility() {
+        val isLoaded = viewModel.state.value is State.Loaded
+        val show = isDoodleEnabled && isLoaded
+        binding.expandedDoodleHeader.isVisible = show
+        // GONE — VP2's end-constraint resolves to the pill's right edge (or before the weather
+        // cookie if visible) so pages get the full available width when the doodle is shown.
+        binding.expandedHeaderMenuContainer.isVisible = !show
+    }
+
+    private fun loadDoodleImage() = whenResumed {
+        val doodle = searchRepository.getDoodle()
+        val density = requireContext().resources.displayMetrics.density
+        if (doodle.url == DoodleImage.DEFAULT.url) {
+            // Wordmark: 36dp height, centered vertically in the 48dp header.
+            binding.expandedDoodleImage.updateLayoutParams<LinearLayout.LayoutParams> {
+                height = (36 * density).toInt()
+            }
+            binding.expandedDoodleImage.scaleType = ImageView.ScaleType.FIT_START
+            val secondary = requireContext().getAttrColor(com.google.android.material.R.attr.colorSecondary)
+            binding.expandedDoodleImage.setImageResource(R.drawable.ic_google_logo_monet)
+            binding.expandedDoodleImage.imageTintList = ColorStateList.valueOf(secondary)
+        } else {
+            // Real doodle: fill the full 48dp header height.
+            binding.expandedDoodleImage.updateLayoutParams<LinearLayout.LayoutParams> {
+                height = LinearLayout.LayoutParams.MATCH_PARENT
+            }
+            binding.expandedDoodleImage.scaleType = ImageView.ScaleType.FIT_START
+            binding.expandedDoodleImage.imageTintList = null
+            val url = if (requireContext().isDarkMode) doodle.darkUrl ?: doodle.url else doodle.url
+            try {
+                Glide.with(this@ExpandedFragment).asBitmap().load(url).into(binding.expandedDoodleImage)
+            } catch (_: Exception) { /* doodle unavailable */ }
+        }
+    }
+
+    /** If the activity was launched with [EXTRA_NAVIGATE_TAB_SETTINGS], navigate once then clear. */
+    private fun handleLaunchNavigation() {
+        val intent = requireActivity().intent ?: return
+        if (!intent.getBooleanExtra(EXTRA_NAVIGATE_TAB_SETTINGS, false)) return
+        intent.removeExtra(EXTRA_NAVIGATE_TAB_SETTINGS)
+        binding.root.post {
+            if (isAdded && !isDetached) {
                 findNavController().navigate(R.id.action_expandedFragment_to_expandedTabSettingsFragment)
-            } else {
-                launchOverlayAction(OpenFromOverlayAction.AddWidget(0))
             }
         }
     }
@@ -340,28 +506,55 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     private fun setupTabs() {
+        // The nav container uses constraintWidth_default="wrap" with 36dp margins, so
+        // ConstraintLayout naturally centers it when content is narrow and limits it to
+        // screen-72dp (36dp each side) when tabs overflow — no dynamic margin tracking needed.
         whenResumed {
-            tabRepository.tabs.collect { tabs -> buildTabUI(tabs) }
+            tabRepository.tabs.collect { tabs ->
+                // Only update visibility when loaded — handleState owns visibility in other states.
+                if (viewModel.state.value is State.Loaded) buildTabUI(tabs)
+            }
         }
         // Re-apply button icons/text whenever the display mode changes, even if the tab list
         // itself hasn't changed (StateFlow wouldn't re-emit an identical tab list).
         whenResumed {
-            tabRepository.navItemDisplayMode.drop(1).collect { selectTab(currentTabIndex, animate = false) }
+            tabRepository.navItemDisplayMode.drop(1).collect { selectTab(currentTabIndex) }
         }
     }
 
     private fun buildTabUI(tabs: List<ExpandedTabConfig>) {
-        loadedTabIndices.clear()
-        currentTabIndex = 0
+        // Always update visibility so that returning from a Disabled/Loading state
+        // correctly restores the content area even when the tab list hasn't changed.
         if (tabs.isEmpty()) {
             binding.expandedWidgetFlipper.isVisible = false
             binding.expandedEmptyLabel.isVisible = true
             binding.expandedTabScrollPill.isVisible = false
+        } else {
+            binding.expandedWidgetFlipper.isVisible = true
+            binding.expandedEmptyLabel.isVisible = false
+            binding.expandedTabScrollPill.isVisible = true
+        }
+
+        // If the tab list hasn't changed, don't tear down and rebuild the views.
+        // This preserves scroll positions and the selected tab when the fragment
+        // resumes (StateFlow replays its current value on each new collection).
+        if (tabs == lastBuiltTabs) {
+            // Still need to re-apply button visuals in case display mode changed.
+            selectTab(currentTabIndex)
             return
         }
-        binding.expandedWidgetFlipper.isVisible = true
-        binding.expandedEmptyLabel.isVisible = false
-        binding.expandedTabScrollPill.isVisible = true
+        lastBuiltTabs = tabs
+
+        if (tabs.isEmpty()) {
+            loadedTabIndices.clear()
+            currentTabIndex = 0
+            return
+        }
+
+        // Clamp the preserved index to the new tab count; reset to 0 only when necessary.
+        val preservedIndex = currentTabIndex.coerceIn(0, tabs.size - 1)
+        loadedTabIndices.clear()
+        currentTabIndex = preservedIndex
 
         binding.expandedWidgetFlipper.removeAllViews()
         tabs.forEach { _ ->
@@ -386,11 +579,10 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
             itemView.setOnClickListener { selectTab(index) }
             binding.expandedTabButtons.addView(itemView)
         }
-        // Remove trailing gap from last item so the pill wraps content tightly (CSS gap
-        // only adds space between items, marginEnd adds it after the last one too).
+        // Remove trailing gap from last item so the pill wraps content tightly.
         (binding.expandedTabButtons.getChildAt(tabs.size - 1)?.layoutParams
                 as? LinearLayout.LayoutParams)?.marginEnd = 0
-        selectTab(0, animate = false)
+        selectTab(preservedIndex)
     }
 
     private fun setupHeaderSwipe() {
@@ -400,26 +592,32 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         // fling-intercept is disabled (onHorizontalSwipe = null) so it never cancels the pager.
         binding.expandedHeaderPill.onHorizontalSwipe = null
 
-        // The ViewPager2 now spans the full pill width (constrained to parent end) so the pill's
-        // rounded corners clip content naturally.  The menu button and weather cookie float on top
-        // in z-order (they appear later in the ConstraintLayout XML), so content slides under them.
-        // clipToPadding=false + small right padding lets the edge of the next page peek into view
-        // during a swipe, matching the Figma "peek" design (Pages Container = 240dp, page = 232dp
-        // → 8dp visible peek).
+        // ViewPager2 is constrained in XML to end at the left edge of the weather cookie,
+        // so each page fills the text area exactly and clips cleanly at the cookie boundary.
+        // No right padding is needed; the cookie itself acts as the natural occlusion point
+        // — the incoming page slides in from behind the cookie during a swipe.
         binding.expandedHeaderTarget.apply {
-            clipToPadding = false
+            clipToPadding = true
             offscreenPageLimit = 1
-            // 8dp right padding → shows a sliver of the next page while swiping
-            setPadding(0, 0, 8.dp, 0)
         }
-        // Allow pages to draw into the padding area so the peek effect works
-        (binding.expandedHeaderTarget.parent as? android.view.ViewGroup)?.clipChildren = false
 
         // Composite transformer:
-        //  1. 8dp gap between pages so they don't butt against each other while peeking
-        //  2. Scale + fade pages as they move off-centre (Figma "feel" — subtle depth)
+        //  1. Dynamic gap applied only to pages with position > 0 (incoming from the right).
+        //     • At rest (position = 1): translationX = gap → adjacent page pushed exactly to the
+        //       pill's right edge, hidden behind the weather cookie / menu container.
+        //     • Mid-swipe: translationX = gap * position → page slides out from behind the
+        //       cookie proportionally as the user drags.
+        //     • Completion (position = 0): translationX = 0 with no jump (gap * 0 = 0).
+        //     • Current / outgoing pages (position ≤ 0): translationX = 0 → move 1:1 with
+        //       finger, no acceleration artifacts.
+        //     Gap re-read at transform time so it auto-adjusts when the weather cookie or
+        //     doodle header appear / disappear.
+        //  2. Scale + fade pages as they move off-centre (subtle depth)
         val transformer = CompositePageTransformer()
-        transformer.addTransformer(MarginPageTransformer(8.dp))
+        transformer.addTransformer { page, position ->
+            val gap = (binding.expandedHeaderPill.width - binding.expandedHeaderTarget.width).toFloat()
+            page.translationX = if (position > 0f) gap * position else 0f
+        }
         transformer.addTransformer { page, position ->
             val absPos = Math.abs(position)
             page.alpha = 1f - (absPos * 0.25f)
@@ -435,37 +633,60 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
                     currentHeaderIndex = position
                     updateHeaderDots()
                 }
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                    updateDotWidths(position, positionOffset)
+                }
             }
         )
     }
 
-    private fun selectTab(index: Int, animate: Boolean = true) {
+    private fun selectTab(index: Int) {
         val tabs = tabRepository.getTabs()
         if (index < 0 || index >= tabs.size) return
         val previousIndex = currentTabIndex
         currentTabIndex = index
         binding.expandedWidgetFlipper.displayedChild = index
 
+        // Reset scroll to top when the user actively switches to a different tab.
+        if (index != previousIndex) {
+            val container = binding.expandedWidgetFlipper.getChildAt(index) as? FrameLayout
+            (container?.getChildAt(0) as? androidx.recyclerview.widget.RecyclerView)
+                ?.scrollToPosition(0)
+        }
+
         val ctx = requireContext()
         // M3 nav-bar tokens
-        val secondaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorSecondaryContainer)
-        val onSecondaryContainer = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
         val primaryColor = ctx.getAttrColor(androidx.appcompat.R.attr.colorPrimary)
         val onPrimary = ctx.getAttrColor(com.google.android.material.R.attr.colorOnPrimary)
         val onSurfaceVariant = ctx.getAttrColor(com.google.android.material.R.attr.colorOnSurfaceVariant)
         val displayMode = tabRepository.getNavItemDisplayMode()
         val symbolTypeface = MaterialSymbolsHelper.getTypeface(ctx)
 
-        // Active indicator pill — 41 dp tall, 20 dp corner radius (Figma node 212:809).
+        // Active indicator pill — 40 dp tall, 20 dp corner radius (Figma node 29:730).
         fun pillBg(color: Int): GradientDrawable = GradientDrawable().apply {
-            cornerRadius = 20.dp.toFloat()
+            cornerRadius = 24.dp.toFloat()
             setColor(color)
+        }
+
+        // If the previously-selected tab is to the LEFT of the newly-selected tab, its icon
+        // will collapse and shift the selected tab left by (iconWidth + marginEnd).  Capture
+        // this now so the scroll target can account for it when both animations run in parallel.
+        // Only ICON_AND_LABEL mode collapses the icon; ICON_ONLY items are fixed-width circles
+        // with no collapse animation, so collapseShift must stay 0 there.
+        var collapseShift = 0
+        if (displayMode == NavItemDisplayMode.ICON_AND_LABEL && previousIndex in 0 until index) {
+            val prevItemView = binding.expandedTabButtons.getChildAt(previousIndex)
+            val prevIconContainer = prevItemView?.findViewById<FrameLayout>(R.id.nav_item_icon_container)
+            if (prevIconContainer?.visibility == View.VISIBLE) {
+                val w = prevIconContainer.width
+                val m = (prevIconContainer.layoutParams as? LinearLayout.LayoutParams)?.marginEnd ?: 0
+                if (w > 0) collapseShift = w + m
+            }
         }
 
         for (i in 0 until binding.expandedTabButtons.childCount) {
             val itemView = binding.expandedTabButtons.getChildAt(i) ?: continue
-            // Icon is a TextView so the Material Symbols font glyph renders immediately
-            // without waiting for a layout pass (ImageView.configureBounds requires one).
+            val iconContainer = itemView.findViewById<FrameLayout>(R.id.nav_item_icon_container) ?: continue
             val iconView = itemView.findViewById<TextView>(R.id.nav_item_icon) ?: continue
             val label = itemView.findViewById<TextView>(R.id.nav_item_label) ?: continue
             val tab = tabs.getOrNull(i) ?: continue
@@ -478,159 +699,169 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
                 iconView.text = String(Character.toChars(cp))
             }
 
-            // Helpers for animated background alpha fade
-            fun fadeBgIn(color: Int, cornerRadius: Float) {
-                val bg = GradientDrawable().apply { this.cornerRadius = cornerRadius; setColor(color); alpha = 0 }
-                itemView.background = bg
-                ValueAnimator.ofInt(0, 255).apply {
-                    duration = 150
-                    interpolator = DecelerateInterpolator(1.5f)
-                    addUpdateListener { bg.alpha = animatedValue as Int }
-                    start()
-                }
-            }
-            fun fadeBgOut(color: Int, cornerRadius: Float) {
-                val bg = GradientDrawable().apply { this.cornerRadius = cornerRadius; setColor(color); alpha = 255 }
-                itemView.background = bg
-                ValueAnimator.ofInt(255, 0).apply {
-                    duration = 150
-                    interpolator = DecelerateInterpolator(1.5f)
-                    addUpdateListener { bg.alpha = animatedValue as Int }
-                    addListener(object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(a: android.animation.Animator) { itemView.background = null }
-                    })
-                    start()
-                }
-            }
-
             when (displayMode) {
                 NavItemDisplayMode.LABEL_ONLY -> {
-                    // Reset any ICON_ONLY square sizing back to wrap_content
                     if (itemView.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT) {
                         itemView.layoutParams = itemView.layoutParams.also { it.width = ViewGroup.LayoutParams.WRAP_CONTENT }
                         itemView.setPadding(8.dp, 0, 8.dp, 0)
                         (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER_VERTICAL
                     }
-                    iconView.visibility = View.GONE
+                    iconContainer.visibility = View.GONE
                     label.visibility = View.VISIBLE
                     label.text = tab.label
-                    val pillRadius = 20.dp.toFloat()
                     if (isSelected) {
                         label.setTextColor(onPrimary)
-                        if (animate && wasSelected.not() && itemView.background == null) {
-                            fadeBgIn(primaryColor, pillRadius)
-                        } else {
-                            itemView.background = pillBg(primaryColor)
-                        }
+                        itemView.background = pillBg(primaryColor)
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
                     } else {
                         label.setTextColor(onSurfaceVariant)
-                        if (animate && wasSelected && itemView.background != null) {
-                            fadeBgOut(primaryColor, pillRadius)
-                        } else {
-                            itemView.background = null
-                        }
+                        itemView.background = null
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
                     }
                 }
 
                 NavItemDisplayMode.ICON_ONLY -> {
-                    // Force a perfect circle: item is always 41×41 dp, no padding, icon centred
-                    val size = 41.dp
-                    if (itemView.layoutParams.width != size) {
-                        itemView.layoutParams = itemView.layoutParams.also { it.width = size }
+                    val circleSize = itemView.height.takeIf { it > 0 } ?: 47.dp
+                    if (itemView.layoutParams.width != circleSize) {
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = circleSize }
                         itemView.setPadding(0, 0, 0, 0)
-                        (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER
-                        (iconView.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 0
                     }
+                    (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER
+                    (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 0
                     label.visibility = View.GONE
                     val cp = tab.iconCodepoint
                     if (cp != null) {
-                        setIcon(cp, if (isSelected) onSecondaryContainer else onSurfaceVariant)
-                        iconView.visibility = View.VISIBLE
+                        setIcon(cp, if (isSelected) onPrimary else onSurfaceVariant)
+                        iconContainer.visibility = View.VISIBLE
                     } else {
-                        iconView.visibility = View.GONE
+                        iconContainer.visibility = View.GONE
                     }
                     val circleRadius = 100.dp.toFloat()
                     if (isSelected) {
-                        if (animate && wasSelected.not() && itemView.background == null) {
-                            fadeBgIn(secondaryContainer, circleRadius)
-                        } else {
-                            itemView.background = GradientDrawable().apply { cornerRadius = circleRadius; setColor(secondaryContainer) }
-                        }
+                        itemView.background = GradientDrawable().apply { cornerRadius = circleRadius; setColor(primaryColor) }
+                        itemView.setPadding(0, 0, 0, 0)
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = circleSize }
                     } else {
-                        if (animate && wasSelected && itemView.background != null) {
-                            fadeBgOut(secondaryContainer, circleRadius)
-                        } else {
-                            itemView.background = null
-                        }
+                        itemView.background = null
+                        itemView.setPadding(0, 0, 0, 0)
+                        itemView.layoutParams = itemView.layoutParams.also { it.width = circleSize }
                     }
                 }
 
                 NavItemDisplayMode.ICON_AND_LABEL -> {
-                    // Reset any ICON_ONLY square sizing back to wrap_content
                     if (itemView.layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT) {
                         itemView.layoutParams = itemView.layoutParams.also { it.width = ViewGroup.LayoutParams.WRAP_CONTENT }
                         itemView.setPadding(8.dp, 0, 8.dp, 0)
                         (itemView as? LinearLayout)?.gravity = android.view.Gravity.CENTER_VERTICAL
-                        (iconView.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 4.dp
+                        (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.marginEnd = 4.dp
                     }
                     label.visibility = View.VISIBLE
                     label.text = tab.label
                     val cp = tab.iconCodepoint
-
                     if (isSelected) {
                         itemView.background = pillBg(primaryColor)
                         label.setTextColor(onPrimary)
-
-                        if (animate && cp != null && itemView.width > 0) {
-                            // Set glyph before measuring — TextView renders immediately.
+                        if (cp != null) {
                             setIcon(cp, onPrimary)
-                            iconView.alpha = 0f
-                            iconView.visibility = View.VISIBLE
-                            itemView.measure(
+                            iconContainer.visibility = View.VISIBLE
+                            // Measure icon at natural size (UNSPECIFIED so parent doesn't constrain it).
+                            iconView.measure(
                                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                                View.MeasureSpec.makeMeasureSpec(41.dp, View.MeasureSpec.EXACTLY)
+                                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
                             )
-                            val expandedWidth = itemView.measuredWidth
-                            // Bounce-grow the width; fade icon in simultaneously so it
-                            // appears to emerge as the pill expands.
-                            animateItemWidth(itemView, itemView.width, expandedWidth, overshoot = true)
-                            iconView.animate().cancel()
-                            iconView.animate().alpha(1f).setDuration(200).setListener(null).start()
-                        } else {
-                            if (cp != null) {
-                                setIcon(cp, onPrimary)
-                                iconView.alpha = 1f
-                                iconView.visibility = View.VISIBLE
-                            } else {
-                                iconView.visibility = View.GONE
+                            val naturalWidth = iconView.measuredWidth
+                            if (index != previousIndex && naturalWidth > 0) {
+                                // Fix icon at natural px width so it overflows the container
+                                // and clipChildren can crop it as the container grows from 0.
+                                (iconView.layoutParams as? FrameLayout.LayoutParams)?.let { lp ->
+                                    lp.width = naturalWidth
+                                    iconView.layoutParams = lp
+                                }
+                                // Start with both width=0 and marginEnd=0 so the container
+                                // contributes zero total space — no layout jump on GONE→VISIBLE.
+                                (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.let { lp ->
+                                    lp.width = 0
+                                    lp.marginEnd = 0
+                                    iconContainer.layoutParams = lp
+                                }
+                                ValueAnimator.ofFloat(0f, 1f).apply {
+                                    duration = 150L
+                                    addUpdateListener {
+                                        val frac = animatedValue as Float
+                                        (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.let { lp ->
+                                            lp.width = (naturalWidth * frac).toInt()
+                                            lp.marginEnd = (4.dp * frac).toInt()
+                                            iconContainer.layoutParams = lp
+                                        }
+                                    }
+                                    addListener(object : AnimatorListenerAdapter() {
+                                        override fun onAnimationEnd(a: android.animation.Animator) {
+                                            (iconView.layoutParams as? FrameLayout.LayoutParams)?.let { lp ->
+                                                lp.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                                                iconView.layoutParams = lp
+                                            }
+                                            (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.let { lp ->
+                                                lp.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                                                lp.marginEnd = 4.dp
+                                                iconContainer.layoutParams = lp
+                                            }
+                                        }
+                                    })
+                                    start()
+                                }
                             }
+                        } else {
+                            iconContainer.visibility = View.GONE
+                        }
+                    } else if (wasSelected) {
+                        // Deselect: change style immediately, shrink icon container to 0.
+                        itemView.background = null
+                        label.setTextColor(onSurfaceVariant)
+                        iconView.setTextColor(onSurfaceVariant)
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
+                        val startWidth = iconContainer.width
+                        if (startWidth > 0 && iconContainer.visibility == View.VISIBLE) {
+                            // Fix icon at current px width so it overflows the shrinking
+                            // container and clipChildren crops it as the container collapses.
+                            val iconCurrentWidth = iconView.width.takeIf { it > 0 } ?: startWidth
+                            (iconView.layoutParams as? FrameLayout.LayoutParams)?.let { lp ->
+                                lp.width = iconCurrentWidth
+                                iconView.layoutParams = lp
+                            }
+                            ValueAnimator.ofFloat(1f, 0f).apply {
+                                duration = 150L
+                                addUpdateListener {
+                                    val frac = animatedValue as Float
+                                    (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.let { lp ->
+                                        lp.width = (startWidth * frac).toInt()
+                                        lp.marginEnd = (4.dp * frac).toInt()
+                                        iconContainer.layoutParams = lp
+                                    }
+                                }
+                                addListener(object : AnimatorListenerAdapter() {
+                                    override fun onAnimationEnd(a: android.animation.Animator) {
+                                        iconContainer.visibility = View.GONE
+                                        (iconView.layoutParams as? FrameLayout.LayoutParams)?.let { lp ->
+                                            lp.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                                            iconView.layoutParams = lp
+                                        }
+                                        (iconContainer.layoutParams as? LinearLayout.LayoutParams)?.let { lp ->
+                                            lp.width = ViewGroup.LayoutParams.WRAP_CONTENT
+                                            lp.marginEnd = 4.dp
+                                            iconContainer.layoutParams = lp
+                                        }
+                                    }
+                                })
+                                start()
+                            }
+                        } else {
+                            iconContainer.visibility = View.GONE
                         }
                     } else {
                         itemView.background = null
                         label.setTextColor(onSurfaceVariant)
-
-                        if (animate && wasSelected && itemView.width > 0) {
-                            iconView.animate().cancel()
-                            if (iconView.visibility == View.VISIBLE) {
-                                iconView.animate().alpha(0f).setDuration(80)
-                                    .setListener(object : AnimatorListenerAdapter() {
-                                        override fun onAnimationEnd(a: android.animation.Animator) {
-                                            iconView.visibility = View.GONE
-                                            iconView.alpha = 1f
-                                            collapseItemWidth(itemView)
-                                        }
-                                        override fun onAnimationCancel(a: android.animation.Animator) {
-                                            iconView.visibility = View.GONE
-                                            iconView.alpha = 1f
-                                        }
-                                    }).start()
-                            } else {
-                                collapseItemWidth(itemView)
-                            }
-                        } else {
-                            iconView.visibility = View.GONE
-                            iconView.alpha = 1f
-                        }
+                        iconContainer.visibility = View.GONE
+                        itemView.setPadding(8.dp, 0, 8.dp, 0)
                     }
                 }
             }
@@ -638,64 +869,397 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
         if (!loadedTabIndices.contains(index)) {
             loadedTabIndices.add(index)
-            loadWidgetForTab(index, tabs[index].appWidgetId)
+            loadReadYouArticlesForTab(index, tabs[index].appWidgetId)
+        }
+
+        // Start scroll immediately (parallel with icon animations).  Subtract collapseShift so
+        // the target is the FINAL position of the selected tab after the prev tab's icon shrinks.
+        binding.expandedTabScrollView.post {
+            val sv = binding.expandedTabScrollView
+            val item = binding.expandedTabButtons.getChildAt(index) ?: return@post
+            val targetX = (item.left - collapseShift).coerceAtLeast(0)
+            val curX = sv.scrollX
+            if (targetX == curX) return@post
+            ValueAnimator.ofInt(curX, targetX).apply {
+                duration = 250L
+                interpolator = android.view.animation.AccelerateDecelerateInterpolator()
+                addUpdateListener { sv.scrollTo(animatedValue as Int, 0) }
+                start()
+            }
         }
     }
 
-    private fun collapseItemWidth(item: View) {
-        item.measure(
-            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-            View.MeasureSpec.makeMeasureSpec(41.dp, View.MeasureSpec.EXACTLY)
+    private fun loadReadYouArticlesForTab(tabIndex: Int, appWidgetId: Int) {
+        val container = binding.expandedWidgetFlipper.getChildAt(tabIndex) as? FrameLayout ?: return
+
+        val cardInset = 16.dp
+        val topRadius = 28.dp.toFloat()
+
+        val recycler = androidx.recyclerview.widget.RecyclerView(requireContext()).apply {
+            visibility = android.view.View.INVISIBLE
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+            addItemDecoration(ReadYouArticleAdapter.ItemDecoration(5.dp))
+            clipToPadding = false
+            // Clip to match the card edges (16dp inset each side) with 28dp top corners,
+            // mirroring the Figma overflow-clip container. Bottom extends off-screen so
+            // only the top corners are rounded.
+            outlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: android.view.View, outline: Outline) {
+                    if (view.width == 0 || view.height == 0) return
+                    outline.setRoundRect(
+                        cardInset, 0,
+                        view.width - cardInset, view.height + topRadius.toInt(),
+                        topRadius
+                    )
+                }
+            }
+            clipToOutline = true
+            doOnAttach { invalidateOutline() }
+            // Bottom padding so the last card stops 9dp above the top of the nav pill.
+            // Computed from the nav view's actual laid-out position.
+            doOnAttach { rv ->
+                val setBottomPadding = {
+                    val navTop = binding.expandedTabNavigation.top
+                    if (navTop > 0) {
+                        rv.updatePadding(bottom = binding.root.height - navTop + 16.dp)
+                    }
+                }
+                setBottomPadding()
+                val navListener = android.view.View.OnLayoutChangeListener { _, _, top, _, _, _, _, _, _ ->
+                    if (top > 0) rv.updatePadding(bottom = binding.root.height - top + 16.dp)
+                }
+                binding.expandedTabNavigation.addOnLayoutChangeListener(navListener)
+                rv.doOnDetach {
+                    binding.expandedTabNavigation.removeOnLayoutChangeListener(navListener)
+                }
+            }
+            addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
+                    // Allow parent to intercept when RecyclerView is at the top and user scrolls up
+                    recyclerView.parent?.requestDisallowInterceptTouchEvent(
+                        newState != androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE ||
+                        recyclerView.canScrollVertically(-1)
+                    )
+                }
+            })
+        }
+        val indicatorHf         = 48.dp.toFloat()   // determinate indicator size
+        val indicatorHfSyncing  = 56.dp.toFloat()   // indeterminate indicator size
+
+        var pullFraction by androidx.compose.runtime.mutableStateOf(0f)
+        var isSyncing    by androidx.compose.runtime.mutableStateOf(false)
+
+        val indicatorColor = androidx.compose.ui.graphics.Color(
+            requireContext().getAttrColor(androidx.appcompat.R.attr.colorPrimary)
         )
-        animateItemWidth(item, item.width, item.measuredWidth, overshoot = false)
+        val loadingIndicator = androidx.compose.ui.platform.ComposeView(requireContext()).apply {
+            scaleX = 0f
+            scaleY = 0f
+            setViewCompositionStrategy(
+                androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+            )
+            // No explicit Modifier.size() — both branches use Material3's natural default so the
+            // ComposeView never changes size when switching between determinate and indeterminate.
+            setContent {
+                if (isSyncing) {
+                    androidx.compose.material3.LoadingIndicator(
+                        modifier = androidx.compose.ui.Modifier.size(androidx.compose.ui.unit.Dp(56f)),
+                        color = indicatorColor,
+                    )
+                } else {
+                    androidx.compose.material3.LoadingIndicator(
+                        progress = { pullFraction },
+                        modifier = androidx.compose.ui.Modifier.size(androidx.compose.ui.unit.Dp(48f)),
+                        color = indicatorColor,
+                    )
+                }
+            }
+        }
+
+        container.removeAllViews()
+        container.clipChildren = false
+        binding.expandedWidgetFlipper.clipChildren = false
+        container.addView(recycler, FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+        ))
+        container.addView(loadingIndicator, FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        ).apply {
+            gravity = android.view.Gravity.TOP or android.view.Gravity.CENTER_HORIZONTAL
+        })
+
+        val maxContentShift = 60.dp.toFloat()
+        // The widget flipper sits 16dp below the smartspace pill (layout_marginTop="16dp").
+        // To centre the indicator in the full visual space (pill bottom → first card top) we
+        // shift up by half that margin so the midpoint lands between the two edges.
+        val pillMarginOffset = 8.dp.toFloat()   // 16dp / 2
+        fun indicatorY(gap: Float, hf: Float = indicatorHf) = gap / 2f - hf / 2f - pillMarginOffset
+
+        fun showLoadingIndicator() {
+            isSyncing = true   // switch to full indeterminate expressive animation
+            loadingIndicator.rotation = 0f
+            val targetGap = maxContentShift
+            loadingIndicator.translationY = indicatorY(targetGap, indicatorHfSyncing)
+            loadingIndicator.animate().cancel()
+            loadingIndicator.animate().scaleX(1f).scaleY(1f).setDuration(150L)
+                .setInterpolator(android.view.animation.DecelerateInterpolator()).start()
+            recycler.animate().cancel()
+            recycler.animate().translationY(targetGap).setDuration(150L)
+                .setInterpolator(android.view.animation.DecelerateInterpolator()).start()
+        }
+
+        fun hideLoadingIndicator(onHidden: () -> Unit) {
+            isSyncing = false
+            pullFraction = 0f
+            loadingIndicator.rotation = 0f
+            loadingIndicator.animate().cancel()
+            recycler.animate().cancel()
+            val startGap   = recycler.translationY
+            val startScale = loadingIndicator.scaleX
+            ValueAnimator.ofFloat(1f, 0f).apply {
+                duration = 300L
+                interpolator = android.view.animation.DecelerateInterpolator()
+                addUpdateListener { anim ->
+                    val f = anim.animatedValue as Float
+                    val gap = startGap * f
+                    recycler.translationY = gap
+                    loadingIndicator.translationY = indicatorY(gap)
+                    loadingIndicator.scaleX = startScale * f
+                    loadingIndicator.scaleY = startScale * f
+                }
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: android.animation.Animator) {
+                        loadingIndicator.scaleX = 0f
+                        loadingIndicator.scaleY = 0f
+                        onHidden()
+                    }
+                })
+                start()
+            }
+        }
+
+        // Loads articles and sets/updates the adapter. Called on first load, on
+        // ContentObserver notifications (background sync), and on pull-to-refresh.
+        // [clearReadState] = true wipes dimmed-read marks; only set on user-triggered refresh.
+        fun loadArticles(isPullToRefresh: Boolean = false) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                // Keep the loading animation visible for at least 1000 ms on pull-to-refresh.
+                val minDisplayJob = if (isPullToRefresh) {
+                    launch { kotlinx.coroutines.delay(1000) }
+                } else null
+                val articles = readYouRepository.getArticles(appWidgetId)
+                articles.filter { it.isRead }.forEach { readYouRepository.markArticleRead(it.id) }
+                minDisplayJob?.join()
+                val existing = recycler.adapter as? ReadYouArticleAdapter
+                if (existing == null) {
+                    val cardColor = blurAlpha(requireContext()
+                        .getAttrColor(com.google.android.material.R.attr.colorSurfaceContainer))
+                    recycler.adapter = ReadYouArticleAdapter(
+                        articles,
+                        isRead = { readYouRepository.isArticleRead(it) },
+                        onMarkRead = { readYouRepository.markArticleRead(it) },
+                        cardBackgroundColor = cardColor
+                    ) { article ->
+                        val (filterFeedId, filterGroupId) = readYouRepository.getFilterIds(appWidgetId)
+                        launchReadYouArticle(article.id, filterFeedId, filterGroupId)
+                    }
+                    recycler.visibility = android.view.View.VISIBLE
+                } else {
+                    existing.updateArticles(articles, clearRead = isPullToRefresh)
+                }
+                hideLoadingIndicator {}
+            }
+        }
+
+        // Pull-to-refresh touch logic:
+        //
+        //  Normal zone (rawDy 0 → thresholdRawDy):
+        //    gap   = frac * maxContentShift     linearly 0 → 60 dp
+        //    scale = frac                       indicator grows 0 → 1
+        //
+        //  Elastic zone (rawDy > thresholdRawDy):
+        //    gap   = maxContentShift + extra * elasticFactor  (slow drift, ~12% finger speed)
+        //    scale stays at 1
+        //
+        //  On release past threshold → animation keeps playing + refresh fires.
+        //
+        //  thresholdRawDy = indicatorHf / pullResistance  (finger travel to full gap)
+        //
+        //  Animation phases (pullFraction / rotation):
+        //   Phase 1 (0 → 0.75×threshold):             frame 0, no rotation
+        //   Phase 2 (0.75× → 1.75×threshold):         determinate 0→1 over 1.0×threshold distance
+        //   Phase 3 (past 1.75×threshold):             final frame, rotates; 360° per 5×threshold px
+        val pullResistance = 0.4f   // finger travel → effective pull (< 1 = slower gap growth)
+        val elasticFactor = 0.12f  // feed drifts at 12% of finger speed past threshold
+        recycler.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
+            private var pullStartY  = 0f
+            private var isPulling   = false
+            private var hasTriggered = false
+
+            // rawDy at which gap saturates at maxContentShift and elastic begins.
+            // pull = rawDy * pullResistance; saturates when pull = indicatorHf.
+            private val thresholdRawDy = indicatorHf / pullResistance
+            private val phase1End = thresholdRawDy * 0.75f
+            private val phase2End = thresholdRawDy * 1.75f
+
+            private fun updateForPull(rawDy: Float) {
+                val clamped = rawDy.coerceAtLeast(0f)
+
+                // Normal zone: feed moves linearly 0 → maxContentShift
+                val frac = (clamped / thresholdRawDy).coerceIn(0f, 1f)
+                val normalGap = frac * maxContentShift
+
+                // Elastic zone: feed drifts further at elasticFactor speed
+                val elasticExtra = if (clamped > thresholdRawDy) {
+                    (clamped - thresholdRawDy) * elasticFactor
+                } else 0f
+
+                val totalGap = normalGap + elasticExtra
+                recycler.translationY = totalGap
+                loadingIndicator.translationY = indicatorY(totalGap)
+
+                // Scale 0→1 tracks normal-zone pull; stays 1 in elastic zone
+                loadingIndicator.scaleX = frac
+                loadingIndicator.scaleY = frac
+
+                // Three-phase animation:
+                // Phase 1: hold on first frame (0 → 0.75×threshold)
+                // Phase 2: determinate 0→1 over 1.0×threshold distance
+                //          (0.75× → 1.75×threshold)
+                // Phase 3: final frame + rotation (360° per 5×threshold of extra drag)
+                when {
+                    clamped <= phase1End -> {
+                        pullFraction = 0f
+                        loadingIndicator.rotation = 0f
+                    }
+                    clamped <= phase2End -> {
+                        pullFraction = (clamped - phase1End) / (phase2End - phase1End)
+                        loadingIndicator.rotation = 0f
+                    }
+                    else -> {
+                        pullFraction = 1f
+                        val extraPull = clamped - phase2End
+                        loadingIndicator.rotation = -((extraPull / (thresholdRawDy * 5f)) * 360f)
+                    }
+                }
+            }
+
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                when (e.actionMasked) {
+                    MotionEvent.ACTION_DOWN -> {
+                        pullStartY = e.rawY
+                        isPulling = false
+                        hasTriggered = false
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        if (hasTriggered) return false
+                        val rawDy = e.rawY - pullStartY
+                        if (!isPulling && rawDy > 8.dp
+                            && !rv.canScrollVertically(-1)
+                            && rv.scrollState == RecyclerView.SCROLL_STATE_IDLE) {
+                            isPulling = true
+                        }
+                        if (isPulling) {
+                            updateForPull(rawDy)
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+                when (e.actionMasked) {
+                    MotionEvent.ACTION_MOVE -> {
+                        if (!hasTriggered) updateForPull(e.rawY - pullStartY)
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        if (isPulling && !hasTriggered) {
+                            // Trigger when user released after fully pulling past threshold
+                            if ((e.rawY - pullStartY) >= thresholdRawDy) {
+                                hasTriggered = true
+                                showLoadingIndicator()
+                                loadArticles(isPullToRefresh = true)
+                                // Also refresh every other feed so read articles
+                                // are cleared and content is up-to-date across all tabs.
+                                refreshAllTabArticles(skipIndex = tabIndex)
+                            } else {
+                                hideLoadingIndicator {}
+                            }
+                        }
+                        isPulling = false
+                    }
+                }
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
+
+        loadArticles()
+
+        // Watch for new articles from Read You and refresh without resetting scroll.
+        // Register on the root authority URI with notifyForDescendants=true so we catch
+        // notifications regardless of whether Read You notifies on the root or per-widget URI.
+        val rootContentUri = android.net.Uri.parse(
+            "content://${ReadYouRepository.AUTHORITY}"
+        )
+        val observer = object : android.database.ContentObserver(
+            android.os.Handler(android.os.Looper.getMainLooper())
+        ) {
+            override fun onChange(selfChange: Boolean) = loadArticles()
+        }
+        recycler.doOnAttach {
+            requireContext().contentResolver.registerContentObserver(
+                rootContentUri, true, observer
+            )
+            recycler.doOnDetach {
+                requireContext().contentResolver.unregisterContentObserver(observer)
+            }
+        }
+    }
+
+    /** Refreshes articles for the currently visible tab without resetting scroll position. */
+    private fun refreshCurrentTabArticles() {
+        if (lastBuiltTabs.isEmpty()) return
+        val tabIndex = currentTabIndex.coerceIn(0, lastBuiltTabs.lastIndex)
+        val container = binding.expandedWidgetFlipper.getChildAt(tabIndex) as? FrameLayout ?: return
+        val recycler = container.getChildAt(0) as? androidx.recyclerview.widget.RecyclerView ?: return
+        val adapter = recycler.adapter as? ReadYouArticleAdapter ?: return
+        val appWidgetId = lastBuiltTabs[tabIndex].appWidgetId
+        viewLifecycleOwner.lifecycleScope.launch {
+            val articles = readYouRepository.getArticles(appWidgetId)
+            adapter.updateArticles(articles)
+        }
     }
 
     /**
-     * Animates [view] width from [from] → [to] px.
-     * overshoot=true → OvershootInterpolator (spring-bounce expand, 260 ms).
-     * overshoot=false → DecelerateInterpolator (smooth collapse, 160 ms).
-     * [onEnd] fires once the animation settles at [to].
+     * Refreshes every ReadYou tab's article list, removing read articles.
+     * [skipIndex] is excluded (used to skip the tab already being refreshed by pull-to-refresh).
      */
-    private fun animateItemWidth(view: View, from: Int, to: Int, overshoot: Boolean, onEnd: (() -> Unit)? = null) {
-        if (from == to) { onEnd?.invoke(); return }
-        view.layoutParams = view.layoutParams.also { it.width = from }
-        ValueAnimator.ofInt(from, to).apply {
-            duration = if (overshoot) 260L else 160L
-            interpolator = if (overshoot) OvershootInterpolator(1.5f) else DecelerateInterpolator(1.5f)
-            addUpdateListener { view.layoutParams = view.layoutParams.also { lp -> lp.width = animatedValue as Int } }
-            if (onEnd != null) {
-                addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(a: android.animation.Animator) { onEnd() }
-                })
+    private fun refreshAllTabArticles(skipIndex: Int = -1) {
+        if (lastBuiltTabs.isEmpty()) return
+        viewLifecycleOwner.lifecycleScope.launch {
+            lastBuiltTabs.forEachIndexed { index, tab ->
+                if (index == skipIndex) return@forEachIndexed
+                val container = binding.expandedWidgetFlipper.getChildAt(index) as? FrameLayout
+                    ?: return@forEachIndexed
+                val recycler = container.getChildAt(0)
+                    as? androidx.recyclerview.widget.RecyclerView ?: return@forEachIndexed
+                val adapter = recycler.adapter as? ReadYouArticleAdapter ?: return@forEachIndexed
+                val articles = readYouRepository.getArticles(tab.appWidgetId)
+                adapter.updateArticles(articles)
             }
-            start()
         }
     }
 
-    private fun loadWidgetForTab(tabIndex: Int, appWidgetId: Int) {
-        val container = binding.expandedWidgetFlipper.getChildAt(tabIndex) as? FrameLayout ?: return
-        val state = viewModel.state.value as? State.Loaded ?: return
-        val widgetItem = state.items.filterIsInstance<Item.Widget>()
-            .firstOrNull { it.appWidgetId == appWidgetId } ?: return
-
-        val availableWidth = binding.expandedWidgetFlipper.measuredWidth
-            .takeIf { it > 0 } ?: resources.displayMetrics.widthPixels
-
-        val hostView = expandedRepository.createHost(requireContext(), availableWidth, widgetItem, sessionId, this)
-        // If the cached view is still attached to a stale container (left over after
-        // buildTabUI replaced all FrameLayouts), detach it before re-parenting.
-        (hostView.parent as? android.view.ViewGroup)?.removeView(hostView)
-        container.removeAllViews()
-        container.addView(hostView, FrameLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
-        ))
-        // After layout, tell the widget provider the full available size so it renders
-        // at the correct height instead of its minimum span height.
-        binding.expandedWidgetFlipper.post {
-            val fullHeight = binding.expandedWidgetFlipper.height.takeIf { it > 0 } ?: return@post
-            val fullWidth = binding.expandedWidgetFlipper.width.takeIf { it > 0 } ?: availableWidth
-            hostView.updateSizeIfNeeded(fullWidth.toFloat(), fullHeight.toFloat())
+    private fun launchReadYouArticle(articleId: String, filterFeedId: String?, filterGroupId: String?) {
+        val intent = Intent().apply {
+            setClassName("me.ash.reader", "me.ash.reader.infrastructure.android.MainActivity")
+            putExtra("article.id", articleId)
+            if (filterFeedId != null)  putExtra("feed.id", filterFeedId)
+            if (filterGroupId != null) putExtra("group.id", filterGroupId)
         }
+        try { startActivity(intent) } catch (_: Exception) { }
     }
 
     // ── State ─────────────────────────────────────────────────────────────
@@ -703,7 +1267,18 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     private fun setupState() {
         handleState(viewModel.state.value)
         whenResumed { viewModel.state.collect { handleState(it) } }
+        showWeatherCookie = settingsRepository.expandedShowWeatherCookie.getSync()
+        whenResumed {
+            settingsRepository.expandedShowWeatherCookie.asFlow().collect { show ->
+                showWeatherCookie = show
+                // Re-render with current cached data so the change is instant
+                updateHeaderTargets(viewModel.rawPageTargets.value)
+                updateWeatherCookie(smartspaceRepository.getDefaultHomeActions().value)
+            }
+        }
         whenResumed { viewModel.rawPageTargets.collect { updateHeaderTargets(it) } }
+        updateWeatherCookie(smartspaceRepository.getDefaultHomeActions().value)
+        whenResumed { smartspaceRepository.getDefaultHomeActions().collect { updateWeatherCookie(it) } }
     }
 
     private fun handleState(state: State) {
@@ -713,18 +1288,25 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         binding.expandedTabNavigation.isVisible = isLoaded
         binding.expandedDisabled.isVisible = state is State.Disabled
         binding.expandedPermission.isVisible = state is State.PermissionRequired
+        if (!isLoaded) {
+            // Hide the news feed content so it doesn't show through the disabled/loading overlay.
+            binding.expandedWidgetFlipper.isVisible = false
+            binding.expandedEmptyLabel.isVisible = false
+            binding.expandedTabScrollPill.isVisible = false
+        }
+        syncDoodleHeaderVisibility()
         if (state is State.Loaded) {
             binding.expandedUnlockContainer.isVisible = state.isLocked && !isOverlay && !isMinusOne
             setStatusBarLight(state.lightStatusIcons)
             updateHeaderTarget(state.items)
-            updateWeatherCookie(state.items)
-            // Retry widget load for current tab if container still empty
+            // Restore content visibility and retry widget load when returning from a non-Loaded state.
             val tabs = tabRepository.getTabs()
+            buildTabUI(tabs)
             if (tabs.isNotEmpty()) {
                 val container = binding.expandedWidgetFlipper.getChildAt(currentTabIndex) as? FrameLayout
                 if (container != null && container.childCount == 0) {
                     loadedTabIndices.remove(currentTabIndex)
-                    loadWidgetForTab(currentTabIndex, tabs[currentTabIndex].appWidgetId)
+                    loadReadYouArticlesForTab(currentTabIndex, tabs[currentTabIndex].appWidgetId)
                 }
             }
         } else {
@@ -737,126 +1319,165 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
     }
 
     /**
-     * Rebuilds [headerTargets] from the raw session page list (all targets in session order,
-     * including blank complication targets, excluding weather).  This mirrors exactly what the
-     * regular Smartspacer widget pages through.
+     * Rebuilds [headerTargets] from the raw session page list.
+     * When [showWeatherCookie] is true (default), weather targets are stripped from the pager
+     * and shown as the circular cookie badge instead. When false, weather targets are kept in
+     * the pager as regular pages and the cookie is hidden.
      */
     private fun updateHeaderTargets(rawTargets: List<SmartspaceTarget>) {
-        val targets = rawTargets
-            .filter { it.featureType != FEATURE_WEATHER }
-            .map { target -> Item.Target(target, null, false, applyShadow = false, isDark = isDark) }
+        val targets = if (showWeatherCookie) {
+            rawTargets
+                .filter { it.featureType != FEATURE_WEATHER }
+                .filterNot { t ->
+                    // Belt-and-suspenders: also drop blank complication targets whose action
+                    // carries subcardType=FEATURE_WEATHER (featureType on these is UNDEFINED).
+                    t.smartspaceTargetId.startsWith(BLANK_TARGET_PREFIX) &&
+                    (t.headerAction?.extras?.getInt("subcardType", -1) == FEATURE_WEATHER ||
+                     t.baseAction?.extras?.getInt("subcardType", -1) == FEATURE_WEATHER)
+                }
+        } else {
+            rawTargets
+        }.map { target -> Item.Target(target, null, false, applyShadow = false, isDark = isDark) }
         headerTargets = targets
         if (currentHeaderIndex >= targets.size) currentHeaderIndex = 0
+        // Keep all pages alive so SmartspacerView.onAttachedToWindow never fires mid-swipe
+        binding.expandedHeaderTarget.offscreenPageLimit = targets.size.coerceAtLeast(1)
         headerPagerAdapter.submitTargets(targets)
         binding.expandedHeaderTarget.setCurrentItem(currentHeaderIndex, false)
         updateHeaderDots()
     }
 
-    /** Rebuilds the dot-indicator row to reflect the current page and total count. */
+    /**
+     * Rebuilds the dot-indicator row when the page count changes.
+     * Each dot is a capsule (RECTANGLE + cornerRadius=100dp) so its width can smoothly
+     * interpolate between [R.dimen.header_dot_size] (inactive circle) and
+     * [R.dimen.header_dot_active_width] (active pill) via [updateDotWidths].
+     */
     private fun updateHeaderDots() {
         val dots = binding.expandedHeaderDots
         val count = headerTargets.size
         dots.isVisible = count > 1
-        dots.removeAllViews()
-        if (!dots.isVisible) return
-        val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
-        val gapPx  = resources.getDimensionPixelSize(R.dimen.header_dot_gap)
-        // Figma: dots use sys/dark/on-primary-container (they sit on the primary-container pill)
-        val dotColor = requireContext()
-            .getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
-        repeat(count) { i ->
-            val dot = View(requireContext()).apply {
-                background = GradientDrawable().apply {
-                    shape = GradientDrawable.OVAL
-                    setColor(dotColor)
-                }
-                alpha = if (i == currentHeaderIndex) 1f else 0.3f
-                layoutParams = LinearLayout.LayoutParams(sizePx, sizePx).apply {
-                    if (i > 0) marginStart = gapPx
-                }
+        if (!dots.isVisible) {
+            dots.removeAllViews()
+            dotViews = emptyList()
+            return
+        }
+        // Only rebuild views if the count changed; otherwise just refresh widths.
+        if (dotViews.size != count) {
+            dots.removeAllViews()
+            val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
+            val activePx = resources.getDimensionPixelSize(R.dimen.header_dot_active_width)
+            val gapPx = resources.getDimensionPixelSize(R.dimen.header_dot_gap)
+            val activeColor = requireContext()
+                .getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
+            val inactiveColor = androidx.core.graphics.ColorUtils.setAlphaComponent(activeColor, 128)
+            dotViews = List(count) { i ->
+                View(requireContext()).apply {
+                    background = GradientDrawable().apply {
+                        shape = GradientDrawable.RECTANGLE
+                        cornerRadius = 100.dp.toFloat()
+                        setColor(if (i == currentHeaderIndex) activeColor else inactiveColor)
+                    }
+                    layoutParams = LinearLayout.LayoutParams(
+                        if (i == currentHeaderIndex) activePx else sizePx,
+                        sizePx
+                    ).apply {
+                        if (i > 0) marginStart = gapPx
+                    }
+                }.also { dots.addView(it) }
             }
-            dots.addView(dot)
+        }
+        // Snap to fully-settled state (no scroll in progress).
+        updateDotWidths(currentHeaderIndex, 0f)
+    }
+
+    /**
+     * Called from [ViewPager2.OnPageChangeCallback.onPageScrolled] to animate the active-dot
+     * pill between pages as the user swipes.
+     *
+     * [position] is the left-hand page index; [offset] (0..1) is how far we've scrolled toward
+     * [position]+1.  The active pill width interpolates from full→short on [position] and
+     * short→full on [position]+1; all other dots stay at the inactive circle width.
+     */
+    private fun updateDotWidths(position: Int, offset: Float) {
+        if (dotViews.isEmpty()) return
+        val sizePx = resources.getDimensionPixelSize(R.dimen.header_dot_size)
+        val activePx = resources.getDimensionPixelSize(R.dimen.header_dot_active_width)
+        val activeColor = requireContext()
+            .getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
+        val inactiveColor = androidx.core.graphics.ColorUtils.setAlphaComponent(activeColor, 128)
+        dotViews.forEachIndexed { i, dot ->
+            val targetWidth = when (i) {
+                position -> (activePx + (sizePx - activePx) * offset).toInt()
+                position + 1 -> (sizePx + (activePx - sizePx) * offset).toInt()
+                else -> sizePx
+            }
+            val lp = dot.layoutParams as? LinearLayout.LayoutParams ?: return@forEachIndexed
+            if (lp.width != targetWidth) {
+                lp.width = targetWidth
+                dot.layoutParams = lp
+            }
+            // Crossfade colour along with size
+            val targetColor = when (i) {
+                position -> if (offset < 0.5f) activeColor else inactiveColor
+                position + 1 -> if (offset >= 0.5f) activeColor else inactiveColor
+                else -> inactiveColor
+            }
+            (dot.background as? GradientDrawable)?.setColor(targetColor)
         }
     }
 
-    private fun updateWeatherCookie(items: List<Item>) {
-        // 0. Highest priority: At-a-Glance weather state (available when Shizuku is active and
-        //    the AtAGlanceTarget is configured). Weather icons are the only ones that carry a
-        //    non-null contentDescription in the At-a-Glance widget view hierarchy, so that flag
-        //    is used to identify the weather state among all parsed At-a-Glance states.
-        val atAGlanceWeather = atAGlanceRepository.getStates()
-            .firstOrNull { !it.iconContentDescription.isNullOrEmpty() }
-        if (atAGlanceWeather != null) {
-            try {
-                val bitmapIcon = android.graphics.drawable.Icon.createWithBitmap(atAGlanceWeather.icon)
-                binding.expandedHeaderWeatherIcon.setImageIcon(bitmapIcon)
-                binding.expandedHeaderWeather.isVisible = true
-                val temp = atAGlanceWeather.subtitle.toString().takeIf { it.isNotBlank() }
-                    ?: atAGlanceWeather.title.toString().takeIf { it.isNotBlank() }
-                binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
-                binding.expandedHeaderWeatherTemp.text = temp ?: ""
-            } catch (e: Exception) {
-                binding.expandedHeaderWeather.isVisible = false
-            }
+    private fun updateWeatherCookie(actions: List<com.kieronquinn.app.smartspacer.sdk.model.SmartspaceAction>) {
+        // When cookie is disabled, always hide the badge — weather is shown as a page instead.
+        if (!showWeatherCookie) {
+            binding.expandedHeaderWeatherContainer.isVisible = false
+            return
+        }
+        // getDefaultHomeActions() contains only FEATURE_WEATHER-derived actions (applyToActions()
+        // filters exclusively to FEATURE_WEATHER targets). Take the first one with an icon.
+        val weatherAction = actions.firstOrNull { it.icon != null }
+
+        val icon = weatherAction?.icon
+        if (icon == null) {
+            binding.expandedHeaderWeatherContainer.isVisible = false
             return
         }
 
-        // 1. Dedicated FEATURE_WEATHER target (e.g. Google At-a-Glance weather target).
-        val weatherTarget = items.filterIsInstance<Item.Target>()
-            .firstOrNull { it.target.featureType == FEATURE_WEATHER }
-        val actionFromTarget = weatherTarget?.target?.run { headerAction ?: baseAction }
-
-        // 2. Fall back to the weather complication action — the GoogleWeatherComplication plugin
-        //    produces a SmartspaceAction (with a weather-condition icon bitmap) that surfaces in
-        //    the complications list rather than as a dedicated target.  The first action that
-        //    carries a non-null icon is treated as the weather action.
-        val actionFromComp = if (actionFromTarget == null) {
-            items.filterIsInstance<Item.Complications>()
-                .firstOrNull()
-                ?.complications
-                ?.complications
-                ?.filterIsInstance<ExpandedSession.Complications.Complication.Action>()
-                ?.firstOrNull { it.smartspaceAction.icon != null }
-                ?.smartspaceAction
-        } else null
-
-        // 3. Last resort: read the TodayState from GoogleWeatherRepository directly.
-        //    This fires even when no GoogleWeatherComplication is configured, as long as
-        //    the Google Weather widget (GoogleWeatherWidget provider) is bound somewhere.
-        val todayState = if (actionFromTarget == null && actionFromComp == null) {
-            googleWeatherRepository.getTodayState()
-        } else null
-
-        if (todayState != null) {
-            try {
-                val bitmapIcon = android.graphics.drawable.Icon.createWithBitmap(todayState.icon)
-                binding.expandedHeaderWeatherIcon.setImageIcon(bitmapIcon)
-                binding.expandedHeaderWeather.isVisible = true
-                binding.expandedHeaderWeatherTemp.isVisible = todayState.temperature.isNotBlank()
-                binding.expandedHeaderWeatherTemp.text = todayState.temperature
-            } catch (e: Exception) {
-                binding.expandedHeaderWeather.isVisible = false
-            }
-            return
-        }
-
-        val action = actionFromTarget ?: actionFromComp
-
-        val icon = action?.icon
-        if (icon == null) { binding.expandedHeaderWeather.isVisible = false; return }
         try {
-            binding.expandedHeaderWeatherIcon.setImageIcon(icon)
-            binding.expandedHeaderWeather.isVisible = true
+            val drawable = icon.loadDrawable(requireContext())
+            // Adaptive icons include a solid background layer that would show as a square.
+            // Extract only the foreground so the cookie background colour shows through.
+            val display = if (drawable is android.graphics.drawable.AdaptiveIconDrawable) {
+                drawable.foreground
+            } else {
+                drawable
+            }
+            binding.expandedHeaderWeatherIcon.setImageDrawable(display)
+            binding.expandedHeaderWeatherContainer.isVisible = true
         } catch (e: Exception) {
-            binding.expandedHeaderWeather.isVisible = false
+            binding.expandedHeaderWeatherContainer.isVisible = false
             return
         }
-        // Temperature may live in subtitle or title — prefer subtitle as it is the
-        // supplemental text field used by the weather complication template.
-        val temp = action.subtitle?.toString()?.takeIf { it.isNotBlank() }
-            ?: action.title.takeIf { it.isNotBlank() }
+
+        val temp = weatherAction.subtitle?.toString()?.takeIf { it.isNotBlank() }
+            ?: weatherAction.title.takeIf { it.isNotBlank() }
         binding.expandedHeaderWeatherTemp.isVisible = !temp.isNullOrBlank()
         binding.expandedHeaderWeatherTemp.text = temp ?: ""
+
+        // Make the weather cookie tappable — fire the action's intent or pendingIntent.
+        val weatherIntent = weatherAction.intent
+        val weatherPendingIntent = weatherAction.pendingIntent
+        binding.expandedHeaderWeatherContainer.setOnClickListener {
+            when {
+                weatherIntent != null -> runCatching {
+                    requireContext().startActivity(
+                        weatherIntent.apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
+                    )
+                }
+                weatherPendingIntent != null && !weatherAction.skipPendingIntent ->
+                    weatherPendingIntent.sendSafely()
+            }
+        }
     }
 
     private fun setStatusBarLight(enabled: Boolean) {
@@ -866,29 +1487,87 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
     // ── Blur / background ─────────────────────────────────────────────────
 
+    /** True when the user has chosen BLUR or SCRIM — both show semi-transparent surfaces. */
+    private val isBlurBackground: Boolean
+        get() = settingsRepository.expandedBackground.getSync().let {
+            it == ExpandedBackground.BLUR || it == ExpandedBackground.SCRIM
+        }
+
+    /** True only for BLUR — SCRIM shows the same surfaces but without window blur. */
+    private val isActualBlur: Boolean
+        get() = settingsRepository.expandedBackground.getSync() == ExpandedBackground.BLUR
+
+    /**
+     * Returns [color] with 75% alpha in BLUR/SCRIM mode, fully opaque otherwise.
+     * Applied to every tinted surface so the wallpaper shows through.
+     */
+    private fun blurAlpha(color: Int): Int =
+        if (isBlurBackground) androidx.core.graphics.ColorUtils.setAlphaComponent(color, 192)
+        else color
+
     override fun onResume() {
         super.onResume()
         viewModel.onResume()
-        if (!isMinusOne) setBlurEnabled(true)
+        if (!isMinusOne) {
+            reapplyColors()
+            setBlurEnabled(true)
+        }
+        // Force the alarm complication to re-read from AlarmManager so it never shows stale data.
+        SmartspacerComplicationProvider.notifyChange(requireContext(), AlarmComplication::class.java)
     }
 
     override fun onPause() {
-        if (!isMinusOne) setBlurEnabled(false)
+        // Only clear blur/window state in BLUR/SCRIM mode.
+        // In SOLID mode the XML background keeps the root opaque, so clearing it causes
+        // the transparent-root / same-as-cards visual bug on re-open.
+        if (!isMinusOne && isBlurBackground) setBlurEnabled(false)
         super.onPause()
         viewModel.onPause()
     }
 
     private fun setBlurEnabled(enabled: Boolean) {
-        if (isOverlay) return
-        // Always use a fully opaque background for all non-overlay modes so the
-        // Monet surface colour is never transparent or semi-transparent.
         val bg = monet.getBackgroundColor(requireContext())
-        binding.root.setBackgroundColor(
-            ColorUtils.setAlphaComponent(bg, if (enabled) 255 else 0)
-        )
-        // Additionally drive the window blur when BLUR mode is selected.
-        if (settingsRepository.expandedBackground.getSync() == ExpandedBackground.BLUR) {
-            blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
+        // Overlay mode: SmartspacerOverlay manages SOLID and SCRIM backgrounds, so keep
+        // the fragment root transparent in those modes. For BLUR the overlay controls the
+        // visual close state via blur radius (zeroed on pause/stop), so we keep the 50%
+        // tint permanently — never clearing it on pause — so the drag-open animation
+        // always shows the tinted surface rather than jumping in on onResume().
+        if (isOverlay) {
+            // BLUR/SCRIM: SmartspacerOverlay manages the wallpaper/blur; keep the root
+            // semi-transparent so the wallpaper shows through.
+            // SOLID: SmartspacerOverlay's background colour is from a service context
+            // (no DynamicColors → resolves to white). Use the Activity context here —
+            // it has DynamicColors applied and gives the correct Monet colorBackground.
+            binding.root.setBackgroundColor(
+                if (isBlurBackground) ColorUtils.setAlphaComponent(bg, 192)
+                else bg
+            )
+            return
+        }
+        // In BLUR mode the root uses 50% opacity so the blurred wallpaper shows through.
+        // In all other modes the root is fully opaque (or transparent when disabled/paused).
+        val targetAlpha = when {
+            !enabled -> 0
+            isBlurBackground -> 192
+            else -> 255
+        }
+        binding.root.setBackgroundColor(ColorUtils.setAlphaComponent(bg, targetAlpha))
+        if (isBlurBackground) {
+            // Ensure FLAG_SHOW_WALLPAPER is set at runtime for both BLUR and SCRIM modes.
+            if (enabled) {
+                requireActivity().window.addFlags(
+                    android.view.WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER
+                )
+            }
+            // Only apply window blur for BLUR mode — SCRIM shows the same transparent
+            // surfaces but over an unblurred wallpaper.
+            if (isActualBlur) {
+                blurProvider.applyBlurToWindow(requireActivity().window, if (enabled) 1f else 0f)
+            }
+            // Cover the nav bar with an opaque surface so the wallpaper doesn't
+            // show through the otherwise-transparent system bar.
+            requireActivity().window.navigationBarColor =
+                ColorUtils.setAlphaComponent(bg, if (enabled) 255 else 0)
         }
     }
 
@@ -1099,9 +1778,10 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
 
     // ── Overlay ───────────────────────────────────────────────────────────
 
-    private fun launchOverlayAction(action: OpenFromOverlayAction) {
+    private fun launchOverlayAction(action: OpenFromOverlayAction, navigateToTabSettings: Boolean = false) {
         unlockAndLaunch(ExpandedActivity.createExportedOverlayIntent(requireContext()).apply {
             putExtra(EXTRA_OPEN_ACTION, action)
+            if (navigateToTabSettings) putExtra(EXTRA_NAVIGATE_TAB_SETTINGS, true)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         })
@@ -1122,26 +1802,51 @@ class ExpandedFragment : BoundFragment<FragmentExpandedBinding>(
         private var targets: List<Item.Target> = emptyList()
 
         fun submitTargets(newTargets: List<Item.Target>) {
+            val old = targets
             targets = newTargets
-            notifyDataSetChanged()
+            if (old.size != newTargets.size) {
+                notifyDataSetChanged()
+                return
+            }
+            // Compare full target content (data class equality), not just ID.
+            // This ensures countdown timers and alarm times redraw when their text
+            // changes even though the smartspaceTargetId stays the same.
+            newTargets.forEachIndexed { i, new ->
+                if (new != old.getOrNull(i)) {
+                    notifyItemChanged(i)
+                }
+            }
         }
 
-        inner class ViewHolder(val sv: SmartspacerView) : RecyclerView.ViewHolder(sv)
+        inner class ViewHolder(val sv: SmartspacerView, container: FrameLayout)
+            : RecyclerView.ViewHolder(container) {
+            var boundTarget: SmartspaceTarget? = null
+        }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            ViewHolder(SmartspacerView(requireContext()).apply {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val sv = SmartspacerView(requireContext()).apply {
+                layoutParams = FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            }
+            val container = FrameLayout(requireContext()).apply {
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
                 )
-                setPadding(0, 0, 0, 0)
-            })
+                setPadding(16.dp, 16.dp, 0, 16.dp)
+                addView(sv)
+            }
+            return ViewHolder(sv, container)
+        }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val target = targets[position]
-            // Figma: target text uses sys/dark/on-primary-container on the primary-container pill
+            if (target.target.equalsForUi(holder.boundTarget)) return
+            holder.boundTarget = target.target
             val tintColour = requireContext()
-                .getAttrColor(com.google.android.material.R.attr.colorOnPrimaryContainer)
+                .getAttrColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
             holder.sv.setTarget(target.target, this@ExpandedFragment, tintColour, false)
         }
 

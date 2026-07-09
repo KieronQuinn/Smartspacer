@@ -183,7 +183,7 @@ class RestoreFragment : BoundFragment<FragmentRestoreBinding>(FragmentRestoreBin
             SwitchSetting(
                 shouldRestoreSettings,
                 getString(R.string.restore_restore_settings_title),
-                if(hasExpandedCustomWidgets){
+                if(hasSettings){
                     getText(R.string.restore_restore_settings_content)
                 }else{
                     getString(R.string.restore_restore_settings_content_empty)

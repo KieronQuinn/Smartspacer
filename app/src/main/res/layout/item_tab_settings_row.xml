@@ -1,124 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Single tab configuration row — Material You Expressive card style.
-  Contains an editable label field, a widget-picker button, and a tonal delete button.
+  Tab settings row — Figma node 490:2106 (handle=Right variant).
+  Layout: [icon 32dp] [label field + action row] [drag handle 68dp]
+  Action row: [edit/icon-picker 40dp circle] [pick widget pill] [delete 40dp circle]
 -->
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="0dp">
+    app:cardBackgroundColor="?attr/colorSecondaryContainer"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
-        <!-- Tab number chip — large, colorPrimary tonal surface -->
-        <com.google.android.material.chip.Chip
-            android:id="@+id/tab_row_index_chip"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="?attr/colorPrimaryContainer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="?attr/colorOnPrimaryContainer"
-            android:textAppearance="?attr/textAppearanceLabelLarge" />
+        <!-- Left: current tab icon rendered via Material Symbols font -->
+        <TextView
+            android:id="@+id/tab_row_icon_view"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:includeFontPadding="false"
+            android:importantForAccessibility="no" />
 
-        <!-- Delete button — tonal, top-end -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/tab_row_delete"
-            style="@style/Widget.Material3.Button.TonalButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/expanded_tab_settings_delete"
-            app:icon="@drawable/ic_cross_circle"
-            app:iconTint="?attr/colorOnErrorContainer"
-            app:backgroundTint="?attr/colorErrorContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Label text field -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tab_row_label_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        <!-- Center: label field + action buttons -->
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/expanded_tab_settings_label_hint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_row_index_chip">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tab_row_label_edit"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tab_row_label_layout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="1" />
+                android:hint="@string/expanded_tab_settings_label_hint">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tab_row_label_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
 
-        <!-- Widget picker button — tonal filled, prominent -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/tab_row_pick_widget"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/expanded_tab_settings_pick_widget"
-            android:textAppearance="?attr/textAppearanceLabelLarge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_row_label_layout" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Assigned widget label (shown below picker once a widget is selected) -->
-        <TextView
-            android:id="@+id/tab_row_widget_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_row_pick_widget" />
+            <!-- Action row: [pick icon] [pick widget] [delete] -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-        <!-- Icon picker button — tonal, shows current icon as button icon when set -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/tab_row_pick_icon"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/expanded_tab_settings_pick_icon"
-            android:textAppearance="?attr/textAppearanceLabelLarge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_row_widget_label" />
+                <!-- Icon picker — circular, colorPrimary filled -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tab_row_pick_icon"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    app:backgroundTint="?attr/colorPrimary"
+                    app:icon="@drawable/ic_edit"
+                    app:iconTint="?attr/colorOnPrimary"
+                    app:iconSize="20dp"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
-        <!-- Selected icon name label (shown below icon picker once an icon is chosen) -->
-        <TextView
-            android:id="@+id/tab_row_icon_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tab_row_pick_icon" />
+                <!-- Widget picker — fills remaining space -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tab_row_pick_widget"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/expanded_tab_settings_pick_widget"
+                    android:textAppearance="?attr/textAppearanceLabelLarge" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- Delete — circular, errorContainer filled -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tab_row_delete"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    app:backgroundTint="?attr/colorErrorContainer"
+                    app:icon="@drawable/ic_delete"
+                    app:iconTint="?attr/colorOnErrorContainer"
+                    app:iconSize="20dp"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Right: drag handle — two horizontal lines, 68dp wide. Touch triggers drag. -->
+        <LinearLayout
+            android:id="@+id/tab_row_drag_handle"
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="2dp"
+                android:background="?attr/colorOnSecondaryContainer"
+                android:backgroundTint="?attr/colorOnSecondaryContainer" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="4dp"
+                android:background="?attr/colorOnSecondaryContainer"
+                android:backgroundTint="?attr/colorOnSecondaryContainer" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

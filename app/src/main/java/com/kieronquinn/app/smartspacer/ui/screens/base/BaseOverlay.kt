@@ -2,6 +2,7 @@ package com.kieronquinn.app.smartspacer.ui.screens.base
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -45,11 +46,16 @@ abstract class BaseOverlay<T: ViewBinding>(
         _binding = viewBindingInflate.invoke(layoutInflater, container, true) as T
         window?.let {
             it.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+            it.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            it.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
             it.addFlags(Window.FEATURE_NO_TITLE)
-            it.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            it.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+            it.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             it.statusBarColor = Color.TRANSPARENT
             it.navigationBarColor = Color.TRANSPARENT
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                it.isStatusBarContrastEnforced = false
+                it.isNavigationBarContrastEnforced = false
+            }
         }
         lifecycleRegistry.handleLifecycleEventSafely(Lifecycle.Event.ON_CREATE)
     }

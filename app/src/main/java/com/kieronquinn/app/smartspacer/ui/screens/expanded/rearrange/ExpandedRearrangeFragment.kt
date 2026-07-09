@@ -40,7 +40,6 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
     SmartspacerBasePageView.SmartspaceTargetInteractionListener, BaseExpandedAdapter.ExpandedAdapterListener {
 
     private val viewModel by viewModel<ExpandedRearrangeViewModel>()
-    private var multiColumnEnabled = true
 
     private val adapter by lazy {
         ExpandedRearrangeAdapter(
@@ -136,7 +135,6 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
                 binding.expandedRearrangeRecyclerView.isVisible = false
             }
             is State.Loaded -> {
-                multiColumnEnabled = state.multiColumnEnabled
                 binding.expandedRearrangeLoading.root.isVisible = false
                 binding.expandedRearrangeRecyclerView.isVisible = true
                 adapter.items = state.items
@@ -146,14 +144,8 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
     }
 
     private fun getSpanPercent(item: Item): Float {
-        var columnCount = requireContext().getWidgetColumnCount(getAvailableWidth())
-        if(!multiColumnEnabled) {
-            //Prevent widgets being displayed alongside each other when multi column is disabled
-            columnCount = columnCount.coerceAtMost(WIDGET_MIN_COLUMNS)
-        }
-        val targetBasedColumns = if(multiColumnEnabled) {
-            (columnCount / WIDGET_MIN_COLUMNS.toFloat()).coerceAtLeast(1f)
-        }else 1f
+        val columnCount = requireContext().getWidgetColumnCount(getAvailableWidth())
+        val targetBasedColumns = (columnCount / WIDGET_MIN_COLUMNS.toFloat()).coerceAtLeast(1f)
         val targetBasedWidth = (1f / targetBasedColumns)
         return when(item) {
             is Item.Widget -> {
@@ -162,7 +154,7 @@ class ExpandedRearrangeFragment: BoundFragment<FragmentExpandedRearrangeBinding>
                     item.spanX != null -> {
                         item.spanX / columnCount.toFloat()
                     }
-                    else -> targetBasedWidth //Unlikely to expect being full width when wide
+                    else -> targetBasedWidth
                 }
             }
             is Item.RemovedWidget -> targetBasedWidth

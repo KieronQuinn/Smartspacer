@@ -10,7 +10,6 @@ import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.repositories.BaseSettingsRepository.SmartspacerSetting
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TargetCountLimit
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
@@ -107,11 +106,6 @@ interface SmartspacerSettingsRepository {
     val expandedShowHeader: SmartspacerSetting<Boolean>
 
     /**
-     *  Whether to show the search box on the expanded screen
-     */
-    val expandedShowSearchBox: SmartspacerSetting<Boolean>
-
-    /**
      *  The package for the expanded search box to open, if enabled
      */
     val expandedSearchPackage: SmartspacerSetting<String>
@@ -120,6 +114,12 @@ interface SmartspacerSettingsRepository {
      *  Whether to show today's Google Doodle on the expanded screen
      */
     val expandedShowDoodle: SmartspacerSetting<Boolean>
+
+    /**
+     *  When true, tapping the doodle/wordmark opens the Google app; when false, opens google.com
+     *  in the default browser.
+     */
+    val expandedDoodleOpenGoogleApp: SmartspacerSetting<Boolean>
 
     /**
      *  The [ExpandedOpenMode] to use when a Target is clicked on the Home Screen
@@ -148,9 +148,10 @@ interface SmartspacerSettingsRepository {
     val expandedBackground: SmartspacerSetting<ExpandedBackground>
 
     /**
-     *  The mode to use when tinting Expanded Smartspace
+     *  Whether to show the weather as a circular cookie badge in the pill header.
+     *  When false, the weather target is kept in the page list as a normal page.
      */
-    val expandedTintColour: SmartspacerSetting<TintColour>
+    val expandedShowWeatherCookie: SmartspacerSetting<Boolean>
 
     /**
      *  Whether the user has previously clicked "Add Widget", if set this will minimise the button
@@ -159,34 +160,9 @@ interface SmartspacerSettingsRepository {
     val expandedHasClickedAdd: SmartspacerSetting<Boolean>
 
     /**
-     *  Whether to force the use of Google Sans in the widgets on the Expanded Smartspace
-     */
-    val expandedWidgetUseGoogleSans: SmartspacerSetting<Boolean>
-
-    /**
-     *  If/when to hide the add widgets button in Expanded Smartspace
-     */
-    val expandedHideAddButton: SmartspacerSetting<ExpandedHideAddButton>
-
-    /**
-     *  Whether to allow multiple columns in Expanded Smartspace
-     */
-    val expandedMultiColumnEnabled: SmartspacerSetting<Boolean>
-
-    /**
      *  Whether the Xposed module should replace Discover with Expanded Smartspace
      */
     val expandedXposedEnabled: SmartspacerSetting<Boolean>
-
-    /**
-     *  Whether to put the Complications above Targets in Expanded Smartspace
-     */
-    val expandedComplicationsFirst: SmartspacerSetting<Boolean>
-
-    /**
-     *  Whether to show the shadow on light text in Expanded Smartspace
-     */
-    val expandedShowShadow: SmartspacerSetting<Boolean>
 
     /**
      *  Whether the OEM Smartspace Service should be enabled
@@ -333,13 +309,6 @@ interface SmartspacerSettingsRepository {
         }
     }
 
-    enum class ExpandedHideAddButton(@StringRes val label: Int) {
-        NEVER(R.string.expanded_settings_hide_add_button_never),
-        OVERLAY_ONLY(R.string.expanded_settings_hide_add_button_overlay_only),
-        WHEN_LOCKED(R.string.expanded_settings_hide_add_button_when_locked),
-        ALWAYS(R.string.expanded_settings_hide_add_button_always),
-    }
-
     suspend fun setRestrictedModeKnownDisabledIfNeeded()
     suspend fun setInstallTimeIfNeeded()
     suspend fun getBackup(): Map<String, String>
@@ -394,14 +363,14 @@ class SmartspacerSettingsRepositoryImpl(
         private const val KEY_EXPANDED_SHOW_HEADER = "expanded_show_header"
         private const val DEFAULT_EXPANDED_SHOW_HEADER = true
 
-        private const val KEY_EXPANDED_SHOW_SEARCH_BOX = "expanded_show_search_box"
-        private const val DEFAULT_EXPANDED_SHOW_SEARCH_BOX = false
-
         private const val KEY_EXPANDED_SEARCH_PACKAGE = "expanded_search_package"
         private const val DEFAULT_EXPANDED_SEARCH_PACKAGE = ""
 
         private const val KEY_EXPANDED_SHOW_DOODLE = "expanded_show_doodle"
         private const val DEFAULT_EXPANDED_SHOW_DOODLE = false
+
+        private const val KEY_EXPANDED_DOODLE_OPEN_GOOGLE_APP = "expanded_doodle_open_google_app"
+        private const val DEFAULT_EXPANDED_DOODLE_OPEN_GOOGLE_APP = false
 
         private const val KEY_EXPANDED_OPEN_MODE_HOME = "expanded_open_mode_home"
         private val DEFAULT_EXPANDED_OPEN_MODE_HOME = ExpandedOpenMode.IF_HAS_EXTRAS
@@ -417,29 +386,14 @@ class SmartspacerSettingsRepositoryImpl(
 
         private const val KEY_EXPANDED_BACKGROUND = "expanded_background"
 
-        private const val KEY_EXPANDED_TINT_COLOUR = "expanded_tint_colour"
-        private val DEFAULT_EXPANDED_TINT_COLOUR = TintColour.AUTOMATIC
-
         private const val KEY_EXPANDED_HAS_CLICKED_ADD = "expanded_has_clicked_add"
         private const val DEFAULT_EXPANDED_HAS_CLICKED_ADD = false
-
-        private const val KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS = "expanded_widgets_use_google_sans"
-        private const val DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS = false
-
-        private const val KEY_EXPANDED_HIDE_ADD_BUTTON = "expanded_hide_add_button"
-        private val DEFAULT_EXPANDED_HIDE_ADD_BUTTON = ExpandedHideAddButton.NEVER
-
-        private const val KEY_EXPANDED_MULTI_COLUMN_ENABLED = "expanded_multi_column_enabled"
-        private const val DEFAULT_EXPANDED_MULTI_COLUMN_ENABLED = true
 
         private const val KEY_EXPANDED_XPOSED_ENABLED = "expanded_xposed_enabled"
         private const val DEFAULT_EXPANDED_XPOSED_ENABLED = false
 
-        private const val KEY_EXPANDED_COMPLICATIONS_FIRST = "expanded_complications_first"
-        private const val DEFAULT_EXPANDED_COMPLICATIONS_FIRST = false
-
-        private const val KEY_EXPANDED_SHOW_SHADOW = "expanded_show_shadow"
-        private const val DEFAULT_EXPANDED_SHOW_SHADOW = true
+        private const val KEY_EXPANDED_SHOW_WEATHER_COOKIE = "expanded_show_weather_cookie"
+        private const val DEFAULT_EXPANDED_SHOW_WEATHER_COOKIE = true
 
         private const val KEY_OEM_SMARTSPACE_ENABLED = "oem_smartspace_enabled"
         private const val DEFAULT_OEM_SMARTSPACE_ENABLED = false
@@ -510,23 +464,18 @@ class SmartspacerSettingsRepositoryImpl(
     override val hideSensitive = enum(KEY_HIDE_SENSITIVE, context.getSystemHideSensitive())
     override val expandedModeEnabled = boolean(KEY_EXPANDED_MODE_ENABLED, DEFAULT_EXPANDED_MODE_ENABLED)
     override val expandedShowHeader = boolean(KEY_EXPANDED_SHOW_HEADER, DEFAULT_EXPANDED_SHOW_HEADER)
-    override val expandedShowSearchBox = boolean(KEY_EXPANDED_SHOW_SEARCH_BOX, DEFAULT_EXPANDED_SHOW_SEARCH_BOX)
     override val expandedSearchPackage = string(KEY_EXPANDED_SEARCH_PACKAGE, DEFAULT_EXPANDED_SEARCH_PACKAGE)
     override val expandedShowDoodle = boolean(KEY_EXPANDED_SHOW_DOODLE, DEFAULT_EXPANDED_SHOW_DOODLE)
+    override val expandedDoodleOpenGoogleApp = boolean(KEY_EXPANDED_DOODLE_OPEN_GOOGLE_APP, DEFAULT_EXPANDED_DOODLE_OPEN_GOOGLE_APP)
     override val expandedOpenModeHome = enum(KEY_EXPANDED_OPEN_MODE_HOME, DEFAULT_EXPANDED_OPEN_MODE_HOME)
     override val expandedOpenModeLock = enum(KEY_EXPANDED_OPEN_MODE_LOCK, DEFAULT_EXPANDED_OPEN_MODE_LOCK)
     override val expandedCloseWhenLocked = boolean(KEY_EXPANDED_CLOSE_WHEN_LOCKED, DEFAULT_EXPANDED_CLOSE_WHEN_LOCKED)
     @Deprecated("No longer set in the settings")
     override val expandedBlurBackground = boolean(KEY_EXPANDED_BACKGROUND_BLUR, DEFAULT_EXPANDED_BACKGROUND_BLUR)
     override val expandedBackground = enum(KEY_EXPANDED_BACKGROUND, getDefaultExpandedBackground())
-    override val expandedTintColour = enum(KEY_EXPANDED_TINT_COLOUR, DEFAULT_EXPANDED_TINT_COLOUR)
     override val expandedHasClickedAdd = boolean(KEY_EXPANDED_HAS_CLICKED_ADD, DEFAULT_EXPANDED_HAS_CLICKED_ADD)
-    override val expandedWidgetUseGoogleSans = boolean(KEY_EXPANDED_WIDGETS_USE_GOOGLE_SANS, DEFAULT_EXPANDED_WIDGETS_USE_GOOGLE_SANS)
-    override val expandedHideAddButton = enum(KEY_EXPANDED_HIDE_ADD_BUTTON, DEFAULT_EXPANDED_HIDE_ADD_BUTTON)
-    override val expandedMultiColumnEnabled = boolean(KEY_EXPANDED_MULTI_COLUMN_ENABLED, DEFAULT_EXPANDED_MULTI_COLUMN_ENABLED)
     override val expandedXposedEnabled = boolean(KEY_EXPANDED_XPOSED_ENABLED, DEFAULT_EXPANDED_XPOSED_ENABLED)
-    override val expandedComplicationsFirst = boolean(KEY_EXPANDED_COMPLICATIONS_FIRST, DEFAULT_EXPANDED_COMPLICATIONS_FIRST)
-    override val expandedShowShadow = boolean(KEY_EXPANDED_SHOW_SHADOW, DEFAULT_EXPANDED_SHOW_SHADOW)
+    override val expandedShowWeatherCookie = boolean(KEY_EXPANDED_SHOW_WEATHER_COOKIE, DEFAULT_EXPANDED_SHOW_WEATHER_COOKIE)
     override val oemSmartspaceEnabled = boolean(KEY_OEM_SMARTSPACE_ENABLED, DEFAULT_OEM_SMARTSPACE_ENABLED)
     override val oemHideIncompatible = boolean(KEY_OEM_HIDE_INCOMPATIBLE, DEFAULT_OEM_HIDE_INCOMPATIBLE)
     override val updateCheckEnabled = boolean(KEY_UPDATE_CHECK_ENABLED, DEFAULT_UPDATE_CHECK_ENABLED)

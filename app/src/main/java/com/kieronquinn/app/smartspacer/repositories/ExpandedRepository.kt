@@ -72,11 +72,6 @@ interface ExpandedRepository {
     val expandedCustomAppWidgets: Flow<List<ExpandedCustomAppWidget>>
 
     /**
-     *  Whether to force the use of Google Sans in the widgets on the Expanded Screen
-     */
-    val widgetUseGoogleSans: Boolean
-
-    /**
      *  Gets stored [ExpandedAppWidget]s, which map [AppWidgetProviderInfo] components to IDs
      */
     fun getExpandedAppWidgets(): Flow<List<ExpandedAppWidget>>
@@ -205,16 +200,10 @@ class ExpandedRepositoryImpl(
     private var appWidgetHostViews = HashMap<CacheTag, ExpandedAppWidgetHostView>()
     private val expandedSessions = HashMap<String, ExpandedSession>()
 
-    private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans.asFlow()
-        .stateIn(scope, SharingStarted.Eagerly, settings.expandedWidgetUseGoogleSans.getSync())
-
     @VisibleForTesting
     var appWidgetHost = ExpandedAppWidgetHost.create(widgetHostContext, 1).also {
         it.startListening()
     }
-
-    override val widgetUseGoogleSans: Boolean
-        get() = widgetsUseGoogleSans.value
 
     override fun getExpandedAppWidgets(): Flow<List<ExpandedAppWidget>> {
         return databaseRepository.getExpandedAppWidgets()

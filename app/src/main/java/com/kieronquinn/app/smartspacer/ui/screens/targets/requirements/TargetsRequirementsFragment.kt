@@ -1,10 +1,12 @@
 package com.kieronquinn.app.smartspacer.ui.screens.targets.requirements
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
+import com.kieronquinn.app.smartspacer.R
 import com.kieronquinn.app.smartspacer.databinding.FragmentRequirementsBinding
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.BoundFragment
@@ -12,10 +14,7 @@ import com.kieronquinn.app.smartspacer.ui.base.LockCollapsed
 import com.kieronquinn.app.smartspacer.ui.screens.base.requirements.BaseRequirementsViewModel.PageType
 import com.kieronquinn.app.smartspacer.ui.screens.targets.requirements.add.TargetsRequirementsAddFragment
 import com.kieronquinn.app.smartspacer.utils.extensions.getSerializableCompat
-import com.kieronquinn.app.smartspacer.utils.extensions.onSelected
-import com.kieronquinn.app.smartspacer.utils.extensions.selectTab
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
-import com.kieronquinn.app.smartspacer.sdk.client.utils.getAttrColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TargetsRequirementsFragment: BoundFragment<FragmentRequirementsBinding>(FragmentRequirementsBinding::inflate), BackAvailable, LockCollapsed {
@@ -25,39 +24,30 @@ class TargetsRequirementsFragment: BoundFragment<FragmentRequirementsBinding>(Fr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupMonet()
-        setupTabs()
         setupViewPager()
         setupResult()
     }
 
-    private fun setupMonet() {
-        val tabBackground = requireContext().getAttrColor(androidx.appcompat.R.attr.colorPrimary)
-        binding.requirementsTabs.backgroundTintList = ColorStateList.valueOf(tabBackground)
-        binding.requirementsTabs.setSelectedTabIndicatorColor(monet.getAccentColor(requireContext()))
-        val secondaryBackground = ColorStateList.valueOf(
-            monet.getBackgroundColorSecondary(requireContext())
-                ?: monet.getBackgroundColor(requireContext())
-        )
-        binding.requirementsTabsContainer.backgroundTintList = secondaryBackground
-    }
-
-    private fun setupTabs() = with(binding.requirementsTabs){
-        selectTab(viewModel.getCurrentPage())
-        whenResumed {
-            onSelected().collect {
-                viewModel.setCurrentPage(it)
-                binding.requirementsViewpager.setCurrentItem(it, true)
-            }
-        }
-    }
-
-    private fun setupViewPager() = with(binding.requirementsViewpager) {
-        isUserInputEnabled = false
-        adapter = TargetsRequirementsViewPagerAdapter(
+    private fun setupViewPager() {
+        binding.requirementsViewpager.adapter = TargetsRequirementsViewPagerAdapter(
             args.targetId, this@TargetsRequirementsFragment
         )
-        setCurrentItem(viewModel.getCurrentPage(), false)
+        binding.requirementsViewpager.setCurrentItem(viewModel.getCurrentPage(), false)
+        val labels = listOf(
+            getString(R.string.requirements_tab_any),
+            getString(R.string.requirements_tab_all)
+        )
+        TabLayoutMediator(binding.requirementsTabs, binding.requirementsViewpager) { tab, position ->
+            tab.text = labels[position]
+        }.attach()
+        whenResumed {
+            binding.requirementsViewpager.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    viewModel.setCurrentPage(position)
+                }
+            })
+        }
     }
 
     private fun setupResult() {

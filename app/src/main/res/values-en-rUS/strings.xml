@@ -640,11 +640,11 @@
     <string name="expanded_permission_later">Later</string>
     <string name="expanded_permission_grant">Grant</string>
     <!-- Expanded Smartspace Settings -->
-    <string name="expanded_settings_title">Expanded Smartspace</string>
-    <string name="expanded_settings_title_short">Expanded</string>
-    <string name="expanded_settings_content">Show Smartspace Targets and Complications in a full screen view, with extra information including widgets, app shortcuts and more</string>
-    <string name="expanded_settings_footer">Expanded Smartspace shows all Smartspace Targets and Complications, as well as information including widgets, app shortcuts and more for supported Targets. It can be opened from the Home Screen, Lock Screen, or an App Shortcut from Smartspacer\'s icon. If you use Discover Killer, Smartspacer can also replace your Google Discover Feed.</string>
-    <string name="expanded_settings_switch">Enable Expanded Smartspace</string>
+    <string name="expanded_settings_title">Pixel Now</string>
+    <string name="expanded_settings_title_short">Pixel Now</string>
+    <string name="expanded_settings_content">Your personal feed — news, widgets, and Smartspace all in one place</string>
+    <string name="expanded_settings_footer">Pixel Now is your personal news feed, built on the same idea as Google Discover but on your terms. Design-wise it takes cues from Discover\'s card-based layout and the iconic pill-shaped camera bar of the Pixel — familiar, but yours to configure. Choose your sources, arrange your content, and see exactly what matters to you.</string>
+    <string name="expanded_settings_switch">Enable Pixel Now</string>
     <string name="expanded_settings_header_search">Search</string>
     <string name="expanded_settings_show_search_box_title">Show Search Box</string>
     <string name="expanded_settings_show_search_box_content">Show a search box at the top of Expanded Smartspace</string>

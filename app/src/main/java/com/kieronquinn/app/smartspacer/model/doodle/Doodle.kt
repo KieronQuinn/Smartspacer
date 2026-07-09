@@ -9,8 +9,9 @@ data class Doodle(
     private val ddlJson: DDLJson
 ) {
 
-    fun getDoodleImage(baseUrl: String): DoodleImage {
-        return ddlJson.image.toDoodleImage(
+    fun getDoodleImage(baseUrl: String): DoodleImage? {
+        val image = ddlJson.image ?: return null
+        return image.toDoodleImage(
             baseUrl,
             ddlJson.altText,
             ddlJson.searchUrl,
@@ -22,23 +23,25 @@ data class Doodle(
         return ddlJson.timeToLiveMs + System.currentTimeMillis()
     }
 
-    fun fillDarkImage(doodleApi: DoodleApi): Doodle = apply {
-        val darkGif = doodleApi.getEquivalentDarkGif(ddlJson.image.url) ?: return@apply
-        ddlJson.darkImage = ddlJson.image.copy(url = darkGif)
+    fun fillDarkImage(doodleApi: DoodleApi, baseUrl: String): Doodle = apply {
+        // If dark_large_image was already parsed from the JSON, nothing to do.
+        if (ddlJson.darkImage != null) return@apply
+        val image = ddlJson.image ?: return@apply
+        val darkGifUrl = doodleApi.getEquivalentDarkGif(image, baseUrl) ?: return@apply
+        ddlJson.darkImage = image.copy(url = darkGifUrl, alternateUrl = null)
     }
 
     /**
      *  If the image is a GIF, there may be an equivalent dark version available. Replacing the
      *  suffix to be -ladc.gif will return it if so.
      */
-    private fun DoodleApi.getEquivalentDarkGif(url: String): String? {
-        if(!url.endsWith("-2xa.gif")) return null
-        val checkUrl = url.replace("-2xa.gif", "-ladc.gif")
+    private fun DoodleApi.getEquivalentDarkGif(image: Image, baseUrl: String): String? {
+        if (!image.url.endsWith("-2xa.gif")) return null
+        val checkRelUrl = image.url.replace("-2xa.gif", "-ladc.gif")
+        val checkUrl = image.alternateUrl?.replace(image.url, checkRelUrl) ?: (baseUrl + checkRelUrl)
         return try {
-            if(getDoodle(checkUrl).execute().isSuccessful){
-                checkUrl
-            }else null
-        }catch (e: Exception){
+            if (getDoodle(checkUrl).execute().isSuccessful) checkRelUrl else null
+        } catch (e: Exception) {
             null
         }
     }
@@ -50,7 +53,7 @@ data class DDLJson(
     val altText: String,
     @SerializedName("large_image")
     val image: Image,
-    @SerializedName("dark_image")
+    @SerializedName("dark_large_image")
     var darkImage: Image? = null,
     @SerializedName("search_url")
     val searchUrl: String,
@@ -61,8 +64,13 @@ data class DDLJson(
 
 data class Image(
     @SerializedName("url")
-    val url: String
+    val url: String,
+    @SerializedName("alternate_url")
+    val alternateUrl: String? = null
 ) {
+
+    /** Returns an absolute URL, preferring the CDN alternate if available. */
+    fun absoluteUrl(baseUrl: String): String = alternateUrl ?: (baseUrl + url)
 
     fun toDoodleImage(
         baseUrl: String,
@@ -71,8 +79,8 @@ data class Image(
         darkImage: Image?
     ): DoodleImage {
         return DoodleImage(
-            baseUrl + url,
-            darkImage?.url?.let { baseUrl + it },
+            absoluteUrl(baseUrl),
+            darkImage?.absoluteUrl(baseUrl),
             baseUrl + searchUrl,
             altText
         )

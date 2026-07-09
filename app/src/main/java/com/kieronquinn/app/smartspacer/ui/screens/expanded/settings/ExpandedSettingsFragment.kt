@@ -10,8 +10,6 @@ import com.kieronquinn.app.smartspacer.model.settings.BaseSettingsItem
 import com.kieronquinn.app.smartspacer.model.settings.GenericSettingsItem
 import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BackAvailable
 import com.kieronquinn.app.smartspacer.ui.base.HideBottomNavigation
 import com.kieronquinn.app.smartspacer.ui.base.settings.BaseSettingsAdapter
@@ -70,7 +68,7 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
         val header = GenericSettingsItem.Switch(
             enabled,
             getString(R.string.expanded_settings_switch),
-            viewModel::onEnabledChanged
+            if (readYouAvailable) viewModel::onEnabledChanged else { _ -> }
         )
         if (!enabled) {
             return listOf(header, footer)
@@ -78,44 +76,6 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
         val backgroundBlurCompatible = viewModel.isBackgroundBlurCompatible()
         return listOf(
             header,
-            GenericSettingsItem.Header(getString(R.string.expanded_settings_header_search)),
-            GenericSettingsItem.SwitchSetting(
-                showSearchBox,
-                getString(R.string.expanded_settings_show_search_box_title),
-                getString(R.string.expanded_settings_show_search_box_content),
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_settings_expanded_show_search_box
-                ),
-                onChanged = viewModel::onShowSearchBoxChanged
-            ),
-            GenericSettingsItem.Setting(
-                getString(R.string.expanded_settings_search_provider_title),
-                if (searchProvider != null) {
-                    getString(
-                        R.string.expanded_settings_search_provider_content,
-                        searchProvider.label
-                    )
-                } else {
-                    getString(R.string.expanded_settings_search_provider_content_unset)
-                },
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_settings_expanded_search_provider
-                ),
-                onClick = viewModel::onSearchProviderClicked,
-                isEnabled = showSearchBox
-            ),
-            GenericSettingsItem.SwitchSetting(
-                showDoodle,
-                getString(R.string.expanded_settings_show_doodle_title),
-                getString(R.string.expanded_settings_show_doodle_content),
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_target_at_a_glance
-                ),
-                onChanged = viewModel::onShowDoodleChanged
-            ),
             GenericSettingsItem.Header(getString(R.string.expanded_settings_header_behaviour)),
             GenericSettingsItem.Setting(
                 getString(R.string.expanded_settings_open_mode_home_screen_title),
@@ -146,11 +106,25 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 onChanged = viewModel::onCloseWhenLockedChanged
             ),
             GenericSettingsItem.SwitchSetting(
-                complicationsFirst,
-                getString(R.string.expanded_complications_first_title),
-                getString(R.string.expanded_complications_first_content),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
-                onChanged = viewModel::onComplicationsFirstChanged
+                showDoodle,
+                getString(R.string.expanded_settings_show_doodle_title),
+                getString(R.string.expanded_settings_show_doodle_content),
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_target_at_a_glance
+                ),
+                onChanged = viewModel::onShowDoodleChanged
+            ),
+            GenericSettingsItem.SwitchSetting(
+                doodleOpenGoogleApp,
+                getString(R.string.expanded_settings_doodle_open_google_app_title),
+                getString(R.string.expanded_settings_doodle_open_google_app_content),
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_google_logo_monet
+                ),
+                enabled = showDoodle,
+                onChanged = viewModel::onDoodleOpenGoogleAppChanged
             ),
             GenericSettingsItem.SwitchSetting(
                 xposedEnabled && xposedAvailable,
@@ -169,23 +143,12 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
                 viewModel.onXposedEnabledChanged(requireContext(), it)
             },
             GenericSettingsItem.Header(getString(R.string.expanded_settings_header_style)),
-            GenericSettingsItem.Dropdown(
-                getString(R.string.expanded_settings_tint_colour),
-                getString(
-                    R.string.expanded_settings_tint_colour_content,
-                    getString(tintColour.label)
-                ),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_expanded_tint_colour),
-                tintColour,
-                viewModel::onTintColourChanged,
-                TintColour.entries
-            ) { it.label },
             GenericSettingsItem.SwitchSetting(
-                showShadow,
-                getString(R.string.expanded_show_shadow_title),
-                getString(R.string.expanded_show_shadow_content),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_shadow),
-                onChanged = viewModel::onShowShadowChanged
+                showWeatherCookie,
+                getString(R.string.expanded_settings_weather_cookie_title),
+                getString(R.string.expanded_settings_weather_cookie_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_complication_google_weather),
+                onChanged = viewModel::onShowWeatherCookieChanged
             ),
             GenericSettingsItem.Dropdown(
                 getString(R.string.expanded_settings_background_mode_title),
@@ -203,42 +166,6 @@ class ExpandedSettingsFragment : BaseSettingsFragment(), BackAvailable, HideBott
             ) {
                 it.label
             },
-            GenericSettingsItem.Dropdown(
-                getString(R.string.expanded_settings_hide_add_button_title),
-                getString(
-                    R.string.expanded_settings_hide_add_button_content,
-                    getString(hideAdd.label)
-                ),
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_fab_add
-                ),
-                hideAdd,
-                onSet = viewModel::onHideAddChanged,
-                ExpandedHideAddButton.entries
-            ) {
-                it.label
-            },
-            GenericSettingsItem.SwitchSetting(
-                widgetsUseGoogleSans,
-                getString(R.string.expanded_settings_widgets_use_google_sans_title),
-                getString(R.string.expanded_settings_widgets_use_google_sans_content),
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_settings_expanded_use_google_sans
-                ),
-                onChanged = viewModel::onUseGoogleSansChanged
-            ),
-            GenericSettingsItem.SwitchSetting(
-                multiColumn,
-                getString(R.string.expanded_settings_enable_columns_title),
-                getString(R.string.expanded_settings_enable_columns_content),
-                ContextCompat.getDrawable(
-                    requireContext(),
-                    R.drawable.ic_expanded_multi_column
-                ),
-                onChanged = viewModel::onMultiColumnChanged
-            ),
             GenericSettingsItem.Dropdown(
                 getString(R.string.expanded_settings_nav_bar_style_title),
                 getString(R.string.expanded_settings_nav_bar_style_content, getString(navItemDisplayMode.label)),

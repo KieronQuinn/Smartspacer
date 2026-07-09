@@ -61,11 +61,38 @@
         <item name="android:overScrollMode">@integer/overscroll_enabled</item>
     </style>
 
-    <!-- Light/Dark wallpaper theme variants — text colors now come from MD3 dynamic color
-         (?attr/colorOnSurface) rather than being forced to white/black. -->
+    <!-- Light/Dark wallpaper theme variants used by ExpandedFragment/ExpandedAdapter
+         to clone the layout inflater context for dark/light theming. -->
     <style name="Theme.Smartspacer.Wallpaper.Light" parent="Theme.Smartspacer.Wallpaper" />
-
     <style name="Theme.Smartspacer.Wallpaper.Dark" parent="Theme.Smartspacer.Wallpaper" />
+
+    <!-- Overlay applied to the expanded activity when using BLUR or SCRIM background.
+         The base theme (Theme.Smartspacer.Wallpaper) already has windowShowWallpaper=true
+         and windowBackground=transparent.  This overlay only disables translucency
+         (required — setBackgroundBlurRadius() does nothing on translucent windows) and
+         suppresses the fade-in animation.
+         Parent is ThemeOverlay.AppCompat (intentionally empty — no colour attributes)
+         so applyStyle(..., force=true) never overwrites DynamicColors / Monet tokens. -->
+    <style name="ThemeOverlay.Smartspacer.BlurWindow" parent="ThemeOverlay.AppCompat">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <!-- Overlay applied to the expanded activity when using SOLID background.
+         The base theme (Theme.Smartspacer.Wallpaper) has windowBackground=transparent
+         and windowShowWallpaper=true, which lets the wallpaper bleed through before
+         the fragment renders.  This overlay overrides those attributes to make the
+         window fully opaque with the Monet colorBackground, hiding the wallpaper
+         entirely.
+         Parent is ThemeOverlay.AppCompat (no colour attributes) so Monet tokens
+         applied by DynamicColors before this overlay are never overwritten. -->
+    <style name="ThemeOverlay.Smartspacer.SolidWindow" parent="ThemeOverlay.AppCompat">
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 
     <style name="AppTheme.ThirdPartyLicences" parent="Theme.MaterialComponents.DayNight">
         <item name="actionBarStyle">@style/ThirdPartyLicencesToolbarTheme</item>

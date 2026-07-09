@@ -75,9 +75,10 @@
 
     <dimen name="setup_image_size">160dp</dimen>
 
-    <!-- Expanded view header pill page dots -->
-    <dimen name="header_dot_size">5dp</dimen>
-    <dimen name="header_dot_gap">5dp</dimen>
+    <!-- Expanded view header pill page dots (Figma 5dp × 1.1803 ≈ 6dp) -->
+    <dimen name="header_dot_size">6dp</dimen>
+    <dimen name="header_dot_active_width">18dp</dimen>
+    <dimen name="header_dot_gap">6dp</dimen>
 
     <!-- Expanded Smartspace -->
     <dimen name="expanded_smartspace_remoteviews_max_height">300dp</dimen>

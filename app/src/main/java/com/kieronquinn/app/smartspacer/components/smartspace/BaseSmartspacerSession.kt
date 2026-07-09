@@ -51,6 +51,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
@@ -101,11 +102,14 @@ abstract class BaseSmartspacerSession<T, I>(
         }
     }
 
+    // Pre-seeded so loadSmartspaceHolders() is not blocked by the screenOff()/mediaPlaying chain
+    // on startup. Initial value false = "no AOD audio" — correct for any non-AOD open.
     private val aodAudio by lazy {
         if(supportsAodAudio) {
             combine(context.screenOff(), mediaPlaying) { screen, audio ->
                 screen && audio
             }.distinctUntilChanged()
+                .stateIn(lifecycleScope, SharingStarted.Eagerly, false)
         }else flowOf(false)
     }
 
@@ -124,15 +128,28 @@ abstract class BaseSmartspacerSession<T, I>(
                 surface == UiSurface.GLANCEABLE_HUB -> ExpandedOpenMode.NEVER
                 else -> throw RuntimeException("Invalid expanded open mode")
             }
-        }.stateIn(lifecycleScope, SharingStarted.Eagerly, null)
+        // IF_HAS_EXTRAS matches the default setting value. A non-null initial value means
+        // firstNotNull() in loadSmartspaceHolders() returns immediately instead of waiting
+        // for three IO-dispatched settings reads on every first emission.
+        }.stateIn(lifecycleScope, SharingStarted.Eagerly, ExpandedOpenMode.IF_HAS_EXTRAS)
     }
 
+    // Eagerly started (on IO) so the class-loading inside doesSystemUISupportSplitSmartspace()
+    // runs in the background immediately on session creation rather than blocking the first
+    // sessionSettings emission when targets are first collected.
+    // flowOn(IO) is critical — without it, stateIn(lifecycleScope) would run the class
+    // loading on the Main thread, blocking UI for seconds on battery-saver devices.
     private val supportsSplitSmartspace = flow {
         emit(compatibilityRepository.doesSystemUISupportSplitSmartspace())
-    }
+    }.flowOn(Dispatchers.IO).stateIn(lifecycleScope, SharingStarted.Eagerly, false)
 
     open val actionsFirst = flowOf(false)
 
+    // Kept as `by lazy` to avoid init-order NPE: `actionsFirst` is an `open val` overridden in
+    // subclasses — reading it from the base constructor would return null before the override is
+    // set. `by lazy` defers evaluation until after all subclass fields are initialised.
+    // stateIn(Eagerly, initial) pre-seeds the flow so loadSmartspaceHolders() can emit as soon as
+    // pages arrives, without waiting for 3 IO-dispatched SharedPreferences reads.
     private val sessionSettings by lazy {
         combine(
             settings.hideSensitive.asFlow(),
@@ -147,7 +164,15 @@ abstract class BaseSmartspacerSession<T, I>(
                 actionsFirst,
                 forceReloadTime
             )
-        }
+        // getSync() reads the pre-loaded StateFlow values synchronously so the initial
+        // SessionSettings matches real prefs, preventing a filterDistinct-passing re-emission
+        // when the stateIn coroutine first delivers real values after Main becomes free.
+        }.stateIn(lifecycleScope, SharingStarted.Eagerly, SessionSettings(
+            settings.hideSensitive.getSync(),
+            supportsSplitSmartspace.value && settings.nativeUseSplitSmartspace.getSync(),
+            false, // actionsFirst is an open val overridden in subclasses — safe default
+            0L
+        ))
     }
 
     private val smartspaceHolders by lazy {
@@ -243,9 +268,18 @@ abstract class BaseSmartspacerSession<T, I>(
         smartspaceRepository.notifyDismissEvent(targetId)
     }
 
+    /**
+     * Debounce applied in [setupTargetCollection] to coalesce rapid multi-source updates and
+     * reduce unnecessary UI refreshes. Set to 0 to disable (e.g. ExpandedSmartspacerSession,
+     * where [collectLatest] cancellation is sufficient and the delay costs visible startup time).
+     */
+    open val targetCollectionDebounce: Long = 16L
+
     private fun setupTargetCollection() = whenCreated {
-        //We apply a small debounce here to prevent jitter
-        targets.filterDistinct().debounce(50L).collectLatest {
+        val flow = targets.filterDistinct()
+        // Skip debounce entirely when duration is 0 — debounce(0) is not valid in kotlinx.coroutines
+        val debouncedFlow = if (targetCollectionDebounce > 0L) flow.debounce(targetCollectionDebounce) else flow
+        debouncedFlow.collectLatest {
             collectInto(sessionId, it)
         }
     }

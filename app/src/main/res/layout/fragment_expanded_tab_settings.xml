@@ -1,89 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Material You Expressive settings pane for configuring widget tabs.
-  Design language:
-    - Large, bold headline (?attr/textAppearanceHeadlineMedium)
-    - Tonal colorSurfaceContainer background cards for each tab row
-    - Full-color filled FAB (ExtendedFloatingActionButton) to add tabs
-    - Filled tonal icon buttons for delete actions
-    - Generous padding and rounded corners (ExtraLarge shape)
+  Tab settings screen.
+  - Root is transparent so the expanded view shows through.
+  - Status bar space + toolbar share colorBackground@80% (set in code).
+  - Gradient strip below toolbar fades colorBackground@80% → transparent.
+  - RecyclerView fills full height; cards scroll under the floating header.
+  - FAB centered, 16dp above system nav bar.
+  - System nav bar is transparent.
 -->
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_settings_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
-    android:fitsSystemWindows="true">
+    android:background="?android:attr/colorBackground">
 
-    <!-- App bar with large headline title -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/tab_settings_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorSurface"
-        android:fitsSystemWindows="true"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tab_settings_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_back"
-            app:navigationIconTint="?attr/colorOnSurface"
-            app:title="@string/expanded_tab_settings_title"
-            app:titleTextAppearance="?attr/textAppearanceTitleLarge"
-            app:titleTextColor="?attr/colorOnSurface" />
-
-        <!-- Expressive large headline below the toolbar -->
-        <TextView
-            android:id="@+id/tab_settings_headline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="8dp"
-            android:text="@string/expanded_tab_settings_title"
-            android:textAppearance="?attr/textAppearanceHeadlineMedium"
-            android:textColor="?attr/colorOnSurface" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Tab list -->
+    <!-- Tab list — full height, cards scroll under the floating header -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tab_settings_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="96dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:paddingEnd="16dp" />
 
-    <!-- Empty state — shown when there are no widgets bound yet -->
+    <!-- Empty state -->
     <TextView
         android:id="@+id/tab_settings_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
         android:padding="32dp"
         android:text="@string/expanded_tab_settings_no_widgets"
         android:textAppearance="?attr/textAppearanceBodyLarge"
         android:textColor="?attr/colorOnSurfaceVariant"
-        android:visibility="gone"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:visibility="gone" />
 
-    <!-- Add Tab FAB — prominent filled full-color button (Expressive style) -->
+    <!-- Floating header: status bar space + toolbar row + gradient fade -->
+    <LinearLayout
+        android:id="@+id/tab_settings_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Height set to status bar inset in code; bg = colorBackground@80% -->
+        <View
+            android:id="@+id/tab_settings_status_bar_space"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <!-- Toolbar row: back | title (fills) | settings -->
+        <LinearLayout
+            android:id="@+id/tab_settings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tab_settings_back_btn"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                app:backgroundTint="?attr/colorSurfaceContainerHigh"
+                app:icon="@drawable/ic_back_rounded"
+                app:iconTint="?attr/colorOnSurfaceVariant"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <TextView
+                android:id="@+id/tab_settings_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:text="@string/expanded_tab_settings_title"
+                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:textColor="?attr/colorOnSurface" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tab_settings_settings_btn"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                app:backgroundTint="?attr/colorSurfaceContainerHigh"
+                app:icon="@drawable/ic_settings_gear"
+                app:iconTint="?attr/colorOnSurfaceVariant"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+        </LinearLayout>
+
+        <!-- Gradient fade: colorBackground@80% → transparent; set in code -->
+        <View
+            android:id="@+id/tab_settings_gradient"
+            android:layout_width="match_parent"
+            android:layout_height="72dp" />
+
+    </LinearLayout>
+
+    <!-- Add Tab extended FAB — centered, 16dp above nav bar (margin set in code) -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/tab_settings_add_fab"
+        style="@style/Widget.Material3.ExtendedFloatingActionButton.Smartspacer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/margin_16"
         android:text="@string/expanded_tab_settings_add"
+        android:textColor="?attr/colorOnPrimary"
+        app:backgroundTint="?attr/colorPrimary"
         app:icon="@drawable/ic_fab_add"
-        app:backgroundTint="?attr/colorPrimaryContainer"
-        app:iconTint="?attr/colorOnPrimaryContainer" />
+        app:iconTint="?attr/colorOnPrimary" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

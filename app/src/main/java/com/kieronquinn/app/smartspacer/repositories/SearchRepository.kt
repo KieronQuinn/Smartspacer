@@ -84,6 +84,9 @@ class SearchRepositoryImpl(
 
     private val cacheFile = File(context.cacheDir, FILENAME_DOODLE_CACHE)
     private val setting = settingsRepository.expandedSearchPackage
+    private val webViewFetcher by lazy { com.kieronquinn.app.smartspacer.utils.doodle.WebViewDoodleFetcher(context) }
+    // Gson without exclusion strategy so time_to_live_ms is read when parsing WebView responses.
+    private val plainGson = com.google.gson.Gson()
 
     private val doodleApi by lazy {
         retrofit.create(DoodleApi::class.java)
@@ -151,15 +154,35 @@ class SearchRepositoryImpl(
         }
     }
 
-    private suspend fun loadDoodle(): Doodle? = withContext(Dispatchers.IO) {
-        try {
-            doodleApi.getDoodle().invoke()?.fillDarkImage(doodleApi)?.also {
+    private suspend fun loadDoodle(): Doodle? {
+        // Try WebView first — it uses Chromium's TLS stack, which Google requires to serve
+        // a real doodle response. OkHttp's TLS fingerprint causes Google to return {"ddljson":{}}.
+        val webViewRaw = try { webViewFetcher.fetchRawJson() } catch (_: Exception) { null }
+        val doodle = if (webViewRaw != null) {
+            parseAndFillDoodle(webViewRaw)
+        } else {
+            // Fallback: direct OkHttp call (works when WebView times out or isn't available).
+            withContext(Dispatchers.IO) {
+                try { doodleApi.getDoodle().invoke()?.fillDarkImage(doodleApi, BASE_URL) }
+                catch (_: Exception) { null }
+            }
+        }
+        if (doodle?.getDoodleImage(BASE_URL) == null) return null
+        return doodle.also {
+            try {
                 val cachedDoodle = CachedDoodle(it, it.getExpiryTime())
                 cacheFile.writeText(gson.toJson(cachedDoodle))
-            }
-        }catch (e: Exception){
-            null
+            } catch (_: Exception) {}
         }
+    }
+
+    /** Parses the raw JSON string (possibly with )]}\' prefix) into a filled Doodle. */
+    private suspend fun parseAndFillDoodle(raw: String): Doodle? = withContext(Dispatchers.IO) {
+        try {
+            val json = if (raw.contains("{")) raw.substring(raw.indexOf("{")) else return@withContext null
+            // Use plainGson so time_to_live_ms is read from the response.
+            plainGson.fromJson(json, Doodle::class.java)?.fillDarkImage(doodleApi, BASE_URL)
+        } catch (_: Exception) { null }
     }
 
     private fun getDefaultSearchPackage(): String? {

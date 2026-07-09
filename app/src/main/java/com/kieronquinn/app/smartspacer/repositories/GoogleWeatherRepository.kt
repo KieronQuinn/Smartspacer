@@ -4,8 +4,11 @@ import android.app.PendingIntent
 import android.graphics.Bitmap
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.ForecastState
 import com.kieronquinn.app.smartspacer.repositories.GoogleWeatherRepository.TodayState
+import kotlinx.coroutines.flow.StateFlow
 
 interface GoogleWeatherRepository {
+
+    val todayStateFlow: StateFlow<TodayState?>
 
     fun getTodayState(): TodayState?
     fun setTodayState(todayState: TodayState)
@@ -36,15 +39,17 @@ interface GoogleWeatherRepository {
 
 class GoogleWeatherRepositoryImpl: GoogleWeatherRepository {
 
-    private var todayState: TodayState? = null
+    private val _todayStateFlow = kotlinx.coroutines.flow.MutableStateFlow<TodayState?>(null)
+    override val todayStateFlow: StateFlow<TodayState?> = _todayStateFlow
+
     private var forecastState: ForecastState? = null
 
     override fun getTodayState(): TodayState? {
-        return todayState
+        return _todayStateFlow.value
     }
 
     override fun setTodayState(todayState: TodayState) {
-        this.todayState = todayState
+        _todayStateFlow.value = todayState
     }
 
     override fun getForecastState(): ForecastState? {

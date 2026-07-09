@@ -16,6 +16,9 @@ import com.kieronquinn.app.smartspacer.model.smartspace.Target.TargetBackup
 import com.kieronquinn.app.smartspacer.repositories.BackupRepository.*
 import com.kieronquinn.app.smartspacer.repositories.BackupRepository.SmartspacerBackupProgress.ErrorReason
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.ExpandedCustomWidgetBackup
+import com.kieronquinn.app.smartspacer.model.expanded.ExpandedTabConfig
+import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
+import com.google.gson.reflect.TypeToken
 import com.kieronquinn.app.smartspacer.sdk.model.CompatibilityState
 import com.kieronquinn.app.smartspacer.utils.extensions.firstNotNull
 import com.kieronquinn.app.smartspacer.utils.extensions.firstOfInstance
@@ -107,8 +110,14 @@ class BackupRepositoryImpl(
     private val requirementsRepository: RequirementsRepository,
     private val databaseRepository: DatabaseRepository,
     private val settingsRepository: SmartspacerSettingsRepository,
-    private val expandedRepository: ExpandedRepository
+    private val expandedRepository: ExpandedRepository,
+    private val expandedTabRepository: ExpandedTabRepository
 ): BackupRepository {
+
+    companion object {
+        const val SETTINGS_KEY_TAB_CONFIGS = "expanded_tab_config_tabs"
+        const val SETTINGS_KEY_NAV_DISPLAY_MODE = "expanded_tab_config_nav_mode"
+    }
 
     override fun createBackup(toUri: Uri) = flow {
         emit(SmartspacerBackupProgress.CreatingBackup)
@@ -132,7 +141,14 @@ class BackupRepositoryImpl(
         emit(SmartspacerBackupProgress.CreatingCustomWidgetsBackup)
         val customWidgets = expandedRepository.getExpandedCustomWidgetBackups()
         emit(SmartspacerBackupProgress.CreatingSettingsBackup)
-        val settingsBackup = settingsRepository.getBackup()
+        val settingsBackup = settingsRepository.getBackup().toMutableMap().apply {
+            val tabs = expandedTabRepository.getTabs()
+            if (tabs.isNotEmpty()) {
+                put(SETTINGS_KEY_TAB_CONFIGS, gson.toJson(tabs))
+            }
+            val navMode = expandedTabRepository.getNavItemDisplayMode()
+            put(SETTINGS_KEY_NAV_DISPLAY_MODE, navMode.name)
+        }
         val backup = SmartspacerBackup(
             targetBackups = targetsBackup,
             complicationBackups = complicationsBackup,

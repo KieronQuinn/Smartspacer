@@ -19,6 +19,7 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositor
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTarget
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.Shortcuts.Shortcut
 import com.kieronquinn.app.smartspacer.sdk.utils.sendSafely
+import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.allowBackground
 import kotlinx.coroutines.flow.Flow

@@ -14,6 +14,7 @@ import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepositor
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.ui.activities.ExpandedActivity
+import com.google.android.material.color.DynamicColors
 import com.kieronquinn.app.smartspacer.ui.screens.base.BaseOverlay
 import com.kieronquinn.app.smartspacer.utils.extensions.removeStatusNavBackgroundOnPreDraw
 import com.kieronquinn.app.smartspacer.utils.extensions.whenResumed
@@ -59,7 +60,10 @@ class SmartspacerOverlay(
     }
 
     private val backgroundColour by lazy {
-        monet.getBackgroundColor(context)
+        // Wrap with DynamicColors so Monet tokens are resolved correctly from the
+        // service/overlay context (which doesn't go through Activity.onCreate and
+        // therefore doesn't get DynamicColors applied automatically).
+        monet.getBackgroundColor(DynamicColors.wrapContextIfAvailable(context))
     }
 
     override fun onCreate(bundle: Bundle?) {
@@ -123,10 +127,9 @@ class SmartspacerOverlay(
                 blurProvider.applyBlurToWindow(window!!, progress)
             }
             ExpandedBackground.SCRIM -> {
-                val backgroundColour = ColorUtils.setAlphaComponent(
-                    Color.BLACK, (127.5 * progress).roundToInt()
-                )
-                binding.root.background = ColorDrawable(backgroundColour)
+                // Same as BLUR but without window blur — the fragment supplies the
+                // 75% tinted surface; the overlay root stays transparent.
+                binding.root.background = null
                 blurProvider.applyBlurToWindow(window!!, 0f)
             }
             ExpandedBackground.SOLID -> {

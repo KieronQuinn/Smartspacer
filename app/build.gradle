@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.compose'
     id 'com.google.devtools.ksp'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
@@ -41,6 +42,7 @@ android {
     buildFeatures {
         viewBinding true
         aidl true
+        compose true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -145,6 +147,13 @@ dependencies {
     implementation 'androidx.palette:palette-ktx:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:2.2.0"
     implementation "com.tbuonomo:dotsindicator:5.1.0"
+
+    // Compose — used for LoadingIndicator (M3 Expressive) in the pull-to-refresh gesture
+    implementation 'androidx.compose.ui:ui:1.8.2'
+    implementation 'androidx.compose.runtime:runtime:1.8.2'
+    implementation 'androidx.compose.foundation:foundation:1.8.2'
+    implementation 'androidx.compose.material3:material3:1.4.0-alpha05'
+    implementation 'androidx.activity:activity-compose:1.11.0'
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
     implementation ("com.github.judemanutd:autostarter:1.1.0") {

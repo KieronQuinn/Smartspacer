@@ -7,10 +7,8 @@ import android.content.pm.LauncherApps.ShortcutQuery.FLAG_MATCH_DYNAMIC
 import android.content.pm.LauncherApps.ShortcutQuery.FLAG_MATCH_MANIFEST
 import android.content.pm.ParceledListSlice
 import android.content.pm.ShortcutInfo
-import android.graphics.Bitmap
 import android.os.DeadObjectException
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.kieronquinn.app.smartspacer.components.smartspace.ExpandedSmartspacerSession.Item
 import com.kieronquinn.app.smartspacer.components.smartspace.compat.TargetMerger.Companion.BLANK_TARGET_PREFIX
 import com.kieronquinn.app.smartspacer.model.appshortcuts.AppShortcut
@@ -21,13 +19,12 @@ import com.kieronquinn.app.smartspacer.model.smartspace.TargetHolder
 import com.kieronquinn.app.smartspacer.repositories.DatabaseRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository
 import com.kieronquinn.app.smartspacer.repositories.ExpandedRepository.CustomExpandedAppWidgetConfig
-import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
+import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspaceRepository.SmartspacePageHolder
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.repositories.WallpaperRepository
 import com.kieronquinn.app.smartspacer.repositories.WidgetRepository
 import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceConfig
@@ -38,13 +35,10 @@ import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState
 import com.kieronquinn.app.smartspacer.sdk.model.expanded.ExpandedState.BaseShortcut
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications.Complication
 import com.kieronquinn.app.smartspacer.utils.extensions.createFakeWidgetProviderInfo
-import com.kieronquinn.app.smartspacer.utils.extensions.getBackgroundColour
-import com.kieronquinn.app.smartspacer.utils.extensions.isColorDark
 import com.kieronquinn.app.smartspacer.utils.extensions.isDarkMode
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
 import com.kieronquinn.app.smartspacer.utils.extensions.split
 import com.kieronquinn.app.smartspacer.utils.extensions.whenCreated
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -55,7 +49,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.component.inject
 import java.util.LinkedList
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.Complications as ExpandedComplications
@@ -79,20 +73,24 @@ class ExpandedSmartspacerSession(
     private val expandedRepository by inject<ExpandedRepository>()
     private val settingsRepository by inject<SmartspacerSettingsRepository>()
     private val databaseRepository by inject<DatabaseRepository>()
-    private val searchRepository by inject<SearchRepository>()
     private val widgetRepository by inject<WidgetRepository>()
     private val wallpaperRepository by inject<WallpaperRepository>()
     private val shizukuServiceRepository by inject<ShizukuServiceRepository>()
+    private val smartspaceRepository by inject<SmartspaceRepository>()
     private val topInset = MutableStateFlow(0)
     private val resumeBus = MutableStateFlow(System.currentTimeMillis())
-    private val glide = Glide.with(context)
 
     override val targetCount = flowOf(Integer.MAX_VALUE)
-    override val actionsFirst = settingsRepository.expandedComplicationsFirst.asFlow()
 
+    // Disable the 16ms debounce: collectLatest already cancels stale work, so the debounce
+    // only adds delay on startup (up to 600ms while stateIn flows settle to real values).
+    override val targetCollectionDebounce: Long = 0L
+
+    // Pre-seeded so uiSurface doesn't block three separate combines (convert, loadSmartspaceHolders,
+    // applyActionOverrides) while waiting for lockscreenShowing()'s first BroadcastReceiver event.
     override val uiSurface = context.lockscreenShowing().mapLatest {
         if (it) UiSurface.LOCKSCREEN else UiSurface.HOMESCREEN
-    }
+    }.stateIn(lifecycleScope, SharingStarted.Eagerly, UiSurface.HOMESCREEN)
 
     private val isDarkMode = uiSurface.flatMapLatest {
         when(it) {
@@ -110,91 +108,62 @@ class ExpandedSmartspacerSession(
     private val isDark = combine(
         isDarkMode.filterNotNull(),
         isSystemDarkMode,
-        settingsRepository.expandedBackground.asFlow(),
-        settingsRepository.expandedTintColour.asFlow()
-    ) { dark, systemDark, background, mode ->
-        when(mode){
-            TintColour.AUTOMATIC -> if(background == ExpandedBackground.SOLID) {
-                !systemDark
-            } else {
-                dark
-            }
-            TintColour.BLACK -> true
-            TintColour.WHITE -> false
-        }
-    }
+        settingsRepository.expandedBackground.asFlow()
+    ) { dark, systemDark, background ->
+        if (background == ExpandedBackground.SOLID) !systemDark else dark
+    }.stateIn(lifecycleScope, SharingStarted.Eagerly, context.isDarkMode)
 
+    // Use emptyList() as initial value so expandedWidgets can emit immediately on startup
+    // rather than waiting for the DB query to complete and unblocking State.Loaded sooner.
     private val expandedWidgetConfigs = expandedRepository.getExpandedAppWidgets()
-        .stateIn(lifecycleScope, SharingStarted.Eagerly, null)
+        .stateIn(lifecycleScope, SharingStarted.Eagerly, emptyList())
 
     private var appShortcuts: List<ShortcutInfo>? = null
 
-    private val doodle = combine(
-        settingsRepository.expandedShowDoodle.asFlow(),
-        resumeBus
-    ) { show, _ ->
-        if(show) searchRepository.getDoodle() else null
-    }
-
-    private val searchBox = combine(
-        settingsRepository.expandedShowSearchBox.asFlow(),
-        searchRepository.expandedSearchApp,
-        doodle,
-        isDark
-    ) { showSearch, app, doodle, dark ->
-        if(!showSearch && doodle == null) return@combine null
-        val searchApp = if(showSearch){
-            app
-        }else null
-        val doodleBitmap = doodle?.getBitmap(dark)
-        val doodleBackground = doodleBitmap?.getBackgroundColour()
-        val isLightStatusBar = doodleBackground?.isColorDark()?.let { !it } ?: false
-        Item.Search(doodle, searchApp, doodleBackground, isLightStatusBar, isDark = dark)
-    }
-
-    private suspend fun DoodleImage.getBitmap(dark: Boolean): Bitmap? = withContext(Dispatchers.IO) {
-        val url = if(dark){
-            darkUrl ?: url
-        }else url
-        try {
-            glide.asBitmap().load(url).submit().get()
-        }catch (e: Exception) {
-            null
-        }
-    }
-
+    // Search box has been removed from the expanded space UI; userSettings no longer needs
+    // expandedSearchApp (PackageManager load) or getBitmap() (Glide fetch) in the critical path.
+    // Initial values use getSync() (reads the already-loaded StateFlow value) so the initial
+    // ExpandedSettings matches the real settings, preventing a filterDistinct-passing re-emission
+    // when the stateIn coroutine first delivers real values on Main.
     private val userSettings = combine(
         settingsRepository.enhancedMode.asFlow(),
-        searchBox,
         isDark,
-        settings.expandedWidgetUseGoogleSans.asFlow(),
-        settings.expandedComplicationsFirst.asFlow(),
-        settings.expandedShowShadow.asFlow()
-    ) { settings ->
+        settingsRepository.expandedShowWeatherCookie.asFlow()
+    ) { enhanced, dark, cookie ->
+        ExpandedSettings(enhanced, dark, cookie)
+    }.stateIn(
+        lifecycleScope,
+        SharingStarted.Eagerly,
         ExpandedSettings(
-            settings[0] as Boolean,
-            settings[1] as? Item.Search,
-            settings[2] as Boolean,
-            settings[3] as Boolean,
-            settings[4] as Boolean,
-            settings[5] as Boolean,
+            settingsRepository.enhancedMode.getSync(),
+            context.isDarkMode,
+            settingsRepository.expandedShowWeatherCookie.getSync()
         )
-    }
+    )
 
+    // getSync() reads the pre-loaded StateFlow value synchronously so the initial ExpandedViewState
+    // matches the real hasClickedAdd value, preventing an unnecessary convert() re-emission.
     private val viewState = combine(
         topInset,
         settings.expandedHasClickedAdd.asFlow(),
         resumeBus
     ) { inset, hasClickedAdd, _ ->
         ExpandedViewState(inset, hasClickedAdd)
-    }
+    }.stateIn(lifecycleScope, SharingStarted.Eagerly, ExpandedViewState(0, settings.expandedHasClickedAdd.getSync()))
 
+    // Pre-seeded with emptyList() so the combine below can emit immediately on startup.
+    private val customWidgetsDb = expandedRepository.expandedCustomAppWidgets
+        .stateIn(lifecycleScope, SharingStarted.Eagerly, emptyList())
+
+    // flowOn(IO) is critical: getProviders() queries AppWidgetManager/PackageManager, which
+    // can block for seconds on a cold start. Previously this was protected by convert().flowOn(IO),
+    // but now that expandedWidgets uses stateIn(Eagerly), it's collected from lifecycleScope
+    // (Main) — so we must explicitly move this lambda onto IO.
     private val expandedCustomAppWidgets = combine(
-        expandedRepository.expandedCustomAppWidgets,
+        customWidgetsDb,
         uiSurface,
-        isDark,
-        settings.expandedWidgetUseGoogleSans.asFlow()
-    ) { widgets, surface, dark, useGoogleSans ->
+        isDark
+    ) { widgets, surface, dark ->
         val providers = widgetRepository.getProviders()
         widgets.mapNotNull { widget ->
             if(!widget.showWhenLocked && surface != UiSurface.HOMESCREEN){
@@ -218,7 +187,7 @@ class ExpandedSmartspacerSession(
                 null,
                 null,
                 true,
-                useGoogleSans,
+                false,
                 config,
                 widget.spanX,
                 widget.spanY,
@@ -227,14 +196,15 @@ class ExpandedSmartspacerSession(
                 dark
             )
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
+    // Pre-seeded so convert() is not blocked by expandedCustomAppWidgets IO dispatches.
     private val expandedWidgets = combine(
-        expandedWidgetConfigs.filterNotNull(),
+        expandedWidgetConfigs,
         expandedCustomAppWidgets
     ) { ids, custom ->
         Pair(ids, custom)
-    }
+    }.stateIn(lifecycleScope, SharingStarted.Eagerly, Pair(emptyList<ExpandedAppWidget>(), emptyList<Item>()))
 
     override suspend fun collectInto(id: SmartspaceSessionId, targets: List<Item>) {
         collectInto(targets)
@@ -289,39 +259,96 @@ class ExpandedSmartspacerSession(
         settings: ExpandedSettings,
         viewState: ExpandedViewState
     ): List<Item> {
-        // Capture the full ordered page list before blank-target splitting so the header pill
-        // can page through exactly the same targets as the regular Smartspacer widget.
-        rawPageTargets.value = map { it.page }
-        val isDark = settings.isDark
-        val applyShadow = settings.applyShadow
-        val list = ArrayList<Item>()
-        if(settings.searchItem != null) {
-            list.add(settings.searchItem.copy(topInset = viewState.topInset))
-        }else{
-            list.add(Item.StatusBarSpace(viewState.topInset, isDark))
+        // When the weather cookie is enabled (default), strip all weather targets so they
+        // are excluded from rawPageTargets and the complications row — weather is shown
+        // exclusively as the circular cookie badge.
+        // When the cookie is disabled, keep weather targets in the list so they appear
+        // as regular pages in the header pill.
+        val finalList = if (settings.showWeatherCookie) {
+            val w = SmartspaceTarget.FEATURE_WEATHER
+            // IDs of the actions that feed the weather cookie — the most reliable identifier
+            val weatherActionIds = smartspaceRepository.getDefaultHomeActions().value
+                .map { it.id }.toSet()
+            fun isCurrentWeatherAction(id: String?) = id != null && weatherActionIds.contains(id)
+            mapNotNull { holder ->
+                val t = holder.page
+                val headerIsWeather = isCurrentWeatherAction(t.headerAction?.id)
+                val baseIsWeather = isCurrentWeatherAction(t.baseAction?.id)
+                when {
+                    // Regular FEATURE_WEATHER targets — drop entirely
+                    t.featureType == w -> null
+                    // Blank complication targets with weather in one or both slots.
+                    t.smartspaceTargetId.startsWith(BLANK_TARGET_PREFIX) &&
+                    (headerIsWeather || baseIsWeather) -> {
+                        val td = t.templateData
+                        when {
+                            headerIsWeather && baseIsWeather -> null
+                            // Header is weather but base has a complication — promote base to header
+                            headerIsWeather -> holder.copy(page = t.copy(
+                                headerAction = t.baseAction,
+                                baseAction = null,
+                                templateData = td?.copy(
+                                    subtitleItem = td.subtitleSupplementalItem,
+                                    subtitleSupplementalItem = null
+                                ),
+                                remoteViews = null
+                            ))
+                            // Base is weather — null it out, keep header
+                            else -> holder.copy(page = t.copy(
+                                baseAction = null,
+                                templateData = td?.copy(subtitleSupplementalItem = null),
+                                remoteViews = null
+                            ))
+                        }
+                    }
+                    // Non-blank target with weather as a subtitle action — strip it.
+                    // Promote supplemental into subtitle if present, otherwise just null it.
+                    headerIsWeather || baseIsWeather -> {
+                        val td = t.templateData
+                        holder.copy(page = t.copy(
+                            headerAction = if (headerIsWeather) null else t.headerAction,
+                            baseAction = if (baseIsWeather) null else t.baseAction,
+                            templateData = td?.copy(
+                                subtitleItem = if (headerIsWeather) td.subtitleSupplementalItem
+                                              else td.subtitleItem,
+                                subtitleSupplementalItem = if (headerIsWeather || baseIsWeather) null
+                                                           else td.subtitleSupplementalItem
+                            ),
+                            remoteViews = null
+                        ))
+                    }
+                    else -> holder
+                }
+            }
+        } else {
+            // Cookie disabled — keep all targets including weather
+            toList()
         }
-        val splitLists = split {
+
+        rawPageTargets.value = finalList.map { it.page }
+        val isDark = settings.isDark
+        val list = ArrayList<Item>()
+        list.add(Item.StatusBarSpace(viewState.topInset, isDark))
+        val splitLists = finalList.split {
             it.page.smartspaceTargetId.startsWith(BLANK_TARGET_PREFIX)
         }
-        val complications = splitLists.second.map { it.page }
-        val addComplications = {
-            list.add(Item.Complications(complications.extractComplications(), applyShadow, isDark))
-        }
-        if(complications.isNotEmpty() && settings.complicationsFirst) {
-            addComplications()
-        }
+
+        // Drop blank targets that became empty after weather stripping.
+        val complications = splitLists.second
+            .filter { it.page.templateData?.subtitleItem != null }
+            .map { it.page }
         splitLists.first.forEach {
             val extras = it.getExtras(
                 surface,
                 widgets,
                 settings.enhancedEnabled,
                 isDark,
-                settings.useGoogleSans
+                false
             )
             list.add(Item.Target(
                 it.page.addFakeWidgetIfNeeded(),
                 it.target?.id, extras.isNotEmpty(),
-                applyShadow,
+                true,
                 isDark
             ))
             //Force a new line if any extras are being shown alongside this Target
@@ -333,8 +360,8 @@ class ExpandedSmartspacerSession(
                 list.add(Item.Spacer(isDark))
             }
         }
-        if(complications.isNotEmpty() && !settings.complicationsFirst) {
-            addComplications()
+        if(complications.isNotEmpty()) {
+            list.add(Item.Complications(complications.extractComplications(), true, isDark))
         }
         list.add(Item.Spacer(isDark))
         list.addAll(customWidgets)
@@ -627,11 +654,8 @@ class ExpandedSmartspacerSession(
 
     data class ExpandedSettings(
         val enhancedEnabled: Boolean,
-        val searchItem: Item.Search?,
         val isDark: Boolean,
-        val useGoogleSans: Boolean,
-        val complicationsFirst: Boolean,
-        val applyShadow: Boolean
+        val showWeatherCookie: Boolean
     )
 
     data class ExpandedViewState(

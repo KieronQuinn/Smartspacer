@@ -1,19 +1,17 @@
 package com.kieronquinn.app.smartspacer.ui.screens.expanded.settings
 
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import com.kieronquinn.app.smartspacer.components.navigation.ContainerNavigation
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedSettingsProvider
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedStateProvider
 import com.kieronquinn.app.smartspacer.model.expanded.NavItemDisplayMode
 import com.kieronquinn.app.smartspacer.repositories.ExpandedTabRepository
-import com.kieronquinn.app.smartspacer.repositories.SearchRepository
-import com.kieronquinn.app.smartspacer.repositories.SearchRepository.SearchApp
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedBackground
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedHideAddButton
 import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.ExpandedOpenMode
-import com.kieronquinn.app.smartspacer.repositories.SmartspacerSettingsRepository.TintColour
 import com.kieronquinn.app.smartspacer.ui.base.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,21 +30,15 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
 
     abstract fun onResume()
     abstract fun onEnabledChanged(enabled: Boolean)
-    abstract fun onShowSearchBoxChanged(enabled: Boolean)
-    abstract fun onSearchProviderClicked()
     abstract fun onShowDoodleChanged(enabled: Boolean)
-    abstract fun onTintColourChanged(tintColour: TintColour)
+    abstract fun onDoodleOpenGoogleAppChanged(enabled: Boolean)
     abstract fun onOpenModeHomeClicked(isFromSettings: Boolean)
     abstract fun onOpenModeLockClicked(isFromSettings: Boolean)
     abstract fun onCloseWhenLockedChanged(enabled: Boolean)
     abstract fun onBackgroundModeChanged(mode: ExpandedBackground)
-    abstract fun onUseGoogleSansChanged(enabled: Boolean)
     abstract fun onXposedEnabledChanged(context: Context, enabled: Boolean)
-    abstract fun onHideAddChanged(hideAdd: ExpandedHideAddButton)
-    abstract fun onMultiColumnChanged(enabled: Boolean)
-    abstract fun onComplicationsFirstChanged(enabled: Boolean)
-    abstract fun onShowShadowChanged(enabled: Boolean)
     abstract fun onNavItemDisplayModeChanged(mode: NavItemDisplayMode)
+    abstract fun onShowWeatherCookieChanged(enabled: Boolean)
 
     abstract fun isBackgroundBlurCompatible(): Boolean
 
@@ -54,22 +46,17 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
         data object Loading: State()
         data class Loaded(
             val enabled: Boolean,
-            val showSearchBox: Boolean,
-            val searchProvider: SearchApp?,
             val showDoodle: Boolean,
-            val tintColour: TintColour,
+            val doodleOpenGoogleApp: Boolean,
             val openModeHome: ExpandedOpenMode,
             val openModeLock: ExpandedOpenMode,
             val closeWhenLocked: Boolean,
             val backgroundMode: ExpandedBackground,
-            val widgetsUseGoogleSans: Boolean,
             val xposedAvailable: Boolean,
             val xposedEnabled: Boolean,
-            val hideAdd: ExpandedHideAddButton,
-            val multiColumn: Boolean,
-            val complicationsFirst: Boolean,
-            val showShadow: Boolean,
-            val navItemDisplayMode: NavItemDisplayMode
+            val navItemDisplayMode: NavItemDisplayMode,
+            val showWeatherCookie: Boolean,
+            val readYouAvailable: Boolean
         ): State()
     }
 
@@ -78,27 +65,20 @@ abstract class ExpandedSettingsViewModel(scope: CoroutineScope?): BaseViewModel(
 class ExpandedSettingsViewModelImpl(
     private val navigation: ContainerNavigation,
     settings: SmartspacerSettingsRepository,
-    searchRepository: SearchRepository,
-    context: Context,
+    private val context: Context,
     private val tabRepository: ExpandedTabRepository,
     scope: CoroutineScope? = null
 ): ExpandedSettingsViewModel(scope) {
 
     private val enabled = settings.expandedModeEnabled
-    private val showSearchBox = settings.expandedShowSearchBox
-    private val searchApp = searchRepository.expandedSearchApp
     private val showDoodle = settings.expandedShowDoodle
-    private val tintColour = settings.expandedTintColour
+    private val doodleOpenGoogleApp = settings.expandedDoodleOpenGoogleApp
     private val openModeHome = settings.expandedOpenModeHome
     private val openModeLock = settings.expandedOpenModeLock
     private val closeWhenLocked = settings.expandedCloseWhenLocked
     private val backgroundMode = settings.expandedBackground
-    private val widgetsUseGoogleSans = settings.expandedWidgetUseGoogleSans
-    private val hideAddButton = settings.expandedHideAddButton
     private val xposedEnabled = settings.expandedXposedEnabled
-    private val multiColumn = settings.expandedMultiColumnEnabled
-    private val complicationsFirst = settings.expandedComplicationsFirst
-    private val showShadow = settings.expandedShowShadow
+    private val showWeatherCookie = settings.expandedShowWeatherCookie
 
     private val resumeBus = MutableStateFlow(System.currentTimeMillis())
 
@@ -106,77 +86,55 @@ class ExpandedSettingsViewModelImpl(
         SmartspacerXposedStateProvider.getXposedEnabled(context)
     }.flowOn(Dispatchers.IO)
 
+    private fun isReadYouAvailable(): Boolean {
+        val intent = Intent().setClassName(
+            "me.ash.reader",
+            "me.ash.reader.infrastructure.android.MainActivity"
+        )
+        return context.packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null
+    }
+
+    // Group openMode + xposed flags to stay within 5-arg combine limit
     private val openMode = combine(
         openModeHome.asFlow(),
         openModeLock.asFlow(),
         xposedEnabled.asFlow()
-    ) { home, lock, xposed ->
-        Triple(home, lock, xposed)
-    }
+    ) { home, lock, xposed -> Triple(home, lock, xposed) }
 
-    private val searchOptions = combine(
-        showSearchBox.asFlow(),
-        searchApp,
-        showDoodle.asFlow()
-    ) { show, provider, doodle ->
-        Triple(show, provider, doodle)
-    }
-
-    private val booleanOptions = combine(
-        closeWhenLocked.asFlow(),
-        widgetsUseGoogleSans.asFlow(),
-        multiColumn.asFlow(),
-        complicationsFirst.asFlow(),
-        showShadow.asFlow()
-    ) { options ->
-        options
-    }
-
+    // Group booleans + style options
     private val options = combine(
-        booleanOptions,
-        tintColour.asFlow(),
+        closeWhenLocked.asFlow(),
         backgroundMode.asFlow(),
-        hideAddButton.asFlow(),
-        tabRepository.navItemDisplayMode
-    ) { booleanOptions, tint, background, hideAdd, displayMode ->
-        Options(
-            tint,
-            booleanOptions[0],
-            background,
-            booleanOptions[1],
-            hideAdd,
-            booleanOptions[2],
-            booleanOptions[3],
-            booleanOptions[4],
-            displayMode
-        )
-    }
+        tabRepository.navItemDisplayMode,
+        showWeatherCookie.asFlow()
+    ) { close, bg, nav, cookie -> object {
+        val closeWhenLocked = close
+        val backgroundMode = bg
+        val navItemDisplayMode = nav
+        val showWeatherCookie = cookie
+    }}
 
     override val state = combine(
         enabled.asFlow(),
         openMode,
-        searchOptions,
+        combine(showDoodle.asFlow(), doodleOpenGoogleApp.asFlow()) { d, og -> Pair(d, og) },
         options,
         xposedAvailable
-    ) { isExpanded, open, search, options, xposed ->
+    ) { isEnabled, open, doodle, opts, xposed ->
+        val readYouAvailable = isReadYouAvailable()
         State.Loaded(
-            isExpanded,
-            search.first,
-            search.second,
-            search.third,
-            options.tintColour,
-            open.first,
-            open.second,
-            options.closeWhenLocked,
-            options.backgroundMode,
-            options.widgetsUseGoogleSans,
-            xposed,
-            open.third,
-            options.hideAddButton,
-            options.multiColumn,
-            options.complicationsFirst,
-            options.showShadow,
-            options.navItemDisplayMode
+            enabled = isEnabled && readYouAvailable,
+            showDoodle = doodle.first,
+            doodleOpenGoogleApp = doodle.second,
+            openModeHome = open.first,
+            openModeLock = open.second,
+            closeWhenLocked = opts.closeWhenLocked,
+            backgroundMode = opts.backgroundMode,
+            xposedAvailable = xposed,
+            xposedEnabled = open.third,
+            navItemDisplayMode = opts.navItemDisplayMode,
+            showWeatherCookie = opts.showWeatherCookie,
+            readYouAvailable = readYouAvailable
         )
     }.stateIn(vmScope, SharingStarted.Eagerly, State.Loading)
 
@@ -192,27 +150,15 @@ class ExpandedSettingsViewModelImpl(
         }
     }
 
-    override fun onSearchProviderClicked() {
-        vmScope.launch {
-            navigation.navigate(ExpandedSettingsFragmentDirections.actionExpandedSettingsFragmentToExpandedSettingsSearchProviderFragment())
-        }
-    }
-
     override fun onShowDoodleChanged(enabled: Boolean) {
         vmScope.launch {
             showDoodle.set(enabled)
         }
     }
 
-    override fun onTintColourChanged(tintColour: TintColour) {
+    override fun onDoodleOpenGoogleAppChanged(enabled: Boolean) {
         vmScope.launch {
-            this@ExpandedSettingsViewModelImpl.tintColour.set(tintColour)
-        }
-    }
-
-    override fun onShowSearchBoxChanged(enabled: Boolean) {
-        vmScope.launch {
-            showSearchBox.set(enabled)
+            doodleOpenGoogleApp.set(enabled)
         }
     }
 
@@ -240,12 +186,6 @@ class ExpandedSettingsViewModelImpl(
         }
     }
 
-    override fun onUseGoogleSansChanged(enabled: Boolean) {
-        vmScope.launch {
-            widgetsUseGoogleSans.set(enabled)
-        }
-    }
-
     override fun onXposedEnabledChanged(context: Context, enabled: Boolean) {
         vmScope.launch {
             xposedEnabled.set(enabled)
@@ -253,48 +193,18 @@ class ExpandedSettingsViewModelImpl(
         }
     }
 
-    override fun onHideAddChanged(hideAdd: ExpandedHideAddButton) {
-        vmScope.launch {
-            hideAddButton.set(hideAdd)
-        }
-    }
-
-    override fun onMultiColumnChanged(enabled: Boolean) {
-        vmScope.launch {
-            multiColumn.set(enabled)
-        }
-    }
-
-    override fun onComplicationsFirstChanged(enabled: Boolean) {
-        vmScope.launch {
-            complicationsFirst.set(enabled)
-        }
-    }
-
-    override fun onShowShadowChanged(enabled: Boolean) {
-        vmScope.launch {
-            showShadow.set(enabled)
-        }
-    }
-
     override fun onNavItemDisplayModeChanged(mode: NavItemDisplayMode) {
         tabRepository.setNavItemDisplayMode(mode)
+    }
+
+    override fun onShowWeatherCookieChanged(enabled: Boolean) {
+        vmScope.launch {
+            showWeatherCookie.set(enabled)
+        }
     }
 
     override fun isBackgroundBlurCompatible(): Boolean {
         return Build.VERSION.SDK_INT >= 30
     }
-
-    data class Options(
-        val tintColour: TintColour,
-        val closeWhenLocked: Boolean,
-        val backgroundMode: ExpandedBackground,
-        val widgetsUseGoogleSans: Boolean,
-        val hideAddButton: ExpandedHideAddButton,
-        val multiColumn: Boolean,
-        val complicationsFirst: Boolean,
-        val showShadow: Boolean,
-        val navItemDisplayMode: NavItemDisplayMode
-    )
 
 }

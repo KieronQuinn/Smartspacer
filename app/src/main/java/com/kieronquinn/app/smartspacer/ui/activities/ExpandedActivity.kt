@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.ui.activities
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
@@ -69,10 +70,20 @@ class ExpandedActivity: AppCompatActivity() {
             window.attributes.layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
         }
+        setupThemeForExpanded()
         setupThemeForMinusOne()
         super.onCreate(savedInstanceState)
         setShowWhenLocked(!isMinusOne)
+        // Edge-to-edge: let our layout extend behind both bars.
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        // Force bars fully transparent — the theme sets the colours but Android 10+
+        // re-applies a contrast scrim unless we explicitly disable it in code.
+        window.statusBarColor = Color.TRANSPARENT
+        window.navigationBarColor = Color.TRANSPARENT
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isStatusBarContrastEnforced = false
+            window.isNavigationBarContrastEnforced = false
+        }
         setupOverlayBackPress()
         whenCreated {
             if(launchMainIfRequired()) return@whenCreated
@@ -89,6 +100,33 @@ class ExpandedActivity: AppCompatActivity() {
         if(!intent.getBooleanExtra(KEY_IS_OVERLAY, false)) return
         onBackPressedDispatcher.addCallback {
             notifyOverlayBackPress()
+        }
+    }
+
+    /**
+     * Only applies to the standalone (non-overlay, non-MinusOne) expanded activity.
+     *
+     * SOLID: SolidWindow overrides the Wallpaper base theme's transparent window background
+     *        so the wallpaper never bleeds through before the fragment renders.
+     * BLUR/SCRIM: BlurWindow disables translucency so setBackgroundBlurRadius() works.
+     *
+     * When launched as the Smart Launcher overlay (isOverlayEarly=true), both cases are
+     * skipped — SmartspacerOverlay owns the background there.
+     */
+    private fun setupThemeForExpanded() {
+        val isOverlayEarly = intent.getBooleanExtra(KEY_IS_OVERLAY, false)
+        val isMinusOneEarly = intent.component?.className == CLASS_MINUS_ONE
+        if (isOverlayEarly || isMinusOneEarly) return
+        // SOLID: apply SolidWindow overlay — overrides the Wallpaper base theme's transparent
+        //        window background and wallpaper flag with an opaque colorBackground window,
+        //        so the wallpaper never shows through before the fragment renders.
+        // BLUR/SCRIM: apply BlurWindow overlay — disables translucency so
+        //        setBackgroundBlurRadius() works; keeps wallpaper visible via the base theme.
+        when (settings.expandedBackground.getSync()) {
+            ExpandedBackground.SOLID ->
+                theme.applyStyle(R.style.ThemeOverlay_Smartspacer_SolidWindow, true)
+            ExpandedBackground.BLUR, ExpandedBackground.SCRIM ->
+                theme.applyStyle(R.style.ThemeOverlay_Smartspacer_BlurWindow, true)
         }
     }
 

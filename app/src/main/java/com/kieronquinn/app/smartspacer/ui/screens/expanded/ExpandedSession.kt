@@ -12,7 +12,6 @@ import com.kieronquinn.app.smartspacer.sdk.model.SmartspaceTargetEvent
 import com.kieronquinn.app.smartspacer.sdk.model.uitemplatedata.BaseTemplateData
 import com.kieronquinn.app.smartspacer.ui.screens.expanded.ExpandedSession.State
 import com.kieronquinn.app.smartspacer.utils.extensions.lockscreenShowing
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -22,11 +21,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import java.util.UUID
 
 interface ExpandedSession {
@@ -52,7 +49,6 @@ interface ExpandedSession {
         data class Loaded(
             val isLocked: Boolean,
             val lightStatusIcons: Boolean,
-            val multiColumnEnabled: Boolean,
             val items: List<ExpandedSmartspacerSession.Item>
         ): State()
     }
@@ -149,26 +145,6 @@ class ExpandedSessionImpl(
         it && settingsRepository.expandedCloseWhenLocked.get()
     }.filterNotNull()
 
-    private val hideAddButton = combine(
-        isOverlay.filterNotNull(),
-        settingsRepository.expandedHideAddButton.asFlow(),
-        isLocked
-    ) { overlay, hideAdd, locked ->
-        when(hideAdd) {
-            SmartspacerSettingsRepository.ExpandedHideAddButton.NEVER -> false
-            SmartspacerSettingsRepository.ExpandedHideAddButton.ALWAYS -> true
-            SmartspacerSettingsRepository.ExpandedHideAddButton.WHEN_LOCKED -> locked
-            SmartspacerSettingsRepository.ExpandedHideAddButton.OVERLAY_ONLY -> overlay
-        }
-    }
-
-    private val filteredItems = combine(
-        items,
-        hideAddButton
-    ) { items, hideAdd ->
-        items.filterNot { it is ExpandedSmartspacerSession.Item.Footer && hideAdd }
-    }
-
     private val hasDisplayOverOtherAppsPermission = combine(
         isOverlay.filterNotNull(),
         isResumed
@@ -181,10 +157,9 @@ class ExpandedSessionImpl(
     override val state = combine(
         settingsRepository.expandedModeEnabled.asFlow(),
         isLocked,
-        filteredItems,
-        hasDisplayOverOtherAppsPermission,
-        settingsRepository.expandedMultiColumnEnabled.asFlow()
-    ) { expanded, locked, list, permission, multiColumn ->
+        items,
+        hasDisplayOverOtherAppsPermission
+    ) { expanded, locked, list, permission ->
         when {
             !permission && expanded -> {
                 State.PermissionRequired
@@ -192,36 +167,33 @@ class ExpandedSessionImpl(
             expanded -> {
                 val search = list.filterIsInstance<ExpandedSmartspacerSession.Item.Search>().firstOrNull()
                 val isLightStatusBar = search?.isLightStatusBar ?: false
-                State.Loaded(locked, isLightStatusBar, multiColumn, list)
+                State.Loaded(locked, isLightStatusBar, list)
             }
             else -> {
                 State.Disabled
             }
         }
-    }.flowOn(Dispatchers.IO).onEach {
+    }.onEach {
         if(it is State.PermissionRequired) {
             settingsRepository.requiresDisplayOverOtherAppsPermission.set(true)
         }
     }.stateIn(scope, SharingStarted.Eagerly, State.Loading)
 
     override fun setup(isOverlay: Boolean) {
-        scope.launch {
-            this@ExpandedSessionImpl.isOverlay.emit(isOverlay)
-        }
+        // Use the synchronous .value setter so hasPermission unblocks immediately
+        // instead of waiting for a scope.launch coroutine to run (which was delayed 180-250ms
+        // behind Main-thread fragment view setup).
+        this.isOverlay.value = isOverlay
     }
 
     override fun onPause() {
         session.onPause()
-        scope.launch {
-            isResumed.emit(false)
-        }
+        isResumed.value = false
     }
 
     override fun onResume() {
         session.onResume()
-        scope.launch {
-            isResumed.emit(true)
-        }
+        isResumed.value = true
     }
 
     override fun onDestroy() {

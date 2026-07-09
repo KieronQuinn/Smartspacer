@@ -87,6 +87,8 @@ import com.kieronquinn.app.smartspacer.repositories.RecentTasksRepository
 import com.kieronquinn.app.smartspacer.repositories.RecentTasksRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.RequirementsRepository
 import com.kieronquinn.app.smartspacer.repositories.RequirementsRepositoryImpl
+import com.kieronquinn.app.smartspacer.repositories.ReadYouRepository
+import com.kieronquinn.app.smartspacer.repositories.ReadYouRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.SearchRepository
 import com.kieronquinn.app.smartspacer.repositories.SearchRepositoryImpl
 import com.kieronquinn.app.smartspacer.repositories.ShizukuServiceRepository
@@ -350,6 +352,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single<AppWidgetRepository>(createdAtStart = true) { AppWidgetRepositoryImpl(get(), get(), get(), get(), get()) }
         single<ExpandedRepository> { ExpandedRepositoryImpl(get(), get(), get(), get(), get()) }
         single<ExpandedTabRepository> { ExpandedTabRepositoryImpl(get(), get()) }
+        single<ReadYouRepository> { ReadYouRepositoryImpl(get()) }
         single<SmartspacerSettingsRepository> { SmartspacerSettingsRepositoryImpl(get()) }
         single<ShizukuServiceRepository> { ShizukuServiceRepositoryImpl(get(), get()) }
         single<SystemSmartspaceRepository>(createdAtStart = true) { SystemSmartspaceRepositoryImpl(get(), get(), get(), get(), get()) }
@@ -394,7 +397,7 @@ class Smartspacer: Application(), Configuration.Provider {
         single<PluginRepository> { PluginRepositoryImpl(get(), get(), get(), get()) }
         single<DownloadRepository> { DownloadRepositoryImpl(get()) }
         single<UpdateRepository> { UpdateRepositoryImpl(get()) }
-        single<BackupRepository> { BackupRepositoryImpl(get(), get(), get(), get(), get(), get(), get()) }
+        single<BackupRepository> { BackupRepositoryImpl(get(), get(), get(), get(), get(), get(), get(), get()) }
         single<DigitalWellbeingRepository> { DigitalWellbeingRepositoryImpl(get()) }
         single<CalendarRepository>(createdAtStart = true) { CalendarRepositoryImpl(get(), get()) }
         single<GmailRepository>(createdAtStart = true) { GmailRepositoryImpl(get(), get()) }
@@ -464,7 +467,7 @@ class Smartspacer: Application(), Configuration.Provider {
                 get()
             )
         }
-        viewModel<ExpandedSettingsViewModel> { ExpandedSettingsViewModelImpl(get(), get(), get(), get(), get()) }
+        viewModel<ExpandedSettingsViewModel> { ExpandedSettingsViewModelImpl(get(), get(), get(), get()) }
         viewModel<ExpandedSettingsSearchProviderViewModel> { ExpandedSettingsSearchProviderViewModelImpl(get(), get()) }
         viewModel { ExpandedHomeOpenModeSettingsViewModel(get()) }
         viewModel { ExpandedLockOpenModeSettingsViewModel(get()) }
@@ -472,7 +475,6 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<MusicConfigurationViewModel> { MusicConfigurationViewModelImpl(get()) }
         viewModel<ExpandedAddWidgetBottomSheetViewModel> { ExpandedAddWidgetBottomSheetViewModelImpl(get(), get(), get(), get()) }
         viewModel<ExpandedRearrangeViewModel> { ExpandedRearrangeViewModelImpl(
-            get(),
             get(),
             get(),
             get(),
@@ -503,7 +505,7 @@ class Smartspacer: Application(), Configuration.Provider {
         viewModel<RestoreComplicationsViewModel> { RestoreComplicationsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
         viewModel<RestoreRequirementsViewModel> { RestoreRequirementsViewModelImpl(get(), get(), get(), get()) }
         viewModel<RestoreWidgetsViewModel> { RestoreWidgetsViewModelImpl(get(), get()) }
-        viewModel<RestoreSettingsViewModel> { RestoreSettingsViewModelImpl(get(), get()) }
+        viewModel<RestoreSettingsViewModel> { RestoreSettingsViewModelImpl(get(), get(), get(), get()) }
         viewModel<CalendarTargetConfigurationViewModel> { CalendarTargetConfigurationViewModelImpl(get(), get(), get()) }
         viewModel<DefaultTargetConfigurationViewModel> { DefaultTargetConfigurationViewModelImpl(get(), get(), get()) }
         viewModel<GmailComplicationConfigurationViewModel> { GmailComplicationConfigurationViewModelImpl(get(), get(), get()) }
