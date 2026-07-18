@@ -190,6 +190,7 @@ fun SystemSmartspaceTarget.equalsCompat(other: Any?): Boolean {
     if(other.associatedSmartspaceTargetId != associatedSmartspaceTargetId) return false
     if(other.sliceUri != sliceUri) return false
     if(other.widget != widget) return false
+    if(other.templateData != templateData) return false
     return true
 }
 
