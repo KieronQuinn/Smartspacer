@@ -72,26 +72,26 @@
     <string name="widget_configuration_material_you_title">Material You 风格</string>
     <string name="widget_configuration_material_you_description">为小组件使用动态的 Material You 风格\n\n<b>注意：</b>启用该选项可能为部分对象带来尺寸问题。</string>
     <!-- Widget Pinning Section -->
-    <string name="widget_configuration_pin_title">Widget Pinning</string>
-    <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
+    <string name="widget_configuration_pin_title">小部件置顶</string>
+    <string name="widget_configuration_pin_description">按此小部件显示特定内容。当堆叠多个 SmartSpace 小部件以模拟可滚动的 Smartspace 体验时有用。</string>
     <!-- Pin Mode -->
-    <string name="widget_configuration_pin_mode_label">Pin Mode</string>
-    <string name="widget_configuration_pin_mode_none">None (cycle through all)</string>
-    <string name="widget_configuration_pin_mode_page">Pin to Page Position</string>
-    <string name="widget_configuration_pin_mode_target">Pin to Specific Target</string>
+    <string name="widget_configuration_pin_mode_label">置顶模式</string>
+    <string name="widget_configuration_pin_mode_none">无 (穿过所有)</string>
+    <string name="widget_configuration_pin_mode_page">固定到页面位置</string>
+    <string name="widget_configuration_pin_mode_target">固定到特定对象</string>
     <!-- Page Mode -->
-    <string name="widget_configuration_pin_page_label">Page Position</string>
-    <string name="widget_configuration_pin_page_value">Page %1$d</string>
-    <string name="widget_configuration_pin_page_warning"><b>How Page Pinning Works:</b> This widget will always show whatever target is at the selected page position. Page content changes dynamically - the target shown may vary based on which targets are currently active and their priorities.</string>
+    <string name="widget_configuration_pin_page_label">页面位置</string>
+    <string name="widget_configuration_pin_page_value">第 %1$d 页</string>
+    <string name="widget_configuration_pin_page_warning"><b>置顶页面如何工作：</b> 这个小部件将总是在选定的页面位置显示任何对象。 页面内容发生了动态变化——所显示的对象可能因目前正在执行的对象及其优先次序而不同。</string>
     <!-- Target Mode -->
-    <string name="widget_configuration_pin_target_label">Select Target</string>
-    <string name="widget_configuration_pin_target_none">Tap to select…</string>
-    <string name="widget_configuration_pin_target_warning"><b>How Target Pinning Works:</b> This widget will always try to show the selected target. If the target becomes unavailable (e.g., no music playing for a music target, or requirements not met), the fallback behavior below determines what to show instead.</string>
+    <string name="widget_configuration_pin_target_label">选择对象</string>
+    <string name="widget_configuration_pin_target_none">点击选择…</string>
+    <string name="widget_configuration_pin_target_warning"><b>置顶对象如何工作：</b> 这个小部件将总是尝试显示选定的对象。如果对象不可用，（没有播放音乐对象的音乐，也没有满足的要求。）下面的后退行为决定了应放映什么。</string>
     <!-- Fallback (shared) -->
-    <string name="widget_configuration_pin_fallback_label">When Unavailable</string>
-    <string name="widget_configuration_pin_fallback_show_date">Show date</string>
-    <string name="widget_configuration_pin_fallback_show_first">Show first available target</string>
-    <string name="widget_configuration_pin_fallback_hide">Hide widget content</string>
+    <string name="widget_configuration_pin_fallback_label">不可用时</string>
+    <string name="widget_configuration_pin_fallback_show_date">显示日期</string>
+    <string name="widget_configuration_pin_fallback_show_first">显示第一个可用对象</string>
+    <string name="widget_configuration_pin_fallback_hide">隐藏小部件内容</string>
     <string name="widget_options_configure">配置小组件</string>
     <string name="accessibility_service_label">Smartspacer 小组件服务</string>
     <string name="accessibility_service_description">无需常驻后台消耗电量，启用 Smartspace 的小组件即可保证对象和附件正常更新。\n\n注意：如果你启用了增强模式则无需该设置。</string>
