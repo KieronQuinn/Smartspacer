@@ -466,16 +466,18 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
     private fun setupCrashListener() = scope.launch {
         activityManager.processDied().collect { uid ->
             if(suppressCrash) return@collect
+            val userId = UserHandle.getUserHandleForUid(uid).getIdentifier()
             val packages = packageManager.getPackagesForUid(uid) ?: return@collect
             packages.forEach { pkg ->
-                onPackageDied(pkg)
+                onPackageDied(pkg, userId)
             }
         }
     }
 
     @Synchronized
-    private fun onPackageDied(packageName: String) {
+    private fun onPackageDied(packageName: String, userId: Int) {
         if(packageName == PACKAGE_ASI) {
+            if(userId != getUserId()) return
             try {
                 crashListener?.onAsiStopped()
             }catch (e: RemoteException){
