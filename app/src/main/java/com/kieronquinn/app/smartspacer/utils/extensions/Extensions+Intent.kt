@@ -10,7 +10,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Parcelable
 import android.provider.Settings
-import android.util.Log
 import androidx.annotation.RestrictTo
 import androidx.core.net.toUri
 import com.kieronquinn.app.smartspacer.BuildConfig
@@ -140,4 +139,10 @@ fun getShizukuInstallIntent(): Intent {
     return Intent(Intent.ACTION_VIEW).apply {
         data = LINK_REDIRECT_SHIZUKU.toUri()
     }
+}
+
+fun Intent.getIntExtras(vararg name: String, default: Int): Int {
+    return name.firstOrNull { hasExtra(it) }?.let {
+        getIntExtra(it, default)
+    } ?: default
 }

@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.11.1'
-def tagCode = 1111
+def tagName = '1.11.2'
+def tagCode = 1112
 
 android {
     compileSdkVersion 37
@@ -80,7 +80,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation "androidx.lifecycle:lifecycle-service:2.10.0"
+    implementation "androidx.lifecycle:lifecycle-service:2.11.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.core:core-splashscreen:1.2.0'
@@ -112,7 +112,7 @@ dependencies {
     //Bypass hidden API restrictions
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
 
-    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation 'com.google.android.gms:play-services-location:21.4.0'
     implementation 'com.google.android.gms:play-services-maps:20.0.0'
 
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
@@ -128,17 +128,17 @@ dependencies {
     implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
 
     //Dependency Injection
-    implementation "io.insert-koin:koin-android:4.2.1"
+    implementation "io.insert-koin:koin-android:4.2.2"
 
     implementation 'com.jakewharton:process-phoenix:3.0.0'
 
     //Image Loading
-    implementation 'com.github.bumptech.glide:glide:5.0.7'
-    ksp 'com.github.bumptech.glide:ksp:5.0.7'
+    implementation 'com.github.bumptech.glide:glide:5.0.9'
+    ksp 'com.github.bumptech.glide:ksp:5.0.9'
 
-    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation 'com.google.android.gms:play-services-location:21.4.0'
     implementation 'com.google.android.gms:play-services-maps:20.0.0'
-    implementation 'com.google.maps.android:android-maps-utils:4.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:5.0.0'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
     implementation 'com.airbnb.android:lottie:6.7.1'
@@ -149,7 +149,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:3.0.0"
     implementation 'androidx.palette:palette-ktx:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:2.3.0"
-    implementation "com.tbuonomo:dotsindicator:5.1.0"
+    implementation "com.tbuonomo:dotsindicator:5.1.1"
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
     implementation ("com.github.judemanutd:autostarter:1.1.0") {
@@ -167,7 +167,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-oss-licenses:17.5.1'
 
     //Firebase Analytics + Crashlytics
-    implementation(platform("com.google.firebase:firebase-bom:34.14.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.16.0"))
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
 

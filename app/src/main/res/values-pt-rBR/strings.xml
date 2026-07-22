@@ -141,9 +141,6 @@
     <string name="target_at_a_glance_label">Resumo (Widget)</string>
     <string name="target_at_a_glance_description">Destaques limitados do resumo do Google, carregados usando o widget do Google</string>
     <string name="target_at_a_glance_description_unsupported">Este destaque requer o aplicativo do Google</string>
-    <string name="target_google_weather_forecast_title">Previsão do tempo do Google</string>
-    <string name="target_google_weather_forecast_content">Exibe o clima atual e a previsão para as próximas quatro horas do Clima do Google</string>
-    <string name="target_google_weather_forecast_incompatible">Este Destaque requer um dispositivo Pixel ou uma ROM baseada em Pixel, com o app do Google instalado.</string>
     <string name="target_notification_warning_title">Receptor de notificação desativado</string>
     <string name="target_notification_warning_description">Toque para ativar</string>
     <string name="complication_default_label">Complementos do Resumo</string>
@@ -908,7 +905,6 @@
     <string name="github">GitHub</string>
     <string name="libraries">Bibliotecas de terceiros</string>
     <string name="donate">Faça uma doação</string>
-    <string name="twitter">Siga-me no Twitter</string>
     <string name="about_version">Versão %1s\nCriada por Kieron Quinn</string>
     <string name="about_contributors">Colaboradores</string>
     <string name="about_crowdin">Crowdin</string>
@@ -995,7 +991,6 @@
     <string name="target_default_settings_hide_calendar">Calendário</string>
     <string name="target_default_settings_hide_work_profile">Perfil de trabalho</string>
     <string name="target_default_settings_hide_food">Pedidos de comida e itens para a casa</string>
-    <string name="target_default_settings_cross_device_timer">Timer entre dispositivos</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Selecionar aplicativo</string>
     <string name="target_notification_configuration_app_content">Selecione o aplicativo para exibir notificações</string>
