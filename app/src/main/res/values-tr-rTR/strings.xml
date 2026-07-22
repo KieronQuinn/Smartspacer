@@ -141,9 +141,6 @@
     <string name="target_at_a_glance_label">Bir Bakışta (Widget)</string>
     <string name="target_at_a_glance_description">Google widget\'ı kullanılarak yüklenen, Google Bir Bakışta özelliğinden sınırlı hedefler</string>
     <string name="target_at_a_glance_description_unsupported">Bu Hedef, Google Uygulamasını gerektirir</string>
-    <string name="target_google_weather_forecast_title">Google Hava Durumu Tahmini</string>
-    <string name="target_google_weather_forecast_content">Google Hava Durumu\'ndan mevcut hava durumunu ve sonraki dört saatlik tahmini gösterir</string>
-    <string name="target_google_weather_forecast_incompatible">Bu Hedef, bir Pixel cihazı veya Pixel tabanlı bir ROM ile Google uygulamasının yüklü olmasını gerektirir</string>
     <string name="target_notification_warning_title">Bildirim Dinleyici Devre Dışı</string>
     <string name="target_notification_warning_description">Etkinleştirmek için dokunun</string>
     <string name="complication_default_label">Bir Bakışta Komplikasyonları</string>
@@ -908,7 +905,6 @@
     <string name="github">GitHub</string>
     <string name="libraries">Üçüncü parti kütüphaneler</string>
     <string name="donate">Bağış Yap</string>
-    <string name="twitter">Beni Twitter\'da takip et</string>
     <string name="about_version">Sürüm %1s\nKieron Quinn tarafından oluşturuldu</string>
     <string name="about_contributors">Katkıda Bulunanlar</string>
     <string name="about_crowdin">Crowdin</string>
@@ -995,7 +991,6 @@
     <string name="target_default_settings_hide_calendar">Takvim</string>
     <string name="target_default_settings_hide_work_profile">İş Profili</string>
     <string name="target_default_settings_hide_food">Yiyecek ve Ev Siparişleri</string>
-    <string name="target_default_settings_cross_device_timer">Cihazlar Arası Zamanlayıcı</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Uygulama Seç</string>
     <string name="target_notification_configuration_app_content">Bildirimleri gösterilecek uygulamayı seçin</string>

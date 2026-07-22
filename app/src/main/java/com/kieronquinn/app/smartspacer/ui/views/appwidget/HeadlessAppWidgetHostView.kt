@@ -21,6 +21,7 @@ import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionI
 import com.kieronquinn.app.smartspacer.utils.extensions.extractRemoteCollectionItems
 import com.kieronquinn.app.smartspacer.utils.extensions.getActionsIncludingNested
 import com.kieronquinn.app.smartspacer.utils.extensions.getCollectionCache
+import com.kieronquinn.app.smartspacer.utils.extensions.getIntExtras
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastBaklava
 import com.kieronquinn.app.smartspacer.utils.extensions.isAtLeastCinnamonBun
 import com.kieronquinn.app.smartspacer.utils.extensions.isRemoteCollectionItemListAdapter
@@ -269,10 +270,14 @@ class HeadlessAppWidgetHostView(context: Context): RoundedCornersEnforcingAppWid
     private data class RemoteIntent(val appWidgetId: Int, val component: ComponentName) {
         companion object {
             private const val EXTRA_WIDGET_ID = "extra_widget_id"
+            private const val EXTRA_WIDGET_ID_ALT = "appWidgetId"
 
             fun Intent.toRemoteIntent(): RemoteIntent? {
-                val widgetId = getIntExtra(EXTRA_WIDGET_ID, -1)
-                    .takeIf { it >= 0 } ?: return null
+                val widgetId = getIntExtras(
+                    EXTRA_WIDGET_ID,
+                    EXTRA_WIDGET_ID_ALT,
+                    default = -1
+                ).takeIf { it >= 0 } ?: return null
                 return RemoteIntent(widgetId, component ?: return null)
             }
         }
