@@ -107,15 +107,15 @@ class AtAGlanceWidget : GlanceWidget() {
     override fun View.loadTNG(smartspacerId: String): Boolean {
         this as ViewGroup
         val listView = findViewsByType(ListView::class.java).firstOrNull()
-        return if(listView != null){
+        return if (listView != null) {
             val listViewId = listView.id
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 getRemoteCollectionItems(smartspacerId, listViewId)
-            }else{
+            } else {
                 getAdapter(smartspacerId, listViewId)
             }
             false
-        }else{
+        } else {
             val state = getStateFromFlatView(false)
             atAGlance.setStates(listOfNotNull(state))
             notifyChange(smartspacerId)
@@ -127,7 +127,7 @@ class AtAGlanceWidget : GlanceWidget() {
         super.onAdapterConnected(smartspacerId, adapter)
         val count = adapter.getCount()
         val adapterItems = ArrayList<RemoteAdapterItem>()
-        for(i in 0 until count) {
+        for (i in 0 until count) {
             adapterItems.add(adapter.getViewAt(i) ?: continue)
         }
         val states = adapterItems.mapNotNull {
@@ -154,19 +154,23 @@ class AtAGlanceWidget : GlanceWidget() {
         val clickable = findViewsByType(View::class.java).firstOrNull {
             it.isClickable
         }
-        val requiredTextViews = if(isFromList) 2 else 3
-        val requiredImageViews = if(isFromList) 1 else 2
-        return if(textViews.size == requiredTextViews && imageViews.size == requiredImageViews) {
-            val title = textViews[0].text
-            val subtitle = textViews[1].text
-            State(
-                title,
-                subtitle,
-                imageViews[0].drawable.toBitmap(),
-                imageViews[0].contentDescription,
-                clickPendingIntent = clickable?.getClickPendingIntent()
-            )
-        }else null
+        val requiredTextViews = if (isFromList) 2 else 3
+        val requiredImageViews = if (isFromList) 1 else 2
+        if (textViews.size < requiredTextViews || imageViews.size < requiredImageViews) return null
+        val title = textViews[0].text
+        val subtitle = textViews[1].text
+        //  Newer Google App builds add a full-size background ImageView to each row. The real
+        //  icon shares a parent with the subtitle TextView, so prefer that; fall back to the
+        //  previous behaviour for older layouts.
+        val icon = imageViews.firstOrNull { it.parent === textViews[1].parent }
+            ?: imageViews.first()
+        return State(
+            title,
+            subtitle,
+            icon.drawable.toBitmap(),
+            icon.contentDescription,
+            clickPendingIntent = clickable?.getClickPendingIntent()
+        )
     }
 
     /**

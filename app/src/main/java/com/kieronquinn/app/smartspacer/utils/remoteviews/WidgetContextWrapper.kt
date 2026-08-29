@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 
 class WidgetContextWrapper(context: Context): ContextWrapper(context) {
 
-    override fun getSystemService(name: String): Any {
+    override fun getSystemService(name: String): Any? {
         if(name == Context.LAYOUT_INFLATER_SERVICE){
             val layoutInflater = super.getSystemService(name) as LayoutInflater
             return WidgetLayoutInflater(this, layoutInflater)

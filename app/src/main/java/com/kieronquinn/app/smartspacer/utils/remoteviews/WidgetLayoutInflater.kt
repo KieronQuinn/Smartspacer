@@ -14,6 +14,7 @@ import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetRadioButton
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetSwitch
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetTextClock
 import com.kieronquinn.app.smartspacer.ui.views.widget.WidgetTextView
+import com.kieronquinn.app.smartspacer.utils.extensions.setPrivateFactory
 
 //Based on https://medium.com/@ilja.kosynkin/creating-custom-layoutinflater-6bd572c4a82a
 class WidgetLayoutInflater(
@@ -22,7 +23,7 @@ class WidgetLayoutInflater(
 ) : LayoutInflater(parent, context) {
 
     init {
-        factory2 = WrapperFactory(factory2)
+        setPrivateFactory(WrapperFactory(factory2))
     }
 
     companion object {

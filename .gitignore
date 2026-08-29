@@ -355,3 +355,5 @@ hs_err_pid*
 
 /apks
 keystore.properties
+gradle/gradle-daemon-jvm.properties
+/app/release
