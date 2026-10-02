@@ -117,7 +117,7 @@
     <string name="target_now_playing_label">Pixel Now Playing</string>
     <string name="target_now_playing_description">Shows the currently playing song from Pixel Now Playing</string>
     <string name="target_now_playing_description_unavailable">This target requires Now Playing on a Pixel</string>
-    <string name="target_now_playing_description_unavailable_pixel">Due to it no longer showing a notification for recognised music, this Target no longer works on unrooted Pixel devices. If you are rooted, install the Public Compute Services Xposed module and enable the option to fix this.</string>
+
     <string name="target_now_playing_shortcut_history">History</string>
     <string name="target_ambient_music_mod_label">Now Playing (Ambient Music Mod)</string>
     <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>

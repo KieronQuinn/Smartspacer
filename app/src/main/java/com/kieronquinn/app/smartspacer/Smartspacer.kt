@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.ComponentName
 import android.content.Context
 import android.content.res.Resources
+import android.webkit.WebView
 import androidx.core.content.res.ResourcesCompat
 import androidx.work.Configuration
 import com.google.android.material.color.DynamicColors
@@ -550,6 +551,8 @@ class Smartspacer: Application(), Configuration.Provider {
     }
 
     override fun onCreate() {
+        // Prevents app being killed when Android System WebView updates
+        WebView.disableWebView()
         super.onCreate()
         if(isSafeMode()) return
         DynamicColors.applyToActivitiesIfAvailable(this)

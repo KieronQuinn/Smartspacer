@@ -1,5 +1,5 @@
 buildscript {
-    ext.nav_version = "2.10.0"
+    ext.nav_version = "2.10.2"
     ext.protobuf_version = '0.10.0'
     ext.refine_version = '4.4.0'
     dependencies {

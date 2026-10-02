@@ -59,14 +59,19 @@ class GoogleWeatherForecastWidget: SmartspacerWidgetProvider() {
                         frameLayout {
                             linearLayout {
                                 linearLayout {
-                                    textView {
+                                    linearLayout {
                                         index = 0
-                                        id = IDENTIFIER_LOCATION
+                                        linearLayout {
+                                            textView {
+                                                index = 0
+                                                id = IDENTIFIER_LOCATION
+                                            }
+                                        }
                                     }
                                     linearLayout {
-                                        index = 2
+                                        index = 1
                                         linearLayout {
-                                            index = 0
+                                            index = 1
                                             linearLayout {
                                                 imageView {
                                                     index = 0
@@ -79,13 +84,15 @@ class GoogleWeatherForecastWidget: SmartspacerWidgetProvider() {
                                             }
                                         }
                                         textView {
-                                            index = 2
+                                            index = 3
                                             id = IDENTIFIER_TEMPERATURE
                                         }
                                     }
-                                    linearLayout {
-                                        index = 4
-                                        id = IDENTIFIER_FORECASTS
+                                    frameLayout {
+                                        index = 3
+                                        linearLayout {
+                                            id = IDENTIFIER_FORECASTS
+                                        }
                                     }
                                 }
                             }
