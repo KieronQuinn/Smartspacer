@@ -18,9 +18,9 @@
     <string name="bottom_nav_settings">Paramètres</string>
     <string name="toast_restricted_mode">Autorisez les paramètres restreints en ouvrant le menu « ... »</string>
     <string name="restricted_mode_content_accessibility">Depuis Android 13, Google interdit par défaut l\'accès aux services d\'accessibilité aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à activer le service d\'accessibilité, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l\'accès aux services d\'accessibilité aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_accessibility"><![CDATA[Depuis Android 14, Google interdit l'accès aux services d'accessibilité aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_content_notification">Depuis Android 13, Google interdit par défaut l\'accès aux notifications aux applications téléchargées en dehors du Play Store en forçant une vérification de sécurité dans les paramètres.\n\n<b>Si vous n\'arrivez pas à accorder l\'accès aux notifications, vous devez ouvrir les Infos sur l\'appli et autoriser les paramètres restreints.</b></string>
-    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l\'accès aux notifications aux applications installées par le Programme d\'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l\'aider d\'une application utilisant l\'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l\'application APKMirror</a>. Vous DEVEZ désinstaller l\'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d\'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
+    <string name="restricted_mode_content_warning_notification"><![CDATA[Depuis Android 14, Google interdit l'accès aux notifications aux applications installées par le Programme d'installation du kit.<br><br><b>Si un message vous indique que les paramètres sont restreints, vous devez alors désinstaller Smartspacer et le réinstaller à l'aider d'une application utilisant l'installation par session comme <a href="https://play.google.com/store/apps/details?id=com.aefyr.sai">Split APKs Installer (SAI)</a> ou <a href="https://play.google.com/store/apps/details?id=com.apkmirror.helper.prod">l'application APKMirror</a>. Vous DEVEZ désinstaller l'application AVANT de la réinstaller.<br><br></b>Un autre moyen de procéder est d'activer le mode amélioré (nécessite Shizuku ou un accès root).]]></string>
     <string name="restricted_mode_button">Ouvrir les Infos sur l\'appli</string>
     <string name="restricted_mode_warning_button">Accorder l\'autorisation avec Shizuku</string>
     <string name="target_sensitive_title">Contenus masqués</string>
@@ -141,6 +141,9 @@
     <string name="target_at_a_glance_label">Aperçu (widget)</string>
     <string name="target_at_a_glance_description">Nombre limité de cibles de Google Aperçu, chargées avec le widget Google</string>
     <string name="target_at_a_glance_description_unsupported">Cette cible requiert l\'application Google</string>
+    <string name="target_pixel_weather_forecast_title">Pixel Weather Forecast</string>
+    <string name="target_pixel_weather_forecast_content">Displays the current weather and forecast for the next four hours from Pixel Weather</string>
+    <string name="target_pixel_weather_forecast_incompatible">This Target requires the Pixel Weather app</string>
     <string name="target_notification_warning_title">Auditeur de notifications désactivé</string>
     <string name="target_notification_warning_description">Appuyez pour activer</string>
     <string name="complication_default_label">Complications Aperçu</string>
@@ -426,6 +429,9 @@
     <string name="settings_enable_update_check_content">Rechercher automatiquement les mises à jour de Smartspacer et afficher une notification si une mise à jour est disponible</string>
     <string name="settings_enable_analytics_title">Activer la collecte de données et l\'envoi des rapports de plantage</string>
     <string name="settings_enable_analytics_content">Autoriser la collecte de données basiques, et l\'envoi à Firebase de ces données et de rapports de plantage pour aider à corriger les bugs. Toutes les données envoyées sont anonymes.</string>
+    <string name="settings_enable_blur_title">Enable Expressive Blurs</string>
+    <string name="settings_enable_blur_content">Use expressive-style blurs across Smartspacer</string>
+    <string name="settings_enable_blur_content_disabled">Not available on this device</string>
     <string name="settings_language_title">Langue</string>
     <string name="settings_language_default">Paramètre par défaut du système</string>
     <string name="settings_language_info"><b>Remarque :</b> L\'application n\'est pas traduite à 100 % dans toutes les langues, vous pouvez nous aider en rejoignant le projet Smartspacer sur Crowdin.</string>
@@ -438,6 +444,16 @@
     <string name="settings_hide_sensitive_contents_hide_contents_content">Afficher la cible mais masquer son contenu</string>
     <string name="settings_hide_sensitive_contents_hide">Masquer la cible</string>
     <string name="settings_hide_sensitive_contents_hide_content">Masquer complètement la cible</string>
+    <string name="settings_complication_on_primary_title">Show Complication on Date</string>
+    <string name="settings_complication_on_primary_title_short">Show Complication</string>
+    <string name="settings_complication_on_primary_content">Whether to show a Complication next to the date (where supported): %1s</string>
+    <string name="settings_complication_on_primary_info"><b>Note:</b> This option is not supported in all Smartspace implementations, and requires any Date Targets to be using the \"Automatic\" date format. To verify it\'s available where you want it, try setting the option to \"Always\" and adding a Date Target to the top of your Target list.</string>
+    <string name="settings_complication_on_primary_always">Always</string>
+    <string name="settings_complication_on_primary_always_content">Any Complication will be displayed next to the date.\n\n<b>Note:</b> This may cause layout issues for longer complications.</string>
+    <string name="settings_complication_on_primary_weather_only">Weather only</string>
+    <string name="settings_complication_on_primary_weather_only_content">Only weather Complications will be displayed next to the date (recommended, matches Pixel stock behaviour)</string>
+    <string name="settings_complication_on_primary_never">Never</string>
+    <string name="settings_complication_on_primary_never_content">Complications will never be displayed next to the date</string>
     <string name="settings_debug_header">Débogage</string>
     <string name="settings_dump_title">Dumper les cibles et les actions</string>
     <string name="settings_dump_content">Afficher les informations de débogage à propos des cibles et des actions actuelles, et les écrire dans un fichier pour aider à la résolution des problèmes</string>
@@ -475,7 +491,7 @@
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">Collecte de données</string>
     <string name="setup_analytics_title">Données et rapports de plantage</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d\'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l\'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacer utilise un grand nombre d'APIs Android expérimentales et « cachées » qui pourraient mal fonctionner sur certains appareils à cause des personnalisations du fabricant.<br>Pour aider à la correction des bugs, Smartspacer peut envoyer les rapports de plantage à Firebase Crashlytics, avec des données statistiques de base (sur les lancements de l'application).<br>Toutes ces données sont anonymes et leur collecte est optionnelle. Plus de détails et règles de confidentialité <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">ici</a>]]></string>
     <string name="setup_analytics_allow">Autoriser</string>
     <string name="setup_analytics_deny">Interdire</string>
     <!-- Setup > Notifications -->
@@ -776,6 +792,8 @@
     <string name="plugin_repository_update_available">Mise à jour disponible !</string>
     <string name="plugin_repository_recommended">Recommandé pour :</string>
     <string name="plugin_repository_changelog"><b>Quoi de neuf</b></string>
+    <string name="plugin_repository_new">New!</string>
+    <string name="plugin_repository_menu_clear_seen">Clear seen plugins</string>
     <string name="plugin_details_install">Installer</string>
     <string name="plugin_details_start_install">Installer</string>
     <string name="plugin_details_open">Ouvrir</string>
@@ -905,6 +923,7 @@
     <string name="github">GitHub</string>
     <string name="libraries">Bibliothèques tierces</string>
     <string name="donate">Faire un don</string>
+    <string name="bluesky">Follow me on Bluesky</string>
     <string name="about_version">Version %1s\nCréé par Kieron Quinn</string>
     <string name="about_contributors">Contributeurs</string>
     <string name="about_crowdin">Crowdin</string>
@@ -973,6 +992,7 @@
     <!-- Default Target settings -->
     <string name="target_default_settings_more_title">Paramètres Aperçu</string>
     <string name="target_default_settings_more_content">Configurer d\'autres paramètres dans l\'application Google</string>
+    <string name="target_default_settings_remote_views_warning">Your device has a different search app selected than the Google App, which disables some At a Glance functionality. Options such as sports scores and financial updates may not be available. You can change the search app by long pressing the search box in the Pixel Launcher.</string>
     <string name="target_default_settings_hide_infobox"><b>Remarque :</b> Certaines cibles peuvent être indisponibles sur votre appareil. Les choix effectués sur cet écran ne sont pas synchronisés avec votre compte Google, les cibles masquées resteront donc affichées sur vos autres appareils.</string>
     <string name="target_default_settings_hide_title">Masquer des cibles</string>
     <string name="target_default_settings_hide_doorbell">Sonnette</string>
@@ -991,6 +1011,60 @@
     <string name="target_default_settings_hide_calendar">À venir</string>
     <string name="target_default_settings_hide_work_profile">Profil professionnel</string>
     <string name="target_default_settings_hide_food">Commandes d\'aliments et d\'articles ménagers</string>
+    <string name="target_default_settings_hide_cross_device_timer">Cross-device Timer</string>
+    <string name="target_default_settings_hide_air_quality">Air Quality</string>
+    <string name="target_default_settings_hide_alarms">Alarms</string>
+    <string name="target_default_settings_hide_cross_device_alarm">Cross-device Alarm</string>
+    <string name="target_default_settings_hide_reminders">Reminders</string>
+    <string name="target_default_settings_hide_sports">Sports</string>
+    <string name="target_default_settings_hide_finance">Finance</string>
+    <string name="target_default_settings_hide_shopping_list">Shopping List</string>
+    <string name="target_default_settings_hide_wallet">Wallet &amp; Loyalty Cards</string>
+    <string name="target_default_settings_hide_media">Media &amp; Music</string>
+    <string name="target_default_settings_hide_in_store">In-Store Features</string>
+    <string name="target_default_settings_hide_events">Events &amp; Hotels</string>
+    <string name="target_default_settings_hide_transit">Transit</string>
+    <string name="target_default_settings_hide_ridesharing">Ridesharing</string>
+    <string name="target_default_settings_hide_driving">Driving</string>
+    <string name="target_default_settings_hide_loud_sound">Loud Sound Alert</string>
+    <string name="target_default_settings_hide_personal">Birthdays &amp; Dates</string>
+    <string name="target_default_settings_hide_communication">Missed Calls</string>
+    <string name="target_default_settings_hide_tips">Tips &amp; Suggestions</string>
+    <string name="target_default_settings_hide_doorbell_desc">Hide doorbell video feeds, chimes, and motion alerts.</string>
+    <string name="target_default_settings_hide_package_desc">Hide delivery tracking status and parcel arrival updates.</string>
+    <string name="target_default_settings_hide_timer_desc">Hide active countdown timers and stopwatch intervals.</string>
+    <string name="target_default_settings_hide_bedtime_desc">Hide sleep summaries, bedtime schedule reminders, and routines.</string>
+    <string name="target_default_settings_hide_fitness_desc">Hide daily tracking metrics like step counts and active minutes.</string>
+    <string name="target_default_settings_hide_connected_devices_desc">Hide battery stats and status for paired headphones and devices.</string>
+    <string name="target_default_settings_hide_flashlight_desc">Hide quick toggle controls when your flashlight is active.</string>
+    <string name="target_default_settings_hide_safety_check_desc">Hide personal safety timers and emergency status check-ins.</string>
+    <string name="target_default_settings_hide_earthquake_alert_desc">Hide early earthquake warnings and seismic event updates.</string>
+    <string name="target_default_settings_hide_commute_desc">Hide traffic trends, estimated travel times, and ambient transit updates.</string>
+    <string name="target_default_settings_hide_time_to_leave_desc">Hide alerts showing precisely when to leave for calendar events.</string>
+    <string name="target_default_settings_hide_weather_alerts_desc">Hide severe storm, flood, and extreme weather hazard updates.</string>
+    <string name="target_default_settings_hide_travel_desc">Hide flight schedules, airport terminal info, and landing times.</string>
+    <string name="target_default_settings_hide_calendar_desc">Hide day schedule events, agenda items, and schedule updates.</string>
+    <string name="target_default_settings_hide_work_profile_desc">Hide agenda items and work notifications from your corporate profile.</string>
+    <string name="target_default_settings_hide_food_desc">Hide restaurant tracking, meal delivery ETAs, and grocery pickup statuses.</string>
+    <string name="target_default_settings_cross_device_timer_desc">Hide timers that are running on your other smart displays or speakers.</string>
+    <string name="target_default_settings_hide_air_quality_desc">Hide current Air Quality Index (AQI) readings and health warnings.</string>
+    <string name="target_default_settings_hide_alarms_desc">Hide morning alarms, holiday alert updates, and upcoming wake-up reminders.</string>
+    <string name="target_default_settings_hide_cross_device_alarm_desc">Hide or silence alarms triggering on your other shared home devices.</string>
+    <string name="target_default_settings_hide_reminders_desc">Hide custom personal reminders and time-sensitive task flags.</string>
+    <string name="target_default_settings_hide_sports_desc">Hide real-time match updates, league rankings, and live sports scores.</string>
+    <string name="target_default_settings_hide_finance_desc">Hide stock changes, earnings notifications, and financial summaries.</string>
+    <string name="target_default_settings_hide_shopping_list_desc">Hide active shopping cart lists and onboarding reminders.</string>
+    <string name="target_default_settings_hide_wallet_desc">Hide digital loyalty cards, boarding passes, and payment suggestions.</string>
+    <string name="target_default_settings_hide_media_desc">Hide currently playing music, audio playback updates, and media controls.</string>
+    <string name="target_default_settings_hide_in_store_desc">Hide store rewards cards, custom mall offers, and local retail items.</string>
+    <string name="target_default_settings_hide_events_desc">Hide hotel check-ins, room reservations, and booked ticket details.</string>
+    <string name="target_default_settings_hide_transit_desc">Hide commuter train times, rail seats, and public transit destination alerts.</string>
+    <string name="target_default_settings_hide_ridesharing_desc">Hide car journey updates, driver arrivals, and rideshare ETAs.</string>
+    <string name="target_default_settings_hide_driving_desc">Hide hands-free driving shortcuts and gas station proximity payments.</string>
+    <string name="target_default_settings_hide_loud_sound_desc">Hide safety warnings regarding sudden loud environmental sounds.</string>
+    <string name="target_default_settings_hide_personal_desc">Hide upcoming birthday trackers and generic date countdown widgets.</string>
+    <string name="target_default_settings_hide_communication_desc">Hide alert notifications regarding missed phone calls.</string>
+    <string name="target_default_settings_hide_tips_desc">Hide setup hints, helpful tips, and Assistant walkthrough cards.</string>
     <!-- Notification Target -->
     <string name="target_notification_configuration_app_title">Sélectionnez une application</string>
     <string name="target_notification_configuration_app_content">Sélectionnez une application dont il faut afficher les notifications</string>
@@ -1130,4 +1204,10 @@
     <string name="fitness_widget_recommendation_category_label">Santé et bien-être</string>
     <string name="news_widget_recommendation_category_label">Actualités et magazines</string>
     <string name="others_widget_recommendation_category_label">Recommandations</string>
+    <!-- Shizuku outdated warning -->
+    <string name="shizuku_outdated_title">Shizuku Outdated</string>
+    <string name="shizuku_outdated_content">The version of Shizuku you have installed is no longer supported and may cause issues, such as crashes and restarts. For the best experience, consider switching to a newer fork.\n\n<b>Note:</b> You may have to uninstall the currently installed version to install the fork.</string>
+    <string name="shizuku_outdated_positive">Update</string>
+    <string name="shizuku_outdated_negative">Not now</string>
+    <string name="shizuku_outdated_neutral">Ignore</string>
 </resources>
