@@ -72,26 +72,26 @@
     <string name="widget_configuration_material_you_title">Material You style</string>
     <string name="widget_configuration_material_you_description">Use dynamic Material You styling for the widget\n\n<b>Note:</b> Enabling this option may cause sizing issues with some Targets。</string>
     <!-- Widget Pinning Section -->
-    <string name="widget_configuration_pin_title">Widget Pinning</string>
-    <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
+    <string name="widget_configuration_pin_title">ウィジェットピン留め</string>
+    <string name="widget_configuration_pin_description">このウィジェットをピン留めして特定のコンテンツを表示します。複数のSmartspacerウィジェットを積み重ねてスクロール可能なSmartspace体験をシミュレートする場合に便利です。</string>
     <!-- Pin Mode -->
-    <string name="widget_configuration_pin_mode_label">Pin Mode</string>
-    <string name="widget_configuration_pin_mode_none">None (cycle through all)</string>
-    <string name="widget_configuration_pin_mode_page">Pin to Page Position</string>
-    <string name="widget_configuration_pin_mode_target">Pin to Specific Target</string>
+    <string name="widget_configuration_pin_mode_label">ピン留めモード</string>
+    <string name="widget_configuration_pin_mode_none">なし (すべてを切り替える)</string>
+    <string name="widget_configuration_pin_mode_page">ページ位置でピン留め</string>
+    <string name="widget_configuration_pin_mode_target">特定のターゲットにピン留め</string>
     <!-- Page Mode -->
-    <string name="widget_configuration_pin_page_label">Page Position</string>
-    <string name="widget_configuration_pin_page_value">Page %1$d</string>
-    <string name="widget_configuration_pin_page_warning"><b>How Page Pinning Works:</b> This widget will always show whatever target is at the selected page position. Page content changes dynamically - the target shown may vary based on which targets are currently active and their priorities.</string>
+    <string name="widget_configuration_pin_page_label">ページの位置</string>
+    <string name="widget_configuration_pin_page_value">%1$dページ</string>
+    <string name="widget_configuration_pin_page_warning"><b>ページピン留めの仕組み:</b> このウィジェットは、選択したページ位置にあるターゲットを常に表示します。 ページコンテンツが動的に変更されます - 表示されるターゲットは、現在アクティブなターゲットとその優先順位によって異なる場合があります。</string>
     <!-- Target Mode -->
-    <string name="widget_configuration_pin_target_label">Select Target</string>
-    <string name="widget_configuration_pin_target_none">Tap to select…</string>
-    <string name="widget_configuration_pin_target_warning"><b>How Target Pinning Works:</b> This widget will always try to show the selected target. If the target becomes unavailable (e.g., no music playing for a music target, or requirements not met), the fallback behavior below determines what to show instead.</string>
+    <string name="widget_configuration_pin_target_label">ターゲットを選択</string>
+    <string name="widget_configuration_pin_target_none">タップして選択…</string>
+    <string name="widget_configuration_pin_target_warning"><b>ターゲットでピン留めする方法：</b> このウィジェットは常に選択したターゲットを表示しようとします。ターゲットが使用できなくなった場合(例えば音楽ターゲットのために演奏されていない音楽, または満たされていない要件)、下記のフォールバック行動は、代わりに何を表示するかを決定します。</string>
     <!-- Fallback (shared) -->
-    <string name="widget_configuration_pin_fallback_label">When Unavailable</string>
-    <string name="widget_configuration_pin_fallback_show_date">Show date</string>
-    <string name="widget_configuration_pin_fallback_show_first">Show first available target</string>
-    <string name="widget_configuration_pin_fallback_hide">Hide widget content</string>
+    <string name="widget_configuration_pin_fallback_label">利用できない場合</string>
+    <string name="widget_configuration_pin_fallback_show_date">日付を表示</string>
+    <string name="widget_configuration_pin_fallback_show_first">最初の利用可能なターゲットを表示</string>
+    <string name="widget_configuration_pin_fallback_hide">ウィジェットの内容を隠す</string>
     <string name="widget_options_configure">ウィジェットの設定</string>
     <string name="accessibility_service_label">Smartspacer ウィジェットサービス</string>
     <string name="accessibility_service_description">Enables Smartspacer\'s widget to keep Targets and Complications up to date, without draining battery life by having them always running.\n\nNote: This is not required if you have Enhanced Mode enabled。</string>
