@@ -25,8 +25,8 @@
     <string name="restricted_mode_warning_button">Berechtigungen mit Shizuku erteilen</string>
     <string name="target_sensitive_title">Inhalte versteckt</string>
     <!-- Shared by widget, notification & expanded -->
-    <string name="tint_colour_automatic">Automatisch (Hintergrundbild basierend)</string>
-    <string name="tint_colour_automatic_alt">Automatisch (Theme basierend)</string>
+    <string name="tint_colour_automatic">Automatisch (Hintergrundbild-basiert)</string>
+    <string name="tint_colour_automatic_alt">Automatisch (Theme-basiert)</string>
     <string name="tint_colour_automatic_content">Text und Icons im Widget werden automatisch eingefärbt, um auf dem Hintergrundbild sichtbar zu sein</string>
     <string name="tint_colour_automatic_content_alt">Text und Icons in der Benachrichtigung werden automatisch eingefärbt, damit sie je nach Theme sichtbar sind</string>
     <string name="tint_colour_white">Weiß</string>
@@ -72,26 +72,26 @@
     <string name="widget_configuration_material_you_title">\"Material You\"-Stil</string>
     <string name="widget_configuration_material_you_description">Verwende den dynamischen \"Material You\" Stil für das Widget. \n\n<b>Hinweis:</b> Das Aktivieren dieser Option kann bei einigen Zielen zu Größenproblemen führen.</string>
     <!-- Widget Pinning Section -->
-    <string name="widget_configuration_pin_title">Widget Pinning</string>
-    <string name="widget_configuration_pin_description">Pin this widget to show specific content. Useful when stacking multiple Smartspacer widgets to simulate a scrollable Smartspace experience.</string>
+    <string name="widget_configuration_pin_title">Widgets fixieren</string>
+    <string name="widget_configuration_pin_description">Fixiere dieses Widget, um spezifische Inhalte anzuzeigen. Nützlich, wenn mehrere Smartspacer-Widgets gestapelt werden, um einen scrollbaren Smartspace zu simulieren.</string>
     <!-- Pin Mode -->
-    <string name="widget_configuration_pin_mode_label">Pin Mode</string>
-    <string name="widget_configuration_pin_mode_none">None (cycle through all)</string>
-    <string name="widget_configuration_pin_mode_page">Pin to Page Position</string>
-    <string name="widget_configuration_pin_mode_target">Pin to Specific Target</string>
+    <string name="widget_configuration_pin_mode_label">Fixierungsmodus</string>
+    <string name="widget_configuration_pin_mode_none">Keiner (alle durchlaufen)</string>
+    <string name="widget_configuration_pin_mode_page">Fixiere Seitenposition</string>
+    <string name="widget_configuration_pin_mode_target">Fixiere spezifisches Ziel</string>
     <!-- Page Mode -->
-    <string name="widget_configuration_pin_page_label">Page Position</string>
-    <string name="widget_configuration_pin_page_value">Page %1$d</string>
-    <string name="widget_configuration_pin_page_warning"><b>How Page Pinning Works:</b> This widget will always show whatever target is at the selected page position. Page content changes dynamically - the target shown may vary based on which targets are currently active and their priorities.</string>
+    <string name="widget_configuration_pin_page_label">Seitenposition</string>
+    <string name="widget_configuration_pin_page_value">Seite %1$d</string>
+    <string name="widget_configuration_pin_page_warning"><b>Wie Seiten-Fixieren funktioniert:</b> Dieses Widget zeigt immer das Ziel an, das sich an der ausgewählten Seitenposition befindet. Seiteninhalt ändert sich dynamisch – das angezeigte Ziel kann variieren, je nachdem, welche Ziele derzeit aktiv sind und deren Prioritäten.</string>
     <!-- Target Mode -->
-    <string name="widget_configuration_pin_target_label">Select Target</string>
-    <string name="widget_configuration_pin_target_none">Tap to select…</string>
-    <string name="widget_configuration_pin_target_warning"><b>How Target Pinning Works:</b> This widget will always try to show the selected target. If the target becomes unavailable (e.g., no music playing for a music target, or requirements not met), the fallback behavior below determines what to show instead.</string>
+    <string name="widget_configuration_pin_target_label">Wähle Ziel</string>
+    <string name="widget_configuration_pin_target_none">Zum Auswählen tippen…</string>
+    <string name="widget_configuration_pin_target_warning"><b>Wie Ziel-Fixieren funktioniert:</b> Dieses Widget versucht immer, das ausgewählte Ziel anzuzeigen. Wenn das Ziel nicht verfügbar ist (z. B. keine Musik spielt bei einem Musik-Ziel oder Bedingungen nicht erfüllt), bestimmt das Ausweichverhalten unten, was stattdessen angezeigt wird.</string>
     <!-- Fallback (shared) -->
-    <string name="widget_configuration_pin_fallback_label">When Unavailable</string>
-    <string name="widget_configuration_pin_fallback_show_date">Show date</string>
-    <string name="widget_configuration_pin_fallback_show_first">Show first available target</string>
-    <string name="widget_configuration_pin_fallback_hide">Hide widget content</string>
+    <string name="widget_configuration_pin_fallback_label">Wenn nicht verfügbar</string>
+    <string name="widget_configuration_pin_fallback_show_date">Datum anzeigen</string>
+    <string name="widget_configuration_pin_fallback_show_first">Erstes verfügbares Ziel anzeigen</string>
+    <string name="widget_configuration_pin_fallback_hide">Widget-Inhalt ausblenden</string>
     <string name="widget_options_configure">Widget konfigurieren</string>
     <string name="accessibility_service_label">Smartspacer Widget-Dienst</string>
     <string name="accessibility_service_description">Ermöglicht es dem Smartspacer-Widget, Ziele und Komplikationen auf dem neuesten Stand zu halten, ohne den Akku zu belasten, weil es ständig läuft.\n\nHinweis: Dies ist nicht erforderlich, wenn du den erweiterten Modus aktiviert hast.</string>
@@ -141,7 +141,7 @@
     <string name="target_at_a_glance_label">Auf einen Blick (Widget)</string>
     <string name="target_at_a_glance_description">Eingeschränkte Ziele von Google Auf einen Blick, geladen über das Google-Widget</string>
     <string name="target_at_a_glance_description_unsupported">Dieses Ziel erfordert die Google-App</string>
-    <string name="target_pixel_weather_forecast_title">Pixel Weather Forecast</string>
+    <string name="target_pixel_weather_forecast_title">Pixel Wettervorhersage</string>
     <string name="target_pixel_weather_forecast_content">Displays the current weather and forecast for the next four hours from Pixel Weather</string>
     <string name="target_pixel_weather_forecast_incompatible">This Target requires the Pixel Weather app</string>
     <string name="target_notification_warning_title">Benachrichtigungs-Listener deaktiviert</string>
@@ -448,7 +448,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="settings_complication_on_primary_title">Komplikation am Datum anzeigen</string>
     <string name="settings_complication_on_primary_title_short">Komplikation anzeigen</string>
     <string name="settings_complication_on_primary_content">Ob eine Komplikation neben dem Datum angezeigt werden soll (wo unterstützt): %1s</string>
-    <string name="settings_complication_on_primary_info"><b>Note:</b> This option is not supported in all Smartspace implementations, and requires any Date Targets to be using the \"Automatic\" date format. To verify it\'s available where you want it, try setting the option to \"Always\" and adding a Date Target to the top of your Target list.</string>
+    <string name="settings_complication_on_primary_info"><b>Hinweis:</b> Diese Option wird nicht in allen Smartspace-Implementierungen unterstützt und setzt voraus, dass alle Datums-Ziele das \"Automatische\" Datumsformat verwenden. Um zu prüfen, ob es verfügbar ist, setze die Option auf \"Immer\" und füge ein Datums-Ziel oben in der Ziel-Liste hinzu.</string>
     <string name="settings_complication_on_primary_always">Immer</string>
     <string name="settings_complication_on_primary_always_content">Jede Komplikation wird neben dem Datum angezeigt.\n\n<b>Hinweis:</b> Dies kann bei längeren Komplikationen zu Layoutproblemen führen.</string>
     <string name="settings_complication_on_primary_weather_only">Nur Wetter</string>
@@ -794,7 +794,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="plugin_repository_update_available">Update verfügbar!</string>
     <string name="plugin_repository_recommended">Empfohlen für:</string>
     <string name="plugin_repository_changelog"><b>Was ist neu</b></string>
-    <string name="plugin_repository_new">New!</string>
+    <string name="plugin_repository_new">Neu!</string>
     <string name="plugin_repository_menu_clear_seen">Clear seen plugins</string>
     <string name="plugin_details_install">Installieren</string>
     <string name="plugin_details_start_install">Installation starten</string>
@@ -1013,22 +1013,22 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_default_settings_hide_calendar">Kalender</string>
     <string name="target_default_settings_hide_work_profile">Arbeitsprofil</string>
     <string name="target_default_settings_hide_food">Lebensmittel- &amp; Haushaltswarenbestellungen</string>
-    <string name="target_default_settings_hide_cross_device_timer">Cross-device Timer</string>
-    <string name="target_default_settings_hide_air_quality">Air Quality</string>
-    <string name="target_default_settings_hide_alarms">Alarms</string>
-    <string name="target_default_settings_hide_cross_device_alarm">Cross-device Alarm</string>
-    <string name="target_default_settings_hide_reminders">Reminders</string>
+    <string name="target_default_settings_hide_cross_device_timer">Geräteübergreifender Timer</string>
+    <string name="target_default_settings_hide_air_quality">Luftqualität</string>
+    <string name="target_default_settings_hide_alarms">Wecker</string>
+    <string name="target_default_settings_hide_cross_device_alarm">Geräteübergreifender Wecker</string>
+    <string name="target_default_settings_hide_reminders">Erinnerungen</string>
     <string name="target_default_settings_hide_sports">Sport</string>
     <string name="target_default_settings_hide_finance">Finanzen</string>
     <string name="target_default_settings_hide_shopping_list">Einkaufsliste</string>
-    <string name="target_default_settings_hide_wallet">Wallet &amp; Loyalty Cards</string>
-    <string name="target_default_settings_hide_media">Media &amp; Music</string>
+    <string name="target_default_settings_hide_wallet">Wallet &amp; Treuekarten</string>
+    <string name="target_default_settings_hide_media">Medien &amp; Musik</string>
     <string name="target_default_settings_hide_in_store">In-Store Features</string>
-    <string name="target_default_settings_hide_events">Events &amp; Hotels</string>
+    <string name="target_default_settings_hide_events">Termine &amp; Hotels</string>
     <string name="target_default_settings_hide_transit">Transit</string>
     <string name="target_default_settings_hide_ridesharing">Ridesharing</string>
     <string name="target_default_settings_hide_driving">Driving</string>
-    <string name="target_default_settings_hide_loud_sound">Loud Sound Alert</string>
+    <string name="target_default_settings_hide_loud_sound">Warnung vor lauten Geräuschen</string>
     <string name="target_default_settings_hide_personal">Birthdays &amp; Dates</string>
     <string name="target_default_settings_hide_communication">Verpasste Anrufe</string>
     <string name="target_default_settings_hide_tips">Tipps &amp; Vorschläge</string>
@@ -1049,8 +1049,8 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_default_settings_hide_work_profile_desc">Hide agenda items and work notifications from your corporate profile.</string>
     <string name="target_default_settings_hide_food_desc">Hide restaurant tracking, meal delivery ETAs, and grocery pickup statuses.</string>
     <string name="target_default_settings_cross_device_timer_desc">Hide timers that are running on your other smart displays or speakers.</string>
-    <string name="target_default_settings_hide_air_quality_desc">Hide current Air Quality Index (AQI) readings and health warnings.</string>
-    <string name="target_default_settings_hide_alarms_desc">Hide morning alarms, holiday alert updates, and upcoming wake-up reminders.</string>
+    <string name="target_default_settings_hide_air_quality_desc">Aktuelle Luftqualitätsindex-Messungen (AQI) und Gesundheitswarnungen ausblenden.</string>
+    <string name="target_default_settings_hide_alarms_desc">Morgenalarme, Urlaubswarnungen und anstehende Wecker-Erinnerungen ausblenden.</string>
     <string name="target_default_settings_hide_cross_device_alarm_desc">Hide or silence alarms triggering on your other shared home devices.</string>
     <string name="target_default_settings_hide_reminders_desc">Hide custom personal reminders and time-sensitive task flags.</string>
     <string name="target_default_settings_hide_sports_desc">Hide real-time match updates, league rankings, and live sports scores.</string>
@@ -1063,7 +1063,7 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_default_settings_hide_transit_desc">Hide commuter train times, rail seats, and public transit destination alerts.</string>
     <string name="target_default_settings_hide_ridesharing_desc">Hide car journey updates, driver arrivals, and rideshare ETAs.</string>
     <string name="target_default_settings_hide_driving_desc">Hide hands-free driving shortcuts and gas station proximity payments.</string>
-    <string name="target_default_settings_hide_loud_sound_desc">Hide safety warnings regarding sudden loud environmental sounds.</string>
+    <string name="target_default_settings_hide_loud_sound_desc">Sicherheitswarnungen vor plötzlichen lauten Umweltgeräuschen ausblenden.</string>
     <string name="target_default_settings_hide_personal_desc">Hide upcoming birthday trackers and generic date countdown widgets.</string>
     <string name="target_default_settings_hide_communication_desc">Hide alert notifications regarding missed phone calls.</string>
     <string name="target_default_settings_hide_tips_desc">Hide setup hints, helpful tips, and Assistant walkthrough cards.</string>
@@ -1080,9 +1080,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="target_notification_remoteviews_source_title">Benutzerdefinierter Inhalt</string>
     <string name="target_notification_remoteviews_source_subtitle">Wenn verfügbar, verwendet benutzerdefinierte Benachrichtigungsinhalte von:</string>
     <string name="target_notification_remoteviews_source_none">Deaktiviert</string>
-    <string name="target_notification_remoteviews_source_small">Collapsed Notification</string>
-    <string name="target_notification_remoteviews_source_large">Expanded Notification</string>
-    <string name="target_notification_remoteviews_source_heads_up">Heads Up Notification</string>
+    <string name="target_notification_remoteviews_source_small">Einklappte Benachrichtigung</string>
+    <string name="target_notification_remoteviews_source_large">Ausgeklappte Benachrichtigung</string>
+    <string name="target_notification_remoteviews_source_heads_up">Benachrichtigungsvorschau</string>
     <string name="target_notification_remoteviews_source_large_info"><b>Hinweis:</b> Kann Skalierungsprobleme verursachen</string>
     <string name="target_notification_remoteviews_padding_title">Custom Content Padding</string>
     <string name="target_notification_remoteviews_background_title">Custom Content Background</string>
@@ -1207,9 +1207,9 @@ Möglicherweise muss auch GPS aktiviert sein, damit Geräte und Verbindungen im 
     <string name="news_widget_recommendation_category_label">Nachrichten &amp; Zeitschriften</string>
     <string name="others_widget_recommendation_category_label">Empfohlen für dich</string>
     <!-- Shizuku outdated warning -->
-    <string name="shizuku_outdated_title">Shizuku Outdated</string>
-    <string name="shizuku_outdated_content">The version of Shizuku you have installed is no longer supported and may cause issues, such as crashes and restarts. For the best experience, consider switching to a newer fork.\n\n<b>Note:</b> You may have to uninstall the currently installed version to install the fork.</string>
-    <string name="shizuku_outdated_positive">Update</string>
-    <string name="shizuku_outdated_negative">Not now</string>
-    <string name="shizuku_outdated_neutral">Ignore</string>
+    <string name="shizuku_outdated_title">Shizuku veraltet</string>
+    <string name="shizuku_outdated_content">Die von dir installierte Version von Shizuku wird nicht mehr unterstützt und kann zu Problemen wie Abstürzen und Neustarts führen. Wechsle für eine optimale Nutzung zu einem neueren Fork.\n\n<B>Hinweis:</B> Möglicherweise muss die derzeit installierte Version deinstalliert werden, um den Fork zu installieren.</string>
+    <string name="shizuku_outdated_positive">Aktualisieren</string>
+    <string name="shizuku_outdated_negative">Nicht jetzt</string>
+    <string name="shizuku_outdated_neutral">Ignorieren</string>
 </resources>
