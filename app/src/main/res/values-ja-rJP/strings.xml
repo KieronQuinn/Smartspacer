@@ -141,9 +141,9 @@
     <string name="target_at_a_glance_label">At a Glance (ウィジェット)</string>
     <string name="target_at_a_glance_description">Googleのウィジェットを使用して読み込まれるスナップショット（At a Glance）からの制限されたターゲット</string>
     <string name="target_at_a_glance_description_unsupported">このターゲットにはGoogleアプリが必要です</string>
-    <string name="target_pixel_weather_forecast_title">Pixel Weather Forecast</string>
+    <string name="target_pixel_weather_forecast_title">Pixel 天気予報</string>
     <string name="target_pixel_weather_forecast_content">Displays the current weather and forecast for the next four hours from Pixel Weather</string>
-    <string name="target_pixel_weather_forecast_incompatible">This Target requires the Pixel Weather app</string>
+    <string name="target_pixel_weather_forecast_incompatible">このターゲットは Pixel 天気 アプリが必要です</string>
     <string name="target_notification_warning_title">通知リスナーは無効です</string>
     <string name="target_notification_warning_description">タップして有効にする</string>
     <string name="complication_default_label">スナップショット（At a Glance）</string>
