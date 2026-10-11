@@ -544,19 +544,19 @@
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Expanded</string>
     <string name="setup_expanded_switch">Expanded Smartspace を有効化</string>
-    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b> is a full screen version of Smartspace displaying all available Targets and Complications, as well as additional dynamic information such as widgets and shortcuts, specified by the Targets. You can also add custom widgets to this screen。</string>
-    <string name="setup_expanded_info_p2">Designed to be a way to quickly glance at all current information, you can set Expanded Smartspace to open when a Target is clicked and additional dynamic information is available. This is useful if you want easy access to contextual info at the touch of a button。</string>
-    <string name="setup_expanded_open_title">Dynamically open Expanded Smartspace</string>
-    <string name="setup_expanded_open_content">If enabled, Expanded Smartspace will open when a Target is tapped if it has additional information to show such as a widget or shortcuts</string>
-    <string name="setup_expanded_info_footer">You can access additional options, including always opening Expanded Smartspace when a Target is tapped (even if it does not have additional information) in Settings &gt; Expanded Smartspace after setup。</string>
+    <string name="setup_expanded_info_p1"><b>Expanded Smartspace</b>は、Smartspaceを全画面で表示するモードです。利用可能なすべてのターゲットやコンプリケーションに加え、ターゲットによって指定されたウィジェットやショートカットなどの動的な追加情報も表示されます。また、この画面にカスタムウィジェットを追加することも可能です。</string>
+    <string name="setup_expanded_info_p2">すべての現在の情報をすばやく見る方法であるように設計されています。ターゲットがクリックされ、追加の動的情報が利用可能になったときに、Expanded Smartspaceを開くように設定できます。これは、ボタンを押すだけでコンテキスト情報に簡単にアクセスしたい場合に便利です。</string>
+    <string name="setup_expanded_open_title">動的にExpanded Smartspaceを開く</string>
+    <string name="setup_expanded_open_content">有効にすると、ウィジェットやショートカットなどの追加情報がある場合、ターゲットがタップされたときにExpanded Smartspaceが開きます</string>
+    <string name="setup_expanded_info_footer">セットアップ後、「設定」&gt;「Expanded Smartspace」から追加オプションにアクセスできます。これには、ターゲットをタップした際に（追加情報がない場合でも）常に Expanded Smartspace を開く設定などが含まれます。</string>
     <!-- Setup > Plugins -->
     <string name="setup_plugins_title">拡張機能</string>
-    <string name="setup_plugins_info_p1">You can download additional <b>Plugins</b>, providing additional Targets, Complications and Requirements in the Plugins tab in the bottom navigation。</string>
-    <string name="setup_plugins_info_p2">Once installed, these are added like any others, by using the <b>Add Target</b> or <b>Add Complication</b> buttons, or by selecting <b>Add Requirement</b> in the Requirement settings for Targets &amp; Complications。</string>
+    <string name="setup_plugins_info_p1">画面下部のナビゲーションにある<b>拡張機能</b>タブから、追加のターゲット、コンプリケーション、要件を提供する拡張機能をダウンロードできます。</string>
+    <string name="setup_plugins_info_p2">インストール後は、他の項目と同様に、<b>ターゲットの追加</b>や<b>コンプリケーションの追加</b>、あるいはターゲット &amp; コンプリケーションの条件設定で <b>要件の追加</b>を選択することで追加できます。</string>
     <string name="setup_plugins_info_finish">終了</string>
     <!-- Setup > Complete -->
     <string name="setup_complete_title">セットアップ完了</string>
-    <string name="setup_complete_content">Targets, Complications and Widgets may need additional permissions, these will be requested when required。</string>
+    <string name="setup_complete_content">ターゲット、コンプリケーション、ウィジェットによっては追加の権限が必要な場合があります。</string>
     <!-- Enhanced Mode > Request -->
     <string name="enhanced_mode_request_loading_title">Requesting permission…</string>
     <string name="enhanced_mode_request_loading_subtitle">Grant Shizuku/Sui permission if asked</string>
