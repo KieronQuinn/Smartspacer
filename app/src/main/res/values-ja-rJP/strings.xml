@@ -35,7 +35,7 @@
     <string name="tint_colour_black">黒</string>
     <string name="tint_colour_black_content">ウィジェット内のテキストとアイコンは常に黒色になります</string>
     <string name="tint_colour_black_content_alt">通知内のテキストとアイコンは常に黒色になります</string>
-    <string name="widget_description_smartspacer">Show Smartspacer Targets &amp; Complications</string>
+    <string name="widget_description_smartspacer">Smartspacer のターゲット &amp; コンプリケーション</string>
     <string name="widget_loading_smartspacer">読み込み中…</string>
     <string name="widget_loading_smartspacer_subtitle">このメッセージが続く場合は、Smartspacerのアクセシビリティサービスが有効になっていることを確認してください。</string>
     <string name="widget_configuration_title">Smartspacer ウィジェット</string>
@@ -86,7 +86,7 @@
     <!-- Target Mode -->
     <string name="widget_configuration_pin_target_label">ターゲットを選択</string>
     <string name="widget_configuration_pin_target_none">タップして選択…</string>
-    <string name="widget_configuration_pin_target_warning"><b>ターゲットでピン留めする方法：</b> このウィジェットは常に選択したターゲットを表示しようとします。ターゲットが使用できなくなった場合(例えば音楽ターゲットのために演奏されていない音楽, または満たされていない要件)、下記のフォールバック行動は、代わりに何を表示するかを決定します。</string>
+    <string name="widget_configuration_pin_target_warning"><b>ターゲットでピン留めする方法：</b> このウィジェットは常に選択したターゲットを表示しようとします。ターゲットが使用できなくなった場合(例えば音楽ターゲットのために演奏されていない音楽, または満たされていない条件)、下記のフォールバック行動は、代わりに何を表示するかを決定します。</string>
     <!-- Fallback (shared) -->
     <string name="widget_configuration_pin_fallback_label">利用できない場合</string>
     <string name="widget_configuration_pin_fallback_show_date">日付を表示</string>
@@ -106,7 +106,7 @@
     <string name="target_now_playing_description_unavailable">このターゲットにはPixelの この曲なに？ が必要です。</string>
     <string name="target_now_playing_shortcut_history">履歴</string>
     <string name="target_ambient_music_mod_label">再生中 (Ambient Music Mod)</string>
-    <string name="target_ambient_music_mod_description">Shows the currently playing song from Ambient Music Mod</string>
+    <string name="target_ambient_music_mod_description">Ambient Music Mod から現在再生中の曲を表示</string>
     <string name="target_ambient_music_mod_description_unavailable">This target requires Ambient Music Mod</string>
     <string name="target_default_label">At a Glance (Smartspace)</string>
     <string name="target_default_description">Google At a Glance のターゲット（Smartspace を使用してロード）</string>
@@ -160,7 +160,7 @@
     <string name="complication_date_description">現在の日付を表示</string>
     <string name="plugin_target_default_label">プラグインのターゲット</string>
     <string name="plugin_action_default_label">Plugin Complication</string>
-    <string name="plugin_requirement_default_label">プラグインの要件</string>
+    <string name="plugin_requirement_default_label">プラグインの条件</string>
     <string name="permission_sdk_label">Read Smartspacer targets &amp; complications</string>
     <string name="permission_sdk_description">Allows access to read and interact with Smartspacer targets &amp; complications</string>
     <string name="notification_channel_background_service_title">バックグラウンドサービス</string>
@@ -445,21 +445,21 @@
     <string name="settings_hide_sensitive_contents_hide">ターゲットを隠す</string>
     <string name="settings_hide_sensitive_contents_hide_content">ターゲットを完全に隠す</string>
     <string name="settings_complication_on_primary_title">日付にコンプリケーションを表示</string>
-    <string name="settings_complication_on_primary_title_short">Show Complication</string>
-    <string name="settings_complication_on_primary_content">Whether to show a Complication next to the date (where supported): %1s</string>
-    <string name="settings_complication_on_primary_info"><b>Note:</b> This option is not supported in all Smartspace implementations, and requires any Date Targets to be using the \"Automatic\" date format. To verify it\'s available where you want it, try setting the option to \"Always\" and adding a Date Target to the top of your Target list.</string>
-    <string name="settings_complication_on_primary_always">Always</string>
-    <string name="settings_complication_on_primary_always_content">Any Complication will be displayed next to the date.\n\n<b>Note:</b> This may cause layout issues for longer complications.</string>
-    <string name="settings_complication_on_primary_weather_only">Weather only</string>
-    <string name="settings_complication_on_primary_weather_only_content">Only weather Complications will be displayed next to the date (recommended, matches Pixel stock behaviour)</string>
-    <string name="settings_complication_on_primary_never">Never</string>
-    <string name="settings_complication_on_primary_never_content">Complications will never be displayed next to the date</string>
+    <string name="settings_complication_on_primary_title_short">コンプリケーションを表示</string>
+    <string name="settings_complication_on_primary_content">日付の隣にコンプリケーションを表示するかどうか (サポートされている場合)： %1s</string>
+    <string name="settings_complication_on_primary_info"><b>注意：</b>このオプションは、すべてのSmartspace 実装でサポートされているわけではありません。そして、任意の日付ターゲットが「自動」日付フォーマットを使用する必要があります。 必要な場所で利用可能であることを確認するために、オプションを「常時」に設定し、ターゲットリストの先頭に日付ターゲットを追加してみてください。</string>
+    <string name="settings_complication_on_primary_always">常に表示する</string>
+    <string name="settings_complication_on_primary_always_content">任意のコンプリケーションは、日付の横に表示されます。\n\n<b>注意：</b>これは、レイアウトの問題を引き起こす可能性があります。</string>
+    <string name="settings_complication_on_primary_weather_only">天気のみ</string>
+    <string name="settings_complication_on_primary_weather_only_content">日付の横には天気に関するコンプリケーションのみが表示されます (推奨、Pixel stockの動作と一致)</string>
+    <string name="settings_complication_on_primary_never">表示しない</string>
+    <string name="settings_complication_on_primary_never_content">日付の横にはコンプリケーションが表示されません</string>
     <string name="settings_debug_header">デバッグ</string>
     <string name="settings_dump_title">ターゲットとアクションをダンプ</string>
     <string name="settings_dump_content">現在のターゲットとアクションのコンテンツとデバッグ情報を表示し、トラブルシューティングに役立つようにファイルに書き込みます。</string>
     <string name="settings_dump_title_short">ダンプ</string>
-    <string name="settings_dump_button">Write to File</string>
-    <string name="settings_dump_complete">Written to file</string>
+    <string name="settings_dump_button">ファイルに書き出す</string>
+    <string name="settings_dump_complete">ファイルに書き出しました</string>
     <!-- Compatibility Labels -->
     <string name="compatibility_feature_basic_title">Basic</string>
     <string name="compatibility_feature_basic_content">Allows showing a title &amp; subtitle with icon. Any unsupported Targets will fallback to this style.</string>
@@ -487,60 +487,60 @@
     <string name="compatibility_template_sub_images_content">Allows showing a sequence of images in addition to the title &amp; subtitle</string>
     <string name="compatibility_label_systemui">ロック画面</string>
     <!-- Setup -->
-    <string name="landing_button_get_started">Get Started</string>
+    <string name="landing_button_get_started">始める</string>
     <!-- Setup > Analytics -->
     <string name="setup_analytics_title_short">解析</string>
     <string name="setup_analytics_title">解析とクラッシュレポート</string>
-    <string name="setup_analytics_content"><![CDATA[Smartspacer uses a lot of experimental and "hidden" Android APIs, which may be prone to crashing on some devices due to OEM modifications.<br>To help bug fixing, Smartspacer can send crash reports to Firebase Crashlytics, as well as basic analytic information (app launches).<br>This data is all anonymous, and is entirely optional, more details and privacy policy <a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">here</a>]]></string>
+    <string name="setup_analytics_content"><![CDATA[Smartspacerは、実験的かつ隠しAPIを含む多数のAndroid APIを使用しています。そのため、OEMによる独自の改変が施された一部の端末では、クラッシュが発生する可能性があります。<br>不具合の修正に役立てるため、Smartspacerはクラッシュレポートや基本的な分析情報（アプリの起動など）をFirebase Crashlyticsに送信する機能を備えています。<br>送信されるデータはすべて匿名であり、この機能の利用は完全に任意です。詳細やプライバシーポリシーについては、<a href="https://kieronquinn.co.uk/redirect/smartspacer/privacy">こちら</a>をご覧ください]]></string>
     <string name="setup_analytics_allow">許可</string>
     <string name="setup_analytics_deny">拒否</string>
     <!-- Setup > Notifications -->
     <string name="setup_notifications_title">通知</string>
-    <string name="setup_notifications_content">Smartspacer uses notifications to show information, warnings and errors, as well as reminders related to Enchanced mode, if enabled.</string>
+    <string name="setup_notifications_content">Smartspacerは、通知を使用して、情報、警告、エラーを表示し、また、有効になっている場合はエンハンスドモードに関連するリマインダーを表示します。</string>
     <string name="setup_notifications_request">権限の許可</string>
     <!-- Setup > Target Info -->
     <string name="setup_targets_info_title">ターゲット</string>
-    <string name="setup_targets_info_p1"><b>Targets</b> are pages of information displayed on Smartspace, usually consisting of at least a title, subtitle and icon. Many Targets also have extra information - where supported - such as images or lists.</string>
-    <string name="setup_targets_info_p2">Targets can either be dynamic, showing and hiding as required, or static and display all the time. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Targets (accessible by tapping a Target in Smartspacer\'s UI).</string>
-    <string name="setup_targets_info_p3">Smartspacer\'s At a Glance integration is provided by the \"At a Glance\" Target, which can display the regular information from Google such as calendar events and flights. Please note that this does <b>not</b> always show today\'s date if no information is available, and you should add the \"Date\" Target separately if you wish to always have the date visible.</string>
-    <string name="setup_targets_info_example_one_title">Heavy traffic nearby</string>
+    <string name="setup_targets_info_p1"><b>ターゲット</b> は Smartspace 上に表示される情報のページで、通常はタイトル、字幕、アイコンで構成されています。 多くのターゲットには、画像やリストなどの追加情報もあります。</string>
+    <string name="setup_targets_info_p2">ターゲットは、必要に応じて動的、表示および非表示、または常に静的および表示することができます。 <b>条件</b>やターゲットによって提供される多くの設定を使用して、さらにカスタマイズすることができます(SmartspacerのUIでターゲットをタップしてアクセス可能)。</string>
+    <string name="setup_targets_info_p3">Smartspacerの「At a Glance」連携機能は、「At a Glance」ターゲットによって提供されます。このターゲットは、カレンダーの予定やフライト情報など、Googleの標準的な情報を表示できます。ただし、表示すべき情報がない場合、本日の日付は必ずしも表示<b>されません</b>。常に日付を表​​示させたい場合は、別途「日付」ターゲットを追加してください。</string>
+    <string name="setup_targets_info_example_one_title">付近の交通量が多いです</string>
     <string name="setup_targets_info_example_one_subtitle">Google マップ</string>
     <string name="setup_targets_info_example_two_title">買い物リスト</string>
     <string name="setup_targets_info_example_two_subtitle">8 個の項目</string>
     <string name="setup_targets_info_example_two_item_1">パン</string>
     <string name="setup_targets_info_example_two_item_2">牛乳</string>
     <string name="setup_targets_info_example_two_item_3">卵</string>
-    <string name="setup_targets_caption_google_maps">Example of a Target with an image</string>
-    <string name="setup_targets_caption_list">Example of a Target with a list</string>
+    <string name="setup_targets_caption_google_maps">画像付きターゲットの例</string>
+    <string name="setup_targets_caption_list">リストを持つターゲットの例</string>
     <!-- Setup > Add Targets -->
     <string name="setup_targets_title">ターゲットを追加</string>
-    <string name="setup_targets_controls_label">You can add, edit, delete and re-order Targets later in the settings</string>
+    <string name="setup_targets_controls_label">後でターゲットを追加、編集、削除、並び替えることができます</string>
     <string name="setup_targets_controls_next">次へ</string>
     <string name="setup_targets_controls_skip">スキップ</string>
     <!-- Setup > Complication Info -->
     <string name="setup_complications_info_title">コンプリケーション</string>
-    <string name="setup_complications_info_p1"><b>Complications</b> are extra information that can be displayed alongside Targets. These are usually short text and icons, for example a unread emails or current weather conditions.</string>
-    <string name="setup_complications_info_p2">。</string>
-    <string name="setup_complications_info_p3">Similar to Targets, Complications can be dynamic or static, and can hide if there\'s not currently information to display. You can further customise when they appear using <b>Requirements</b>, and the settings provided by many Complications (accessible by tapping a Complication in Smartspacer\'s UI)。</string>
+    <string name="setup_complications_info_p1"><b>コンプリケーション</b>は、ターゲットと一緒に表示できる追加情報です。これらは通常、未読の電子メールや現在の気象条件など、短いテキストとアイコンです。</string>
+    <string name="setup_complications_info_p2">利用可能なスペースがあれば、ターゲットと一緒にコンプリケーションが表示されます。また、残りのターゲットが利用できない場合は、日付とともに追加のページに表示されます。</string>
+    <string name="setup_complications_info_p3">ターゲットと同様に、コンプリケーションは動的または静的であり、現在表示する情報がない場合は非表示にできます。 <b>条件</b>や提供される多くの設定を使用して、さらにカスタマイズすることができます(SmartspacerのUIでコンプリケーションをタップしてアクセスできます)。</string>
     <string name="setup_complications_example_gmail">8</string>
-    <string name="setup_complications_caption_gmail">Example of a Complication showing unread emails</string>
+    <string name="setup_complications_caption_gmail">未読メール数を表示するコンプリケーションの例</string>
     <string name="setup_complications_example_weather">20°</string>
-    <string name="setup_complications_caption_weather">Example of a Complication showing weather conditions</string>
+    <string name="setup_complications_caption_weather">天気を示すコンプリケーションの例</string>
     <!-- Setup > Add Complications -->
     <string name="setup_complications_title">コンプリケーションを追加</string>
-    <string name="setup_complications_controls_label">You can add, edit, delete and re-order Complications later in the settings</string>
+    <string name="setup_complications_controls_label">後でコンプリケーションを追加、編集、削除、並び替えることができます</string>
     <string name="setup_complications_controls_next">次へ</string>
     <string name="setup_complications_controls_skip">スキップ</string>
     <!-- Setup > Add Widget -->
     <string name="setup_add_widget_title">ウィジェットを追加</string>
-    <string name="setup_add_widget_content">Add Smartspacer to your Home Screen</string>
-    <string name="setup_add_widget_lock"><![CDATA[Note: If you wish to add Smartspacer to your Lock Screen, you must use an app like <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Lock Screen Widgets</a> to add the widget。]]></string>
+    <string name="setup_add_widget_content">Smartspacer をホーム画面に追加する</string>
+    <string name="setup_add_widget_lock"><![CDATA[注意：Smartspacerをロック画面に追加したい場合は、次の操作を行ってください。ウィジェットを追加するには、 <a href="https://play.google.com/store/apps/details?id=tk.zwander.lockscreenwidgets">Widgets Anywhere</a> のようなアプリを使用する必要があります。]]></string>
     <!-- Setup > Requirements -->
     <string name="setup_requirements_info_title">条件の設定</string>
-    <string name="setup_requirements_info_p1"><b>Requirements</b> allow you to customise when a Target or Complication is shown in Smartspace. With these, you can create scenarios where useful information is shown in Smartspace。</string>
-    <string name="setup_requirements_info_p2"><b>You can access the Requirement settings by tapping an added Target or Complication in Smartspacer\'s UI, and selecting \"Requirements\" at the bottom of the settings.</b></string>
-    <string name="setup_requirements_info_p3">With <b>Any Requirements</b>, any of the added Requirements can be met to show a Target or Complication. For example, you could use the Wi-Fi Requirement to show your shopping list from Google Keep when in range of the networks at any of your local stores。</string>
-    <string name="setup_requirements_info_p4">With <b>All Requirements</b>, all of the added Requirements must be met to show a Target or Complication. For example, you could use the Time &amp; Date and Location Requirements to show your gym pass from Google Wallet on Tuesday evenings when near the gym。</string>
+    <string name="setup_requirements_info_p1"><b>条件</b>は、Smartspace にターゲットまたはコンプリケーションが表示されるときにカスタマイズできます。これらを使用すると、Smartspace に有用な情報が表示されるシナリオを作成できます。</string>
+    <string name="setup_requirements_info_p2"><b>SmartspacerのUIで追加済みのターゲットまたはコンプリケーションをタップし、設定画面の下部にある「条件」を選択することで、条件の設定にアクセスできます。</b></string>
+    <string name="setup_requirements_info_p3"><b>いずれかの条件</b>を使用すると、追加された条件のいずれかが満たされた場合に、ターゲットやコンプリケーションを表示できます。例えば、Wi-Fiの条件を設定しておけば、近所の店舗のネットワーク圏内に入った際に、Google Keepの買い物リストを表示させるといったことが可能です。</string>
+    <string name="setup_requirements_info_p4"><b>すべての条件</b>では、追加されたすべての条件が満たされた場合にのみ、ターゲットやコンプリケーションが表示されます。例えば、「時刻 &amp; 日付」および「場所」の条件を組み合わせれば、火曜日の夕方にジムの近くにいるときだけ、Google ウォレットのジムのパスを表示させるといったことが可能です。</string>
     <!-- Setup > Expanded -->
     <string name="setup_expanded_title">Expanded</string>
     <string name="setup_expanded_switch">Expanded Smartspace を有効化</string>
