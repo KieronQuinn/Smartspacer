@@ -16,26 +16,30 @@
 
 package com.android.internal.appwidget;
 
+import android.app.IApplicationThread;
+import android.app.IServiceConnection;
+import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.ParceledListSlice;
-import android.appwidget.AppWidgetProviderInfo;
-import com.android.internal.appwidget.IAppWidgetHost;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import android.app.IApplicationThread;
-import android.app.IServiceConnection;
 
-interface IAppWidgetService {
+public interface IAppWidgetService extends android.os.IInterface {
+
+    abstract class Stub extends android.os.Binder implements android.app.IServiceConnection {
+        public static IAppWidgetService asInterface(android.os.IBinder obj) {
+            throw new RuntimeException("Stub!");
+        }
+    }
 
     //
     // for AppWidgetHost
     //
     ParceledListSlice startListening(IAppWidgetHost host, String callingPackage, int hostId,
-            in int[] appWidgetIds);
+            int[] appWidgetIds);
     void stopListening(String callingPackage, int hostId);
     int allocateAppWidgetId(String callingPackage, int hostId);
     void deleteAppWidgetId(String callingPackage, int appWidgetId);
@@ -45,32 +49,34 @@ interface IAppWidgetService {
     int[] getAppWidgetIdsForHost(String callingPackage, int hostId);
     IntentSender createAppWidgetConfigIntentSender(String callingPackage, int appWidgetId,
             int intentFlags);
+    IntentSender createAppWidgetConfigIntentSender(String callingPackage, int appWidgetId,
+            int intentFlags, int userId);
 
     //
     // for AppWidgetManager
     //
-    void updateAppWidgetIds(String callingPackage, in int[] appWidgetIds, in RemoteViews views);
-    void updateAppWidgetOptions(String callingPackage, int appWidgetId, in Bundle extras);
+    void updateAppWidgetIds(String callingPackage, int[] appWidgetIds, RemoteViews views);
+    void updateAppWidgetOptions(String callingPackage, int appWidgetId, Bundle extras);
     Bundle getAppWidgetOptions(String callingPackage, int appWidgetId);
-    void partiallyUpdateAppWidgetIds(String callingPackage, in int[] appWidgetIds,
-            in RemoteViews views);
-    void updateAppWidgetProvider(in ComponentName provider, in RemoteViews views);
-    void updateAppWidgetProviderInfo(in ComponentName provider, in String metadataKey);
-    void notifyAppWidgetViewDataChanged(String packageName, in int[] appWidgetIds, int viewId);
+    void partiallyUpdateAppWidgetIds(String callingPackage, int[] appWidgetIds,
+            RemoteViews views);
+    void updateAppWidgetProvider(ComponentName provider, RemoteViews views);
+    void updateAppWidgetProviderInfo(ComponentName provider, String metadataKey);
+    void notifyAppWidgetViewDataChanged(String packageName, int[] appWidgetIds, int viewId);
     ParceledListSlice getInstalledProvidersForProfile(int categoryFilter, int profileId,
             String packageName);
     AppWidgetProviderInfo getAppWidgetInfo(String callingPackage, int appWidgetId);
-    boolean hasBindAppWidgetPermission(in String packageName, int userId);
-    void setBindAppWidgetPermission(in String packageName, int userId, in boolean permission);
-    boolean bindAppWidgetId(in String callingPackage, int appWidgetId,
-            int providerProfileId, in ComponentName providerComponent, in Bundle options);
-    boolean bindRemoteViewsService(String callingPackage, int appWidgetId, in Intent intent,
+    boolean hasBindAppWidgetPermission(String packageName, int userId);
+    void setBindAppWidgetPermission(String packageName, int userId, boolean permission);
+    boolean bindAppWidgetId(String callingPackage, int appWidgetId,
+            int providerProfileId, ComponentName providerComponent, Bundle options);
+    boolean bindRemoteViewsService(String callingPackage, int appWidgetId, Intent intent,
             IApplicationThread caller, IBinder token, IServiceConnection connection, int flags);
 
-    int[] getAppWidgetIds(in ComponentName providerComponent);
+    int[] getAppWidgetIds(ComponentName providerComponent);
     boolean isBoundWidgetPackage(String packageName, int userId);
-    boolean requestPinAppWidget(String packageName, in ComponentName providerComponent,
-            in Bundle extras, in IntentSender resultIntent);
+    boolean requestPinAppWidget(String packageName, ComponentName providerComponent,
+            Bundle extras, IntentSender resultIntent);
     boolean isRequestPinAppWidgetSupported();
-    oneway void noteAppWidgetTapped(in String callingPackage, in int appWidgetId);
+    void noteAppWidgetTapped(String callingPackage, int appWidgetId);
 }

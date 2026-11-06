@@ -16,7 +16,7 @@ fun AppWidgetHost.getIntentSenderForConfigureActivityCompatInternal(
     val sService = AppWidgetHost::class.java.getDeclaredField("sService").apply {
         isAccessible = true
     }.get(this) as IAppWidgetService
-    return sService.createAppWidgetConfigIntentSender(
+    return sService.createAppWidgetConfigIntentSenderCompat(
         BuildConfig.APPLICATION_ID, appWidgetId, intentFlags
     )
 }

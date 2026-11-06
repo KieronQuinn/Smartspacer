@@ -13,8 +13,8 @@ plugins {
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
-def tagName = '1.11.4'
-def tagCode = 1114
+def tagName = '1.11.5'
+def tagCode = 1115
 
 android {
     compileSdkVersion 37
@@ -60,6 +60,8 @@ android {
     }
     androidResources {
         generateLocaleConfig true
+        // Use a custom ID prefix (ASCII "S") to avoid colliding with other apps' RemoteViews IDs
+        additionalParameters += ["--package-id", "0x53", "--allow-reserved-package-id"]
     }
     testOptions {
         packagingOptions {
@@ -110,13 +112,13 @@ dependencies {
     compileOnly project(path: ':systemstubs')
 
     //Bypass hidden API restrictions
-    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.2'
 
     implementation 'com.google.android.gms:play-services-location:21.4.0'
-    implementation 'com.google.android.gms:play-services-maps:20.0.0'
+    implementation 'com.google.android.gms:play-services-maps:20.1.0'
 
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
-    implementation 'com.google.code.gson:gson:2.14.0'
+    implementation 'com.google.code.gson:gson:2.15.0'
 
     //Shizuku for Shell service
     def shizuku_version = '13.1.5'
@@ -137,8 +139,8 @@ dependencies {
     ksp 'com.github.bumptech.glide:ksp:5.0.9'
 
     implementation 'com.google.android.gms:play-services-location:21.4.0'
-    implementation 'com.google.android.gms:play-services-maps:20.0.0'
-    implementation 'com.google.maps.android:android-maps-utils:6.0.0'
+    implementation 'com.google.android.gms:play-services-maps:20.1.0'
+    implementation 'com.google.maps.android:android-maps-utils:7.0.0'
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
     implementation 'com.airbnb.android:lottie:6.7.1'
@@ -147,9 +149,9 @@ dependencies {
     implementation "dev.rikka.tools.refine:runtime:$refine_version"
     implementation "com.squareup.retrofit2:retrofit:3.0.0"
     implementation "com.squareup.retrofit2:converter-gson:3.0.0"
-    implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation 'androidx.palette:palette-ktx:1.1.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:2.4.0"
-    implementation "com.tbuonomo:dotsindicator:5.1.1"
+    implementation "com.tbuonomo:dotsindicator:5.1.2"
 
     //Autostarter provides some OEM battery checks + starting settings for disabling them
     implementation ("com.github.judemanutd:autostarter:1.1.0") {
@@ -164,10 +166,10 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     //OSS libraries activity
-    implementation 'com.google.android.gms:play-services-oss-licenses:17.5.2'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.5.3'
 
     //Firebase Analytics + Crashlytics
-    implementation(platform("com.google.firebase:firebase-bom:34.19.0"))
+    implementation(platform("com.google.firebase:firebase-bom:35.1.0"))
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
 

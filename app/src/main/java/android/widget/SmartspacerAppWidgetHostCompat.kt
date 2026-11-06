@@ -22,12 +22,19 @@ import android.appwidget.AppWidgetProviderInfoHidden
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.IntentSender
-import android.os.*
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.os.Process
+import android.os.RemoteException
+import android.os.ServiceManager
 import com.android.internal.appwidget.IAppWidgetHost
 import com.android.internal.appwidget.IAppWidgetService
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.sdk.client.views.base.SmartspacerBasePageView.SmartspaceTargetInteractionListener
 import com.kieronquinn.app.smartspacer.ui.views.appwidget.ExpandedAppWidgetHostView
+import com.kieronquinn.app.smartspacer.utils.extensions.createAppWidgetConfigIntentSenderCompat
 import com.kieronquinn.app.smartspacer.utils.extensions.resetAppWidget
 import com.kieronquinn.app.smartspacer.utils.extensions.setInteractionHandler
 import com.kieronquinn.app.smartspacer.utils.extensions.viewDataChanged
@@ -229,17 +236,13 @@ open class SmartspacerAppWidgetHostCompat @JvmOverloads constructor(
         appWidgetId: Int, intentFlags: Int, requestCode: Int, options: Bundle?
     ) {
         try {
-            val intentSender = sService.createAppWidgetConfigIntentSender(
+            val intentSender = sService.createAppWidgetConfigIntentSenderCompat(
                 mContextOpPackageName, appWidgetId, intentFlags
             )
-            if (intentSender != null) {
-                activity.startIntentSenderForResult(
-                    intentSender, requestCode, null, 0, 0, 0,
-                    options
-                )
-            } else {
-                throw ActivityNotFoundException()
-            }
+            activity.startIntentSenderForResult(
+                intentSender, requestCode, null, 0, 0, 0,
+                options
+            )
         } catch (e: IntentSender.SendIntentException) {
             throw ActivityNotFoundException()
         } catch (e: RemoteException) {
@@ -422,7 +425,7 @@ open class SmartspacerAppWidgetHostCompat @JvmOverloads constructor(
     }
 
     fun getIntentSenderForConfigureActivityCompat(appWidgetId: Int, intentFlags: Int = 0): IntentSender {
-        return sService.createAppWidgetConfigIntentSender(
+        return sService.createAppWidgetConfigIntentSenderCompat(
             BuildConfig.APPLICATION_ID, appWidgetId, intentFlags
         )
     }
