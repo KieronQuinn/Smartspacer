@@ -57,5 +57,5 @@ protobuf {
 }
 
 dependencies {
-    api "com.google.protobuf:protobuf-javalite:4.35.0"
+    api "com.google.protobuf:protobuf-javalite:4.36.2"
 }

@@ -8,6 +8,8 @@ import android.view.View
 import com.kieronquinn.app.smartspacer.BuildConfig
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedSettingsProvider
 import com.kieronquinn.app.smartspacer.providers.SmartspacerXposedStateProvider
+import com.kieronquinn.app.smartspacer.xposed.Xposed.Companion.OVERLAY_PREFIX
+import com.kieronquinn.app.smartspacer.xposed.Xposed.Companion.OVERLAY_VIEW_CLASS
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XC_MethodReplacement
@@ -20,6 +22,7 @@ class Xposed: IXposedHookLoadPackage {
         private const val ACTION_OVERLAY = "com.android.launcher3.WINDOW_OVERLAY"
         private const val PACKAGE_NEXUS_LAUNCHER = "com.google.android.apps.nexuslauncher"
         private const val OVERLAY_PREFIX = "com.google.android.apps.nexuslauncher.overlay"
+        private const val OVERLAY_VIEW_CLASS = "com.android.launcher3.overlay.StartingWindowView"
     }
 
     override fun handleLoadPackage(lpparam: LoadPackageParam) {
@@ -91,7 +94,7 @@ class Xposed: IXposedHookLoadPackage {
      *  on the overlay before minus one loads. This is fine for Discover, but creates a graphical
      *  glitch when using Smartspacer with a transparent background. Fixing this requires hooking
      *  all View inits, finding the singular View coming from a class starting with [OVERLAY_PREFIX]
-     *  and replacing its onDraw with a no-op.
+     *  or matching [OVERLAY_VIEW_CLASS] and replacing its onDraw with a no-op.
      */
     private fun ClassLoader.setupNexusLauncherSpecificHooks() {
         XposedHelpers.findAndHookConstructor(
@@ -101,7 +104,7 @@ class Xposed: IXposedHookLoadPackage {
                 override fun beforeHookedMethod(param: MethodHookParam) {
                     super.beforeHookedMethod(param)
                     val clazz = param.thisObject::class.java.name
-                    if(clazz.startsWith(OVERLAY_PREFIX)) {
+                    if(clazz == OVERLAY_VIEW_CLASS || clazz.startsWith(OVERLAY_PREFIX)) {
                         this@setupNexusLauncherSpecificHooks
                             .removeCanvasBackgroundDrawingFromView(clazz)
                     }

@@ -348,14 +348,14 @@ class SmartspacerNotificationWidgetService: LifecycleService() {
             when(it) {
                 PagedWidgetSmartspacerSessionState.DotConfig.REGULAR -> {
                     RemoteViews(packageName, R.layout.widget_dot).apply {
-                        setImageViewImageTintListCompat(R.id.dot, dotColour)
-                        setImageViewImageAlpha(R.id.dot, 0.5f)
+                        setImageViewImageTintListCompat(R.id.widget_smartspacer_dot, dotColour)
+                        setImageViewImageAlpha(R.id.widget_smartspacer_dot, 0.5f)
                     }
                 }
                 PagedWidgetSmartspacerSessionState.DotConfig.HIGHLIGHTED -> {
                     RemoteViews(packageName, R.layout.widget_dot).apply {
-                        setImageViewImageTintListCompat(R.id.dot, dotColour)
-                        setImageViewImageAlpha(R.id.dot, 1f)
+                        setImageViewImageTintListCompat(R.id.widget_smartspacer_dot, dotColour)
+                        setImageViewImageAlpha(R.id.widget_smartspacer_dot, 1f)
                     }
                 }
             }
