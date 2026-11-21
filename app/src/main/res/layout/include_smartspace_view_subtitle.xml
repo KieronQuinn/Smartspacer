@@ -31,7 +31,7 @@
         android:layout_weight="1"
         android:autoStart="true"
         android:clipChildren="true"
-        android:flipInterval="4000"
+        android:flipInterval="6500"
         android:inAnimation="@anim/scroll_text_1"
         android:visibility="gone"
         android:layout_marginStart="@dimen/smartspace_view_icon_margin">
@@ -103,7 +103,7 @@
         android:layout_weight="1"
         android:autoStart="true"
         android:clipChildren="true"
-        android:flipInterval="8000"
+        android:flipInterval="10500"
         android:inAnimation="@anim/scroll_text_2"
         android:visibility="gone"
         android:layout_marginStart="@dimen/smartspace_view_icon_margin">
@@ -175,7 +175,7 @@
         android:layout_weight="1"
         android:autoStart="true"
         android:clipChildren="true"
-        android:flipInterval="16000"
+        android:flipInterval="18500"
         android:inAnimation="@anim/scroll_text_3"
         android:visibility="gone"
         android:layout_marginStart="@dimen/smartspace_view_icon_margin">

@@ -77,16 +77,78 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
     open val supportsSubAction = false
 
     /**
+     *  IDs of one set of scrolling text views: per speed bucket, a ViewFlipper, its two strips
+     *  and the two text cells in each strip.
+     */
+    private class ScrollIds(
+        val flippers: IntArray,
+        val strips: Array<IntArray>,
+        val cells: Array<Array<IntArray>>
+    )
+
+    private val TITLE_SCROLL = ScrollIds(
+        flippers = intArrayOf(
+            R.id.smartspace_view_title_scroll_1,
+            R.id.smartspace_view_title_scroll_2,
+            R.id.smartspace_view_title_scroll_3
+        ),
+        strips = arrayOf(
+            intArrayOf(R.id.smartspace_view_title_scroll_1_a, R.id.smartspace_view_title_scroll_1_b),
+            intArrayOf(R.id.smartspace_view_title_scroll_2_a, R.id.smartspace_view_title_scroll_2_b),
+            intArrayOf(R.id.smartspace_view_title_scroll_3_a, R.id.smartspace_view_title_scroll_3_b)
+        ),
+        cells = arrayOf(
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_title_scroll_1_a_1, R.id.smartspace_view_title_scroll_1_a_2),
+                intArrayOf(R.id.smartspace_view_title_scroll_1_b_1, R.id.smartspace_view_title_scroll_1_b_2)
+            ),
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_title_scroll_2_a_1, R.id.smartspace_view_title_scroll_2_a_2),
+                intArrayOf(R.id.smartspace_view_title_scroll_2_b_1, R.id.smartspace_view_title_scroll_2_b_2)
+            ),
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_title_scroll_3_a_1, R.id.smartspace_view_title_scroll_3_a_2),
+                intArrayOf(R.id.smartspace_view_title_scroll_3_b_1, R.id.smartspace_view_title_scroll_3_b_2)
+            )
+        )
+    )
+
+    private val SUBTITLE_SCROLL = ScrollIds(
+        flippers = intArrayOf(
+            R.id.smartspace_view_subtitle_scroll_1,
+            R.id.smartspace_view_subtitle_scroll_2,
+            R.id.smartspace_view_subtitle_scroll_3
+        ),
+        strips = arrayOf(
+            intArrayOf(R.id.smartspace_view_subtitle_scroll_1_a, R.id.smartspace_view_subtitle_scroll_1_b),
+            intArrayOf(R.id.smartspace_view_subtitle_scroll_2_a, R.id.smartspace_view_subtitle_scroll_2_b),
+            intArrayOf(R.id.smartspace_view_subtitle_scroll_3_a, R.id.smartspace_view_subtitle_scroll_3_b)
+        ),
+        cells = arrayOf(
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_1_a_1, R.id.smartspace_view_subtitle_scroll_1_a_2),
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_1_b_1, R.id.smartspace_view_subtitle_scroll_1_b_2)
+            ),
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_2_a_1, R.id.smartspace_view_subtitle_scroll_2_a_2),
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_2_b_1, R.id.smartspace_view_subtitle_scroll_2_b_2)
+            ),
+            arrayOf(
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_3_a_1, R.id.smartspace_view_subtitle_scroll_3_a_2),
+                intArrayOf(R.id.smartspace_view_subtitle_scroll_3_b_1, R.id.smartspace_view_subtitle_scroll_3_b_2)
+            )
+        )
+    )
+
+    /**
      *  Swaps the static text view [normalId] for the continuously scrolling ViewFlipper of
-     *  [params]' speed bucket. [prefix] is the ID prefix of the scrolling views in the layout
-     *  (`<prefix>_scroll_<bucket>` for the flipper, `_a`/`_b` for its two strips, and `_1`/`_2`
-     *  for the two text cells in each strip). Each strip is two cells wide, with the text in
-     *  each, so sliding it by one cell (half its width) loops seamlessly.
+     *  [params]' speed bucket. Each strip is two cells wide, with the text in each, so sliding it
+     *  by one cell (half its width) loops seamlessly.
      */
     @SuppressLint("NewApi")
     private fun RemoteViews.setupScrollingText(
         context: Context,
-        prefix: String,
+        ids: ScrollIds,
         params: ScrollParams,
         normalId: Int,
         text: CharSequence,
@@ -95,29 +157,35 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         isList: Boolean,
         tapAction: TapAction?
     ) {
-        fun id(name: String): Int {
-            return context.resources.getIdentifier(name, "id", context.packageName)
-        }
+        val index = params.bucket - 1
         setViewVisibility(normalId, View.GONE)
-        for(bucket in 1..3) {
-            val visibility = if(bucket == params.bucket) View.VISIBLE else View.GONE
-            setViewVisibility(id("${prefix}_scroll_$bucket"), visibility)
+        ids.flippers.forEachIndexed { i, id ->
+            setViewVisibility(id, if(i == index) View.VISIBLE else View.GONE)
         }
-        val flipper = id("${prefix}_scroll_${params.bucket}")
-        for(strip in listOf("a", "b")) {
-            val stripId = id("${prefix}_scroll_${params.bucket}_$strip")
+        for(strip in 0..1) {
             //Before Android 12 the strips have fixed widths set in the layout
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                setViewLayoutWidth(stripId, params.cellWidth * 2f, COMPLEX_UNIT_PX)
+                setViewLayoutWidth(ids.strips[index][strip], params.cellWidth * 2f, COMPLEX_UNIT_PX)
             }
-            for(cell in listOf("1", "2")) {
-                val cellId = id("${prefix}_scroll_${params.bucket}_${strip}_$cell")
+            for(cellId in ids.cells[index][strip]) {
                 setTextViewText(cellId, text)
                 setTextViewTextSize(cellId, COMPLEX_UNIT_PX, textSize)
                 setTextColor(cellId, textColour)
             }
         }
-        setOnClickAction(context, flipper, isList, tapAction)
+        //The flipper shows its first strip statically until its first flip, one full loop later, so
+        //flip now to start the slide straight away. Both strips are identical so this is seamless.
+        showNext(ids.flippers[index])
+        setOnClickAction(context, ids.flippers[index], isList, tapAction)
+    }
+
+    /**
+     *  Hides the scrolling views, and shows the static text view [normalId] if it's not managed
+     *  elsewhere. Widgets are often updated in place, so this undoes any previous scrolling.
+     */
+    private fun RemoteViews.resetScrollingText(ids: ScrollIds, normalId: Int?) {
+        ids.flippers.forEach { setViewVisibility(it, View.GONE) }
+        normalId?.let { setViewVisibility(it, View.VISIBLE) }
     }
 
     @CallSuper
@@ -208,15 +276,20 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         remoteViews.setupOverflow(context, isList, textColour, overflowIntent)
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
         remoteViews.setTextViewTextSize(R.id.smartspace_view_title, COMPLEX_UNIT_PX, titleSize)
-        titleText?.takeIf { scrollEnabled }?.let {
+        val titleScroll = titleText?.takeIf { scrollEnabled }?.let {
             getScrollParams(
-                context, it, titleSize, shadowEnabled, context.getAvailableTextSize(width, false)
-            )?.let { params ->
-                remoteViews.setupScrollingText(
-                    context, "smartspace_view_title", params, R.id.smartspace_view_title, it, titleSize,
-                    textColour, isList, titleTapAction
-                )
-            }
+                context, it, titleSize, shadowEnabled, context.getAvailableTextSize(width, false),
+                isTitle = true
+            )
+        }
+        if(titleText != null && titleScroll != null) {
+            remoteViews.setupScrollingText(
+                context, TITLE_SCROLL, titleScroll, R.id.smartspace_view_title, titleText!!,
+                titleSize, textColour, isList, titleTapAction
+            )
+        }else{
+            //Widgets can be updated in place, so always undo any previous scrolling state
+            remoteViews.resetScrollingText(TITLE_SCROLL, R.id.smartspace_view_title)
         }
         val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
         remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
@@ -245,13 +318,15 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         remoteViews.setOnClickAction(
             context, R.id.smartspace_view_subtitle_text, isList, template.subtitleItem?.tapAction
         )
-        template.subtitleItem?.text?.let { text ->
-            subtitleScroll?.let {
-                remoteViews.setupScrollingText(
-                    context, "smartspace_view_subtitle", it, R.id.smartspace_view_subtitle_text, text.text,
-                    subtitleSize, textColour, isList, template.subtitleItem?.tapAction
-                )
-            }
+        val subtitleItemText = template.subtitleItem?.text
+        if(subtitleItemText != null && subtitleScroll != null) {
+            remoteViews.setupScrollingText(
+                context, SUBTITLE_SCROLL, subtitleScroll, R.id.smartspace_view_subtitle_text,
+                subtitleItemText.text, subtitleSize, textColour, isList,
+                template.subtitleItem?.tapAction
+            )
+        }else{
+            remoteViews.resetScrollingText(SUBTITLE_SCROLL, null)
         }
         if(supportsSubAction) {
             template.subtitleSupplementalItem?.text?.let {

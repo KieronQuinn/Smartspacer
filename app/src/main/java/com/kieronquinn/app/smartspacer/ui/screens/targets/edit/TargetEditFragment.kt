@@ -305,7 +305,7 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
                 target.scrollLongText,
                 getString(R.string.target_edit_scroll_long_text_title),
                 getString(R.string.target_edit_scroll_long_text_content),
-                ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_scroll_text),
                 onChanged = viewModel::onScrollLongTextChanged
             ),
             GenericSettingsItem.Header(

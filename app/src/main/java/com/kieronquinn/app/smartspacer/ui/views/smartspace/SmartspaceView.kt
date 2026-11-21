@@ -32,6 +32,8 @@ abstract class SmartspaceView(
 
     companion object {
         private const val SCROLL_GAP_DP = 32
+        //The measured width is an estimate, so leave some headroom to avoid clipping the text
+        private const val SCROLL_WIDTH_MARGIN = 1.05f
         private const val SCROLL_SPEED_DP = 50f
         private const val SCROLL_MIN_GAP_DP = 16
         private const val SCROLL_BASE_CELL_DP = 200
@@ -136,11 +138,13 @@ abstract class SmartspaceView(
         text: CharSequence,
         size: Float,
         shadowEnabled: Boolean,
-        availableWidth: Int
+        availableWidth: Int,
+        isTitle: Boolean = false
     ): ScrollParams? {
         if(availableWidth <= 0) return null
-        val textWidth = appWidgetRepository.getTextWidth(text, size, shadowEnabled)
-        if(textWidth <= availableWidth) return null
+        val measuredWidth = appWidgetRepository.getTextWidth(text, size, shadowEnabled, isTitle)
+        if(measuredWidth <= availableWidth) return null
+        val textWidth = (measuredWidth * SCROLL_WIDTH_MARGIN).toInt()
         val density = context.resources.displayMetrics.density
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             //The strip's width can't be set at runtime before Android 12, so use the fixed width
@@ -151,7 +155,8 @@ abstract class SmartspaceView(
             return ScrollParams(bucket, ((SCROLL_BASE_CELL_DP shl (bucket - 1)) * density).toInt())
         }
         val cellWidth = textWidth + (SCROLL_GAP_DP * density).toInt()
-        //Pick the loop duration closest to a constant scroll speed
+        //Pick the closest of three loop durations (4s, 8s, 16s) to the target speed. This is only
+        //approximately constant (within about 1.5x), as the durations are fixed in the animations.
         val durationMs = cellWidth / (SCROLL_SPEED_DP * density) * 1000f
         val bucket = when {
             durationMs <= 6000f -> 1

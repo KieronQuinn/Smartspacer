@@ -71,6 +71,7 @@ open class SmartspacerView: FrameLayout {
      *  If [scrollLongText] is `true`, the title and subtitle will scroll horizontally if they are
      *  too long to fit, rather than being truncated.
      */
+    @JvmOverloads
     fun setTarget(
         target: SmartspaceTarget?,
         listener: SmartspaceTargetInteractionListener?,

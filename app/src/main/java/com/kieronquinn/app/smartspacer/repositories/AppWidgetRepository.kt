@@ -132,7 +132,12 @@ interface AppWidgetRepository {
     /**
      *  Estimates the width in pixels that [text] will take up in a widget at a given text [size].
      */
-    fun getTextWidth(text: CharSequence, size: Float, shadowEnabled: Boolean): Int
+    fun getTextWidth(
+        text: CharSequence,
+        size: Float,
+        shadowEnabled: Boolean,
+        isTitle: Boolean = false
+    ): Int
 
     fun supportsPinAppWidget(): Boolean
     fun requestPinAppWidget(callbackAction: String)
@@ -183,6 +188,11 @@ class AppWidgetRepositoryImpl(
     private val maxLengthTextView by lazy {
         LayoutInflater.from(context)
             .inflate(R.layout.smartspacer_view_template_subtitle_measure, null) as TextView
+    }
+
+    private val titleMeasureTextView by lazy {
+        LayoutInflater.from(context)
+            .inflate(R.layout.smartspacer_view_template_title_measure, null) as TextView
     }
 
     override val newAppWidgetIdBus = MutableSharedFlow<Int>()
@@ -398,8 +408,14 @@ class AppWidgetRepositoryImpl(
     }
 
     @Synchronized
-    override fun getTextWidth(text: CharSequence, size: Float, shadowEnabled: Boolean): Int {
-        return text.estimateWidth(size, shadowEnabled)
+    override fun getTextWidth(
+        text: CharSequence,
+        size: Float,
+        shadowEnabled: Boolean,
+        isTitle: Boolean
+    ): Int {
+        val textView = if(isTitle) titleMeasureTextView else maxLengthTextView
+        return text.estimateWidth(size, shadowEnabled, textView)
     }
 
     private fun setupPackageStates() = scope.launch {
@@ -454,19 +470,23 @@ class AppWidgetRepositoryImpl(
         setupPackageStates()
     }
 
-    private fun CharSequence.estimateWidth(textSize: Float, shadowEnabled: Boolean): Int {
-        maxLengthTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-        maxLengthTextView.layoutParams = ViewGroup.LayoutParams(
+    private fun CharSequence.estimateWidth(
+        textSize: Float,
+        shadowEnabled: Boolean,
+        textView: TextView = maxLengthTextView
+    ): Int {
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
+        textView.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
         if(shadowEnabled) {
-            maxLengthTextView.setShadowLayer(1f, 1f, 1f, Color.BLACK)
+            textView.setShadowLayer(1f, 1f, 1f, Color.BLACK)
         }else{
-            maxLengthTextView.setShadowLayer(0f, 0f, 0f, Color.BLACK)
+            textView.setShadowLayer(0f, 0f, 0f, Color.BLACK)
         }
-        maxLengthTextView.text = this
-        maxLengthTextView.measure(0, 0)
-        return maxLengthTextView.measuredWidth
+        textView.text = this
+        textView.measure(0, 0)
+        return textView.measuredWidth
     }
 
     private fun CharSequence.getLengthForWidth(
