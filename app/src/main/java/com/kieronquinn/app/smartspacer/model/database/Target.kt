@@ -41,7 +41,9 @@ data class Target(
     @ColumnInfo(name = "expanded_show_when_locked")
     var expandedShowWhenLocked: Boolean = true,
     @ColumnInfo(name = "disable_sub_complications")
-    var disableSubComplications: Boolean = false
+    var disableSubComplications: Boolean = false,
+    @ColumnInfo(name = "scroll_long_text")
+    var scrollLongText: Boolean = false
 ): Parcelable {
 
     fun hasRequirement(id: String): Boolean {

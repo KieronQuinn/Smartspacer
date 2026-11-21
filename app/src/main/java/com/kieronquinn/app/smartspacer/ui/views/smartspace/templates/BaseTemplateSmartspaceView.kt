@@ -1,7 +1,9 @@
 package com.kieronquinn.app.smartspacer.ui.views.smartspace.templates
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.View
 import android.widget.RemoteViews
@@ -74,6 +76,50 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
 
     open val supportsSubAction = false
 
+    /**
+     *  Swaps the static text view [normalId] for the continuously scrolling ViewFlipper of
+     *  [params]' speed bucket. [prefix] is the ID prefix of the scrolling views in the layout
+     *  (`<prefix>_scroll_<bucket>` for the flipper, `_a`/`_b` for its two strips, and `_1`/`_2`
+     *  for the two text cells in each strip). Each strip is two cells wide, with the text in
+     *  each, so sliding it by one cell (half its width) loops seamlessly.
+     */
+    @SuppressLint("NewApi")
+    private fun RemoteViews.setupScrollingText(
+        context: Context,
+        prefix: String,
+        params: ScrollParams,
+        normalId: Int,
+        text: CharSequence,
+        textSize: Float,
+        textColour: Int,
+        isList: Boolean,
+        tapAction: TapAction?
+    ) {
+        fun id(name: String): Int {
+            return context.resources.getIdentifier(name, "id", context.packageName)
+        }
+        setViewVisibility(normalId, View.GONE)
+        for(bucket in 1..3) {
+            val visibility = if(bucket == params.bucket) View.VISIBLE else View.GONE
+            setViewVisibility(id("${prefix}_scroll_$bucket"), visibility)
+        }
+        val flipper = id("${prefix}_scroll_${params.bucket}")
+        for(strip in listOf("a", "b")) {
+            val stripId = id("${prefix}_scroll_${params.bucket}_$strip")
+            //Before Android 12 the strips have fixed widths set in the layout
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                setViewLayoutWidth(stripId, params.cellWidth * 2f, COMPLEX_UNIT_PX)
+            }
+            for(cell in listOf("1", "2")) {
+                val cellId = id("${prefix}_scroll_${params.bucket}_${strip}_$cell")
+                setTextViewText(cellId, text)
+                setTextViewTextSize(cellId, COMPLEX_UNIT_PX, textSize)
+                setTextColor(cellId, textColour)
+            }
+        }
+        setOnClickAction(context, flipper, isList, tapAction)
+    }
+
     @CallSuper
     override fun apply(
         context: Context,
@@ -99,6 +145,17 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 subtitle
             )
         }
+        //Weather targets keep the standard views, as their date title is managed separately
+        val scrollEnabled = scrollLongText && target.featureType != FEATURE_WEATHER
+        var titleText: CharSequence? = null
+        var titleTapAction: TapAction? = null
+        //Subtitle scrolls if it's too long for the space available to it
+        val subtitleScroll = template.subtitleItem?.text?.text?.takeIf { scrollEnabled }?.let {
+            getScrollParams(
+                context, it, subtitleSize, shadowEnabled,
+                context.getAvailableTextSize(width, template.hasSubAction())
+            )
+        }
         template.primaryItem?.takeIf {
             it.loggingInfo?.featureType == FEATURE_WEATHER
         }?.let {
@@ -120,6 +177,8 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 //Don't update the text on a weather target as it clears the date
                 if (target.featureType != FEATURE_WEATHER) {
                     remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
+                    titleText = it.text
+                    titleTapAction = template.supplementalAlarmItem?.tapAction
                 }
                 remoteViews.setOnClickAction(
                     context, R.id.smartspace_view_root, isList, template.supplementalAlarmItem?.tapAction
@@ -141,22 +200,32 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
                 //Don't update the text on a weather target as it clears the date
                 if (target.featureType != FEATURE_WEATHER) {
                     remoteViews.setTextViewText(R.id.smartspace_view_title, it.text)
+                    titleText = it.text
+                    titleTapAction = template.primaryItem?.tapAction
                 }
             }
         }
         remoteViews.setupOverflow(context, isList, textColour, overflowIntent)
         remoteViews.setTextColor(R.id.smartspace_view_title, textColour)
         remoteViews.setTextViewTextSize(R.id.smartspace_view_title, COMPLEX_UNIT_PX, titleSize)
+        titleText?.takeIf { scrollEnabled }?.let {
+            getScrollParams(
+                context, it, titleSize, shadowEnabled, context.getAvailableTextSize(width, false)
+            )?.let { params ->
+                remoteViews.setupScrollingText(
+                    context, "smartspace_view_title", params, R.id.smartspace_view_title, it, titleSize,
+                    textColour, isList, titleTapAction
+                )
+            }
+        }
         val enforcedHeightVisibility = if(isList) View.VISIBLE else View.GONE
         remoteViews.setViewVisibility(R.id.smartspace_view_enforced_height, enforcedHeightVisibility)
         template.subtitleItem?.text?.let {
             val maxLength = bestMaxLength?.first ?: DEFAULT_MAX_LENGTH
-            remoteViews.setTextViewText(
-                R.id.smartspace_view_subtitle_text, it.text.takeEllipsised(maxLength)
-            )
-            remoteViews.setTextViewTextSize(
-                R.id.smartspace_view_subtitle_text, COMPLEX_UNIT_PX, subtitleSize
-            )
+            //When scrolling, show the full text rather than a pre-truncated version
+            val subtitleText = if(subtitleScroll != null) it.text else it.text.takeEllipsised(maxLength)
+            remoteViews.setTextViewText(R.id.smartspace_view_subtitle_text, subtitleText)
+            remoteViews.setTextViewTextSize(R.id.smartspace_view_subtitle_text, COMPLEX_UNIT_PX, subtitleSize)
             remoteViews.setTextColor(R.id.smartspace_view_subtitle_text, textColour)
             remoteViews.setViewVisibility(R.id.smartspace_view_subtitle_text, View.VISIBLE)
         } ?: run {
@@ -176,6 +245,14 @@ abstract class BaseTemplateSmartspaceView<T: BaseTemplateData>(
         remoteViews.setOnClickAction(
             context, R.id.smartspace_view_subtitle_text, isList, template.subtitleItem?.tapAction
         )
+        template.subtitleItem?.text?.let { text ->
+            subtitleScroll?.let {
+                remoteViews.setupScrollingText(
+                    context, "smartspace_view_subtitle", it, R.id.smartspace_view_subtitle_text, text.text,
+                    subtitleSize, textColour, isList, template.subtitleItem?.tapAction
+                )
+            }
+        }
         if(supportsSubAction) {
             template.subtitleSupplementalItem?.text?.let {
                 val ems = bestMaxLength?.second ?: DEFAULT_MAX_LENGTH

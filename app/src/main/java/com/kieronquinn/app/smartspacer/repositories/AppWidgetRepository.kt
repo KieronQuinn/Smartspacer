@@ -129,6 +129,11 @@ interface AppWidgetRepository {
         subtitle: CharSequence?
     ): Pair<Int, Int?>
 
+    /**
+     *  Estimates the width in pixels that [text] will take up in a widget at a given text [size].
+     */
+    fun getTextWidth(text: CharSequence, size: Float, shadowEnabled: Boolean): Int
+
     fun supportsPinAppWidget(): Boolean
     fun requestPinAppWidget(callbackAction: String)
     fun onAppWidgetUpdate(vararg ids: Int)
@@ -390,6 +395,11 @@ class AppWidgetRepositoryImpl(
             title.getLengthForWidth(halfWidth, size, shadowEnabled),
             subtitle.getLengthForWidth(halfWidth, size, shadowEnabled)
         )
+    }
+
+    @Synchronized
+    override fun getTextWidth(text: CharSequence, size: Float, shadowEnabled: Boolean): Int {
+        return text.estimateWidth(size, shadowEnabled)
     }
 
     private fun setupPackageStates() = scope.launch {

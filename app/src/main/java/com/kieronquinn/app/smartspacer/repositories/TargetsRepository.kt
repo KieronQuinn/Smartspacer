@@ -283,7 +283,8 @@ class TargetsRepositoryImpl(
                     showShortcuts = it.showShortcuts,
                     showAppShortcuts = it.showAppShortcuts,
                     expandedShowWhenLocked = it.expandedShowWhenLocked,
-                    disableSubComplications = it.disableSubComplications
+                    disableSubComplications = it.disableSubComplications,
+                    scrollLongText = it.scrollLongText
                 )
                 @Suppress("CloseTarget")
                 val target = Target(context, it.authority, it.id, it.packageName, config)

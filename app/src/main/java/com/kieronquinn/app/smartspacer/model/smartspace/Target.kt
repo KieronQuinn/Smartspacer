@@ -267,7 +267,9 @@ class Target(
         @SerializedName("expanded_show_when_locked")
         val expandedShowWhenLocked: Boolean = true,
         @SerializedName("disable_sub_complications")
-        val disableSubComplications: Boolean = false
+        val disableSubComplications: Boolean = false,
+        @SerializedName("scroll_long_text")
+        val scrollLongText: Boolean = false
     ): Parcelable
 
     @Parcelize
