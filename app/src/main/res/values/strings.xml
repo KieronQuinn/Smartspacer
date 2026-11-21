@@ -276,6 +276,8 @@
     <string name="target_edit_advanced_header">Advanced</string>
     <string name="target_edit_disable_subcomplication_title">Disable Sub-Complication</string>
     <string name="target_edit_disable_subcomplication_content">Prevents Smartspacer adding a Complication alongside this Target, if space is available</string>
+    <string name="target_edit_scroll_long_text_title">Scroll long text</string>
+    <string name="target_edit_scroll_long_text_content">Scrolls the title and subtitle of this Target when they are too long to fit, instead of cutting them off. The animation runs while it is visible, which may use a little more battery</string>
     <string name="target_edit_settings_header">Settings</string>
     <string name="target_edit_requirements_title">Requirements</string>
     <string name="target_edit_requirements_content">Set the requirements for this target to appear</string>

@@ -14,6 +14,220 @@
         tools:text="Title"
         tools:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title.Preview" />
 
+    <!-- Continuously scrolling twins of the text, shown instead of it when "Scroll long text" is on and the text is too long. One per speed bucket. Each flipper flips between two identical strips of two text cells (widths set at runtime) so the loop is seamless. -->
+    <ViewFlipper
+        android:id="@+id/smartspace_view_title_scroll_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:autoStart="true"
+        android:clipChildren="true"
+        android:flipInterval="6500"
+        android:inAnimation="@anim/scroll_text_1"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_1_a"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_1_a_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_1_a_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_1_b"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_1_b_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_1_b_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:id="@+id/smartspace_view_title_scroll_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:autoStart="true"
+        android:clipChildren="true"
+        android:flipInterval="10500"
+        android:inAnimation="@anim/scroll_text_2"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_2_a"
+            android:layout_width="800dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_2_a_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_2_a_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_2_b"
+            android:layout_width="800dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_2_b_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_2_b_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:id="@+id/smartspace_view_title_scroll_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:autoStart="true"
+        android:clipChildren="true"
+        android:flipInterval="18500"
+        android:inAnimation="@anim/scroll_text_3"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_3_a"
+            android:layout_width="1600dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_3_a_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_3_a_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/smartspace_view_title_scroll_3_b"
+            android:layout_width="1600dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_3_b_1"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+            <TextView
+                android:id="@+id/smartspace_view_title_scroll_3_b_2"
+                style="@style/WidgetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />
+
+        </LinearLayout>
+
+    </ViewFlipper>
+
     <ImageView
         android:id="@+id/smartspace_view_primary_action_icon"
         android:layout_width="@dimen/smartspace_view_icon_size"

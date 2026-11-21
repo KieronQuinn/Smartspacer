@@ -31,12 +31,20 @@ abstract class SmartspaceView(
 ): KoinComponent {
 
     companion object {
+        private const val SCROLL_GAP_DP = 32
+        //The measured width is an estimate, so leave some headroom to avoid clipping the text
+        private const val SCROLL_WIDTH_MARGIN = 1.05f
+        private const val SCROLL_SPEED_DP = 50f
+        private const val SCROLL_MIN_GAP_DP = 16
+        private const val SCROLL_BASE_CELL_DP = 200
+
         fun fromTarget(
             target: SmartspaceTarget,
             surface: UiSurface,
-            forceBasic: Boolean
+            forceBasic: Boolean,
+            scrollLongText: Boolean = false
         ): SmartspaceView {
-            return target.remoteViews?.let {
+            return (target.remoteViews?.let {
                 RemoteViewsSmartspaceView(target, surface)
             } ?: target.templateData?.let { template ->
                 BaseTemplateSmartspaceView.create(
@@ -44,9 +52,17 @@ abstract class SmartspaceView(
                 )
             } ?: BaseFeatureSmartspaceView.create(
                 target.smartspaceTargetId, target, surface, forceBasic
-            )
+            )).also {
+                it.scrollLongText = scrollLongText
+            }
         }
     }
+
+    /**
+     *  Whether the title and subtitle of this view should scroll rather than being truncated,
+     *  set from the per-Target "Scroll long text" option.
+     */
+    var scrollLongText: Boolean = false
 
     abstract val layoutRes: Int
     abstract val viewType: ViewType
@@ -105,6 +121,49 @@ abstract class SmartspaceView(
         subtitle: CharSequence?
     ): Pair<Int, Int?> {
         return appWidgetRepository.getBestMaxLength(width, size, shadowEnabled, title, subtitle)
+    }
+
+    /**
+     *  How to scroll a text: the speed [bucket] (1-3, slow to fast loop durations) and the width in
+     *  pixels of one [cellWidth] (the text plus a gap) that is repeated in the scrolling strip.
+     */
+    protected data class ScrollParams(val bucket: Int, val cellWidth: Int)
+
+    /**
+     *  Returns how to continuously scroll [text] in [availableWidth], or null if it fits and
+     *  should be shown normally.
+     */
+    protected fun getScrollParams(
+        context: Context,
+        text: CharSequence,
+        size: Float,
+        shadowEnabled: Boolean,
+        availableWidth: Int,
+        isTitle: Boolean = false
+    ): ScrollParams? {
+        if(availableWidth <= 0) return null
+        val measuredWidth = appWidgetRepository.getTextWidth(text, size, shadowEnabled, isTitle)
+        if(measuredWidth <= availableWidth) return null
+        val textWidth = (measuredWidth * SCROLL_WIDTH_MARGIN).toInt()
+        val density = context.resources.displayMetrics.density
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            //The strip's width can't be set at runtime before Android 12, so use the fixed width
+            //strips from the layout (cells of 200, 400 and 800dp, all at the same speed) and pick
+            //the smallest that fits the text and a minimum gap. Longer text is cut off at 800dp.
+            val needed = textWidth + (SCROLL_MIN_GAP_DP * density).toInt()
+            val bucket = (1..3).firstOrNull { (SCROLL_BASE_CELL_DP shl (it - 1)) * density >= needed } ?: 3
+            return ScrollParams(bucket, ((SCROLL_BASE_CELL_DP shl (bucket - 1)) * density).toInt())
+        }
+        val cellWidth = textWidth + (SCROLL_GAP_DP * density).toInt()
+        //Pick the closest of three loop durations (4s, 8s, 16s) to the target speed. This is only
+        //approximately constant (within about 1.5x), as the durations are fixed in the animations.
+        val durationMs = cellWidth / (SCROLL_SPEED_DP * density) * 1000f
+        val bucket = when {
+            durationMs <= 6000f -> 1
+            durationMs <= 12000f -> 2
+            else -> 3
+        }
+        return ScrollParams(bucket, cellWidth)
     }
 
     /**

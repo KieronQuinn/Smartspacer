@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Slides a two-cell strip left by exactly one cell (half its width, the strip's width is set at
+  runtime to two text-widths), so the end frame matches the start frame and the loop is seamless.
+  It holds for 2500 ms, then slides for 16000 ms; the ViewFlipper interval
+  is the sum of the two.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+    <translate
+        android:duration="16000"
+        android:startOffset="2500"
+        android:fromXDelta="0"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:toXDelta="-50%" />
+</set>

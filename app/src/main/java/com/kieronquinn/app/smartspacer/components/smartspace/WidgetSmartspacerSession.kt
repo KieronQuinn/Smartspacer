@@ -110,8 +110,9 @@ abstract class WidgetSmartspacerSession(
 
     private fun SmartspacePageHolder.toSmartspaceViewState(): Flow<SmartspacerViewState> {
         val template = page.templateData
+        val scrollLongText = target?.config?.scrollLongText == true
         val basic = if(includeBasic) {
-            SmartspaceView.fromTarget(page, config.uiSurface, true)
+            SmartspaceView.fromTarget(page, config.uiSurface, true, scrollLongText)
         }else null
         return when {
             !includeBasic && template is SubImageTemplateData -> {
@@ -128,7 +129,8 @@ abstract class WidgetSmartspacerSession(
                 val page = SmartspaceView.fromTarget(
                     page.prepareRemoteViews(),
                     config.uiSurface,
-                    false
+                    false,
+                    scrollLongText
                 )
                 flowOf(page).map {
                     SmartspacerViewState(it, this.page, basic)

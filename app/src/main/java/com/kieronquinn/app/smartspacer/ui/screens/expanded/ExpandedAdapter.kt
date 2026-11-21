@@ -288,7 +288,8 @@ class ExpandedAdapter(
             target.target,
             targetInteractionListener,
             tintColour,
-            target.applyShadow
+            target.applyShadow,
+            target.scrollLongText
         )
     }
 

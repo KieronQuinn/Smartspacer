@@ -3,6 +3,7 @@ package com.kieronquinn.app.smartspacer.sdk.client.views.base
 import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Color
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,9 +29,11 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
             target: SmartspaceTarget,
             listener: SmartspaceTargetInteractionListener?,
             tintColour: Int,
-            applyShadowIfRequired: Boolean
+            applyShadowIfRequired: Boolean,
+            scrollLongText: Boolean = false
         ): SmartspacerBasePageView<*> {
             return clazz.getConstructor(Context::class.java).newInstance(context).apply {
+                this.scrollLongText = scrollLongText
                 val shouldApplyShadow = applyShadowIfRequired && tintColour == Color.WHITE
                 whenResumed {
                     setTarget(target, listener, tintColour, shouldApplyShadow)
@@ -38,6 +41,11 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
             }
         }
     }
+
+    /**
+     *  Whether the title and subtitle should scroll if they are too long, rather than truncating
+     */
+    var scrollLongText = false
 
     abstract suspend fun setTarget(
         target: SmartspaceTarget,
@@ -59,6 +67,16 @@ abstract class SmartspacerBasePageView<V: ViewBinding>(
             shadowDy,
             if(enabled) Color.BLACK else Color.TRANSPARENT
         )
+    }
+
+    /**
+     *  Makes the text scroll (marquee) if it's too long to fit, overriding any truncation
+     */
+    protected fun TextView.setScrolling() {
+        setSingleLine(true)
+        ellipsize = TextUtils.TruncateAt.MARQUEE
+        marqueeRepeatLimit = -1
+        isSelected = true
     }
 
     protected fun TextView.setExpressiveTitleFontIfAvailable() {

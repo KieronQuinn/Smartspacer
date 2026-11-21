@@ -301,6 +301,13 @@ class TargetEditFragment: BoundFragment<FragmentEditBinding>(FragmentEditBinding
                 ContextCompat.getDrawable(requireContext(), R.drawable.ic_complications),
                 onChanged = viewModel::onDisableSubComplicationsChanged
             ),
+            GenericSettingsItem.SwitchSetting(
+                target.scrollLongText,
+                getString(R.string.target_edit_scroll_long_text_title),
+                getString(R.string.target_edit_scroll_long_text_content),
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_edit_scroll_text),
+                onChanged = viewModel::onScrollLongTextChanged
+            ),
             GenericSettingsItem.Header(
                 getString(R.string.target_edit_settings_header)
             ),

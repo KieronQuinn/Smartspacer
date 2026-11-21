@@ -147,7 +147,8 @@ class RestoreTargetsViewModelImpl(
                 showShortcuts = config.showShortcuts,
                 showAppShortcuts = config.showAppShortcuts,
                 expandedShowWhenLocked = config.expandedShowWhenLocked,
-                disableSubComplications = config.disableSubComplications
+                disableSubComplications = config.disableSubComplications,
+                scrollLongText = config.scrollLongText
             )
             if(target.notificationAuthority != null){
                 val notificationListener = NotificationListener(

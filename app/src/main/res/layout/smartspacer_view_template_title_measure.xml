@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Used to measure the width of widget titles, which use a different typeface to subtitles -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/WidgetShadowEnabled"
+    style="@style/WidgetTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/TextAppearance.Smartspacer.Widget.Title" />

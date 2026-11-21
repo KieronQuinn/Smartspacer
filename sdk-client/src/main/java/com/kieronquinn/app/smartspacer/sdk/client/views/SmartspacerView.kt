@@ -48,6 +48,7 @@ open class SmartspacerView: FrameLayout {
 
     private var _tintColour: Int? = null
     private var applyShadowIfRequired: Boolean = true
+    private var scrollLongText: Boolean = false
 
     private val tintColour
         get() = _tintColour ?: defaultTintColour
@@ -66,13 +67,21 @@ open class SmartspacerView: FrameLayout {
      *  You can also pass a [tintColour], and/or [applyShadowIfRequired], which will call
      *  [setTintColour]/[setApplyShadowIfRequired] before setting the Target, but only make one
      *  update pass with the new Target.
+     *
+     *  If [scrollLongText] is `true`, the title and subtitle will scroll horizontally if they are
+     *  too long to fit, rather than being truncated.
      */
+    @JvmOverloads
     fun setTarget(
         target: SmartspaceTarget?,
         listener: SmartspaceTargetInteractionListener?,
         tintColour: Int? = null,
-        applyShadowIfRequired: Boolean? = null
+        applyShadowIfRequired: Boolean? = null,
+        scrollLongText: Boolean? = null
     ) {
+        if(scrollLongText != null){
+            this.scrollLongText = scrollLongText
+        }
         if(tintColour != null){
             setTintColour(tintColour, false)
         }
@@ -85,7 +94,8 @@ open class SmartspacerView: FrameLayout {
             target ?: generateBlankTarget(),
             listener,
             this.tintColour,
-            this.applyShadowIfRequired
+            this.applyShadowIfRequired,
+            this.scrollLongText
         ) ?: createFallbackFragment(
             this.tintColour,
             this.applyShadowIfRequired
@@ -141,7 +151,8 @@ open class SmartspacerView: FrameLayout {
         target: SmartspaceTarget,
         listener: SmartspaceTargetInteractionListener?,
         tintColour: Int,
-        applyShadowIfRequired: Boolean
+        applyShadowIfRequired: Boolean,
+        scrollLongText: Boolean
     ): SmartspacerBasePageView<*>? {
         return try {
             val clazz = when {
@@ -186,7 +197,8 @@ open class SmartspacerView: FrameLayout {
                 target,
                 listener,
                 tintColour,
-                applyShadowIfRequired
+                applyShadowIfRequired,
+                scrollLongText
             )
         }catch (e: Exception) {
             Log.d(TAG, "Failed to create fragment for target ${target.smartspaceTargetId}", e)
@@ -198,7 +210,9 @@ open class SmartspacerView: FrameLayout {
         tintColour: Int,
         applyShadowIfRequired: Boolean
     ): SmartspacerBasePageView<*>? {
-        return createView(generateBlankTarget(), null, tintColour, applyShadowIfRequired)
+        return createView(
+            generateBlankTarget(), null, tintColour, applyShadowIfRequired, scrollLongText
+        )
     }
 
     private fun generateBlankTarget(): SmartspaceTarget = SmartspaceTarget(
