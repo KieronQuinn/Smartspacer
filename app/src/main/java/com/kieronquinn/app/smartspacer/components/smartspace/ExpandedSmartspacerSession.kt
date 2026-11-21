@@ -352,6 +352,7 @@ class ExpandedSmartspacerSession(
                 it.page.prepareRemoteViews(),
                 it.target?.id, extras.isNotEmpty(),
                 applyShadow,
+                it.target?.config?.scrollLongText == true,
                 isDark
             ))
             //Force a new line if any extras are being shown alongside this Target
@@ -551,6 +552,7 @@ class ExpandedSmartspacerSession(
             val parentId: String?,
             val hasExtras: Boolean,
             val applyShadow: Boolean,
+            val scrollLongText: Boolean,
             override val isDark: Boolean
         ): Item(Type.TARGET, isDark) {
             override fun getStaticId() = "${parentId ?: "default"}_${target.smartspaceTargetId}"

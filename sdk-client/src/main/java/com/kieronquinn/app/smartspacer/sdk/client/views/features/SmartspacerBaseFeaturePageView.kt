@@ -70,6 +70,10 @@ abstract class SmartspacerBaseFeaturePageView<V : ViewBinding>(
         subtitle.action?.setShadowEnabled(applyShadow)
         subtitle.action?.setExpressiveSubtitleFontIfAvailable()
         subtitle.actionIcon?.setShadowEnabled(applyShadow)
+        if(scrollLongText && target.featureType != SmartspaceTarget.FEATURE_WEATHER) {
+            title?.smartspaceViewTitle?.setScrolling()
+            subtitle.subtitle.setScrolling()
+        }
     }
 
     sealed class SubtitleBinding {

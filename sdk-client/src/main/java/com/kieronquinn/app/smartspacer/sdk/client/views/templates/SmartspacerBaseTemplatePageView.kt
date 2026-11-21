@@ -109,6 +109,11 @@ abstract class SmartspacerBaseTemplatePageView<V : ViewBinding>(
             subtitle.action?.setShadowEnabled(applyShadow)
             subtitle.action?.setExpressiveSubtitleFontIfAvailable()
             subtitle.actionIcon?.setShadowEnabled(applyShadow)
+            //Weather keeps its standard views, as its date title is managed separately
+            if(scrollLongText && target.featureType != SmartspaceTarget.FEATURE_WEATHER) {
+                title?.smartspaceViewTitle?.setScrolling()
+                subtitle.subtitle.setScrolling()
+            }
         }
     }
 
