@@ -253,7 +253,10 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
             .setPredictedTargetCount(10)
             .build()
         val callback = AppPredictor.Callback {
-            listener.onTargetsAvailable(ParceledListSlice(it))
+            try {
+                listener.onTargetsAvailable(ParceledListSlice(it))
+            }catch (e: RemoteException){
+            }
         }
         try {
             appPredictionSession = appPredictionManager?.createAppPredictionSession(
@@ -289,7 +292,10 @@ class SmartspacerShizukuService: ISmartspacerShizukuService.Stub() {
             .setPredictedTargetCount(20)
             .build()
         val callback = AppPredictor.Callback {
-            listener.onTargetsAvailable(ParceledListSlice(it))
+            try {
+                listener.onTargetsAvailable(ParceledListSlice(it))
+            }catch (e: RemoteException){
+            }
         }
         try {
             widgetPredictionSession = appPredictionManager?.createAppPredictionSession(

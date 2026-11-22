@@ -38,6 +38,7 @@ class SmartspacerWeatherTemplatePageView(context: Context): SmartspacerBaseTempl
         with(binding.smartspacePageTemplateBasicClock.smartspaceViewTitle){
             setTextColor(tintColour)
             setShadowEnabled(applyShadow)
+            setExpressiveTitleFontIfAvailable()
             format12Hour = dateFormat
             format24Hour = dateFormat
             setOnClickListener {

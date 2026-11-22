@@ -252,7 +252,7 @@ open class OverlayController(context: Context?, theme: Int, dialogTheme: Int) :
 
     open fun onDragProgress(progress: Float) {}
 
-    override fun getSystemService(str: String): Any {
+    override fun getSystemService(str: String): Any? {
         return if ("window" != str || windowManager == null) {
             super.getSystemService(str)
         } else windowManager!!
